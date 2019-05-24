@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/shareInfo",
+    "pages/login/login",
+    "pages/market/market",
+    "pages/market/goodDetail",
+    "pages/market/panicBuy",
+    "pages/message/message",
+    "pages/shopcar/shopcar",
+    "pages/mine/mine",
+    "pages/components/search"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff"
+  },
+  "tabBar": {
+    "color": "#7a7e83",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/img/tabbar/index1.png",
+        "selectedIconPath": "static/img/tabbar/index2.png"
+      },
+      {
+        "pagePath": "pages/market/market",
+        "text": "商城",
+        "iconPath": "static/img/tabbar/market1.png",
+        "selectedIconPath": "static/img/tabbar/market2.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "static/img/tabbar/message1.png",
+        "selectedIconPath": "static/img/tabbar/message2.png"
+      },
+      {
+        "pagePath": "pages/shopcar/shopcar",
+        "text": "购物车",
+        "iconPath": "static/img/tabbar/shopcar1.png",
+        "selectedIconPath": "static/img/tabbar/shopcar2.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/img/tabbar/mine1.png",
+        "selectedIconPath": "static/img/tabbar/mine2.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

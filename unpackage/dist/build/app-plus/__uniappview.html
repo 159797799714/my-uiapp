@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"优逸","entryPagePath":"pages/index/index.html","page":{"pages/index/index.html":{"window":{"navigationBarTitleText":"优逸","usingComponents":{}}},"pages/login/login.html":{"window":{"navigationBarTitleText":"登录","usingComponents":{}}},"pages/market/market.html":{"window":{"navigationBarTitleText":"商城","usingComponents":{}}},"pages/message/message.html":{"window":{"navigationBarTitleText":"消息","usingComponents":{}}},"pages/shopcar/shopcar.html":{"window":{"navigationBarTitleText":"购物车","usingComponents":{}}},"pages/mine/mine.html":{"window":{"navigationBarTitleText":"我的","usingComponents":{}}},"components/search.html":{"window":{"navigationBarTitleText":"搜索","usingComponents":{}}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarBackgroundColor":"#fff","backgroundColor":"#fff"}},"tabBar":{"color":"#7a7e83","selectedColor":"#000000","backgroundColor":"#ffffff","borderStyle":"black","list":[{"pagePath":"pages/index/index.html","text":"首页","iconPath":"static/img/tabbar/index1.png","selectedIconPath":"static/img/tabbar/index2.png"},{"pagePath":"pages/market/market.html","text":"商城","iconPath":"static/img/tabbar/market1.png","selectedIconPath":"static/img/tabbar/market2.png"},{"pagePath":"pages/message/message.html","text":"消息","iconPath":"static/img/tabbar/message1.png","selectedIconPath":"static/img/tabbar/message2.png"},{"pagePath":"pages/shopcar/shopcar.html","text":"购物车","iconPath":"static/img/tabbar/shopcar1.png","selectedIconPath":"static/img/tabbar/shopcar2.png"},{"pagePath":"pages/mine/mine.html","text":"我的","iconPath":"static/img/tabbar/mine1.png","selectedIconPath":"static/img/tabbar/mine2.png"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/index/index","pages/login/login","pages/market/market","pages/message/message","pages/shopcar/shopcar","pages/mine/mine","components/search"],"subPackages":[],"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"1.9.8","usingComponents":{}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

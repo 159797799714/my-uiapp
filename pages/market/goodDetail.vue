@@ -1,0 +1,306 @@
+<template>
+  <view class="container">
+    <scroll-view scroll-y="true" class="content">
+      <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
+        <swiper-item v-for="(item, index) in swiperList" :key="index">
+          <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
+        </swiper-item>
+      </swiper>
+      <view class="head bg-white">
+        <view class="head-left">
+          <view class="title">{{ data.title }}</view>
+          <view>
+            <text class="price font-red">￥{{ data.price }}</text>
+            <text v-for="(item, index) in data.textList" :key="index" class="tag">{{ item }}</text>
+          </view>
+        </view>
+        <view class="head-right">
+          <view>
+            <text class="iconfont">&#xe60f;</text>分享
+          </view>
+          <view>
+            <text class="iconfont">&#xe637;</text>收藏
+          </view>
+        </view>
+      </view>
+      <view class="sale-info row bg-white">
+        <view class="row-name">促销信息</view>
+        <view class="row-info">
+          <text>满送</text>
+          <text>满999元送4000毫安的充电宝满999元送4000毫安的充电宝...</text>
+        </view>
+        <text class="iconfont">&#xe644;</text>
+      </view>
+      <view class="row bg-white">
+        <view class="row-name">选择颜色</view>
+        <view class="row-info">已选：“黑色”“官方标配”</view>
+        <text class="iconfont">&#xe644;</text>
+      </view>
+      <view class="row bg-white">
+        <view class="row-name">商品规格</view>
+        <view class="row-info">颜色 适用设备</view>
+        <text class="iconfont">&#xe644;</text>
+      </view>
+      <view class="row bg-white">
+        <view class="row-name">服务说明</view>
+        <view class="row-info">7天无理由退货，7天保价</view>
+        <text class="iconfont">&#xe644;</text>
+      </view>
+      <view class="user-comment bg-white">
+        <view class="comment-head">
+          <view>
+            <text>用户评价</text> (3085)
+          </view>
+          <view class="font-red">
+            <text>查看全部</text>
+            <text class="iconfont">&#xe644;</text>
+          </view>
+        </view>
+        <view class="comment-writer">
+          <view class="writer-head">
+            <view>
+              <view>
+                <image src="" mode=""></image>
+                <text>炒饭</text>
+              </view>
+              <view class="font-99">
+                <text>2018.10.13 13:11</text>
+                <text>黑色；官方标配</text>
+              </view>
+              <view></view>
+            </view>
+            <text class="iconfont font-99">&#xe63a;</text>
+          </view>
+          <view class="writer-speak">很喜欢，音质不错，算是物超所值了。</view>
+          <view class="writer-speak-img">
+            <image src="" mode=""></image>
+          </view>
+        </view>
+      </view>
+      <view class="store bg-white">
+        <image src="" mode=""></image>
+        <view class="name">{{ store.name }}</view>
+        <view class="btn">进店逛逛</view>
+      </view>
+    </scroll-view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        indicatorDots: true,                  // 指示点显隐
+        autoplay: true,                       // 自动轮播
+        interval: 2000,                       // 自动轮播时间 
+        duration: 500,                        // 轮播过渡时间
+        indicatorActiveColor: '#fff',         // 轮播图指示点选中颜色
+        swiperList:[{}, {}, {}],              // 轮播元素数组
+        data: {
+          price: 1099,
+          textList: ['包邮', '自营'],
+          title: '',                             
+        },                                     // 商品价格等
+        store: {
+          name: 'SONY官方自营店',
+          imgUrl: ''   
+        }                                      // 店名头像信息
+      }
+    },
+    // 接受首页传递的参数
+    onLoad(option) {
+      console.log('分享文章详情页接受到的参数',option)
+      this.data.title = option.info
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  .swiper{
+    height: 750upx;
+    .swiper-item{
+      height: 750upx;
+      width: 750upx;
+    }  
+  }
+  .head{
+    height: 242upx;
+    padding: 31upx 44upx 20upx 32upx;
+    display: flex;
+    box-sizing: border-box;
+    .head-left{
+      flex: 1;
+      .title{
+        height: 84upx;
+        margin-bottom: 40upx;
+        white-space: wrap;
+        overflow: hidden;
+        word-break:break-all;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: $font-32;
+        line-height: 46upx;
+        
+      }
+      .price{
+        margin-right: 60upx;
+        font-size: $font-32;
+        line-height: 36upx;
+        font-weight: $font-bold;
+      }
+      .tag{
+        display: inline-block;
+        height: 40upx;
+        padding: 0 17upx;
+        margin-right: 10upx;
+        border-radius: 20upx;
+        line-height: 40upx;
+        font-size: $font-24;
+        background:rgba(244,67,61,0.08);
+        color: $color-red;
+        &:nth-child(2n-1){
+          background:rgba(244,160,61,0.08);
+          color: $color-orange
+        }
+      }
+    }
+    .head-right{
+      display: flex;
+      margin-top: 22upx;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 39upx;
+      width: 180upx;
+      height: 112upx;
+      font-size: $font-24;
+      color: $word-color;
+      line-height: $font-30;
+      border-left: 2px dashed $color-dd;
+      &>view{
+        &>text{
+          margin-right: 20upx;
+          font-size: $font-30;
+        }  
+      }
+    }
+  }
+  .row{
+    height: 104upx;
+    padding: 0 30upx;
+    border-bottom: 1upx solid $color-f5;
+    display: flex;
+    align-items: center;
+    .row-name{
+      font-size: $font-28;
+      color: $color-99;
+      margin-right: 44upx;
+    }
+    .row-info{
+      flex: 1;
+      font-size: $font-26;
+      padding-right: 70upx;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  .sale-info{
+    height: 114upx;
+    margin: 20upx 0;
+  }
+  .user-comment{
+    margin-top: 20upx;
+    margin-bottom: 20upx;
+    padding: 0 30upx;
+    .comment-head{
+      height: 94upx;
+      font-size: $font-28;
+      margin-bottom: 20upx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1upx solid $color-f5;
+      &>view>text{
+        margin-right: 18upx;
+      }
+      .font-red>.iconfont{
+        margin-left: 18upx;
+      }
+    }
+    .comment-writer{
+      height: 332upx;
+      .writer-head{
+        height: 78upx;
+        margin-top: 30upx;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        &>view>view{
+          font-size: $font-26;
+          line-height: 44upx;
+          margin-bottom: 13upx;
+          display: flex;
+          &>image{
+            height: 44upx;
+            width: 44upx;
+            border-radius: 100%;
+            margin-right: 16upx;
+            background: #ccc;
+          }
+        }
+        &>view{
+          .font-99{
+            font-size: $font-22;
+            line-height: 21upx;
+          }
+        }
+      }
+      .writer-speak{
+        font-size: $font-28;
+        line-height: 50upx;
+        margin-top: 7upx;
+      }
+      .writer-speak-img{
+        height: 110upx;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        &>image{
+          height: 110upx;
+          width: 110upx;
+          margin-right: 10upx;
+          background: #ccc;
+        }
+      }
+    }
+  }
+  .store{
+    height: 150upx;
+    padding: 0 30upx;
+    display: flex;
+    align-items: center;
+    &>image{
+      height: 100upx;
+      width: 100upx;
+      margin-right: 54upx;
+      border-radius: 100%;
+      background: #ccc;
+    }
+    .name{
+      flex: 1;
+      font-size: $font-32;
+    }
+    .btn{
+      height: 50upx;
+      width: 140upx;
+      border: 1upx solid $title-color;
+      text-align: center;
+      font-size: $font-24;
+      line-height: 50upx;
+      border-radius: 25upx;
+    }
+  }
+</style>
