@@ -1,0 +1,17 @@
+{
+  "navigationBarTitleText": "购物车",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#f8f8f8",
+  "bounce": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "购物车",
+        "fontSize": "22",
+        "float": "left",
+        "color": "#131313"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

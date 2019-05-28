@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "搜索",
+  "bounce": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "type": "none",
+        "text": "取消",
+        "float": "right"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

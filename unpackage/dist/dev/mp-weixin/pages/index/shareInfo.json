@@ -1,4 +1,13 @@
 {
   "navigationBarTitleText": "优逸",
+  "bounce": "none",
+  "titleNView": {
+    "searchInput": {
+      "align": "left",
+      "placeholder": "请输入查找房源信息",
+      "borderRadius": "50upx",
+      "backgroundColor": "#fff"
+    }
+  },
   "usingComponents": {}
 }

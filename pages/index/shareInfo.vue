@@ -49,7 +49,7 @@
         </view>
       </view>
     </scroll-view>
-    <view class="speak bg-white">
+    <view class="speak bg-white border-box">
       <input type="text" :value="speakVal" placeholder="留下你的精彩评论吧"/>
       <view>
         <text class="iconfont">&#xe63a;</text>
@@ -221,6 +221,7 @@
   }
   .comment{
     padding: 40upx 40upx 0 35upx;
+    margin-bottom: 99upx;
     .total{
       font-size: $font-36;
       line-height: 34upx;
@@ -308,9 +309,10 @@
     }
   }
   .speak{
-    // position: fixed;
-    // bottom: 0;
-    // left: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 99upx;
     margin-top: 1upx;
     display: flex;

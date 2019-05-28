@@ -54,7 +54,9 @@
         </view>
       </view>
       <view class="recommend">
-        <view class="recommend-title">为你推荐</view>
+        <view class="recommend-title">
+          <image src="../../static/img/market/foryou.png" mode=""></image>
+        </view>
         <view class="recommend-content">
           <view v-for="(item, index) in recommendList" :key="index" class="recommend-item" @tap="goDetail(item)">
             <image src="" mode=""></image>
@@ -301,10 +303,17 @@
     }
     .recommend{
       .recommend-title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 110upx;
+        margin-top: 30upx;
         font-size: $font-32;
         font-weight: $font-bold;
-        text-align: center;
-        line-height: 110upx;
+        &>image{
+          height: 31upx;
+          width: 230upx;
+        }
       }
       .recommend-content{
         display: flex;

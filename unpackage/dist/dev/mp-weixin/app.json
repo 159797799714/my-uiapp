@@ -13,14 +13,14 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#fff",
-    "backgroundColor": "#fff"
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#000000",
+    "backgroundColor": "#000000"
   },
   "tabBar": {
-    "color": "#7a7e83",
-    "selectedColor": "#000000",
-    "backgroundColor": "#ffffff",
+    "color": "#666",
+    "selectedColor": "#fff",
+    "backgroundColor": "#000",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -54,5 +54,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

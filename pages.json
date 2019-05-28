@@ -3,56 +3,145 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "优逸"
+        "navigationBarTitleText": "优逸",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/index/shareInfo",
       "style": {
-        "navigationBarTitleText": "优逸"
+        "navigationBarTitleText": "优逸",
+        "bounce": "none",
+        "titleNView": {
+          // "buttons": [{
+          //     "text": "地图",
+          //     "fontSize": "16",
+          //     "float": "right",
+          //     "color": "#fff"
+          //   },
+          //   {
+          //     "text": "唐山",
+          //     "fontSize": "16",
+          //     "float": "left",
+          //     "color": "#fff"
+          //   }
+          // ],
+          "searchInput": {
+            "align": "left",
+            "placeholder": "请输入查找房源信息",
+            "borderRadius": "50upx",
+            "backgroundColor": "#fff"
+          }
+        },
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/login/login",
       "style": {
-        "navigationBarTitleText": "登录"
+        "navigationBarTitleText": "登录",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/market/market",
       "style": {
-        "navigationBarTitleText": "商城"
+        "navigationBarTitleText": "商城",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/market/goodDetail",
       "style": {
-        "navigationBarTitleText": "详情"
+        "navigationBarTitleText": "详情",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/market/panicBuy"
     }, {
       "path": "pages/message/message",
       "style": {
-        "navigationBarTitleText": "消息"
+        "navigationBarTitleText": "消息",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "titleSize": "18"
+          }
+        }
       }
     }, {
       "path": "pages/shopcar/shopcar",
       "style": {
-        "navigationBarTitleText": "购物车"
+        "navigationBarTitleText": "购物车",
+        "navigationBarTextStyle": "black",
+        "navigationBarBackgroundColor": "#f8f8f8",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": {
+            "buttons": [
+              {
+                "text": "购物车",
+                "fontSize":"22",
+                "float": "left",
+                "color":"#131313"
+              }
+            ]
+          }
+        }
       }
     }, {
       "path": "pages/mine/mine",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "black",
+        "app-plus": {
+          "titleNView": false
+        }
       }
     }, {
       "path": "pages/components/search",
       "style": {
-        "navigationBarTitleText": "搜索"
+        "navigationBarTitleText": "搜索",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": {
+            "buttons": [ //原生标题栏按钮配置,
+              {
+                "type": "none",
+                "text": "取消",
+                "float": "right"
+              }
+            ]
+          }
+        }
       }
     }
   ],
   "tabBar": {
-    "color": "#7a7e83",
-    "selectedColor": "#000000",
-    "backgroundColor": "#ffffff",
+    "color": "#666",
+    "selectedColor": "#fff",
+    "backgroundColor": "#000",
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",
@@ -81,8 +170,8 @@
     }]
   },
   "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#fff",
-    "backgroundColor": "#fff"
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#000000",
+    "backgroundColor": "#000000"
   }
 }

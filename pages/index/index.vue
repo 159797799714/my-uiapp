@@ -1,10 +1,6 @@
 <template>
   <view class="container">
     <scroll-view scroll-y="true" class="content bg-white">
-      <view class="search">
-        <text class="search-icon iconfont">&#xe667;</text>
-        <view class="searchVal">{{ searchInfo }}</view>
-      </view>
       <view class="banner-swiper">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
@@ -103,6 +99,11 @@
   .content {
     padding: 20upx 30upx;
     box-sizing: border-box;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      background-color: transparent;
+    }
     .search {
       display: flex;
       justify-content: center;

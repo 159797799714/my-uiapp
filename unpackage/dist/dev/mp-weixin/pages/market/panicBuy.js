@@ -139,16 +139,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      title: '',
+      title: '', // 顶部标题
       indicatorDots: true,
       autoplay: true,
       interval: 2000,
       duration: 500,
-      indicatorActiveColor: '#ffffff',
+      indicatorActiveColor: '#ffffff', // 以上轮播图信息
       timeList: [
       {
         id: 1,
@@ -181,8 +193,56 @@ var _default =
         status_text: '即将开抢',
         status: 2 }],
 
+      // 时间
+      selectIndex: 2, // 选中的时间
+      goodList: [
+      {
+        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
+        leaver_sum: 40,
+        total: 100,
+        discount: '4.6折',
+        newPrice: 300,
+        oldPrice: 4000,
+        code: 1,
+        percent: 40 },
+      {
+        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
+        leaver_sum: 0,
+        total: 200,
+        discount: '4.6折',
+        newPrice: 300,
+        oldPrice: 4000,
+        code: 0,
+        percent: 0 },
+      {
+        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
+        leaver_sum: 40,
+        total: 100,
+        discount: '4.6折',
+        newPrice: 300,
+        oldPrice: 4000,
+        code: 1,
+        percent: 40 },
+      {
+        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
+        leaver_sum: 40,
+        total: 100,
+        discount: '4.6折',
+        newPrice: 300,
+        oldPrice: 4000,
+        code: 1,
+        percent: 40 },
+      {
+        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
+        leaver_sum: 40,
+        total: 100,
+        discount: '4.6折',
+        newPrice: 300,
+        oldPrice: 4000,
+        code: 1,
+        percent: 40 }] };
 
-      selectIndex: 2 };
+
 
   },
   onLoad: function onLoad(option) {

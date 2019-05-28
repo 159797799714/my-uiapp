@@ -12,7 +12,7 @@
 	}
 </script>
 
-<!-- <style lang="scss">
-	@import './common/common.scss';
-</style> -->
+<style lang="scss">
+	// @import './common/common.scss';
+</style>
 
