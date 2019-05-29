@@ -143,23 +143,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
       list: [{
-        '0': [{
+        storeName: '优逸影音自营',
+        goodArr: [{
           imgUrl: '',
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
@@ -167,7 +157,8 @@ var _default =
           num: 1 }] },
 
       {
-        '0': [{
+        storeName: '优逸影音自营',
+        goodArr: [{
           imgUrl: '',
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
@@ -178,9 +169,10 @@ var _default =
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
           price: 1099,
-          num: 1 }] }] };
+          num: 1 }] }],
 
 
+      current: 0 };
 
   },
   methods: {

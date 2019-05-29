@@ -1,5 +1,11 @@
 <template>
   <view class="container">
+    <view class="topBar">
+      <view class="search" @click="goSearch">
+        <text class="search-icon iconfont">&#xe667;</text>
+        <view class="searchVal">{{ searchInfo }}</view>
+      </view>
+    </view>
     <scroll-view scroll-y="true" class="content bg-white">
       <view class="banner-swiper">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
@@ -86,9 +92,16 @@
           console.log("得到节点信息" + JSON.stringify(data))
         }).exec()
       }, 
+      // 文章详情页
       goInfo(item) {
         uni.navigateTo({
           url: 'shareInfo?title=' + item.title
+        })
+      },
+      // 搜索页
+      goSearch() {
+        uni.navigateTo({
+          url: '../components/search'
         })
       }
     }
@@ -96,33 +109,51 @@
 </script>
 
 <style lang="scss" scoped>
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 66upx;
+    width: 100%;
+    text-align: center;
+    color: $control-color;
+    background: rgba(248,248,248,0.1);
+    .search-icon {
+      margin-right: 60upx;
+      font-size: $font-28;
+    }
+    .searchVal {
+      line-height: 28upx;
+      font-size: $font-28;
+    }
+  }
   .content {
-    padding: 20upx 30upx;
+    padding: 30upx ;
     box-sizing: border-box;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
       background-color: transparent;
     }
-    .search {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80upx;
-      margin-bottom: 30upx;
-      text-align: center;
-      border-bottom: 1px solid $title-color;
-      .search-icon {
-        height: 26upx;
-        width: 26upx;
-        margin-right: 22upx;
-        font-size: $font-28;
-      }
-      .searchVal {
-        line-height: 28upx;
-        font-size: $font-28;
-      }
-    }
+    // .search {
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   height: 80upx;
+    //   margin-bottom: 30upx;
+    //   text-align: center;
+    //   border-bottom: 1px solid $title-color;
+    //   .search-icon {
+    //     height: 26upx;
+    //     width: 26upx;
+    //     margin-right: 22upx;
+    //     font-size: $font-28;
+    //   }
+    //   .searchVal {
+    //     line-height: 28upx;
+    //     font-size: $font-28;
+    //   }
+    // }
     .banner-swiper {
       height: 390upx;
       margin-bottom: 50upx;

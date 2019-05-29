@@ -1,1 +1,1 @@
-<view class="content" bind:__l="__l">搜索页</view>
+<view class="container" bind:__l="__l"><view class="topBar"></view><srollview class="content" vue-slots="{{['default']}}"><input class="uni-input" confirm-type="search" placeholder="键盘右下角按钮显示为搜索"/><input class="uni-input" placeholder="带清除按钮的输入框" data-event-opts="{{[['input',[['clearInput',['$event']]]]]}}" value="{{inputClearValue}}" bindinput="__e"/><block wx:if="{{showClearIcon}}"><view data-event-opts="{{[['tap',[['clearIcon',['$event']]]]]}}" class="uni-icon uni-icon-clear" bindtap="__e"></view></block></srollview></view>

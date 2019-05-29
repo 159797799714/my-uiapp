@@ -110,6 +110,18 @@ view{
 .content{ position: relative; height: 100%; width: 100%; overflow: hidden; background: #F5F5F5; display: flex; flex-direction: column; }
 .bg-white{ background: #fff; }
 
+// 关闭原生头部导航时自定义头部样式
+.topBar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30upx;
+  height: 176upx;
+  background: $title-color;
+  padding-top: 88upx;
+  box-sizing: border-box;
+}
+
 
 .my-button{
   border-radius: 25upx;

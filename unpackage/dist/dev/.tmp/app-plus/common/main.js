@@ -83,12 +83,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch', " at App.vue:4");
+    // 锁定屏幕方向
+    plus.screen.lockOrientation('portrait-primary'); //锁定
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:7");
+    console.log('App Show', " at App.vue:9");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:10");
+    console.log('App Hide', " at App.vue:12");
   } };exports.default = _default;
 
 /***/ }),

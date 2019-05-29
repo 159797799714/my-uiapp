@@ -3,12 +3,10 @@
     {
       "path": "pages/index/index",
       "style": {
+        "navigationStyle": "custom",
         "navigationBarTitleText": "优逸",
         "app-plus": {
-          "bounce": "none",
-          "titleNView": {
-            "titleSize": "18"
-          }
+          "titleNView": "false"
         }
       }
     }, {
@@ -21,12 +19,6 @@
           //     "text": "地图",
           //     "fontSize": "16",
           //     "float": "right",
-          //     "color": "#fff"
-          //   },
-          //   {
-          //     "text": "唐山",
-          //     "fontSize": "16",
-          //     "float": "left",
           //     "color": "#fff"
           //   }
           // ],
@@ -122,18 +114,11 @@
     }, {
       "path": "pages/components/search",
       "style": {
-        "navigationBarTitleText": "搜索",
+        "navigationStyle": "custom",
+        // "navigationBarTitleText": "搜索",
         "app-plus": {
-          "bounce": "none", //关闭窗口回弹效果
-          "titleNView": {
-            "buttons": [ //原生标题栏按钮配置,
-              {
-                "type": "none",
-                "text": "取消",
-                "float": "right"
-              }
-            ]
-          }
+          // "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
         }
       }
     }

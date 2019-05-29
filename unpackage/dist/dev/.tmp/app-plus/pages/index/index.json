@@ -1,8 +1,6 @@
 {
+  "navigationStyle": "custom",
   "navigationBarTitleText": "优逸",
-  "bounce": "none",
-  "titleNView": {
-    "titleSize": "18"
-  },
+  "titleNView": "false",
   "usingComponents": {}
 }

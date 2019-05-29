@@ -133,6 +133,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
 var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));
 var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
@@ -168,13 +174,13 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: ['发现', '电音', '潮品', '美妆', '游戏'], selectIndex: 0, cultureList: [{ imgUrl: '', title: '2019深圳啦啦啦', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000,
-        zansum: 3000 }] };
-
-
-
-  },
-  methods: {
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: ['发现', '电音', '潮品', '美妆', '游戏'], selectIndex: 0, cultureList: [{ imgUrl: '', title: '2019深圳啦啦啦', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }] };}, methods: {
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
@@ -186,9 +192,16 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         console.log("得到节点信息" + JSON.stringify(data));
       }).exec();
     },
+    // 文章详情页
     goInfo: function goInfo(item) {
       uni.navigateTo({
         url: 'shareInfo?title=' + item.title });
+
+    },
+    // 搜索页
+    goSearch: function goSearch() {
+      uni.navigateTo({
+        url: '../components/search' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

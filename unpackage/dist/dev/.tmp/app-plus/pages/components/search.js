@@ -86,13 +86,36 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      title: '搜索页' };
+      title: '搜索页',
+      inputClearValue: '',
+      showClearIcon: false };
 
-  } };exports.default = _default;
+  },
+  methods: {
+    clearIcon: function clearIcon() {
+      this.inputClearValue = '';
+      this.showClearIcon = false;
+    },
+    clearInput: function clearInput(event) {
+      console.log(event.target.value, " at pages\\components\\search.vue:29");
+      this.inputClearValue = event.target.value;
+      if (event.target.value.length > 0) {
+        this.showClearIcon = true;
+      } else {
+        this.showClearIcon = false;
+      }
+    } } };exports.default = _default;
 
 /***/ }),
 
