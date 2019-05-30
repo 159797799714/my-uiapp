@@ -1,8 +1,5 @@
 {
-  "navigationBarTitleText": "商城",
-  "bounce": "none",
-  "titleNView": {
-    "titleSize": "18"
-  },
+  "navigationStyle": "custom",
+  "titleNView": false,
   "usingComponents": {}
 }

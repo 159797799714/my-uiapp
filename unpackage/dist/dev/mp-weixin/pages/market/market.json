@@ -1,4 +1,4 @@
 {
-  "navigationBarTitleText": "商城",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

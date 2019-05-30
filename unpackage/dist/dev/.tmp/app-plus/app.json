@@ -4,7 +4,7 @@
     "pages/index/shareInfo",
     "pages/login/login",
     "pages/market/market",
-    "pages/market/goodDetail",
+    "pages/components/goodDetail",
     "pages/market/panicBuy",
     "pages/message/message",
     "pages/shopcar/shopcar",

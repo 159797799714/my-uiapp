@@ -98,7 +98,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -245,7 +255,31 @@ var _default =
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option);
     this.title = option.title;
-  } };exports.default = _default;
+  },
+  methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
+    goShare: function goShare() {
+      uni.share({
+        provider: "weixin",
+        scene: "WXSceneSession",
+        type: 0,
+        href: "http://uniapp.dcloud.io/",
+        title: "uni-app分享",
+        summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
+        imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+        success: function success(res) {
+          console.log("success:" + JSON.stringify(res));
+        },
+        fail: function fail(err) {
+          console.log("fail:" + JSON.stringify(err));
+        } });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

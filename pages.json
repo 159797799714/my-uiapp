@@ -12,28 +12,10 @@
     }, {
       "path": "pages/index/shareInfo",
       "style": {
-        "navigationBarTitleText": "优逸",
-        "bounce": "none",
-        "titleNView": {
-          // "buttons": [{
-          //     "text": "地图",
-          //     "fontSize": "16",
-          //     "float": "right",
-          //     "color": "#fff"
-          //   }
-          // ],
-          "searchInput": {
-            "align": "left",
-            "placeholder": "请输入查找房源信息",
-            "borderRadius": "50upx",
-            "backgroundColor": "#fff"
-          }
-        },
+        "navigationStyle": "custom",
         "app-plus": {
           "bounce": "none",
-          "titleNView": {
-            "titleSize": "18"
-          }
+          "titleNView": "false"
         }
       }
     }, {
@@ -50,23 +32,25 @@
     }, {
       "path": "pages/market/market",
       "style": {
-        "navigationBarTitleText": "商城",
+        "navigationStyle": "custom",
         "app-plus": {
-          "bounce": "none",
-          "titleNView": {
-            "titleSize": "18"
-          }
+          "titleNView": false
         }
       }
     }, {
-      "path": "pages/market/goodDetail",
+      "path": "pages/components/goodDetail",
       "style": {
-        "navigationBarTitleText": "详情",
+        "navigationStyle": "custom",
         "app-plus": {
-          "bounce": "none",
-          "titleNView": {
-            "titleSize": "18"
-          }
+          "titleNView": false
+        }
+      }
+    }, {
+      "path": "pages/components/goods",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "titleNView": false
         }
       }
     }, {

@@ -171,7 +171,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -183,8 +182,7 @@ var _default =
       indicatorActiveColor: '#fff',
       searchInfo: '大家都在搜“森海塞尔”',
       swiperList: [{}, {}, {}],
-      menuList: [
-      {
+      menuList: [{
         imgUrl: '../../static/img/market/movie.png',
         title: '影音' },
       {
@@ -206,15 +204,13 @@ var _default =
         imgUrl: '../../static/img/market/life.png',
         title: '生活' }],
 
-
       lightning: {
         title: '秒杀购',
         time: '02:00:00',
         newPrice: 423,
         oldPrice: 1543 },
 
-      recommendList: [
-      {
+      recommendList: [{
         imgUrl: '',
         info: '索尼MDR-XB550AP头戴式立体声免提通话耳机',
         price: 1612 },
@@ -225,31 +221,54 @@ var _default =
       {
         imgUrl: '',
         info: '结果符合退热贴通过提高人体',
+        price: 1612 },
+      {
+        imgUrl: '',
+        info: '结果符合退热贴通过提高人体',
+        price: 1612 },
+      {
+        imgUrl: '',
+        info: '放假哦按拱结构感觉泛泛而谈哈哈',
+        price: 1612 },
+      {
+        imgUrl: '',
+        info: '结果符合退热贴通过提高人体',
+        price: 1612 },
+      {
+        imgUrl: '',
+        info: '结果符合退热贴通过提高人体',
         price: 1612 }] };
-
 
 
   },
   methods: {
     goDetail: function goDetail(item) {
       uni.navigateTo({
-        url: 'goodDetail?info=' + item.info });
-
+        url: '../components/goodDetail?info=' + item.info
+        // url: 'goodDetail' 
+      });
     },
     goPanicBuy: function goPanicBuy(data) {
       switch (data) {
-        case 1:{
+        case 1:
+          {
             uni.navigateTo({
               url: 'panicBuy?origin=' + '秒杀' });
 
             break;
           }
-        case 2:{
+        case 2:
+          {
             uni.navigateTo({
               url: 'panicBuy?origin=' + '限时购' });
 
             break;
           }}
+
+    },
+    goGoods: function goGoods(item) {
+      uni.navigateTo({
+        url: '../components/goods?class=' + 'item' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

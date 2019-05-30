@@ -2,7 +2,6 @@
   <view class="container">
     <scroll-view scroll-y="true" class="content border-box">
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
-      <!-- <view class="store"> -->
         <radio-group @change="checkboxChange">
           <view class="store-head">
             <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->

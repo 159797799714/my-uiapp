@@ -83,8 +83,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
-    // 锁定屏幕方向
-    plus.screen.lockOrientation('portrait-primary'); //锁定
+
+
+
+
   },
   onShow: function onShow() {
     console.log('App Show');

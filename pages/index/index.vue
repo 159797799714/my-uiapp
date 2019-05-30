@@ -118,6 +118,7 @@
     text-align: center;
     color: $control-color;
     background: rgba(248,248,248,0.1);
+    border-radius: 4upx;
     .search-icon {
       margin-right: 60upx;
       font-size: $font-28;

@@ -1,5 +1,15 @@
 <template>
   <view class="container">
+    <view class="topBar">
+      <view class="search">
+        <text class="iconfont" @click="goBack">&#xe61c;</text>
+        <view class="center">
+          <image src="" mode=""></image>
+          <text class="name">{{ userInfo.userName }}</text>
+        </view>
+        <text class="iconfont" @click="goShare">&#xe60f;</text>
+      </view>
+    </view>
     <scroll-view scroll-y="true" class="content">
       <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
         <swiper-item v-for="(item, index) in swiperList" :key="index">
@@ -145,16 +155,71 @@
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option)
       this.title = option.title
+    },
+    methods: {
+      goBack() {
+        uni.navigateBack({
+          delta: 1
+          })
+      },
+      goShare() {
+        uni.share({
+          provider: "weixin",
+          scene: "WXSceneSession",
+          type: 0,
+          href: "http://uniapp.dcloud.io/",
+          title: "uni-app分享",
+          summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
+          imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+          success: function (res) {
+            console.log("success:" + JSON.stringify(res));
+          },
+          fail: function (err) {
+            console.log("fail:" + JSON.stringify(err));
+          }
+        })
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .topBar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    .search{
+      display: flex;
+      width: 100%;
+      font-size: $font-38;
+      color: $color-white;
+      line-height: 88upx;
+      align-items: center;
+      .center{
+        flex: 1;
+        display: flex;
+        margin: 0 34upx;
+        align-items: center;
+        &>image{
+          height: 60upx;
+          width: 60upx;
+          margin-right: 27upx;
+          background: #ccc;
+        }
+      }
+      .iconfont{
+        font-size: $font-40;
+      }
+    }
+  }
   .swiper{
-    height: 750upx;
+    height: 748upx;
     .swiper-item{
-      height: 750upx;
-      width: 750upx;
+      height: 748upx;
+      width: 748upx;
     }  
   }
   .userInfo{
