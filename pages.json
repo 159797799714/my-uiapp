@@ -54,6 +54,14 @@
         }
       }
     }, {
+      "path": "pages/moreList/moreList",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "titleNView": false
+        }
+      }
+    }, {
       "path": "pages/market/panicBuy"
     }, {
       "path": "pages/message/message",

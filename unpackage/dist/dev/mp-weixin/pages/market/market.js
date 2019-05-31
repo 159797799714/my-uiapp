@@ -270,6 +270,12 @@ var _default =
       uni.navigateTo({
         url: '../components/goods?class=' + 'item' });
 
+    },
+    // 点击更多
+    goMore: function goMore() {
+      uni.navigateTo({
+        url: "../moreList/moreList" });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

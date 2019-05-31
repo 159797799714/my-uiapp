@@ -6,6 +6,7 @@
     "pages/market/market",
     "pages/components/goodDetail",
     "pages/components/goods",
+    "pages/moreList/moreList",
     "pages/market/panicBuy",
     "pages/message/message",
     "pages/shopcar/shopcar",

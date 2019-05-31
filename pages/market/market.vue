@@ -16,7 +16,7 @@
             <view class="item-title">{{ item.title }}</view>
           </view>
           <view class="item">
-            <image src="../../static/img/market/more.png" mode="aspectFit" class="moreImg"></image>
+            <image src="../../static/img/market/more.png" mode="aspectFit" class="moreImg" @click="goMore"></image>
           </view>
         </view>
         <view class="lightning" @click="goPanicBuy(1)">
@@ -169,6 +169,12 @@
       goGoods(item) {
         uni.navigateTo({
           url: '../components/goods?class=' + 'item'
+        })
+      },
+      // 点击更多
+      goMore() {
+        uni.navigateTo({
+          url: "../moreList/moreList"
         })
       }
     }
