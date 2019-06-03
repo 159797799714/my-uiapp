@@ -1,6 +1,7 @@
 {
   "navigationStyle": "custom",
   "navigationBarTextStyle": "black",
+  "bounce": "none",
   "titleNView": false,
   "usingComponents": {}
 }

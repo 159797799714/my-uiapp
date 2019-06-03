@@ -185,8 +185,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 var _default =
 {
   data: function data() {
@@ -197,6 +195,7 @@ var _default =
       duration: 500, // 轮播过渡时间
       indicatorActiveColor: '#fff', // 轮播图指示点选中颜色
       swiperList: [{}, {}, {}], // 轮播元素数组
+      isShowTop: true, // 顶部
       data: {
         price: 1099,
         textList: ['包邮', '自营'],
@@ -210,7 +209,7 @@ var _default =
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:113");
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:112");
     this.data.title = option.info;
   },
   methods: {
@@ -229,15 +228,25 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:132");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:131");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:135");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:134");
         } });
 
     },
     keepAction: function keepAction() {
-      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:140");
+      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:139");
+    },
+    scroll: function scroll(e) {
+      if (e.detail.scrollTop > 260) {
+        this.isShowTop = false;
+        return;
+      }
+      if (e.detail.scrollTop <= 260) {
+        this.isShowTop = true;
+        return;
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

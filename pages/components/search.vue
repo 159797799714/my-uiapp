@@ -8,7 +8,7 @@
       </view>
       <text @click="goBack">取消</text>
     </view>
-    <srollview class="content bg-white border-box">
+    <sroll-view class="content bg-white border-box">
       <view class="history">
         <view class="title">
           <text>搜索记录</text>
@@ -26,7 +26,7 @@
           <text v-for="(item, index) in hot" :key="index" class="tag">{{ item }}</text>
         </view>
       </view>
-    </srollview>
+    </sroll-view>
   </view>
 </template>
 

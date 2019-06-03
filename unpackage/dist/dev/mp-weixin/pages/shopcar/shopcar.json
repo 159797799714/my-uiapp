@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "购物车",
-  "navigationBarTextStyle": "black",
-  "navigationBarBackgroundColor": "#f8f8f8",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

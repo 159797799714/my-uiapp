@@ -305,7 +305,7 @@
             height: 330upx;
             width: 330upx;
             margin-bottom: 30upx;
-            background: $color-ee;
+            background: $color-f5;
           }
           .good-info{
             flex: 1;
@@ -340,7 +340,6 @@
               }
             }
           }
-          
         }
       }
     }

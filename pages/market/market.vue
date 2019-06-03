@@ -19,36 +19,40 @@
             <image src="../../static/img/market/more.png" mode="aspectFit" class="moreImg" @click="goMore"></image>
           </view>
         </view>
-        <view class="lightning" @click="goPanicBuy(1)">
-          <view class="leftbox">
-            <view class="leftbox-one">
-              <image src="../../static/img/market/lightning.png" mode="aspectFit"></image>
-              <text class="one-title">{{ lightning.title }}</text>
-              <text class="one-time">距开场 {{ lightning.time }}</text>
-            </view>
-            <view class="price">
-              <text class="new-price">￥{{ lightning.newPrice }}</text>
-              <text class="old-price">￥{{ lightning.oldPrice }}</text>
-            </view>
-          </view>
-          <view class="right-img">
-            <image src="" mode=""></image>
+        <view class="group border-box">
+          <image src="../../static/img/market/bg.png" mode="" />
+          <view class="group-main border-box">
+            <view class="bigTitle">呼朋唤友来<text>拼团吧！</text></view>
+            <view class="smallTitle">拼的越多，越优惠</view>
+            <view class="leaveTime">距结束 <text>02:01:20</text></view>
           </view>
         </view>
-        <view class="lightning limit" @click="goPanicBuy(2)">
-          <view class="leftbox">
-            <view class="leftbox-one">
-              <image src="../../static/img/market/limit.png" mode="aspectFit"></image>
-              <text class="one-title">{{ lightning.title }}</text>
-              <text class="one-time">距开场 {{ lightning.time }}</text>
+        <view class="activity">
+          <view class="lightning" @click="goPanicBuy(1)">
+            <view class="activity-title">
+              <text class="title">{{ lightning.title }}</text>
+              <text class="time">{{ lightning.time }}</text>
             </view>
             <view class="price">
               <text class="new-price">￥{{ lightning.newPrice }}</text>
               <text class="old-price">￥{{ lightning.oldPrice }}</text>
             </view>
+            <view class="img">
+              <image src="" mode=""></image>
+            </view>
           </view>
-          <view class="right-img">
-            <image src="" mode=""></image>
+          <view class="lightning limit" @click="goPanicBuy(2)">
+            <view class="activity-title">
+              <text class="title">限时购</text>
+              <text class="time">{{ lightning.time }}</text>
+            </view>
+            <view class="price">
+              <text class="new-price">￥{{ lightning.newPrice }}</text>
+              <text class="old-price">￥{{ lightning.oldPrice }}</text>
+            </view>
+            <view class="img">
+              <image src="" mode=""></image>
+            </view>
           </view>
         </view>
         <view class="recommend">
@@ -56,11 +60,11 @@
             <image src="../../static/img/market/foryou.png" mode=""></image>
           </view>
           <view class="recommend-content">
-            <view v-for="(item, index) in recommendList" :key="index" class="recommend-item" @tap="goDetail(item)">
+            <view v-for="(item, index) in recommendList" :key="index" class="recommend-item" @click="goDetail(item)">
               <image src="" mode=""></image>
               <view class="goods-info">{{ item.info }}</view>
               <view class="goods-price">
-                <text class="price">￥{{ item.price }}</text>
+                <view class="price">￥{{ item.price }} <text v-if="item.oldPrice" class="old-price">￥{{ item.oldPrice }}</text></view>
                 <text>...</text>
               </view>
             </view>
@@ -90,7 +94,7 @@
           title: '衍生'
         }, {
           imgUrl: '../../static/img/market/play.png',
-          title: '玩物'
+          title: '3C'
         }, {
           imgUrl: '../../static/img/market/popular.png',
           title: '潮品'
@@ -99,7 +103,8 @@
           title: '美妆'
         }, {
           imgUrl: '../../static/img/market/game.png',
-          title: '游戏'
+          title: '玩物'
+
         }, {
           imgUrl: '../../static/img/market/life.png',
           title: '生活'
@@ -113,7 +118,8 @@
         recommendList: [{
           imgUrl: '',
           info: '索尼MDR-XB550AP头戴式立体声免提通话耳机',
-          price: 1612
+          price: 1612,
+          oldPrice: 1700
         }, {
           imgUrl: '',
           info: '放假哦按拱结构感觉泛泛而谈哈哈',
@@ -168,7 +174,7 @@
       },
       goGoods(item) {
         uni.navigateTo({
-          url: '../components/goods?class=' + 'item'
+          url: '../components/goods?class=' + item
         })
       },
       // 点击更多
@@ -211,6 +217,8 @@
       display: flex;
       justify-content: flex-start;
       flex-wrap: wrap;
+      color: $word-color;
+      margin-bottom: 40upx;
       .item {
         display: flex;
         flex-direction: column;
@@ -242,100 +250,134 @@
         }
       }
     }
-    .lightning {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      overflow: hidden;
+    .group {
+      position: relative;
       height: 180upx;
-      padding: 20upx 22upx;
-      box-sizing: border-box;
-      background: $bg-lightning;
-      margin-bottom: 10upx;
-      margin-top: 40upx;
-
-      .leftbox {
-        height: 39upx;
-        line-height: 39upx;
-
-        .leftbox-one {
-          display: flex;
-
-          &>image {
-            height: 39upx;
-            width: 39upx;
-            margin-right: 13upx;
+      width: 100%;
+    
+      &>image {
+        height: 100%;
+        width: 100%;
+      }
+    
+      .group-main {
+        padding: 35upx 20upx 20upx 40upx;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    
+        .bigTitle {
+          height: 31upx;
+          font-size: $font-42;
+          line-height: 31upx;
+          font-family: PangMenZhengDao;
+          font-weight: bold;
+    
+          &>text {
+            color: $color-red;
           }
-
-          .one-title {
-            margin-right: 22upx;
-            font-size: $font-46;
+        }
+    
+        .smallTitle {
+          height: 64upx;
+          font-size: $font-28;
+          line-height: 64upx;
+          color: $word-color;
+        }
+    
+        .leaveTime {
+          width: 180upx;
+          height: 36upx;
+          line-height: 36upx;
+          padding: 0 10upx;
+          font-size: $font-20;
+          border-radius: 18upx;
+          background: $color-ee;
+        }
+      }
+    }
+    .activity {
+      display: flex;
+      height: 240upx;
+      justify-content: space-between;
+      margin-top: 10upx;
+      .lightning {
+        height: 100%;
+        width: 340upx;
+        padding: 25upx;
+        box-sizing: border-box;
+        background: $color-f4;
+        .activity-title {
+          display: flex;
+          .title {
+            margin-right: 14upx;
+            font-size: $font-42;
+            line-height: 31upx;
             font-weight: $font-bold;
           }
-
-          .one-time {
-            height: 36upx;
-            width: 226upx;
-            padding: 0 18upx;
-            box-sizing: border-box;
+          .time {
+            padding: 0 10upx;
+            line-height: 41upx;
             font-size: $font-22;
-            line-height: 36upx;
             background: $color-black;
             color: $color-white;
             border-radius: 18upx;
           }
         }
-
         .price {
-          height: 32upx;
-          margin-top: 30upx;
-
+          height: 62upx;
+          line-height: 62upx;
           .new-price {
-            margin-right: 20upx;
-            font-size: $font-42;
+            margin-right: 13upx;
+            font-size: $font-28;
             font-weight: $font-bold;
             color: $color-red;
           }
-
           .old-price {
-            font-size: $font-30;
+            font-size: $font-24;
             color: $control-color;
             overflow: hidden;
-
+            position: relative;
             &::before {
-              content: '———';
+              content: '';
               text-align: center;
-              color: $control-color;
+              width: 100%;
+              background: $control-color;
               height: 2upx;
               position: absolute;
+              margin: 0 auto;
+              top: 50%;
+              bottom: 0;
+              transform: translateY(-50%);
             }
           }
         }
-      }
-
-      .right-img {
-        height: 100%;
-        width: 150upx;
-        background: #ccc;
-
-        &>image {
-          height: 100%;
-          width: 150upx;
+        .img {
+          height: 100upx;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          overflow: hidden;
+          &>image {
+            margin-right: 10upx;
+            height: 100%;
+            width: 100upx;
+            background: #ccc;
+          }
         }
       }
     }
-
-    .limit {
-      margin: 0;
-    }
-
     .recommend {
       .recommend-title {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 110upx;
-        margin-top: 30upx;
+        margin-top: 62upx;
         font-size: $font-32;
         font-weight: $font-bold;
 
@@ -380,7 +422,27 @@
             display: flex;
             justify-content: space-between;
             line-height: 54upx;
-            font-size: $font-26;
+            font-size: $font-34;
+            font-weight: bold;
+            .old-price{
+              margin-left: 8upx;
+              font-size: $font-26;
+              color: $color-99;
+              position: relative;
+              font-weight: normal;
+              &::before {
+                content: '';
+                text-align: center;
+                width: 100%;
+                background: $control-color;
+                height: 2upx;
+                position: absolute;
+                margin: 0 auto;
+                top: 50%;
+                bottom: 0;
+                transform: translateY(-50%);
+              }
+            }
           }
         }
       }

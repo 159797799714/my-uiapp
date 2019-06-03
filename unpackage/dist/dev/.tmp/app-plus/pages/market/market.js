@@ -171,6 +171,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -190,7 +198,7 @@ var _default =
         title: '衍生' },
       {
         imgUrl: '../../static/img/market/play.png',
-        title: '玩物' },
+        title: '3C' },
       {
         imgUrl: '../../static/img/market/popular.png',
         title: '潮品' },
@@ -199,7 +207,8 @@ var _default =
         title: '美妆' },
       {
         imgUrl: '../../static/img/market/game.png',
-        title: '游戏' },
+        title: '玩物' },
+
       {
         imgUrl: '../../static/img/market/life.png',
         title: '生活' }],
@@ -264,6 +273,17 @@ var _default =
 
             break;
           }}
+
+    },
+    goGoods: function goGoods(item) {
+      uni.navigateTo({
+        url: '../components/goods?class=' + 'item' });
+
+    },
+    // 点击更多
+    goMore: function goMore() {
+      uni.navigateTo({
+        url: "../moreList/moreList" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
