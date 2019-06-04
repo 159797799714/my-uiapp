@@ -14,6 +14,7 @@ $color-99: #999999;
 $color-pink: #FCD1D1;
 $color-ee: #EEEEEE;
 $color-f4: #f4f4f4;
+$color-orange: #F2401A;
 
 /* 行为相关颜色 */
 $color_primary: #007aff;
@@ -126,7 +127,7 @@ view{
   background: $title-color;
   color: $control-color;
   box-sizing: border-box;
-  z-index: 100;
+  z-index: 5;
 }
 
 
@@ -146,3 +147,20 @@ view{
   justify-content: space-between;
 }
 
+.padding-30{
+  padding-left: 30upx;
+  padding-right: 30upx;
+}
+
+// 全屏遮罩层
+.big-cover{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  z-index: 6;
+}

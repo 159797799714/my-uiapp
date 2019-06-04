@@ -120,7 +120,7 @@
     background: rgba(248,248,248,0.1);
     border-radius: 4upx;
     .search-icon {
-      margin-right: 60upx;
+      margin-right: 19upx;
       font-size: $font-28;
     }
     .searchVal {
@@ -136,25 +136,6 @@
       height: 0;
       background-color: transparent;
     }
-    // .search {
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    //   height: 80upx;
-    //   margin-bottom: 30upx;
-    //   text-align: center;
-    //   border-bottom: 1px solid $title-color;
-    //   .search-icon {
-    //     height: 26upx;
-    //     width: 26upx;
-    //     margin-right: 22upx;
-    //     font-size: $font-28;
-    //   }
-    //   .searchVal {
-    //     line-height: 28upx;
-    //     font-size: $font-28;
-    //   }
-    // }
     .banner-swiper {
       height: 390upx;
       margin-bottom: 50upx;

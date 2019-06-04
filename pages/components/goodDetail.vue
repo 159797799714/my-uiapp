@@ -2,7 +2,7 @@
   <view class="container">
     <view v-if="isShowTop" class="topBar">
       <view class="search">
-        <text class="iconfont" @click="goBack">&#xe61c;</text>
+        <text class="iconfont back" @click="goBack">&#xe61c;</text>
         <view class="conduct">
           <text class="iconfont share" @click="goShare">&#xe60f;</text>
           <text class="iconfont" @click="keepAction">&#xe637;</text>
@@ -154,7 +154,7 @@
 
 <style lang="scss" scoped>
   .topBar{
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.01);
     position: absolute;
     top: 0;
     left: 0;
@@ -173,6 +173,9 @@
     }
     .iconfont{
       color:$title-color;
+      font-size: 40upx;
+    }
+    .back{
       font-weight: $font-bold;
     }
   }

@@ -157,6 +157,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -168,6 +203,9 @@ var _default =
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
       shareTag: ['综合', '最热', '最新', '官方', '筛选'],
+      filter: ['品牌', '分类'],
+      filterTag_Index: '', //默认选中品牌
+      filter_alert: true, // 筛选遮罩层显示
       shareList: [
       {
         imgUrl: '',
@@ -199,6 +237,11 @@ var _default =
         zan_num: 300 }],
 
 
+      filterCoverList: {
+        list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
+        sum: 4999 },
+
+      filterArr: [],
       goodList: [
       {
         imgUrl: '',
@@ -224,6 +267,23 @@ var _default =
       // 商城数据
     };
   },
+  watch: {
+    tabIndex: function tabIndex(val, oldval) {
+      if (val === 0) {
+        this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
+        return;
+      }
+      if (val === 1) {
+        this.shareTag = ['综合', '销量', '上架', '价格', '筛选'];
+        return;
+      }
+    },
+    filterIndex: function filterIndex(val, oldVal) {
+      if (val === 4) {
+        this.filter_alert = true;
+      }
+    } },
+
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option.class);
     this.searchInfo = option.class;
@@ -243,15 +303,31 @@ var _default =
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
+        return;
       } else {
         this.showClearIcon = false;
       }
     },
+    // 分享商城tab点击
     selectTab: function selectTab(index) {
       this.tabIndex = index;
     },
+    // 价格等分类点击
     selectFilter: function selectFilter(index) {
+      if (!this.filter_alert && index === 4) {
+        this.filter_alert = true;
+      }
       this.filterIndex = index;
+    },
+    selectFilterTag: function selectFilterTag(info) {
+      var index = info.toString();
+      if (index === this.filterTag_Index && this.filterTag_Index !== '') {
+        this.filterTag_Index = '';
+        return;
+      }
+      if (index !== this.filterTag_Index || this.filterTag_Index === '') {
+        this.filterTag_Index = index;
+      }
     },
     clickZan: function clickZan(index) {
       if (!this.shareList[index].zan_status) {
@@ -300,6 +376,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.filter.map(function(item, index) {
+    var g0 = index.toString()
+    var g1 = index.toString()
+    return {
+      $orig: _vm.__get_orig(item),
+      g0: g0,
+      g1: g1
+    }
+  })
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.filterTag_Index = ""
+    }
+
+    _vm.e1 = function($event) {
+      _vm.filter_alert = false
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

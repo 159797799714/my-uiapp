@@ -175,6 +175,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -193,7 +200,7 @@ var _default =
         imgUrl: '../../static/img/market/child.png',
         title: '衍生' },
       {
-        imgUrl: '../../static/img/market/play.png',
+        imgUrl: '../../static/img/market/3C.png',
         title: '3C' },
       {
         imgUrl: '../../static/img/market/popular.png',
@@ -272,6 +279,13 @@ var _default =
           }}
 
     },
+    // 搜索页
+    goSearch: function goSearch() {
+      uni.navigateTo({
+        url: '../components/search' });
+
+    },
+    // 商品详情页
     goGoods: function goGoods(item) {
       uni.navigateTo({
         url: '../components/goods?class=' + item });

@@ -1,6 +1,13 @@
 <template>
   <view class="container">
-    <scroll-view scroll-y="true">
+    <view class="topBar">
+      <view class="search" @click="goSearch">
+        <text class="search-icon iconfont">&#xe667;</text>
+        <view class="searchVal">{{ searchInfo }}</view>
+      </view>
+    </view>
+    <view class="bg-black"></view>
+    <scroll-view scroll-y="true" class="content-box">
       <view class="banner-swiper">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
           :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
@@ -93,7 +100,7 @@
           imgUrl: '../../static/img/market/child.png',
           title: '衍生'
         }, {
-          imgUrl: '../../static/img/market/play.png',
+          imgUrl: '../../static/img/market/3C.png',
           title: '3C'
         }, {
           imgUrl: '../../static/img/market/popular.png',
@@ -172,6 +179,13 @@
             }
         }
       },
+      // 搜索页
+      goSearch() {
+        uni.navigateTo({
+          url: '../components/search'
+        })
+      },
+      // 商品详情页
       goGoods(item) {
         uni.navigateTo({
           url: '../components/goods?class=' + item
@@ -190,16 +204,49 @@
 <style lang="scss" scoped>
   $bg-lightning: #F9FAFD;
   .container {
-    overflow: auto;
+    overflow: hidden;
+  }
+  .content-box{
+    position: absolute;
+    top: 176upx;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .bg-black{
+    height: 238upx;
+    width: 100%;
+    background: $title-color;
+    border-radius:0px 0px 0px 171px;
+  }
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 66upx;
+    width: 100%;
+    text-align: center;
+    color: $control-color;
+    background: rgba(248,248,248,0.1);
+    border-radius: 4upx;
+    .search-icon {
+      margin-right: 19upx;
+      font-size: $font-28;
+    }
+    .searchVal {
+      line-height: 28upx;
+      font-size: $font-28;
+    }
   }
   .banner-swiper {
-    height: 676upx;
+    height: 438upx;
     box-sizing: border-box;
+    padding: 38upx 30upx 0 30upx;
     .swiper {
-      height: 676upx;
+      height: 400upx;
     }
     .swiper-item {
-      height: 676upx;
+      height: 400upx;
       width: 100%;
     }
   }
@@ -209,7 +256,7 @@
     overflow: hidden;
     background: #F5F5F5;
     flex-direction: column;
-    padding: 20upx 30upx;
+    padding: 0 30upx 20upx 30upx;
     display: block;
     box-sizing: border-box;
     background: $color-white;
@@ -218,35 +265,33 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       color: $word-color;
-      margin-bottom: 40upx;
+      margin-bottom: 25upx;
       .item {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 140upx;
-        width: 100upx;
-        margin-top: 36upx;
-        margin-right: 94upx;
+        height: 164upx;
+        width: 112upx;
+        margin-top: 39upx;
+        margin-right: 81upx;
         &:nth-child(4n) {
           margin-right: 0;
         }
         &:nth-child(7n) {
-          margin-right: 67upx;
+          margin-right: 70upx;
         }
         &>image {
-          height: 108upx;
+          height: 112upx;
           width: 100%;
         }
         .item-title {
-          font-size: $font-26;
+          font-size: $font-24;
           text-align: center;
-          font-size: $font-26;
-          line-height: 40upx;
-          line-height: 40upx;
+          line-height: 58upx;
         }
         .moreImg {
-          height: 122upx;
-          width: 122upx;
+          height: 53upx;
+          width: 101upx;
         }
       }
     }

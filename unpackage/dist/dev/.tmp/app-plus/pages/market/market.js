@@ -179,6 +179,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -197,7 +200,7 @@ var _default =
         imgUrl: '../../static/img/market/child.png',
         title: '衍生' },
       {
-        imgUrl: '../../static/img/market/play.png',
+        imgUrl: '../../static/img/market/3C.png',
         title: '3C' },
       {
         imgUrl: '../../static/img/market/popular.png',
@@ -222,7 +225,8 @@ var _default =
       recommendList: [{
         imgUrl: '',
         info: '索尼MDR-XB550AP头戴式立体声免提通话耳机',
-        price: 1612 },
+        price: 1612,
+        oldPrice: 1700 },
       {
         imgUrl: '',
         info: '放假哦按拱结构感觉泛泛而谈哈哈',
@@ -275,9 +279,16 @@ var _default =
           }}
 
     },
+    // 搜索页
+    goSearch: function goSearch() {
+      uni.navigateTo({
+        url: '../components/search' });
+
+    },
+    // 商品详情页
     goGoods: function goGoods(item) {
       uni.navigateTo({
-        url: '../components/goods?class=' + 'item' });
+        url: '../components/goods?class=' + item });
 
     },
     // 点击更多
