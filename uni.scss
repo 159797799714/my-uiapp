@@ -15,6 +15,7 @@ $color-pink: #FCD1D1;
 $color-ee: #EEEEEE;
 $color-f4: #f4f4f4;
 $color-orange: #F2401A;
+$color-pink-bg: #FEF0F0;
 
 /* 行为相关颜色 */
 $color_primary: #007aff;
@@ -163,4 +164,24 @@ view{
   display: flex;
   flex-direction: column;
   z-index: 6;
+}
+
+.selectSpan{
+  position: relative;
+  background: $color-pink-bg!important;
+  &:before{
+    content: '+';
+    position: absolute;
+    bottom: -20upx;
+    right: -20upx;
+    color: $color-white;
+    font-size: 22upx;
+    height: 42upx;
+    width: 42upx;
+    text-align: left;
+    line-height: 40upx;
+    background: $color-orange;
+    transform: rotate(45deg);
+    z-index: 5;
+  }
 }

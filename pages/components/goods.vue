@@ -10,15 +10,20 @@
       <text v-if="tabIndex === 1" class="iconfont" @click="goBack">&#xe60e;</text>
     </view>
     <view class="content bg-white border-box">
+      
+      <!-- 分享或者商城 -->
       <view class="tabs">
         <text v-for="(item, index) in tabList" :key="index" :class="{selectTab: index === tabIndex}" @click="selectTab(index)">{{ item }}</text>
       </view>
+      
+     <!-- 综合等分类 -->
       <view class="filter">
         <view v-for="(item, index) in shareTag" :key="index" :class="{selectFilter: index === filterIndex}" @click="selectFilter(index)">{{ item }}
           <text v-if="item === '价格'" class="iconfont">&#xe60c;</text>
           <text v-if="index === 4" class="iconfont">&#xe610;</text>
         </view>
       </view>
+      <!-- 品牌及分类 -->
       <view v-if="tabIndex === 1" class="filter-tags bg-white padding-30">
         <view v-for="(item, index) in filter" :key="index" :class="{'filter-tag': true, selectFilter: filterTag_Index === index.toString()}" @click="selectFilterTag(index)">{{ item }}
           <text :class="{iconfont: true, clicked: filterTag_Index === index.toString()}">&#xe792;</text>
@@ -36,6 +41,7 @@
         </view>
         <view class="white" @click="filterTag_Index = ''"/>
       </view>
+      
       <scroll-view scroll-y="true" class="culture">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
@@ -58,6 +64,7 @@
             </view>
           </view>
         </view>
+        
         <!-- 商品 -->
         <view v-if="tabIndex === 1" class="main bg-white border-box">
           <view v-for="(item, index) in goodList" :key="index" class="good-item"  @click="goDetail(item)">
@@ -76,6 +83,7 @@
         </view>
       </scroll-view>
     </view>
+    
     <!-- 筛选 -->
     <view v-if="filterIndex === 4 && filter_alert" class="big-cover">
       <view class="white" @click="filter_alert = false"></view>
@@ -94,12 +102,12 @@
               <text :class="{iconfont: true, rotate: selecArr.indexOf(index) !== -1}">&#xe792;</text>
             </view>
             <view class="tag-span">
-              <view v-for="(li, num) in item.arr" :key="num" class="tag border-box">{{ li }}</view>
+              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: item.selectIndexArr !== undefined ? item.selectIndexArr.indexOf(li) !== -1: false}" @click="selTag(index, num)">{{ item.selectIndexArr === undefined}}</view>
             </view>
           </view>
         </scroll-view>
         <view class="foot">
-          <view>重置</view>
+          <view @click="resetFilter">重置</view>
           <view class="sure">完成({{ filterCoverList.sum }}物品)</view>
         </view>
       </view>
@@ -111,6 +119,7 @@
 <script>
   export default{
     data() {
+      console.log('ddd')
       return {
         searchInfo: '',              // 输入框placeholdeer
         inputClearValue: '',        //  输入框value值
@@ -184,13 +193,16 @@
         captionList: [
           {
             title: '品牌',
-            arr: ['索尼', '索尼', '索尼', '索尼', '索尼', '索尼']
+            // selectIndexArr: ['默认'],               //循环时加上
+            arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
           }, {
             title: '分类',
-            arr: ['索尼', '索尼', '索尼索尼索尼索尼索尼', '索尼', '索尼']
+            // selectIndexArr: ['默认'],
+            arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选']
           }, {
             title: '促销',
-            arr: ['索尼', '索尼', '索尼']
+            // selectIndexArr: ['默认'],
+            arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
           }
         ],                             // 筛选侧边栏数据
         selecArr: [],                  // 筛选侧边栏展开的数组index
@@ -216,6 +228,9 @@
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option.class)
       this.searchInfo = option.class
+      this.captionList.map((item, index) => {
+        this.captionList[index].selectIndexArr = ['默认']
+      })
     },
     methods: {
       goBack() {
@@ -244,10 +259,15 @@
       // 价格等分类点击
       selectFilter(index) {
         if(!this.filter_alert && index === 4) {
+          this.captionList.map((item, index) => {
+            this.captionList[index].selectIndexArr = ['默认']
+          })
+          // 给captionList加上一个选中的索引空数组selectIndexArr
           this.filter_alert = true
         }
         this.filterIndex = index
       },
+      //直接点击外面的分类品牌
       selectFilterTag(info) {
         let index = info.toString()
         if(index === this.filterTag_Index && this.filterTag_Index !== '') {
@@ -257,6 +277,25 @@
         if (index !== this.filterTag_Index || this.filterTag_Index === '') {
           this.filterTag_Index = index
         }
+      },
+      // 筛选侧边弹窗选择
+      selTag(index, num) {
+        let name = this.captionList[index].arr[num]
+        let charIndex = this.captionList[index].selectIndexArr.indexOf(name)
+        if(charIndex === -1) {
+          this.captionList[index].selectIndexArr.push(name)
+          return
+        }
+        if (charIndex !== -1) {
+          this.captionList[index].selectIndexArr.splice(charIndex, 1)
+          return
+        }
+      },
+      // 重置筛选
+      resetFilter() {
+        this.captionList.map((item, index) => {
+          item.selectIndexArr = ['默认']
+        })
       },
       clickZan(index) {
         if (!this.shareList[index].zan_status) {

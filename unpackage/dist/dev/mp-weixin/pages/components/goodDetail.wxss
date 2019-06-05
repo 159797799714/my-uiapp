@@ -159,6 +159,27 @@ view.data-v-295bbe46 {
           flex-direction: column;
   z-index: 6;
 }
+.selectSpan.data-v-295bbe46 {
+  position: relative;
+  background: #FEF0F0 !important;
+}
+.selectSpan.data-v-295bbe46:before {
+    content: '+';
+    position: absolute;
+    bottom: -20rpx;
+    right: -20rpx;
+    color: #fff;
+    font-size: 22rpx;
+    height: 42rpx;
+    width: 42rpx;
+    text-align: left;
+    line-height: 40rpx;
+    background: #F2401A;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    z-index: 5;
+}
 .topBar.data-v-295bbe46 {
   background: rgba(255, 255, 255, 0.01);
   position: absolute;

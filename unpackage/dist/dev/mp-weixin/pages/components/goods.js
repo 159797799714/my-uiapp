@@ -208,9 +208,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
+    console.log('ddd');
     return {
       searchInfo: '', // 输入框placeholdeer
       inputClearValue: '', //  输入框value值
@@ -284,13 +293,16 @@ var _default =
       captionList: [
       {
         title: '品牌',
-        arr: ['索尼', '索尼', '索尼', '索尼', '索尼', '索尼'] },
+        // selectIndexArr: ['默认'],               //循环时加上
+        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] },
       {
         title: '分类',
-        arr: ['索尼', '索尼', '索尼索尼索尼索尼索尼', '索尼', '索尼'] },
+        // selectIndexArr: ['默认'],
+        arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选'] },
       {
         title: '促销',
-        arr: ['索尼', '索尼', '索尼'] }],
+        // selectIndexArr: ['默认'],
+        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] }],
 
       // 筛选侧边栏数据
       selecArr: [] // 筛选侧边栏展开的数组index
@@ -313,9 +325,12 @@ var _default =
       }
     } },
 
-  onLoad: function onLoad(option) {
+  onLoad: function onLoad(option) {var _this = this;
     console.log('分享文章详情页接受到的参数', option.class);
     this.searchInfo = option.class;
+    this.captionList.map(function (item, index) {
+      _this.captionList[index].selectIndexArr = ['默认'];
+    });
   },
   methods: {
     goBack: function goBack() {
@@ -342,12 +357,17 @@ var _default =
       this.tabIndex = index;
     },
     // 价格等分类点击
-    selectFilter: function selectFilter(index) {
+    selectFilter: function selectFilter(index) {var _this2 = this;
       if (!this.filter_alert && index === 4) {
+        this.captionList.map(function (item, index) {
+          _this2.captionList[index].selectIndexArr = ['默认'];
+        });
+        // 给captionList加上一个选中的索引空数组selectIndexArr
         this.filter_alert = true;
       }
       this.filterIndex = index;
     },
+    //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
       var index = info.toString();
       if (index === this.filterTag_Index && this.filterTag_Index !== '') {
@@ -357,6 +377,25 @@ var _default =
       if (index !== this.filterTag_Index || this.filterTag_Index === '') {
         this.filterTag_Index = index;
       }
+    },
+    // 筛选侧边弹窗选择
+    selTag: function selTag(index, num) {
+      var name = this.captionList[index].arr[num];
+      var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
+      if (charIndex === -1) {
+        this.captionList[index].selectIndexArr.push(name);
+        return;
+      }
+      if (charIndex !== -1) {
+        this.captionList[index].selectIndexArr.splice(charIndex, 1);
+        return;
+      }
+    },
+    // 重置筛选
+    resetFilter: function resetFilter() {
+      this.captionList.map(function (item, index) {
+        item.selectIndexArr = ['默认'];
+      });
     },
     clickZan: function clickZan(index) {
       if (!this.shareList[index].zan_status) {
@@ -414,11 +453,19 @@ var render = function() {
       g1: g1
     }
   })
-  var l1 = _vm.captionList.map(function(item, index) {
+  var l2 = _vm.captionList.map(function(item, index) {
     var g2 = _vm.selecArr.indexOf(index)
+    var l1 = item.arr.map(function(li, num) {
+      var g3 = item.selectIndexArr.indexOf(li)
+      return {
+        $orig: _vm.__get_orig(li),
+        g3: g3
+      }
+    })
     return {
       $orig: _vm.__get_orig(item),
-      g2: g2
+      g2: g2,
+      l1: l1
     }
   })
 
@@ -437,7 +484,7 @@ var render = function() {
     {
       $root: {
         l0: l0,
-        l1: l1
+        l2: l2
       }
     }
   )

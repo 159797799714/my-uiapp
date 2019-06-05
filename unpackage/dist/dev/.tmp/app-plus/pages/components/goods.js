@@ -184,9 +184,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
+    console.log('ddd', " at pages\\components\\goods.vue:122");
     return {
       searchInfo: '', // 输入框placeholdeer
       inputClearValue: '', //  输入框value值
@@ -254,9 +287,25 @@ var _default =
         imgUrl: '',
         name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
         remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }]
+        price: 499 }],
 
       // 商城数据
+      captionList: [
+      {
+        title: '品牌',
+        selectIndexArr: ['默认'], //循环时加上
+        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] },
+      {
+        title: '分类',
+        selectIndexArr: ['默认'],
+        arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选'] },
+      {
+        title: '促销',
+        selectIndexArr: ['默认'],
+        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] }],
+
+      // 筛选侧边栏数据
+      selecArr: [] // 筛选侧边栏展开的数组index
     };
   },
   watch: {
@@ -277,8 +326,11 @@ var _default =
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:180");
+    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:229");
     this.searchInfo = option.class;
+    // this.captionList.map((item, index) => {
+    //   item.selectIndexArr = []
+    // })
   },
   methods: {
     goBack: function goBack() {
@@ -291,7 +343,7 @@ var _default =
       this.showClearIcon = false;
     },
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\goods.vue:194");
+      console.log(event.target.value, " at pages\\components\\goods.vue:246");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -307,10 +359,13 @@ var _default =
     // 价格等分类点击
     selectFilter: function selectFilter(index) {
       if (!this.filter_alert && index === 4) {
+
+        // 给captionList加上一个选中的索引空数组selectIndexArr
         this.filter_alert = true;
       }
       this.filterIndex = index;
     },
+    //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
       var index = info.toString();
       if (index === this.filterTag_Index && this.filterTag_Index !== '') {
@@ -320,6 +375,25 @@ var _default =
       if (index !== this.filterTag_Index || this.filterTag_Index === '') {
         this.filterTag_Index = index;
       }
+    },
+    // 筛选侧边弹窗选择
+    selTag: function selTag(index, num) {
+      var name = this.captionList[index].arr[num];
+      var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
+      if (charIndex === -1) {
+        this.captionList[index].selectIndexArr.push(name);
+        return;
+      }
+      if (charIndex !== -1) {
+        this.captionList[index].selectIndexArr.splice(charIndex, 1);
+        return;
+      }
+    },
+    // 重置筛选
+    resetFilter: function resetFilter() {
+      this.captionList.map(function (item, index) {
+        item.selectIndexArr = ['默认'];
+      });
     },
     clickZan: function clickZan(index) {
       if (!this.shareList[index].zan_status) {
@@ -377,6 +451,21 @@ var render = function() {
       g1: g1
     }
   })
+  var l2 = _vm.captionList.map(function(item, index) {
+    var g2 = _vm.selecArr.indexOf(index)
+    var l1 = item.arr.map(function(li, num) {
+      var g3 = item.selectIndexArr.indexOf(li)
+      return {
+        $orig: _vm.__get_orig(li),
+        g3: g3
+      }
+    })
+    return {
+      $orig: _vm.__get_orig(item),
+      g2: g2,
+      l1: l1
+    }
+  })
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
@@ -392,7 +481,8 @@ var render = function() {
     {},
     {
       $root: {
-        l0: l0
+        l0: l0,
+        l2: l2
       }
     }
   )
