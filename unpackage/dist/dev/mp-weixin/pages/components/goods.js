@@ -192,6 +192,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -262,9 +278,22 @@ var _default =
         imgUrl: '',
         name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
         remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }]
+        price: 499 }],
 
       // 商城数据
+      captionList: [
+      {
+        title: '品牌',
+        arr: ['索尼', '索尼', '索尼', '索尼', '索尼', '索尼'] },
+      {
+        title: '分类',
+        arr: ['索尼', '索尼', '索尼索尼索尼索尼索尼', '索尼', '索尼'] },
+      {
+        title: '促销',
+        arr: ['索尼', '索尼', '索尼'] }],
+
+      // 筛选侧边栏数据
+      selecArr: [] // 筛选侧边栏展开的数组index
     };
   },
   watch: {
@@ -385,6 +414,13 @@ var render = function() {
       g1: g1
     }
   })
+  var l1 = _vm.captionList.map(function(item, index) {
+    var g2 = _vm.selecArr.indexOf(index)
+    return {
+      $orig: _vm.__get_orig(item),
+      g2: g2
+    }
+  })
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
@@ -400,7 +436,8 @@ var render = function() {
     {},
     {
       $root: {
-        l0: l0
+        l0: l0,
+        l1: l1
       }
     }
   )

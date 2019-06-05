@@ -79,15 +79,31 @@
     <!-- 筛选 -->
     <view v-if="filterIndex === 4 && filter_alert" class="big-cover">
       <view class="white" @click="filter_alert = false"></view>
-      <scroll-view scroll-y="true" class="big-cover-main bg-white border-box">
-        <view class="price">
-          <view class="title">价格区间(元)</view>
-          <view class="ipt">
-            <input type="text" value="" placeholder="最低价" placeholder-style="color: #999"/>
-            <input type="text" value="" placeholder="最高价" placeholder-style="color: #999"/>
+      <view class="big-cover-main bg-white border-box padding-30">
+        <scroll-view scroll-y="true" class="box">
+          <view class="price">
+            <view class="title">价格区间(元)</view>
+            <view class="ipt">
+              <input type="text" class="lower" value="" placeholder="最低价" placeholder-style="color: #999"/>
+              <input type="text" value="" placeholder="最高价" placeholder-style="color: #999"/>
+            </view>
           </view>
+          <view v-for="(item, index) in captionList" :key="index" class="list-span">
+            <view class="title caption">
+              <text>{{ item.title }}</text>
+              <text :class="{iconfont: true, rotate: selecArr.indexOf(index) !== -1}">&#xe792;</text>
+            </view>
+            <view class="tag-span">
+              <view v-for="(li, num) in item.arr" :key="num" class="tag border-box">{{ li }}</view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="foot">
+          <view>重置</view>
+          <view class="sure">完成({{ filterCoverList.sum }}物品)</view>
         </view>
-      </scroll-view>
+      </view>
+      
     </view>
   </view>
 </template>
@@ -165,6 +181,19 @@
             price: 499
           }
         ],                                  // 商城数据
+        captionList: [
+          {
+            title: '品牌',
+            arr: ['索尼', '索尼', '索尼', '索尼', '索尼', '索尼']
+          }, {
+            title: '分类',
+            arr: ['索尼', '索尼', '索尼索尼索尼索尼索尼', '索尼', '索尼']
+          }, {
+            title: '促销',
+            arr: ['索尼', '索尼', '索尼']
+          }
+        ],                             // 筛选侧边栏数据
+        selecArr: [],                  // 筛选侧边栏展开的数组index
       }
     },
     watch: {
@@ -317,6 +346,10 @@
   }
   .selectFilter{
     color: $color-red;
+    font-weight: $font-bold;
+    .iconfont{
+      font-weight: 400;
+    }
   }
   .filter-tags{
     height: 50upx;
@@ -377,28 +410,27 @@
           }
         }
       }
-      .foot{
-        height: 98upx;
-        display: flex;
-        font-size: $font-30;
-        color: $word-color;
-        text-align: center;
-        line-height: 98upx;
-        border-top: 1px solid $color-f5;
-        &>view{
-          flex: 1;
-        }
-        .sure{
-          color: $color-white;
-          background: $color-orange;
-        }
-      }
     }
     .white{
       flex: 1;
     }
   }
-  
+  .foot{
+    height: 98upx;
+    display: flex;
+    font-size: $font-30;
+    color: $word-color;
+    text-align: center;
+    line-height: 98upx;
+    border-top: 1px solid $color-f5;
+    &>view{
+      flex: 1;
+    }
+    .sure{
+      color: $color-white;
+      background: $color-orange;
+    }
+  }
   .culture{
     flex: 1;
     display: flex;
@@ -540,20 +572,37 @@
     }
     .big-cover-main{
       width: 524upx;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      .box{
+        flex: 1;
+        overflow: hidden;
+      }
+      .title{
+        font-size: $font-26;
+        line-height: 85upx;
+      }
       .price{
         height: 159upx;
-        margin: 80upx 35upx 0 35upx;
+        margin: 80upx 5upx 0 5upx;
         padding-bottom: 30upx;
-        border-bottom: 2px solid $color-f5;
-        .title{
-          font-size: $font-26;
-          line-height: 85upx;
-        }
         .ipt{
           height: 74upx;
           display: flex;
           justify-content: space-between;
+          position: relative;
+          &::after{
+            content: '';
+            position: absolute;
+            height: 2upx;
+            width: 30upx;
+            top: 50%;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            transform: translate(-50%);
+            background: $color-ee;
+          }
           &>input{
             width: 190upx;
             height: 74upx;
@@ -563,6 +612,37 @@
             background: $color-ee;
           }
         }
+      }
+      .caption{
+        display: flex;
+        justify-content: space-between;
+        border-top: 2px solid $color-f5;
+        .rotate{
+          transform: rotate(180deg);
+        }
+      }
+      .tag-span{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        min-height: 10upx;
+        font-size: $font-26;
+        .tag{
+          width: 216upx;
+          height: 88upx;
+          padding: 0 20upx;
+          margin-bottom: 20upx;
+          line-height: 88upx;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          background: $color-ee;
+        }
+      }
+      .foot{
+        width: calc(100% + 60upx);
+        margin-left: -30upx;
       }
     }
   }
