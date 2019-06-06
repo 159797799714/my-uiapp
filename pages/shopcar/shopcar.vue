@@ -1,5 +1,6 @@
 <template>
   <view class="container">
+    <view class="top border-box"> 购物车 </view>
     <scroll-view scroll-y="true" class="content border-box">
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <radio-group @change="checkboxChange">
@@ -108,12 +109,25 @@
 </script>
 
 <style lang="scss" scoped>
+  .top{
+    height: 176upx;
+    padding: 120upx 20upx 0 30upx;
+    overflow: hidden;
+    font-size: $font-44;
+    font-weight: $font-bold;
+    line-height: 44upx;
+  }
+  .container{
+    background: $color-f5;
+  }
   .content {
     margin: 30upx;
+    width: calc(100% - 60upx);
+    margin-top: 0;
     .store{
       min-height: 292upx;
-      padding: 0 20upx 35upx 0;
-      margin-bottom: 30upx;
+      padding: 0 20upx 35upx 20upx;
+      margin: 30upx 0;
       .store-head{
         display: flex;
         font-size: $font-28;

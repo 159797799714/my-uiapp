@@ -163,12 +163,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: { uniIndexedList: uniIndexedList },
   data: function data() {
     return {
       topIndex: 0, // 顶部导航默认选中的
-      topList: ['分类', '品牌', '精选专辑'], // 顶部导航选项
+      topList: ['分类'], // 顶部导航选项
       list: ['为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆'], // 侧边菜单
       navData: 0,
       child: [{
@@ -183,32 +218,7 @@ __webpack_require__.r(__webpack_exports__);
       interval: 2000,
       duration: 500,
       indicatorActiveColor: '#fff',
-      swiperList: [{}, {}, {}], // 轮播图
-      brand: [{
-        "letter": "A",
-        "data": [{
-          name: "澳门国际机场",
-          imgUrl: 'FJEIG' }] },
-
-
-      {
-        "letter": "B",
-        "data": [{
-          name: "澳门国际机场",
-          imgUrl: 'FJEIG' },
-        {
-          name: "澳门国际机场",
-          imgUrl: 'FJEIG' }] },
-
-
-      {
-        "letter": "D",
-        "data": [{
-          name: "澳门国际机场",
-          imgUrl: 'FJEIG' }] }],
-
-
-      // 品牌
+      swiperList: [{}, {}, {}], // 轮播图  
       album: {
         imgUrl: '',
         arr: [{
@@ -216,18 +226,19 @@ __webpack_require__.r(__webpack_exports__);
           sum: 2095 },
         {
           imgUrl: '',
-          sum: 2095 }] } };
+          sum: 2095 }] },
 
 
-
+      brand: 3 // 品牌
+    };
   },
   methods: {
     clickNav: function clickNav(index) {
       this.navData = index;
     },
-    selectTop: function selectTop(index) {
-      this.topIndex = index;
-    },
+    // selectTop(index) {
+    //   this.topIndex = index
+    // },
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });

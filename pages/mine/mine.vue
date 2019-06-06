@@ -35,7 +35,7 @@
           </view>
         </view>
         <view class="row2">
-          <view v-for="(item, index) in menuList2" :key="index">
+          <view v-for="(item, index) in menuList2" :key="index" @click="goChild(index)">
             <image :src="item.imgUrl" mode=""></image>
             <text>{{ item.name }}</text>
           </view>
@@ -130,8 +130,21 @@
       }
     },
     methods: {
+      // 点赞或者收藏
       selectTab(index) {
         this.tabIndex = index
+      },
+      goChild(index) {
+        if( index === 0) {
+          uni.navigateTo({
+            url: 'discount'
+          })
+        }
+        if( index === 2) {
+          uni.navigateTo({
+            url: 'looks'
+          })
+        }
       }
     }
   }
@@ -326,7 +339,7 @@
               overflow: hidden;
               text-overflow: ellipsis;
               &>text{
-                margin: 0 16upx;
+                margin-right: 32upx;
               }
             }
             .good-price{

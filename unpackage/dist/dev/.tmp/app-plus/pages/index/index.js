@@ -195,7 +195,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     // 文章详情页
     goInfo: function goInfo(item) {
       uni.navigateTo({
-        url: 'shareInfo?title=' + item.title });
+        url: '../components/shareInfo?title=' + item.title });
 
     },
     // 搜索页

@@ -7,7 +7,7 @@
         <input class="ipt" :placeholder="searchInfo" confirm-type="search" :value="inputClearValue" @input="clearInput"/>
         <icon type="clear" v-if="showClearIcon" size="14" @click="clearIcon"/>
       </view>
-      <text v-if="tabIndex === 1" class="iconfont" @click="goBack">&#xe60e;</text>
+      <text v-if="tabIndex === 1" class="iconfont" @click="changeStyle">&#xe60e;</text>
     </view>
     <view class="content bg-white border-box">
       
@@ -45,7 +45,7 @@
       <scroll-view scroll-y="true" class="culture">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
-          <view v-for="(item, index) in shareList" :key="index" class="item">
+          <view v-for="(item, index) in shareList" :key="index" class="item" @click="goShareDetail(item)">
             <view class="img">
               <image src="" mode=""></image>
             </view>
@@ -55,7 +55,7 @@
                 <view class="userImg">
                   <image src="" mode=""></image>
                 </view>
-                <view class="userName">{{ item.name }}</view> 
+                <view class="userName">{{ item.authorName }}</view> 
               </view>
               <view class="zan">
                 <text :class="{iconfont: true, isZan: item.zan_status}" @click="clickZan(index)">&#xe63a;</text>
@@ -66,7 +66,7 @@
         </view>
         
         <!-- 商品 -->
-        <view v-if="tabIndex === 1" class="main bg-white border-box">
+        <view v-if="tabIndex === 1" :class="{main: style === 0, 'bg-white': true, 'border-box': true, row: style === 1}">
           <view v-for="(item, index) in goodList" :key="index" class="good-item"  @click="goDetail(item)">
             <view class="good-img"></view>
             <view class="good-info border-box">
@@ -75,7 +75,10 @@
                 <text v-for="(li, index) in item.remark" :key="index">{{ li }}</text>
               </view>
               <view class="good-price">
-                <text>￥{{ item.price }}</text>
+                <view>
+                  <text>￥</text>
+                  <text class="bigText">{{ item.price }}</text>
+                </view>
                 <text class="iconfont">&#xe719;</text>
               </view>
             </view>
@@ -102,7 +105,7 @@
               <text :class="{iconfont: true, rotate: selecArr.indexOf(index) !== -1}">&#xe792;</text>
             </view>
             <view class="tag-span">
-              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: item.selectIndexArr !== undefined ? item.selectIndexArr.indexOf(li) !== -1: false}" @click="selTag(index, num)">{{ item.selectIndexArr === undefined}}</view>
+              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: item.selectIndexArr? item.selectIndexArr.indexOf(li) !== -1: false}" @click="selTag(index, num)">{{ li }}</view>
             </view>
           </view>
         </scroll-view>
@@ -119,8 +122,8 @@
 <script>
   export default{
     data() {
-      console.log('ddd')
       return {
+        style: 0,                    // 商品块默认0上图下文，1为左图右文
         searchInfo: '',              // 输入框placeholdeer
         inputClearValue: '',        //  输入框value值
         showClearIcon: false,       // 输入框清空
@@ -188,20 +191,25 @@
             name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
             remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
             price: 499
+          }, {
+            imgUrl: '',
+            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
+            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
+            price: 499
           }
         ],                                  // 商城数据
         captionList: [
           {
             title: '品牌',
-            // selectIndexArr: ['默认'],               //循环时加上
+            selectIndexArr: ['默认'],               //循环时加上
             arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
           }, {
             title: '分类',
-            // selectIndexArr: ['默认'],
+            selectIndexArr: ['默认'],
             arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选']
           }, {
             title: '促销',
-            // selectIndexArr: ['默认'],
+            selectIndexArr: ['默认'],
             arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
           }
         ],                             // 筛选侧边栏数据
@@ -210,6 +218,7 @@
     },
     watch: {
       tabIndex(val, oldval) {
+        this.filterIndex = 0
         if(val === 0) {
           this.shareTag = ['综合', '最热', '最新', '官方', '筛选']
           return
@@ -228,11 +237,15 @@
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option.class)
       this.searchInfo = option.class
-      this.captionList.map((item, index) => {
-        this.captionList[index].selectIndexArr = ['默认']
-      })
     },
     methods: {
+      changeStyle() {
+        if(this.style === 0) {
+          this.style = 1
+          return
+        }
+        this.style = 0
+      },
       goBack() {
         uni.navigateBack({
           delta: 1
@@ -241,6 +254,11 @@
       clearIcon() {
       	this.inputClearValue = ''
       	this.showClearIcon = false
+      },
+      goShareDetail(item) {
+        uni.navigateTo({
+          url: '../components/shareInfo?title=' + item.authorName
+        })
       },
       clearInput(event) {
         console.log(event.target.value)
@@ -259,10 +277,10 @@
       // 价格等分类点击
       selectFilter(index) {
         if(!this.filter_alert && index === 4) {
-          this.captionList.map((item, index) => {
-            this.captionList[index].selectIndexArr = ['默认']
-          })
-          // 给captionList加上一个选中的索引空数组selectIndexArr
+          // this.captionList.map((item, index) => {
+          //   this.captionList[index].selectIndexArr = ['默认']
+          // })
+          // // 给captionList加上一个选中的索引空数组selectIndexArr
           this.filter_alert = true
         }
         this.filterIndex = index
@@ -313,7 +331,7 @@
         uni.navigateTo({
           url: '../components/goodDetail?info=' + item.name
         })
-      },
+      }
     }
   }
 </script>
@@ -475,6 +493,7 @@
     display: flex;
     flex-direction: column;
   }
+  //商品样式1
   .main{
     padding: 0 30upx;
     display: flex;
@@ -517,21 +536,24 @@
         width: 100%;
         padding: 0 20upx;
         line-height: 40upx;
-        .userImg{ 
-          height: 40upx;
-          width: 40upx;
-          margin-right: 10upx;
-          border-radius: 100%;
-          overflow: hidden;
-          &>image{
-            height: 100%;
-            width: 100%;
-            background: #ccc;
+        .user{
+          display: flex;
+          .userImg{ 
+            height: 40upx;
+            width: 40upx;
+            margin-right: 10upx;
+            border-radius: 100%;
+            overflow: hidden;
+            &>image{
+              height: 100%;
+              width: 100%;
+              background: #ccc;
+            }
           }
-        }
-        .userName{
-          font-size: $font-24;
-          font-weight: bold;
+          .userName{
+            font-size: $font-24;
+            font-weight: bold;
+          }
         }
         .zan{
           display: flex;
@@ -588,7 +610,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           &>text{
-            margin: 0 16upx;
+            margin-right: 32upx;
           }
         }
         .good-price{
@@ -599,6 +621,63 @@
           line-height: 54upx;
           .iconfont{
             color: $word-color;
+          }
+          .bigText{
+            font-size: $font-36;
+          }
+        }
+      }
+    }
+  }
+  // 样式2
+  .row{
+    padding: 0 30upx;
+    .good-item{
+      height: 220upx;
+      width: 100%;
+      margin-bottom: 20upx;
+      box-sizing: border-box;
+      display: flex;
+      .good-img{
+        height: 220upx;
+        width: 220upx;
+        margin-right: 30upx;
+        background: #ccc;
+      }
+      .good-info{
+        flex: 1;
+        overflow: hidden;
+        .good-name{
+          height: 78upx;
+          line-height: 42upx;
+          margin-top: 14upx;
+          font-size: $font-28;
+          white-space: wrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .good-remark{
+          font-size: $font-20;
+          line-height: 59upx;
+          color: $word-color;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &>text{
+            margin-right: 29upx;
+          }
+        }
+        .good-price{
+          display: flex;
+          justify-content: space-between;
+          font-size: $font-26;
+          font-weight: $font-bold;
+          line-height: 54upx;
+          .iconfont{
+            color: $word-color;
+          }
+          .bigText{
+            font-size: $font-34;
           }
         }
       }

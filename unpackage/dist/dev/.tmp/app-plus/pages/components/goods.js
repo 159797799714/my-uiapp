@@ -216,11 +216,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
-    console.log('ddd', " at pages\\components\\goods.vue:122");
     return {
+      style: 0, // 商品块默认0上图下文，1为左图右文
       searchInfo: '', // 输入框placeholdeer
       inputClearValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
@@ -287,6 +290,11 @@ var _default =
         imgUrl: '',
         name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
         remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
+        price: 499 },
+      {
+        imgUrl: '',
+        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
+        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
         price: 499 }],
 
       // 商城数据
@@ -310,6 +318,7 @@ var _default =
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
+      this.filterIndex = 0;
       if (val === 0) {
         this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
         return;
@@ -326,13 +335,17 @@ var _default =
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:229");
+    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:238");
     this.searchInfo = option.class;
-    // this.captionList.map((item, index) => {
-    //   item.selectIndexArr = []
-    // })
   },
   methods: {
+    changeStyle: function changeStyle() {
+      if (this.style === 0) {
+        this.style = 1;
+        return;
+      }
+      this.style = 0;
+    },
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
@@ -342,8 +355,13 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
+    goShareDetail: function goShareDetail(item) {
+      uni.navigateTo({
+        url: '../components/shareInfo?title=' + item.authorName });
+
+    },
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\goods.vue:246");
+      console.log(event.target.value, " at pages\\components\\goods.vue:264");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -359,8 +377,10 @@ var _default =
     // 价格等分类点击
     selectFilter: function selectFilter(index) {
       if (!this.filter_alert && index === 4) {
-
-        // 给captionList加上一个选中的索引空数组selectIndexArr
+        // this.captionList.map((item, index) => {
+        //   this.captionList[index].selectIndexArr = ['默认']
+        // })
+        // // 给captionList加上一个选中的索引空数组selectIndexArr
         this.filter_alert = true;
       }
       this.filterIndex = index;

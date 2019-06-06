@@ -16,6 +16,7 @@ $color-ee: #EEEEEE;
 $color-f4: #f4f4f4;
 $color-orange: #F2401A;
 $color-pink-bg: #FEF0F0;
+$color-black: #000000;
 
 /* 行为相关颜色 */
 $color_primary: #007aff;
@@ -35,6 +36,7 @@ $font-36: 36upx;
 $font-38: 38upx;
 $font-40: 40upx;
 $font-42: 42upx;
+$font-44: 44upx;
 $font-46: 46upx;
 
 $font-bold: 600;
@@ -121,9 +123,9 @@ view{
   justify-content: center;
   align-items: center;
   padding: 0 30upx;
-  height: 176upx;
+  height: 88px;
   width: 100%;
-  padding-top: 88upx;
+  padding-top: 44px;
   font-size: $font-28;
   background: $title-color;
   color: $control-color;

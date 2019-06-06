@@ -95,7 +95,7 @@
       // 文章详情页
       goInfo(item) {
         uni.navigateTo({
-          url: 'shareInfo?title=' + item.title
+          url: '../components/shareInfo?title=' + item.title
         })
       },
       // 搜索页
@@ -129,8 +129,11 @@
     }
   }
   .content {
-    padding: 30upx ;
+    margin: 30upx ;
+    margin-top: 0;
+    width: calc(100% - 60upx);
     box-sizing: border-box;
+    overflow: hidden;
     &::-webkit-scrollbar {
       width: 0;
       height: 0;
@@ -139,6 +142,7 @@
     .banner-swiper {
       height: 390upx;
       margin-bottom: 50upx;
+      margin-top: 30upx;
       box-sizing: border-box;
       .swiper {
         height: 390upx;

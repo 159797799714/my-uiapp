@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/shareInfo",
+    "pages/components/shareInfo",
     "pages/login/login",
     "pages/market/market",
     "pages/components/goodDetail",
@@ -11,6 +11,7 @@
     "pages/message/message",
     "pages/shopcar/shopcar",
     "pages/mine/mine",
+    "pages/mine/looks",
     "pages/components/search"
   ],
   "subPackages": [],

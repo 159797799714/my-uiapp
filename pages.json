@@ -11,7 +11,7 @@
         }
       }
     }, {
-      "path": "pages/index/shareInfo",
+      "path": "pages/components/shareInfo",
       "style": {
         "navigationStyle": "custom",
         "app-plus": {
@@ -60,11 +60,13 @@
     }, {
       "path": "pages/moreList/moreList",
       "style": {
-        "navigationStyle": "custom",
-        "app-plus": {
-          "bounce": "none",
-          "titleNView": false
-        }
+        // "navigationStyle": "custom",
+        "navigationBarTitleText":"分类",
+        "navigationBarBackgroundColor":"#151515"
+        // "app-plus": {
+        //   "bounce": "none",
+        //   "titleNView": false
+        // }
       }
     }, {
       "path": "pages/market/panicBuy"
@@ -99,10 +101,31 @@
         }
       }
     }, {
+      "path": "pages/mine/looks",
+      "style": {
+        // "navigationStyle": "custom",
+        "navigationBarTitleText":"浏览记录",
+        "navigationBarBackgroundColor":"#151515"
+        // "app-plus": {
+        //   "bounce": "none",
+        //   "titleNView": false
+        // }
+      }
+    }, {
       "path": "pages/components/search",
       "style": {
         "navigationStyle": "custom",
         // "navigationBarTitleText": "搜索",
+        "app-plus": {
+          "bounce": "none",
+          // "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/discount",
+      "style": {
+        "navigationStyle": "custom",
         "app-plus": {
           "bounce": "none",
           // "bounce": "none", //关闭窗口回弹效果

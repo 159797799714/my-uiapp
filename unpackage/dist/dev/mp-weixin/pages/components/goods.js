@@ -216,11 +216,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default =
 {
   data: function data() {
-    console.log('ddd');
     return {
+      style: 0, // 商品块默认0上图下文，1为左图右文
       searchInfo: '', // 输入框placeholdeer
       inputClearValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
@@ -287,21 +290,26 @@ var _default =
         imgUrl: '',
         name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
         remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
+        price: 499 },
+      {
+        imgUrl: '',
+        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
+        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
         price: 499 }],
 
       // 商城数据
       captionList: [
       {
         title: '品牌',
-        // selectIndexArr: ['默认'],               //循环时加上
+        selectIndexArr: ['默认'], //循环时加上
         arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] },
       {
         title: '分类',
-        // selectIndexArr: ['默认'],
+        selectIndexArr: ['默认'],
         arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选'] },
       {
         title: '促销',
-        // selectIndexArr: ['默认'],
+        selectIndexArr: ['默认'],
         arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] }],
 
       // 筛选侧边栏数据
@@ -310,6 +318,7 @@ var _default =
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
+      this.filterIndex = 0;
       if (val === 0) {
         this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
         return;
@@ -325,14 +334,18 @@ var _default =
       }
     } },
 
-  onLoad: function onLoad(option) {var _this = this;
+  onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option.class);
     this.searchInfo = option.class;
-    this.captionList.map(function (item, index) {
-      _this.captionList[index].selectIndexArr = ['默认'];
-    });
   },
   methods: {
+    changeStyle: function changeStyle() {
+      if (this.style === 0) {
+        this.style = 1;
+        return;
+      }
+      this.style = 0;
+    },
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
@@ -341,6 +354,11 @@ var _default =
     clearIcon: function clearIcon() {
       this.inputClearValue = '';
       this.showClearIcon = false;
+    },
+    goShareDetail: function goShareDetail(item) {
+      uni.navigateTo({
+        url: '../components/shareInfo?title=' + item.authorName });
+
     },
     clearInput: function clearInput(event) {
       console.log(event.target.value);
@@ -357,12 +375,12 @@ var _default =
       this.tabIndex = index;
     },
     // 价格等分类点击
-    selectFilter: function selectFilter(index) {var _this2 = this;
+    selectFilter: function selectFilter(index) {
       if (!this.filter_alert && index === 4) {
-        this.captionList.map(function (item, index) {
-          _this2.captionList[index].selectIndexArr = ['默认'];
-        });
-        // 给captionList加上一个选中的索引空数组selectIndexArr
+        // this.captionList.map((item, index) => {
+        //   this.captionList[index].selectIndexArr = ['默认']
+        // })
+        // // 给captionList加上一个选中的索引空数组selectIndexArr
         this.filter_alert = true;
       }
       this.filterIndex = index;
