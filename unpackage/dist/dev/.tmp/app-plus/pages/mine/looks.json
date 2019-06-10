@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "浏览记录",
-  "navigationBarBackgroundColor": "#151515",
+  "navigationStyle": "custom",
+  "bounce": "none",
+  "titleNView": false,
   "usingComponents": {}
 }

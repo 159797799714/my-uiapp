@@ -235,6 +235,11 @@ var _default =
       this.tabIndex = index;
     },
     goChild: function goChild(index) {
+      if (index === 0) {
+        uni.navigateTo({
+          url: 'discount' });
+
+      }
       if (index === 2) {
         uni.navigateTo({
           url: 'looks' });

@@ -199,6 +199,23 @@ createPage(_discount.default);
 
 /***/ }),
 
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2FdiscountCenter\"}":
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FdiscountCenter"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _discountCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/discountCenter.vue */ "../../../../Desktop/LEI/white/pages/mine/discountCenter.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_discountCenter.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Flooks\"}":
 /*!*****************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Flooks"} ***!
@@ -212,6 +229,23 @@ createPage(_discount.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
 var _looks = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/looks.vue */ "../../../../Desktop/LEI/white/pages/mine/looks.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_looks.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fmean\"}":
+/*!****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmean"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _mean = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/mean.vue */ "../../../../Desktop/LEI/white/pages/mine/mean.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_mean.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),

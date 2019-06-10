@@ -1,5 +1,9 @@
 <template>
   <view class="container">
+    <view class="topBar">
+      <text class="iconfont" @click="goBack">&#xe61c;</text>
+      <text class="title">浏览记录</text>
+    </view>
     <view class="tabs">
       <view :class="{tab: true, selected: tabIndex === index}" v-for="(item, index) in tabList" :key="index" @click="selectTab(index)">{{ item }}</view>
     </view>
@@ -108,6 +112,11 @@
       }
     },
     methods: {
+      goBack() {
+        uni.navigateBack({
+          delta: 1
+        })
+      },
       selectTab(index) {
         this.tabIndex = index
       },
@@ -138,6 +147,20 @@
 </script>
 
 <style lang="scss" scoped>
+  .topBar{
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-38;
+    color: $color-white;
+    .iconfont{
+      font-size: $font-42;
+      font-weight: 500;
+    }
+    .title{
+      flex: 1;
+      text-align: center;
+    }
+  }
   .tabs{
     height: 134upx;
     padding: 0 150upx;
@@ -168,6 +191,7 @@
   }
   .goods-content{
     padding: 0 30upx;
+    padding-bottom: 30upx;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

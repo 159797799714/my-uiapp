@@ -109,17 +109,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      tabsList: ['未使用', '已使用', '已过期'],
+      tabData: 0,
+      discount: {
+        word: '还没有优惠券哦',
+        info: '快去领券中心领优惠券吧~' },
 
+      imgName: 'usable',
+      btnShow: 'visible' };
 
   },
+  watch: {
+    tabData: function tabData(val) {
+      if (val !== 0) {
+        this.imgName = 'unusable';
+        this.btnShow = 'hidden';
+        return;
+      }
+      this.imgName = 'usable';
+      this.btnShow = 'visible';
+    } },
+
   methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
     goMean: function goMean() {
       uni.navigateTo({
         url: 'mean' });
+
+    },
+    selectTab: function selectTab(index) {
+      this.tabData = index;
+    },
+    goDiscountCenter: function goDiscountCenter() {
+      uni.navigateTo({
+        url: 'discountCenter' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

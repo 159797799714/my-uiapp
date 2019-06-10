@@ -13,7 +13,9 @@
     "pages/mine/mine",
     "pages/mine/looks",
     "pages/components/search",
-    "pages/mine/discount"
+    "pages/mine/discount",
+    "pages/mine/mean",
+    "pages/mine/discountCenter"
   ],
   "subPackages": [],
   "window": {

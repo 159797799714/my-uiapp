@@ -142,6 +142,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -191,7 +192,7 @@ var _default =
   },
   methods: {
     checkboxChange: function checkboxChange(e) {
-      console.log(e, " at pages\\shopcar\\shopcar.vue:94");
+      console.log(e, " at pages\\shopcar\\shopcar.vue:95");
       // var items = this.items,
       // values = e.detail.value
       // for (var i = 0, lenI = items.length; i < lenI; ++i) {

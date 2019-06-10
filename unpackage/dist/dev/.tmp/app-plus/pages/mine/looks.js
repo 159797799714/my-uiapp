@@ -145,6 +145,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -208,6 +212,11 @@ var _default =
 
   },
   methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
     selectTab: function selectTab(index) {
       this.tabIndex = index;
     },
