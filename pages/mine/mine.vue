@@ -7,7 +7,7 @@
           <view class="navigator">
             <view class="title">
               我的
-              <text class="iconfont">&#xe676;</text>
+              <text class="iconfont" @click="goSetting">&#xe676;</text>
             </view>
           </view>
           <view class="user">
@@ -145,6 +145,11 @@
             url: 'looks'
           })
         }
+      },
+      goSetting() {
+        uni.navigateTo({
+          url: 'setting'
+        })
       }
     }
   }

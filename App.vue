@@ -17,6 +17,16 @@
 </script>
 
 <style lang="scss">
-	// @import './common/common.scss';
+  page{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-family: PingFangSC-Regular;
+    color: $title-color;
+    margin: 0;
+    padding: 0;
+   }
 </style>
 

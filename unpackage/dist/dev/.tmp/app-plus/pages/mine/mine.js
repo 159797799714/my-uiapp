@@ -245,6 +245,11 @@ var _default =
           url: 'looks' });
 
       }
+    },
+    goSetting: function goSetting() {
+      uni.navigateTo({
+        url: 'setting' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

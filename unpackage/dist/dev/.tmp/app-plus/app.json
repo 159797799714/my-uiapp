@@ -15,6 +15,10 @@
     "pages/components/search",
     "pages/mine/discount",
     "pages/mine/mean",
+    "pages/mine/setting",
+    "pages/mine/personal",
+    "pages/mine/address",
+    "pages/mine/addAddress",
     "pages/mine/discountCenter"
   ],
   "subPackages": [],

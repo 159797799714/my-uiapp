@@ -140,6 +140,61 @@
         }
       }
     }, {
+      "path": "pages/mine/setting",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, 
+    {
+      "path": "pages/mine/personal",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/address",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/addAddress",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/changePassword",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/about",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
       "path": "pages/mine/discountCenter",
       "style": {
         "navigationStyle": "custom",
