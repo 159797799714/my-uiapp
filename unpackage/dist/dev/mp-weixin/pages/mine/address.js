@@ -119,11 +119,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      addressList: [
+      {
+        name: '锤子',
+        tel: '166666666666',
+        location: '广东省深圳市南山区',
+        address: '高新南九道三行科技大厦11108',
+        tags: ['其他'],
+        def: true },
+      {
+        name: '冬瓜',
+        tel: '166666666666',
+        location: '广东省深圳市南山区',
+        address: '高新南九道三行科技大厦11108',
+        tags: ['家'],
+        def: false }] };
+
 
 
   },
@@ -136,6 +151,11 @@ var _default =
     addAction: function addAction() {
       uni.navigateTo({
         url: 'addAddress' });
+
+    },
+    editAction: function editAction(item) {
+      uni.navigateTo({
+        url: 'addAddress?info=' + JSON.stringify(item) });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

@@ -23,13 +23,13 @@
       <view class="order bg-white">
         <view class="myorder">
           <text>我的订单</text>
-          <view>
+          <view @click="goOrder('')">
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
           </view>
         </view>
         <view class="row1">
-          <view v-for="(item, index) in menuList1" :key="index">
+          <view v-for="(item, index) in menuList1" :key="index" @click="goOrder(item.name)">
             <image :src="item.imgUrl" mode=""></image>
             <text>{{ item.name }}</text>
           </view>
@@ -139,12 +139,33 @@
           uni.navigateTo({
             url: 'discount'
           })
+          return
         }
         if( index === 2) {
           uni.navigateTo({
             url: 'looks'
           })
+          return
         }
+        if( index === 3) {
+          uni.share({
+            provider: "weixin",
+            scene: "WXSceneSession",
+            type: 2,
+            imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+            success: function (res) {
+              console.log("success:" + JSON.stringify(res));
+            },
+            fail: function (err) {
+              console.log("fail:" + JSON.stringify(err));
+            }
+          })
+        }
+      },
+      goOrder(name) {
+        uni.navigateTo({
+          url: '../order/order?name=' + name
+        })
       },
       goSetting() {
         uni.navigateTo({

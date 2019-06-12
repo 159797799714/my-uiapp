@@ -203,6 +203,33 @@
           "titleNView": "false"
         }
       }
+    }, {
+      "path": "pages/order/order",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/order/orderDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/order/grade",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
     }
   ],
   "tabBar": {

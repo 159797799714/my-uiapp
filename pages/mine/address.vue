@@ -6,15 +6,14 @@
       <text class="iconfont" @click="addAction">&#xe620;</text>
     </view>
     <view class="content padding-30 border-box bg-white">
-      <view class="item">
-        <view>
-          <text class="name">撒浪嘿</text>
-          <text class="tel">15999999999</text>
-          <view class="tags">
-            <text class="tag">默认</text>
-          </view>
+      <view v-for="(item, index) in addressList" :key="index" class="item" @click="editAction(item)">
+        <view class="row1">
+          <text class="name">{{ item.name }}</text>
+          <text class="tel">{{ item.tel }}</text>
+          <text v-if="item.def" class="tag">默认</text>
+          <text v-for="(li, num) in item.tags" :key="num" class="tag">{{ li }}</text>
         </view>
-        <view class="address">广东省深圳市南山区 三航科技大厦 11108</view>
+        <view class="address">{{ item.location + item.address }}</view>
       </view>
     </view>
   </view>
@@ -24,7 +23,23 @@
   export default{
     data() {
       return {
-        
+        addressList: [
+          {
+            name: '锤子',
+            tel: '166666666666',
+            location: '广东省深圳市南山区',
+            address: '高新南九道三行科技大厦11108',
+            tags: ['其他'],
+            def: true
+          }, {
+            name: '冬瓜',
+            tel: '166666666666',
+            location: '广东省深圳市南山区',
+            address: '高新南九道三行科技大厦11108',
+            tags: ['家'],
+            def: false
+          }
+        ]
       }
     },
     methods: {
@@ -36,6 +51,11 @@
       addAction() {
         uni.navigateTo({
           url: 'addAddress'
+        })
+      },
+      editAction(item) {
+        uni.navigateTo({
+          url: 'addAddress?info=' + JSON.stringify(item)
         })
       }
     }
@@ -61,6 +81,13 @@
       height: 148upx;
       font-size: $font-24;
       border-bottom: 1px solid $color-f5;
+      .row1{
+        height: 32upx;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 32upx;
+      }
       .name{
         font-size: $font-30;
       }
@@ -69,19 +96,16 @@
         color: $word-color;
         font-size: $font-30;
       }
-      .tags{
+      .tag{
+        margin-left: 23upx;
         display: inline-block;
-        .tag{
-          margin-left: 23upx;
-          display: inline-block;
-          height: 30upx;
-          width: 72upx;
-          border-radius: 15upx;
-          line-height: 30upx;
-          text-align: center;
-          color: $color-white;
-          background:  $color-red;
-        }
+        height: 30upx;
+        width: 72upx;
+        border-radius: 15upx;
+        line-height: 30upx;
+        text-align: center;
+        color: $color-white;
+        background:  $color-red;
       }
       .address{
         margin-top: 24upx;

@@ -15,7 +15,14 @@
     "pages/components/search",
     "pages/mine/discount",
     "pages/mine/mean",
-    "pages/mine/discountCenter"
+    "pages/mine/setting",
+    "pages/mine/personal",
+    "pages/mine/address",
+    "pages/mine/addAddress",
+    "pages/mine/changePassword",
+    "pages/mine/about",
+    "pages/mine/discountCenter",
+    "pages/order/order"
   ],
   "subPackages": [],
   "window": {

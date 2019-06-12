@@ -239,12 +239,33 @@ var _default =
         uni.navigateTo({
           url: 'discount' });
 
+        return;
       }
       if (index === 2) {
         uni.navigateTo({
           url: 'looks' });
 
+        return;
       }
+      if (index === 3) {
+        uni.share({
+          provider: "weixin",
+          scene: "WXSceneSession",
+          type: 2,
+          imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
+          success: function success(res) {
+            console.log("success:" + JSON.stringify(res));
+          },
+          fail: function fail(err) {
+            console.log("fail:" + JSON.stringify(err));
+          } });
+
+      }
+    },
+    goOrder: function goOrder(name) {
+      uni.navigateTo({
+        url: '../order/order?name=' + name });
+
     },
     goSetting: function goSetting() {
       uni.navigateTo({

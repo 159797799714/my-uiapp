@@ -14,6 +14,7 @@ $color-99: #999999;
 $color-pink: #FCD1D1;
 $color-ee: #EEEEEE;
 $color-f4: #f4f4f4;
+$color-33: #333;
 $color-orange: #F2401A;
 $color-pink-bg: #FEF0F0;
 $color-black: #000000;
@@ -126,7 +127,6 @@ view{
   z-index: 5;
 }
 
-
 .my-button{
   border-radius: 25upx;
   text-align: center;
@@ -167,6 +167,8 @@ view{
   &:before{
     content: '+';
     position: absolute;
+    box-sizing: border-box;
+    padding-left: 4upx;
     bottom: -20upx;
     right: -20upx;
     color: $color-white;
@@ -179,4 +181,9 @@ view{
     transform: rotate(45deg);
     z-index: 5;
   }
+}
+
+.border-red{
+  color: $color-slipe-red!important;
+  border-color: $color-slipe-red!important;
 }

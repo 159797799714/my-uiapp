@@ -135,7 +135,7 @@ var _default =
       {
         icon: '&#xe64c;',
         title: '更改密码',
-        url: '' },
+        url: 'changePassword' },
       {
         icon: '&#xe740;',
         title: '电话客服',
@@ -143,7 +143,7 @@ var _default =
       {
         icon: '&#xe763;',
         title: '关于我们',
-        url: '' }] };
+        url: 'about' }] };
 
 
   },

@@ -21,7 +21,10 @@
     "pages/mine/addAddress",
     "pages/mine/changePassword",
     "pages/mine/about",
-    "pages/mine/discountCenter"
+    "pages/mine/discountCenter",
+    "pages/order/order",
+    "pages/order/orderDetail",
+    "pages/order/grade"
   ],
   "subPackages": [],
   "window": {
@@ -66,5 +69,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,1 @@
+<view class="container data-v-5abba555"><view class="topBar data-v-5abba555"><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" class="iconfont data-v-5abba555" bindtap="__e"></text><text class="data-v-5abba555">发布评价</text><text class="iconfont commit data-v-5abba555">发布</text></view><view class="content data-v-5abba555"></view></view>

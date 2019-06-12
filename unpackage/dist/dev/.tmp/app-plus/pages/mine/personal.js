@@ -149,6 +149,17 @@ var _default =
       uni.navigateBack({
         delta: 1 });
 
+    },
+    selectSex: function selectSex() {
+      uni.showActionSheet({
+        itemList: ['男', '女'],
+        success: function success(res) {
+          console.log('选中了第' + (res.tapIndex + 1) + '个按钮', " at pages\\mine\\personal.vue:57");
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg, " at pages\\mine\\personal.vue:60");
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

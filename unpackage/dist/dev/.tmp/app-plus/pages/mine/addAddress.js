@@ -141,19 +141,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       info: {
-        name: '不知道先生',
-        tel: '166666666666',
-        location: '广东省深圳市南山区',
-        address: '高新南九道三行科技大厦11108',
+        name: '',
+        tel: '',
+        location: '',
+        address: '',
         tags: ['家', '公司', '学校', '其他'],
-        def: true } };
+        def: false } };
 
 
+  },
+  onLoad: function onLoad(option) {
+    if (option.info) {
+      this.info = JSON.parse(option.info);
+    }
   },
   methods: {
     goBack: function goBack() {
@@ -166,11 +175,11 @@ var _default =
       var that = this;
       uni.chooseLocation({
         success: function success(res) {
-          that.info.location = res.name;
-          console.log('位置名称：' + res.name, " at pages\\mine\\addAddress.vue:70");
-          console.log('详细地址：' + res.address, " at pages\\mine\\addAddress.vue:71");
-          console.log('纬度：' + res.latitude, " at pages\\mine\\addAddress.vue:72");
-          console.log('经度：' + res.longitude, " at pages\\mine\\addAddress.vue:73");
+          that.info.location = res.address;
+          console.log('位置名称：' + res.name, " at pages\\mine\\addAddress.vue:79");
+          console.log('详细地址：' + res.address, " at pages\\mine\\addAddress.vue:80");
+          console.log('纬度：' + res.latitude, " at pages\\mine\\addAddress.vue:81");
+          console.log('经度：' + res.longitude, " at pages\\mine\\addAddress.vue:82");
         } });
 
     },
@@ -180,12 +189,15 @@ var _default =
         content: '确认删除？',
         success: function success(res) {
           if (res.confirm) {
-            console.log(res.confirm, " at pages\\mine\\addAddress.vue:83");
+            console.log(res.confirm, " at pages\\mine\\addAddress.vue:92");
           } else if (res.cancel) {
-            console.log('用户点击取消', " at pages\\mine\\addAddress.vue:85");
+            console.log('用户点击取消', " at pages\\mine\\addAddress.vue:94");
           }
         } });
 
+    },
+    switchChange: function switchChange(e) {
+      console.log('switch1 发生 change 事件，携带值为', e.target.value, " at pages\\mine\\addAddress.vue:100");
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

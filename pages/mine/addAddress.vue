@@ -50,13 +50,18 @@
     data() {
       return {
         info: {
-          name: '不知道先生',
-          tel: '166666666666',
-          location: '广东省深圳市南山区',
-          address: '高新南九道三行科技大厦11108',
+          name: '',
+          tel: '',
+          location: '',
+          address: '',
           tags: ['家', '公司', '学校', '其他'],
-          def: true
+          def: false
         }
+      }
+    },
+    onLoad(option) {
+      if(option.info) {
+        this.info = JSON.parse(option.info)
       }
     },
     methods: {
