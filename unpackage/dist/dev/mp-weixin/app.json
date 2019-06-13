@@ -24,7 +24,11 @@
     "pages/mine/discountCenter",
     "pages/order/order",
     "pages/order/orderDetail",
-    "pages/order/grade"
+    "pages/order/grade",
+    "pages/mine/bonus/bonusCenter",
+    "pages/mine/bonus/bonusInfo",
+    "pages/mine/bonus/myCard",
+    "pages/mine/bonus/bonusApplyInfo"
   ],
   "subPackages": [],
   "window": {
@@ -69,6 +73,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

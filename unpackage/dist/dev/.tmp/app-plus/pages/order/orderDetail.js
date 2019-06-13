@@ -206,6 +206,11 @@ var _default =
 
         } });
 
+    },
+    goGrade: function goGrade() {
+      uni.navigateTo({
+        url: 'grade' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

@@ -98,18 +98,99 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniRate = function uniRate() {return __webpack_require__.e(/*! import() | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/components/uni-rate/uni-rate.vue */ "../../../../Desktop/LEI/white/components/uni-rate/uni-rate.vue"));};var _default =
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  components: { uniRate: uniRate },
+  data: function data() {
+    return {
+      describe: 0,
+      describe_word: '' };
+
+  },
+  watch: {
+    describe: function describe(val) {
+      console.log('data', val, " at pages\\order\\grade.vue:64");
+    } },
+
+  methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
+    changeNum: function changeNum(val) {
+      console.log(val.value, " at pages\\order\\grade.vue:74");
+      switch (val.value) {
+        case 1:
+          this.describe_word = '差';
+          break;
+        case 2:
+          this.describe_word = '不满意';
+          break;
+        case 3:
+          this.describe_word = '一般';
+          break;
+        case 4:
+          this.describe_word = '满意';
+          break;
+        case 5:
+          this.describe_word = '非常满意';
+          break;}
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

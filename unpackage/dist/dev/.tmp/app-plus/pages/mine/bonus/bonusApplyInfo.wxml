@@ -1,0 +1,1 @@
+<view class="container data-v-10bdf1c8"><view class="topBar data-v-10bdf1c8"><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" class="iconfont data-v-10bdf1c8" bindtap="__e"></text><text class="title data-v-10bdf1c8">佣金提现明细</text></view><scroll-view class="content data-v-10bdf1c8" scroll-y="true"></scroll-view></view>

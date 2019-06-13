@@ -15,7 +15,7 @@
           <text class="iconfont" @click="delHistory">&#xe60d;</text>
         </view>
         <view class="tags">
-          <text v-for="(item, index) in history" :key="index" class="tag">{{ item }}</text>
+          <text v-for="(item, index) in history" :key="index" class="tag" @click="goGood(item)">{{ item }}</text>
         </view>
       </view>
       <view class="hot">
@@ -51,6 +51,11 @@
       clearIcon() {
       	this.inputClearValue = ''
       	this.showClearIcon = false
+      },
+      goGood(item) {
+        uni.navigateTo({
+          url: 'goods?class=' + item
+        })
       },
       clearInput(event) {
         console.log(event.target.value)

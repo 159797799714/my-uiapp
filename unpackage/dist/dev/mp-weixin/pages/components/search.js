@@ -152,6 +152,11 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
+    goGood: function goGood(item) {
+      uni.navigateTo({
+        url: 'goods?class=' + item });
+
+    },
     clearInput: function clearInput(event) {
       console.log(event.target.value);
       this.inputClearValue = event.target.value;

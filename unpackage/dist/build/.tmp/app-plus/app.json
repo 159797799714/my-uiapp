@@ -22,7 +22,13 @@
     "pages/mine/changePassword",
     "pages/mine/about",
     "pages/mine/discountCenter",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/order/orderDetail",
+    "pages/order/grade",
+    "pages/mine/bonus/bonusCenter",
+    "pages/mine/bonus/bonusInfo",
+    "pages/mine/bonus/myCard",
+    "pages/mine/bonus/bonusApplyInfo"
   ],
   "subPackages": [],
   "window": {
@@ -67,11 +73,12 @@
       }
     ]
   },
+  "nvueCompiler": "weex",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
   "appname": "优逸",
-  "compilerVersion": "1.9.9",
+  "compilerVersion": "2.0.0",
   "usingComponents": {}
 }

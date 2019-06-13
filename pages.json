@@ -230,6 +230,42 @@
           "titleNView": "false"
         }
       }
+    }, {
+      "path": "pages/mine/bonus/bonusCenter",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/bonus/bonusInfo",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/bonus/myCard",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
+    }, {
+      "path": "pages/mine/bonus/bonusApplyInfo",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none", //关闭窗口回弹效果
+          "titleNView": "false"
+        }
+      }
     }
   ],
   "tabBar": {

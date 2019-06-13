@@ -1,0 +1,1 @@
+<view class="container data-v-2fb57c47"><view class="topBar data-v-2fb57c47"><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" class="iconfont data-v-2fb57c47" bindtap="__e"></text><text class="title data-v-2fb57c47">我的银行卡</text><text class="iconfont del data-v-2fb57c47"></text></view><scroll-view class="content data-v-2fb57c47" scroll-y="true"></scroll-view></view>

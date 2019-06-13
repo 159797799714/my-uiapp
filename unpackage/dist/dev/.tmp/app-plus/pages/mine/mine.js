@@ -248,17 +248,8 @@ var _default =
         return;
       }
       if (index === 3) {
-        uni.share({
-          provider: "weixin",
-          scene: "WXSceneSession",
-          type: 2,
-          imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
-          success: function success(res) {
-            console.log("success:" + JSON.stringify(res), " at pages\\mine\\mine.vue:157");
-          },
-          fail: function fail(err) {
-            console.log("fail:" + JSON.stringify(err), " at pages\\mine\\mine.vue:160");
-          } });
+        uni.navigateTo({
+          url: 'bonus/bonusCenter' });
 
       }
     },

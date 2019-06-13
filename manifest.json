@@ -94,5 +94,9 @@
             "urlCheck" : false
         },
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "优逸商城",
+        "domain" : "youyi.shop.com"
     }
 }

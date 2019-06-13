@@ -233,6 +233,74 @@ createPage(_address.default);
 
 /***/ }),
 
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusApplyInfo\"}":
+/*!**********************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusApplyInfo"} ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _bonusApplyInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusApplyInfo.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusApplyInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusApplyInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusCenter\"}":
+/*!*******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _bonusCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusCenter.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusCenter.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusCenter.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusInfo\"}":
+/*!*****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusInfo"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _bonusInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusInfo.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FmyCard\"}":
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FmyCard"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _myCard = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/myCard.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/myCard.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_myCard.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2FchangePassword\"}":
 /*!**************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FchangePassword"} ***!
