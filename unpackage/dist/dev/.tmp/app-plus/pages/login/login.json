@@ -1,8 +1,7 @@
 {
-  "navigationBarTitleText": "登录",
+  "navigationStyle": "custom",
   "bounce": "none",
-  "titleNView": {
-    "titleSize": "18"
-  },
+  "animationType": "zoom-fade-out",
+  "titleNView": "false",
   "usingComponents": {}
 }

@@ -185,6 +185,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -203,14 +215,19 @@ var _default =
       // 商品价格等
       store: {
         name: 'SONY官方自营店',
-        imgUrl: ''
-        // 店名头像信息
-      } };
+        imgUrl: '' },
+      // 店名头像信息
+      showPanic: false };
+
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option);
     this.data.title = option.info;
+    if (option.panic === 'true') {
+      this.showPanic = true;
+      return;
+    }
   },
   methods: {
     goBack: function goBack() {

@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/login/register",
+    "pages/login/password",
     "pages/index/index",
     "pages/components/shareInfo",
-    "pages/login/login",
     "pages/market/market",
     "pages/components/goodDetail",
     "pages/components/goods",
@@ -79,6 +81,6 @@
     "autoclose": false
   },
   "appname": "优逸",
-  "compilerVersion": "2.0.0",
+  "compilerVersion": "2.0.1",
   "usingComponents": {}
 }

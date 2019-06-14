@@ -185,6 +185,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -203,14 +215,19 @@ var _default =
       // 商品价格等
       store: {
         name: 'SONY官方自营店',
-        imgUrl: ''
-        // 店名头像信息
-      } };
+        imgUrl: '' },
+      // 店名头像信息
+      showPanic: false };
+
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:112");
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:125");
     this.data.title = option.info;
+    if (option.panic === 'true') {
+      this.showPanic = true;
+      return;
+    }
   },
   methods: {
     goBack: function goBack() {
@@ -228,15 +245,15 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:131");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:148");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:134");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:151");
         } });
 
     },
     keepAction: function keepAction() {
-      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:139");
+      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:156");
     },
     scroll: function scroll(e) {
       if (e.detail.scrollTop > 260) {

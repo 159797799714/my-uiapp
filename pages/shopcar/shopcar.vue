@@ -12,7 +12,7 @@
               <text>{{ item.storeName }}</text>
             </view>
           </view>
-          <view v-for="(good, num) in item.goodArr" :key="num" class="item">
+          <view v-for="(good, num) in item.goodArr" :key="num" class="item" @click="goDetail(good.name)">
             <view class="left-box">
               <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->
               <radio value="这是商品value" color="#F4433D"/>
@@ -21,16 +21,16 @@
               </view>  
             </view>
             <view class="right-box">
-              <view class="good-name">索尼（SONY）WF-SP900真无线防水运动耳机</view>
-              <text class="good-info">黑色 官方标配</text>
+              <view class="good-name">{{ good.name }}</view>
+              <text class="good-info">{{ good.info }}</text>
               <view class="foot">
-                <text class="price">￥1099</text>
+                <text class="price">￥{{ good.price }}</text>
                 <view class="num">
-                  <view class="icon">
+                  <view class="icon" @click="controlNum('cut', index, num)">
                     <text class="iconfont">&#xe643;</text>
                   </view>
-                  <text>1</text>
-                  <view class="icon">
+                  <text>{{ good.num }}</text>
+                  <view class="icon" @click="controlNum('add', index, num)">
                     <text class="iconfont">&#xe645;</text>
                   </view>
                 </view>
@@ -62,14 +62,14 @@
             imgUrl: '',
             name: '索尼（SONY）WF-SP900真无线防水运动耳机',
             info: '黑色 官方标配',
-            price: 1099,
-            num: 1
+            price: 399,
+            num: 2
           }, {
             imgUrl: '',
             name: '索尼（SONY）WF-SP900真无线防水运动耳机',
             info: '黑色 官方标配',
-            price: 1099,
-            num: 1
+            price: 99,
+            num: 4
           }]
         }, {
           storeName: '优逸影音自营',
@@ -83,8 +83,8 @@
             imgUrl: '',
             name: '索尼（SONY）WF-SP900真无线防水运动耳机',
             info: '黑色 官方标配',
-            price: 1099,
-            num: 1
+            price: 5299,
+            num: 3
           }]
         }],
         current: 0
@@ -103,6 +103,22 @@
         //     this.$set(item, 'checked', false)
         //   }
         // }
+      },
+      controlNum(type, index, num) {
+        let item = this.list[index].goodArr[num].num
+        if(type === 'cut' && item > 1) {
+          this.list[index].goodArr[num].num -= 1
+          return
+        }
+        if(type === 'add') {
+          this.list[index].goodArr[num].num += 1
+          return
+        }
+      },
+      goDetail(info) {
+        uni.navigateTo({
+          url: '../components/goodDetail?info=' + info
+        })
       }
     }
   }

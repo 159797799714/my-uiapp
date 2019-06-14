@@ -152,8 +152,13 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
+    goGood: function goGood(item) {
+      uni.navigateTo({
+        url: 'goods?class=' + item });
+
+    },
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\search.vue:56");
+      console.log(event.target.value, " at pages\\components\\search.vue:61");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -170,7 +175,7 @@ var _default =
           if (res.confirm) {
             that.history = [];
           } else if (res.cancel) {
-            console.log('用户点击取消', " at pages\\components\\search.vue:73");
+            console.log('用户点击取消', " at pages\\components\\search.vue:78");
           }
         } });
 

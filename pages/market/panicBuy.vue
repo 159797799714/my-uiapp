@@ -21,7 +21,7 @@
           </swiper-item>
         </swiper>
         <view class="leave-time">{{ title === '秒杀'?'秒杀': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view>
-        <view v-for="(item, index) in goodList" :key="index" class="item bg-white">
+        <view v-for="(item, index) in goodList" :key="index" class="item bg-white" @click="goDetail(item.title)">
           <view class="goodImg">
             <view v-if="item.code === 0" class="imgCover">
               <text>售完</text>
@@ -155,6 +155,11 @@
     methods: {
       selectTime(item, index) {
         this.selectIndex = index
+      },
+      goDetail(info) {
+        uni.navigateTo({
+          url: '../components/goodDetail?info=' + info + '&panic=true'
+        })
       }
     },
   }

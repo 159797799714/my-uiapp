@@ -255,6 +255,11 @@ var _default =
   methods: {
     selectTime: function selectTime(item, index) {
       this.selectIndex = index;
+    },
+    goDetail: function goDetail(info) {
+      uni.navigateTo({
+        url: '../components/goodDetail?info=' + info + '&panic=true' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

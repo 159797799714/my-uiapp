@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -162,14 +162,14 @@ var _default =
           imgUrl: '',
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
-          price: 1099,
-          num: 1 },
+          price: 399,
+          num: 2 },
         {
           imgUrl: '',
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
-          price: 1099,
-          num: 1 }] },
+          price: 99,
+          num: 4 }] },
 
       {
         storeName: '优逸影音自营',
@@ -183,8 +183,8 @@ var _default =
           imgUrl: '',
           name: '索尼（SONY）WF-SP900真无线防水运动耳机',
           info: '黑色 官方标配',
-          price: 1099,
-          num: 1 }] }],
+          price: 5299,
+          num: 3 }] }],
 
 
       current: 0 };
@@ -203,7 +203,24 @@ var _default =
       //     this.$set(item, 'checked', false)
       //   }
       // }
+    },
+    controlNum: function controlNum(type, index, num) {
+      var item = this.list[index].goodArr[num].num;
+      if (type === 'cut' && item > 1) {
+        this.list[index].goodArr[num].num -= 1;
+        return;
+      }
+      if (type === 'add') {
+        this.list[index].goodArr[num].num += 1;
+        return;
+      }
+    },
+    goDetail: function goDetail(info) {
+      uni.navigateTo({
+        url: '../components/goodDetail?info=' + info });
+
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

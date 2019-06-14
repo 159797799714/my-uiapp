@@ -19,7 +19,7 @@
         <view class="menuWord">{{ item.title }}</view>
         <text class="iconfont info">&#xe644;</text>
       </view>
-      <view class="loginout">退出登录</view>
+      <view class="loginout" @click="loginOut">退出登录</view>
     </view>
   </view>
 </template>
@@ -62,6 +62,11 @@
         }
         uni.navigateTo({
           url: url
+        })
+      },
+      loginOut() {
+        uni.navigateTo({
+          url: '../login/login'
         })
       }
     }

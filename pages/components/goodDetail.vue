@@ -15,6 +15,18 @@
           <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
         </swiper-item>
       </swiper>
+      <view v-if="showPanic" class="panic border-box">
+        <view class="price">
+          <text class="newPrice">￥199.00</text>
+          <text class="oldPrice">￥700</text>
+        </view>
+        <view class="time-box">
+          <view class="time-info">
+            <text class="iconfont">&#xe6b9;</text>距开抢00:10:50.08
+          </view>
+          <view class="time">今天17:00开抢</view>
+        </view>
+      </view>
       <view class="head bg-white">
         <view class="title">{{ data.title }}</view>
         <view class="price font-red">￥{{ data.price }}</view>
@@ -104,13 +116,18 @@
         store: {
           name: 'SONY官方自营店',
           imgUrl: ''   
-        }                                      // 店名头像信息
+        },                                      // 店名头像信息
+        showPanic: false
       }
     },
     // 接受首页传递的参数
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option)
       this.data.title = option.info
+      if(option.panic === 'true') {
+        this.showPanic = true
+        return
+      }
     },
     methods: {
       goBack() {
@@ -185,6 +202,63 @@
       height: 750upx;
       width: 750upx;
     }  
+  }
+  .panic{
+    height: 130upx;
+    padding: 35upx 20upx 0;
+    display: flex;
+    color: $color-white;
+    justify-content: space-between;
+    background: $color-yellow;
+    .price{
+      .newPrice{
+        margin-right: 20upx;
+        font-size: $font-56;
+        line-height: 56upx;
+        font-weight: $font-bold;
+      }
+      .oldPrice{
+        position: relative;
+        font-size: $font-26;
+        line-height: 26upx;
+        width: 350upx;
+        &:before{
+          position: absolute;
+          content: '';
+          top: 50%;
+          transform: translateY(-50%);
+          height: 1upx;
+          width: 100%;
+          background: $color-white;
+        }
+      }
+    }
+    .time-box{
+      height: 62upx;
+      font-size: $font-22;
+      text-align: center;
+      padding-left: 30upx;
+      box-sizing: border-box;
+      border-left: 1px solid $color-white;
+      .time-info{
+        font-size: $font-20;
+        line-height: 20upx;
+        margin-bottom: 11upx;
+        &>.iconfont{
+          border-radius: 100%;
+          background: $color-white;
+          color: $color-yellow;
+        }
+      }
+      .time{
+        height: 30upx;
+        line-height: 30upx;
+        width: 220upx;
+        background: rgba(225, 225, 225, 0.3);
+        border-radius: 15upx;
+        text-align: center;
+      }
+    }
   }
   .head{
     height: 234upx;

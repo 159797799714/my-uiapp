@@ -110,11 +110,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
-      receive: {} };
+      dataList: [{
+        bgImg: '../../../static/img/mine/card/post_bg.png',
+        imgUrl: '../../../static/img/mine/card/post.png',
+        name: '中国邮政储蓄银行',
+        type: '储蓄卡',
+        num: '6611' },
+      {
+        bgImg: '../../../static/img/mine/card/china_bg.png',
+        imgUrl: '../../../static/img/mine/card/china.png',
+        name: '中国银行',
+        type: '储蓄卡',
+        num: '6611' }] };
+
 
   },
   methods: {
