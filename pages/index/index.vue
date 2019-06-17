@@ -129,8 +129,7 @@
     }
   }
   .content {
-    margin: 30upx ;
-    margin-top: 0;
+    margin: 0 30upx 0 30upx;
     width: calc(100% - 60upx);
     box-sizing: border-box;
     overflow: hidden;

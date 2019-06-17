@@ -149,6 +149,54 @@ view {
           flex-direction: column;
   z-index: 6;
 }
+.toTop {
+  -webkit-animation: toTop 800ms;
+          animation: toTop 800ms;
+}
+.toLeft {
+  -webkit-animation: toLeft 800ms;
+          animation: toLeft 800ms;
+}
+@-webkit-keyframes toTop {
+from {
+    top: 100%;
+    opacity: 0;
+}
+to {
+    top: 0;
+    opacity: 1;
+}
+}
+@keyframes toTop {
+from {
+    top: 100%;
+    opacity: 0;
+}
+to {
+    top: 0;
+    opacity: 1;
+}
+}
+@-webkit-keyframes toLeft {
+from {
+    left: 100%;
+    opacity: 0;
+}
+to {
+    left: 0;
+    opacity: 1;
+}
+}
+@keyframes toLeft {
+from {
+    left: 100%;
+    opacity: 0;
+}
+to {
+    left: 0;
+    opacity: 1;
+}
+}
 .selectSpan {
   position: relative;
   background: #FEF0F0 !important;

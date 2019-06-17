@@ -1,5 +1,8 @@
 <template>
   <view class="container">
+    <view class="topBar">
+      <text>消息</text>
+    </view>
     <scroll-view scroll-y class="content border-box">
       <view class="head bg-white border-box">
         <view v-for="(item, index) in headList" :key="index">
@@ -65,6 +68,12 @@
 </script>
 
 <style lang="scss" scoped>
+  .topBar{
+    &>text{
+      color: $color-white;
+      font-size: $font-38;
+    }
+  }
   .content{
     padding: 30upx;
     .head{

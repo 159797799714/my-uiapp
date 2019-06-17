@@ -151,9 +151,6 @@ var _default =
 
   },
   methods: {
-    logon: function logon() {
-      console.log('login', " at pages\\login\\login.vue:55");
-    },
     onInput: function onInput(e) {
       var value = e.detail.value;
       if (value) {
@@ -171,6 +168,25 @@ var _default =
     goLogin: function goLogin() {
       uni.switchTab({
         url: '../index/index' });
+
+    },
+    loginWay: function loginWay(type) {
+      uni.getProvider({
+        service: 'oauth',
+        success: function success(res) {
+          console.log(res.provider, " at pages\\login\\login.vue:77");
+          if (~res.provider.indexOf(type)) {
+            uni.login({
+              provider: type,
+              success: function success(loginRes) {
+                console.log(JSON.stringify(loginRes), " at pages\\login\\login.vue:82");
+              } });
+
+          }
+        },
+        fail: function fail(err) {
+          console.log(err, " at pages\\login\\login.vue:88");
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

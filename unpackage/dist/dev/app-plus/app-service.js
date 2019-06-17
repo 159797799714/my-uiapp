@@ -1124,6 +1124,7 @@ Z([3,'content data-v-295bbe46'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'scroll']],[[4],[[5],[[4],[[5],[[5],[1,'scroll']],[[4],[[5],[1,'$event']]]]]]]]]]])
 Z([3,'true'])
 Z([[7],[3,'showPanic']])
+Z([[7],[3,'coverShow']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_4);return __WXML_GLOBAL__.ops_cached.$gwx_4
 }
 function gz$gwx_5(){
@@ -1406,6 +1407,8 @@ function gz$gwx_32(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_32)return __WXML_GLOBAL__.ops_cached.$gwx_32
 __WXML_GLOBAL__.ops_cached.$gwx_32=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'container data-v-c4044d68'])
+Z([[7],[3,'dataList']])
 Z([[2,'!'],[[7],[3,'dataList']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_32);return __WXML_GLOBAL__.ops_cached.$gwx_32
 }
@@ -1508,14 +1511,19 @@ var c8=_v()
 _(f7,c8)
 if(_oz(z,1,e,s,gg)){c8.wxVkey=1
 }
-var h9=_mz(z,'scroll-view',['bindscroll',2,'class',1,'data-event-opts',2,'scrollY',3],[],e,s,gg)
-var o0=_v()
-_(h9,o0)
-if(_oz(z,6,e,s,gg)){o0.wxVkey=1
+var o0=_mz(z,'scroll-view',['bindscroll',2,'class',1,'data-event-opts',2,'scrollY',3],[],e,s,gg)
+var cAB=_v()
+_(o0,cAB)
+if(_oz(z,6,e,s,gg)){cAB.wxVkey=1
 }
-o0.wxXCkey=1
+cAB.wxXCkey=1
+_(f7,o0)
+var h9=_v()
 _(f7,h9)
+if(_oz(z,7,e,s,gg)){h9.wxVkey=1
+}
 c8.wxXCkey=1
+h9.wxXCkey=1
 _(r,f7)
 return r
 }
@@ -1523,107 +1531,107 @@ e_[x[3]]={f:m3,j:[],i:[],ti:[],ic:[]}
 d_[x[4]]={}
 var m4=function(e,s,r,gg){
 var z=gz$gwx_5()
-var oBB=_n('view')
-_rz(z,oBB,'class',0,e,s,gg)
-var aDB=_n('view')
-_rz(z,aDB,'class',1,e,s,gg)
-var tEB=_v()
-_(aDB,tEB)
-if(_oz(z,2,e,s,gg)){tEB.wxVkey=1
-}
+var lCB=_n('view')
+_rz(z,lCB,'class',0,e,s,gg)
+var tEB=_n('view')
+_rz(z,tEB,'class',1,e,s,gg)
 var eFB=_v()
-_(aDB,eFB)
-if(_oz(z,3,e,s,gg)){eFB.wxVkey=1
+_(tEB,eFB)
+if(_oz(z,2,e,s,gg)){eFB.wxVkey=1
 }
-tEB.wxXCkey=1
+var bGB=_v()
+_(tEB,bGB)
+if(_oz(z,3,e,s,gg)){bGB.wxVkey=1
+}
 eFB.wxXCkey=1
-_(oBB,aDB)
-var bGB=_n('view')
-_rz(z,bGB,'class',4,e,s,gg)
-var oJB=_v()
-_(bGB,oJB)
-var fKB=function(hMB,cLB,oNB,gg){
-var oPB=_mz(z,'view',['bindtap',9,'class',1,'data-event-opts',2],[],hMB,cLB,gg)
-var lQB=_v()
-_(oPB,lQB)
-if(_oz(z,12,hMB,cLB,gg)){lQB.wxVkey=1
-}
+bGB.wxXCkey=1
+_(lCB,tEB)
+var oHB=_n('view')
+_rz(z,oHB,'class',4,e,s,gg)
+var fKB=_v()
+_(oHB,fKB)
+var cLB=function(oNB,hMB,cOB,gg){
+var lQB=_mz(z,'view',['bindtap',9,'class',1,'data-event-opts',2],[],oNB,hMB,gg)
 var aRB=_v()
-_(oPB,aRB)
-if(_oz(z,13,hMB,cLB,gg)){aRB.wxVkey=1
+_(lQB,aRB)
+if(_oz(z,12,oNB,hMB,gg)){aRB.wxVkey=1
 }
-lQB.wxXCkey=1
+var tSB=_v()
+_(lQB,tSB)
+if(_oz(z,13,oNB,hMB,gg)){tSB.wxVkey=1
+}
 aRB.wxXCkey=1
-_(oNB,oPB)
-return oNB
+tSB.wxXCkey=1
+_(cOB,lQB)
+return cOB
 }
-oJB.wxXCkey=2
-_2z(z,7,fKB,e,s,gg,oJB,'item','index','index')
-var oHB=_v()
-_(bGB,oHB)
-if(_oz(z,14,e,s,gg)){oHB.wxVkey=1
-}
+fKB.wxXCkey=2
+_2z(z,7,cLB,e,s,gg,fKB,'item','index','index')
 var xIB=_v()
-_(bGB,xIB)
-if(_oz(z,15,e,s,gg)){xIB.wxVkey=1
+_(oHB,xIB)
+if(_oz(z,14,e,s,gg)){xIB.wxVkey=1
 }
-var tSB=_mz(z,'scroll-view',['class',16,'scrollY',1],[],e,s,gg)
-var eTB=_v()
-_(tSB,eTB)
-if(_oz(z,18,e,s,gg)){eTB.wxVkey=1
+var oJB=_v()
+_(oHB,oJB)
+if(_oz(z,15,e,s,gg)){oJB.wxVkey=1
 }
+var eTB=_mz(z,'scroll-view',['class',16,'scrollY',1],[],e,s,gg)
 var bUB=_v()
-_(tSB,bUB)
-if(_oz(z,19,e,s,gg)){bUB.wxVkey=1
+_(eTB,bUB)
+if(_oz(z,18,e,s,gg)){bUB.wxVkey=1
 }
-eTB.wxXCkey=1
+var oVB=_v()
+_(eTB,oVB)
+if(_oz(z,19,e,s,gg)){oVB.wxVkey=1
+}
 bUB.wxXCkey=1
-_(bGB,tSB)
-oHB.wxXCkey=1
+oVB.wxXCkey=1
+_(oHB,eTB)
 xIB.wxXCkey=1
-_(oBB,bGB)
-var lCB=_v()
-_(oBB,lCB)
-if(_oz(z,20,e,s,gg)){lCB.wxVkey=1
+oJB.wxXCkey=1
+_(lCB,oHB)
+var aDB=_v()
+_(lCB,aDB)
+if(_oz(z,20,e,s,gg)){aDB.wxVkey=1
 }
-lCB.wxXCkey=1
-_(r,oBB)
+aDB.wxXCkey=1
+_(r,lCB)
 return r
 }
 e_[x[4]]={f:m4,j:[],i:[],ti:[],ic:[]}
 d_[x[5]]={}
 var m5=function(e,s,r,gg){
 var z=gz$gwx_6()
-var xWB=_v()
-_(r,xWB)
-if(_oz(z,0,e,s,gg)){xWB.wxVkey=1
+var oXB=_v()
+_(r,oXB)
+if(_oz(z,0,e,s,gg)){oXB.wxVkey=1
 }
-xWB.wxXCkey=1
+oXB.wxXCkey=1
 return r
 }
 e_[x[5]]={f:m5,j:[],i:[],ti:[],ic:[]}
 d_[x[6]]={}
 var m6=function(e,s,r,gg){
 var z=gz$gwx_7()
-var fYB=_v()
-_(r,fYB)
-var cZB=function(o2B,h1B,c3B,gg){
-var l5B=_v()
-_(c3B,l5B)
-var a6B=function(e8B,t7B,b9B,gg){
-var xAC=_v()
-_(b9B,xAC)
-if(_oz(z,8,e8B,t7B,gg)){xAC.wxVkey=1
+var cZB=_v()
+_(r,cZB)
+var h1B=function(c3B,o2B,o4B,gg){
+var a6B=_v()
+_(o4B,a6B)
+var t7B=function(b9B,e8B,o0B,gg){
+var oBC=_v()
+_(o0B,oBC)
+if(_oz(z,8,b9B,e8B,gg)){oBC.wxVkey=1
 }
-xAC.wxXCkey=1
-return b9B
+oBC.wxXCkey=1
+return o0B
 }
-l5B.wxXCkey=2
-_2z(z,6,a6B,o2B,h1B,gg,l5B,'item','index','index')
-return c3B
+a6B.wxXCkey=2
+_2z(z,6,t7B,c3B,o2B,gg,a6B,'item','index','index')
+return o4B
 }
-fYB.wxXCkey=2
-_2z(z,2,cZB,e,s,gg,fYB,'item','index','index')
+cZB.wxXCkey=2
+_2z(z,2,h1B,e,s,gg,cZB,'item','index','index')
 return r
 }
 e_[x[6]]={f:m6,j:[],i:[],ti:[],ic:[]}
@@ -1636,87 +1644,87 @@ e_[x[7]]={f:m7,j:[],i:[],ti:[],ic:[]}
 d_[x[8]]={}
 var m8=function(e,s,r,gg){
 var z=gz$gwx_9()
-var cDC=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var hEC=_v()
-_(cDC,hEC)
-if(_oz(z,4,e,s,gg)){hEC.wxVkey=1
+var hEC=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var oFC=_v()
+_(hEC,oFC)
+if(_oz(z,4,e,s,gg)){oFC.wxVkey=1
 }
-hEC.wxXCkey=1
-_(r,cDC)
+oFC.wxXCkey=1
+_(r,hEC)
 return r
 }
 e_[x[8]]={f:m8,j:[],i:[],ti:[],ic:[]}
 d_[x[9]]={}
 var m9=function(e,s,r,gg){
 var z=gz$gwx_10()
-var cGC=_v()
-_(r,cGC)
-if(_oz(z,0,e,s,gg)){cGC.wxVkey=1
+var oHC=_v()
+_(r,oHC)
+if(_oz(z,0,e,s,gg)){oHC.wxVkey=1
 }
-cGC.wxXCkey=1
+oHC.wxXCkey=1
 return r
 }
 e_[x[9]]={f:m9,j:[],i:[],ti:[],ic:[]}
 d_[x[10]]={}
 var m10=function(e,s,r,gg){
 var z=gz$gwx_11()
-var lIC=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var aJC=_v()
-_(lIC,aJC)
-if(_oz(z,4,e,s,gg)){aJC.wxVkey=1
-}
+var aJC=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
 var tKC=_v()
-_(lIC,tKC)
-if(_oz(z,5,e,s,gg)){tKC.wxVkey=1
+_(aJC,tKC)
+if(_oz(z,4,e,s,gg)){tKC.wxVkey=1
 }
 var eLC=_v()
-_(lIC,eLC)
-if(_oz(z,6,e,s,gg)){eLC.wxVkey=1
+_(aJC,eLC)
+if(_oz(z,5,e,s,gg)){eLC.wxVkey=1
 }
-aJC.wxXCkey=1
+var bMC=_v()
+_(aJC,bMC)
+if(_oz(z,6,e,s,gg)){bMC.wxVkey=1
+}
 tKC.wxXCkey=1
 eLC.wxXCkey=1
-_(r,lIC)
+bMC.wxXCkey=1
+_(r,aJC)
 return r
 }
 e_[x[10]]={f:m10,j:[],i:[],ti:[],ic:[]}
 d_[x[11]]={}
 var m11=function(e,s,r,gg){
 var z=gz$gwx_12()
-var oNC=_v()
-_(r,oNC)
-var xOC=function(fQC,oPC,cRC,gg){
-var oTC=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],fQC,oPC,gg)
-var cUC=_v()
-_(oTC,cUC)
-if(_oz(z,7,fQC,oPC,gg)){cUC.wxVkey=1
+var xOC=_v()
+_(r,xOC)
+var oPC=function(cRC,fQC,hSC,gg){
+var cUC=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],cRC,fQC,gg)
+var oVC=_v()
+_(cUC,oVC)
+if(_oz(z,7,cRC,fQC,gg)){oVC.wxVkey=1
 }
-cUC.wxXCkey=1
-_(cRC,oTC)
-return cRC
+oVC.wxXCkey=1
+_(hSC,cUC)
+return hSC
 }
-oNC.wxXCkey=2
-_2z(z,2,xOC,e,s,gg,oNC,'item','index','index')
+xOC.wxXCkey=2
+_2z(z,2,oPC,e,s,gg,xOC,'item','index','index')
 return r
 }
 e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
 d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
-var lWC=_v()
-_(r,lWC)
-var aXC=function(eZC,tYC,b1C,gg){
-var x3C=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],eZC,tYC,gg)
-var o4C=_v()
-_(x3C,o4C)
-if(_oz(z,7,eZC,tYC,gg)){o4C.wxVkey=1
+var aXC=_v()
+_(r,aXC)
+var tYC=function(b1C,eZC,o2C,gg){
+var o4C=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],b1C,eZC,gg)
+var f5C=_v()
+_(o4C,f5C)
+if(_oz(z,7,b1C,eZC,gg)){f5C.wxVkey=1
 }
-o4C.wxXCkey=1
-_(b1C,x3C)
-return b1C
+f5C.wxXCkey=1
+_(o2C,o4C)
+return o2C
 }
-lWC.wxXCkey=2
-_2z(z,2,aXC,e,s,gg,lWC,'item','index','index')
+aXC.wxXCkey=2
+_2z(z,2,tYC,e,s,gg,aXC,'item','index','index')
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
@@ -1741,20 +1749,20 @@ e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
-var c9C=_v()
-_(r,c9C)
-var o0C=function(aBD,lAD,tCD,gg){
-var bED=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],aBD,lAD,gg)
-var oFD=_v()
-_(bED,oFD)
-if(_oz(z,7,aBD,lAD,gg)){oFD.wxVkey=1
+var o0C=_v()
+_(r,o0C)
+var lAD=function(tCD,aBD,eDD,gg){
+var oFD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],tCD,aBD,gg)
+var xGD=_v()
+_(oFD,xGD)
+if(_oz(z,7,tCD,aBD,gg)){xGD.wxVkey=1
 }
-oFD.wxXCkey=1
-_(tCD,bED)
-return tCD
+xGD.wxXCkey=1
+_(eDD,oFD)
+return eDD
 }
-c9C.wxXCkey=2
-_2z(z,2,o0C,e,s,gg,c9C,'item','index','index')
+o0C.wxXCkey=2
+_2z(z,2,lAD,e,s,gg,o0C,'item','index','index')
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
@@ -1791,49 +1799,49 @@ e_[x[21]]={f:m21,j:[],i:[],ti:[],ic:[]}
 d_[x[22]]={}
 var m22=function(e,s,r,gg){
 var z=gz$gwx_23()
-var cMD=_v()
-_(r,cMD)
-if(_oz(z,0,e,s,gg)){cMD.wxVkey=1
+var oND=_v()
+_(r,oND)
+if(_oz(z,0,e,s,gg)){oND.wxVkey=1
 }
-cMD.wxXCkey=1
+oND.wxXCkey=1
 return r
 }
 e_[x[22]]={f:m22,j:[],i:[],ti:[],ic:[]}
 d_[x[23]]={}
 var m23=function(e,s,r,gg){
 var z=gz$gwx_24()
-var lOD=_v()
-_(r,lOD)
-var aPD=function(eRD,tQD,bSD,gg){
-var xUD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],eRD,tQD,gg)
-var oVD=_v()
-_(xUD,oVD)
-if(_oz(z,7,eRD,tQD,gg)){oVD.wxVkey=1
+var aPD=_v()
+_(r,aPD)
+var tQD=function(bSD,eRD,oTD,gg){
+var oVD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],bSD,eRD,gg)
+var fWD=_v()
+_(oVD,fWD)
+if(_oz(z,7,bSD,eRD,gg)){fWD.wxVkey=1
 }
-oVD.wxXCkey=1
-_(bSD,xUD)
-return bSD
+fWD.wxXCkey=1
+_(oTD,oVD)
+return oTD
 }
-lOD.wxXCkey=2
-_2z(z,2,aPD,e,s,gg,lOD,'item','index','index')
+aPD.wxXCkey=2
+_2z(z,2,tQD,e,s,gg,aPD,'item','index','index')
 return r
 }
 e_[x[23]]={f:m23,j:[],i:[],ti:[],ic:[]}
 d_[x[24]]={}
 var m24=function(e,s,r,gg){
 var z=gz$gwx_25()
-var cXD=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
-var hYD=_v()
-_(cXD,hYD)
-if(_oz(z,2,e,s,gg)){hYD.wxVkey=1
-}
+var hYD=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
 var oZD=_v()
-_(cXD,oZD)
-if(_oz(z,3,e,s,gg)){oZD.wxVkey=1
+_(hYD,oZD)
+if(_oz(z,2,e,s,gg)){oZD.wxVkey=1
 }
-hYD.wxXCkey=1
+var c1D=_v()
+_(hYD,c1D)
+if(_oz(z,3,e,s,gg)){c1D.wxVkey=1
+}
 oZD.wxXCkey=1
-_(r,cXD)
+c1D.wxXCkey=1
+_(r,hYD)
 return r
 }
 e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
@@ -1858,35 +1866,35 @@ e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
 d_[x[28]]={}
 var m28=function(e,s,r,gg){
 var z=gz$gwx_29()
-var t5D=_v()
-_(r,t5D)
-var e6D=function(o8D,b7D,x9D,gg){
-var fAE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o8D,b7D,gg)
-var cBE=_v()
-_(fAE,cBE)
-if(_oz(z,7,o8D,b7D,gg)){cBE.wxVkey=1
-}
+var e6D=_v()
+_(r,e6D)
+var b7D=function(x9D,o8D,o0D,gg){
+var cBE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],x9D,o8D,gg)
 var hCE=_v()
-_(fAE,hCE)
-if(_oz(z,8,o8D,b7D,gg)){hCE.wxVkey=1
+_(cBE,hCE)
+if(_oz(z,7,x9D,o8D,gg)){hCE.wxVkey=1
 }
 var oDE=_v()
-_(fAE,oDE)
-if(_oz(z,9,o8D,b7D,gg)){oDE.wxVkey=1
+_(cBE,oDE)
+if(_oz(z,8,x9D,o8D,gg)){oDE.wxVkey=1
 }
 var cEE=_v()
-_(fAE,cEE)
-if(_oz(z,10,o8D,b7D,gg)){cEE.wxVkey=1
+_(cBE,cEE)
+if(_oz(z,9,x9D,o8D,gg)){cEE.wxVkey=1
 }
-cBE.wxXCkey=1
+var oFE=_v()
+_(cBE,oFE)
+if(_oz(z,10,x9D,o8D,gg)){oFE.wxVkey=1
+}
 hCE.wxXCkey=1
 oDE.wxXCkey=1
 cEE.wxXCkey=1
-_(x9D,fAE)
-return x9D
+oFE.wxXCkey=1
+_(o0D,cBE)
+return o0D
 }
-t5D.wxXCkey=2
-_2z(z,2,e6D,e,s,gg,t5D,'item','index','index')
+e6D.wxXCkey=2
+_2z(z,2,b7D,e,s,gg,e6D,'item','index','index')
 return r
 }
 e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
@@ -1899,26 +1907,34 @@ e_[x[29]]={f:m29,j:[],i:[],ti:[],ic:[]}
 d_[x[30]]={}
 var m30=function(e,s,r,gg){
 var z=gz$gwx_31()
-var aHE=_n('view')
-_rz(z,aHE,'class',0,e,s,gg)
-var tIE=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(aHE,tIE)
-var eJE=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(aHE,eJE)
-var bKE=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(aHE,bKE)
-_(r,aHE)
+var tIE=_n('view')
+_rz(z,tIE,'class',0,e,s,gg)
+var eJE=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(tIE,eJE)
+var bKE=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(tIE,bKE)
+var oLE=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(tIE,oLE)
+_(r,tIE)
 return r
 }
 e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
 d_[x[31]]={}
 var m31=function(e,s,r,gg){
 var z=gz$gwx_32()
-var xME=_v()
-_(r,xME)
-if(_oz(z,0,e,s,gg)){xME.wxVkey=1
+var oNE=_n('view')
+_rz(z,oNE,'class',0,e,s,gg)
+var fOE=_v()
+_(oNE,fOE)
+if(_oz(z,1,e,s,gg)){fOE.wxVkey=1
 }
-xME.wxXCkey=1
+var cPE=_v()
+_(oNE,cPE)
+if(_oz(z,2,e,s,gg)){cPE.wxVkey=1
+}
+fOE.wxXCkey=1
+cPE.wxXCkey=1
+_(r,oNE)
 return r
 }
 e_[x[31]]={f:m31,j:[],i:[],ti:[],ic:[]}
@@ -1978,13 +1994,13 @@ __wxAppCode__['pages/components/shareInfo.wxml']=$gwx('./pages/components/shareI
 __wxAppCode__['pages/index/index.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/index/index.wxml']=$gwx('./pages/index/index.wxml');
 
-__wxAppCode__['pages/login/login.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
+__wxAppCode__['pages/login/login.json']={"navigationStyle":"custom","bounce":"none","animationType":"zoom-fade-out","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/login/login.wxml']=$gwx('./pages/login/login.wxml');
 
-__wxAppCode__['pages/login/password.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
+__wxAppCode__['pages/login/password.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","animationType":"zoom-fade-out","usingComponents":{}};
 __wxAppCode__['pages/login/password.wxml']=$gwx('./pages/login/password.wxml');
 
-__wxAppCode__['pages/login/register.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
+__wxAppCode__['pages/login/register.json']={"navigationStyle":"custom","bounce":"none","animationType":"zoom-fade-out","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/login/register.wxml']=$gwx('./pages/login/register.wxml');
 
 __wxAppCode__['pages/market/market.json']={"navigationStyle":"custom","bounce":"none","titleNView":false,"usingComponents":{}};
@@ -1993,7 +2009,7 @@ __wxAppCode__['pages/market/market.wxml']=$gwx('./pages/market/market.wxml');
 __wxAppCode__['pages/market/panicBuy.json']={"usingComponents":{}};
 __wxAppCode__['pages/market/panicBuy.wxml']=$gwx('./pages/market/panicBuy.wxml');
 
-__wxAppCode__['pages/message/message.json']={"navigationBarTitleText":"消息","bounce":"none","titleNView":{"titleSize":"18"},"usingComponents":{}};
+__wxAppCode__['pages/message/message.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/message/message.wxml']=$gwx('./pages/message/message.wxml');
 
 __wxAppCode__['pages/mine/about.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
@@ -3576,7 +3592,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -9774,7 +9790,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -9795,14 +9811,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9871,7 +9887,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"app-plus","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"app-plus","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));
@@ -12204,9 +12220,6 @@ var _default =
 
   },
   methods: {
-    logon: function logon() {
-      console.log('login', " at pages\\login\\login.vue:55");
-    },
     onInput: function onInput(e) {
       var value = e.detail.value;
       if (value) {
@@ -12224,6 +12237,25 @@ var _default =
     goLogin: function goLogin() {
       uni.switchTab({
         url: '../index/index' });
+
+    },
+    loginWay: function loginWay(type) {
+      uni.getProvider({
+        service: 'oauth',
+        success: function success(res) {
+          console.log(res.provider, " at pages\\login\\login.vue:77");
+          if (~res.provider.indexOf(type)) {
+            uni.login({
+              provider: type,
+              success: function success(loginRes) {
+                console.log(JSON.stringify(loginRes), " at pages\\login\\login.vue:82");
+              } });
+
+          }
+        },
+        fail: function fail(err) {
+          console.log(err, " at pages\\login\\login.vue:88");
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -13494,6 +13526,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -13852,6 +13886,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -13872,12 +13915,13 @@ var _default =
         name: 'SONY官方自营店',
         imgUrl: '' },
       // 店名头像信息
-      showPanic: false };
-
+      showPanic: false, // 顶部分享显示与隐藏
+      coverShow: false // 全局遮罩层显隐
+    };
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:125");
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:135");
     this.data.title = option.info;
     if (option.panic === 'true') {
       this.showPanic = true;
@@ -13885,11 +13929,13 @@ var _default =
     }
   },
   methods: {
+    // 返回
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
 
     },
+    // 分享
     goShare: function goShare() {
       uni.share({
         provider: "weixin",
@@ -13900,16 +13946,18 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:148");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:160");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:151");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:163");
         } });
 
     },
+    // 收藏
     keepAction: function keepAction() {
-      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:156");
+      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:169");
     },
+    // 页面滚动
     scroll: function scroll(e) {
       if (e.detail.scrollTop > 260) {
         this.isShowTop = false;
@@ -13919,6 +13967,10 @@ var _default =
         this.isShowTop = true;
         return;
       }
+    },
+    // 点击促销信息
+    lookInfo: function lookInfo() {
+      this.coverShow = true;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -13950,6 +14002,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.coverShow = false
+    }
+
+    _vm.e1 = function($event) {
+      _vm.coverShow = false
+    }
+  }
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15187,6 +15248,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
 //
 //
 //

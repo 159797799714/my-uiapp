@@ -65,6 +65,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .container{
+    background: $color-f4;
+  }
   .topBar{
     height: 368upx;
     display: flex;
@@ -88,7 +91,7 @@
     height: calc(100% - 216upx);
     width: calc(100% - 60upx);
     margin: 0 30upx;
-    background: #f8f8f8;
+    background: $color-f4;
     z-index: 5;
     .banner{
       height: 300upx;

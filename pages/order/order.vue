@@ -6,11 +6,11 @@
       <text class="iconfont del">&#xe667;</text>
     </view>
     <scroll-view scroll-x="true" :scroll-left="scrollLeft" class="scroll-tab">
-      <view class="tabNav border-box bg-white">
+      <view class="tabNav border-box">
         <view v-for="(item, index) in tabList" :key="index" :class="{tab: true, selected: item === selectData}" @click="selectTab(item)">{{ item }}</view>
       </view> 
     </scroll-view>
-  	<scroll-view scroll-y="true" class="content padding-30">
+  	<scroll-view v-if="dataList" scroll-y="true" class="content padding-30 border-box">
       <view v-for="(item, index) in dataList" :key="index" class="item border-box bg-white">
         <view class="head">
           <view class="store">
@@ -38,15 +38,15 @@
           <text>删除订单</text>
         </view>
       </view>
-      <!-- 页面数据为空时 -->
-      <view v-if="!dataList" class="nothing">
-        <view class="img">
-          <image src="../../static/img/order/null.png" mode=""/>
-        </view>
-        <view class="big-info">暂无订单</view>
-        <view class="small-info">“快去商城看看有没有你喜欢的优物吧～”</view>
-      </view>
     </scroll-view>
+    <!-- 页面数据为空时 -->
+    <view v-if="!dataList" class="nothing">
+      <view class="img">
+        <image src="../../static/img/order/null.png" mode=""/>
+      </view>
+      <view class="big-info">暂无订单</view>
+      <view class="small-info">“快去商城看看有没有你喜欢的优物吧～”</view>
+    </view>
   </view>
 </template>
 
@@ -137,31 +137,27 @@
     }
   }
   .scroll-tab{
-    height: 83upx;
+    padding: 10upx 10upx 18upx 0;
     width: calc(100% - 10upx);
+    background: $title-color;
     overflow: hidden;
-    padding-right: 10upx;
   }
   .tabNav{
-    height: 83upx;
+    height: 70upx;
     width: calc(100% + 148upx);
     padding: 0 30upx;
-    padding-top: 14upx;
+    line-height: 70upx;
     .tab{
       display: inline-block;
       position: relative;
       width: 138upx;
-      height: 100%;
       text-align: center;
-      font-size: $font-30;
-      line-height: 69upx;
-      color: $color-33;
+      font-size: $font-28;
+      line-height: 70upx;
+      color: $color-white;
     }
     .selected{
-      top: 0;
-      left: 0;
-      font-size: $font-36;
-      color: $title-color;
+      font-size: $font-34;
       font-weight: $font-bold;
       &:after{
         content: '';
@@ -173,11 +169,12 @@
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
+        border-radius: 2upx;
       }
     }
   }
   .content{
-    padding-bottom: 30upx;
+    // padding-bottom: 30upx;
     .item{
       margin-top: 30upx;
       padding: 30upx;
@@ -280,31 +277,31 @@
         }
       }
     }
-    .nothing{
-      margin: 162upx auto 0;
+  }
+  .nothing{
+    margin: 162upx auto 0;
+    text-align: center;
+    .img{
+      margin: auto;
+      width: 300upx;
+      height: 226upx;
+      &>image{
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .big-info{
+      margin-top: 86upx;
+      margin-bottom: 19upx;
       text-align: center;
-      .img{
-        margin: auto;
-        width: 300upx;
-        height: 226upx;
-        &>image{
-          height: 100%;
-          width: 100%;
-        }
-      }
-      .big-info{
-        margin-top: 86upx;
-        margin-bottom: 19upx;
-        text-align: center;
-        font-size: $font-30;
-        line-height: 30upx;
-        font-weight: $font-bold;
-        color: $word-color;
-      }
-      .small-info{
-        font-size: $font-26;
-        color: $color-99;
-      }
+      font-size: $font-30;
+      line-height: 30upx;
+      font-weight: $font-bold;
+      color: $word-color;
+    }
+    .small-info{
+      font-size: $font-26;
+      color: $color-99;
     }
   }
   .iconfont{

@@ -166,6 +166,40 @@ view{
   z-index: 6;
 }
 
+.toTop{
+  animation: toTop 800ms;
+}
+
+.toLeft{
+  animation: toLeft 800ms;
+}
+
+// 遮罩层从下往上
+@keyframes toTop{
+  from{
+    top: 100%;
+    opacity: 0;
+  }
+  to{
+    top: 0;
+    opacity: 1;
+  }
+}
+
+// 遮罩层从右到左
+@keyframes toLeft{
+  from{
+    left: 100%;
+    opacity: 0;
+  }
+  to{
+    left: 0;
+    opacity: 1;
+  }
+}
+
+
+
 .selectSpan{
   position: relative;
   background: $color-pink-bg!important;

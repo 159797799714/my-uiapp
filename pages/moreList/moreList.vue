@@ -49,7 +49,7 @@
               <view class="span-title">春秋搭配必备指南</view>
               <view class="span-info">
                 <text>16件商品</text>
-                <text class="iconfont">&#xe601;2.5W人购买</text>
+                <text class="iconfont">&#xe707;2.5W人购买</text>
               </view>
             </view>   
           </view>

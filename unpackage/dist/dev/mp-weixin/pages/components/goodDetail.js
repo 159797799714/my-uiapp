@@ -197,10 +197,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      navList: ['商品', '详情', '评价', '推荐'], // 顶部导航栏
+      navIndex: 0, // 顶部初始索引值
+      top: 0, // 滚动距离顶部距离
       indicatorDots: true, // 指示点显隐
       autoplay: true, // 自动轮播
       interval: 2000, // 自动轮播时间 
@@ -217,8 +234,9 @@ var _default =
         name: 'SONY官方自营店',
         imgUrl: '' },
       // 店名头像信息
-      showPanic: false };
-
+      showPanic: false, // 顶部分享显示与隐藏
+      coverShow: false // 全局遮罩层显隐
+    };
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
@@ -230,11 +248,16 @@ var _default =
     }
   },
   methods: {
+    // 返回
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
 
     },
+    navAction: function navAction(index) {
+      this.navIndex = index;
+    },
+    // 分享
     goShare: function goShare() {
       uni.share({
         provider: "weixin",
@@ -252,18 +275,25 @@ var _default =
         } });
 
     },
+    // 收藏
     keepAction: function keepAction() {
       console.log('点击了收藏');
     },
+    // 页面滚动
     scroll: function scroll(e) {
-      if (e.detail.scrollTop > 260) {
+      this.top = e.detail.scrollTop;
+      if (e.detail.scrollTop > 375) {
         this.isShowTop = false;
         return;
       }
-      if (e.detail.scrollTop <= 260) {
+      if (e.detail.scrollTop <= 375) {
         this.isShowTop = true;
         return;
       }
+    },
+    // 点击促销信息
+    lookInfo: function lookInfo() {
+      this.coverShow = true;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
@@ -295,6 +325,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.coverShow = false
+    }
+
+    _vm.e1 = function($event) {
+      _vm.coverShow = false
+    }
+  }
 }
 var staticRenderFns = []
 render._withStripped = true

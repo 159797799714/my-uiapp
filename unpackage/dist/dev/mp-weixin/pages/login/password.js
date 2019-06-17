@@ -144,7 +144,8 @@ var _default =
   methods: {
     goBack: function goBack() {
       uni.navigateBack({
-        delta: 1 });
+        delta: 1,
+        "animationType": "zoom-fade-out" });
 
     },
     onInput: function onInput(e) {

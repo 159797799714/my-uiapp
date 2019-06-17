@@ -91,12 +91,10 @@
     }, {
       "path": "pages/message/message",
       "style": {
-        "navigationBarTitleText": "消息",
+        "navigationStyle": "custom",
         "app-plus": {
           "bounce": "none",
-          "titleNView": {
-            "titleSize": "18"
-          }
+          "titleNView": "false"
         }
       }
     }, {

@@ -88,7 +88,7 @@
     </view>
     
     <!-- 筛选 -->
-    <view v-if="filterIndex === 4 && filter_alert" class="big-cover">
+    <view v-if="filterIndex === 4 && filter_alert" class="big-cover toLeft">
       <view class="white" @click="filter_alert = false"></view>
       <view class="big-cover-main bg-white border-box padding-30">
         <scroll-view scroll-y="true" class="box">

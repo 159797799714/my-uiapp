@@ -149,6 +149,54 @@ view.data-v-efa0bd64 {
           flex-direction: column;
   z-index: 6;
 }
+.toTop.data-v-efa0bd64 {
+  -webkit-animation: toTop-data-v-efa0bd64 800ms;
+          animation: toTop-data-v-efa0bd64 800ms;
+}
+.toLeft.data-v-efa0bd64 {
+  -webkit-animation: toLeft-data-v-efa0bd64 800ms;
+          animation: toLeft-data-v-efa0bd64 800ms;
+}
+@-webkit-keyframes toTop-data-v-efa0bd64 {
+from {
+    top: 100%;
+    opacity: 0;
+}
+to {
+    top: 0;
+    opacity: 1;
+}
+}
+@keyframes toTop-data-v-efa0bd64 {
+from {
+    top: 100%;
+    opacity: 0;
+}
+to {
+    top: 0;
+    opacity: 1;
+}
+}
+@-webkit-keyframes toLeft-data-v-efa0bd64 {
+from {
+    left: 100%;
+    opacity: 0;
+}
+to {
+    left: 0;
+    opacity: 1;
+}
+}
+@keyframes toLeft-data-v-efa0bd64 {
+from {
+    left: 100%;
+    opacity: 0;
+}
+to {
+    left: 0;
+    opacity: 1;
+}
+}
 .selectSpan.data-v-efa0bd64 {
   position: relative;
   background: #FEF0F0 !important;

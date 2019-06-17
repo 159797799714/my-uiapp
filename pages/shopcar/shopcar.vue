@@ -137,7 +137,7 @@
     background: $color-f5;
   }
   .content {
-    margin: 30upx;
+    margin: 0 30upx 0 30upx;
     width: calc(100% - 60upx);
     margin-top: 0;
     .store{

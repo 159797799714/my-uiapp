@@ -1,8 +1,13 @@
 <template>
   <view class="container">
-    <view v-if="isShowTop" class="topBar">
+    <view class="topBar">
+      <!-- :style="{background: 'rgba(0, 0, 0,' + top / 375 + ')'}" -->
       <view class="search">
         <text class="iconfont back" @click="goBack">&#xe61c;</text>
+        <view class="nav" :style="{opacity: top / 375}">
+          <view v-for="(item, index) in navList" :key="index" :class="{checked: index === navIndex}" @click="navAction(index)">{{ item }}</view>
+          <view class="slipe-span" :style="{left: (1 / navList.length / 2 * (navIndex * 2 + 1) ) * 100 + '%'}"></view>
+        </view>
         <view class="conduct">
           <text class="iconfont share" @click="goShare">&#xe60f;</text>
           <text class="iconfont" @click="keepAction">&#xe637;</text>
@@ -34,11 +39,11 @@
           <text v-for="(item, index) in data.textList" :key="index" class="tag">{{ item }}</text>
         </view>
       </view>
-      <view class="sale-info row bg-white">
+      <view class="sale-info row bg-white" @click="lookInfo">
         <view class="row-name">促销信息</view>
         <view class="row-info">
-          <text>满送</text>
-          <text>满999元送4000毫安的充电宝满999元送4000毫安的充电宝...</text>
+          <text class="info">满送</text>
+          <text>满999元送4000毫安的充电宝满999元送4000毫安的充电宝</text>
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
@@ -94,6 +99,15 @@
         <view class="btn">进店逛逛</view>
       </view>
     </scroll-view>
+    <view v-if="coverShow" class="big-cover toTop">
+      <view class="white" @click="coverShow = false"></view>
+      <view class="cover-main bg-white">
+        <view class="cover-word padding-30">
+          <view class="title">促销信息</view>
+        </view>
+        <view class="sure-btn" @click="coverShow = false">关闭</view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -101,6 +115,9 @@
   export default {
     data() {
       return {
+        navList: ['商品', '详情', '评价', '推荐'],   // 顶部导航栏
+        navIndex: 0,                          // 顶部初始索引值
+        top: 0,                               // 滚动距离顶部距离
         indicatorDots: true,                  // 指示点显隐
         autoplay: true,                       // 自动轮播
         interval: 2000,                       // 自动轮播时间 
@@ -117,7 +134,8 @@
           name: 'SONY官方自营店',
           imgUrl: ''   
         },                                      // 店名头像信息
-        showPanic: false
+        showPanic: false,                       // 顶部分享显示与隐藏
+        coverShow: false                        // 全局遮罩层显隐
       }
     },
     // 接受首页传递的参数
@@ -130,11 +148,16 @@
       }
     },
     methods: {
+      // 返回
       goBack() {
         uni.navigateBack({
           delta: 1
           })
       },
+      navAction(index) {
+        this.navIndex = index
+      },
+      // 分享
       goShare() {
         uni.share({
           provider: "weixin",
@@ -152,18 +175,25 @@
           }
         })
       },
+      // 收藏
       keepAction() {
         console.log('点击了收藏')
       },
+      // 页面滚动
       scroll(e) {
-        if (e.detail.scrollTop > 260) {
+        this.top = e.detail.scrollTop
+        if (e.detail.scrollTop > 375) {
           this.isShowTop = false
           return
         }
-        if (e.detail.scrollTop <= 260) {
+        if (e.detail.scrollTop <= 375) {
           this.isShowTop = true
           return
         }
+      },
+      // 点击促销信息
+      lookInfo() {
+        this.coverShow = true
       }
     },
   }
@@ -171,28 +201,54 @@
 
 <style lang="scss" scoped>
   .topBar{
-    background: rgba(255, 255, 255, 0.01);
-    position: absolute;
-    top: 0;
-    left: 0;
+    background: $title-color;
   }
   .search{
     display: flex;
+    align-items: center;
     width: 100%;
-    line-height: 100%;
-    font-size: $font-40;
-    color: $title-color;
+    line-height: 88upx;
+    height: 88upx;
+    font-size: $font-28;
+    color: $control-color;
     justify-content: space-between;
     .conduct{
       .share{
-        margin-right: 55upx;
+        margin: 0 55upx 0 30upx;
+      }
+    }
+    .nav{
+      flex: 1;
+      display: flex;
+      position: relative;
+      &>view{
+        flex: 1;
+        text-align: center;
+      }
+      .checked{
+        color: $color-white;
+      }
+      .slipe-span{
+        position: absolute;
+        bottom: 12upx;
+        height: 4upx;
+        width: 34upx;
+        background: $color-red;
+        border-radius: 2upx;
+        transition: 500ms;
+        transform: translateX(-17upx);
       }
     }
     .iconfont{
-      color:$title-color;
-      font-size: 40upx;
+      height: 40upx;
+      line-height: 40upx;
+      color:$color-white;
+      font-size: $font-40;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 100%;
     }
     .back{
+      margin-right: 73upx;
       font-weight: $font-bold;
     }
   }
@@ -319,7 +375,36 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      &>.info{
+        padding: 0 14upx;
+        background: $title-color;
+        color: $color-white;
+        line-height: 30upx;
+        border-radius: 15upx;
+        margin-right: 20upx;
+      }
     }
+  }
+  .big-cover{
+    .white{
+      flex: 1;
+    }
+    .cover-main{
+      height: 848upx;
+      display: flex;
+      flex-direction: column;
+      .cover-word{
+        flex: 1;
+      }
+      .sure-btn{
+        height: 98upx;
+        background: $title-color;
+        text-align: center;
+        font-size: $font-30;
+        line-height: 98upx;
+        color: $color-white;
+      }
+    }  
   }
   .sale-info{
     height: 114upx;

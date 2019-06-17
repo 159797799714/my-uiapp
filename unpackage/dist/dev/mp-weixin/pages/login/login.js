@@ -151,9 +151,6 @@ var _default =
 
   },
   methods: {
-    logon: function logon() {
-      console.log('login');
-    },
     onInput: function onInput(e) {
       var value = e.detail.value;
       if (value) {
@@ -164,12 +161,32 @@ var _default =
     },
     clickAction: function clickAction(type) {
       uni.navigateTo({
-        url: 'register?type=' + type });
+        url: 'register?type=' + type,
+        "animationType": "zoom-fade-out" });
 
     },
     goLogin: function goLogin() {
       uni.switchTab({
         url: '../index/index' });
+
+    },
+    loginWay: function loginWay(type) {
+      uni.getProvider({
+        service: 'oauth',
+        success: function success(res) {
+          console.log(res.provider);
+          if (~res.provider.indexOf(type)) {
+            uni.login({
+              provider: type,
+              success: function success(loginRes) {
+                console.log(JSON.stringify(loginRes));
+              } });
+
+          }
+        },
+        fail: function fail(err) {
+          console.log(err);
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

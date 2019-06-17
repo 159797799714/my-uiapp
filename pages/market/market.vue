@@ -71,8 +71,10 @@
               <image src="" mode=""></image>
               <view class="goods-info">{{ item.info }}</view>
               <view class="goods-price">
-                <view class="price">￥{{ item.price }} <text v-if="item.oldPrice" class="old-price">￥{{ item.oldPrice }}</text></view>
-                <text>...</text>
+                <view class="price">
+                  ￥<text class="bigNewPrice">{{ item.price }}</text>.00
+                  <text v-if="item.oldPrice" class="old-price">￥{{ item.oldPrice }}</text>
+                </view>
               </view>
             </view>
           </view>
@@ -467,8 +469,11 @@
             display: flex;
             justify-content: space-between;
             line-height: 54upx;
-            font-size: $font-34;
+            font-size: $font-26;
             font-weight: bold;
+            .bigNewPrice{
+              font-size: $font-34;
+            }
             .old-price{
               margin-left: 8upx;
               font-size: $font-26;

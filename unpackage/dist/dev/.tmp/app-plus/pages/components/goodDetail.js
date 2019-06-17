@@ -197,6 +197,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -217,12 +226,13 @@ var _default =
         name: 'SONY官方自营店',
         imgUrl: '' },
       // 店名头像信息
-      showPanic: false };
-
+      showPanic: false, // 顶部分享显示与隐藏
+      coverShow: false // 全局遮罩层显隐
+    };
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:125");
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goodDetail.vue:135");
     this.data.title = option.info;
     if (option.panic === 'true') {
       this.showPanic = true;
@@ -230,11 +240,13 @@ var _default =
     }
   },
   methods: {
+    // 返回
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
 
     },
+    // 分享
     goShare: function goShare() {
       uni.share({
         provider: "weixin",
@@ -245,16 +257,18 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:148");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\goodDetail.vue:160");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:151");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\goodDetail.vue:163");
         } });
 
     },
+    // 收藏
     keepAction: function keepAction() {
-      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:156");
+      console.log('点击了收藏', " at pages\\components\\goodDetail.vue:169");
     },
+    // 页面滚动
     scroll: function scroll(e) {
       if (e.detail.scrollTop > 260) {
         this.isShowTop = false;
@@ -264,6 +278,10 @@ var _default =
         this.isShowTop = true;
         return;
       }
+    },
+    // 点击促销信息
+    lookInfo: function lookInfo() {
+      this.coverShow = true;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -295,6 +313,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.coverShow = false
+    }
+
+    _vm.e1 = function($event) {
+      _vm.coverShow = false
+    }
+  }
 }
 var staticRenderFns = []
 render._withStripped = true

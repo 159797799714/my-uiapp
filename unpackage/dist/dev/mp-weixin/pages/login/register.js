@@ -178,12 +178,14 @@ var _default =
     },
     goNext: function goNext() {
       uni.navigateTo({
-        url: 'password?type=' + this.type });
+        url: 'password?type=' + this.type,
+        "animationType": "zoom-fade-out" });
 
     },
     goLogin: function goLogin() {
       uni.navigateTo({
-        url: 'login' });
+        url: 'login',
+        "animationType": "zoom-fade-out" });
 
     },
     getCode: function getCode() {
