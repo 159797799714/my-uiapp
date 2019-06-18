@@ -177,10 +177,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      current: {
+        poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
+        name: '致爱丽丝',
+        author: '暂无',
+        src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' },
+
+      audioAction: {
+        method: 'pause' },
+      // 音频播放audio参数
       title: '',
       indicatorDots: true,
       autoplay: true,
@@ -253,7 +271,7 @@ var _default =
   },
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\shareInfo.vue:156");
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\shareInfo.vue:174");
     this.title = option.title;
   },
   methods: {
@@ -272,10 +290,10 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:175");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:193");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:178");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:196");
         } });
 
     } } };exports.default = _default;

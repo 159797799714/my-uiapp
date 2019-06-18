@@ -211,6 +211,100 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -235,7 +329,18 @@ var _default =
         imgUrl: '' },
       // 店名头像信息
       showPanic: false, // 顶部分享显示与隐藏
-      coverShow: false // 全局遮罩层显隐
+      coverShow: false, // 全局遮罩层显隐
+      sale_info: [{
+        title: '满送',
+        info: '满999元送4000毫安的充电宝,购买后送200积分',
+        type: 1 },
+      {
+        title: '促销',
+        info: '满1548元，省150元',
+        time: '2019.06.12-2019.06.15',
+        type: 2 }],
+
+      normShow: false // 商品规格弹窗
     };
   },
   // 接受首页传递的参数
@@ -294,6 +399,11 @@ var _default =
     // 点击促销信息
     lookInfo: function lookInfo() {
       this.coverShow = true;
+    },
+    goShopcar: function goShopcar() {
+      uni.switchTab({
+        url: '../shopcar/shopcar' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
@@ -327,11 +437,27 @@ var render = function() {
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.coverShow = false
+      _vm.normShow = true
     }
 
     _vm.e1 = function($event) {
+      _vm.normShow = true
+    }
+
+    _vm.e2 = function($event) {
       _vm.coverShow = false
+    }
+
+    _vm.e3 = function($event) {
+      _vm.coverShow = false
+    }
+
+    _vm.e4 = function($event) {
+      _vm.normShow = false
+    }
+
+    _vm.e5 = function($event) {
+      _vm.normShow = false
     }
   }
 }

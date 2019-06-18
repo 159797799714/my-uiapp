@@ -420,6 +420,9 @@
       line-height: 50upx;
       background: $color-ee;
       border-radius: 25upx;
+      .iconfont{
+        font-size: $font-20;
+      }
     }
     .iconfont{
       margin-left: 10upx;

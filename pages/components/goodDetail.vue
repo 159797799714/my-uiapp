@@ -47,12 +47,12 @@
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
-      <view class="row bg-white">
+      <view class="row bg-white"  @click="normShow = true">
         <view class="row-name">选择颜色</view>
         <view class="row-info">已选：“黑色”“官方标配”</view>
         <text class="iconfont">&#xe644;</text>
       </view>
-      <view class="row bg-white">
+      <view class="row bg-white" @click="normShow = true">
         <view class="row-name">商品规格</view>
         <view class="row-info">颜色 适用设备</view>
         <text class="iconfont">&#xe644;</text>
@@ -99,13 +99,107 @@
         <view class="btn">进店逛逛</view>
       </view>
     </scroll-view>
+    <view class="bottom-bar bg-white">
+      <view class="link-menu border-box">
+        <view>
+        	<text class="iconfont">&#xe60b;</text>
+          <text>店铺</text>
+        </view>
+        <view>
+        	<text class="iconfont">&#xe656;</text>
+          <text>客服</text>
+        </view>
+        <view @click="goShopcar">
+        	<text class="iconfont">&#xe707;</text>
+          <text>购物车</text>
+        </view>
+      </view>
+      <view class="btn-menu">
+        <view class="btn">加入购物车</view>
+        <view class="btn buy">立即购买</view>
+      </view>
+    </view>
+    
+    <!-- 促销信息弹窗 -->
     <view v-if="coverShow" class="big-cover toTop">
       <view class="white" @click="coverShow = false"></view>
-      <view class="cover-main bg-white">
+      <view class="cover-main bg-white border-box">
         <view class="cover-word padding-30">
-          <view class="title">促销信息</view>
+          <view class="title" >促销信息</view>
+          <view v-for="(item, index) in sale_info" :key="index" class="item">
+            <text :class="{'red-bg': item.type === 2}">{{ item.title }}</text>
+            <view class="item-info">{{ item.info }}
+              <view v-if="item.time" class="item-time">{{ item.time }}</view>
+            </view>
+          </view>
         </view>
         <view class="sure-btn" @click="coverShow = false">关闭</view>
+      </view>
+    </view>
+    
+    <!-- 商品规格选择弹窗 -->
+    <view v-if="normShow" class="big-cover toTop border-box">
+      <view class="white"></view>
+      <view class="cover-main bg-white border-box">
+        <view class="cover-word border-box padding-30">
+          <view class="header">
+            <view class="img">
+              <image src="" mode=""></image>
+            </view>
+            <view class="other">
+              <view class="cancel">
+                <text class="iconfont" @click="normShow = false">&#xe613;</text>
+              </view>
+              <view class="price">￥<text>1099</text>.00</view>
+              <view class="storeNum">仅剩3件</view>
+            </view>
+          </view>
+          <scroll-view scroll-y="true" class="norm">
+            <view class="norm-item">
+              <view class="norm-title">颜色</view>
+              <view class="norm-bar">
+                <text :class="{selected: true}">黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+                <text>黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+                <text>黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+              </view>
+            </view>
+            <view class="norm-item">
+              <view class="norm-title">颜色</view>
+              <view class="norm-bar">
+                <text :class="{selected: true}">黑色</text>
+              </view>
+            </view>
+            <view class="norm-item">
+              <view class="norm-title">颜色</view>
+              <view class="norm-bar">
+                <text :class="{selected: true}">黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+                <text>黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+                <text>黑色</text>
+                <text>红色</text>
+                <text>白色</text>
+              </view>
+            </view>
+            <view class="control-num">
+              <text>购买数量</text>
+              <view class="sum">
+                <text class="iconfont">&#xe643;</text>
+                <text class="num">1</text>
+                <text class="iconfont">&#xe620;</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <view class="sure-btn"  @click="normShow = false">确定</view>
       </view>
     </view>
   </view>
@@ -135,7 +229,18 @@
           imgUrl: ''   
         },                                      // 店名头像信息
         showPanic: false,                       // 顶部分享显示与隐藏
-        coverShow: false                        // 全局遮罩层显隐
+        coverShow: false,                       // 全局遮罩层显隐
+        sale_info: [{
+          title: '满送',
+          info: '满999元送4000毫安的充电宝,购买后送200积分',
+          type: 1
+        }, {
+          title: '促销',
+          info: '满1548元，省150元',
+          time: '2019.06.12-2019.06.15',
+          type: 2
+        }],
+        normShow: false,                        // 商品规格弹窗
       }
     },
     // 接受首页传递的参数
@@ -194,6 +299,11 @@
       // 点击促销信息
       lookInfo() {
         this.coverShow = true
+      },
+      goShopcar() {
+        uni.switchTab({
+          url: '../shopcar/shopcar'
+        })
       }
     },
   }
@@ -386,15 +496,161 @@
     }
   }
   .big-cover{
+    &.toBottom{
+      animation: toBottom 2s;
+    }
     .white{
       flex: 1;
     }
     .cover-main{
-      height: 848upx;
+      height: 896upx;
+      padding-top: 9upx;
       display: flex;
       flex-direction: column;
       .cover-word{
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        
+        // 促销信息
+        .title{
+          font-size: $font-34;
+          line-height: 110upx;
+          text-align: center;
+          font-weight: $font-bold;
+        }
+        .item{
+          display: flex;
+          margin-bottom: 28upx;
+          line-height: 30upx;
+          font-size: $font-26;
+          &>text{
+            padding: 0 14upx;
+            height: 30upx;
+            margin-right: 20upx;
+            font-size: $font-20;
+            color:$color-white;
+            background: $title-color;
+            border-radius: 15upx;
+            flex-wrap: nowrap;
+          }
+          .red-bg{
+            background: $color-red;
+          }
+          .item-info{
+            flex: 1;
+            flex-wrap: wrap;
+          }
+          .item-time{
+            margin-top: 15upx;
+            font-size: $font-24;
+            color: $color-99;
+            line-height: 19upx;
+          }
+        }
+        
+        // 商品规格
+        .header{
+          margin: 31upx 0 50upx;
+          height: 180upx;
+          display: flex;
+          .other{
+            flex: 1;
+            .cancel{
+              margin-bottom: 72upx;
+              text-align: right;
+              font-size: 24upx;
+              color: $word-color;
+            }
+            &>.price{
+              margin-bottom: 22upx;
+              font-size: $font-32;
+              color: $title-color;
+              line-height: 31upx;
+              &>text{
+                font-size: $font-40;
+                height: 31upx;
+              }
+            }
+            .storeNum{
+              font-size: $font-24;
+              color: $color-99;
+              line-height: 23upx;
+            }
+          }
+          .img{
+            height: 180upx;
+            width: 180upx;
+            margin-right: 18upx;
+            &>image{
+              height: 100%;
+              width: 100%;
+              background: $color-99;
+            }
+          }
+        }
+        .norm{
+          height: 628upx;
+          width: 100%;
+          overflow: hidden;
+          .norm-item{
+            width: calc(100% + 10upx);
+            .norm-title{
+              margin-bottom: 24upx;
+              font-size: $font-24;
+              color: $word-color;
+              line-height: 23upx;
+            }
+            .norm-bar{
+              margin-bottom: 20upx;
+              display: flex;
+              flex-wrap: wrap;
+              &>text{
+                padding: 0 25upx;
+                margin: 0 39upx 20upx 0;
+                height: 50upx;
+                font-size: $font-26;
+                line-height: 50upx;
+                border-radius: 25upx;
+                background: $color-f5; 
+                border: 2upx solid $color-f5;
+              }
+            }
+            .selected{
+              border: 2upx solid $color-red!important;
+              color: $color-red;
+            }
+          }
+        }
+        .control-num{
+          display: flex;
+          justify-content: space-between;
+          height: 45upx;
+          padding: 50upx 0;
+          margin-top: 10upx;
+          border-top: 2upx solid $color-f5;
+          &>text{
+            font-size: $font-24;
+            color: $word-color;
+            line-height: 45upx;
+          }
+          &>view{
+            height: 45upx;
+            display: flex;
+            align-items: center;
+            color: $title-color;
+            .num{
+              padding: 0 35upx;
+              margin: 0 19upx;
+              font-size: $font-30;
+              line-height: 45upx;
+              background: $color-f5;
+            }
+            &>text{
+              font-size: $font-24;
+            }
+          }
+        }
       }
       .sure-btn{
         height: 98upx;
@@ -500,6 +756,50 @@
       font-size: $font-24;
       line-height: 50upx;
       border-radius: 25upx;
+    }
+  }
+  .bottom-bar{
+    height: 98upx;
+    line-height: 98upx;
+    display: flex;
+    .link-menu{
+      padding-right: 18upx;
+      width: 306upx;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &>view{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: $font-20;
+        color: $word-color;
+        line-height: 19upx;
+        .iconfont{
+          font-size: 32upx;
+          line-height: 32upx;
+          margin-bottom: 12upx;
+        }
+      }
+    }
+    .btn-menu{
+      flex: 1;
+      .btn{
+        display: inline-block;
+        width: 50%;
+        height: 100%;
+        line-height: 98upx;
+        text-align: center;
+        font-size: $font-26;
+        color: $color-white;
+        background: $title-color;
+      }
+      .buy{
+        background: $color-red;
+      }
     }
   }
 </style>

@@ -177,10 +177,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      current: {
+        poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
+        name: '致爱丽丝',
+        author: '暂无',
+        src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' },
+
+      audioAction: {
+        method: 'pause' },
+      // 音频播放audio参数
       title: '',
       indicatorDots: true,
       autoplay: true,

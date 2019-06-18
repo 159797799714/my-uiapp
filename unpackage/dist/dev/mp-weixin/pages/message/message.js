@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -152,18 +152,25 @@ var _default =
         mes: '我是谁？我在哪？我要干嘛？' },
       {
         imgUrl: '',
-        name: '啦啦啦啦',
+        name: '哈哈哈哈',
         time: '刚刚',
         mes: '我是谁？我在哪？我要干嘛？' },
       {
         imgUrl: '',
-        name: '啦啦啦啦',
+        name: '嘿嘿嘿嘿',
         time: '刚刚',
         mes: '我是谁？我在哪？我要干嘛？' }] };
 
 
 
-  } };exports.default = _default;
+  },
+  methods: {
+    goDetail: function goDetail(name) {
+      uni.navigateTo({
+        url: 'chatDetail?title=' + name });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

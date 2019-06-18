@@ -11,7 +11,7 @@
         </view>
       </view>
       <view class="main bg-white">
-        <view v-for="(item, index) in commentList" :key="index" class="item">
+        <view v-for="(item, index) in commentList" :key="index" class="item" @click="goDetail(item.name)">
           <view class="img">
             <image :src="item.imgUrl" mode=""></image>
           </view>
@@ -52,16 +52,23 @@
             mes: '我是谁？我在哪？我要干嘛？'
           }, {
             imgUrl: '',
-            name: '啦啦啦啦',
+            name: '哈哈哈哈',
             time: '刚刚',
             mes: '我是谁？我在哪？我要干嘛？'
           }, {
             imgUrl: '',
-            name: '啦啦啦啦',
+            name: '嘿嘿嘿嘿',
             time: '刚刚',
             mes: '我是谁？我在哪？我要干嘛？'
           }
         ]
+      }
+    },
+    methods: {
+      goDetail(name) {
+        uni.navigateTo({
+          url: 'chatDetail?title=' + name
+        })
       }
     }
   }

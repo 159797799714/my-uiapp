@@ -12,7 +12,7 @@
         </view>
       </view>
       <view class="post border-box bg-white">
-        <image src="../../static/img/mine/stayreceive.png" mode=""></image>
+        <text class="iconfont car">&#xe65b;</text>
         <view class="post-info">
           <view class="info">【深圳市】快件已被签收，如有问题请联系快递员：蔡建彬【17756506677】</view>
           <view class="post-time">2019-05-22  09:10:34</view>
@@ -158,11 +158,11 @@
     height: 181upx;
     width: 100%;
     display: flex;
-    &>image{
-      height: 50upx;
-      width: 50upx;
-      margin-right: 25upx;
+    .car{
+      margin-right: 33upx;
       margin-top: 12upx;
+      font-size: 46upx;
+      font-weight: $font-bold;
     }
     .post-info{
       flex: 1;

@@ -16,9 +16,18 @@
           <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
         </swiper-item>
       </swiper>
-      <view class="userInfo">
-        <image src="" mode=""></image>
-        <text class="userName">{{ userInfo.userName }}</text>
+      <view class="songs padding-30 border-box">
+      	<view class="song-share">
+          <view class="title">
+            <text>歌单推荐</text>(4首)
+          </view>
+      	  <view>
+            全部<text class="iconfont">&#xe644;</text>
+          </view>
+      	</view>
+        <view class="sing">
+          <audio :style="{'text-align': 'left'}" :src="current.src" :poster="current.poster" :name="current.name" :author="current.author" :action="audioAction" controls></audio>
+        </view>
       </view>
       <view class="cultureInfo bg-white">
         <!-- <view class="cultureTitle">{{ cultureInfo.title }}</view> -->
@@ -81,6 +90,15 @@
   export default {
     data() {
       return {
+        current: {
+          poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
+          name: '致爱丽丝',
+          author: '暂无',
+          src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3',
+        },
+        audioAction: {
+          method: 'pause'
+        },                                            // 音频播放audio参数
         title: '',
         indicatorDots: true,
         autoplay: true,
@@ -222,20 +240,28 @@
       width: 748upx;
     }  
   }
-  .userInfo{
-    display: flex;
-    height: 120upx;
-    padding: 0 30upx;
-    align-items: center;
-    &>image{
-      margin-right: 20upx;
-      height: 66upx;
-      width: 66upx;
-      border-radius: 100%;
-      background: #ccc;
+  .songs{
+    height: 207upx;
+    .song-share{
+      height: 93upx;
+      display: flex;
+      justify-content: space-between;
+      font-size: $font-24;
+      color: $word-color;
+      line-height: 93upx;
+      .title{
+        &>text{
+          margin-right: 25upx;
+          font-size: $font-36;
+          font-weight: $font-bold;
+          color: $title-color;
+        }
+      }
     }
-    .userName{
-      font-size: $font-30;
+    .sing{
+      height: 114upx;
+      display: flex;
+      justify-content: space-between;
     }
   }
   .cultureInfo{
@@ -243,7 +269,7 @@
     flex-direction: column;
     max-height: 640upx;
     margin-bottom: 30upx;
-    padding: 60upx 30upx;
+    padding: 69upx 30upx;
     box-sizing: border-box;
     overflow: hidden;
     .cultureTitle{

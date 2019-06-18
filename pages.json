@@ -107,6 +107,15 @@
         }
       }
     }, {
+      "path": "pages/message/chatDetail",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none",
+          "titleNView": "false"
+        }
+      }
+    }, {
       "path": "pages/mine/mine",
       "style": {
         "navigationStyle": "custom",

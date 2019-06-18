@@ -12,6 +12,7 @@
     "pages/market/panicBuy",
     "pages/message/message",
     "pages/shopcar/shopcar",
+    "pages/message/chatDetail",
     "pages/mine/mine",
     "pages/mine/looks",
     "pages/components/search",

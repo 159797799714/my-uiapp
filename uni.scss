@@ -43,6 +43,7 @@ $font-40: 40upx;
 $font-42: 42upx;
 $font-44: 44upx;
 $font-46: 46upx;
+$font-52: 52upx;
 $font-54: 54upx;
 $font-56: 56upx;
 $font-58: 58upx;
@@ -113,7 +114,7 @@ view{
 }
 
 .container{ position: relative; width: 100%; height: 100%; overflow: hidden; box-sizing: border-box; display: flex; flex-direction: column; }
-.content{ position: relative; flex: 1; overflow: hidden; background: #F5F5F5; display: flex; flex-direction: column; box-sizing: border-box; }
+.content{ position: relative; flex: 1; overflow: hidden; background: #F5F5F5; display: flex; flex-direction: column; box-sizing: border-box; color: $title-color; }
 .bg-white{ background: #fff; }
 
 // 关闭原生头部导航时自定义头部样式
@@ -168,6 +169,7 @@ view{
 
 .toTop{
   animation: toTop 800ms;
+  transition: 5s;
 }
 
 .toLeft{
@@ -177,11 +179,11 @@ view{
 // 遮罩层从下往上
 @keyframes toTop{
   from{
-    top: 100%;
+    transform: translateY(100%);
     opacity: 0;
   }
   to{
-    top: 0;
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -189,16 +191,14 @@ view{
 // 遮罩层从右到左
 @keyframes toLeft{
   from{
-    left: 100%;
+    transform: translateX(100%);
     opacity: 0;
   }
   to{
-    left: 0;
+    transform: translateX(100%);
     opacity: 1;
   }
 }
-
-
 
 .selectSpan{
   position: relative;
