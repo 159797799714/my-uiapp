@@ -180,12 +180,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -200,12 +194,13 @@ var _default =
         method: 'pause' },
       // 音频播放audio参数
       title: '',
+      article_id: '', // 文章ID
       indicatorDots: true,
       autoplay: true,
       interval: 2000,
       duration: 500,
       indicatorActiveColor: '#ffffff',
-      swiperList: [{}, {}, {}],
+      swiperList: [],
       userInfo: {
         imgUrl: '',
         userName: '奶油田官方' },
@@ -272,12 +267,25 @@ var _default =
   // 接受首页传递的参数
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option);
-    this.title = option.title;
+    this.article_id = option.article_id;
+    this.getDetail(this.article_id);
   },
   methods: {
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
+
+    },
+    getDetail: function getDetail(id) {var _this = this;
+      this.$http({
+        url: this.$api.detailing,
+        data: {
+          article_id: id },
+
+        cb: function cb(err, res) {
+          console.log(res.data.detail.banners);
+          _this.swiperList = res.data.detail.banners;
+        } });
 
     },
     goShare: function goShare() {

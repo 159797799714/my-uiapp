@@ -6,30 +6,30 @@
         <view class="searchVal">{{ searchInfo }}</view>
       </view>
     </view>
-    <scroll-view scroll-y="true" class="content bg-white">
-      <view class="banner-swiper">
+    <scroll-view scroll-y="true" class="content">
+      <view class="banner-swiper bg-white">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
             <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
           </swiper-item>
         </swiper>
       </view>
-      <view class="TabNav">
-        <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item }}</view>
+      <view class="TabNav bg-white">
+        <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
-      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-white" @click="goInfo(item)">
-        <image src="" mode=""></image>
+      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-white" @click="goInfo(item.article_id)">
+        <image :src="item.image.file_path" mode=""></image>
         <view class="item-words">
-          <view class="title">{{ item.title }}</view>
-          <view class="info">{{ item.info }}</view>
+          <view v-if="item.article_title" class="title">{{ item.article_title }}</view>
+          <view v-if="item.subtitle" class="info">{{ item.subtitle }}</view>
           <view class="control">
             <view class="look">
               <text class="search-icon iconfont">&#xe6cc;</text>
-              <text>{{ item.looksum }}</text>
+              <text>{{ item.show_views }}</text>
             </view>
             <view class="zan">
               <text class="search-icon iconfont">&#xe63a;</text>
-              <text>{{ item.zansum }}</text>
+              <text>{{ item.like_count }}</text>
             </view>
           </view>  
         </view>
@@ -40,11 +40,6 @@
 
 <script>
   import service from '../../service.js';
-  import {
-    mapState,
-    mapMutations
-  } from 'vuex'
-
   export default {
     data() {
       return {
@@ -55,47 +50,76 @@
         indicatorActiveColor: '#ffffff',
         searchInfo: '大家都在搜“森海塞尔”',
         swiperList: [{}, {}, {}],
-        tabList: ['发现', '电音', '潮品', '美妆', '游戏'],
+        tabList: [],
         selectIndex: 0,
-        cultureList: [
-          {
-            imgUrl: '',
-            title: '2019深圳啦啦啦',
-            info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......',
-            looksum: 4000,
-            zansum: 3000
-          }, {
-            imgUrl: '',
-            title: '2019深圳奶油田电音节',
-            info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......',
-            looksum: 4000,
-            zansum: 3000
-          }, {
-            imgUrl: '',
-            title: '2019深圳奶油田电音节',
-            info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......',
-            looksum: 4000,
-            zansum: 3000
-          }
-        ]
+        cultureList: []
       }
     },
+    watch: {
+      selectIndex(val) {
+        this.getDefault(this.tabList[val].category_id)
+      }
+    },
+    onLoad() {
+      this.getCategorylist()
+      this.getDefault()
+    },
     methods: {
+      // 获取文章
+      getDefault(id) {
+        this.$http({
+          url: this.$api.articlesbycategoryid,
+          data: {
+            'category_id': id? id: ''
+          },
+          cb: (err, res) => {
+            if (!err && res.code === 1) {
+              this.cultureList = res.data.list
+              if (res.data.list.length === 0) {
+                uni.showToast({
+                	title: '当前分类文章为空',
+                  icon: 'none'
+                })
+              }
+              return
+            } else {
+              uni.showToast({
+              	title: '文章列表获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      // 获取文章分类
+      getCategorylist() {
+        this.$http({
+          data: {
+            'wxapp_id': 10001,
+            token: 'b612f5e2a32d553fdaea8eeb06bc2744',  
+          },
+          url: this.$api.categorylist,
+          cb: (err, res) => {
+            if (!err && res.code === 1) { 
+              this.tabList = res.data.categoryList
+              return
+            } else {
+              uni.showToast({
+              	title: '文章分类获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
       // 选择分类
       selectTab(item, index) {
         this.selectIndex = index
-        let view = uni.createSelectorQuery().select(".item")
-        view.fields({
-          size: true,
-          scrollOffset: true
-        }, data => {
-          console.log("得到节点信息" + JSON.stringify(data))
-        }).exec()
       }, 
       // 文章详情页
       goInfo(item) {
         uni.navigateTo({
-          url: '../components/shareInfo?title=' + item.title
+          url: '../components/shareInfo?article_id=' + item
         })
       },
       // 搜索页
@@ -109,6 +133,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .container{
+    background: $color-f5;
+  }
   .search {
     display: flex;
     justify-content: center;
@@ -129,8 +156,7 @@
     }
   }
   .content {
-    margin: 0 30upx 0 30upx;
-    width: calc(100% - 60upx);
+    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
     &::-webkit-scrollbar {
@@ -139,10 +165,8 @@
       background-color: transparent;
     }
     .banner-swiper {
+      padding: 30upx 30upx 0 30upx;
       height: 390upx;
-      margin-bottom: 50upx;
-      margin-top: 30upx;
-      box-sizing: border-box;
       .swiper {
         height: 390upx;
       }
@@ -152,6 +176,8 @@
       }
     }
     .TabNav{
+      padding: 0 30upx;
+      padding-top: 50upx;
       display: flex;
       position: relative;
       .item{
@@ -160,6 +186,7 @@
         font-weight: $font-bold;
         line-height: 60upx;
         text-align: center;
+        position: relative;
       }
       .slipe-span{
         position: absolute;
@@ -172,29 +199,42 @@
       .selected{
         font-size: $font-40;
         &::before{
-          content: '——';
-          color: $color-slipe-red;
+          content: '';
+          display: block;
           height: 6upx;
+          width: 78upx;
           position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          background: $color-slipe-red;
         }
       }
     }
     .culture{
-      height: 630upx;
-      width: 100%;
-      margin-top: 30upx;
+      margin: 30upx 30upx 0 30upx;
+      padding-bottom: 30upx;
+      width: calc(100% - 60upx);
       background: $color-white;
+      box-shadow:0 0 24upx 0 rgba(202,220,232,0.54);
       &>image{
+        margin-bottom: 15upx;
         height: 388upx;
         width: 100%;
-        background: #ccc;
       }
       .item-words{
         padding: 0 21upx;
         .title{
-          line-height: 94upx;
+          padding: 0;
+          margin-top: -6upx;
+          margin-bottom: 17upx;
+          max-height: 90upx;
+          line-height: 48upx;
           font-size: $font-36;
-          font-weight: $font-bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         .info{
           height: 62upx;
@@ -207,6 +247,7 @@
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           font-size: $font-24;
+          line-height: 36upx;
           color: $word-color;
         }  
       }
@@ -214,7 +255,7 @@
         display: flex;
         justify-content: flex-end;
         font-size: $font-24;
-        line-height: 86upx;
+        line-height: 25upx;
         color: $control-color;
         .look{
           height: 29upx;

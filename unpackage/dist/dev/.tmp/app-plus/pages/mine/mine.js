@@ -235,23 +235,28 @@ var _default =
       this.tabIndex = index;
     },
     goChild: function goChild(index) {
-      if (index === 0) {
-        uni.navigateTo({
-          url: 'discount' });
+      switch (index) {
+        case 0:
+          uni.navigateTo({
+            url: 'discount' });
 
-        return;
-      }
-      if (index === 2) {
-        uni.navigateTo({
-          url: 'looks' });
+          break;
+        case 1:
+          uni.navigateTo({
+            url: 'sign' });
 
-        return;
-      }
-      if (index === 3) {
-        uni.navigateTo({
-          url: 'bonus/bonusCenter' });
+          break;
+        case 2:
+          uni.navigateTo({
+            url: 'looks' });
 
-      }
+          break;
+        case 3:
+          uni.navigateTo({
+            url: 'bonus/bonusCenter' });
+
+          break;}
+
     },
     goOrder: function goOrder(name) {
       uni.navigateTo({

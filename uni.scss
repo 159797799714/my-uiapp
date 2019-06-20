@@ -22,6 +22,8 @@ $color-bb: #BBBBBB;
 $color-yellow: #F4A03D;
 $color-3c: #3C3C3C;
 $color-90: #909090;
+$color-8c: #8c8c8c;
+$color-3c: #3c3c3c;
 
 /* 行为相关颜色 */
 $color_primary: #007aff;
@@ -49,10 +51,12 @@ $font-56: 56upx;
 $font-58: 58upx;
 $font-76: 76upx;
 $font-84: 84upx;
+$font-86: 86upx;
+$font-88: 88upx;
 
 $font-bold: 600;
 
-view{
+view, image, text, input, form{
   margin: 0;
   padding: 0;
 }
@@ -164,7 +168,7 @@ view{
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  z-index: 6;
+  z-index: 20;
 }
 
 .toTop{
@@ -176,6 +180,9 @@ view{
   animation: toLeft 800ms;
 }
 
+.toBig{
+  animation: toBig 800ms;
+}
 // 遮罩层从下往上
 @keyframes toTop{
   from{
@@ -196,6 +203,18 @@ view{
   }
   to{
     transform: translateX(100%);
+    opacity: 1;
+  }
+}
+
+// 遮罩层从小到大
+@keyframes toBig{
+  from{
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
     opacity: 1;
   }
 }

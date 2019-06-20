@@ -13,7 +13,9 @@
     <scroll-view scroll-y="true" class="content">
       <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
         <swiper-item v-for="(item, index) in swiperList" :key="index">
-          <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
+          <view :class="{'swiper-item': true, 'bg_primary': true}">
+            <image :src="item.banner_img" mode=""></image>
+          </view>
         </swiper-item>
       </swiper>
       <view class="songs padding-30 border-box">
@@ -71,15 +73,7 @@
     <view class="speak bg-white border-box">
       <input type="text" :value="speakVal" placeholder="留下你的精彩评论吧"/>
       <view>
-        <text class="iconfont">&#xe63a;</text>
-        <text>{{ sumList.zanTotal }}</text>
-      </view>
-      <view>
-        <text class="iconfont">&#xe637;</text>
-        <text>{{ sumList.starTotal }}</text>
-      </view>
-      <view>
-        <text class="iconfont">&#xe6cc;</text>
+        <text class="iconfont">&#xe69d;</text>
         <text>{{ sumList.megTotal }}</text>
       </view>
     </view>
@@ -100,12 +94,13 @@
           method: 'pause'
         },                                            // 音频播放audio参数
         title: '',
+        article_id: '',                               // 文章ID
         indicatorDots: true,
         autoplay: true,
         interval: 2000,
         duration: 500,
         indicatorActiveColor: '#ffffff',
-        swiperList: [{}, {}, {}],
+        swiperList: [],
         userInfo: {
           imgUrl: '',
           userName: '奶油田官方'
@@ -172,13 +167,26 @@
     // 接受首页传递的参数
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option)
-      this.title = option.title
+      this.article_id = option.article_id
+      this.getDetail(this.article_id)
     },
     methods: {
       goBack() {
         uni.navigateBack({
           delta: 1
           })
+      },
+      getDetail(id) {
+        this.$http({
+          url: this.$api.detailing,
+          data: {
+            article_id: id
+          },
+          cb: (err, res) => {
+            console.log(res.data.detail.banners)
+            this.swiperList = res.data.detail.banners
+          }
+        })
       },
       goShare() {
         uni.share({
@@ -238,6 +246,10 @@
     .swiper-item{
       height: 748upx;
       width: 748upx;
+      &>image{
+        height: 100%;
+        width: 100%;
+      }
     }  
   }
   .songs{
@@ -413,8 +425,8 @@
     padding: 0 30upx;
     border-top: 1px solid $color-f5;
     &>input{
+      flex: 1;
       height: 60upx;
-      width: 360upx;
       border-radius: 30upx;
       padding: 0 30upx;
       box-sizing: border-box;
@@ -422,18 +434,21 @@
       background: $color-f5;
     }
     &>view{
+      margin: 0 35upx 0;
+      height: 60upx;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       .iconfont{
         font-size: $font-36;
+        line-height: 36upx;
         color: $word-color;
         margin: 0;
       }
       &>text{
         font-size: $font-20;
-        line-height: 36upx;
+        line-height: 34upx;
         color: $word-color;
       }
     }

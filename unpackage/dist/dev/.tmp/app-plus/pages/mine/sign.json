@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "bounce": "none",
+  "titleNView": "false",
+  "usingComponents": {
+    "calendar": "/components/uni-calendar/uni-calendar"
+  }
+}

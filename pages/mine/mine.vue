@@ -135,22 +135,27 @@
         this.tabIndex = index
       },
       goChild(index) {
-        if( index === 0) {
-          uni.navigateTo({
-            url: 'discount'
-          })
-          return
-        }
-        if( index === 2) {
-          uni.navigateTo({
-            url: 'looks'
-          })
-          return
-        }
-        if( index === 3) {
-          uni.navigateTo({
-            url: 'bonus/bonusCenter'
-          })
+        switch(index) {
+          case 0:
+            uni.navigateTo({
+              url: 'discount'
+            })
+            break
+          case 1:
+            uni.navigateTo({
+              url: 'sign'
+            })
+            break
+          case 2:
+            uni.navigateTo({
+              url: 'looks'
+            })
+            break
+          case 3:
+            uni.navigateTo({
+              url: 'bonus/bonusCenter'
+            })
+            break
         }
       },
       goOrder(name) {

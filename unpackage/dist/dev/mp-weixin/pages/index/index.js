@@ -139,8 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));
-var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
 //
@@ -180,22 +179,47 @@ var _vuex = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.j
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: ['发现', '电音', '潮品', '美妆', '游戏'], selectIndex: 0, cultureList: [{ imgUrl: '', title: '2019深圳啦啦啦', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }, { imgUrl: '', title: '2019深圳奶油田电音节', info: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等和GaretMcGrillen改组成的双人电子音乐制作团队Knife Party等......', looksum: 4000, zansum: 3000 }] };}, methods: {
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
+            return;
+          } else {
+            uni.showToast({
+              title: '文章列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 获取文章分类
+    getCategorylist: function getCategorylist() {var _this2 = this;
+      this.$http({
+        data: {
+          'wxapp_id': 10001,
+          token: 'b612f5e2a32d553fdaea8eeb06bc2744' },
+
+        url: this.$api.categorylist,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this2.tabList = res.data.categoryList;
+            return;
+          } else {
+            uni.showToast({
+              title: '文章分类获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
-      var view = uni.createSelectorQuery().select(".item");
-      view.fields({
-        size: true,
-        scrollOffset: true },
-      function (data) {
-        console.log("得到节点信息" + JSON.stringify(data));
-      }).exec();
     },
     // 文章详情页
     goInfo: function goInfo(item) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.title });
+        url: '../components/shareInfo?article_id=' + item });
 
     },
     // 搜索页
