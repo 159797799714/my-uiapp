@@ -1224,13 +1224,13 @@ __WXML_GLOBAL__.ops_cached.$gwx_9=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
-Z([[7],[3,'commentList']])
+Z([[6],[[7],[3,'comments']],[3,'list']])
 Z(z[0])
-Z(z[0])
-Z(z[1])
-Z([[6],[[7],[3,'item']],[3,'writerChild']])
-Z(z[0])
-Z([[2,'<'],[[7],[3,'index']],[1,2]])
+Z([3,'num'])
+Z([3,'li'])
+Z([[6],[[7],[3,'item']],[3,'replys']])
+Z(z[4])
+Z([[2,'<'],[[7],[3,'num']],[1,2]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_9);return __WXML_GLOBAL__.ops_cached.$gwx_9
 }
 function gz$gwx_10(){
@@ -1241,9 +1241,6 @@ Z([3,'index'])
 Z([3,'item'])
 Z([[7],[3,'cultureList']])
 Z(z[0])
-Z([3,'__e'])
-Z([3,'culture bg-white data-v-5ff3a554'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goInfo']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[1,'cultureList']],[1,'']],[[7],[3,'index']]]]]]]]]]]]]]]])
 Z([3,'item-words data-v-5ff3a554'])
 Z([[6],[[7],[3,'item']],[3,'article_title']])
 Z([[6],[[7],[3,'item']],[3,'subtitle']])
@@ -1794,7 +1791,7 @@ aBD.wxXCkey=1
 return o0C
 }
 c6C.wxXCkey=2
-_2z(z,6,h7C,x3C,o2C,gg,c6C,'item','index','index')
+_2z(z,6,h7C,x3C,o2C,gg,c6C,'li','num','num')
 return o4C
 }
 eZC.wxXCkey=2
@@ -1808,20 +1805,18 @@ var z=gz$gwx_10()
 var eDD=_v()
 _(r,eDD)
 var bED=function(xGD,oFD,oHD,gg){
-var cJD=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],xGD,oFD,gg)
-var hKD=_n('view')
-_rz(z,hKD,'class',7,xGD,oFD,gg)
-var oLD=_v()
-_(hKD,oLD)
-if(_oz(z,8,xGD,oFD,gg)){oLD.wxVkey=1
-}
-var cMD=_v()
-_(hKD,cMD)
-if(_oz(z,9,xGD,oFD,gg)){cMD.wxVkey=1
-}
-oLD.wxXCkey=1
-cMD.wxXCkey=1
+var cJD=_n('view')
+_rz(z,cJD,'class',4,xGD,oFD,gg)
+var hKD=_v()
 _(cJD,hKD)
+if(_oz(z,5,xGD,oFD,gg)){hKD.wxVkey=1
+}
+var oLD=_v()
+_(cJD,oLD)
+if(_oz(z,6,xGD,oFD,gg)){oLD.wxVkey=1
+}
+hKD.wxXCkey=1
+oLD.wxXCkey=1
 _(oHD,cJD)
 return oHD
 }
@@ -1833,98 +1828,98 @@ e_[x[9]]={f:m9,j:[],i:[],ti:[],ic:[]}
 d_[x[10]]={}
 var m10=function(e,s,r,gg){
 var z=gz$gwx_11()
-var lOD=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var aPD=_v()
-_(lOD,aPD)
-if(_oz(z,4,e,s,gg)){aPD.wxVkey=1
+var oND=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var lOD=_v()
+_(oND,lOD)
+if(_oz(z,4,e,s,gg)){lOD.wxVkey=1
 }
-aPD.wxXCkey=1
-_(r,lOD)
+lOD.wxXCkey=1
+_(r,oND)
 return r
 }
 e_[x[10]]={f:m10,j:[],i:[],ti:[],ic:[]}
 d_[x[11]]={}
 var m11=function(e,s,r,gg){
 var z=gz$gwx_12()
-var eRD=_v()
-_(r,eRD)
-if(_oz(z,0,e,s,gg)){eRD.wxVkey=1
+var tQD=_v()
+_(r,tQD)
+if(_oz(z,0,e,s,gg)){tQD.wxVkey=1
 }
-eRD.wxXCkey=1
+tQD.wxXCkey=1
 return r
 }
 e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
 d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
-var oTD=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var bSD=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var oTD=_v()
+_(bSD,oTD)
+if(_oz(z,4,e,s,gg)){oTD.wxVkey=1
+}
 var xUD=_v()
-_(oTD,xUD)
-if(_oz(z,4,e,s,gg)){xUD.wxVkey=1
+_(bSD,xUD)
+if(_oz(z,5,e,s,gg)){xUD.wxVkey=1
 }
 var oVD=_v()
-_(oTD,oVD)
-if(_oz(z,5,e,s,gg)){oVD.wxVkey=1
+_(bSD,oVD)
+if(_oz(z,6,e,s,gg)){oVD.wxVkey=1
 }
-var fWD=_v()
-_(oTD,fWD)
-if(_oz(z,6,e,s,gg)){fWD.wxVkey=1
-}
+oTD.wxXCkey=1
 xUD.wxXCkey=1
 oVD.wxXCkey=1
-fWD.wxXCkey=1
-_(r,oTD)
+_(r,bSD)
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
 d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
-var hYD=_v()
-_(r,hYD)
-var oZD=function(o2D,c1D,l3D,gg){
-var t5D=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o2D,c1D,gg)
-var e6D=_v()
-_(t5D,e6D)
-if(_oz(z,7,o2D,c1D,gg)){e6D.wxVkey=1
+var cXD=_v()
+_(r,cXD)
+var hYD=function(c1D,oZD,o2D,gg){
+var a4D=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],c1D,oZD,gg)
+var t5D=_v()
+_(a4D,t5D)
+if(_oz(z,7,c1D,oZD,gg)){t5D.wxVkey=1
 }
-e6D.wxXCkey=1
-_(l3D,t5D)
-return l3D
+t5D.wxXCkey=1
+_(o2D,a4D)
+return o2D
 }
-hYD.wxXCkey=2
-_2z(z,2,oZD,e,s,gg,hYD,'item','index','index')
+cXD.wxXCkey=2
+_2z(z,2,hYD,e,s,gg,cXD,'item','index','index')
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var o8D=_v()
-_(r,o8D)
-var x9D=function(fAE,o0D,cBE,gg){
-var oDE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],fAE,o0D,gg)
-var cEE=_v()
-_(oDE,cEE)
-if(_oz(z,7,fAE,o0D,gg)){cEE.wxVkey=1
+var b7D=_v()
+_(r,b7D)
+var o8D=function(o0D,x9D,fAE,gg){
+var hCE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o0D,x9D,gg)
+var oDE=_v()
+_(hCE,oDE)
+if(_oz(z,7,o0D,x9D,gg)){oDE.wxVkey=1
 }
-cEE.wxXCkey=1
-_(cBE,oDE)
-return cBE
+oDE.wxXCkey=1
+_(fAE,hCE)
+return fAE
 }
-o8D.wxXCkey=2
-_2z(z,2,x9D,e,s,gg,o8D,'item','index','index')
+b7D.wxXCkey=2
+_2z(z,2,o8D,e,s,gg,b7D,'item','index','index')
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var lGE=_v()
-_(r,lGE)
-if(_oz(z,0,e,s,gg)){lGE.wxVkey=1
+var oFE=_v()
+_(r,oFE)
+if(_oz(z,0,e,s,gg)){oFE.wxVkey=1
 }
-lGE.wxXCkey=1
+oFE.wxXCkey=1
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
@@ -1949,20 +1944,20 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-var oLE=_v()
-_(r,oLE)
-var xME=function(fOE,oNE,cPE,gg){
-var oRE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],fOE,oNE,gg)
-var cSE=_v()
-_(oRE,cSE)
-if(_oz(z,7,fOE,oNE,gg)){cSE.wxVkey=1
+var bKE=_v()
+_(r,bKE)
+var oLE=function(oNE,xME,fOE,gg){
+var hQE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oNE,xME,gg)
+var oRE=_v()
+_(hQE,oRE)
+if(_oz(z,7,oNE,xME,gg)){oRE.wxVkey=1
 }
-cSE.wxXCkey=1
-_(cPE,oRE)
-return cPE
+oRE.wxXCkey=1
+_(fOE,hQE)
+return fOE
 }
-oLE.wxXCkey=2
-_2z(z,2,xME,e,s,gg,oLE,'item','index','index')
+bKE.wxXCkey=2
+_2z(z,2,oLE,e,s,gg,bKE,'item','index','index')
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
@@ -1999,49 +1994,49 @@ e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
 d_[x[25]]={}
 var m25=function(e,s,r,gg){
 var z=gz$gwx_26()
-var oZE=_v()
-_(r,oZE)
-if(_oz(z,0,e,s,gg)){oZE.wxVkey=1
+var bYE=_v()
+_(r,bYE)
+if(_oz(z,0,e,s,gg)){bYE.wxVkey=1
 }
-oZE.wxXCkey=1
+bYE.wxXCkey=1
 return r
 }
 e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
 d_[x[26]]={}
 var m26=function(e,s,r,gg){
 var z=gz$gwx_27()
-var o2E=_v()
-_(r,o2E)
-var f3E=function(h5E,c4E,o6E,gg){
-var o8E=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],h5E,c4E,gg)
-var l9E=_v()
-_(o8E,l9E)
-if(_oz(z,7,h5E,c4E,gg)){l9E.wxVkey=1
+var x1E=_v()
+_(r,x1E)
+var o2E=function(c4E,f3E,h5E,gg){
+var c7E=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],c4E,f3E,gg)
+var o8E=_v()
+_(c7E,o8E)
+if(_oz(z,7,c4E,f3E,gg)){o8E.wxVkey=1
 }
-l9E.wxXCkey=1
-_(o6E,o8E)
-return o6E
+o8E.wxXCkey=1
+_(h5E,c7E)
+return h5E
 }
-o2E.wxXCkey=2
-_2z(z,2,f3E,e,s,gg,o2E,'item','index','index')
+x1E.wxXCkey=2
+_2z(z,2,o2E,e,s,gg,x1E,'item','index','index')
 return r
 }
 e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 d_[x[27]]={}
 var m27=function(e,s,r,gg){
 var z=gz$gwx_28()
-var tAF=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
+var a0E=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
+var tAF=_v()
+_(a0E,tAF)
+if(_oz(z,2,e,s,gg)){tAF.wxVkey=1
+}
 var eBF=_v()
-_(tAF,eBF)
-if(_oz(z,2,e,s,gg)){eBF.wxVkey=1
+_(a0E,eBF)
+if(_oz(z,3,e,s,gg)){eBF.wxVkey=1
 }
-var bCF=_v()
-_(tAF,bCF)
-if(_oz(z,3,e,s,gg)){bCF.wxVkey=1
-}
+tAF.wxXCkey=1
 eBF.wxXCkey=1
-bCF.wxXCkey=1
-_(r,tAF)
+_(r,a0E)
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
@@ -2066,51 +2061,51 @@ e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
 d_[x[31]]={}
 var m31=function(e,s,r,gg){
 var z=gz$gwx_32()
-var cHF=_v()
-_(r,cHF)
-var hIF=function(cKF,oJF,oLF,gg){
-var aNF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],cKF,oJF,gg)
+var fGF=_v()
+_(r,fGF)
+var cHF=function(oJF,hIF,cKF,gg){
+var lMF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oJF,hIF,gg)
+var aNF=_v()
+_(lMF,aNF)
+if(_oz(z,7,oJF,hIF,gg)){aNF.wxVkey=1
+}
 var tOF=_v()
-_(aNF,tOF)
-if(_oz(z,7,cKF,oJF,gg)){tOF.wxVkey=1
+_(lMF,tOF)
+if(_oz(z,8,oJF,hIF,gg)){tOF.wxVkey=1
 }
 var ePF=_v()
-_(aNF,ePF)
-if(_oz(z,8,cKF,oJF,gg)){ePF.wxVkey=1
+_(lMF,ePF)
+if(_oz(z,9,oJF,hIF,gg)){ePF.wxVkey=1
 }
 var bQF=_v()
-_(aNF,bQF)
-if(_oz(z,9,cKF,oJF,gg)){bQF.wxVkey=1
+_(lMF,bQF)
+if(_oz(z,10,oJF,hIF,gg)){bQF.wxVkey=1
 }
-var oRF=_v()
-_(aNF,oRF)
-if(_oz(z,10,cKF,oJF,gg)){oRF.wxVkey=1
-}
+aNF.wxXCkey=1
 tOF.wxXCkey=1
 ePF.wxXCkey=1
 bQF.wxXCkey=1
-oRF.wxXCkey=1
-_(oLF,aNF)
-return oLF
+_(cKF,lMF)
+return cKF
 }
-cHF.wxXCkey=2
-_2z(z,2,hIF,e,s,gg,cHF,'item','index','index')
+fGF.wxXCkey=2
+_2z(z,2,cHF,e,s,gg,fGF,'item','index','index')
 return r
 }
 e_[x[31]]={f:m31,j:[],i:[],ti:[],ic:[]}
 d_[x[32]]={}
 var m32=function(e,s,r,gg){
 var z=gz$gwx_33()
-var oTF=_n('view')
-_rz(z,oTF,'class',0,e,s,gg)
-var cVF=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
-_(oTF,cVF)
-var fUF=_v()
-_(oTF,fUF)
-if(_oz(z,8,e,s,gg)){fUF.wxVkey=1
+var xSF=_n('view')
+_rz(z,xSF,'class',0,e,s,gg)
+var fUF=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
+_(xSF,fUF)
+var oTF=_v()
+_(xSF,oTF)
+if(_oz(z,8,e,s,gg)){oTF.wxVkey=1
 }
-fUF.wxXCkey=1
-_(r,oTF)
+oTF.wxXCkey=1
+_(r,xSF)
 return r
 }
 e_[x[32]]={f:m32,j:[],i:[],ti:[],ic:[]}
@@ -2123,34 +2118,34 @@ e_[x[33]]={f:m33,j:[],i:[],ti:[],ic:[]}
 d_[x[34]]={}
 var m34=function(e,s,r,gg){
 var z=gz$gwx_35()
-var cYF=_n('view')
-_rz(z,cYF,'class',0,e,s,gg)
-var oZF=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(cYF,oZF)
-var l1F=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(cYF,l1F)
-var a2F=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(cYF,a2F)
-_(r,cYF)
+var oXF=_n('view')
+_rz(z,oXF,'class',0,e,s,gg)
+var cYF=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXF,cYF)
+var oZF=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXF,oZF)
+var l1F=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXF,l1F)
+_(r,oXF)
 return r
 }
 e_[x[34]]={f:m34,j:[],i:[],ti:[],ic:[]}
 d_[x[35]]={}
 var m35=function(e,s,r,gg){
 var z=gz$gwx_36()
-var e4F=_n('view')
-_rz(z,e4F,'class',0,e,s,gg)
+var t3F=_n('view')
+_rz(z,t3F,'class',0,e,s,gg)
+var e4F=_v()
+_(t3F,e4F)
+if(_oz(z,1,e,s,gg)){e4F.wxVkey=1
+}
 var b5F=_v()
-_(e4F,b5F)
-if(_oz(z,1,e,s,gg)){b5F.wxVkey=1
+_(t3F,b5F)
+if(_oz(z,2,e,s,gg)){b5F.wxVkey=1
 }
-var o6F=_v()
-_(e4F,o6F)
-if(_oz(z,2,e,s,gg)){o6F.wxVkey=1
-}
+e4F.wxXCkey=1
 b5F.wxXCkey=1
-o6F.wxXCkey=1
-_(r,e4F)
+_(r,t3F)
 return r
 }
 e_[x[35]]={f:m35,j:[],i:[],ti:[],ic:[]}
@@ -2763,26 +2758,317 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = request;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = request;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 function request(obj) {
+  uni.showLoading({
+    title: '加载中' });
+
+  var params = {
+    'wxapp_id': '10001',
+    token: 'e49a5f24059cca8dd47eb38d5d631742' };
+
+  var data = _objectSpread({}, obj.data, params);
   uni.request({
     url: obj.url,
     method: obj.method ? obj.method : 'GET',
-    // data: obj.data? obj.data: {},
-    data: {
-      'wxapp_id': 10001,
-      token: 'b377d993eb053778e684c00bfff7e442' },
-
+    data: data,
     header: obj.header ? obj.header : {},
     success: function success(res) {
       obj.cb(null, res.data);
     },
     fail: function fail(err) {
       obj.cb(err, null);
+    },
+    complete: function complete(data) {
+      if (data) {
+        uni.hideLoading();
+      }
     } });
 
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/components/richText.js":
+/*!************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/components/richText.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
+var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
+var attr = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g; // Empty Elements - HTML 5
+
+var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr'); // Block Elements - HTML 5
+// fixed by xxx 将 ins 标签从块级名单中移除
+
+var block = makeMap('a,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
+
+var inline = makeMap('abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'); // Elements that you can, intentionally, leave open
+// (and which close themselves)
+
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr'); // Attributes that have their values filled in disabled="disabled"
+
+var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected'); // Special Elements (can contain anything)
+
+var special = makeMap('script,style');
+function HTMLParser(html, handler) {
+  var index;
+  var chars;
+  var match;
+  var stack = [];
+  var last = html;
+
+  stack.last = function () {
+    return this[this.length - 1];
+  };
+
+  while (html) {
+    chars = true; // Make sure we're not in a script or style element
+
+    if (!stack.last() || !special[stack.last()]) {
+      // Comment
+      if (html.indexOf('<!--') == 0) {
+        index = html.indexOf('-->');
+
+        if (index >= 0) {
+          if (handler.comment) {
+            handler.comment(html.substring(4, index));
+          }
+
+          html = html.substring(index + 3);
+          chars = false;
+        } // end tag
+
+      } else if (html.indexOf('</') == 0) {
+        match = html.match(endTag);
+
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(endTag, parseEndTag);
+          chars = false;
+        } // start tag
+
+      } else if (html.indexOf('<') == 0) {
+        match = html.match(startTag);
+
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(startTag, parseStartTag);
+          chars = false;
+        }
+      }
+
+      if (chars) {
+        index = html.indexOf('<');
+        var text = index < 0 ? html : html.substring(0, index);
+        html = index < 0 ? '' : html.substring(index);
+
+        if (handler.chars) {
+          handler.chars(text);
+        }
+      }
+    } else {
+      html = html.replace(new RegExp('([\\s\\S]*?)<\/' + stack.last() + '[^>]*>'), function (all, text) {
+        text = text.replace(/<!--([\s\S]*?)-->|<!\[CDATA\[([\s\S]*?)]]>/g, '$1$2');
+
+        if (handler.chars) {
+          handler.chars(text);
+        }
+
+        return '';
+      });
+      parseEndTag('', stack.last());
+    }
+
+    if (html == last) {
+      throw 'Parse Error: ' + html;
+    }
+
+    last = html;
+  } // Clean up any remaining tags
+
+
+  parseEndTag();
+
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = tagName.toLowerCase();
+
+    if (block[tagName]) {
+      while (stack.last() && inline[stack.last()]) {
+        parseEndTag('', stack.last());
+      }
+    }
+
+    if (closeSelf[tagName] && stack.last() == tagName) {
+      parseEndTag('', tagName);
+    }
+
+    unary = empty[tagName] || !!unary;
+
+    if (!unary) {
+      stack.push(tagName);
+    }
+
+    if (handler.start) {
+      var attrs = [];
+      rest.replace(attr, function (match, name) {
+        var value = arguments[2] ? arguments[2] : arguments[3] ? arguments[3] : arguments[4] ? arguments[4] : fillAttrs[name] ? name : '';
+        attrs.push({
+          name: name,
+          value: value,
+          escaped: value.replace(/(^|[^\\])"/g, '$1\\\"') // "
+        });
+
+      });
+
+      if (handler.start) {
+        handler.start(tagName, attrs, unary);
+      }
+    }
+  }
+
+  function parseEndTag(tag, tagName) {
+    // If no tag name is provided, clean shop
+    if (!tagName) {
+      var pos = 0;
+    } // Find the closest opened tag of the same type
+    else {
+        for (var pos = stack.length - 1; pos >= 0; pos--) {
+          if (stack[pos] == tagName) {
+            break;
+          }
+        }
+      }
+
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (var i = stack.length - 1; i >= pos; i--) {
+        if (handler.end) {
+          handler.end(stack[i]);
+        }
+      } // Remove the open elements from the stack
+
+
+      stack.length = pos;
+    }
+  }
+}
+
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+
+  for (var i = 0; i < items.length; i++) {
+    obj[items[i]] = true;
+  }
+
+  return obj;
+}
+
+function removeDOCTYPE(html) {
+  return html.replace(/<\?xml.*\?>\n/, '').replace(/<!doctype.*>\n/, '').replace(/<!DOCTYPE.*>\n/, '');
+}
+
+function parseAttrs(attrs) {
+  return attrs.reduce(function (pre, attr) {
+    var value = attr.value;
+    var name = attr.name;
+
+    if (pre[name]) {
+      pre[name] = pre[name] + " " + value;
+    } else {
+      pre[name] = value;
+    }
+
+    return pre;
+  }, {});
+}
+
+function parseHtml(html) {
+  html = removeDOCTYPE(html);
+  var stacks = [];
+  var results = {
+    node: 'root',
+    children: [] };
+
+  HTMLParser(html, {
+    start: function start(tag, attrs, unary) {
+      var node = {
+        name: tag };
+
+
+      if (attrs.length !== 0) {
+        node.attrs = parseAttrs(attrs);
+      }
+
+      if (unary) {
+        var parent = stacks[0] || results;
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      } else {
+        stacks.unshift(node);
+      }
+    },
+    end: function end(tag) {
+      var node = stacks.shift();
+      if (node.name !== tag) console.error('invalid state: mismatch end tag', " at components\\richText.js:222");
+
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      }
+    },
+    chars: function chars(text) {
+      var node = {
+        type: 'text',
+        text: text };
+
+
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+
+        if (!parent.children) {
+          parent.children = [];
+        }
+
+        parent.children.push(node);
+      }
+    },
+    comment: function comment(text) {
+      var node = {
+        node: 'comment',
+        text: text };
+
+      var parent = stacks[0];
+
+      if (!parent.children) {
+        parent.children = [];
+      }
+
+      parent.children.push(node);
+    } });
+
+  return results.children;
+}var _default =
+
+parseHtml;exports.default = _default;
 
 /***/ }),
 
@@ -14865,8 +15151,19 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { category_id: id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;return;} else {uni.showToast({ title: '文章列表', icon: 'none' });}} });}, // 获取文章分类
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
+            return;
+          } else {
+            uni.showToast({
+              title: '文章列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 获取文章分类
     getCategorylist: function getCategorylist() {var _this2 = this;
       this.$http({
         data: {
@@ -14887,21 +15184,57 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         } });
 
     },
+    // 点赞
+    zanAction: function zanAction(item, index) {var _this3 = this;
+      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:117");
+      var url = this.$api.unLike;
+      if (item.islike === 'no') {
+        url = this.$api.like;
+      }
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                _this3.cultureList[index].islike = 'no';
+                _this3.cultureList[index].like_count -= 1;
+                break;
+              case 'no':
+                _this3.cultureList[index].islike = 'yes';
+                _this3.cultureList[index].like_count += 1;
+                break;}
+
+          } else {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
-      var view = uni.createSelectorQuery().select(".item");
-      view.fields({
-        size: true,
-        scrollOffset: true },
-      function (data) {
-        console.log("得到节点信息" + JSON.stringify(data), " at pages\\index\\index.vue:112");
-      }).exec();
     },
     // 文章详情页
     goInfo: function goInfo(item) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.title });
+        url: '../components/shareInfo?article_id=' + item });
 
     },
     // 搜索页
@@ -15054,178 +15387,240 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      current: {
-        poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
-        name: '致爱丽丝',
-        author: '暂无',
-        src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' },
-
-      audioAction: {
-        method: 'pause' },
-      // 音频播放audio参数
-      title: '',
-      indicatorDots: true,
-      autoplay: true,
-      interval: 2000,
-      duration: 500,
-      indicatorActiveColor: '#ffffff',
-      swiperList: [{}, {}, {}],
-      userInfo: {
-        imgUrl: '',
-        userName: '奶油田官方' },
-
-      cultureInfo: {
-        title: '2019深圳奶油田电音节',
-        tags: ['深圳奶油田', '深圳'],
-        time: '2019-05-16',
-        words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' },
-
-      total: 1212, // 评论总数
-      commentList: [
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1,
-        writerChild: [
-        {
-          imgUrl: '',
-          name: '@看灰机',
-          speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-          time: '05-12',
-          zan: 999,
-          zan_status: 1 }] },
-
-
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1 },
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1,
-        writerChild: [
-        {
-          imgUrl: '',
-          name: '@看灰机',
-          speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-          time: '05-12',
-          zan: 999,
-          zan_status: 1 }] }],
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
-      // 评论信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _richText = _interopRequireDefault(__webpack_require__(/*! ../../components/richText.js */ "../../../../Desktop/LEI/white/components/richText.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { current: { poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg', name: '致爱丽丝', author: '暂无', src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' }, audioAction: { method: 'pause' }, // 音频播放audio参数
+      title: '', article_id: '', // 文章ID
+      indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', swiperList: [], userInfo: { imgUrl: '', userName: '奶油田官方' }, cultureInfo: { title: '2019深圳奶油田电音节', tags: ['深圳奶油田', '深圳'], time: '2019-05-16', words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' }, strings: [], comments: {}, // commentList: [{
+      //   imgUrl: '',
+      //   name: '撒浪嘿',
+      //   speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
+      //   time: '05-12',
+      //   zan: 666,
+      //   zan_status: 1,
+      //   writerChild: [
+      //     {
+      //       imgUrl: '',
+      //       name: '@看灰机',
+      //       speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
+      //       time: '05-12',
+      //       zan: 999,
+      //       zan_status: 1
+      //     }
+      //   ]
+      // }],               // 评论信息
       speakVal: '', // 我的评论value值
-      sumList: {
-        zanTotal: 2000,
-        starTotal: 1578,
-        megTotal: 1959 } };
+      sumList: { zanTotal: 2000, starTotal: 1578, megTotal: 1959 } };}, // 接受首页传递的参数
+  onLoad: function onLoad(option) {this.article_id = option.article_id;this.getDetail(this.article_id);}, methods: { goBack: function goBack() {uni.navigateBack({ delta: 1 });}, getDetail: function getDetail(id) {var _this = this;this.$http({ url: this.$api.detailing, data: { article_id: id }, cb: function cb(err, res) {console.log(res.data.detail, " at pages\\components\\shareInfo.vue:164");_this.swiperList = res.data.detail.banners;_this.comments = res.data.detail.comments; // 文章标题等
+          _this.cultureInfo.title = res.data.detail.article_title;var richtext = '<p>众所周知，水电听起来柔软，水电搭配Beats低音更是沁入人心。</p><p><img src="http://market.pd-unixe.com/uploads/2019041511593871a464816.jpg"/></p><p>好了，我们下期再见</p><p><video src="http://weibobangshou.oss-cn-shenzhen.aliyuncs.com/example.mp4" poster="" style="height: 190px;" controls=""></video></p><p></p>';var regex = new RegExp('img');richtext = richtext.replace(regex, "img style=\"max-width: 100%;\"");_this.strings = richtext; // this.strings = res.data.detail.article_content
+          // this.strings = parseHtml(res.data.detail.article_content)
+          // console.log(this.strings)
+          _this.cultureInfo.time = res.data.detail.update_time;} });}, // 评论点赞
+    zanAction: function zanAction(item, index) {var _this2 = this;console.log(item.id, item.islike, index, " at pages\\components\\shareInfo.vue:188");var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {
+            switch (_this2.comments.list[index].islike) {
+              case 'yes':
+                _this2.comments.list[index].islike = 'no';
+                _this2.comments.list[index].likenum -= 1;
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
 
+                break;
+              case 'no':
+                _this2.comments.list[index].islike = 'yes';
+                _this2.comments.list[index].likenum += 1;
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
 
-  },
-  // 接受首页传递的参数
-  onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\shareInfo.vue:166");
-    this.title = option.title;
-  },
-  methods: {
-    goBack: function goBack() {
-      uni.navigateBack({
-        delta: 1 });
+                break;}
+
+          } else {
+            switch (_this2.comments.list[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
 
     },
     goShare: function goShare() {
@@ -15238,10 +15633,36 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:185");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:247");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:188");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:250");
+        } });
+
+    },
+    addComment: function addComment(e) {var _this3 = this;
+      console.log(this.speakVal, " at pages\\components\\shareInfo.vue:255");
+      this.$http({
+        url: this.$api.addcomments,
+        data: {
+          article_id: this.article_id,
+          comment: e.detail.value },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // 成功后刷新数据
+            _this3.getDetail(_this3.article_id);
+            _this3.speakVal = '';
+            uni.showToast({
+              title: '评论发布成功',
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '发布失败请重试',
+              icon: 'none' });
+
+          }
         } });
 
     } } };exports.default = _default;

@@ -3,7 +3,7 @@
     <view class="topBar">
       <view class="search border-box">
         <text class="search-icon iconfont">&#xe667;</text>
-        <input class="ipt" :placeholder="'大家都在搜' + searchInfo" confirm-type="search" :value="inputClearValue" @input="clearInput"/>
+        <input class="ipt" :placeholder="'大家都在搜' + searchInfo" confirm-type="search" :value="inputClearValue" @input="clearInput" @confirm="searchAction"/>
         <icon type="clear" v-if="showClearIcon" size="14" @click="clearIcon"/>
       </view>
       <text @click="goBack">取消</text>
@@ -39,8 +39,12 @@
         showClearIcon: false,
         searchInfo: '森海塞尔',
         history: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
-        hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱']
+        hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱'],
+        type: ''
       }
+    },
+    onLoad(option) {
+      this.type = option.type
     },
     methods: {
       goBack() {
@@ -54,7 +58,7 @@
       },
       goGood(item) {
         uni.navigateTo({
-          url: 'goods?class=' + item
+          url: 'goods?class=' + item + '&type=' + this.type
         })
       },
       clearInput(event) {
@@ -65,6 +69,11 @@
       	} else {
       		this.showClearIcon = false
       	}
+      },
+      searchAction(e) {
+        uni.navigateTo({
+          url: 'goods?class=' + e.detail.value + '&type=' + this.type
+        })
       },
       delHistory() {
         let that = this

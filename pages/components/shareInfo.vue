@@ -28,41 +28,44 @@
           </view>
       	</view>
         <view class="sing">
-          <audio :style="{'text-align': 'left'}" :src="current.src" :poster="current.poster" :name="current.name" :author="current.author" :action="audioAction" controls></audio>
+          <!-- <audio :style="{'text-align': 'left'}" :src="current.src" :poster="current.poster" :name="current.name" :author="current.author" :action="audioAction" controls></audio> -->
         </view>
       </view>
       <view class="cultureInfo bg-white">
-        <!-- <view class="cultureTitle">{{ cultureInfo.title }}</view> -->
-        <view class="cultureTitle">{{ title }}</view>
+        <view class="cultureTitle">{{ cultureInfo.title }}</view>
         <view class="cultureCategory">
           <text v-for="(item, index) in cultureInfo.tags" :key="index">{{ item }}</text>
         </view>
         <view class="cultureTime">{{ cultureInfo.time }}</view>
-        <scroll-view scroll-y="true" class="cultureWords">{{ cultureInfo.words }}</scroll-view>
+        <view class="cultureWords">
+          <rich-text type="node" :nodes="strings"></rich-text>
+        </view>
       </view>
       <view class="comment bg-white">
-        <view class="total">评论({{ total }})</view>
-        <view v-for="(item, index) in commentList" :key="index" :class="{ item: true, 'no-border': index === 0 }">
+        <view class="total">评论({{ comments.num }})</view>
+        <view v-for="(item, index) in comments.list" :key="index" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
           <view class="writer">
-            <image class="writerImg"></image>
+            <view class="writerImg">
+              <image :src="item.avatarUrl" mode=""></image>
+            </view>
             <view class="writer-center">
               <view class="writer-father">
-                <view class="writer-name">{{ item.name }}</view>
-                <view class="writer-speak">{{ item.speak }}<text>{{ item.time }}</text></view>
+                <view class="writer-name">{{ item.nickName }}</view>
+                <view class="writer-speak">{{ item.content }}<text>{{ item.input_date }}</text></view>
                 <view class="zan">
-                  <text class="iconfont">&#xe63a;</text>
-                  <text>{{ item.zan }}</text>
+                  <text :class="{iconfont: true, isZan: item.islike !== 'no'}" @click="zanAction(item, index)">&#xe63a;</text>
+                  <text>{{ item.likenum }}</text>
                 </view>
               </view>
-              <view v-for="(item, index) in item.writerChild" :key="index" v-if="index < 2 " class="writer-child">
+              <view v-for="(li, num) in item.replys" :key="num" v-if="num < 2 " class="writer-child">
                 <image class="childImg"></image>
                 <view class="childCenter">
-                  <view class="writer-name">{{ item.name }}</view>
-                  <view class="writer-speak">{{ item.speak }}<text>{{ item.time }}</text></view>
+                  <view class="writer-name">{{ li.reply_name }}</view>
+                  <view class="writer-speak">{{ li.reply_content }}<text>{{ li.reply_input_time }}</text></view>
                 </view>
                 <view class="zan">
                   <text class="iconfont">&#xe63a;</text>
-                  <text>{{ item.zan }}</text>
+                  <text>{{ li.likenum }}</text>
                 </view>
               </view>
             </view>
@@ -71,16 +74,17 @@
       </view>
     </scroll-view>
     <view class="speak bg-white border-box">
-      <input type="text" :value="speakVal" placeholder="留下你的精彩评论吧"/>
+      <input type="text" :value="speakVal" placeholder="留下你的精彩评论吧" @confirm="addComment"/>
       <view>
         <text class="iconfont">&#xe69d;</text>
-        <text>{{ sumList.megTotal }}</text>
+        <text>{{ comments.num }}</text>
       </view>
     </view>
   </view>
 </template>
 
 <script>
+  import parseHtml from  "../../components/richText.js"
   export default {
     data() {
       return {
@@ -111,51 +115,26 @@
           time: '2019-05-16',
           words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。'
         },
-        total: 1212,        // 评论总数
-        commentList: [
-          {
-            imgUrl: '',
-            name: '撒浪嘿',
-            speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-            time: '05-12',
-            zan: 666,
-            zan_status: 1,
-            writerChild: [
-              {
-                imgUrl: '',
-                name: '@看灰机',
-                speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-                time: '05-12',
-                zan: 999,
-                zan_status: 1
-              }
-            ]
-          }, {
-            imgUrl: '',
-            name: '撒浪嘿',
-            speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-            time: '05-12',
-            zan: 666,
-            zan_status: 1
-          }, {
-            imgUrl: '',
-            name: '撒浪嘿',
-            speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-            time: '05-12',
-            zan: 666,
-            zan_status: 1,
-            writerChild: [
-              {
-                imgUrl: '',
-                name: '@看灰机',
-                speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-                time: '05-12',
-                zan: 999,
-                zan_status: 1
-              }
-            ]
-          }
-        ],               // 评论信息
+        strings: [],
+        comments: {},
+        // commentList: [{
+        //   imgUrl: '',
+        //   name: '撒浪嘿',
+        //   speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
+        //   time: '05-12',
+        //   zan: 666,
+        //   zan_status: 1,
+        //   writerChild: [
+        //     {
+        //       imgUrl: '',
+        //       name: '@看灰机',
+        //       speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
+        //       time: '05-12',
+        //       zan: 999,
+        //       zan_status: 1
+        //     }
+        //   ]
+        // }],               // 评论信息
         speakVal: '',     // 我的评论value值
         sumList: {
           zanTotal: 2000,
@@ -166,7 +145,6 @@
     },
     // 接受首页传递的参数
     onLoad(option) {
-      console.log('分享文章详情页接受到的参数',option)
       this.article_id = option.article_id
       this.getDetail(this.article_id)
     },
@@ -183,8 +161,76 @@
             article_id: id
           },
           cb: (err, res) => {
-            console.log(res.data.detail.banners)
+            console.log(res.data.detail)
             this.swiperList = res.data.detail.banners
+            this.comments = res.data.detail.comments
+            // 文章标题等
+            this.cultureInfo.title = res.data.detail.article_title
+            
+            var richtext=  '<p>众所周知，水电听起来柔软，水电搭配Beats低音更是沁入人心。</p><p><img src="http://market.pd-unixe.com/uploads/2019041511593871a464816.jpg"/></p><p>好了，我们下期再见</p><p><video src="http://weibobangshou.oss-cn-shenzhen.aliyuncs.com/example.mp4" poster="" style="height: 190px;" controls=""></video></p><p></p>'
+            const regex = new RegExp('img')
+            richtext= richtext.replace(regex, `img style="max-width: 100%;"`)
+            
+            this.strings = richtext
+            
+            // this.strings = res.data.detail.article_content
+            
+            // this.strings = parseHtml(res.data.detail.article_content)
+            
+            // console.log(this.strings)
+            
+            this.cultureInfo.time = res.data.detail.update_time
+          }
+        })
+      },
+      // 评论点赞
+      zanAction(item, index) {
+        console.log(item.id, item.islike, index)
+        let url = this.$api.commentunlike
+        if(item.islike === 'no') {
+          url = this.$api.commentlike
+        }
+        this.$http({
+          url: url,
+          data: {
+            comment_id: item.id
+          },
+          cb: (err, res) => {
+            if(!err && res) {
+              switch(this.comments.list[index].islike) {
+                case 'yes':
+                  this.comments.list[index].islike = 'no'
+                  this.comments.list[index].likenum -= 1
+                  uni.showToast({
+                  	title: '点赞成功',
+                    icon: 'none'
+                  })
+                  break
+                case 'no':
+                  this.comments.list[index].islike = 'yes'
+                  this.comments.list[index].likenum += 1
+                  uni.showToast({
+                  	title: '取消点赞成功',
+                    icon: 'none'
+                  })
+                  break
+              }
+            } else {
+              switch(this.comments.list[index].islike) {
+                case 'yes':
+                  uni.showToast({
+                  	title: '取消点赞失败',
+                    icon: 'none'
+                  })
+                  break
+                case 'no':
+                  uni.showToast({
+                  	title: '点赞失败请重试',
+                    icon: 'none'
+                  })
+                  break
+              }
+            }
           }
         })
       },
@@ -202,6 +248,32 @@
           },
           fail: function (err) {
             console.log("fail:" + JSON.stringify(err));
+          }
+        })
+      },
+      addComment(e) {
+        console.log(this.speakVal)
+        this.$http({
+          url: this.$api.addcomments,
+          data: {
+            article_id: this.article_id,
+            comment: e.detail.value
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              // 成功后刷新数据
+              this.getDetail(this.article_id)
+              this.speakVal = ''
+              uni.showToast({
+              	title: '评论发布成功',
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+              	title: '发布失败请重试',
+                icon: 'none'
+              })
+            }
           }
         })
       }
@@ -279,16 +351,16 @@
   .cultureInfo{
     display: flex;
     flex-direction: column;
-    max-height: 640upx;
     margin-bottom: 30upx;
-    padding: 69upx 30upx;
+    padding: 60upx 30upx;
+    width: 100%;
     box-sizing: border-box;
     overflow: hidden;
     .cultureTitle{
-      margin-bottom: 30upx;
+      margin-bottom: 21upx;
       font-size: $font-40;
       font-weight: $font-bold;
-      line-height: 38upx;
+      line-height: 56upx;
     }
     .cultureCategory{
       height: 40upx;
@@ -315,11 +387,14 @@
       font-size: $font-24;
     }
     .cultureWords{
-      max-height: 323upx;
+      width: 100%;
       font-size: $font-28;
       word-break:break-all;
       line-height: 40upx;
       color: $word-color;
+      image{
+        max-width: 500upx;
+      }
     }
   }
   .comment{
@@ -333,7 +408,7 @@
       min-height: 150upx;
       padding-top: 30upx;
       padding-bottom: 27upx;
-      border-top: 2px solid $color-f5;
+      border-top: 2upx solid $color-f5;
       .writer{
         display: flex;
         .writerImg{
@@ -341,7 +416,12 @@
           width: 66upx;
           border-radius: 100%;
           margin-right: 30upx;
-          background: #ccc;
+          border: 1px solid $color-f5;
+          overflow: hidden;
+          &>image{
+            height: 100%;
+            width: 100%;
+          }
         }
         .writer-center{
           flex: 1;
@@ -353,6 +433,18 @@
               position: absolute;
               right: -70upx;
               top: 0;
+            }
+            .isZan{
+              position: relative;
+              &::before{
+                content: '';
+                height: 13upx;
+                width: 14upx;
+                background: $color-red;
+                position: absolute;
+                bottom: 6upx;
+                left: 8upx;
+              }
             }
           }
           .writer-name{

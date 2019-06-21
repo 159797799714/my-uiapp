@@ -184,7 +184,7 @@
       // 搜索页
       goSearch() {
         uni.navigateTo({
-          url: '../components/search'
+          url: '../components/search?type=1'
         })
       },
       // 商品详情页

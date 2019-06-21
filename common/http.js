@@ -1,14 +1,16 @@
 
 export default function request(obj){
+  uni.showLoading({
+    title: '加载中'
+  })
   let params = {
     'wxapp_id': '10001',
-    token: 'b377d993eb053778e684c00bfff7e442'
+    token: 'e49a5f24059cca8dd47eb38d5d631742'
   }
   let data ={...obj.data, ...params}
   uni.request({
     url: obj.url,
     method: obj.method? obj.method : 'GET',
-    // data: obj.data? obj.data: {},
     data: data,
     header: obj.header? obj.header : {},
     success: (res) => {
@@ -16,6 +18,11 @@ export default function request(obj){
     },
     fail: (err) => {
       obj.cb(err, null)
+    },
+    complete: (data)=> {
+      if(data) {
+        uni.hideLoading()
+      }
     }
   })
 }

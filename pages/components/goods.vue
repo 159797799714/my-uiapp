@@ -45,21 +45,21 @@
       <scroll-view scroll-y="true" class="culture">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
-          <view v-for="(item, index) in shareList" :key="index" class="item" @click="goShareDetail(item)">
+          <view v-for="(item, index) in shareList" :key="index" class="item" @click="goShareDetail(item.article_id)">
             <view class="img">
-              <image src="" mode=""></image>
+              <image :src="item.image.file_path" mode=""></image>
             </view>
-            <view class="title border-box">{{ item.title }}</view>
+            <view class="title border-box">{{ item.article_title }}</view>
             <view class="info border-box">
               <view class="user">
                 <view class="userImg">
-                  <image src="" mode=""></image>
+                  <image :src="item.headimg.file_path" mode=""></image>
                 </view>
-                <view class="userName">{{ item.authorName }}</view> 
+                <view class="userName">{{ item.author }}</view> 
               </view>
               <view class="zan">
                 <text :class="{iconfont: true, isZan: item.zan_status}" @click="clickZan(index)">&#xe63a;</text>
-                <text>{{ item.zan_num }}</text>
+                <text>{{ item.like_count }}</text>
               </view>
             </view>
           </view>
@@ -68,18 +68,19 @@
         <!-- 商品 -->
         <view v-if="tabIndex === 1" :class="{main: style === 0, 'bg-white': true, 'border-box': true, row: style === 1}">
           <view v-for="(item, index) in goodList" :key="index" class="good-item"  @click="goDetail(item)">
-            <view class="good-img"></view>
+            <view class="good-img">
+              <image :src="item.image[0].file_path" mode=""></image>
+            </view>
             <view class="good-info border-box">
-              <view class="good-name">{{ item.name }}</view>
+              <view class="good-name">{{ item.goods_name }}</view>
               <view class="good-remark">
-                <text v-for="(li, index) in item.remark" :key="index">{{ li }}</text>
+                <text>{{ item.selling_point }}</text>
               </view>
               <view class="good-price">
                 <view>
                   <text>￥</text>
-                  <text class="bigText">{{ item.price }}</text>
+                  <text class="bigText">{{ item.goods_min_price }}</text>
                 </view>
-                <text class="iconfont">&#xe719;</text>
               </view>
             </view>
           </view>
@@ -134,70 +135,13 @@
         filter: ['品牌', '分类'],
         filterTag_Index: '',            //默认选中品牌
         filter_alert: true,             // 筛选遮罩层显示
-        shareList: [
-          {
-            imgUrl: '',
-            title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-            authorImg: '',
-            authorName: '奶油田官方',
-            zan_status: true,
-            zan_num: 300
-          }, {
-            imgUrl: '',
-            title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-            authorImg: '',
-            authorName: '奶油田官方',
-            zan_status: false,
-            zan_num: 300
-          }, {
-            imgUrl: '',
-            title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-            authorImg: '',
-            authorName: '奶油田官方',
-            zan_status: false,
-            zan_num: 300
-          }, {
-            imgUrl: '',
-            title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-            authorImg: '',
-            authorName: '奶油田官方',
-            zan_status: false,
-            zan_num: 300
-          }
-        ],
+        shareList: [],
         filterCoverList: {
           list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
           sum: 4999
         },
         filterArr: [],
-        goodList: [
-          {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }
-        ],                                  // 商城数据
+        goodList: [],                                  // 商城数据
         captionList: [
           {
             title: '品牌',
@@ -219,6 +163,7 @@
     watch: {
       tabIndex(val, oldval) {
         this.filterIndex = 0
+        this.searchAction(this.searchInfo, this.tabIndex)
         if(val === 0) {
           this.shareTag = ['综合', '最热', '最新', '官方', '筛选']
           return
@@ -237,8 +182,62 @@
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option.class)
       this.searchInfo = option.class
+      this.tabIndex = Number(option.type)
+      this.searchAction(option.class, this.tabIndex)
     },
     methods: {
+      // 搜索typeCode 0 为分享 1为商品
+      searchAction(info, typeCode) {
+        let url = this.$api.goodlists
+        let data = {
+          category_id: '',
+          search: info,
+          sortType: '',
+          sortPrice: '',
+          listRows: '',
+          brand_id: '',
+          promotions_type: '',
+          min_price: '',
+          max_price: ''
+        }
+        if( typeCode === 0 ) {
+          url= this.$api.articlesbysearch
+          data = {
+            search: info,
+            tags_id: ''
+          }
+        }
+        this.$http({
+          url: url,
+          data: data,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              // 成功后刷新数据
+              if(res.data.list.length < 1) {
+                uni.showToast({
+                	title: '未搜索到相关数据',
+                  icon: 'none'
+                })
+                return
+              }
+              switch (typeCode) {
+                case 0:
+                  this.shareList = res.data.list
+                  break
+                case 1:
+                  console.log(res.data.list)
+                  this.goodList = res.data.list.data
+                  break 
+              }
+            } else {
+              uni.showToast({
+              	title: '搜索失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
       changeStyle() {
         if(this.style === 0) {
           this.style = 1
@@ -255,9 +254,9 @@
       	this.inputClearValue = ''
       	this.showClearIcon = false
       },
-      goShareDetail(item) {
+      goShareDetail(id) {
         uni.navigateTo({
-          url: '../components/shareInfo?title=' + item.authorName
+          url: '../components/shareInfo?article_id=' + id
         })
       },
       clearInput(event) {
@@ -592,7 +591,10 @@
         height: 330upx;
         width: 330upx;
         margin-bottom: 30upx;
-        background: $color-f5;
+        &>image{
+          width: 100%;
+          height: 100%;
+        }
       }
       .good-info{
         flex: 1;
@@ -645,7 +647,10 @@
         height: 220upx;
         width: 220upx;
         margin-right: 30upx;
-        background: #ccc;
+        &>image{
+          height: 100%;
+          width: 100%;
+        }
       }
       .good-info{
         flex: 1;

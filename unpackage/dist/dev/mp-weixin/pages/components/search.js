@@ -139,8 +139,12 @@ var _default =
       showClearIcon: false,
       searchInfo: '森海塞尔',
       history: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
-      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱'] };
+      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱'],
+      type: '' };
 
+  },
+  onLoad: function onLoad(option) {
+    this.type = option.type;
   },
   methods: {
     goBack: function goBack() {
@@ -154,7 +158,7 @@ var _default =
     },
     goGood: function goGood(item) {
       uni.navigateTo({
-        url: 'goods?class=' + item });
+        url: 'goods?class=' + item + '&type=' + this.type });
 
     },
     clearInput: function clearInput(event) {
@@ -165,6 +169,11 @@ var _default =
       } else {
         this.showClearIcon = false;
       }
+    },
+    searchAction: function searchAction(e) {
+      uni.navigateTo({
+        url: 'goods?class=' + e.detail.value + '&type=' + this.type });
+
     },
     delHistory: function delHistory() {
       var that = this;

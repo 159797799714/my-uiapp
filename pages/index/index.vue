@@ -17,18 +17,18 @@
       <view class="TabNav bg-white">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
-      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-white" @click="goInfo(item.article_id)">
-        <image :src="item.image.file_path" mode=""></image>
+      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-white">
+        <image :src="item.image.file_path" mode="" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
-          <view v-if="item.article_title" class="title">{{ item.article_title }}</view>
-          <view v-if="item.subtitle" class="info">{{ item.subtitle }}</view>
+          <view v-if="item.article_title" class="title" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
+          <view v-if="item.subtitle" class="info" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
           <view class="control">
             <view class="look">
               <text class="search-icon iconfont">&#xe6cc;</text>
               <text>{{ item.show_views }}</text>
             </view>
             <view class="zan">
-              <text class="search-icon iconfont">&#xe63a;</text>
+              <text :class="{'search-icon': true, iconfont: true, isZan: item.islike !== 'no'}" @click="zanAction(item, index)">&#xe63a;</text>
               <text>{{ item.like_count }}</text>
             </view>
           </view>  
@@ -112,6 +112,49 @@
           }
         })
       },
+      // 点赞
+      zanAction(item, index) {
+        console.log(item.article_id, item.islike, index)
+        let url = this.$api.unLike
+        if(item.islike === 'no') {
+          url = this.$api.like
+        }
+        this.$http({
+          url: url,
+          data: {
+            article_id: item.article_id
+          },
+          cb: (err, res) => {
+            if(!err && res) {
+              switch(this.cultureList[index].islike) {
+                case 'yes':
+                  this.cultureList[index].islike = 'no'
+                  this.cultureList[index].like_count -= 1
+                  break
+                case 'no':
+                  this.cultureList[index].islike = 'yes'
+                  this.cultureList[index].like_count += 1
+                  break
+              }
+            } else {
+              switch(this.cultureList[index].islike) {
+                case 'yes':
+                  uni.showToast({
+                  	title: '取消点赞失败',
+                    icon: 'none'
+                  })
+                  break
+                case 'no':
+                  uni.showToast({
+                  	title: '点赞失败请重试',
+                    icon: 'none'
+                  })
+                  break
+              }
+            }
+          }
+        })
+      },
       // 选择分类
       selectTab(item, index) {
         this.selectIndex = index
@@ -125,7 +168,7 @@
       // 搜索页
       goSearch() {
         uni.navigateTo({
-          url: '../components/search'
+          url: '../components/search?type=0'
         })
       }
     }
@@ -237,6 +280,7 @@
           text-overflow: ellipsis;
         }
         .info{
+          margin-top: -6upx;
           height: 62upx;
           width: 100%;
           white-space: wrap;
@@ -263,6 +307,18 @@
         .zan{
           height: 29upx;
           margin-left: 12upx;
+        }
+        .isZan{
+          position: relative;
+          &::before{
+            content: '';
+            height: 13upx;
+            width: 14upx;
+            background: $color-red;
+            position: absolute;
+            bottom: 5upx;
+            left: 8upx;
+          }
         }
       }
     }

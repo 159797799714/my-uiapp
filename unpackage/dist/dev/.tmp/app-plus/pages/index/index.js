@@ -179,8 +179,19 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { category_id: id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;return;} else {uni.showToast({ title: '文章列表', icon: 'none' });}} });}, // 获取文章分类
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
+            return;
+          } else {
+            uni.showToast({
+              title: '文章列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 获取文章分类
     getCategorylist: function getCategorylist() {var _this2 = this;
       this.$http({
         data: {
@@ -201,21 +212,57 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         } });
 
     },
+    // 点赞
+    zanAction: function zanAction(item, index) {var _this3 = this;
+      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:117");
+      var url = this.$api.unLike;
+      if (item.islike === 'no') {
+        url = this.$api.like;
+      }
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                _this3.cultureList[index].islike = 'no';
+                _this3.cultureList[index].like_count -= 1;
+                break;
+              case 'no':
+                _this3.cultureList[index].islike = 'yes';
+                _this3.cultureList[index].like_count += 1;
+                break;}
+
+          } else {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
-      var view = uni.createSelectorQuery().select(".item");
-      view.fields({
-        size: true,
-        scrollOffset: true },
-      function (data) {
-        console.log("得到节点信息" + JSON.stringify(data), " at pages\\index\\index.vue:112");
-      }).exec();
     },
     // 文章详情页
     goInfo: function goInfo(item) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.title });
+        url: '../components/shareInfo?article_id=' + item });
 
     },
     // 搜索页

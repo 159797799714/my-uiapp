@@ -219,6 +219,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -234,70 +235,13 @@ var _default =
       filter: ['品牌', '分类'],
       filterTag_Index: '', //默认选中品牌
       filter_alert: true, // 筛选遮罩层显示
-      shareList: [
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: true,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 }],
-
-
+      shareList: [],
       filterCoverList: {
         list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
         sum: 4999 },
 
       filterArr: [],
-      goodList: [
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }],
-
-      // 商城数据
+      goodList: [], // 商城数据
       captionList: [
       {
         title: '品牌',
@@ -319,6 +263,7 @@ var _default =
   watch: {
     tabIndex: function tabIndex(val, oldval) {
       this.filterIndex = 0;
+      this.searchAction(this.searchInfo, this.tabIndex);
       if (val === 0) {
         this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
         return;
@@ -337,8 +282,62 @@ var _default =
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option.class);
     this.searchInfo = option.class;
+    this.tabIndex = Number(option.type);
+    this.searchAction(option.class, this.tabIndex);
   },
   methods: {
+    // 搜索typeCode 0 为分享 1为商品
+    searchAction: function searchAction(info, typeCode) {var _this = this;
+      var url = this.$api.goodlists;
+      var data = {
+        category_id: '',
+        search: info,
+        sortType: '',
+        sortPrice: '',
+        listRows: '',
+        brand_id: '',
+        promotions_type: '',
+        min_price: '',
+        max_price: '' };
+
+      if (typeCode === 0) {
+        url = this.$api.articlesbysearch;
+        data = {
+          search: info,
+          tags_id: '' };
+
+      }
+      this.$http({
+        url: url,
+        data: data,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // 成功后刷新数据
+            if (res.data.list.length < 1) {
+              uni.showToast({
+                title: '未搜索到相关数据',
+                icon: 'none' });
+
+              return;
+            }
+            switch (typeCode) {
+              case 0:
+                _this.shareList = res.data.list;
+                break;
+              case 1:
+                console.log(res.data.list);
+                _this.goodList = res.data.list.data;
+                break;}
+
+          } else {
+            uni.showToast({
+              title: '搜索失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
     changeStyle: function changeStyle() {
       if (this.style === 0) {
         this.style = 1;
@@ -355,9 +354,9 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
-    goShareDetail: function goShareDetail(item) {
+    goShareDetail: function goShareDetail(id) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.authorName });
+        url: '../components/shareInfo?article_id=' + id });
 
     },
     clearInput: function clearInput(event) {

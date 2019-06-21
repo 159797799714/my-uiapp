@@ -392,6 +392,7 @@ to {
            text-overflow: ellipsis;
 }
 .content .culture .item-words .info.data-v-5ff3a554 {
+        margin-top: -6rpx;
         height: 62rpx;
         width: 100%;
         white-space: wrap;
@@ -425,5 +426,17 @@ to {
 .content .culture .control .zan.data-v-5ff3a554 {
         height: 29rpx;
         margin-left: 12rpx;
+}
+.content .culture .control .isZan.data-v-5ff3a554 {
+        position: relative;
+}
+.content .culture .control .isZan.data-v-5ff3a554::before {
+          content: '';
+          height: 13rpx;
+          width: 14rpx;
+          background: #F4433D;
+          position: absolute;
+          bottom: 5rpx;
+          left: 8rpx;
 }
 

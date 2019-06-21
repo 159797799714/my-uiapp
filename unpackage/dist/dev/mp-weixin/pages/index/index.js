@@ -212,6 +212,49 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         } });
 
     },
+    // 点赞
+    zanAction: function zanAction(item, index) {var _this3 = this;
+      console.log(item.article_id, item.islike, index);
+      var url = this.$api.unLike;
+      if (item.islike === 'no') {
+        url = this.$api.like;
+      }
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                _this3.cultureList[index].islike = 'no';
+                _this3.cultureList[index].like_count -= 1;
+                break;
+              case 'no':
+                _this3.cultureList[index].islike = 'yes';
+                _this3.cultureList[index].like_count += 1;
+                break;}
+
+          } else {
+            switch (_this3.cultureList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
@@ -225,7 +268,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     // 搜索页
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: '../components/search' });
+        url: '../components/search?type=0' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

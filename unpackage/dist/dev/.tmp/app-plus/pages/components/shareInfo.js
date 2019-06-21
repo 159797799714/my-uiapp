@@ -98,178 +98,240 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {
-      current: {
-        poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
-        name: '致爱丽丝',
-        author: '暂无',
-        src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' },
-
-      audioAction: {
-        method: 'pause' },
-      // 音频播放audio参数
-      title: '',
-      indicatorDots: true,
-      autoplay: true,
-      interval: 2000,
-      duration: 500,
-      indicatorActiveColor: '#ffffff',
-      swiperList: [{}, {}, {}],
-      userInfo: {
-        imgUrl: '',
-        userName: '奶油田官方' },
-
-      cultureInfo: {
-        title: '2019深圳奶油田电音节',
-        tags: ['深圳奶油田', '深圳'],
-        time: '2019-05-16',
-        words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' },
-
-      total: 1212, // 评论总数
-      commentList: [
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1,
-        writerChild: [
-        {
-          imgUrl: '',
-          name: '@看灰机',
-          speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-          time: '05-12',
-          zan: 999,
-          zan_status: 1 }] },
-
-
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1 },
-      {
-        imgUrl: '',
-        name: '撒浪嘿',
-        speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
-        time: '05-12',
-        zan: 666,
-        zan_status: 1,
-        writerChild: [
-        {
-          imgUrl: '',
-          name: '@看灰机',
-          speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
-          time: '05-12',
-          zan: 999,
-          zan_status: 1 }] }],
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
-      // 评论信息
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _richText = _interopRequireDefault(__webpack_require__(/*! ../../components/richText.js */ "../../../../Desktop/LEI/white/components/richText.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { data: function data() {return { current: { poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg', name: '致爱丽丝', author: '暂无', src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' }, audioAction: { method: 'pause' }, // 音频播放audio参数
+      title: '', article_id: '', // 文章ID
+      indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', swiperList: [], userInfo: { imgUrl: '', userName: '奶油田官方' }, cultureInfo: { title: '2019深圳奶油田电音节', tags: ['深圳奶油田', '深圳'], time: '2019-05-16', words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' }, strings: [], comments: {}, // commentList: [{
+      //   imgUrl: '',
+      //   name: '撒浪嘿',
+      //   speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
+      //   time: '05-12',
+      //   zan: 666,
+      //   zan_status: 1,
+      //   writerChild: [
+      //     {
+      //       imgUrl: '',
+      //       name: '@看灰机',
+      //       speak: '的确，现场太燃了，而且很多漂亮小姐姐。',
+      //       time: '05-12',
+      //       zan: 999,
+      //       zan_status: 1
+      //     }
+      //   ]
+      // }],               // 评论信息
       speakVal: '', // 我的评论value值
-      sumList: {
-        zanTotal: 2000,
-        starTotal: 1578,
-        megTotal: 1959 } };
+      sumList: { zanTotal: 2000, starTotal: 1578, megTotal: 1959 } };}, // 接受首页传递的参数
+  onLoad: function onLoad(option) {this.article_id = option.article_id;this.getDetail(this.article_id);}, methods: { goBack: function goBack() {uni.navigateBack({ delta: 1 });}, getDetail: function getDetail(id) {var _this = this;this.$http({ url: this.$api.detailing, data: { article_id: id }, cb: function cb(err, res) {console.log(res.data.detail, " at pages\\components\\shareInfo.vue:164");_this.swiperList = res.data.detail.banners;_this.comments = res.data.detail.comments; // 文章标题等
+          _this.cultureInfo.title = res.data.detail.article_title;var richtext = '<p>众所周知，水电听起来柔软，水电搭配Beats低音更是沁入人心。</p><p><img src="http://market.pd-unixe.com/uploads/2019041511593871a464816.jpg"/></p><p>好了，我们下期再见</p><p><video src="http://weibobangshou.oss-cn-shenzhen.aliyuncs.com/example.mp4" poster="" style="height: 190px;" controls=""></video></p><p></p>';var regex = new RegExp('img');richtext = richtext.replace(regex, "img style=\"max-width: 100%;\"");_this.strings = richtext; // this.strings = res.data.detail.article_content
+          // this.strings = parseHtml(res.data.detail.article_content)
+          // console.log(this.strings)
+          _this.cultureInfo.time = res.data.detail.update_time;} });}, // 评论点赞
+    zanAction: function zanAction(item, index) {var _this2 = this;console.log(item.id, item.islike, index, " at pages\\components\\shareInfo.vue:188");var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {
+            switch (_this2.comments.list[index].islike) {
+              case 'yes':
+                _this2.comments.list[index].islike = 'no';
+                _this2.comments.list[index].likenum -= 1;
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
 
+                break;
+              case 'no':
+                _this2.comments.list[index].islike = 'yes';
+                _this2.comments.list[index].likenum += 1;
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
 
-  },
-  // 接受首页传递的参数
-  onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\shareInfo.vue:166");
-    this.title = option.title;
-  },
-  methods: {
-    goBack: function goBack() {
-      uni.navigateBack({
-        delta: 1 });
+                break;}
+
+          } else {
+            switch (_this2.comments.list[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
 
     },
     goShare: function goShare() {
@@ -282,10 +344,36 @@ var _default =
         summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
         imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
         success: function success(res) {
-          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:185");
+          console.log("success:" + JSON.stringify(res), " at pages\\components\\shareInfo.vue:247");
         },
         fail: function fail(err) {
-          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:188");
+          console.log("fail:" + JSON.stringify(err), " at pages\\components\\shareInfo.vue:250");
+        } });
+
+    },
+    addComment: function addComment(e) {var _this3 = this;
+      console.log(this.speakVal, " at pages\\components\\shareInfo.vue:255");
+      this.$http({
+        url: this.$api.addcomments,
+        data: {
+          article_id: this.article_id,
+          comment: e.detail.value },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // 成功后刷新数据
+            _this3.getDetail(_this3.article_id);
+            _this3.speakVal = '';
+            uni.showToast({
+              title: '评论发布成功',
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '发布失败请重试',
+              icon: 'none' });
+
+          }
         } });
 
     } } };exports.default = _default;

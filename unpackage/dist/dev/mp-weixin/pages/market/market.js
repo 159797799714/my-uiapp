@@ -284,7 +284,7 @@ var _default =
     // 搜索页
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: '../components/search' });
+        url: '../components/search?type=1' });
 
     },
     // 商品详情页
