@@ -202,7 +202,7 @@ view, image, text, input, form{
     opacity: 0;
   }
   to{
-    transform: translateX(100%);
+    transform: translateX(0);
     opacity: 1;
   }
 }
@@ -226,7 +226,7 @@ view, image, text, input, form{
     content: '+';
     position: absolute;
     box-sizing: border-box;
-    padding-left: 4upx;
+    padding-left: 2upx;
     bottom: -20upx;
     right: -20upx;
     color: $color-white;

@@ -18,7 +18,7 @@
       
      <!-- 综合等分类 -->
       <view class="filter">
-        <view v-for="(item, index) in shareTag" :key="index" :class="{selectFilter: index === filterIndex}" @click="selectFilter(index)">{{ item }}
+        <view v-for="(item, index) in shareTag" :key="index" :class="{selectFilter: index === filterIndex}" @click="selectFilter(index)">{{ item.tag_name }}
           <text v-if="item === '价格'" class="iconfont">&#xe60c;</text>
           <text v-if="index === 4" class="iconfont">&#xe610;</text>
         </view>
@@ -45,11 +45,11 @@
       <scroll-view scroll-y="true" class="culture">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
-          <view v-for="(item, index) in shareList" :key="index" class="item" @click="goShareDetail(item.article_id)">
-            <view class="img">
+          <view v-for="(item, index) in shareList" :key="index" class="item">
+            <view class="img"  @click="goShareDetail(item.article_id)">
               <image :src="item.image.file_path" mode=""></image>
             </view>
-            <view class="title border-box">{{ item.article_title }}</view>
+            <view class="title border-box" @click="goShareDetail(item.article_id)">{{ item.article_title }}</view>
             <view class="info border-box">
               <view class="user">
                 <view class="userImg">
@@ -58,7 +58,7 @@
                 <view class="userName">{{ item.author }}</view> 
               </view>
               <view class="zan">
-                <text :class="{iconfont: true, isZan: item.zan_status}" @click="clickZan(index)">&#xe63a;</text>
+                <text :class="{iconfont: true, isZan: item.islike === 'yes'}" @click="clickZan(item, index)">&#xe63a;</text>
                 <text>{{ item.like_count }}</text>
               </view>
             </view>
@@ -79,7 +79,8 @@
               <view class="good-price">
                 <view>
                   <text>￥</text>
-                  <text class="bigText">{{ item.goods_min_price }}</text>
+                  <text class="bigText">{{ item.goods_min_price * 100 / 100 }}</text>
+                  <text>.{{ item.goods_min_price * 100 % 100 === 0 ? '00' : item.goods_min_price * 100 % 100  }}</text>
                 </view>
               </view>
             </view>
@@ -100,13 +101,13 @@
               <input type="text" value="" placeholder="最高价" placeholder-style="color: #999"/>
             </view>
           </view>
-          <view v-for="(item, index) in captionList" :key="index" class="list-span">
-            <view class="title caption">
+          <view  v-for="(item, index) in captionList" :key="index" class="list-span">
+            <view class="title caption" @click="setCategory(index)">
               <text>{{ item.title }}</text>
-              <text :class="{iconfont: true, rotate: selecArr.indexOf(index) !== -1}">&#xe792;</text>
+              <text :class="{iconfont: true, rotate: selectArr.indexOf(index) !== -1}">&#xe792;</text>
             </view>
-            <view class="tag-span">
-              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: item.selectIndexArr? item.selectIndexArr.indexOf(li) !== -1: false}" @click="selTag(index, num)">{{ li }}</view>
+            <view v-if="selectArr.indexOf(index) !== -1" class="tag-span">
+              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: item.selectIndexArr? item.selectIndexArr.indexOf(li) !== -1: false}" @click="selTag(index, num)">{{ li.name }}</view>
             </view>
           </view>
         </scroll-view>
@@ -131,7 +132,7 @@
         tabIndex: 0,                // 默认选中分享
         filterIndex: 0,             // 默认选中综合
         tabList: ['分享', '商城'],
-        shareTag: ['综合', '最热', '最新', '官方', '筛选'],
+        shareTag: [{tag_name:'综合'}, {tag_name:'最热'}, {tag_name:'最新'}, {tag_name:'官方'}, {tag_name:'筛选'}],   // 标签默认这个是商品标签
         filter: ['品牌', '分类'],
         filterTag_Index: '',            //默认选中品牌
         filter_alert: true,             // 筛选遮罩层显示
@@ -146,18 +147,18 @@
           {
             title: '品牌',
             selectIndexArr: ['默认'],               //循环时加上
-            arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
+            arr: []
           }, {
             title: '分类',
             selectIndexArr: ['默认'],
-            arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选']
+            arr: []
           }, {
             title: '促销',
             selectIndexArr: ['默认'],
-            arr: ['索尼', '综合', '最热', '最新', '官方', '筛选']
+            arr: []
           }
         ],                             // 筛选侧边栏数据
-        selecArr: [],                  // 筛选侧边栏展开的数组index
+        selectArr: [],                  // 筛选侧边栏展开的数组index
       }
     },
     watch: {
@@ -165,11 +166,11 @@
         this.filterIndex = 0
         this.searchAction(this.searchInfo, this.tabIndex)
         if(val === 0) {
-          this.shareTag = ['综合', '最热', '最新', '官方', '筛选']
+          this.getCultureTag()
           return
         }
         if(val === 1) {
-          this.shareTag = ['综合', '销量', '上架', '价格', '筛选']
+          this.shareTag = [{tag_name:'综合'}, {tag_name:'最热'}, {tag_name:'最新'}, {tag_name:'官方'}, {tag_name:'筛选'}]
           return
         }
       },
@@ -184,8 +185,23 @@
       this.searchInfo = option.class
       this.tabIndex = Number(option.type)
       this.searchAction(option.class, this.tabIndex)
+      // 获取文章标签
+      if(this.tabIndex === 0) {
+        this.getCultureTag()
+      }
     },
     methods: {
+      // 选中分享文章标签
+      getCultureTag() {
+        this.$http({
+          url: this.$api.activitytags,
+          cb: (err, res) => {
+            // console.log(res.data.tags)
+            this.shareTag = res.data.tags
+          }
+        })
+      },
+      
       // 搜索typeCode 0 为分享 1为商品
       searchAction(info, typeCode) {
         let url = this.$api.goodlists
@@ -225,7 +241,6 @@
                   this.shareList = res.data.list
                   break
                 case 1:
-                  console.log(res.data.list)
                   this.goodList = res.data.list.data
                   break 
               }
@@ -238,6 +253,7 @@
           }
         })
       },
+      // 切换商品排列样式
       changeStyle() {
         if(this.style === 0) {
           this.style = 1
@@ -245,6 +261,7 @@
         }
         this.style = 0
       },
+      // 返回
       goBack() {
         uni.navigateBack({
           delta: 1
@@ -254,11 +271,13 @@
       	this.inputClearValue = ''
       	this.showClearIcon = false
       },
+      // 分享详情页
       goShareDetail(id) {
         uni.navigateTo({
           url: '../components/shareInfo?article_id=' + id
         })
       },
+      // 
       clearInput(event) {
         console.log(event.target.value)
       	this.inputClearValue = event.target.value
@@ -275,11 +294,38 @@
       },
       // 价格等分类点击
       selectFilter(index) {
-        if(!this.filter_alert && index === 4) {
-          // this.captionList.map((item, index) => {
-          //   this.captionList[index].selectIndexArr = ['默认']
-          // })
+        if(!this.filter_alert || index === 4) {
           // // 给captionList加上一个选中的索引空数组selectIndexArr
+          
+          // 品牌分类
+          this.$http({
+            url: this.$api.getbrands,
+            cb: (err, res) => {
+              let arr = []
+              let list = res.data.list
+              for(let item in list) {
+                arr.push(list[item])
+              }
+              this.captionList[0].arr = arr
+            }
+          })
+          // 商品分类
+          this.$http({
+            url: this.$api.goodscategory,
+            cb: (err, res) => {
+              console.log(res.data.list)
+              this.captionList[1].arr = res.data.list
+            }
+          })
+          // 促销活动
+          this.$http({
+            url: this.$api.promotions,
+            cb: (err, res) => {
+              // console.log(res.data.promotions)
+              this.captionList[2].arr = res.data.promotions
+            }
+          })
+          
           this.filter_alert = true
         }
         this.filterIndex = index
@@ -295,7 +341,15 @@
           this.filterTag_Index = index
         }
       },
-      // 筛选侧边弹窗选择
+      // 点击筛选侧边栏中的品牌，活动等分类
+      setCategory(index) {
+        if(this.selectArr.indexOf(index) === -1) {
+          this.selectArr.push(index)
+          return
+        }
+        this.selectArr.splice(this.selectArr.indexOf(index), 1)
+      },
+      // 筛选侧边弹窗选择分类里面的子选项
       selTag(index, num) {
         let name = this.captionList[index].arr[num]
         let charIndex = this.captionList[index].selectIndexArr.indexOf(name)
@@ -314,17 +368,65 @@
           item.selectIndexArr = ['默认']
         })
       },
-      clickZan(index) {
-        if (!this.shareList[index].zan_status) {
-          this.shareList[index].zan_num += 1
-          this.shareList[index].zan_status = !this.shareList[index].zan_status
-          return
+      clickZan(item, index) {
+        console.log(item.article_id, item.islike, index)
+        let url = this.$api.unLike
+        if(item.islike === 'no') {
+          url = this.$api.like
         }
-        if (this.shareList[index].zan_status) {
-          this.shareList[index].zan_num -= 1
-          this.shareList[index].zan_status = !this.shareList[index].zan_status
-          return
-        }
+        this.$http({
+          url: url,
+          data: {
+            article_id: item.article_id
+          },
+          cb: (err, res) => {
+            if(!err && res) {
+              switch(this.shareList[index].islike) {
+                case 'yes':
+                  uni.showToast({
+                    title: '取消点赞成功',
+                    icon: 'none'
+                  })
+                  this.shareList[index].islike = 'no'
+                  this.shareList[index].like_count -= 1
+                  break
+                case 'no':
+                  uni.showToast({
+                    title: '点赞成功',
+                    icon: 'none'
+                  })
+                  this.shareList[index].islike = 'yes'
+                  this.shareList[index].like_count += 1
+                  break
+              }
+            } else {
+              switch(this.shareList[index].islike) {
+                case 'yes':
+                  uni.showToast({
+                  	title: '取消点赞失败',
+                    icon: 'none'
+                  })
+                  break
+                case 'no':
+                  uni.showToast({
+                  	title: '点赞失败请重试',
+                    icon: 'none'
+                  })
+                  break
+              }
+            }
+          }
+        })
+        // if (!this.shareList[index].zan_status) {
+        //   this.shareList[index].zan_num += 1
+        //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+        //   return
+        // }
+        // if (this.shareList[index].zan_status) {
+        //   this.shareList[index].zan_num -= 1
+        //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+        //   return
+        // }
       },
       goDetail(item) {
         uni.navigateTo({
@@ -388,9 +490,9 @@
   }
   .filter{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 92upx;
-    padding: 0 50upx;
+    padding: 0 10upx;
     margin-bottom: 10upx;
     font-size: $font-26;
     color: $word-color;
@@ -692,16 +794,19 @@
     }
   }
   .big-cover{
+    display: flex;
     flex-direction: row;
+    height: 100%;
     .white{
       flex: 1;
     }
     .big-cover-main{
       width: 524upx;
+      height: 100%;
       display: flex;
       flex-direction: column;
       .box{
-        flex: 1;
+        height: calc(100% - 98upx);
         overflow: hidden;
       }
       .title{
@@ -743,6 +848,9 @@
         display: flex;
         justify-content: space-between;
         border-top: 2px solid $color-f5;
+        .iconfont{
+          transition: 500ms;
+        }
         .rotate{
           transform: rotate(180deg);
         }

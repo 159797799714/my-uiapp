@@ -21,7 +21,7 @@ export default {
   
   // 商城
   promotions: API.devApi + '/goods/promotions',                          // 促销活动
-  goodscategory: API.devApi + '/goods/goodscategory',                    // 获取所有商品分类
+  goodscategory: API.devApi + '/category/goodscategory',                    // 获取所有商品分类
   recommendgoods: API.devApi + '/goods/recommendgoods',                  // 推荐商品列表
   getbrands: API.devApi + '/brands/getbrands',                           // 品牌分类
   getflashsalegoodsbyone: API.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品

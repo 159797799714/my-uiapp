@@ -138,13 +138,20 @@ var _default =
       inputClearValue: '',
       showClearIcon: false,
       searchInfo: '森海塞尔',
-      history: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
-      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱'],
+      history: [],
+      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
       type: '' };
 
   },
   onLoad: function onLoad(option) {
+    var that = this;
     this.type = option.type;
+    uni.getStorage({
+      key: 'history_arr',
+      success: function success(res) {
+        that.history = res.data;
+      } });
+
   },
   methods: {
     goBack: function goBack() {
@@ -171,6 +178,14 @@ var _default =
       }
     },
     searchAction: function searchAction(e) {
+      this.history.push(e.detail.value);
+      uni.setStorage({
+        key: 'history_arr',
+        data: this.history,
+        success: function success() {
+          console.log('success');
+        } });
+
       uni.navigateTo({
         url: 'goods?class=' + e.detail.value + '&type=' + this.type });
 
@@ -182,7 +197,12 @@ var _default =
         content: '确认删除所有搜索记录？',
         success: function success(res) {
           if (res.confirm) {
-            that.history = [];
+            uni.removeStorage({
+              key: 'history_arr',
+              success: function success(res) {
+                that.history = [];
+              } });
+
           } else if (res.cancel) {
             console.log('用户点击取消');
           }

@@ -296,13 +296,13 @@ var _default = { data: function data() {return { current: { poster: 'https://img
           // this.strings = parseHtml(res.data.detail.article_content)
           // console.log(this.strings)
           _this.cultureInfo.time = res.data.detail.update_time;} });}, // 评论点赞
-    zanAction: function zanAction(item, index) {var _this2 = this;console.log(item.id, item.islike, index);var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {
-            switch (_this2.comments.list[index].islike) {
+    zanAction: function zanAction(item, index) {var _this2 = this; // console.log(item.id, item.islike, index)
+      var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {switch (_this2.comments.list[index].islike) {
               case 'yes':
                 _this2.comments.list[index].islike = 'no';
                 _this2.comments.list[index].likenum -= 1;
                 uni.showToast({
-                  title: '点赞成功',
+                  title: '取消点赞成功',
                   icon: 'none' });
 
                 break;
@@ -310,7 +310,7 @@ var _default = { data: function data() {return { current: { poster: 'https://img
                 _this2.comments.list[index].islike = 'yes';
                 _this2.comments.list[index].likenum += 1;
                 uni.showToast({
-                  title: '取消点赞成功',
+                  title: '点赞成功',
                   icon: 'none' });
 
                 break;}
@@ -351,6 +351,10 @@ var _default = { data: function data() {return { current: { poster: 'https://img
         } });
 
     },
+    onInput: function onInput(e) {
+      this.speakVal = e.detail.value;
+    },
+    // 发布评论
     addComment: function addComment(e) {var _this3 = this;
       console.log(this.speakVal);
       this.$http({

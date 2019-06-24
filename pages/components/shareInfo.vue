@@ -74,7 +74,7 @@
       </view>
     </scroll-view>
     <view class="speak bg-white border-box">
-      <input type="text" :value="speakVal" placeholder="留下你的精彩评论吧" @confirm="addComment"/>
+      <input type="text" v-model="speakVal" placeholder="留下你的精彩评论吧" @confirm="addComment" @input="onInput"/>
       <view>
         <text class="iconfont">&#xe69d;</text>
         <text>{{ comments.num }}</text>
@@ -185,7 +185,7 @@
       },
       // 评论点赞
       zanAction(item, index) {
-        console.log(item.id, item.islike, index)
+        // console.log(item.id, item.islike, index)
         let url = this.$api.commentunlike
         if(item.islike === 'no') {
           url = this.$api.commentlike
@@ -202,7 +202,7 @@
                   this.comments.list[index].islike = 'no'
                   this.comments.list[index].likenum -= 1
                   uni.showToast({
-                  	title: '点赞成功',
+                  	title: '取消点赞成功',
                     icon: 'none'
                   })
                   break
@@ -210,7 +210,7 @@
                   this.comments.list[index].islike = 'yes'
                   this.comments.list[index].likenum += 1
                   uni.showToast({
-                  	title: '取消点赞成功',
+                  	title: '点赞成功',
                     icon: 'none'
                   })
                   break
@@ -251,6 +251,10 @@
           }
         })
       },
+      onInput(e) {
+        this.speakVal = e.detail.value
+      },
+      // 发布评论
       addComment(e) {
         console.log(this.speakVal)
         this.$http({
@@ -511,7 +515,7 @@
     height: 99upx;
     margin-top: 1upx;
     display: flex;
-    text-align: center;
+    text-align: left;
     align-items: center;
     justify-content: space-between;
     padding: 0 30upx;

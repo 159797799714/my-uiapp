@@ -128,10 +128,18 @@
             if(!err && res) {
               switch(this.cultureList[index].islike) {
                 case 'yes':
+                  uni.showToast({
+                    title: '取消点赞成功',
+                    icon: 'none'
+                  })
                   this.cultureList[index].islike = 'no'
                   this.cultureList[index].like_count -= 1
                   break
                 case 'no':
+                  uni.showToast({
+                    title: '点赞成功',
+                    icon: 'none'
+                  })
                   this.cultureList[index].islike = 'yes'
                   this.cultureList[index].like_count += 1
                   break
@@ -253,6 +261,7 @@
           bottom: 0;
           margin: auto;
           background: $color-slipe-red;
+          opacity: 0.5;
         }
       }
     }
@@ -276,6 +285,7 @@
           max-height: 90upx;
           line-height: 48upx;
           font-size: $font-36;
+          font-weight: $font-bold;
           overflow: hidden;
           text-overflow: ellipsis;
         }
@@ -314,10 +324,10 @@
             content: '';
             height: 13upx;
             width: 14upx;
-            background: $color-red;
             position: absolute;
             bottom: 5upx;
             left: 8upx;
+            background: $color-red;
           }
         }
       }

@@ -228,10 +228,18 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
           if (!err && res) {
             switch (_this3.cultureList[index].islike) {
               case 'yes':
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'no';
                 _this3.cultureList[index].like_count -= 1;
                 break;
               case 'no':
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'yes';
                 _this3.cultureList[index].like_count += 1;
                 break;}

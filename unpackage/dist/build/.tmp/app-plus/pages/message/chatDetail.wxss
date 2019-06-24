@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* 行为相关颜色 */
-view.data-v-7b912e9c {
+view.data-v-7b912e9c, image.data-v-7b912e9c, text.data-v-7b912e9c, input.data-v-7b912e9c, form.data-v-7b912e9c {
   margin: 0;
   padding: 0;
 }
@@ -196,8 +196,8 @@ from {
     opacity: 0;
 }
 to {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
 }
 }
@@ -208,8 +208,8 @@ from {
     opacity: 0;
 }
 to {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
 }
 }
@@ -246,7 +246,7 @@ to {
     position: absolute;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    padding-left: 4rpx;
+    padding-left: 2rpx;
     bottom: -20rpx;
     right: -20rpx;
     color: #fff;

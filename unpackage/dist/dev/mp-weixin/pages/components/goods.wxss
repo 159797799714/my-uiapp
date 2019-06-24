@@ -196,8 +196,8 @@ from {
     opacity: 0;
 }
 to {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
 }
 }
@@ -208,8 +208,8 @@ from {
     opacity: 0;
 }
 to {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     opacity: 1;
 }
 }
@@ -246,7 +246,7 @@ to {
     position: absolute;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-    padding-left: 4rpx;
+    padding-left: 2rpx;
     bottom: -20rpx;
     right: -20rpx;
     color: #fff;
@@ -338,12 +338,11 @@ to {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
   height: 92rpx;
-  padding: 0 50rpx;
+  padding: 0 10rpx;
   margin-bottom: 10rpx;
   font-size: 26rpx;
   color: #666666;
@@ -751,11 +750,16 @@ to {
           font-size: 34rpx;
 }
 .big-cover.data-v-10a6f7ae {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+  height: 100%;
 }
 .big-cover .white.data-v-10a6f7ae {
     -webkit-box-flex: 1;
@@ -765,6 +769,7 @@ to {
 }
 .big-cover .big-cover-main.data-v-10a6f7ae {
     width: 524rpx;
+    height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -776,10 +781,8 @@ to {
             flex-direction: column;
 }
 .big-cover .big-cover-main .box.data-v-10a6f7ae {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
+      height: -webkit-calc(100% - 98rpx);
+      height: calc(100% - 98rpx);
       overflow: hidden;
 }
 .big-cover .big-cover-main .title.data-v-10a6f7ae {
@@ -836,6 +839,11 @@ to {
           -ms-flex-pack: justify;
               justify-content: space-between;
       border-top: 2px solid #f5f5f5;
+}
+.big-cover .big-cover-main .caption .iconfont.data-v-10a6f7ae {
+        -webkit-transition: 500ms;
+        -o-transition: 500ms;
+        transition: 500ms;
 }
 .big-cover .big-cover-main .caption .rotate.data-v-10a6f7ae {
         -webkit-transform: rotate(180deg);
