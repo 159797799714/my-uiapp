@@ -1200,7 +1200,7 @@ Z(z[5])
 Z([3,'__e'])
 Z([[4],[[5],[[5],[1,'data-v-10a6f7ae']],[[2,'?:'],[[2,'==='],[[7],[3,'index']],[[7],[3,'filterIndex']]],[1,'selectFilter'],[1,'']]]])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'selectFilter']],[[4],[[5],[[7],[3,'index']]]]]]]]]]]])
-Z([[2,'==='],[[7],[3,'item']],[1,'价格']])
+Z([[2,'==='],[[6],[[7],[3,'item']],[3,'tag_name']],[1,'价格']])
 Z([[2,'==='],[[7],[3,'index']],[1,4]])
 Z(z[3])
 Z([[2,'&&'],[[2,'!=='],[[7],[3,'filterTag_Index']],[1,'']],[[2,'==='],[[7],[3,'tabIndex']],[1,1]]])
@@ -1209,6 +1209,11 @@ Z([3,'true'])
 Z([[2,'==='],[[7],[3,'tabIndex']],[1,0]])
 Z(z[3])
 Z([[2,'&&'],[[2,'==='],[[7],[3,'filterIndex']],[1,4]],[[7],[3,'filter_alert']]])
+Z(z[5])
+Z(z[6])
+Z([[6],[[7],[3,'$root']],[3,'l2']])
+Z(z[5])
+Z([[2,'!=='],[[6],[[7],[3,'item']],[3,'g3']],[[2,'-'],[1,1]]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_7);return __WXML_GLOBAL__.ops_cached.$gwx_7
 }
 function gz$gwx_8(){
@@ -1250,36 +1255,59 @@ function gz$gwx_11(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_11)return __WXML_GLOBAL__.ops_cached.$gwx_11
 __WXML_GLOBAL__.ops_cached.$gwx_11=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'content border-box data-v-7dfac292'])
 Z([3,'__e'])
-Z(z[0])
-Z([3,'form-main border-box data-v-326bfe42'])
-Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'login']],[[4],[[5],[1,'$event']]]]]]]]]],[[4],[[5],[[5],[1,'reset']],[[4],[[5],[[4],[[5],[[5],[1,'formReset']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z(z[1])
+Z([3,'myForm data-v-7dfac292'])
+Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'formSubmit']],[[4],[[5],[1,'$event']]]]]]]]]],[[4],[[5],[[5],[1,'reset']],[[4],[[5],[[4],[[5],[[5],[1,'formReset']],[[4],[[5],[1,'$event']]]]]]]]]]])
 Z([[7],[3,'showDel']])
+Z([3,'ipt data-v-7dfac292'])
+Z([[2,'!'],[[7],[3,'showInfo']]])
+Z([[7],[3,'showInfo']])
+Z(z[7])
+Z(z[8])
+Z([[2,'==='],[[7],[3,'type']],[1,'register']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_11);return __WXML_GLOBAL__.ops_cached.$gwx_11
 }
 function gz$gwx_12(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_12)return __WXML_GLOBAL__.ops_cached.$gwx_12
 __WXML_GLOBAL__.ops_cached.$gwx_12=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([[2,'==='],[[7],[3,'type']],[1,'forget']])
+Z([3,'__e'])
+Z(z[0])
+Z([3,'form-main border-box data-v-326bfe42'])
+Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'login']],[[4],[[5],[1,'$event']]]]]]]]]],[[4],[[5],[[5],[1,'reset']],[[4],[[5],[[4],[[5],[[5],[1,'formReset']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([[7],[3,'showDel']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_12);return __WXML_GLOBAL__.ops_cached.$gwx_12
 }
 function gz$gwx_13(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_13)return __WXML_GLOBAL__.ops_cached.$gwx_13
 __WXML_GLOBAL__.ops_cached.$gwx_13=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'__e'])
-Z(z[0])
-Z([3,'myForm data-v-639a5b5a'])
-Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'formSubmit']],[[4],[[5],[1,'$event']]]]]]]]]],[[4],[[5],[[5],[1,'reset']],[[4],[[5],[[4],[[5],[[5],[1,'formReset']],[[4],[[5],[1,'$event']]]]]]]]]]])
-Z([[7],[3,'showDel']])
-Z([[2,'!'],[[7],[3,'showInfo']]])
-Z([[7],[3,'showInfo']])
+Z([[2,'==='],[[7],[3,'type']],[1,'forget']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_13);return __WXML_GLOBAL__.ops_cached.$gwx_13
 }
 function gz$gwx_14(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_14)return __WXML_GLOBAL__.ops_cached.$gwx_14
 __WXML_GLOBAL__.ops_cached.$gwx_14=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'content border-box data-v-639a5b5a'])
+Z([3,'__e'])
+Z(z[1])
+Z([3,'myForm data-v-639a5b5a'])
+Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'submit']],[[4],[[5],[[4],[[5],[[5],[1,'formSubmit']],[[4],[[5],[1,'$event']]]]]]]]]],[[4],[[5],[[5],[1,'reset']],[[4],[[5],[[4],[[5],[[5],[1,'formReset']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([[7],[3,'showDel']])
+Z([3,'ipt data-v-639a5b5a'])
+Z([[2,'!'],[[7],[3,'showInfo']]])
+Z([[7],[3,'showInfo']])
+Z(z[7])
+Z(z[8])
+Z([[2,'==='],[[7],[3,'type']],[1,'register']])
+})(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
+}
+function gz$gwx_15(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
+__WXML_GLOBAL__.ops_cached.$gwx_15=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
@@ -1289,11 +1317,11 @@ Z([3,'__e'])
 Z([3,'recommend-item data-v-1baedeae'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goDetail']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[1,'recommendList']],[1,'']],[[7],[3,'index']]]]]]]]]]]]]]]])
 Z([[6],[[7],[3,'item']],[3,'oldPrice']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_14);return __WXML_GLOBAL__.ops_cached.$gwx_14
+})(__WXML_GLOBAL__.ops_cached.$gwx_15);return __WXML_GLOBAL__.ops_cached.$gwx_15
 }
-function gz$gwx_15(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
-__WXML_GLOBAL__.ops_cached.$gwx_15=[];
+function gz$gwx_16(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_16)return __WXML_GLOBAL__.ops_cached.$gwx_16
+__WXML_GLOBAL__.ops_cached.$gwx_16=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
@@ -1303,19 +1331,13 @@ Z([3,'__e'])
 Z([3,'item bg-white data-v-5d50af01'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goDetail']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[[5],[1,'goodList']],[1,'']],[[7],[3,'index']]],[1,'title']]]]]]]]]]]]]]])
 Z([[2,'==='],[[6],[[7],[3,'item']],[3,'code']],[1,0]])
-})(__WXML_GLOBAL__.ops_cached.$gwx_15);return __WXML_GLOBAL__.ops_cached.$gwx_15
-}
-function gz$gwx_16(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_16)return __WXML_GLOBAL__.ops_cached.$gwx_16
-__WXML_GLOBAL__.ops_cached.$gwx_16=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-Z([[7],[3,'wayShow']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_16);return __WXML_GLOBAL__.ops_cached.$gwx_16
 }
 function gz$gwx_17(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_17)return __WXML_GLOBAL__.ops_cached.$gwx_17
 __WXML_GLOBAL__.ops_cached.$gwx_17=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([[7],[3,'wayShow']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_17);return __WXML_GLOBAL__.ops_cached.$gwx_17
 }
 function gz$gwx_18(){
@@ -1334,6 +1356,12 @@ function gz$gwx_20(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_20)return __WXML_GLOBAL__.ops_cached.$gwx_20
 __WXML_GLOBAL__.ops_cached.$gwx_20=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
+}
+function gz$gwx_21(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_21)return __WXML_GLOBAL__.ops_cached.$gwx_21
+__WXML_GLOBAL__.ops_cached.$gwx_21=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
 Z([[7],[3,'addressList']])
@@ -1342,12 +1370,6 @@ Z([3,'__e'])
 Z([3,'item data-v-328459c9'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'editAction']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[1,'addressList']],[1,'']],[[7],[3,'index']]]]]]]]]]]]]]]])
 Z([[6],[[7],[3,'item']],[3,'def']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_20);return __WXML_GLOBAL__.ops_cached.$gwx_20
-}
-function gz$gwx_21(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_21)return __WXML_GLOBAL__.ops_cached.$gwx_21
-__WXML_GLOBAL__.ops_cached.$gwx_21=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_21);return __WXML_GLOBAL__.ops_cached.$gwx_21
 }
 function gz$gwx_22(){
@@ -1378,12 +1400,18 @@ function gz$gwx_26(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_26)return __WXML_GLOBAL__.ops_cached.$gwx_26
 __WXML_GLOBAL__.ops_cached.$gwx_26=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([1,false])
 })(__WXML_GLOBAL__.ops_cached.$gwx_26);return __WXML_GLOBAL__.ops_cached.$gwx_26
 }
 function gz$gwx_27(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_27)return __WXML_GLOBAL__.ops_cached.$gwx_27
 __WXML_GLOBAL__.ops_cached.$gwx_27=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([1,false])
+})(__WXML_GLOBAL__.ops_cached.$gwx_27);return __WXML_GLOBAL__.ops_cached.$gwx_27
+}
+function gz$gwx_28(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_28)return __WXML_GLOBAL__.ops_cached.$gwx_28
+__WXML_GLOBAL__.ops_cached.$gwx_28=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
@@ -1393,22 +1421,16 @@ Z([3,'__e'])
 Z([[4],[[5],[[5],[[5],[[5],[1,'data-v-00e5acb1']],[[2,'?:'],[1,true],[1,'tab'],[1,'']]],[[2,'?:'],[[2,'!=='],[[7],[3,'index']],[1,0]],[1,'border-left'],[1,'']]],[[2,'?:'],[[2,'==='],[[7],[3,'index']],[[7],[3,'tabIndex']]],[1,'selected'],[1,'']]]])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'selectTab']],[[4],[[5],[[7],[3,'index']]]]]]]]]]]])
 Z([[2,'==='],[[7],[3,'index']],[1,0]])
-})(__WXML_GLOBAL__.ops_cached.$gwx_27);return __WXML_GLOBAL__.ops_cached.$gwx_27
-}
-function gz$gwx_28(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_28)return __WXML_GLOBAL__.ops_cached.$gwx_28
-__WXML_GLOBAL__.ops_cached.$gwx_28=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'content data-v-c8d3d26e'])
-Z([3,'true'])
-Z([[2,'==='],[[7],[3,'tabIndex']],[1,1]])
-Z([[2,'==='],[[7],[3,'tabIndex']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_28);return __WXML_GLOBAL__.ops_cached.$gwx_28
 }
 function gz$gwx_29(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_29)return __WXML_GLOBAL__.ops_cached.$gwx_29
 __WXML_GLOBAL__.ops_cached.$gwx_29=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'content data-v-c8d3d26e'])
+Z([3,'true'])
+Z([[2,'==='],[[7],[3,'tabIndex']],[1,1]])
+Z([[2,'==='],[[7],[3,'tabIndex']],[1,0]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_29);return __WXML_GLOBAL__.ops_cached.$gwx_29
 }
 function gz$gwx_30(){
@@ -1427,6 +1449,12 @@ function gz$gwx_32(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_32)return __WXML_GLOBAL__.ops_cached.$gwx_32
 __WXML_GLOBAL__.ops_cached.$gwx_32=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_32);return __WXML_GLOBAL__.ops_cached.$gwx_32
+}
+function gz$gwx_33(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_33)return __WXML_GLOBAL__.ops_cached.$gwx_33
+__WXML_GLOBAL__.ops_cached.$gwx_33=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'index'])
 Z([3,'item'])
 Z([[7],[3,'menu']])
@@ -1438,11 +1466,11 @@ Z([[2,'==='],[[7],[3,'index']],[1,0]])
 Z([[2,'==='],[[7],[3,'index']],[1,1]])
 Z([[2,'==='],[[7],[3,'index']],[1,2]])
 Z([[2,'==='],[[7],[3,'index']],[1,3]])
-})(__WXML_GLOBAL__.ops_cached.$gwx_32);return __WXML_GLOBAL__.ops_cached.$gwx_32
+})(__WXML_GLOBAL__.ops_cached.$gwx_33);return __WXML_GLOBAL__.ops_cached.$gwx_33
 }
-function gz$gwx_33(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_33)return __WXML_GLOBAL__.ops_cached.$gwx_33
-__WXML_GLOBAL__.ops_cached.$gwx_33=[];
+function gz$gwx_34(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_34)return __WXML_GLOBAL__.ops_cached.$gwx_34
+__WXML_GLOBAL__.ops_cached.$gwx_34=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'container data-v-27f8d490'])
 Z([3,'__l'])
@@ -1453,17 +1481,17 @@ Z([[4],[[5],[[5],[[4],[[5],[[5],[1,'^change']],[[4],[[5],[[4],[[5],[1,'change']]
 Z([1,true])
 Z([3,'1'])
 Z([[7],[3,'successAlert']])
-})(__WXML_GLOBAL__.ops_cached.$gwx_33);return __WXML_GLOBAL__.ops_cached.$gwx_33
-}
-function gz$gwx_34(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_34)return __WXML_GLOBAL__.ops_cached.$gwx_34
-__WXML_GLOBAL__.ops_cached.$gwx_34=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_34);return __WXML_GLOBAL__.ops_cached.$gwx_34
 }
 function gz$gwx_35(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_35)return __WXML_GLOBAL__.ops_cached.$gwx_35
 __WXML_GLOBAL__.ops_cached.$gwx_35=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_35);return __WXML_GLOBAL__.ops_cached.$gwx_35
+}
+function gz$gwx_36(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_36)return __WXML_GLOBAL__.ops_cached.$gwx_36
+__WXML_GLOBAL__.ops_cached.$gwx_36=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'content border-box data-v-5abba555'])
 Z([3,'__l'])
@@ -1487,21 +1515,15 @@ Z(z[4])
 Z(z[5])
 Z(z[6])
 Z([3,'3'])
-})(__WXML_GLOBAL__.ops_cached.$gwx_35);return __WXML_GLOBAL__.ops_cached.$gwx_35
-}
-function gz$gwx_36(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_36)return __WXML_GLOBAL__.ops_cached.$gwx_36
-__WXML_GLOBAL__.ops_cached.$gwx_36=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'container data-v-c4044d68'])
-Z([[7],[3,'dataList']])
-Z([[2,'!'],[[7],[3,'dataList']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_36);return __WXML_GLOBAL__.ops_cached.$gwx_36
 }
 function gz$gwx_37(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_37)return __WXML_GLOBAL__.ops_cached.$gwx_37
 __WXML_GLOBAL__.ops_cached.$gwx_37=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'container data-v-c4044d68'])
+Z([[7],[3,'dataList']])
+Z([[2,'!'],[[7],[3,'dataList']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_37);return __WXML_GLOBAL__.ops_cached.$gwx_37
 }
 function gz$gwx_38(){
@@ -1510,11 +1532,17 @@ __WXML_GLOBAL__.ops_cached.$gwx_38=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 })(__WXML_GLOBAL__.ops_cached.$gwx_38);return __WXML_GLOBAL__.ops_cached.$gwx_38
 }
+function gz$gwx_39(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_39)return __WXML_GLOBAL__.ops_cached.$gwx_39
+__WXML_GLOBAL__.ops_cached.$gwx_39=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+})(__WXML_GLOBAL__.ops_cached.$gwx_39);return __WXML_GLOBAL__.ops_cached.$gwx_39
+}
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./components/uni-calendar/uni-calendar-item.wxml','./components/uni-calendar/uni-calendar.wxml','./components/uni-icon/uni-icon.wxml','./components/uni-indexed-list/uni-indexed-list.wxml','./components/uni-rate/uni-rate.wxml','./pages/components/goodDetail.wxml','./pages/components/goods.wxml','./pages/components/search.wxml','./pages/components/shareInfo.wxml','./pages/index/index.wxml','./pages/login/login.wxml','./pages/login/password.wxml','./pages/login/register.wxml','./pages/market/market.wxml','./pages/market/panicBuy.wxml','./pages/message/chatDetail.wxml','./pages/message/message.wxml','./pages/mine/about.wxml','./pages/mine/addAddress.wxml','./pages/mine/address.wxml','./pages/mine/bonus/bonusApplyInfo.wxml','./pages/mine/bonus/bonusCenter.wxml','./pages/mine/bonus/bonusInfo.wxml','./pages/mine/bonus/myCard.wxml','./pages/mine/changePassword.wxml','./pages/mine/discount.wxml','./pages/mine/discountCenter.wxml','./pages/mine/looks.wxml','./pages/mine/mean.wxml','./pages/mine/mine.wxml','./pages/mine/personal.wxml','./pages/mine/setting.wxml','./pages/mine/sign.wxml','./pages/moreList/moreList.wxml','./pages/order/grade.wxml','./pages/order/order.wxml','./pages/order/orderDetail.wxml','./pages/shopcar/shopcar.wxml'];d_[x[0]]={}
+var x=['./components/uni-calendar/uni-calendar-item.wxml','./components/uni-calendar/uni-calendar.wxml','./components/uni-icon/uni-icon.wxml','./components/uni-indexed-list/uni-indexed-list.wxml','./components/uni-rate/uni-rate.wxml','./pages/components/goodDetail.wxml','./pages/components/goods.wxml','./pages/components/search.wxml','./pages/components/shareInfo.wxml','./pages/index/index.wxml','./pages/login/bindTel.wxml','./pages/login/login.wxml','./pages/login/password.wxml','./pages/login/register.wxml','./pages/market/market.wxml','./pages/market/panicBuy.wxml','./pages/message/chatDetail.wxml','./pages/message/message.wxml','./pages/mine/about.wxml','./pages/mine/addAddress.wxml','./pages/mine/address.wxml','./pages/mine/bonus/bonusApplyInfo.wxml','./pages/mine/bonus/bonusCenter.wxml','./pages/mine/bonus/bonusInfo.wxml','./pages/mine/bonus/myCard.wxml','./pages/mine/changePassword.wxml','./pages/mine/discount.wxml','./pages/mine/discountCenter.wxml','./pages/mine/looks.wxml','./pages/mine/mean.wxml','./pages/mine/mine.wxml','./pages/mine/personal.wxml','./pages/mine/setting.wxml','./pages/mine/sign.wxml','./pages/moreList/moreList.wxml','./pages/order/grade.wxml','./pages/order/order.wxml','./pages/order/orderDetail.wxml','./pages/shopcar/shopcar.wxml'];d_[x[0]]={}
 var m0=function(e,s,r,gg){
 var z=gz$gwx_1()
 var oB=_v()
@@ -1757,6 +1785,18 @@ _(fCC,oHC)
 var cDC=_v()
 _(fCC,cDC)
 if(_oz(z,20,e,s,gg)){cDC.wxVkey=1
+var lWC=_v()
+_(cDC,lWC)
+var aXC=function(eZC,tYC,b1C,gg){
+var x3C=_v()
+_(b1C,x3C)
+if(_oz(z,25,eZC,tYC,gg)){x3C.wxVkey=1
+}
+x3C.wxXCkey=1
+return b1C
+}
+lWC.wxXCkey=2
+_2z(z,23,aXC,e,s,gg,lWC,'item','index','index')
 }
 cDC.wxXCkey=1
 _(r,fCC)
@@ -1766,166 +1806,225 @@ e_[x[6]]={f:m6,j:[],i:[],ti:[],ic:[]}
 d_[x[7]]={}
 var m7=function(e,s,r,gg){
 var z=gz$gwx_8()
-var aXC=_v()
-_(r,aXC)
-if(_oz(z,0,e,s,gg)){aXC.wxVkey=1
+var f5C=_v()
+_(r,f5C)
+if(_oz(z,0,e,s,gg)){f5C.wxVkey=1
 }
-aXC.wxXCkey=1
+f5C.wxXCkey=1
 return r
 }
 e_[x[7]]={f:m7,j:[],i:[],ti:[],ic:[]}
 d_[x[8]]={}
 var m8=function(e,s,r,gg){
 var z=gz$gwx_9()
-var eZC=_v()
-_(r,eZC)
-var b1C=function(x3C,o2C,o4C,gg){
-var c6C=_v()
-_(o4C,c6C)
-var h7C=function(c9C,o8C,o0C,gg){
-var aBD=_v()
-_(o0C,aBD)
-if(_oz(z,8,c9C,o8C,gg)){aBD.wxVkey=1
+var h7C=_v()
+_(r,h7C)
+var o8C=function(o0C,c9C,lAD,gg){
+var tCD=_v()
+_(lAD,tCD)
+var eDD=function(oFD,bED,xGD,gg){
+var fID=_v()
+_(xGD,fID)
+if(_oz(z,8,oFD,bED,gg)){fID.wxVkey=1
 }
-aBD.wxXCkey=1
-return o0C
+fID.wxXCkey=1
+return xGD
 }
-c6C.wxXCkey=2
-_2z(z,6,h7C,x3C,o2C,gg,c6C,'li','num','num')
-return o4C
+tCD.wxXCkey=2
+_2z(z,6,eDD,o0C,c9C,gg,tCD,'li','num','num')
+return lAD
 }
-eZC.wxXCkey=2
-_2z(z,2,b1C,e,s,gg,eZC,'item','index','index')
+h7C.wxXCkey=2
+_2z(z,2,o8C,e,s,gg,h7C,'item','index','index')
 return r
 }
 e_[x[8]]={f:m8,j:[],i:[],ti:[],ic:[]}
 d_[x[9]]={}
 var m9=function(e,s,r,gg){
 var z=gz$gwx_10()
-var eDD=_v()
-_(r,eDD)
-var bED=function(xGD,oFD,oHD,gg){
-var cJD=_n('view')
-_rz(z,cJD,'class',4,xGD,oFD,gg)
 var hKD=_v()
-_(cJD,hKD)
-if(_oz(z,5,xGD,oFD,gg)){hKD.wxVkey=1
+_(r,hKD)
+var oLD=function(oND,cMD,lOD,gg){
+var tQD=_n('view')
+_rz(z,tQD,'class',4,oND,cMD,gg)
+var eRD=_v()
+_(tQD,eRD)
+if(_oz(z,5,oND,cMD,gg)){eRD.wxVkey=1
 }
-var oLD=_v()
-_(cJD,oLD)
-if(_oz(z,6,xGD,oFD,gg)){oLD.wxVkey=1
+var bSD=_v()
+_(tQD,bSD)
+if(_oz(z,6,oND,cMD,gg)){bSD.wxVkey=1
 }
-hKD.wxXCkey=1
-oLD.wxXCkey=1
-_(oHD,cJD)
-return oHD
+eRD.wxXCkey=1
+bSD.wxXCkey=1
+_(lOD,tQD)
+return lOD
 }
-eDD.wxXCkey=2
-_2z(z,2,bED,e,s,gg,eDD,'item','index','index')
+hKD.wxXCkey=2
+_2z(z,2,oLD,e,s,gg,hKD,'item','index','index')
 return r
 }
 e_[x[9]]={f:m9,j:[],i:[],ti:[],ic:[]}
 d_[x[10]]={}
 var m10=function(e,s,r,gg){
 var z=gz$gwx_11()
-var oND=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var lOD=_v()
-_(oND,lOD)
-if(_oz(z,4,e,s,gg)){lOD.wxVkey=1
+var xUD=_n('view')
+_rz(z,xUD,'class',0,e,s,gg)
+var fWD=_mz(z,'form',['bindreset',1,'bindsubmit',1,'class',2,'data-event-opts',3],[],e,s,gg)
+var cXD=_v()
+_(fWD,cXD)
+if(_oz(z,5,e,s,gg)){cXD.wxVkey=1
 }
-lOD.wxXCkey=1
-_(r,oND)
+var c1D=_n('view')
+_rz(z,c1D,'class',6,e,s,gg)
+var o2D=_v()
+_(c1D,o2D)
+if(_oz(z,7,e,s,gg)){o2D.wxVkey=1
+}
+var l3D=_v()
+_(c1D,l3D)
+if(_oz(z,8,e,s,gg)){l3D.wxVkey=1
+}
+o2D.wxXCkey=1
+l3D.wxXCkey=1
+_(fWD,c1D)
+var hYD=_v()
+_(fWD,hYD)
+if(_oz(z,9,e,s,gg)){hYD.wxVkey=1
+}
+var oZD=_v()
+_(fWD,oZD)
+if(_oz(z,10,e,s,gg)){oZD.wxVkey=1
+}
+cXD.wxXCkey=1
+hYD.wxXCkey=1
+oZD.wxXCkey=1
+_(xUD,fWD)
+var oVD=_v()
+_(xUD,oVD)
+if(_oz(z,11,e,s,gg)){oVD.wxVkey=1
+}
+oVD.wxXCkey=1
+_(r,xUD)
 return r
 }
 e_[x[10]]={f:m10,j:[],i:[],ti:[],ic:[]}
 d_[x[11]]={}
 var m11=function(e,s,r,gg){
 var z=gz$gwx_12()
-var tQD=_v()
-_(r,tQD)
-if(_oz(z,0,e,s,gg)){tQD.wxVkey=1
+var t5D=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
+var e6D=_v()
+_(t5D,e6D)
+if(_oz(z,4,e,s,gg)){e6D.wxVkey=1
 }
-tQD.wxXCkey=1
+e6D.wxXCkey=1
+_(r,t5D)
 return r
 }
 e_[x[11]]={f:m11,j:[],i:[],ti:[],ic:[]}
 d_[x[12]]={}
 var m12=function(e,s,r,gg){
 var z=gz$gwx_13()
-var bSD=_mz(z,'form',['bindreset',0,'bindsubmit',1,'class',1,'data-event-opts',2],[],e,s,gg)
-var oTD=_v()
-_(bSD,oTD)
-if(_oz(z,4,e,s,gg)){oTD.wxVkey=1
+var o8D=_v()
+_(r,o8D)
+if(_oz(z,0,e,s,gg)){o8D.wxVkey=1
 }
-var xUD=_v()
-_(bSD,xUD)
-if(_oz(z,5,e,s,gg)){xUD.wxVkey=1
-}
-var oVD=_v()
-_(bSD,oVD)
-if(_oz(z,6,e,s,gg)){oVD.wxVkey=1
-}
-oTD.wxXCkey=1
-xUD.wxXCkey=1
-oVD.wxXCkey=1
-_(r,bSD)
+o8D.wxXCkey=1
 return r
 }
 e_[x[12]]={f:m12,j:[],i:[],ti:[],ic:[]}
 d_[x[13]]={}
 var m13=function(e,s,r,gg){
 var z=gz$gwx_14()
-var cXD=_v()
-_(r,cXD)
-var hYD=function(c1D,oZD,o2D,gg){
-var a4D=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],c1D,oZD,gg)
-var t5D=_v()
-_(a4D,t5D)
-if(_oz(z,7,c1D,oZD,gg)){t5D.wxVkey=1
+var o0D=_n('view')
+_rz(z,o0D,'class',0,e,s,gg)
+var cBE=_mz(z,'form',['bindreset',1,'bindsubmit',1,'class',2,'data-event-opts',3],[],e,s,gg)
+var hCE=_v()
+_(cBE,hCE)
+if(_oz(z,5,e,s,gg)){hCE.wxVkey=1
 }
-t5D.wxXCkey=1
-_(o2D,a4D)
-return o2D
+var oFE=_n('view')
+_rz(z,oFE,'class',6,e,s,gg)
+var lGE=_v()
+_(oFE,lGE)
+if(_oz(z,7,e,s,gg)){lGE.wxVkey=1
 }
-cXD.wxXCkey=2
-_2z(z,2,hYD,e,s,gg,cXD,'item','index','index')
+var aHE=_v()
+_(oFE,aHE)
+if(_oz(z,8,e,s,gg)){aHE.wxVkey=1
+}
+lGE.wxXCkey=1
+aHE.wxXCkey=1
+_(cBE,oFE)
+var oDE=_v()
+_(cBE,oDE)
+if(_oz(z,9,e,s,gg)){oDE.wxVkey=1
+}
+var cEE=_v()
+_(cBE,cEE)
+if(_oz(z,10,e,s,gg)){cEE.wxVkey=1
+}
+hCE.wxXCkey=1
+oDE.wxXCkey=1
+cEE.wxXCkey=1
+_(o0D,cBE)
+var fAE=_v()
+_(o0D,fAE)
+if(_oz(z,11,e,s,gg)){fAE.wxVkey=1
+}
+fAE.wxXCkey=1
+_(r,o0D)
 return r
 }
 e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var b7D=_v()
-_(r,b7D)
-var o8D=function(o0D,x9D,fAE,gg){
-var hCE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o0D,x9D,gg)
-var oDE=_v()
-_(hCE,oDE)
-if(_oz(z,7,o0D,x9D,gg)){oDE.wxVkey=1
+var eJE=_v()
+_(r,eJE)
+var bKE=function(xME,oLE,oNE,gg){
+var cPE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],xME,oLE,gg)
+var hQE=_v()
+_(cPE,hQE)
+if(_oz(z,7,xME,oLE,gg)){hQE.wxVkey=1
 }
-oDE.wxXCkey=1
-_(fAE,hCE)
-return fAE
+hQE.wxXCkey=1
+_(oNE,cPE)
+return oNE
 }
-b7D.wxXCkey=2
-_2z(z,2,o8D,e,s,gg,b7D,'item','index','index')
+eJE.wxXCkey=2
+_2z(z,2,bKE,e,s,gg,eJE,'item','index','index')
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var oFE=_v()
-_(r,oFE)
-if(_oz(z,0,e,s,gg)){oFE.wxVkey=1
+var cSE=_v()
+_(r,cSE)
+var oTE=function(aVE,lUE,tWE,gg){
+var bYE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],aVE,lUE,gg)
+var oZE=_v()
+_(bYE,oZE)
+if(_oz(z,7,aVE,lUE,gg)){oZE.wxVkey=1
 }
-oFE.wxXCkey=1
+oZE.wxXCkey=1
+_(tWE,bYE)
+return tWE
+}
+cSE.wxXCkey=2
+_2z(z,2,oTE,e,s,gg,cSE,'item','index','index')
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
+var o2E=_v()
+_(r,o2E)
+if(_oz(z,0,e,s,gg)){o2E.wxVkey=1
+}
+o2E.wxXCkey=1
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
@@ -1944,26 +2043,26 @@ e_[x[18]]={f:m18,j:[],i:[],ti:[],ic:[]}
 d_[x[19]]={}
 var m19=function(e,s,r,gg){
 var z=gz$gwx_20()
-var bKE=_v()
-_(r,bKE)
-var oLE=function(oNE,xME,fOE,gg){
-var hQE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oNE,xME,gg)
-var oRE=_v()
-_(hQE,oRE)
-if(_oz(z,7,oNE,xME,gg)){oRE.wxVkey=1
-}
-oRE.wxXCkey=1
-_(fOE,hQE)
-return fOE
-}
-bKE.wxXCkey=2
-_2z(z,2,oLE,e,s,gg,bKE,'item','index','index')
 return r
 }
 e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
+var c7E=_v()
+_(r,c7E)
+var o8E=function(a0E,l9E,tAF,gg){
+var bCF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],a0E,l9E,gg)
+var oDF=_v()
+_(bCF,oDF)
+if(_oz(z,7,a0E,l9E,gg)){oDF.wxVkey=1
+}
+oDF.wxXCkey=1
+_(tAF,bCF)
+return tAF
+}
+c7E.wxXCkey=2
+_2z(z,2,o8E,e,s,gg,c7E,'item','index','index')
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
@@ -1994,55 +2093,55 @@ e_[x[24]]={f:m24,j:[],i:[],ti:[],ic:[]}
 d_[x[25]]={}
 var m25=function(e,s,r,gg){
 var z=gz$gwx_26()
-var bYE=_v()
-_(r,bYE)
-if(_oz(z,0,e,s,gg)){bYE.wxVkey=1
-}
-bYE.wxXCkey=1
 return r
 }
 e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
 d_[x[26]]={}
 var m26=function(e,s,r,gg){
 var z=gz$gwx_27()
-var x1E=_v()
-_(r,x1E)
-var o2E=function(c4E,f3E,h5E,gg){
-var c7E=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],c4E,f3E,gg)
-var o8E=_v()
-_(c7E,o8E)
-if(_oz(z,7,c4E,f3E,gg)){o8E.wxVkey=1
+var cKF=_v()
+_(r,cKF)
+if(_oz(z,0,e,s,gg)){cKF.wxVkey=1
 }
-o8E.wxXCkey=1
-_(h5E,c7E)
-return h5E
-}
-x1E.wxXCkey=2
-_2z(z,2,o2E,e,s,gg,x1E,'item','index','index')
+cKF.wxXCkey=1
 return r
 }
 e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 d_[x[27]]={}
 var m27=function(e,s,r,gg){
 var z=gz$gwx_28()
-var a0E=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
-var tAF=_v()
-_(a0E,tAF)
-if(_oz(z,2,e,s,gg)){tAF.wxVkey=1
+var lMF=_v()
+_(r,lMF)
+var aNF=function(ePF,tOF,bQF,gg){
+var xSF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],ePF,tOF,gg)
+var oTF=_v()
+_(xSF,oTF)
+if(_oz(z,7,ePF,tOF,gg)){oTF.wxVkey=1
 }
-var eBF=_v()
-_(a0E,eBF)
-if(_oz(z,3,e,s,gg)){eBF.wxVkey=1
+oTF.wxXCkey=1
+_(bQF,xSF)
+return bQF
 }
-tAF.wxXCkey=1
-eBF.wxXCkey=1
-_(r,a0E)
+lMF.wxXCkey=2
+_2z(z,2,aNF,e,s,gg,lMF,'item','index','index')
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
 d_[x[28]]={}
 var m28=function(e,s,r,gg){
 var z=gz$gwx_29()
+var cVF=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
+var hWF=_v()
+_(cVF,hWF)
+if(_oz(z,2,e,s,gg)){hWF.wxVkey=1
+}
+var oXF=_v()
+_(cVF,oXF)
+if(_oz(z,3,e,s,gg)){oXF.wxVkey=1
+}
+hWF.wxXCkey=1
+oXF.wxXCkey=1
+_(r,cVF)
 return r
 }
 e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
@@ -2061,97 +2160,97 @@ e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
 d_[x[31]]={}
 var m31=function(e,s,r,gg){
 var z=gz$gwx_32()
-var fGF=_v()
-_(r,fGF)
-var cHF=function(oJF,hIF,cKF,gg){
-var lMF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oJF,hIF,gg)
-var aNF=_v()
-_(lMF,aNF)
-if(_oz(z,7,oJF,hIF,gg)){aNF.wxVkey=1
-}
-var tOF=_v()
-_(lMF,tOF)
-if(_oz(z,8,oJF,hIF,gg)){tOF.wxVkey=1
-}
-var ePF=_v()
-_(lMF,ePF)
-if(_oz(z,9,oJF,hIF,gg)){ePF.wxVkey=1
-}
-var bQF=_v()
-_(lMF,bQF)
-if(_oz(z,10,oJF,hIF,gg)){bQF.wxVkey=1
-}
-aNF.wxXCkey=1
-tOF.wxXCkey=1
-ePF.wxXCkey=1
-bQF.wxXCkey=1
-_(cKF,lMF)
-return cKF
-}
-fGF.wxXCkey=2
-_2z(z,2,cHF,e,s,gg,fGF,'item','index','index')
 return r
 }
 e_[x[31]]={f:m31,j:[],i:[],ti:[],ic:[]}
 d_[x[32]]={}
 var m32=function(e,s,r,gg){
 var z=gz$gwx_33()
-var xSF=_n('view')
-_rz(z,xSF,'class',0,e,s,gg)
-var fUF=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
-_(xSF,fUF)
-var oTF=_v()
-_(xSF,oTF)
-if(_oz(z,8,e,s,gg)){oTF.wxVkey=1
+var t3F=_v()
+_(r,t3F)
+var e4F=function(o6F,b5F,x7F,gg){
+var f9F=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o6F,b5F,gg)
+var c0F=_v()
+_(f9F,c0F)
+if(_oz(z,7,o6F,b5F,gg)){c0F.wxVkey=1
 }
-oTF.wxXCkey=1
-_(r,xSF)
+var hAG=_v()
+_(f9F,hAG)
+if(_oz(z,8,o6F,b5F,gg)){hAG.wxVkey=1
+}
+var oBG=_v()
+_(f9F,oBG)
+if(_oz(z,9,o6F,b5F,gg)){oBG.wxVkey=1
+}
+var cCG=_v()
+_(f9F,cCG)
+if(_oz(z,10,o6F,b5F,gg)){cCG.wxVkey=1
+}
+c0F.wxXCkey=1
+hAG.wxXCkey=1
+oBG.wxXCkey=1
+cCG.wxXCkey=1
+_(x7F,f9F)
+return x7F
+}
+t3F.wxXCkey=2
+_2z(z,2,e4F,e,s,gg,t3F,'item','index','index')
 return r
 }
 e_[x[32]]={f:m32,j:[],i:[],ti:[],ic:[]}
 d_[x[33]]={}
 var m33=function(e,s,r,gg){
 var z=gz$gwx_34()
+var lEG=_n('view')
+_rz(z,lEG,'class',0,e,s,gg)
+var tGG=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
+_(lEG,tGG)
+var aFG=_v()
+_(lEG,aFG)
+if(_oz(z,8,e,s,gg)){aFG.wxVkey=1
+}
+aFG.wxXCkey=1
+_(r,lEG)
 return r
 }
 e_[x[33]]={f:m33,j:[],i:[],ti:[],ic:[]}
 d_[x[34]]={}
 var m34=function(e,s,r,gg){
 var z=gz$gwx_35()
-var oXF=_n('view')
-_rz(z,oXF,'class',0,e,s,gg)
-var cYF=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(oXF,cYF)
-var oZF=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(oXF,oZF)
-var l1F=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(oXF,l1F)
-_(r,oXF)
 return r
 }
 e_[x[34]]={f:m34,j:[],i:[],ti:[],ic:[]}
 d_[x[35]]={}
 var m35=function(e,s,r,gg){
 var z=gz$gwx_36()
-var t3F=_n('view')
-_rz(z,t3F,'class',0,e,s,gg)
-var e4F=_v()
-_(t3F,e4F)
-if(_oz(z,1,e,s,gg)){e4F.wxVkey=1
-}
-var b5F=_v()
-_(t3F,b5F)
-if(_oz(z,2,e,s,gg)){b5F.wxVkey=1
-}
-e4F.wxXCkey=1
-b5F.wxXCkey=1
-_(r,t3F)
+var oJG=_n('view')
+_rz(z,oJG,'class',0,e,s,gg)
+var xKG=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oJG,xKG)
+var oLG=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oJG,oLG)
+var fMG=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oJG,fMG)
+_(r,oJG)
 return r
 }
 e_[x[35]]={f:m35,j:[],i:[],ti:[],ic:[]}
 d_[x[36]]={}
 var m36=function(e,s,r,gg){
 var z=gz$gwx_37()
+var hOG=_n('view')
+_rz(z,hOG,'class',0,e,s,gg)
+var oPG=_v()
+_(hOG,oPG)
+if(_oz(z,1,e,s,gg)){oPG.wxVkey=1
+}
+var cQG=_v()
+_(hOG,cQG)
+if(_oz(z,2,e,s,gg)){cQG.wxVkey=1
+}
+oPG.wxXCkey=1
+cQG.wxXCkey=1
+_(r,hOG)
 return r
 }
 e_[x[36]]={f:m36,j:[],i:[],ti:[],ic:[]}
@@ -2161,6 +2260,12 @@ var z=gz$gwx_38()
 return r
 }
 e_[x[37]]={f:m37,j:[],i:[],ti:[],ic:[]}
+d_[x[38]]={}
+var m38=function(e,s,r,gg){
+var z=gz$gwx_39()
+return r
+}
+e_[x[38]]={f:m38,j:[],i:[],ti:[],ic:[]}
 if(path&&e_[path]){
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
 var main=e_[path].f
@@ -2178,7 +2283,7 @@ return root;
 
 
 
-__wxAppCode__['app.json']={"pages":["pages/login/login","pages/login/register","pages/login/password","pages/index/index","pages/components/shareInfo","pages/market/market","pages/components/goodDetail","pages/components/goods","pages/moreList/moreList","pages/market/panicBuy","pages/message/message","pages/shopcar/shopcar","pages/message/chatDetail","pages/mine/mine","pages/mine/looks","pages/components/search","pages/mine/discount","pages/mine/mean","pages/mine/setting","pages/mine/personal","pages/mine/address","pages/mine/addAddress","pages/mine/changePassword","pages/mine/about","pages/mine/discountCenter","pages/order/order","pages/order/orderDetail","pages/order/grade","pages/mine/bonus/bonusCenter","pages/mine/bonus/bonusInfo","pages/mine/bonus/myCard","pages/mine/sign","pages/mine/bonus/bonusApplyInfo"],"subPackages":[],"window":{"navigationBarTextStyle":"white","navigationBarBackgroundColor":"#000000","backgroundColor":"#000000"},"tabBar":{"color":"#666","selectedColor":"#fff","backgroundColor":"#000","list":[{"pagePath":"pages/index/index","text":"首页","iconPath":"static/img/tabbar/index1.png","selectedIconPath":"static/img/tabbar/index2.png"},{"pagePath":"pages/market/market","text":"商城","iconPath":"static/img/tabbar/market1.png","selectedIconPath":"static/img/tabbar/market2.png"},{"pagePath":"pages/message/message","text":"消息","iconPath":"static/img/tabbar/message1.png","selectedIconPath":"static/img/tabbar/message2.png"},{"pagePath":"pages/shopcar/shopcar","text":"购物车","iconPath":"static/img/tabbar/shopcar1.png","selectedIconPath":"static/img/tabbar/shopcar2.png"},{"pagePath":"pages/mine/mine","text":"我的","iconPath":"static/img/tabbar/mine1.png","selectedIconPath":"static/img/tabbar/mine2.png"}]},"nvueCompiler":"weex","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"优逸","compilerVersion":"2.0.1","usingComponents":{}};
+__wxAppCode__['app.json']={"pages":["pages/login/login","pages/login/bindTel","pages/login/register","pages/login/password","pages/index/index","pages/components/shareInfo","pages/market/market","pages/components/goodDetail","pages/components/goods","pages/moreList/moreList","pages/market/panicBuy","pages/message/message","pages/shopcar/shopcar","pages/message/chatDetail","pages/mine/mine","pages/mine/looks","pages/components/search","pages/mine/discount","pages/mine/mean","pages/mine/setting","pages/mine/personal","pages/mine/address","pages/mine/addAddress","pages/mine/changePassword","pages/mine/about","pages/mine/discountCenter","pages/order/order","pages/order/orderDetail","pages/order/grade","pages/mine/bonus/bonusCenter","pages/mine/bonus/bonusInfo","pages/mine/bonus/myCard","pages/mine/sign","pages/mine/bonus/bonusApplyInfo"],"subPackages":[],"window":{"navigationBarTextStyle":"white","navigationBarBackgroundColor":"#000000","backgroundColor":"#000000"},"tabBar":{"color":"#666","selectedColor":"#fff","backgroundColor":"#000","list":[{"pagePath":"pages/index/index","text":"首页","iconPath":"static/img/tabbar/index1.png","selectedIconPath":"static/img/tabbar/index2.png"},{"pagePath":"pages/market/market","text":"商城","iconPath":"static/img/tabbar/market1.png","selectedIconPath":"static/img/tabbar/market2.png"},{"pagePath":"pages/message/message","text":"消息","iconPath":"static/img/tabbar/message1.png","selectedIconPath":"static/img/tabbar/message2.png"},{"pagePath":"pages/shopcar/shopcar","text":"购物车","iconPath":"static/img/tabbar/shopcar1.png","selectedIconPath":"static/img/tabbar/shopcar2.png"},{"pagePath":"pages/mine/mine","text":"我的","iconPath":"static/img/tabbar/mine1.png","selectedIconPath":"static/img/tabbar/mine2.png"}]},"nvueCompiler":"weex","splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"appname":"优逸","compilerVersion":"2.0.1","usingComponents":{}};
 __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/uni-calendar/uni-calendar-item.json']={"usingComponents":{},"component":true};
@@ -2210,6 +2315,9 @@ __wxAppCode__['pages/components/shareInfo.wxml']=$gwx('./pages/components/shareI
 
 __wxAppCode__['pages/index/index.json']={"navigationStyle":"custom","bounce":"none","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/index/index.wxml']=$gwx('./pages/index/index.wxml');
+
+__wxAppCode__['pages/login/bindTel.json']={"navigationStyle":"custom","bounce":"none","animationType":"zoom-fade-out","titleNView":"false","usingComponents":{}};
+__wxAppCode__['pages/login/bindTel.wxml']=$gwx('./pages/login/bindTel.wxml');
 
 __wxAppCode__['pages/login/login.json']={"navigationStyle":"custom","bounce":"none","animationType":"zoom-fade-out","titleNView":"false","usingComponents":{}};
 __wxAppCode__['pages/login/login.wxml']=$gwx('./pages/login/login.wxml');
@@ -2387,12 +2495,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     // 锁定屏幕方向
     plus.screen.lockOrientation('portrait-primary'); //锁定
 
+    var that = this;
+    // uni.getStorage({
+    //   key: 'userinfo',
+    //   success: function (res) {
+    //     if(res.data.token) {
+    //       console.log('登录页本地获取的token是', res.data.token)
+    //       that.$store.commit('setToken', res.data.token)
+    //       if(res.data.mobile) {
+    //         console.log('登录页本地获取的手机号是', res.data.mobile)
+    //         uni.reLaunch({
+    //           url: 'pages/index/index'
+    //         })
+    //         return
+    //       }
+    //       return
+    //     }
+    //   }
+    // })
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:11");
+    console.log('App Show', " at App.vue:29");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:14");
+    console.log('App Hide', " at App.vue:32");
   } };exports.default = _default;
 
 /***/ }),
@@ -2690,7 +2816,13 @@ define('common/vendor.js',function(require, module, exports, window, document, f
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ "../../../../Desktop/LEI/white/api/config.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 {
-
+  // 登录注册
+  login: _config.default.devApi + '/app.user/login', // 登录
+  register: _config.default.devApi + '/app.user/register', // 注册
+  sendcode: _config.default.devApi + '/app.user/sendcode', // 发送验证码
+  resetpassword: _config.default.devApi + '/app.user/resetpassword', // 重置密码
+  otherlogin: _config.default.devApi + '/app.user/otherlogin', // 第三方登录
+  otherregister: _config.default.devApi + '/app.user/otherregister', // 第三方登录完善信息
   // 首页
   categorylist: _config.default.devApi + '/article/categorylist', // 所有文章分类
   articlesbycategoryid: _config.default.devApi + '/article/articlesbycategoryid', // 通过分类ID获取文章列表
@@ -2710,7 +2842,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   // 商城
   promotions: _config.default.devApi + '/goods/promotions', // 促销活动
-  goodscategory: _config.default.devApi + '/goods/goodscategory', // 获取所有商品分类
+  goodscategory: _config.default.devApi + '/category/goodscategory', // 获取所有商品分类
   recommendgoods: _config.default.devApi + '/goods/recommendgoods', // 推荐商品列表
   getbrands: _config.default.devApi + '/brands/getbrands', // 品牌分类
   getflashsalegoodsbyone: _config.default.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品
@@ -2744,8 +2876,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  conductApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
-  devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
+  devApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
+  conductApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
 };exports.default = _default;
 
 /***/ }),
@@ -2758,14 +2890,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = request;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = request;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../Desktop/LEI/white/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
 function request(obj) {
   uni.showLoading({
     title: '加载中' });
 
+  console.log(_index.default.state.token, " at common\\http.js:7");
   var params = {
     'wxapp_id': '10001',
-    token: 'e49a5f24059cca8dd47eb38d5d631742' };
+    token: _index.default.state.token };
 
   var data = _objectSpread({}, obj.data, params);
   uni.request({
@@ -2774,7 +2908,14 @@ function request(obj) {
     data: data,
     header: obj.header ? obj.header : {},
     success: function success(res) {
-      obj.cb(null, res.data);
+      if (res.data) {
+        obj.cb(null, res.data);
+      } else {
+        uni.showToast({
+          title: '请求失败',
+          icon: 'none' });
+
+      }
     },
     fail: function fail(err) {
       obj.cb(err, null);
@@ -3751,6 +3892,23 @@ createPage(_index.default);
 
 /***/ }),
 
+/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2FbindTel\"}":
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ "../../../../Desktop/LEI/white/pages/login/bindTel.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bindTel.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
 /*!******************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
@@ -4291,21 +4449,21 @@ _vue.default.use(_vuex.default);
 
 var store = new _vuex.default.Store({
   state: {
-    /**
-            * 是否需要强制登录
-            */
-    forcedLogin: false,
-    hasLogin: false,
-    userName: "" },
+    type: '',
+    mobile: '',
+    token: '' },
 
   mutations: {
-    login: function login(state, userName) {
-      state.userName = userName || '新用户';
-      state.hasLogin = true;
+    login: function login(state, userinfo) {
+      state.mobile = userinfo.mobile;
+      state.token = userinfo.token;
     },
     logout: function logout(state) {
-      state.userName = "";
-      state.hasLogin = false;
+      state.mobile = '';
+      state.token = '';
+    },
+    setToken: function setToken(state, token) {
+      state.token = token;
     } } });var _default =
 
 
@@ -14414,13 +14572,30 @@ var _default =
 {
   data: function data() {
     return {
-      username: '',
-      form: {
-        username: '11',
-        password: '' },
+      mobile: '',
+      password: '',
+      showDel: false,
+      ishide: false,
+      loginType: '' };
 
-      showDel: false };
-
+  },
+  onLoad: function onLoad() {
+    // uni.getStorage({
+    //   key: 'userinfo',
+    //   success: function (res) {
+    //     if(res.data.token) {
+    //       console.log('登录页本地获取的token是', res.data.token)
+    //       if(res.data.mobile) {
+    //         console.log('登录页本地获取的手机号是', res.data.mobile)
+    //         uni.reLaunch({
+    //           url: '../index/index'
+    //         })
+    //         return
+    //       }
+    //       return
+    //     }
+    //   }
+    // })
   },
   methods: {
     onInput: function onInput(e) {
@@ -14437,27 +14612,115 @@ var _default =
         "animationType": "zoom-fade-out" });
 
     },
-    goLogin: function goLogin() {
-      uni.switchTab({
-        url: '../index/index' });
+    goLogin: function goLogin() {var _this = this;
+      var value = /^1[3456789]\d{9}$/.test(this.mobile);
+      if (value) {
+        if (!this.password) {
+          uni.showToast({
+            title: '请输入密码',
+            icon: 'none' });
 
+          return;
+        }
+        this.$http({
+          url: this.$api.login,
+          data: {
+            mobile: this.mobile,
+            password: this.password },
+
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              // console.log(res.data.userinfo.token)
+
+              var userinfo = {
+                mobile: res.data.userinfo.mobile,
+                token: res.data.userinfo.token };
+
+              _this.$store.commit('login', userinfo);
+              uni.setStorage({
+                key: 'userinfo',
+                data: userinfo,
+                success: function success() {
+                  console.log('success', " at pages\\login\\login.vue:114");
+                } });
+
+              uni.switchTab({
+                url: '../index/index' });
+
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            } else {
+              uni.showToast({
+                title: '登录失败',
+                icon: 'none' });
+
+            }
+          } });
+
+      } else {
+        uni.showToast({
+          title: '请输入正确的手机号码',
+          icon: 'none' });
+
+      }
     },
     loginWay: function loginWay(type) {
+      var that = this;
+      that.loginType = type === 'weixin' ? 'weixin' : type === 'qq' ? 'qq' : 'sinaweibo';
       uni.getProvider({
         service: 'oauth',
         success: function success(res) {
-          console.log(res.provider, " at pages\\login\\login.vue:77");
+          console.log(res.provider, " at pages\\login\\login.vue:146");
           if (~res.provider.indexOf(type)) {
             uni.login({
               provider: type,
               success: function success(loginRes) {
-                console.log(JSON.stringify(loginRes), " at pages\\login\\login.vue:82");
+                console.log('第三方登录获取到的信息', JSON.stringify(loginRes), " at pages\\login\\login.vue:151");
+                if (that.type === 'sinaweibo') {
+                  that.openid = loginRes.authResult.uid;
+                } else {
+                  that.openid = loginRes.authResult.openid;
+                }
+                that.getInfo();
               } });
 
           }
         },
         fail: function fail(err) {
-          console.log(err, " at pages\\login\\login.vue:88");
+          uni.showToast({
+            title: '授权登录失败',
+            icon: 'none' });
+
+        } });
+
+    },
+    // 第三方登录获取绑定是否手机号等信息
+    getInfo: function getInfo() {
+      this.$http({
+        url: this.$api.otherlogin,
+        method: 'POST',
+        data: {
+          openid: this.openid,
+          type: this.loginType },
+
+        cb: function cb(err, res) {
+          console.log(err, " at pages\\login\\login.vue:180");
+          // if(!err && res.code === 1) {
+          //   console.log(res.data)
+          // } else if (res.code === 0 && res.msg){
+          //   uni.showToast({
+          //     title: res.msg,
+          //     icon: 'none'
+          //   })
+          // } if(err) {
+          //   uni.showToast({
+          //     title: 获取用户绑定信息失败,
+          //     icon: 'none'
+          //   })
+          // }
         } });
 
     } } };exports.default = _default;
@@ -14491,6 +14754,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = Array.isArray(_vm.password)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.mobile = ""
+    }
+
+    _vm.e1 = function($event) {
+      var $$a = _vm.password,
+        $$el = $event.target,
+        $$c = $$el.checked ? true : false
+
+      if (Array.isArray($$a)) {
+        var $$v = null,
+          $$i = _vm._i($$a, $$v)
+
+        if ($$el.checked) {
+          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+        } else {
+          $$i > -1 &&
+            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+        }
+      } else {
+        _vm.password = $$c
+      }
+    }
+
+    _vm.e2 = function($event) {
+      _vm.password = null
+    }
+
+    _vm.e3 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14502,6 +14809,353 @@ render._withStripped = true
 },[["../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}","common/runtime","common/vendor"]]]);
 });
 require('pages/login/login.js');
+__wxRoute = 'pages/login/bindTel';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/login/bindTel.js';
+
+define('pages/login/bindTel.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/login/bindTel"],{
+
+/***/ "../../../../Desktop/LEI/white/pages/login/bindTel.vue":
+/*!*************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bindTel.vue?vue&type=template&id=7dfac292&scoped=true& */ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true&");
+/* harmony import */ var _bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bindTel.vue?vue&type=script&lang=js& */ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true& */ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true&");
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "7dfac292",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "Desktop/LEI/white/pages/login/bindTel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/babel-loader/lib!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./bindTel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_babel_loader_lib_index_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_12_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_script_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/css-loader??ref--8-oneOf-1-2!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/postcss-loader/src??ref--8-oneOf-1-3!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true& */ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true&");
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_1_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_css_loader_index_js_ref_8_oneOf_1_2_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_stylePostLoader_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_3_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_4_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_8_oneOf_1_5_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_style_index_0_id_7dfac292_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!../../../../../Downloads/HBuilderX/plugins/uniapp-cli/node_modules/vue-loader/lib??vue-loader-options!./bindTel.vue?vue&type=template&id=7dfac292&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_vue_cli_plugin_uni_packages_webpack_preprocess_loader_index_js_ref_17_0_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_dcloudio_webpack_uni_mp_loader_lib_template_js_Downloads_HBuilderX_plugins_uniapp_cli_node_modules_vue_loader_lib_index_js_vue_loader_options_bindTel_vue_vue_type_template_id_7dfac292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default =
+{
+  data: function data() {
+    return {
+      title: '',
+      type: '',
+      showDel: false,
+      code_word: '获取验证码',
+      mobile: '',
+      code: '',
+      password: '',
+      check_code: '',
+      showInfo: false,
+      ishide: false };
+
+  },
+  onLoad: function onLoad(option) {
+    this.type = option.type;
+  },
+  methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
+    onInput: function onInput(e) {
+      var value = e.detail.value;
+      if (value) {
+        this.showDel = true;
+        return;
+      }
+      this.showDel = false;
+    },
+    goNext: function goNext() {
+      if (!this.check_code) {
+        uni.showToast({
+          title: '请先获取手机验证码',
+          icon: 'none' });
+
+        return;
+      }
+      if (this.check_code !== this.code) {
+        uni.showToast({
+          title: '验证码不正确',
+          icon: 'none' });
+
+        return;
+      }
+      if (!this.password) {
+        uni.showToast({
+          title: '请输入密码',
+          icon: 'none' });
+
+        return;
+      }
+      if (this.check_code === this.code && this.check_code) {
+        // uni.navigateTo({
+        //   url: 'password?type=' + this.type + '&mobile=' + this.mobile,
+        //   "animationType": "zoom-fade-out"
+        // })  
+      }
+    },
+    goLogin: function goLogin() {
+      uni.navigateTo({
+        url: 'login',
+        "animationType": "zoom-fade-out" });
+
+    },
+    getCode: function getCode() {
+      var value = /^1[3456789]\d{9}$/.test(this.mobile);
+      var that = this;
+      if (!value) {
+        uni.showToast({
+          title: '请输入正确的手机号码',
+          icon: 'none' });
+
+        return;
+      }
+
+      console.log(this.mobile, " at pages\\login\\bindTel.vue:125");
+      var num = 1111;
+      that.check_code = num.toString();
+      console.log(num.toString(), " at pages\\login\\bindTel.vue:128");
+
+      // this.$http({
+      //   url: this.$api.sendcode,
+      //   method: 'POST',
+      //   data: {
+      //     mobile: this.mobile
+      //   },
+      //   cb: (err, res) => {
+      //     if(!err && res.code === 1) {
+      //       that.check_code = res.data.info.code.toString()
+      //       that.code_word = 120
+      //       that.showInfo = true
+      //       setInterval(function() {
+      //         if (that.code_word > 0) {
+      //           that.code_word--
+      //         }
+      //         if (that.code_word === 0) {
+      //           that.check_code = ''
+      //           that.showInfo = false
+      //           return
+      //         }
+      //       }.bind(that), 1000)
+      //     } else {
+      //       uni.showToast({
+      //         title: '手机验证码获取失败',
+      //         icon: 'none'
+      //       })
+      //     }
+      //   }
+      // })
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--8-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-1!./node_modules/css-loader??ref--8-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-oneOf-1-3!./node_modules/sass-loader/lib/loader.js??ref--8-oneOf-1-4!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--8-oneOf-1-5!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=style&index=0&id=7dfac292&lang=scss&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/pc/Desktop/LEI/white/pages/login/bindTel.vue?vue&type=template&id=7dfac292&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  var g0 = Array.isArray(_vm.password)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.mobile = ""
+    }
+
+    _vm.e1 = function($event) {
+      var $$a = _vm.password,
+        $$el = $event.target,
+        $$c = $$el.checked ? true : false
+
+      if (Array.isArray($$a)) {
+        var $$v = null,
+          $$i = _vm._i($$a, $$v)
+
+        if ($$el.checked) {
+          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+        } else {
+          $$i > -1 &&
+            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+        }
+      } else {
+        _vm.password = $$c
+      }
+    }
+
+    _vm.e2 = function($event) {
+      _vm.password = null
+    }
+
+    _vm.e3 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ })
+
+},[["../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2FbindTel\"}","common/runtime","common/vendor"]]]);
+});
+require('pages/login/bindTel.js');
 __wxRoute = 'pages/login/register';__wxRouteBegin = true;__wxAppCurrentFile__ = 'pages/login/register.js';
 
 define('pages/login/register.js',function(require, module, exports, window, document, frames, self, location, navigator, localStorage, history, Caches, screen, alert, confirm, prompt, fetch, XMLHttpRequest, WebSocket, webkit, WeixinJSCore, Reporter, print, WeixinJSBridge){
@@ -14644,6 +15298,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -14654,6 +15309,7 @@ var _default =
       code_word: '获取验证码',
       username: '',
       code: '',
+      check_code: '',
       showInfo: false };
 
   },
@@ -14676,7 +15332,6 @@ var _default =
     },
     onInput: function onInput(e) {
       var value = e.detail.value;
-      this.username = value;
       if (value) {
         this.showDel = true;
         return;
@@ -14684,10 +15339,28 @@ var _default =
       this.showDel = false;
     },
     goNext: function goNext() {
-      uni.navigateTo({
-        url: 'password?type=' + this.type,
-        "animationType": "zoom-fade-out" });
+      console.log(this.check_code, this.code, this.check_code === this.code, " at pages\\login\\register.vue:81");
+      if (!this.check_code) {
+        uni.showToast({
+          title: '请先获取手机验证码',
+          icon: 'none' });
 
+        return;
+      }
+      if (this.check_code !== this.code) {
+        uni.showToast({
+          title: '验证码不正确',
+          icon: 'none' });
+
+        return;
+      }
+      console.log(this.check_code, this.code, " at pages\\login\\register.vue:96");
+      if (this.check_code === this.code && this.check_code) {
+        uni.navigateTo({
+          url: 'password?type=' + this.type + '&mobile=' + this.username,
+          "animationType": "zoom-fade-out" });
+
+      }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
@@ -14697,7 +15370,7 @@ var _default =
     },
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.username);
-      console.log(this.username, " at pages\\login\\register.vue:93");
+      var that = this;
       if (!value) {
         uni.showToast({
           title: '请输入正确的手机号码',
@@ -14705,18 +15378,41 @@ var _default =
 
         return;
       }
-      this.code_word = 60;
-      this.showInfo = true;
-      setInterval(function () {
-        if (this.code_word > 0) {
-          this.code_word--;
-        }
-        if (this.code_word === 0) {
-          this.code_word = '获取验证码';
-          this.showInfo = false;
-          return;
-        }
-      }.bind(this), 1000);
+
+      // console.log(this.username)
+      // let num = 1111
+      // that.check_code = num.toString()
+      // console.log(num.toString())
+
+      this.$http({
+        url: this.$api.sendcode,
+        method: 'POST',
+        data: {
+          mobile: this.username },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            that.check_code = res.data.info.code.toString();
+            that.code_word = 120;
+            that.showInfo = true;
+            setInterval(function () {
+              if (that.code_word > 0) {
+                that.code_word--;
+              }
+              if (that.code_word === 0) {
+                that.check_code = '';
+                that.showInfo = false;
+                return;
+              }
+            }.bind(that), 1000);
+          } else {
+            uni.showToast({
+              title: '手机验证码获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -14895,18 +15591,25 @@ var _default =
       type: '',
       showInfo: false,
       code_word: '获取验证码',
-      username: '',
-      code: '' };
+      mobile: '',
+      password: '',
+      code: '',
+      btnValue: '',
+      ishide: false };
 
   },
   onLoad: function onLoad(option) {
     this.type = option.type;
+    this.mobile = option.mobile;
+    console.log('接收到的参数', option, " at pages\\login\\password.vue:39");
     if (option.type === 'register') {
       this.title = '设置密码';
+      this.btnValue = '注册并登录';
       return;
     }
     if (option.type === 'forget') {
       this.title = '重置密码';
+      this.btnValue = '保存并登录';
       return;
     }
   },
@@ -14917,13 +15620,73 @@ var _default =
         "animationType": "zoom-fade-out" });
 
     },
-    onInput: function onInput(e) {
-      var value = e.detail.value;
-      this.username = value;
-    },
     sureAction: function sureAction() {
-      uni.switchTab({
-        url: '../index/index' });
+      switch (this.type) {
+        case 'forget':
+          this.$http({
+            url: this.$api.resetpassword,
+            method: 'POST',
+            data: {
+              mobile: this.mobile,
+              newpassword: this.password },
+
+            cb: function cb(err, res) {
+              if (!err && res.code === 1) {
+                uni.showToast({
+                  title: '重置密码成功',
+                  icon: 'none' });
+
+                uni.switchTab({
+                  url: '../index/index' });
+
+                return;
+              } else if (res.code === 0) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none' });
+
+                return;
+              } else {
+                uni.showToast({
+                  title: '重置密码失败',
+                  icon: 'none' });
+
+                return;
+              }
+            } });
+
+          break;
+        case 'register':
+          this.$http({
+            url: this.$api.register,
+            method: 'POST',
+            data: {
+              mobile: this.mobile,
+              password: this.password },
+
+            cb: function cb(err, res) {
+              if (!err && res.code === 1) {
+                uni.showToast({
+                  title: '注册成功',
+                  icon: 'none' });
+
+                uni.switchTab({
+                  url: '../index/index' });
+
+              } else if (res.code === 0) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none' });
+
+              } else {
+                uni.showToast({
+                  title: '注册失败',
+                  icon: 'none' });
+
+              }
+            } });
+
+          break;}
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -14956,6 +15719,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = Array.isArray(_vm.password)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      var $$a = _vm.password,
+        $$el = $event.target,
+        $$c = $$el.checked ? true : false
+
+      if (Array.isArray($$a)) {
+        var $$v = null,
+          $$i = _vm._i($$a, $$v)
+
+        if ($$el.checked) {
+          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+        } else {
+          $$i > -1 &&
+            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+        }
+      } else {
+        _vm.password = $$c
+      }
+    }
+
+    _vm.e1 = function($event) {
+      _vm.password = null
+    }
+
+    _vm.e2 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15111,6 +15914,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -15151,9 +15956,10 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
-            return;
+//
+//
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();this.getBanner();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}return;
           } else {
             uni.showToast({
               title: '文章列表获取失败',
@@ -15186,7 +15992,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     },
     // 点赞
     zanAction: function zanAction(item, index) {var _this3 = this;
-      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:117");
+      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:120");
       var url = this.$api.unLike;
       if (item.islike === 'no') {
         url = this.$api.like;
@@ -15200,10 +16006,18 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
           if (!err && res) {
             switch (_this3.cultureList[index].islike) {
               case 'yes':
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'no';
                 _this3.cultureList[index].like_count -= 1;
                 break;
               case 'no':
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'yes';
                 _this3.cultureList[index].like_count += 1;
                 break;}
@@ -15227,6 +16041,24 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         } });
 
     },
+    // 首页轮播图图片
+    getBanner: function getBanner() {var _this4 = this;
+      this.$http({
+        url: this.$api.index,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // console.log(res.data.items[0].data)
+            _this4.swiperList = res.data.items[0].data;
+          } else {
+            uni.showToast({
+              title: '轮播图图片加载失败',
+              icon: 'none' });
+
+          }
+          // console.log(res.data.items[0].data[0].imgUrl)
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
@@ -15240,7 +16072,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     // 搜索页
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: '../components/search' });
+        url: '../components/search?type=0' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -15585,13 +16417,13 @@ var _default = { data: function data() {return { current: { poster: 'https://img
           // this.strings = parseHtml(res.data.detail.article_content)
           // console.log(this.strings)
           _this.cultureInfo.time = res.data.detail.update_time;} });}, // 评论点赞
-    zanAction: function zanAction(item, index) {var _this2 = this;console.log(item.id, item.islike, index, " at pages\\components\\shareInfo.vue:188");var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {
-            switch (_this2.comments.list[index].islike) {
+    zanAction: function zanAction(item, index) {var _this2 = this; // console.log(item.id, item.islike, index)
+      var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {switch (_this2.comments.list[index].islike) {
               case 'yes':
                 _this2.comments.list[index].islike = 'no';
                 _this2.comments.list[index].likenum -= 1;
                 uni.showToast({
-                  title: '点赞成功',
+                  title: '取消点赞成功',
                   icon: 'none' });
 
                 break;
@@ -15599,7 +16431,7 @@ var _default = { data: function data() {return { current: { poster: 'https://img
                 _this2.comments.list[index].islike = 'yes';
                 _this2.comments.list[index].likenum += 1;
                 uni.showToast({
-                  title: '取消点赞成功',
+                  title: '点赞成功',
                   icon: 'none' });
 
                 break;}
@@ -15640,8 +16472,12 @@ var _default = { data: function data() {return { current: { poster: 'https://img
         } });
 
     },
+    onInput: function onInput(e) {
+      this.speakVal = e.detail.value;
+    },
+    // 发布评论
     addComment: function addComment(e) {var _this3 = this;
-      console.log(this.speakVal, " at pages\\components\\shareInfo.vue:255");
+      console.log(this.speakVal, " at pages\\components\\shareInfo.vue:259");
       this.$http({
         url: this.$api.addcomments,
         data: {
@@ -15996,7 +16832,7 @@ var _default =
     // 搜索页
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: '../components/search' });
+        url: '../components/search?type=1' });
 
     },
     // 商品详情页
@@ -16752,6 +17588,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -16763,101 +17601,60 @@ var _default =
       tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
-      shareTag: ['综合', '最热', '最新', '官方', '筛选'],
+      shareTag: [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }], // 标签默认这个是商品标签
       filter: ['品牌', '分类'],
       filterTag_Index: '', //默认选中品牌
       filter_alert: true, // 筛选遮罩层显示
-      shareList: [
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: true,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 }],
-
-
+      shareList: [],
       filterCoverList: {
         list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
         sum: 4999 },
 
       filterArr: [],
-      goodList: [
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }],
-
-      // 商城数据
+      goodList: [], // 商城数据
       captionList: [
       {
         title: '品牌',
-        selectIndexArr: ['默认'], //循环时加上
-        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] },
+        selectIndexArr: [], //循环时加上
+        arr: [] },
       {
         title: '分类',
-        selectIndexArr: ['默认'],
-        arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选'] },
+        selectIndexArr: [],
+        arr: [] },
       {
         title: '促销',
-        selectIndexArr: ['默认'],
-        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] }],
+        selectIndexArr: [],
+        arr: [] }],
 
       // 筛选侧边栏数据
-      selecArr: [] // 筛选侧边栏展开的数组index
+      selectArr: [], // 筛选侧边栏展开的数组index
+      goodsFormData: {
+        category_id: '',
+        search: '',
+        sortType: '',
+        sortPrice: '',
+        listRows: '',
+        brand_id: '',
+        promotions_type: '',
+        min_price: '',
+        max_price: '' },
+      // 商品默认请求参数
+      shareFormData: {
+        search: '',
+        tags_id: '' }
+      // 分享文章默认请求参数
     };
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
       this.filterIndex = 0;
+      this.searchAction();
       if (val === 0) {
-        this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
+        this.getCultureTag();
         return;
       }
       if (val === 1) {
-        this.shareTag = ['综合', '销量', '上架', '价格', '筛选'];
+        this.shareTag = [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }];
         return;
       }
     },
@@ -16868,10 +17665,70 @@ var _default =
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:238");
+    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:199");
     this.searchInfo = option.class;
+    this.tabIndex = Number(option.type);
+    // 搜索关键词
+    this.goodsFormData.search = this.searchInfo;
+    this.shareFormData.search = this.searchInfo;
+
+    this.searchAction();
+    // 获取文章标签
+    if (this.tabIndex === 0) {
+      this.getCultureTag();
+    }
   },
   methods: {
+    // 选中分享文章标签
+    getCultureTag: function getCultureTag() {var _this = this;
+      this.$http({
+        url: this.$api.activitytags,
+        cb: function cb(err, res) {
+          // console.log(res.data.tags)
+          _this.shareTag = res.data.tags;
+        } });
+
+    },
+
+    // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
+    searchAction: function searchAction() {var _this2 = this;
+      var url = this.$api.goodlists;
+      var data = this.goodsFormData;
+      if (this.tabIndex === 0) {
+        url = this.$api.articlesbysearch;
+        data = this.shareFormData;
+      }
+      this.$http({
+        url: url,
+        data: data,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // 成功后刷新数据
+            if (res.data.list.length < 1) {
+              uni.showToast({
+                title: '未搜索到相关数据',
+                icon: 'none' });
+
+              return;
+            }
+            switch (_this2.tabIndex) {
+              case 0:
+                _this2.shareList = res.data.list;
+                break;
+              case 1:
+                _this2.goodList = res.data.list.data;
+                break;}
+
+          } else {
+            uni.showToast({
+              title: '搜索失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 切换商品排列样式
     changeStyle: function changeStyle() {
       if (this.style === 0) {
         this.style = 1;
@@ -16879,6 +17736,7 @@ var _default =
       }
       this.style = 0;
     },
+    // 返回
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
@@ -16888,13 +17746,15 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
-    goShareDetail: function goShareDetail(item) {
+    // 分享详情页
+    goShareDetail: function goShareDetail(id) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.authorName });
+        url: '../components/shareInfo?article_id=' + id });
 
     },
+    // 
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\goods.vue:264");
+      console.log(event.target.value, " at pages\\components\\goods.vue:288");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -16908,15 +17768,65 @@ var _default =
       this.tabIndex = index;
     },
     // 价格等分类点击
-    selectFilter: function selectFilter(index) {
-      if (!this.filter_alert && index === 4) {
-        // this.captionList.map((item, index) => {
-        //   this.captionList[index].selectIndexArr = ['默认']
-        // })
-        // // 给captionList加上一个选中的索引空数组selectIndexArr
-        this.filter_alert = true;
-      }
+    selectFilter: function selectFilter(index) {var _this3 = this;
       this.filterIndex = index;
+      if (this.tabIndex === 0) {
+        console.log('进来了', " at pages\\components\\goods.vue:305");
+        return;
+      }
+      // 商城下面的标签分类
+      if (this.tabIndex === 1) {
+        switch (index) {
+          case 0:
+            this.goodsFormData.sortType = '';
+            this.searchAction();
+            break;
+          case 1:
+            this.goodsFormData.sortType = 'sales';
+            this.searchAction();
+            break;
+          case 2:
+            this.goodsFormData.sortType = 'price';
+            this.searchAction();
+            break;
+          case 3:
+            this.goodsFormData.sortPrice = !this.goodsFormData.sortPrice;
+            this.searchAction();
+            break;
+          case 4:
+            // 品牌分类
+            this.$http({
+              url: this.$api.getbrands,
+              cb: function cb(err, res) {
+                var arr = [];
+                var list = res.data.list;
+                for (var item in list) {
+                  arr.push(list[item]);
+                }
+                _this3.captionList[0].arr = arr;
+              } });
+
+            // 商品分类
+            this.$http({
+              url: this.$api.goodscategory,
+              cb: function cb(err, res) {
+                console.log(res.data.list, " at pages\\components\\goods.vue:344");
+                _this3.captionList[1].arr = res.data.list;
+              } });
+
+            // 促销活动
+            this.$http({
+              url: this.$api.promotions,
+              cb: function cb(err, res) {
+                // console.log(res.data.promotions)
+                _this3.captionList[2].arr = res.data.promotions;
+              } });
+
+            this.filter_alert = true;
+            break;}
+
+        return;
+      }
     },
     //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
@@ -16929,18 +17839,43 @@ var _default =
         this.filterTag_Index = index;
       }
     },
-    // 筛选侧边弹窗选择
+    // 点击筛选侧边栏中的品牌，活动等分类
+    setCategory: function setCategory(index) {
+      if (this.selectArr.indexOf(index) === -1) {
+        this.selectArr.push(index);
+        return;
+      }
+      this.selectArr.splice(this.selectArr.indexOf(index), 1);
+    },
+    // 筛选侧边弹窗选择分类里面的子选项
     selTag: function selTag(index, num) {
+      console.log('选择了', index, num, " at pages\\components\\goods.vue:383");
       var name = this.captionList[index].arr[num];
       var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
-      if (charIndex === -1) {
+      if (this.captionList[index].selectIndexArr.length < 1) {
         this.captionList[index].selectIndexArr.push(name);
         return;
       }
-      if (charIndex !== -1) {
-        this.captionList[index].selectIndexArr.splice(charIndex, 1);
-        return;
+      if (this.captionList[index].selectIndexArr.length === 1) {
+        if (charIndex === -1) {
+          this.captionList[index].selectIndexArr = [name];
+          return;
+        }
+        this.captionList[index].selectIndexArr = [];
       }
+
+      // console.log(this.captionList[index].selectIndexArr, name)
+
+      // 多选
+
+      // if(charIndex === -1) {
+      //   this.captionList[index].selectIndexArr.push(name)
+      //   return
+      // }
+      // if (charIndex !== -1) {
+      //   this.captionList[index].selectIndexArr.splice(charIndex, 1)
+      //   return
+      // }
     },
     // 重置筛选
     resetFilter: function resetFilter() {
@@ -16948,17 +17883,65 @@ var _default =
         item.selectIndexArr = ['默认'];
       });
     },
-    clickZan: function clickZan(index) {
-      if (!this.shareList[index].zan_status) {
-        this.shareList[index].zan_num += 1;
-        this.shareList[index].zan_status = !this.shareList[index].zan_status;
-        return;
+    clickZan: function clickZan(item, index) {var _this4 = this;
+      console.log(item.article_id, item.islike, index, " at pages\\components\\goods.vue:418");
+      var url = this.$api.unLike;
+      if (item.islike === 'no') {
+        url = this.$api.like;
       }
-      if (this.shareList[index].zan_status) {
-        this.shareList[index].zan_num -= 1;
-        this.shareList[index].zan_status = !this.shareList[index].zan_status;
-        return;
-      }
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this4.shareList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
+
+                _this4.shareList[index].islike = 'no';
+                _this4.shareList[index].like_count -= 1;
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
+
+                _this4.shareList[index].islike = 'yes';
+                _this4.shareList[index].like_count += 1;
+                break;}
+
+          } else {
+            switch (_this4.shareList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
+
+      // if (!this.shareList[index].zan_status) {
+      //   this.shareList[index].zan_num += 1
+      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+      //   return
+      // }
+      // if (this.shareList[index].zan_status) {
+      //   this.shareList[index].zan_num -= 1
+      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+      //   return
+      // }
     },
     goDetail: function goDetail(item) {
       uni.navigateTo({
@@ -17005,17 +17988,19 @@ var render = function() {
     }
   })
   var l2 = _vm.captionList.map(function(item, index) {
-    var g2 = _vm.selecArr.indexOf(index)
+    var g2 = _vm.selectArr.indexOf(index)
+    var g3 = _vm.selectArr.indexOf(index)
     var l1 = item.arr.map(function(li, num) {
-      var g3 = item.selectIndexArr.indexOf(li)
+      var g4 = item.selectIndexArr.indexOf(li)
       return {
         $orig: _vm.__get_orig(li),
-        g3: g3
+        g4: g4
       }
     })
     return {
       $orig: _vm.__get_orig(item),
       g2: g2,
+      g3: g3,
       l1: l1
     }
   })
@@ -19092,8 +20077,19 @@ var _default =
       inputClearValue: '',
       showClearIcon: false,
       searchInfo: '森海塞尔',
-      history: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
-      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱'] };
+      history: [],
+      hot: ['耳机', '蓝牙音箱', '耳机', '蓝牙音箱', '耳机', '蓝', '耳机耳机耳机', '蓝牙音箱'],
+      type: '' };
+
+  },
+  onLoad: function onLoad(option) {
+    var that = this;
+    this.type = option.type;
+    uni.getStorage({
+      key: 'history_arr',
+      success: function success(res) {
+        that.history = res.data;
+      } });
 
   },
   methods: {
@@ -19108,17 +20104,30 @@ var _default =
     },
     goGood: function goGood(item) {
       uni.navigateTo({
-        url: 'goods?class=' + item });
+        url: 'goods?class=' + item + '&type=' + this.type });
 
     },
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\search.vue:61");
+      console.log(event.target.value, " at pages\\components\\search.vue:72");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
       } else {
         this.showClearIcon = false;
       }
+    },
+    searchAction: function searchAction(e) {
+      this.history.push(e.detail.value);
+      uni.setStorage({
+        key: 'history_arr',
+        data: this.history,
+        success: function success() {
+          console.log('success', " at pages\\components\\search.vue:86");
+        } });
+
+      uni.navigateTo({
+        url: 'goods?class=' + e.detail.value + '&type=' + this.type });
+
     },
     delHistory: function delHistory() {
       var that = this;
@@ -19127,9 +20136,14 @@ var _default =
         content: '确认删除所有搜索记录？',
         success: function success(res) {
           if (res.confirm) {
-            that.history = [];
+            uni.removeStorage({
+              key: 'history_arr',
+              success: function success(res) {
+                that.history = [];
+              } });
+
           } else if (res.cancel) {
-            console.log('用户点击取消', " at pages\\components\\search.vue:78");
+            console.log('用户点击取消', " at pages\\components\\search.vue:107");
           }
         } });
 
@@ -19762,6 +20776,13 @@ var _default =
 
     },
     loginOut: function loginOut() {
+      this.$store.commit('loginout');
+      uni.removeStorage({
+        key: 'userinfo',
+        success: function success(res) {
+          console.log('success', " at pages\\mine\\setting.vue:72");
+        } });
+
       uni.navigateTo({
         url: '../login/login' });
 

@@ -139,6 +139,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -179,9 +181,10 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
-            return;
+//
+//
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();this.getBanner();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}return;
           } else {
             uni.showToast({
               title: '文章列表获取失败',
@@ -260,6 +263,24 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
                 break;}
 
           }
+        } });
+
+    },
+    // 首页轮播图图片
+    getBanner: function getBanner() {var _this4 = this;
+      this.$http({
+        url: this.$api.index,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // console.log(res.data.items[0].data)
+            _this4.swiperList = res.data.items[0].data;
+          } else {
+            uni.showToast({
+              title: '轮播图图片加载失败',
+              icon: 'none' });
+
+          }
+          // console.log(res.data.items[0].data[0].imgUrl)
         } });
 
     },

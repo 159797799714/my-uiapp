@@ -165,6 +165,13 @@ var _default =
 
     },
     loginOut: function loginOut() {
+      this.$store.commit('loginout');
+      uni.removeStorage({
+        key: 'userinfo',
+        success: function success(res) {
+          console.log('success');
+        } });
+
       uni.navigateTo({
         url: '../login/login' });
 

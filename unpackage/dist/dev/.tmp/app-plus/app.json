@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/login/bindTel",
     "pages/login/register",
     "pages/login/password",
     "pages/index/index",

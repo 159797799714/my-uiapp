@@ -232,7 +232,7 @@ var _default =
       tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
-      shareTag: [{ tag_name: '综合' }, { tag_name: '最热' }, { tag_name: '最新' }, { tag_name: '官方' }, { tag_name: '筛选' }], // 标签默认这个是商品标签
+      shareTag: [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }], // 标签默认这个是商品标签
       filter: ['品牌', '分类'],
       filterTag_Index: '', //默认选中品牌
       filter_alert: true, // 筛选遮罩层显示
@@ -246,31 +246,46 @@ var _default =
       captionList: [
       {
         title: '品牌',
-        selectIndexArr: ['默认'], //循环时加上
+        selectIndexArr: [], //循环时加上
         arr: [] },
       {
         title: '分类',
-        selectIndexArr: ['默认'],
+        selectIndexArr: [],
         arr: [] },
       {
         title: '促销',
-        selectIndexArr: ['默认'],
+        selectIndexArr: [],
         arr: [] }],
 
       // 筛选侧边栏数据
-      selectArr: [] // 筛选侧边栏展开的数组index
+      selectArr: [], // 筛选侧边栏展开的数组index
+      goodsFormData: {
+        category_id: '',
+        search: '',
+        sortType: '',
+        sortPrice: '',
+        listRows: '',
+        brand_id: '',
+        promotions_type: '',
+        min_price: '',
+        max_price: '' },
+      // 商品默认请求参数
+      shareFormData: {
+        search: '',
+        tags_id: '' }
+      // 分享文章默认请求参数
     };
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
       this.filterIndex = 0;
-      this.searchAction(this.searchInfo, this.tabIndex);
+      this.searchAction();
       if (val === 0) {
         this.getCultureTag();
         return;
       }
       if (val === 1) {
-        this.shareTag = [{ tag_name: '综合' }, { tag_name: '最热' }, { tag_name: '最新' }, { tag_name: '官方' }, { tag_name: '筛选' }];
+        this.shareTag = [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }];
         return;
       }
     },
@@ -284,7 +299,11 @@ var _default =
     console.log('分享文章详情页接受到的参数', option.class);
     this.searchInfo = option.class;
     this.tabIndex = Number(option.type);
-    this.searchAction(option.class, this.tabIndex);
+    // 搜索关键词
+    this.goodsFormData.search = this.searchInfo;
+    this.shareFormData.search = this.searchInfo;
+
+    this.searchAction();
     // 获取文章标签
     if (this.tabIndex === 0) {
       this.getCultureTag();
@@ -302,26 +321,13 @@ var _default =
 
     },
 
-    // 搜索typeCode 0 为分享 1为商品
-    searchAction: function searchAction(info, typeCode) {var _this2 = this;
+    // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
+    searchAction: function searchAction() {var _this2 = this;
       var url = this.$api.goodlists;
-      var data = {
-        category_id: '',
-        search: info,
-        sortType: '',
-        sortPrice: '',
-        listRows: '',
-        brand_id: '',
-        promotions_type: '',
-        min_price: '',
-        max_price: '' };
-
-      if (typeCode === 0) {
+      var data = this.goodsFormData;
+      if (this.tabIndex === 0) {
         url = this.$api.articlesbysearch;
-        data = {
-          search: info,
-          tags_id: '' };
-
+        data = this.shareFormData;
       }
       this.$http({
         url: url,
@@ -336,7 +342,7 @@ var _default =
 
               return;
             }
-            switch (typeCode) {
+            switch (_this2.tabIndex) {
               case 0:
                 _this2.shareList = res.data.list;
                 break;
@@ -394,41 +400,64 @@ var _default =
     },
     // 价格等分类点击
     selectFilter: function selectFilter(index) {var _this3 = this;
-      if (!this.filter_alert || index === 4) {
-        // // 给captionList加上一个选中的索引空数组selectIndexArr
-
-        // 品牌分类
-        this.$http({
-          url: this.$api.getbrands,
-          cb: function cb(err, res) {
-            var arr = [];
-            var list = res.data.list;
-            for (var item in list) {
-              arr.push(list[item]);
-            }
-            _this3.captionList[0].arr = arr;
-          } });
-
-        // 商品分类
-        this.$http({
-          url: this.$api.goodscategory,
-          cb: function cb(err, res) {
-            console.log(res.data.list);
-            _this3.captionList[1].arr = res.data.list;
-          } });
-
-        // 促销活动
-        this.$http({
-          url: this.$api.promotions,
-          cb: function cb(err, res) {
-            // console.log(res.data.promotions)
-            _this3.captionList[2].arr = res.data.promotions;
-          } });
-
-
-        this.filter_alert = true;
-      }
       this.filterIndex = index;
+      if (this.tabIndex === 0) {
+        console.log('进来了');
+        return;
+      }
+      // 商城下面的标签分类
+      if (this.tabIndex === 1) {
+        switch (index) {
+          case 0:
+            this.goodsFormData.sortType = '';
+            this.searchAction();
+            break;
+          case 1:
+            this.goodsFormData.sortType = 'sales';
+            this.searchAction();
+            break;
+          case 2:
+            this.goodsFormData.sortType = 'price';
+            this.searchAction();
+            break;
+          case 3:
+            this.goodsFormData.sortPrice = !this.goodsFormData.sortPrice;
+            this.searchAction();
+            break;
+          case 4:
+            // 品牌分类
+            this.$http({
+              url: this.$api.getbrands,
+              cb: function cb(err, res) {
+                var arr = [];
+                var list = res.data.list;
+                for (var item in list) {
+                  arr.push(list[item]);
+                }
+                _this3.captionList[0].arr = arr;
+              } });
+
+            // 商品分类
+            this.$http({
+              url: this.$api.goodscategory,
+              cb: function cb(err, res) {
+                console.log(res.data.list);
+                _this3.captionList[1].arr = res.data.list;
+              } });
+
+            // 促销活动
+            this.$http({
+              url: this.$api.promotions,
+              cb: function cb(err, res) {
+                // console.log(res.data.promotions)
+                _this3.captionList[2].arr = res.data.promotions;
+              } });
+
+            this.filter_alert = true;
+            break;}
+
+        return;
+      }
     },
     //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
@@ -451,16 +480,33 @@ var _default =
     },
     // 筛选侧边弹窗选择分类里面的子选项
     selTag: function selTag(index, num) {
+      console.log('选择了', index, num);
       var name = this.captionList[index].arr[num];
       var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
-      if (charIndex === -1) {
+      if (this.captionList[index].selectIndexArr.length < 1) {
         this.captionList[index].selectIndexArr.push(name);
         return;
       }
-      if (charIndex !== -1) {
-        this.captionList[index].selectIndexArr.splice(charIndex, 1);
-        return;
+      if (this.captionList[index].selectIndexArr.length === 1) {
+        if (charIndex === -1) {
+          this.captionList[index].selectIndexArr = [name];
+          return;
+        }
+        this.captionList[index].selectIndexArr = [];
       }
+
+      // console.log(this.captionList[index].selectIndexArr, name)
+
+      // 多选
+
+      // if(charIndex === -1) {
+      //   this.captionList[index].selectIndexArr.push(name)
+      //   return
+      // }
+      // if (charIndex !== -1) {
+      //   this.captionList[index].selectIndexArr.splice(charIndex, 1)
+      //   return
+      // }
     },
     // 重置筛选
     resetFilter: function resetFilter() {

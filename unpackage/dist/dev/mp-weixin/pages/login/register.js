@@ -137,6 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -147,6 +148,7 @@ var _default =
       code_word: '获取验证码',
       username: '',
       code: '',
+      check_code: '',
       showInfo: false };
 
   },
@@ -169,7 +171,6 @@ var _default =
     },
     onInput: function onInput(e) {
       var value = e.detail.value;
-      this.username = value;
       if (value) {
         this.showDel = true;
         return;
@@ -177,10 +178,28 @@ var _default =
       this.showDel = false;
     },
     goNext: function goNext() {
-      uni.navigateTo({
-        url: 'password?type=' + this.type,
-        "animationType": "zoom-fade-out" });
+      console.log(this.check_code, this.code, this.check_code === this.code);
+      if (!this.check_code) {
+        uni.showToast({
+          title: '请先获取手机验证码',
+          icon: 'none' });
 
+        return;
+      }
+      if (this.check_code !== this.code) {
+        uni.showToast({
+          title: '验证码不正确',
+          icon: 'none' });
+
+        return;
+      }
+      console.log(this.check_code, this.code);
+      if (this.check_code === this.code && this.check_code) {
+        uni.navigateTo({
+          url: 'password?type=' + this.type + '&mobile=' + this.username,
+          "animationType": "zoom-fade-out" });
+
+      }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
@@ -190,7 +209,7 @@ var _default =
     },
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.username);
-      console.log(this.username);
+      var that = this;
       if (!value) {
         uni.showToast({
           title: '请输入正确的手机号码',
@@ -198,18 +217,41 @@ var _default =
 
         return;
       }
-      this.code_word = 60;
-      this.showInfo = true;
-      setInterval(function () {
-        if (this.code_word > 0) {
-          this.code_word--;
-        }
-        if (this.code_word === 0) {
-          this.code_word = '获取验证码';
-          this.showInfo = false;
-          return;
-        }
-      }.bind(this), 1000);
+
+      // console.log(this.username)
+      // let num = 1111
+      // that.check_code = num.toString()
+      // console.log(num.toString())
+
+      this.$http({
+        url: this.$api.sendcode,
+        method: 'POST',
+        data: {
+          mobile: this.username },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            that.check_code = res.data.info.code.toString();
+            that.code_word = 120;
+            that.showInfo = true;
+            setInterval(function () {
+              if (that.code_word > 0) {
+                that.code_word--;
+              }
+              if (that.code_word === 0) {
+                that.check_code = '';
+                that.showInfo = false;
+                return;
+              }
+            }.bind(that), 1000);
+          } else {
+            uni.showToast({
+              title: '手机验证码获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 

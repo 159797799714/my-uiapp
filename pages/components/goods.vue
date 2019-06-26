@@ -19,7 +19,7 @@
      <!-- 综合等分类 -->
       <view class="filter">
         <view v-for="(item, index) in shareTag" :key="index" :class="{selectFilter: index === filterIndex}" @click="selectFilter(index)">{{ item.tag_name }}
-          <text v-if="item === '价格'" class="iconfont">&#xe60c;</text>
+          <text v-if="item.tag_name === '价格'" class="iconfont">&#xe60c;</text>
           <text v-if="index === 4" class="iconfont">&#xe610;</text>
         </view>
       </view>
@@ -42,7 +42,7 @@
         <view class="white" @click="filterTag_Index = ''"/>
       </view>
       
-      <scroll-view scroll-y="true" class="culture">
+      <scroll-view  scroll-y="true" class="culture">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
           <view v-for="(item, index) in shareList" :key="index" class="item">
@@ -132,7 +132,7 @@
         tabIndex: 0,                // 默认选中分享
         filterIndex: 0,             // 默认选中综合
         tabList: ['分享', '商城'],
-        shareTag: [{tag_name:'综合'}, {tag_name:'最热'}, {tag_name:'最新'}, {tag_name:'官方'}, {tag_name:'筛选'}],   // 标签默认这个是商品标签
+        shareTag: [{tag_name:'综合'}, {tag_name:'销量'}, {tag_name:'上架'}, {tag_name:'价格'}, {tag_name:'筛选'}],   // 标签默认这个是商品标签
         filter: ['品牌', '分类'],
         filterTag_Index: '',            //默认选中品牌
         filter_alert: true,             // 筛选遮罩层显示
@@ -146,31 +146,46 @@
         captionList: [
           {
             title: '品牌',
-            selectIndexArr: ['默认'],               //循环时加上
+            selectIndexArr: [],               //循环时加上
             arr: []
           }, {
             title: '分类',
-            selectIndexArr: ['默认'],
+            selectIndexArr: [],
             arr: []
           }, {
             title: '促销',
-            selectIndexArr: ['默认'],
+            selectIndexArr: [],
             arr: []
           }
-        ],                             // 筛选侧边栏数据
-        selectArr: [],                  // 筛选侧边栏展开的数组index
+        ],                                   // 筛选侧边栏数据
+        selectArr: [],                       // 筛选侧边栏展开的数组index
+        goodsFormData: {
+          category_id: '',
+          search: '',
+          sortType: '',
+          sortPrice: '',
+          listRows: '',
+          brand_id: '',
+          promotions_type: '',
+          min_price: '',
+          max_price: ''
+        },                                   // 商品默认请求参数
+        shareFormData: {
+          search: '',
+          tags_id: ''
+        },                                   // 分享文章默认请求参数
       }
     },
     watch: {
       tabIndex(val, oldval) {
         this.filterIndex = 0
-        this.searchAction(this.searchInfo, this.tabIndex)
+        this.searchAction()
         if(val === 0) {
           this.getCultureTag()
           return
         }
         if(val === 1) {
-          this.shareTag = [{tag_name:'综合'}, {tag_name:'最热'}, {tag_name:'最新'}, {tag_name:'官方'}, {tag_name:'筛选'}]
+          this.shareTag = [{tag_name:'综合'}, {tag_name:'销量'}, {tag_name:'上架'}, {tag_name:'价格'}, {tag_name:'筛选'}]
           return
         }
       },
@@ -184,7 +199,11 @@
       console.log('分享文章详情页接受到的参数',option.class)
       this.searchInfo = option.class
       this.tabIndex = Number(option.type)
-      this.searchAction(option.class, this.tabIndex)
+      // 搜索关键词
+      this.goodsFormData.search = this.searchInfo
+      this.shareFormData.search = this.searchInfo
+      
+      this.searchAction()
       // 获取文章标签
       if(this.tabIndex === 0) {
         this.getCultureTag()
@@ -202,26 +221,13 @@
         })
       },
       
-      // 搜索typeCode 0 为分享 1为商品
-      searchAction(info, typeCode) {
+      // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
+      searchAction() {
         let url = this.$api.goodlists
-        let data = {
-          category_id: '',
-          search: info,
-          sortType: '',
-          sortPrice: '',
-          listRows: '',
-          brand_id: '',
-          promotions_type: '',
-          min_price: '',
-          max_price: ''
-        }
-        if( typeCode === 0 ) {
+        let data = this.goodsFormData
+        if( this.tabIndex === 0 ) {
           url= this.$api.articlesbysearch
-          data = {
-            search: info,
-            tags_id: ''
-          }
+          data = this.shareFormData
         }
         this.$http({
           url: url,
@@ -236,7 +242,7 @@
                 })
                 return
               }
-              switch (typeCode) {
+              switch (this.tabIndex) {
                 case 0:
                   this.shareList = res.data.list
                   break
@@ -294,41 +300,64 @@
       },
       // 价格等分类点击
       selectFilter(index) {
-        if(!this.filter_alert || index === 4) {
-          // // 给captionList加上一个选中的索引空数组selectIndexArr
-          
-          // 品牌分类
-          this.$http({
-            url: this.$api.getbrands,
-            cb: (err, res) => {
-              let arr = []
-              let list = res.data.list
-              for(let item in list) {
-                arr.push(list[item])
-              }
-              this.captionList[0].arr = arr
-            }
-          })
-          // 商品分类
-          this.$http({
-            url: this.$api.goodscategory,
-            cb: (err, res) => {
-              console.log(res.data.list)
-              this.captionList[1].arr = res.data.list
-            }
-          })
-          // 促销活动
-          this.$http({
-            url: this.$api.promotions,
-            cb: (err, res) => {
-              // console.log(res.data.promotions)
-              this.captionList[2].arr = res.data.promotions
-            }
-          })
-          
-          this.filter_alert = true
-        }
         this.filterIndex = index
+        if(this.tabIndex === 0) {
+          console.log('进来了')
+          return
+        }
+        // 商城下面的标签分类
+        if(this.tabIndex === 1) {
+          switch(index) {
+            case 0:
+              this.goodsFormData.sortType = ''
+              this.searchAction()
+              break
+            case 1:
+              this.goodsFormData.sortType = 'sales'
+              this.searchAction()
+              break
+            case 2:
+              this.goodsFormData.sortType = 'price'
+              this.searchAction()
+              break
+            case 3:
+              this.goodsFormData.sortPrice = !this.goodsFormData.sortPrice
+              this.searchAction()
+              break
+            case 4:
+              // 品牌分类
+              this.$http({
+                url: this.$api.getbrands,
+                cb: (err, res) => {
+                  let arr = []
+                  let list = res.data.list
+                  for(let item in list) {
+                    arr.push(list[item])
+                  }
+                  this.captionList[0].arr = arr
+                }
+              })
+              // 商品分类
+              this.$http({
+                url: this.$api.goodscategory,
+                cb: (err, res) => {
+                  console.log(res.data.list)
+                  this.captionList[1].arr = res.data.list
+                }
+              })
+              // 促销活动
+              this.$http({
+                url: this.$api.promotions,
+                cb: (err, res) => {
+                  // console.log(res.data.promotions)
+                  this.captionList[2].arr = res.data.promotions
+                }
+              })
+              this.filter_alert = true
+              break
+          }
+          return
+        }
       },
       //直接点击外面的分类品牌
       selectFilterTag(info) {
@@ -351,16 +380,33 @@
       },
       // 筛选侧边弹窗选择分类里面的子选项
       selTag(index, num) {
+        console.log('选择了', index, num)
         let name = this.captionList[index].arr[num]
         let charIndex = this.captionList[index].selectIndexArr.indexOf(name)
-        if(charIndex === -1) {
+        if(this.captionList[index].selectIndexArr.length < 1) {
           this.captionList[index].selectIndexArr.push(name)
           return
         }
-        if (charIndex !== -1) {
-          this.captionList[index].selectIndexArr.splice(charIndex, 1)
-          return
+        if(this.captionList[index].selectIndexArr.length === 1) {
+          if(charIndex === -1) {
+            this.captionList[index].selectIndexArr = [name]
+            return
+          }
+          this.captionList[index].selectIndexArr = []
         }
+        
+        // console.log(this.captionList[index].selectIndexArr, name)
+        
+        // 多选
+        
+        // if(charIndex === -1) {
+        //   this.captionList[index].selectIndexArr.push(name)
+        //   return
+        // }
+        // if (charIndex !== -1) {
+        //   this.captionList[index].selectIndexArr.splice(charIndex, 1)
+        //   return
+        // }
       },
       // 重置筛选
       resetFilter() {
@@ -806,7 +852,7 @@
       display: flex;
       flex-direction: column;
       .box{
-        height: calc(100% - 98upx);
+        flex: 1;
         overflow: hidden;
       }
       .title{

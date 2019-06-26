@@ -23,7 +23,7 @@
           <text>热门搜索</text>
         </view>
         <view class="tags">
-          <text v-for="(item, index) in hot" :key="index" class="tag">{{ item }}</text>
+          <text v-for="(item, index) in hot" :key="index" class="tag"  @click="goGood(item)">{{ item }}</text>
         </view>
       </view>
     </sroll-view>
@@ -132,7 +132,6 @@
       .search-icon{
         margin-right: 21upx;
       }
-      
     }
     &>text{
       font-size: $font-38;
@@ -162,6 +161,8 @@
         display: inline-block;
         padding: 20upx;
         color:$word-color;
+        font-size: $font-28;
+        line-height: 27upx;
         border-radius: 10upx;
         background: $color-f5;
         margin-right: 30upx;

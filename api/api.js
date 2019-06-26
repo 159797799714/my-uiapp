@@ -1,7 +1,13 @@
 import API from './config.js'
 
 export default {
-  
+  // 登录注册
+  login: API.devApi + '/app.user/login',                                // 登录
+  register: API.devApi + '/app.user/register',                          // 注册
+  sendcode: API.devApi + '/app.user/sendcode',                          // 发送验证码
+  resetpassword: API.devApi + '/app.user/resetpassword',                // 重置密码
+  otherlogin: API.devApi + '/app.user/otherlogin',                      // 第三方登录
+  otherregister: API.devApi + '/app.user/otherregister',                // 第三方登录完善信息
   // 首页
   categorylist: API.devApi + '/article/categorylist',                   // 所有文章分类
   articlesbycategoryid: API.devApi + '/article/articlesbycategoryid',   // 通过分类ID获取文章列表

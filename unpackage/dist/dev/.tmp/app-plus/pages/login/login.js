@@ -142,13 +142,30 @@ var _default =
 {
   data: function data() {
     return {
-      username: '',
-      form: {
-        username: '11',
-        password: '' },
+      mobile: '',
+      password: '',
+      showDel: false,
+      ishide: false,
+      loginType: '' };
 
-      showDel: false };
-
+  },
+  onLoad: function onLoad() {
+    // uni.getStorage({
+    //   key: 'userinfo',
+    //   success: function (res) {
+    //     if(res.data.token) {
+    //       console.log('登录页本地获取的token是', res.data.token)
+    //       if(res.data.mobile) {
+    //         console.log('登录页本地获取的手机号是', res.data.mobile)
+    //         uni.reLaunch({
+    //           url: '../index/index'
+    //         })
+    //         return
+    //       }
+    //       return
+    //     }
+    //   }
+    // })
   },
   methods: {
     onInput: function onInput(e) {
@@ -165,27 +182,115 @@ var _default =
         "animationType": "zoom-fade-out" });
 
     },
-    goLogin: function goLogin() {
-      uni.switchTab({
-        url: '../index/index' });
+    goLogin: function goLogin() {var _this = this;
+      var value = /^1[3456789]\d{9}$/.test(this.mobile);
+      if (value) {
+        if (!this.password) {
+          uni.showToast({
+            title: '请输入密码',
+            icon: 'none' });
 
+          return;
+        }
+        this.$http({
+          url: this.$api.login,
+          data: {
+            mobile: this.mobile,
+            password: this.password },
+
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              // console.log(res.data.userinfo.token)
+
+              var userinfo = {
+                mobile: res.data.userinfo.mobile,
+                token: res.data.userinfo.token };
+
+              _this.$store.commit('login', userinfo);
+              uni.setStorage({
+                key: 'userinfo',
+                data: userinfo,
+                success: function success() {
+                  console.log('success', " at pages\\login\\login.vue:114");
+                } });
+
+              uni.switchTab({
+                url: '../index/index' });
+
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            } else {
+              uni.showToast({
+                title: '登录失败',
+                icon: 'none' });
+
+            }
+          } });
+
+      } else {
+        uni.showToast({
+          title: '请输入正确的手机号码',
+          icon: 'none' });
+
+      }
     },
     loginWay: function loginWay(type) {
+      var that = this;
+      that.loginType = type === 'weixin' ? 'weixin' : type === 'qq' ? 'qq' : 'sinaweibo';
       uni.getProvider({
         service: 'oauth',
         success: function success(res) {
-          console.log(res.provider, " at pages\\login\\login.vue:77");
+          console.log(res.provider, " at pages\\login\\login.vue:146");
           if (~res.provider.indexOf(type)) {
             uni.login({
               provider: type,
               success: function success(loginRes) {
-                console.log(JSON.stringify(loginRes), " at pages\\login\\login.vue:82");
+                console.log('第三方登录获取到的信息', JSON.stringify(loginRes), " at pages\\login\\login.vue:151");
+                if (that.type === 'sinaweibo') {
+                  that.openid = loginRes.authResult.uid;
+                } else {
+                  that.openid = loginRes.authResult.openid;
+                }
+                that.getInfo();
               } });
 
           }
         },
         fail: function fail(err) {
-          console.log(err, " at pages\\login\\login.vue:88");
+          uni.showToast({
+            title: '授权登录失败',
+            icon: 'none' });
+
+        } });
+
+    },
+    // 第三方登录获取绑定是否手机号等信息
+    getInfo: function getInfo() {
+      this.$http({
+        url: this.$api.otherlogin,
+        method: 'POST',
+        data: {
+          openid: this.openid,
+          type: this.loginType },
+
+        cb: function cb(err, res) {
+          console.log(err, " at pages\\login\\login.vue:180");
+          // if(!err && res.code === 1) {
+          //   console.log(res.data)
+          // } else if (res.code === 0 && res.msg){
+          //   uni.showToast({
+          //     title: res.msg,
+          //     icon: 'none'
+          //   })
+          // } if(err) {
+          //   uni.showToast({
+          //     title: 获取用户绑定信息失败,
+          //     icon: 'none'
+          //   })
+          // }
         } });
 
     } } };exports.default = _default;
@@ -219,6 +324,50 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = Array.isArray(_vm.password)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.mobile = ""
+    }
+
+    _vm.e1 = function($event) {
+      var $$a = _vm.password,
+        $$el = $event.target,
+        $$c = $$el.checked ? true : false
+
+      if (Array.isArray($$a)) {
+        var $$v = null,
+          $$i = _vm._i($$a, $$v)
+
+        if ($$el.checked) {
+          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+        } else {
+          $$i > -1 &&
+            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+        }
+      } else {
+        _vm.password = $$c
+      }
+    }
+
+    _vm.e2 = function($event) {
+      _vm.password = null
+    }
+
+    _vm.e3 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

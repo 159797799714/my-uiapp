@@ -65,6 +65,13 @@
         })
       },
       loginOut() {
+        this.$store.commit('loginout')
+        uni.removeStorage({
+          key: 'userinfo',
+          success: function (res) {
+            console.log('success')
+          }
+        })
         uni.navigateTo({
           url: '../login/login'
         })

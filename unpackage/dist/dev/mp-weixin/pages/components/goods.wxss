@@ -781,8 +781,10 @@ to {
             flex-direction: column;
 }
 .big-cover .big-cover-main .box.data-v-10a6f7ae {
-      height: -webkit-calc(100% - 98rpx);
-      height: calc(100% - 98rpx);
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
       overflow: hidden;
 }
 .big-cover .big-cover-main .title.data-v-10a6f7ae {

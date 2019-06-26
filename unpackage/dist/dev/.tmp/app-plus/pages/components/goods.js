@@ -219,6 +219,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -230,101 +232,60 @@ var _default =
       tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
-      shareTag: ['综合', '最热', '最新', '官方', '筛选'],
+      shareTag: [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }], // 标签默认这个是商品标签
       filter: ['品牌', '分类'],
       filterTag_Index: '', //默认选中品牌
       filter_alert: true, // 筛选遮罩层显示
-      shareList: [
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: true,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 },
-      {
-        imgUrl: '',
-        title: '丛林音乐节，万人狂欢！！2019门票疯狂开售',
-        authorImg: '',
-        authorName: '奶油田官方',
-        zan_status: false,
-        zan_num: 300 }],
-
-
+      shareList: [],
       filterCoverList: {
         list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
         sum: 4999 },
 
       filterArr: [],
-      goodList: [
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }],
-
-      // 商城数据
+      goodList: [], // 商城数据
       captionList: [
       {
         title: '品牌',
-        selectIndexArr: ['默认'], //循环时加上
-        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] },
+        selectIndexArr: [], //循环时加上
+        arr: [] },
       {
         title: '分类',
-        selectIndexArr: ['默认'],
-        arr: ['索尼', '索', '索尼索尼索尼索尼索尼', '综合', '最热', '最新', '官方', '筛选'] },
+        selectIndexArr: [],
+        arr: [] },
       {
         title: '促销',
-        selectIndexArr: ['默认'],
-        arr: ['索尼', '综合', '最热', '最新', '官方', '筛选'] }],
+        selectIndexArr: [],
+        arr: [] }],
 
       // 筛选侧边栏数据
-      selecArr: [] // 筛选侧边栏展开的数组index
+      selectArr: [], // 筛选侧边栏展开的数组index
+      goodsFormData: {
+        category_id: '',
+        search: '',
+        sortType: '',
+        sortPrice: '',
+        listRows: '',
+        brand_id: '',
+        promotions_type: '',
+        min_price: '',
+        max_price: '' },
+      // 商品默认请求参数
+      shareFormData: {
+        search: '',
+        tags_id: '' }
+      // 分享文章默认请求参数
     };
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
       this.filterIndex = 0;
+      this.searchAction();
       if (val === 0) {
-        this.shareTag = ['综合', '最热', '最新', '官方', '筛选'];
+        this.getCultureTag();
         return;
       }
       if (val === 1) {
-        this.shareTag = ['综合', '销量', '上架', '价格', '筛选'];
+        this.shareTag = [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }];
         return;
       }
     },
@@ -335,10 +296,70 @@ var _default =
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:238");
+    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:199");
     this.searchInfo = option.class;
+    this.tabIndex = Number(option.type);
+    // 搜索关键词
+    this.goodsFormData.search = this.searchInfo;
+    this.shareFormData.search = this.searchInfo;
+
+    this.searchAction();
+    // 获取文章标签
+    if (this.tabIndex === 0) {
+      this.getCultureTag();
+    }
   },
   methods: {
+    // 选中分享文章标签
+    getCultureTag: function getCultureTag() {var _this = this;
+      this.$http({
+        url: this.$api.activitytags,
+        cb: function cb(err, res) {
+          // console.log(res.data.tags)
+          _this.shareTag = res.data.tags;
+        } });
+
+    },
+
+    // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
+    searchAction: function searchAction() {var _this2 = this;
+      var url = this.$api.goodlists;
+      var data = this.goodsFormData;
+      if (this.tabIndex === 0) {
+        url = this.$api.articlesbysearch;
+        data = this.shareFormData;
+      }
+      this.$http({
+        url: url,
+        data: data,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // 成功后刷新数据
+            if (res.data.list.length < 1) {
+              uni.showToast({
+                title: '未搜索到相关数据',
+                icon: 'none' });
+
+              return;
+            }
+            switch (_this2.tabIndex) {
+              case 0:
+                _this2.shareList = res.data.list;
+                break;
+              case 1:
+                _this2.goodList = res.data.list.data;
+                break;}
+
+          } else {
+            uni.showToast({
+              title: '搜索失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 切换商品排列样式
     changeStyle: function changeStyle() {
       if (this.style === 0) {
         this.style = 1;
@@ -346,6 +367,7 @@ var _default =
       }
       this.style = 0;
     },
+    // 返回
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
@@ -355,13 +377,15 @@ var _default =
       this.inputClearValue = '';
       this.showClearIcon = false;
     },
-    goShareDetail: function goShareDetail(item) {
+    // 分享详情页
+    goShareDetail: function goShareDetail(id) {
       uni.navigateTo({
-        url: '../components/shareInfo?title=' + item.authorName });
+        url: '../components/shareInfo?article_id=' + id });
 
     },
+    // 
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\goods.vue:264");
+      console.log(event.target.value, " at pages\\components\\goods.vue:288");
       this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -375,15 +399,65 @@ var _default =
       this.tabIndex = index;
     },
     // 价格等分类点击
-    selectFilter: function selectFilter(index) {
-      if (!this.filter_alert && index === 4) {
-        // this.captionList.map((item, index) => {
-        //   this.captionList[index].selectIndexArr = ['默认']
-        // })
-        // // 给captionList加上一个选中的索引空数组selectIndexArr
-        this.filter_alert = true;
-      }
+    selectFilter: function selectFilter(index) {var _this3 = this;
       this.filterIndex = index;
+      if (this.tabIndex === 0) {
+        console.log('进来了', " at pages\\components\\goods.vue:305");
+        return;
+      }
+      // 商城下面的标签分类
+      if (this.tabIndex === 1) {
+        switch (index) {
+          case 0:
+            this.goodsFormData.sortType = '';
+            this.searchAction();
+            break;
+          case 1:
+            this.goodsFormData.sortType = 'sales';
+            this.searchAction();
+            break;
+          case 2:
+            this.goodsFormData.sortType = 'price';
+            this.searchAction();
+            break;
+          case 3:
+            this.goodsFormData.sortPrice = !this.goodsFormData.sortPrice;
+            this.searchAction();
+            break;
+          case 4:
+            // 品牌分类
+            this.$http({
+              url: this.$api.getbrands,
+              cb: function cb(err, res) {
+                var arr = [];
+                var list = res.data.list;
+                for (var item in list) {
+                  arr.push(list[item]);
+                }
+                _this3.captionList[0].arr = arr;
+              } });
+
+            // 商品分类
+            this.$http({
+              url: this.$api.goodscategory,
+              cb: function cb(err, res) {
+                console.log(res.data.list, " at pages\\components\\goods.vue:344");
+                _this3.captionList[1].arr = res.data.list;
+              } });
+
+            // 促销活动
+            this.$http({
+              url: this.$api.promotions,
+              cb: function cb(err, res) {
+                // console.log(res.data.promotions)
+                _this3.captionList[2].arr = res.data.promotions;
+              } });
+
+            this.filter_alert = true;
+            break;}
+
+        return;
+      }
     },
     //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
@@ -396,18 +470,43 @@ var _default =
         this.filterTag_Index = index;
       }
     },
-    // 筛选侧边弹窗选择
+    // 点击筛选侧边栏中的品牌，活动等分类
+    setCategory: function setCategory(index) {
+      if (this.selectArr.indexOf(index) === -1) {
+        this.selectArr.push(index);
+        return;
+      }
+      this.selectArr.splice(this.selectArr.indexOf(index), 1);
+    },
+    // 筛选侧边弹窗选择分类里面的子选项
     selTag: function selTag(index, num) {
+      console.log('选择了', index, num, " at pages\\components\\goods.vue:383");
       var name = this.captionList[index].arr[num];
       var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
-      if (charIndex === -1) {
+      if (this.captionList[index].selectIndexArr.length < 1) {
         this.captionList[index].selectIndexArr.push(name);
         return;
       }
-      if (charIndex !== -1) {
-        this.captionList[index].selectIndexArr.splice(charIndex, 1);
-        return;
+      if (this.captionList[index].selectIndexArr.length === 1) {
+        if (charIndex === -1) {
+          this.captionList[index].selectIndexArr = [name];
+          return;
+        }
+        this.captionList[index].selectIndexArr = [];
       }
+
+      // console.log(this.captionList[index].selectIndexArr, name)
+
+      // 多选
+
+      // if(charIndex === -1) {
+      //   this.captionList[index].selectIndexArr.push(name)
+      //   return
+      // }
+      // if (charIndex !== -1) {
+      //   this.captionList[index].selectIndexArr.splice(charIndex, 1)
+      //   return
+      // }
     },
     // 重置筛选
     resetFilter: function resetFilter() {
@@ -415,17 +514,65 @@ var _default =
         item.selectIndexArr = ['默认'];
       });
     },
-    clickZan: function clickZan(index) {
-      if (!this.shareList[index].zan_status) {
-        this.shareList[index].zan_num += 1;
-        this.shareList[index].zan_status = !this.shareList[index].zan_status;
-        return;
+    clickZan: function clickZan(item, index) {var _this4 = this;
+      console.log(item.article_id, item.islike, index, " at pages\\components\\goods.vue:418");
+      var url = this.$api.unLike;
+      if (item.islike === 'no') {
+        url = this.$api.like;
       }
-      if (this.shareList[index].zan_status) {
-        this.shareList[index].zan_num -= 1;
-        this.shareList[index].zan_status = !this.shareList[index].zan_status;
-        return;
-      }
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this4.shareList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
+
+                _this4.shareList[index].islike = 'no';
+                _this4.shareList[index].like_count -= 1;
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
+
+                _this4.shareList[index].islike = 'yes';
+                _this4.shareList[index].like_count += 1;
+                break;}
+
+          } else {
+            switch (_this4.shareList[index].islike) {
+              case 'yes':
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none' });
+
+                break;
+              case 'no':
+                uni.showToast({
+                  title: '点赞失败请重试',
+                  icon: 'none' });
+
+                break;}
+
+          }
+        } });
+
+      // if (!this.shareList[index].zan_status) {
+      //   this.shareList[index].zan_num += 1
+      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+      //   return
+      // }
+      // if (this.shareList[index].zan_status) {
+      //   this.shareList[index].zan_num -= 1
+      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
+      //   return
+      // }
     },
     goDetail: function goDetail(item) {
       uni.navigateTo({
@@ -472,17 +619,19 @@ var render = function() {
     }
   })
   var l2 = _vm.captionList.map(function(item, index) {
-    var g2 = _vm.selecArr.indexOf(index)
+    var g2 = _vm.selectArr.indexOf(index)
+    var g3 = _vm.selectArr.indexOf(index)
     var l1 = item.arr.map(function(li, num) {
-      var g3 = item.selectIndexArr.indexOf(li)
+      var g4 = item.selectIndexArr.indexOf(li)
       return {
         $orig: _vm.__get_orig(li),
-        g3: g3
+        g4: g4
       }
     })
     return {
       $orig: _vm.__get_orig(item),
       g2: g2,
+      g3: g3,
       l1: l1
     }
   })

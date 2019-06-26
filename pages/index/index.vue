@@ -10,7 +10,9 @@
       <view class="banner-swiper bg-white">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
-            <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
+            <view class="swiper-item">
+              <image :src="item.imgUrl" mode=""></image>
+            </view>
           </swiper-item>
         </swiper>
       </view>
@@ -63,6 +65,7 @@
     onLoad() {
       this.getCategorylist()
       this.getDefault()
+      this.getBanner()
     },
     methods: {
       // 获取文章
@@ -163,6 +166,24 @@
           }
         })
       },
+      // 首页轮播图图片
+      getBanner() {
+        this.$http({
+          url: this.$api.index,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              // console.log(res.data.items[0].data)
+              this.swiperList = res.data.items[0].data
+            } else {
+              uni.showToast({
+              	title: '轮播图图片加载失败',
+                icon: 'none'
+              })
+            }
+            // console.log(res.data.items[0].data[0].imgUrl)
+          }
+        })
+      },
       // 选择分类
       selectTab(item, index) {
         this.selectIndex = index
@@ -224,6 +245,10 @@
       .swiper-item {
         height: 390upx;
         width: 100%;
+        &>image{
+          height: 100%;
+          width: 100%;
+        }
       }
     }
     .TabNav{
@@ -261,7 +286,7 @@
           bottom: 0;
           margin: auto;
           background: $color-slipe-red;
-          opacity: 0.5;
+          opacity: 0.8;
         }
       }
     }

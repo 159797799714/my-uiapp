@@ -139,6 +139,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js */ "../../../../Desktop/LEI/white/service.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -179,9 +181,10 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}
-            return;
+//
+//
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();this.getBanner();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}return;
           } else {
             uni.showToast({
               title: '文章列表获取失败',
@@ -214,7 +217,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     },
     // 点赞
     zanAction: function zanAction(item, index) {var _this3 = this;
-      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:117");
+      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:120");
       var url = this.$api.unLike;
       if (item.islike === 'no') {
         url = this.$api.like;
@@ -228,10 +231,18 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
           if (!err && res) {
             switch (_this3.cultureList[index].islike) {
               case 'yes':
+                uni.showToast({
+                  title: '取消点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'no';
                 _this3.cultureList[index].like_count -= 1;
                 break;
               case 'no':
+                uni.showToast({
+                  title: '点赞成功',
+                  icon: 'none' });
+
                 _this3.cultureList[index].islike = 'yes';
                 _this3.cultureList[index].like_count += 1;
                 break;}
@@ -255,6 +266,24 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
         } });
 
     },
+    // 首页轮播图图片
+    getBanner: function getBanner() {var _this4 = this;
+      this.$http({
+        url: this.$api.index,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            // console.log(res.data.items[0].data)
+            _this4.swiperList = res.data.items[0].data;
+          } else {
+            uni.showToast({
+              title: '轮播图图片加载失败',
+              icon: 'none' });
+
+          }
+          // console.log(res.data.items[0].data[0].imgUrl)
+        } });
+
+    },
     // 选择分类
     selectTab: function selectTab(item, index) {
       this.selectIndex = index;
@@ -268,7 +297,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     // 搜索页
     goSearch: function goSearch() {
       uni.navigateTo({
-        url: '../components/search' });
+        url: '../components/search?type=0' });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

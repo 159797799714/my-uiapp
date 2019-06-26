@@ -9,13 +9,13 @@
         <form @submit="login" @reset="formReset" class="form-main border-box">
           <view class="ipt">
             <text class="iconfont">&#xe763;</text>
-            <input type="text" :value="username" placeholder="请输入账号" @input="onInput">
-            <text v-if="showDel" class="iconfont del">&#xe620;</text>
+            <input type="text" v-model="mobile" placeholder="请输入您的手机号码" @input="onInput" maxlength="11">
+            <text v-if="showDel" class="iconfont del" @click="mobile = ''">&#xe620;</text>
           </view>
           <view class="ipt border-box">
             <text class="iconfont">&#xe64c;</text>
-            <input type="text" :value="form.password" placeholder="请输入密码">
-            <text class="iconfont">&#xe6cc;</text>
+            <input :type="ishide ? 'password': 'text'" v-model="password" placeholder="请输入密码" maxlength="16">
+            <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
           </view>
           <view class="btn" foroType="submit" @click="goLogin">登录</view>
           <view class="other">
@@ -42,13 +42,30 @@
   export default {
     data() {
       return {
-        username: '',
-        form: {
-          username: '11',
-          password: ''
-        },
-        showDel: false
+        mobile: '',
+        password: '',
+        showDel: false,
+        ishide: false,
+        loginType: ''
       }
+    },
+    onLoad() {
+      // uni.getStorage({
+      //   key: 'userinfo',
+      //   success: function (res) {
+      //     if(res.data.token) {
+      //       console.log('登录页本地获取的token是', res.data.token)
+      //       if(res.data.mobile) {
+      //         console.log('登录页本地获取的手机号是', res.data.mobile)
+      //         uni.reLaunch({
+      //           url: '../index/index'
+      //         })
+      //         return
+      //       }
+      //       return
+      //     }
+      //   }
+      // })
     },
     methods: {
       onInput(e) {
@@ -66,11 +83,63 @@
         })
       },
       goLogin() {
-        uni.switchTab({
-          url: '../index/index'
-        })
+        let value = /^1[3456789]\d{9}$/.test(this.mobile)
+        if(value) {
+          if(!this.password) {
+            uni.showToast({
+              title: '请输入密码',
+              icon: 'none'
+            })
+            return
+          }
+          this.$http({
+            url: this.$api.login,
+            data: {
+              mobile: this.mobile,
+              password: this.password
+            },
+            cb: (err, res) => {
+              if(!err && res.code === 1) {
+                // console.log(res.data.userinfo.token)
+                
+                let userinfo = {
+                  mobile: res.data.userinfo.mobile,
+                  token: res.data.userinfo.token
+                }
+                this.$store.commit('login', userinfo)
+                uni.setStorage({
+                  key: 'userinfo',
+                  data: userinfo,
+                  success: function () {
+                    console.log('success')
+                  }
+                })
+                uni.switchTab({
+                  url: '../index/index'
+                })  
+              } else if(res.code === 0 && res.msg) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              } else {
+                uni.showToast({
+                  title: '登录失败',
+                  icon: 'none'
+                })
+              }
+            }
+          })
+        } else {
+          uni.showToast({
+            title: '请输入正确的手机号码',
+            icon: 'none'
+          })
+        }
       },
       loginWay(type) {
+        let that = this
+        that.loginType = type === 'weixin' ? 'weixin': ( type === 'qq' ? 'qq' : 'sinaweibo' )
         uni.getProvider({
           service: 'oauth',
           success: function(res) {
@@ -79,13 +148,49 @@
               uni.login({
                 provider: type,
                 success: function(loginRes) {
-                  console.log(JSON.stringify(loginRes));
+                  console.log('第三方登录获取到的信息', JSON.stringify(loginRes))
+                  if(that.type === 'sinaweibo') {
+                    that.openid = loginRes.authResult.uid
+                  } else {
+                    that.openid = loginRes.authResult.openid
+                  }
+                  that.getInfo()
                 }
               })
             }
           },
           fail: function(err){
+            uni.showToast({
+              title: '授权登录失败',
+              icon: 'none'
+            })
+          }
+        })
+      },
+      // 第三方登录获取绑定是否手机号等信息
+      getInfo() {
+        this.$http({
+          url: this.$api.otherlogin,
+          method: 'POST',
+          data: {
+            openid: this.openid,
+            type: this.loginType
+          },
+          cb: (err, res) => {
             console.log(err)
+            // if(!err && res.code === 1) {
+            //   console.log(res.data)
+            // } else if (res.code === 0 && res.msg){
+            //   uni.showToast({
+            //     title: res.msg,
+            //     icon: 'none'
+            //   })
+            // } if(err) {
+            //   uni.showToast({
+            //     title: 获取用户绑定信息失败,
+            //     icon: 'none'
+            //   })
+            // }
           }
         })
       }

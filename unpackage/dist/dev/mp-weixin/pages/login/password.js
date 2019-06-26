@@ -126,18 +126,25 @@ var _default =
       type: '',
       showInfo: false,
       code_word: '获取验证码',
-      username: '',
-      code: '' };
+      mobile: '',
+      password: '',
+      code: '',
+      btnValue: '',
+      ishide: false };
 
   },
   onLoad: function onLoad(option) {
     this.type = option.type;
+    this.mobile = option.mobile;
+    console.log('接收到的参数', option);
     if (option.type === 'register') {
       this.title = '设置密码';
+      this.btnValue = '注册并登录';
       return;
     }
     if (option.type === 'forget') {
       this.title = '重置密码';
+      this.btnValue = '保存并登录';
       return;
     }
   },
@@ -148,13 +155,73 @@ var _default =
         "animationType": "zoom-fade-out" });
 
     },
-    onInput: function onInput(e) {
-      var value = e.detail.value;
-      this.username = value;
-    },
     sureAction: function sureAction() {
-      uni.switchTab({
-        url: '../index/index' });
+      switch (this.type) {
+        case 'forget':
+          this.$http({
+            url: this.$api.resetpassword,
+            method: 'POST',
+            data: {
+              mobile: this.mobile,
+              newpassword: this.password },
+
+            cb: function cb(err, res) {
+              if (!err && res.code === 1) {
+                uni.showToast({
+                  title: '重置密码成功',
+                  icon: 'none' });
+
+                uni.switchTab({
+                  url: '../index/index' });
+
+                return;
+              } else if (res.code === 0) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none' });
+
+                return;
+              } else {
+                uni.showToast({
+                  title: '重置密码失败',
+                  icon: 'none' });
+
+                return;
+              }
+            } });
+
+          break;
+        case 'register':
+          this.$http({
+            url: this.$api.register,
+            method: 'POST',
+            data: {
+              mobile: this.mobile,
+              password: this.password },
+
+            cb: function cb(err, res) {
+              if (!err && res.code === 1) {
+                uni.showToast({
+                  title: '注册成功',
+                  icon: 'none' });
+
+                uni.switchTab({
+                  url: '../index/index' });
+
+              } else if (res.code === 0) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none' });
+
+              } else {
+                uni.showToast({
+                  title: '注册失败',
+                  icon: 'none' });
+
+              }
+            } });
+
+          break;}
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
@@ -187,6 +254,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = Array.isArray(_vm.password)
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      var $$a = _vm.password,
+        $$el = $event.target,
+        $$c = $$el.checked ? true : false
+
+      if (Array.isArray($$a)) {
+        var $$v = null,
+          $$i = _vm._i($$a, $$v)
+
+        if ($$el.checked) {
+          $$i < 0 && (_vm.password = $$a.concat([$$v]))
+        } else {
+          $$i > -1 &&
+            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+        }
+      } else {
+        _vm.password = $$c
+      }
+    }
+
+    _vm.e1 = function($event) {
+      _vm.password = null
+    }
+
+    _vm.e2 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

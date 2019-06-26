@@ -87,12 +87,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     // 锁定屏幕方向
     plus.screen.lockOrientation('portrait-primary'); //锁定
 
+    var that = this;
+    // uni.getStorage({
+    //   key: 'userinfo',
+    //   success: function (res) {
+    //     if(res.data.token) {
+    //       console.log('登录页本地获取的token是', res.data.token)
+    //       that.$store.commit('setToken', res.data.token)
+    //       if(res.data.mobile) {
+    //         console.log('登录页本地获取的手机号是', res.data.mobile)
+    //         uni.reLaunch({
+    //           url: 'pages/index/index'
+    //         })
+    //         return
+    //       }
+    //       return
+    //     }
+    //   }
+    // })
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:11");
+    console.log('App Show', " at App.vue:29");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:14");
+    console.log('App Hide', " at App.vue:32");
   } };exports.default = _default;
 
 /***/ }),

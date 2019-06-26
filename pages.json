@@ -11,6 +11,16 @@
         }
       }
     }, {
+      "path": "pages/login/bindTel",
+      "style": {
+        "navigationStyle": "custom",
+        "app-plus": {
+          "bounce": "none",
+          "animationType": "zoom-fade-out",
+          "titleNView": "false"
+        }
+      }
+    }, {
       "path": "pages/login/register",
       "style": {
         "navigationStyle": "custom",
