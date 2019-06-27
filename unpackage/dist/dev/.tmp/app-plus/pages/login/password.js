@@ -151,11 +151,10 @@ var _default =
   methods: {
     goBack: function goBack() {
       uni.navigateBack({
-        delta: 1,
-        "animationType": "zoom-fade-out" });
+        delta: 1 });
 
     },
-    sureAction: function sureAction() {
+    sureAction: function sureAction() {var _this = this;
       switch (this.type) {
         case 'forget':
           this.$http({
@@ -167,9 +166,14 @@ var _default =
 
             cb: function cb(err, res) {
               if (!err && res.code === 1) {
+                _this.$store.commit('login', {
+                  mobile: _this.mobile,
+                  token: res.data.token });
+
                 uni.showToast({
                   title: '重置密码成功',
                   icon: 'none' });
+
 
                 uni.switchTab({
                   url: '../index/index' });

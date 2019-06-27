@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
@@ -88,23 +88,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
     var that = this;
-    // uni.getStorage({
-    //   key: 'userinfo',
-    //   success: function (res) {
-    //     if(res.data.token) {
-    //       console.log('登录页本地获取的token是', res.data.token)
-    //       that.$store.commit('setToken', res.data.token)
-    //       if(res.data.mobile) {
-    //         console.log('登录页本地获取的手机号是', res.data.mobile)
-    //         uni.reLaunch({
-    //           url: 'pages/index/index'
-    //         })
-    //         return
-    //       }
-    //       return
-    //     }
-    //   }
-    // })
+    uni.getStorage({
+      key: 'userinfo',
+      success: function success(res) {
+        if (res.data.token) {
+          console.log('登录页本地获取的token是', res.data.token);
+          that.$store.commit('setToken', res.data.token);
+          // if(res.data.mobile) {
+          //   console.log('登录页本地获取的手机号是', res.data.mobile)
+          //   uni.reLaunch({
+          //     url: 'pages/index/index'
+          //   })
+          //   return
+          // }
+
+          uni.reLaunch({
+            url: 'pages/index/index' });
+
+
+          return;
+        }
+      } });
+
   },
   onShow: function onShow() {
     console.log('App Show');
@@ -112,6 +117,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   onHide: function onHide() {
     console.log('App Hide');
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
 /***/ }),
 

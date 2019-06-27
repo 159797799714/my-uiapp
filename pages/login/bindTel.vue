@@ -27,16 +27,8 @@
             </view>
             <view v-if="!showInfo" class="info"></view>
             <view v-if="showInfo" class="info">验证码已通过手机短信的形式发送至您的手机，请注意查收</view>
-            <view class="btn" foroType="submit" @click="goNext">确认</view>
+            <view class="btn" foroType="submit" @click="sureAction">确认</view>
           </form>
-        </view>
-        <view v-if="type === 'register'">
-          <view class="login" @click="goLogin">已有账号去登录</view>
-          <view class="clause">
-            <text class="iconfont">&#xe722;</text>注册即表示您已同意
-            <text>《用户协议》</text>和
-            <text>《隐私条款》</text>
-          </view>  
         </view>
       </view>
     </view>
@@ -48,7 +40,7 @@
     data() {
       return {
         title: '',
-        type: '',
+        token: '',
         showDel: false,
         code_word: '获取验证码',
         mobile: '',
@@ -59,9 +51,10 @@
         ishide: false
       }
     },
-    onLoad(option) {
-      this.type = option.type
-    },
+    // onLoad(option) {
+    //   console.log(option.token)
+    //   this.token = option.token
+    // },
     methods: {
       goBack() {
         uni.navigateBack({
@@ -76,7 +69,7 @@
         }
         this.showDel = false
       },
-      goNext() {
+      sureAction() {
         if(!this.check_code) {
           uni.showToast({
             title: '请先获取手机验证码',
@@ -99,17 +92,38 @@
           return
         }
         if(this.check_code === this.code && this.check_code) {
-          // uni.navigateTo({
-          //   url: 'password?type=' + this.type + '&mobile=' + this.mobile,
-          //   "animationType": "zoom-fade-out"
-          // })  
+          let data = {
+            mobile: this.mobile,
+            password: this.password
+          }
+          // console.log(JSON.stringify(data))
+          this.$http({
+            url: this.$api.otherregister,
+            method: 'POST',
+            data: data,
+            cb: (err, res) => {
+              if(!err && res.code === 1) {
+                uni.showToast({
+                  title: '绑定手机号成功',
+                  icon: 'none'
+                })
+                uni.switchTab({
+                  url: '../index/index'
+                })
+              } else if (res.code === 0 && res.msg){
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none'
+                })
+              } if(err) {
+                uni.showToast({
+                  title: '绑定手机号失败',
+                  icon: 'none'
+                })
+              }
+            }
+          })
         }
-      },
-      goLogin() {
-        uni.navigateTo({
-          url: 'login',
-          "animationType": "zoom-fade-out"
-        })
       },
       getCode() {
         let value = /^1[3456789]\d{9}$/.test(this.mobile)

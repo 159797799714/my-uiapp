@@ -51,8 +51,7 @@
     methods: {
       goBack() {
         uni.navigateBack({
-          delta: 1,
-          "animationType": "zoom-fade-out"
+          delta: 1
         })
       },
       sureAction() {
@@ -67,10 +66,15 @@
               },
               cb: (err, res) => {
                 if(!err && res.code === 1) {
+                  this.$store.commit('login', {
+                    mobile: this.mobile,
+                    token: res.data.token
+                  })
                   uni.showToast({
                     title: '重置密码成功',
                     icon: 'none'
                   })
+                  
                   uni.switchTab({
                     url: '../index/index'
                   })

@@ -137,19 +137,20 @@
           })
         }
       },
+      
+      // 点击第三方登录
       loginWay(type) {
         let that = this
         that.loginType = type === 'weixin' ? 'weixin': ( type === 'qq' ? 'qq' : 'sinaweibo' )
         uni.getProvider({
           service: 'oauth',
           success: function(res) {
-            console.log(res.provider)
             if (~res.provider.indexOf(type)) {
               uni.login({
                 provider: type,
                 success: function(loginRes) {
-                  console.log('第三方登录获取到的信息', JSON.stringify(loginRes))
-                  if(that.type === 'sinaweibo') {
+                  // console.log('第三方登录获取到的信息', JSON.stringify(loginRes.authResult.openid))
+                  if(type === 'sinaweibo') {
                     that.openid = loginRes.authResult.uid
                   } else {
                     that.openid = loginRes.authResult.openid
@@ -177,20 +178,52 @@
             type: this.loginType
           },
           cb: (err, res) => {
-            console.log(err)
-            // if(!err && res.code === 1) {
-            //   console.log(res.data)
-            // } else if (res.code === 0 && res.msg){
-            //   uni.showToast({
-            //     title: res.msg,
-            //     icon: 'none'
-            //   })
-            // } if(err) {
-            //   uni.showToast({
-            //     title: 获取用户绑定信息失败,
-            //     icon: 'none'
-            //   })
-            // }
+            if(!err && res.code === 1) {
+              // console.log('获取成功', res.data.userinfo)
+              
+              // 绑定了手机
+              if(res.data.userinfo.mobile) {
+                let userinfo = {
+                  mobile: res.data.userinfo.mobile,
+                  token: res.data.userinfo.token
+                }
+                
+                // 存储token信息
+                this.$store.commit('login', userinfo)
+                uni.setStorage({
+                  key: 'userinfo',
+                  data: userinfo,
+                  success: function () {
+                    uni.switchTab({
+                      url: '../index/index'
+                    })
+                  }
+                })
+                return
+              }
+              
+              // 没绑定手机
+              this.$store.commit('setToken', res.data.userinfo.token)
+              
+              uni.showToast({
+                title: '请绑定您的手机号码',
+                icon: 'none'
+              })
+              uni.navigateTo({
+                url: 'bindTel'
+              })
+              
+            } else if (res.code === 0 && res.msg){
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } if(err) {
+              uni.showToast({
+                title: '获取用户绑定信息失败',
+                icon: 'none'
+              })
+            }
           }
         })
       }

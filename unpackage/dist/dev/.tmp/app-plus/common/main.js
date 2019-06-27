@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
     console.log('App Launch', " at App.vue:4");
@@ -88,30 +88,36 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     plus.screen.lockOrientation('portrait-primary'); //锁定
 
     var that = this;
-    // uni.getStorage({
-    //   key: 'userinfo',
-    //   success: function (res) {
-    //     if(res.data.token) {
-    //       console.log('登录页本地获取的token是', res.data.token)
-    //       that.$store.commit('setToken', res.data.token)
-    //       if(res.data.mobile) {
-    //         console.log('登录页本地获取的手机号是', res.data.mobile)
-    //         uni.reLaunch({
-    //           url: 'pages/index/index'
-    //         })
-    //         return
-    //       }
-    //       return
-    //     }
-    //   }
-    // })
+    uni.getStorage({
+      key: 'userinfo',
+      success: function success(res) {
+        if (res.data.token) {
+          console.log('登录页本地获取的token是', res.data.token, " at App.vue:14");
+          that.$store.commit('setToken', res.data.token);
+          // if(res.data.mobile) {
+          //   console.log('登录页本地获取的手机号是', res.data.mobile)
+          //   uni.reLaunch({
+          //     url: 'pages/index/index'
+          //   })
+          //   return
+          // }
+
+          uni.reLaunch({
+            url: 'pages/index/index' });
+
+
+          return;
+        }
+      } });
+
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:29");
+    console.log('App Show', " at App.vue:34");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:32");
+    console.log('App Hide', " at App.vue:37");
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

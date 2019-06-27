@@ -135,20 +135,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
       title: '',
-      type: '',
+      token: '',
       showDel: false,
       code_word: '获取验证码',
       mobile: '',
@@ -159,9 +151,10 @@ var _default =
       ishide: false };
 
   },
-  onLoad: function onLoad(option) {
-    this.type = option.type;
-  },
+  // onLoad(option) {
+  //   console.log(option.token)
+  //   this.token = option.token
+  // },
   methods: {
     goBack: function goBack() {
       uni.navigateBack({
@@ -176,7 +169,7 @@ var _default =
       }
       this.showDel = false;
     },
-    goNext: function goNext() {
+    sureAction: function sureAction() {
       if (!this.check_code) {
         uni.showToast({
           title: '请先获取手机验证码',
@@ -199,17 +192,38 @@ var _default =
         return;
       }
       if (this.check_code === this.code && this.check_code) {
-        // uni.navigateTo({
-        //   url: 'password?type=' + this.type + '&mobile=' + this.mobile,
-        //   "animationType": "zoom-fade-out"
-        // })  
-      }
-    },
-    goLogin: function goLogin() {
-      uni.navigateTo({
-        url: 'login',
-        "animationType": "zoom-fade-out" });
+        var data = {
+          mobile: this.mobile,
+          password: this.password
 
+          // console.log(JSON.stringify(data))
+        };this.$http({
+          url: this.$api.otherregister,
+          method: 'POST',
+          data: data,
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              uni.showToast({
+                title: '绑定手机号成功',
+                icon: 'none' });
+
+              uni.switchTab({
+                url: '../index/index' });
+
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            }if (err) {
+              uni.showToast({
+                title: '绑定手机号失败',
+                icon: 'none' });
+
+            }
+          } });
+
+      }
     },
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.mobile);
@@ -222,10 +236,10 @@ var _default =
         return;
       }
 
-      console.log(this.mobile, " at pages\\login\\bindTel.vue:125");
+      console.log(this.mobile, " at pages\\login\\bindTel.vue:139");
       var num = 1111;
       that.check_code = num.toString();
-      console.log(num.toString(), " at pages\\login\\bindTel.vue:128");
+      console.log(num.toString(), " at pages\\login\\bindTel.vue:142");
 
       // this.$http({
       //   url: this.$api.sendcode,

@@ -196,15 +196,13 @@ var _default =
       console.log(this.check_code, this.code);
       if (this.check_code === this.code && this.check_code) {
         uni.navigateTo({
-          url: 'password?type=' + this.type + '&mobile=' + this.username,
-          "animationType": "zoom-fade-out" });
+          url: 'password?type=' + this.type + '&mobile=' + this.username });
 
       }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
-        url: 'login',
-        "animationType": "zoom-fade-out" });
+        url: 'login' });
 
     },
     getCode: function getCode() {
