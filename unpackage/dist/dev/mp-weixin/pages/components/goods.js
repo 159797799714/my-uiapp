@@ -227,7 +227,7 @@ var _default =
     return {
       style: 0, // 商品块默认0上图下文，1为左图右文
       searchInfo: '', // 输入框placeholdeer
-      inputClearValue: '', //  输入框value值
+      inputValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
       tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
@@ -271,9 +271,11 @@ var _default =
         max_price: '' },
       // 商品默认请求参数
       shareFormData: {
+        category_id: '',
         search: '',
-        tags_id: '' }
-      // 分享文章默认请求参数
+        tags_id: '' },
+
+      byid: false // 分享文章默认请求参数
     };
   },
   watch: {
@@ -293,21 +295,37 @@ var _default =
       if (val === 4) {
         this.filter_alert = true;
       }
+    },
+    inputValue: function inputValue(val, oldval) {
+      if (this.tabIndex === 0) {
+        this.shareFormData.search = val;
+      } else {
+        this.goodsFormData.search = val;
+      }
+
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class);
-    this.searchInfo = option.class;
-    this.tabIndex = Number(option.type);
-    // 搜索关键词
-    this.goodsFormData.search = this.searchInfo;
-    this.shareFormData.search = this.searchInfo;
-
-    this.searchAction();
-    // 获取文章标签
-    if (this.tabIndex === 0) {
-      this.getCultureTag();
+    console.log('分享文章详情页接受到的参数', option);
+    if (option.class) {
+      console.log('class', option.class);
+      this.searchInfo = option.class;
+      this.tabIndex = Number(option.type);
+      // 搜索关键词
+      this.goodsFormData.search = this.searchInfo;
+      if (this.tabIndex === 0) {
+        this.getCultureTag();
+      }
     }
+    if (option.id) {
+      console.log('id', option.id);
+      this.shareFormData.category_id = option.id;
+      this.goodsFormData.category_id = option.id;
+      this.byid = true;
+    }
+    // 获取文章标签
+    this.searchAction();
+
   },
   methods: {
     // 选中分享文章标签
@@ -325,17 +343,21 @@ var _default =
     searchAction: function searchAction() {var _this2 = this;
       var url = this.$api.goodlists;
       var data = this.goodsFormData;
-      if (this.tabIndex === 0) {
-        url = this.$api.articlesbysearch;
+      if (this.tabIndex === 0) {// 选中分享时
+        url = this.$api.articlesbysearch; // 关键字搜索
+        if (this.byid && this.inputValue === '') {
+          url = this.$api.articlesbycategoryid; // 选中分享且是从商城携带id进来搜索时
+        }
         data = this.shareFormData;
       }
+      console.log('url', url, 'data', data, 'byid', this.byid);
       this.$http({
         url: url,
         data: data,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
             // 成功后刷新数据
-            if (res.data.list.length < 1) {
+            if (res.data.list.length === 0 || undefined) {
               uni.showToast({
                 title: '未搜索到相关数据',
                 icon: 'none' });
@@ -374,7 +396,7 @@ var _default =
 
     },
     clearIcon: function clearIcon() {
-      this.inputClearValue = '';
+      this.inputValue = '';
       this.showClearIcon = false;
     },
     // 分享详情页
@@ -385,8 +407,6 @@ var _default =
     },
     // 
     clearInput: function clearInput(event) {
-      console.log(event.target.value);
-      this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
         return;

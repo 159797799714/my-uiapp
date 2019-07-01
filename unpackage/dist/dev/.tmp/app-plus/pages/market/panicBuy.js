@@ -151,6 +151,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -161,77 +162,9 @@ var _default =
       interval: 2000,
       duration: 500,
       indicatorActiveColor: '#ffffff', // 以上轮播图信息
-      timeList: [
-      {
-        id: 1,
-        day: '05-01',
-        hour: '20:00',
-        status_text: '已开抢',
-        status: 1 },
-      {
-        id: 2,
-        day: '05-01',
-        hour: '20:00',
-        status_text: '已开抢',
-        status: 1 },
-      {
-        id: 3,
-        day: '05-01',
-        hour: '20:00',
-        status_text: '已开抢',
-        status: 1 },
-      {
-        id: 4,
-        day: '05-01',
-        hour: '20:00',
-        status_text: '即将开抢',
-        status: 2 },
-      {
-        id: 5,
-        day: '05-01',
-        hour: '20:00',
-        status_text: '即将开抢',
-        status: 2 }],
-
-      // 时间
-      selectIndex: 2, // 选中的时间
+      timeList: [], // 时间
+      selectIndex: 0, // 选中的时间
       goodList: [
-      {
-        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-        leaver_sum: 40,
-        total: 100,
-        discount: '4.6折',
-        newPrice: 300,
-        oldPrice: 4000,
-        code: 1,
-        percent: 40 },
-      {
-        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-        leaver_sum: 0,
-        total: 200,
-        discount: '4.6折',
-        newPrice: 300,
-        oldPrice: 4000,
-        code: 0,
-        percent: 0 },
-      {
-        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-        leaver_sum: 40,
-        total: 100,
-        discount: '4.6折',
-        newPrice: 300,
-        oldPrice: 4000,
-        code: 1,
-        percent: 40 },
-      {
-        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-        leaver_sum: 40,
-        total: 100,
-        discount: '4.6折',
-        newPrice: 300,
-        oldPrice: 4000,
-        code: 1,
-        percent: 40 },
       {
         title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
         leaver_sum: 40,
@@ -243,23 +176,92 @@ var _default =
         percent: 40 }] };
 
 
-
   },
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:149");
+    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:81");
     this.title = option.origin;
     uni.setNavigationBarTitle({
       title: option.origin });
 
+    // 获取秒杀或者限时购活动列表
+    this.getSeckillCategorys();
+
   },
+  watch: {
+    selectIndex: function selectIndex(val, oldval) {
+      // 点击顶部时间动态获取秒杀商品
+      this.getgoodsbycategoryid(this.timeList[val].category_id);
+    } },
+
   methods: {
+    // 获取秒杀活动列表
+    getSeckillCategorys: function getSeckillCategorys() {var _this = this;
+      var url = this.$api.seckill_categorys;
+      if (this.title === '限时购') {
+        url = this.$api.flashsale_categorys;
+      }
+      this.$http({
+        url: url,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this.timeList = res.data.list;
+
+            // 通过第一个活动ID获取秒杀商品
+            _this.getgoodsbycategoryid(_this.timeList[0].category_id);
+
+          } else if (res.code === 0 || res.code === -1 & res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '秒杀活动列表加载失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 通过秒杀活动ID获取秒杀商品列表
+    getgoodsbycategoryid: function getgoodsbycategoryid(id) {var _this2 = this;
+      var url = this.$api.seckill_goodsbycategoryid;
+      if (this.title === '限时购') {
+        url = this.$api.flashsale_goodsbycategoryid;
+      }
+      this.$http({
+        url: url,
+        data: {
+          category_id: id },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            console.log(res.data.list.data, " at pages\\market\\panicBuy.vue:139");
+            _this2.goodList = res.data.list;
+          } else if (res.code === 0 || res.code === -1 & res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '秒杀商品列表加载失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+
     selectTime: function selectTime(item, index) {
       this.selectIndex = index;
     },
-    goDetail: function goDetail(info) {
-      uni.navigateTo({
-        url: '../components/goodDetail?info=' + info + '&panic=true' });
-
+    // 去购买或者进入详情页
+    goDetail: function goDetail(item) {
+      console.log(item, " at pages\\market\\panicBuy.vue:161");
+      // uni.navigateTo({
+      //   url: '../components/goodDetail?info=' + info + '&panic=true'
+      // })
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

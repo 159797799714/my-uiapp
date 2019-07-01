@@ -29,6 +29,12 @@ view.data-v-efa0bd64, image.data-v-efa0bd64, text.data-v-efa0bd64, input.data-v-
 .bg_error.data-v-efa0bd64 {
   background: #dd524d;
 }
+.bg-white.data-v-efa0bd64 {
+  background: #fff !important;
+}
+.bg-black.data-v-efa0bd64 {
+  background: #151515 !important;
+}
 .font-red.data-v-efa0bd64 {
   color: #F4433D;
 }
@@ -37,6 +43,15 @@ view.data-v-efa0bd64, image.data-v-efa0bd64, text.data-v-efa0bd64, input.data-v-
 }
 .font-66.data-v-efa0bd64 {
   color: #666666;
+}
+.font-ff.data-v-efa0bd64 {
+  color: #fff;
+}
+.font-A3.data-v-efa0bd64 {
+  color: #A3A3A3 !important;
+}
+.font-purple.data-v-efa0bd64 {
+  color: #FF00FF !important;
 }
 /* iPhone X in portrait & landscape */
 /* iPhone X in landscape */
@@ -78,9 +93,6 @@ view.data-v-efa0bd64, image.data-v-efa0bd64, text.data-v-efa0bd64, input.data-v-
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #131313;
-}
-.bg-white.data-v-efa0bd64 {
-  background: #fff;
 }
 .topBar.data-v-efa0bd64 {
   display: -webkit-box;

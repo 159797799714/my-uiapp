@@ -194,91 +194,114 @@ var _default =
       duration: 500,
       indicatorActiveColor: '#fff',
       searchInfo: '大家都在搜“森海塞尔”',
-      swiperList: [{}, {}, {}],
-      menuList: [{
-        imgUrl: '../../static/img/market/movie.png',
-        title: '影音' },
-      {
-        imgUrl: '../../static/img/market/child.png',
-        title: '衍生' },
-      {
-        imgUrl: '../../static/img/market/3C.png',
-        title: '3C' },
-      {
-        imgUrl: '../../static/img/market/popular.png',
-        title: '潮品' },
-      {
-        imgUrl: '../../static/img/market/makeup.png',
-        title: '美妆' },
-      {
-        imgUrl: '../../static/img/market/game.png',
-        title: '玩物' },
+      swiperList: [{
+        imgUrl: "https://market.pd-unixe.com/uploads/20190625200421f6a525590.png",
+        goods_id: 10255 }],
 
-      {
-        imgUrl: '../../static/img/market/life.png',
-        title: '生活' }],
-
+      menuList: [], // 所有商品分类列表
       lightning: {
         title: '秒杀购',
         time: '02:00:00',
         newPrice: 423,
         oldPrice: 1543 },
 
-      recommendList: [{
-        imgUrl: '',
-        info: '索尼MDR-XB550AP头戴式立体声免提通话耳机',
-        price: 1612,
-        oldPrice: 1700 },
-      {
-        imgUrl: '',
-        info: '放假哦按拱结构感觉泛泛而谈哈哈',
-        price: 1612 },
-      {
-        imgUrl: '',
-        info: '结果符合退热贴通过提高人体',
-        price: 1612 },
-      {
-        imgUrl: '',
-        info: '结果符合退热贴通过提高人体',
-        price: 1612 },
-      {
-        imgUrl: '',
-        info: '放假哦按拱结构感觉泛泛而谈哈哈',
-        price: 1612 },
-      {
-        imgUrl: '',
-        info: '结果符合退热贴通过提高人体',
-        price: 1612 },
-      {
-        imgUrl: '',
-        info: '结果符合退热贴通过提高人体',
-        price: 1612 }] };
-
+      recommendList: [] };
 
   },
+  onLoad: function onLoad() {
+    // 获取所有商品分类
+    this.getGoodscategory();
+
+    // 获取推荐商品列表
+    this.getRecommendgoods();
+
+    // 获取一个限时购商品
+    this.getLimitGoods();
+
+    // 获取一个秒杀商品
+    this.getKillGoods();
+  },
   methods: {
+    // 获取所有商品分类
+    getGoodscategory: function getGoodscategory() {var _this = this;
+      this.$http({
+        url: this.$api.goodscategory,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this.menuList = res.data.list;
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '商品分类列表加载失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 商城页展示一个限时抢购商品
+    getLimitGoods: function getLimitGoods() {
+      this.$http({
+        url: this.$api.getflashsalegoodsbyone,
+        cb: function cb(err, res) {
+          console.log('限时购', res);
+        } });
+
+    },
+    // 商城页展示一个秒杀商品
+    getKillGoods: function getKillGoods() {
+      this.$http({
+        url: this.$api.getseckillgoodsbyone,
+        cb: function cb(err, res) {
+          console.log('秒杀购', res);
+        } });
+
+    },
+    // 推荐商品列表
+    getRecommendgoods: function getRecommendgoods() {var _this2 = this;
+      this.$http({
+        url: this.$api.recommendgoods,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this2.recommendList = res.data.list;
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '推荐商品列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 去商品详情页
     goDetail: function goDetail(item) {
       uni.navigateTo({
         url: '../components/goodDetail?info=' + item.info
         // url: 'goodDetail' 
       });
     },
+    // 抢购或者秒杀页
     goPanicBuy: function goPanicBuy(data) {
       switch (data) {
         case 1:
-          {
-            uni.navigateTo({
-              url: 'panicBuy?origin=' + '秒杀' });
+          uni.navigateTo({
+            url: 'panicBuy?origin=' + '秒杀' });
 
-            break;
-          }
+          break;
         case 2:
-          {
-            uni.navigateTo({
-              url: 'panicBuy?origin=' + '限时购' });
+          uni.navigateTo({
+            url: 'panicBuy?origin=' + '限时购' });
 
-            break;
-          }}
+          break;}
 
     },
     // 搜索页
@@ -287,10 +310,10 @@ var _default =
         url: '../components/search?type=1' });
 
     },
-    // 商品详情页
-    goGoods: function goGoods(item) {
+    // 商品分类
+    goGoods: function goGoods(id) {
       uni.navigateTo({
-        url: '../components/goods?class=' + item });
+        url: '../components/goods?id=' + id });
 
     },
     // 点击更多

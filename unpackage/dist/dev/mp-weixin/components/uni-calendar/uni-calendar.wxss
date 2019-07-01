@@ -29,6 +29,12 @@ view, image, text, input, form {
 .bg_error {
   background: #dd524d;
 }
+.bg-white {
+  background: #fff !important;
+}
+.bg-black {
+  background: #151515 !important;
+}
 .font-red {
   color: #F4433D;
 }
@@ -37,6 +43,15 @@ view, image, text, input, form {
 }
 .font-66 {
   color: #666666;
+}
+.font-ff {
+  color: #fff;
+}
+.font-A3 {
+  color: #A3A3A3 !important;
+}
+.font-purple {
+  color: #FF00FF !important;
 }
 /* iPhone X in portrait & landscape */
 /* iPhone X in landscape */
@@ -78,9 +93,6 @@ view, image, text, input, form {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #131313;
-}
-.bg-white {
-  background: #fff;
 }
 .topBar {
   display: -webkit-box;

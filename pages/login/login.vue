@@ -155,7 +155,19 @@
                   } else {
                     that.openid = loginRes.authResult.openid
                   }
-                  that.getInfo()
+                  
+                  
+                  
+                  
+                  // 正式登录
+                  // that.getInfo()
+                  
+                  
+                  // 手动登录
+                  uni.switchTab({
+                    url: '../index/index'
+                  })
+                  
                 }
               })
             }

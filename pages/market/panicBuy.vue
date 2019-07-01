@@ -3,9 +3,9 @@
     <view class="content">
       <view class="tabs">
         <view v-for="(item, index) in timeList" :key="index" :class="{'tab-item': true, selected: selectIndex === index}" @click="selectTime(item, index)">
-          <text class="day">{{ item.day }}</text>
-          <text class="hour">{{ item.hour }}</text>
-          <text class="status">{{ item.status_text }}</text>
+          <text class="day">{{ item.activity_date }}</text>
+          <text class="hour">{{ item.activity_time }}</text>
+          <text class="status">{{ item.status }}</text>
         </view>
       </view>
       <scroll-view scroll-y="true" class="main">
@@ -21,28 +21,29 @@
           </swiper-item>
         </swiper>
         <view class="leave-time">{{ title === '秒杀'?'秒杀': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view>
-        <view v-for="(item, index) in goodList" :key="index" class="item bg-white" @click="goDetail(item.title)">
+        <view v-for="(item, index) in goodList.data" :key="index" class="item bg-white" @click="goDetail(item)">
           <view class="goodImg">
-            <view v-if="item.code === 0" class="imgCover">
+            <view v-if="item.surplus_inventory === 0" class="imgCover">
               <text>售完</text>
-             </view>
-            <image src="" mode=""></image>
+            </view>
+            <image :src="goodList.banners[index].file_path" mode=""></image>
           </view>
           <view class="goodInfo">
-            <view class="goodName">{{ item.title }}</view>
+            <view class="goodName">{{ item.goods_name }}</view>
             <view class="leaver">
-              <text class="text">仅剩余{{ item.leaver_sum }}件</text>
+              <text class="text">仅剩余{{ item.surplus_inventory }}件</text>
               <view class="peogress-box">
-                <progress :percent="item.percent" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
+                <progress :percent="item.total_inventory - item.surplus_inventory" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
               </view>
             </view>
             <view class="discount">
-              <text>{{ item.discount }}</text>
+              <text>{{ item.selling_point }}</text>
             </view>
             <view class="price">
-              <text class="newPrice">￥{{ item.newPrice }}</text>
-              <text class="oldPrice">￥{{ item.oldPrice }}</text>
-              <text :class="{buy: true, 'bg-white': true, 'my-button': true, none: item.code === 0}">{{ item.code === 0 ? '已售完':'立即秒杀' }}</text>
+              <text class="newPrice">￥{{ item.goods_min_price }}</text>
+              <text class="oldPrice">￥{{ item.goods_max_price }}</text>
+              <text v-if="item.surplus_inventory !== 0" :class="{buy: true, 'bg-white': true, 'my-button': true}">立即秒杀</text>
+              <text v-if="item.surplus_inventory === 0" :class="{buy: true,'my-button': true, none: item.surplus_inventory === 0}">已售完</text>
             </view>
           </view>
         </view>
@@ -61,40 +62,8 @@
         interval: 2000,
         duration: 500,
         indicatorActiveColor: '#ffffff',   // 以上轮播图信息
-        timeList: [
-          { 
-            id: 1,
-            day: '05-01',
-            hour: '20:00',
-            status_text: '已开抢',
-            status: 1
-          }, {
-            id: 2,
-            day: '05-01',
-            hour: '20:00',
-            status_text: '已开抢',
-            status: 1
-          }, {
-            id: 3,
-            day: '05-01',
-            hour: '20:00',
-            status_text: '已开抢',
-            status: 1
-          }, {
-            id: 4,
-            day: '05-01',
-            hour: '20:00',
-            status_text: '即将开抢',
-            status: 2
-          }, {
-            id: 5,
-            day: '05-01',
-            hour: '20:00',
-            status_text: '即将开抢',
-            status: 2
-          }
-        ],                              // 时间
-        selectIndex: 2,                 // 选中的时间
+        timeList: [],                      // 时间
+        selectIndex: 0,                    // 选中的时间
         goodList: [
           {
             title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
@@ -105,44 +74,7 @@
             oldPrice: 4000,
             code: 1,
             percent: 40
-          }, {
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-            leaver_sum: 0,
-            total: 200,
-            discount: '4.6折',
-            newPrice: 300,
-            oldPrice: 4000,
-            code: 0,
-            percent: 0
-          }, {
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-            leaver_sum: 40,
-            total: 100,
-            discount: '4.6折',
-            newPrice: 300,
-            oldPrice: 4000,
-            code: 1,
-            percent: 40
-          }, {
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-            leaver_sum: 40,
-            total: 100,
-            discount: '4.6折',
-            newPrice: 300,
-            oldPrice: 4000,
-            code: 1,
-            percent: 40
-          }, {
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-            leaver_sum: 40,
-            total: 100,
-            discount: '4.6折',
-            newPrice: 300,
-            oldPrice: 4000,
-            code: 1,
-            percent: 40
-          }
-        ]
+          }]
       }
     },
     onLoad(option) {
@@ -151,15 +83,85 @@
       uni.setNavigationBarTitle({
         title: option.origin
       })
+      // 获取秒杀或者限时购活动列表
+      this.getSeckillCategorys()
+      
+    },
+    watch: {
+      selectIndex(val, oldval) {
+        // 点击顶部时间动态获取秒杀商品
+        this.getgoodsbycategoryid(this.timeList[val].category_id)
+      }
     },
     methods: {
+      // 获取秒杀活动列表
+      getSeckillCategorys() {
+        let url = this.$api.seckill_categorys
+        if(this.title === '限时购') {
+          url = this.$api.flashsale_categorys
+        }
+        this.$http({
+          url: url,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              this.timeList = res.data.list
+              
+              // 通过第一个活动ID获取秒杀商品
+              this.getgoodsbycategoryid(this.timeList[0].category_id)
+              
+            } else if(res.code === 0 || res.code === -1 & res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '秒杀活动列表加载失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      // 通过秒杀活动ID获取秒杀商品列表
+      getgoodsbycategoryid(id) {
+        let url = this.$api.seckill_goodsbycategoryid
+        if(this.title === '限时购') {
+          url = this.$api.flashsale_goodsbycategoryid
+        }
+        this.$http({
+          url: url,
+          data: {
+            category_id: id
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              console.log(res.data.list.data)
+              this.goodList = res.data.list
+            } else if(res.code === 0 || res.code === -1 & res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '秒杀商品列表加载失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      
       selectTime(item, index) {
         this.selectIndex = index
       },
-      goDetail(info) {
-        uni.navigateTo({
-          url: '../components/goodDetail?info=' + info + '&panic=true'
-        })
+      // 去购买或者进入详情页
+      goDetail(item) {
+        console.log(item)
+        // uni.navigateTo({
+        //   url: '../components/goodDetail?info=' + info + '&panic=true'
+        // })
       }
     },
   }
@@ -178,8 +180,7 @@
   overflow: auto;
   z-index: 2;
   .tab-item{
-    height: 130upx;
-    width: 150upx;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -247,7 +248,7 @@
         left: 0;
         height: 100%;
         width: 100%;
-        background: rgba(0,0,0, 0.3);
+        background: rgba(0,0,0, 0.5);
         text-align: center;
         &>text{
           display: block;
@@ -329,6 +330,9 @@
           font-size: $font-22;
           line-height: 36upx;
           color: $word-color;
+          text-overflow: hidden;
+          white-space: nowrap;
+          
           &::before{
             content: '———';
             text-align: center;
@@ -345,14 +349,15 @@
           right: 0;
           height: 48upx;
           width: 140upx;
-          border: 1px solid $color-slipe-red;
           color: $color-slipe-red;
+          border: 1px solid $color-slipe-red;
           font-size: $font-24;
           line-height: 48upx;
         }
         .none{
-          border-color: $word-color;
-          color: $word-color;
+          border-color: $color-99;
+          background: $color-99;
+          color: $color-white;
         }
       }
     }

@@ -29,6 +29,12 @@ view.data-v-5ff3a554, image.data-v-5ff3a554, text.data-v-5ff3a554, input.data-v-
 .bg_error.data-v-5ff3a554 {
   background: #dd524d;
 }
+.bg-white.data-v-5ff3a554 {
+  background: #fff !important;
+}
+.bg-black.data-v-5ff3a554 {
+  background: #151515 !important;
+}
 .font-red.data-v-5ff3a554 {
   color: #F4433D;
 }
@@ -37,6 +43,15 @@ view.data-v-5ff3a554, image.data-v-5ff3a554, text.data-v-5ff3a554, input.data-v-
 }
 .font-66.data-v-5ff3a554 {
   color: #666666;
+}
+.font-ff.data-v-5ff3a554 {
+  color: #fff;
+}
+.font-A3.data-v-5ff3a554 {
+  color: #A3A3A3 !important;
+}
+.font-purple.data-v-5ff3a554 {
+  color: #FF00FF !important;
 }
 /* iPhone X in portrait & landscape */
 /* iPhone X in landscape */
@@ -78,9 +93,6 @@ view.data-v-5ff3a554, image.data-v-5ff3a554, text.data-v-5ff3a554, input.data-v-
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #131313;
-}
-.bg-white.data-v-5ff3a554 {
-  background: #fff;
 }
 .topBar.data-v-5ff3a554 {
   display: -webkit-box;
@@ -267,6 +279,7 @@ to {
 }
 .container.data-v-5ff3a554 {
   background: #f5f5f5;
+  color: #000000;
 }
 .search.data-v-5ff3a554 {
   display: -webkit-box;
@@ -338,7 +351,6 @@ to {
           -ms-flex: 1;
               flex: 1;
       font-size: 32rpx;
-      font-weight: 600;
       line-height: 60rpx;
       text-align: center;
       position: relative;
@@ -373,9 +385,6 @@ to {
     padding-bottom: 30rpx;
     width: -webkit-calc(100% - 60rpx);
     width: calc(100% - 60rpx);
-    background: #fff;
-    -webkit-box-shadow: 0 0 24rpx 0 rgba(202, 220, 232, 0.54);
-            box-shadow: 0 0 24rpx 0 rgba(202, 220, 232, 0.54);
 }
 .content .culture > image.data-v-5ff3a554 {
       margin-bottom: 15rpx;
@@ -391,8 +400,7 @@ to {
         margin-bottom: 17rpx;
         max-height: 90rpx;
         line-height: 48rpx;
-        font-size: 36rpx;
-        font-weight: 600;
+        font-size: 32rpx;
         overflow: hidden;
         -o-text-overflow: ellipsis;
            text-overflow: ellipsis;
@@ -438,10 +446,10 @@ to {
 }
 .content .culture .control .isZan.data-v-5ff3a554::before {
           content: '';
-          height: 13rpx;
-          width: 14rpx;
+          height: 11rpx;
+          width: 12rpx;
           position: absolute;
-          bottom: 5rpx;
+          bottom: 6rpx;
           left: 8rpx;
           background: #F4433D;
 }

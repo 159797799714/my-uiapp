@@ -29,6 +29,12 @@ view.data-v-5d50af01, image.data-v-5d50af01, text.data-v-5d50af01, input.data-v-
 .bg_error.data-v-5d50af01 {
   background: #dd524d;
 }
+.bg-white.data-v-5d50af01 {
+  background: #fff !important;
+}
+.bg-black.data-v-5d50af01 {
+  background: #151515 !important;
+}
 .font-red.data-v-5d50af01 {
   color: #F4433D;
 }
@@ -37,6 +43,15 @@ view.data-v-5d50af01, image.data-v-5d50af01, text.data-v-5d50af01, input.data-v-
 }
 .font-66.data-v-5d50af01 {
   color: #666666;
+}
+.font-ff.data-v-5d50af01 {
+  color: #fff;
+}
+.font-A3.data-v-5d50af01 {
+  color: #A3A3A3 !important;
+}
+.font-purple.data-v-5d50af01 {
+  color: #FF00FF !important;
 }
 /* iPhone X in portrait & landscape */
 /* iPhone X in landscape */
@@ -78,9 +93,6 @@ view.data-v-5d50af01, image.data-v-5d50af01, text.data-v-5d50af01, input.data-v-
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #131313;
-}
-.bg-white.data-v-5d50af01 {
-  background: #fff;
 }
 .topBar.data-v-5d50af01 {
   display: -webkit-box;
@@ -290,8 +302,10 @@ to {
   z-index: 2;
 }
 .tabs .tab-item.data-v-5d50af01 {
-    height: 130rpx;
-    width: 150rpx;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -380,7 +394,7 @@ to {
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.5);
       text-align: center;
 }
 .item .goodImg .imgCover > text.data-v-5d50af01 {
@@ -481,6 +495,9 @@ to {
         font-size: 22rpx;
         line-height: 36rpx;
         color: #666666;
+        -o-text-overflow: hidden;
+           text-overflow: hidden;
+        white-space: nowrap;
 }
 .item .goodInfo .price .oldPrice.data-v-5d50af01::before {
           content: '\2014\2014\2014';
@@ -497,13 +514,14 @@ to {
         right: 0;
         height: 48rpx;
         width: 140rpx;
-        border: 1px solid #FF3C3E;
         color: #FF3C3E;
+        border: 1px solid #FF3C3E;
         font-size: 24rpx;
         line-height: 48rpx;
 }
 .item .goodInfo .price .none.data-v-5d50af01 {
-        border-color: #666666;
-        color: #666666;
+        border-color: #999999;
+        background: #999999;
+        color: #fff;
 }
 

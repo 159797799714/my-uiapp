@@ -71,8 +71,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  devApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
-  conductApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
+  conductApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
+  devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
 };exports.default = _default;
 
 /***/ }),
@@ -85,16 +85,16 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = request;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../Desktop/LEI/white/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../Desktop/LEI/white/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
-function request(obj) {
+function _default(obj) {
   uni.showLoading({
     title: '加载中' });
 
-  console.log(_index.default.state.token);
   var params = {
     'wxapp_id': '10001',
-    token: _index.default.state.token };
+    // token: store.state.token
+    token: 'aee3249feb5ed1535d780ab939fcd949' };
 
   var data = _objectSpread({}, obj.data, params);
   uni.request({
@@ -103,14 +103,13 @@ function request(obj) {
     data: data,
     header: obj.header ? obj.header : {},
     success: function success(res) {
-      if (res.data) {
-        obj.cb(null, res.data);
-      } else {
+      if (res.data.code === -1 || res.data.code === 0 && res.msg) {
         uni.showToast({
-          title: '请求失败',
+          title: res.msg,
           icon: 'none' });
 
       }
+      obj.cb(null, res.data);
     },
     fail: function fail(err) {
       obj.cb(err, null);
@@ -118,6 +117,12 @@ function request(obj) {
     complete: function complete(data) {
       if (data) {
         uni.hideLoading();
+      } else {
+        uni.hideLoading();
+        uni.showToast({
+          title: '请求出错',
+          icon: 'none' });
+
       }
     } });
 

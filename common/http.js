@@ -1,13 +1,13 @@
 import store from '../store/index.js'
 
-export default function request(obj){
+export default function(obj){
   uni.showLoading({
     title: '加载中'
   })
-  console.log(store.state.token)
   let params = {
     'wxapp_id': '10001',
-    token: store.state.token
+    // token: store.state.token
+    token: 'aee3249feb5ed1535d780ab939fcd949'
   }
   let data ={...obj.data, ...params}
   uni.request({
@@ -16,14 +16,13 @@ export default function request(obj){
     data: data,
     header: obj.header? obj.header : {},
     success: (res) => {
-      if(res.data) {
-        obj.cb(null, res.data)
-      } else {
+      if(res.data.code === -1 || res.data.code === 0 && res.msg) {
         uni.showToast({
-          title: '请求失败',
+          title: res.msg,
           icon: 'none'
         })
       }
+      obj.cb(null, res.data)
     },
     fail: (err) => {
       obj.cb(err, null)
@@ -31,6 +30,12 @@ export default function request(obj){
     complete: (data)=> {
       if(data) {
         uni.hideLoading()
+      } else {
+        uni.hideLoading()
+        uni.showToast({
+          title: '请求出错',
+          icon: 'none'
+        })
       }
     }
   })

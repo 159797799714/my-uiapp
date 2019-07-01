@@ -79,7 +79,7 @@
                     url: '../index/index'
                   })
                   return
-                } else if(res.code === 0) {
+                } else if(res.code === 0 && res.msg) {
                   uni.showToast({
                     title: res.msg,
                     icon: 'none'

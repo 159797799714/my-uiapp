@@ -273,10 +273,10 @@
           summary: "我正在使用HBuilderX开发uni-app，赶紧跟我一起来体验！",
           imageUrl: "https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png",
           success: function (res) {
-            console.log("success:" + JSON.stringify(res));
+            console.log('success:' + JSON.stringify(res));
           },
           fail: function (err) {
-            console.log("fail:" + JSON.stringify(err));
+            console.log('fail:' + JSON.stringify(err));
           }
         })
       },

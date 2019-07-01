@@ -183,8 +183,16 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
 //
 //
 //
-var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{}, {}, {}], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();this.getBanner();}, methods: { // 获取文章
-    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {_this.cultureList = res.data.list;if (res.data.list.length === 0) {uni.showToast({ title: '当前分类文章为空', icon: 'none' });}return;
+var _default = { data: function data() {return { indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', searchInfo: '大家都在搜“森海塞尔”', swiperList: [{ imgUrl: "https://market.pd-unixe.com/uploads/201906111745582db721897.png" }, { imgUrl: "https://market.pd-unixe.com/uploads/2019061117455884a819697.jpg" }, { imgUrl: "https://market.pd-unixe.com/uploads/20190611174558d5c576479.png" }, { imgUrl: "https://market.pd-unixe.com/uploads/201906111745539eac11543.png" }], tabList: [], selectIndex: 0, cultureList: [] };}, watch: { selectIndex: function selectIndex(val) {this.getDefault(this.tabList[val].category_id);} }, onLoad: function onLoad() {this.getCategorylist();this.getDefault();this.getBanner();}, methods: { // 获取文章
+    getDefault: function getDefault(id) {var _this = this;this.$http({ url: this.$api.articlesbycategoryid, data: { 'category_id': id ? id : '' }, cb: function cb(err, res) {if (!err && res.code === 1) {
+            _this.cultureList = res.data.list;
+            if (res.data.list.length === 0) {
+              uni.showToast({
+                title: '当前分类文章为空',
+                icon: 'none' });
+
+            }
+            return;
           } else {
             uni.showToast({
               title: '文章列表获取失败',
@@ -217,7 +225,7 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
     },
     // 点赞
     zanAction: function zanAction(item, index) {var _this3 = this;
-      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:120");
+      console.log(item.article_id, item.islike, index, " at pages\\index\\index.vue:128");
       var url = this.$api.unLike;
       if (item.islike === 'no') {
         url = this.$api.like;
@@ -267,13 +275,15 @@ var _default = { data: function data() {return { indicatorDots: true, autoplay: 
 
     },
     // 首页轮播图图片
-    getBanner: function getBanner() {var _this4 = this;
+    getBanner: function getBanner() {
       this.$http({
         url: this.$api.index,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
             // console.log(res.data.items[0].data)
-            _this4.swiperList = res.data.items[0].data;
+
+            // 替换轮播图图片路径数据
+            // this.swiperList = res.data.items[0].data
           } else {
             uni.showToast({
               title: '轮播图图片加载失败',

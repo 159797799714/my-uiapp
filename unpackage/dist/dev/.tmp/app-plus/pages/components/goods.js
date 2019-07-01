@@ -227,7 +227,7 @@ var _default =
     return {
       style: 0, // 商品块默认0上图下文，1为左图右文
       searchInfo: '', // 输入框placeholdeer
-      inputClearValue: '', //  输入框value值
+      inputValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
       tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
@@ -271,9 +271,11 @@ var _default =
         max_price: '' },
       // 商品默认请求参数
       shareFormData: {
+        category_id: '',
         search: '',
-        tags_id: '' }
-      // 分享文章默认请求参数
+        tags_id: '' },
+
+      byid: false // 分享文章默认请求参数
     };
   },
   watch: {
@@ -293,21 +295,37 @@ var _default =
       if (val === 4) {
         this.filter_alert = true;
       }
+    },
+    inputValue: function inputValue(val, oldval) {
+      if (this.tabIndex === 0) {
+        this.shareFormData.search = val;
+      } else {
+        this.goodsFormData.search = val;
+      }
+
     } },
 
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.class, " at pages\\components\\goods.vue:199");
-    this.searchInfo = option.class;
-    this.tabIndex = Number(option.type);
-    // 搜索关键词
-    this.goodsFormData.search = this.searchInfo;
-    this.shareFormData.search = this.searchInfo;
-
-    this.searchAction();
-    // 获取文章标签
-    if (this.tabIndex === 0) {
-      this.getCultureTag();
+    console.log('分享文章详情页接受到的参数', option, " at pages\\components\\goods.vue:209");
+    if (option.class) {
+      console.log('class', option.class, " at pages\\components\\goods.vue:211");
+      this.searchInfo = option.class;
+      this.tabIndex = Number(option.type);
+      // 搜索关键词
+      this.goodsFormData.search = this.searchInfo;
+      if (this.tabIndex === 0) {
+        this.getCultureTag();
+      }
     }
+    if (option.id) {
+      console.log('id', option.id, " at pages\\components\\goods.vue:221");
+      this.shareFormData.category_id = option.id;
+      this.goodsFormData.category_id = option.id;
+      this.byid = true;
+    }
+    // 获取文章标签
+    this.searchAction();
+
   },
   methods: {
     // 选中分享文章标签
@@ -325,17 +343,21 @@ var _default =
     searchAction: function searchAction() {var _this2 = this;
       var url = this.$api.goodlists;
       var data = this.goodsFormData;
-      if (this.tabIndex === 0) {
-        url = this.$api.articlesbysearch;
+      if (this.tabIndex === 0) {// 选中分享时
+        url = this.$api.articlesbysearch; // 关键字搜索
+        if (this.byid && this.inputValue === '') {
+          url = this.$api.articlesbycategoryid; // 选中分享且是从商城携带id进来搜索时
+        }
         data = this.shareFormData;
       }
+      console.log('url', url, 'data', data, 'byid', this.byid, " at pages\\components\\goods.vue:253");
       this.$http({
         url: url,
         data: data,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
             // 成功后刷新数据
-            if (res.data.list.length < 1) {
+            if (res.data.list.length === 0 || undefined) {
               uni.showToast({
                 title: '未搜索到相关数据',
                 icon: 'none' });
@@ -374,7 +396,7 @@ var _default =
 
     },
     clearIcon: function clearIcon() {
-      this.inputClearValue = '';
+      this.inputValue = '';
       this.showClearIcon = false;
     },
     // 分享详情页
@@ -385,8 +407,6 @@ var _default =
     },
     // 
     clearInput: function clearInput(event) {
-      console.log(event.target.value, " at pages\\components\\goods.vue:288");
-      this.inputClearValue = event.target.value;
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
         return;
@@ -402,7 +422,7 @@ var _default =
     selectFilter: function selectFilter(index) {var _this3 = this;
       this.filterIndex = index;
       if (this.tabIndex === 0) {
-        console.log('进来了', " at pages\\components\\goods.vue:305");
+        console.log('进来了', " at pages\\components\\goods.vue:325");
         return;
       }
       // 商城下面的标签分类
@@ -441,7 +461,7 @@ var _default =
             this.$http({
               url: this.$api.goodscategory,
               cb: function cb(err, res) {
-                console.log(res.data.list, " at pages\\components\\goods.vue:344");
+                console.log(res.data.list, " at pages\\components\\goods.vue:364");
                 _this3.captionList[1].arr = res.data.list;
               } });
 
@@ -480,7 +500,7 @@ var _default =
     },
     // 筛选侧边弹窗选择分类里面的子选项
     selTag: function selTag(index, num) {
-      console.log('选择了', index, num, " at pages\\components\\goods.vue:383");
+      console.log('选择了', index, num, " at pages\\components\\goods.vue:403");
       var name = this.captionList[index].arr[num];
       var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
       if (this.captionList[index].selectIndexArr.length < 1) {
@@ -515,7 +535,7 @@ var _default =
       });
     },
     clickZan: function clickZan(item, index) {var _this4 = this;
-      console.log(item.article_id, item.islike, index, " at pages\\components\\goods.vue:418");
+      console.log(item.article_id, item.islike, index, " at pages\\components\\goods.vue:438");
       var url = this.$api.unLike;
       if (item.islike === 'no') {
         url = this.$api.like;

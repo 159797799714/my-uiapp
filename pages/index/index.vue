@@ -6,8 +6,8 @@
         <view class="searchVal">{{ searchInfo }}</view>
       </view>
     </view>
-    <scroll-view scroll-y="true" class="content">
-      <view class="banner-swiper bg-white">
+    <scroll-view scroll-y="true" class="content bg-black">
+      <view class="banner-swiper bg-black">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
             <view class="swiper-item">
@@ -16,14 +16,14 @@
           </swiper-item>
         </swiper>
       </view>
-      <view class="TabNav bg-white">
+      <view class="TabNav bg-black font-ff">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
-      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-white">
+      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
         <image :src="item.image.file_path" mode="" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
-          <view v-if="item.article_title" class="title" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
-          <view v-if="item.subtitle" class="info" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
+          <view v-if="item.article_title" class="title font-ff" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
+          <view v-if="item.subtitle" class="info font-A3" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
           <view class="control">
             <view class="look">
               <text class="search-icon iconfont">&#xe6cc;</text>
@@ -51,7 +51,15 @@
         duration: 500,
         indicatorActiveColor: '#ffffff',
         searchInfo: '大家都在搜“森海塞尔”',
-        swiperList: [{}, {}, {}],
+        swiperList: [{
+          imgUrl:"https://market.pd-unixe.com/uploads/201906111745582db721897.png"
+        }, {
+          imgUrl:"https://market.pd-unixe.com/uploads/2019061117455884a819697.jpg"
+        }, {
+          imgUrl:"https://market.pd-unixe.com/uploads/20190611174558d5c576479.png"
+        }, {
+          imgUrl:"https://market.pd-unixe.com/uploads/201906111745539eac11543.png"
+        }],
         tabList: [],
         selectIndex: 0,
         cultureList: []
@@ -173,7 +181,9 @@
           cb: (err, res) => {
             if(!err && res.code === 1) {
               // console.log(res.data.items[0].data)
-              this.swiperList = res.data.items[0].data
+              
+              // 替换轮播图图片路径数据
+              // this.swiperList = res.data.items[0].data
             } else {
               uni.showToast({
               	title: '轮播图图片加载失败',
@@ -207,6 +217,7 @@
 <style lang="scss" scoped>
   .container{
     background: $color-f5;
+    color: $color-black;
   }
   .search {
     display: flex;
@@ -259,7 +270,6 @@
       .item{
         flex: 1;
         font-size: $font-32;
-        font-weight: $font-bold;
         line-height: 60upx;
         text-align: center;
         position: relative;
@@ -294,8 +304,6 @@
       margin: 30upx 30upx 0 30upx;
       padding-bottom: 30upx;
       width: calc(100% - 60upx);
-      background: $color-white;
-      box-shadow:0 0 24upx 0 rgba(202,220,232,0.54);
       &>image{
         margin-bottom: 15upx;
         height: 388upx;
@@ -309,8 +317,7 @@
           margin-bottom: 17upx;
           max-height: 90upx;
           line-height: 48upx;
-          font-size: $font-36;
-          font-weight: $font-bold;
+          font-size: $font-32;
           overflow: hidden;
           text-overflow: ellipsis;
         }
@@ -347,10 +354,10 @@
           position: relative;
           &::before{
             content: '';
-            height: 13upx;
-            width: 14upx;
+            height: 11upx;
+            width: 12upx;
             position: absolute;
-            bottom: 5upx;
+            bottom: 6upx;
             left: 8upx;
             background: $color-red;
           }
