@@ -128,6 +128,7 @@ var _default =
 {
   data: function data() {
     return {
+      userinfo: {},
       menu: [{
         icon: '&#xe646;',
         title: '我的收获地址',
@@ -146,6 +147,12 @@ var _default =
         url: 'about' }] };
 
 
+  },
+  onLoad: function onLoad(option) {
+    // console.log(JSON.parse(option.userinfo))
+    if (option.userinfo) {
+      this.userinfo = JSON.parse(option.userinfo);
+    }
   },
   methods: {
     goPersonal: function goPersonal() {

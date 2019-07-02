@@ -8,28 +8,28 @@
       <view class="personal-img">
         <text>个人头像</text>
         <view class="center">
-          <image src="../../static/img/mine/bg.png" mode=""></image>
+          <image :src="userinfo.avatarUrl" mode=""></image>
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
       <view class="name row">
         <text>用户昵称</text>
         <view class="center">
-          <text>不知道先生</text>
+          <text>{{ userinfo.nickName }}</text>
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
       <view class="sex row" @click="selectSex">
         <text>性别</text>
         <view class="center">
-          <text>男</text>
+          <text>{{ userinfo.gender }}</text>
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
       <view class="sign row">
         <text>个人签名</text>
         <view class="center">
-          <text>不知道先生</text>
+          <text>未设置签名</text>
         </view>
         <text class="iconfont">&#xe644;</text>
       </view>
@@ -41,7 +41,13 @@
   export default{
     data () {
       return {
-        
+        userinfo: {}
+      }
+    },
+    onLoad(option) {
+      // console.log(JSON.parse(option.userinfo))
+      if(option.userinfo) {
+        this.userinfo = JSON.parse(option.userinfo)
       }
     },
     methods: {

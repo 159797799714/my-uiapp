@@ -11,10 +11,10 @@
             </view>
           </view>
           <view class="user">
-            <image src="../../static/img/mine/bg.png" mode=""></image>
-            <view>
-              <view class="name">不知道先生</view>
-              <view class="uenum">UE号：7784759567</view>
+            <image :src="userinfo.avatarUrl" mode=""></image>
+            <view @click="goPersonal">
+              <view class="name">{{ userinfo.nickName ? userinfo.nickName : '未设置昵称' }}</view>
+              <view class="uenum">UE号：{{ userinfo.mobile ? userinfo.mobile : '未绑定手机号' }}</view>
               <view class="sign">这家伙很懒什么都没有留下</view>
             </view>
           </view>
@@ -23,17 +23,19 @@
       <view class="order bg-white">
         <view class="myorder">
           <text>我的订单</text>
-          <view @click="goOrder('')">
+          <view @click="goOrder('全部', 'all')">
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
           </view>
         </view>
         <view class="row1">
-          <view v-for="(item, index) in menuList1" :key="index" @click="goOrder(item.name)">
+          <view v-for="(item, index) in menuList1" :key="index" @click="goOrder(item.name, item.dataType)">
             <image :src="item.imgUrl" mode=""></image>
             <text>{{ item.name }}</text>
           </view>
         </view>
+        
+        <!--  优惠券菜单等 -->
         <view class="row2">
           <view v-for="(item, index) in menuList2" :key="index" @click="goChild(index)">
             <image :src="item.imgUrl" mode=""></image>
@@ -45,16 +47,40 @@
         <view class="goodsTab">
           <view v-for="(item, index) in tabList" :key="index" :class="{ tabItem: true, after: index === tabIndex }" @click="selectTab(index)">{{ item }}</view>
         </view>
-        <view class="goods-content">
+        
+        <!-- 收藏 -->
+        <view v-if="tabIndex === 0" class="goods-content">
+          <view v-for="(item, index) in shareList" :key="index" class="item">
+            <view class="img"  @click="goShareDetail(item.article_id)">
+              <image :src="item.image.file_path" mode=""></image>
+            </view>
+            <view class="title border-box" @click="goShareDetail(item.article_id)">{{ item.article_title }}</view>
+            <view class="info border-box">
+              <view class="user">
+                <view class="userImg">
+                  <image :src="item.headimg.file_path" mode=""></image>
+                </view>
+                <view class="userName">{{ item.author }}</view> 
+              </view>
+              <view class="zan">
+                <text :class="{iconfont: true, isZan: true}" @click="clickZan(item, index)">&#xe63a;</text>
+                <text>{{ item.like_count }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+         <!-- 点赞 -->
+        <view v-if="tabIndex === 1" class="goods-content">
           <view v-for="(item, index) in goodList" :key="index" class="good-item">
             <view class="good-img"></view>
             <view class="good-info border-box">
-              <view class="good-name">{{ item.name }}</view>
+              <view class="good-name">{{ item.goods_name }}</view>
               <view class="good-remark">
-                <text v-for="(li, index) in item.remark" :key="index">{{ li }}</text>
+                <text>{{ item.selling_point }}</text>
               </view>
               <view class="good-price">
-                <text>￥{{ item.price }}</text>
+                <text>￥{{ item.goods_min_price }}</text>
                 <text class="iconfont">&#xe719;</text>
               </view>
             </view>
@@ -69,22 +95,32 @@
   export default {
     data() {
       return {
+        userinfo: {
+          avatarUrl: '',
+          nickName: '',
+          mobile: '',
+        },
         menuList1: [
           {
             imgUrl: '../../static/img/mine/staypay.png',
-            name: '待付款'
+            name: '待付款',
+            dataType: 'payment'
           }, {
             imgUrl: '../../static/img/mine/stayreceive.png',
-            name: '待收货'
+            name: '待收货',
+            dataType: 'received'
           }, {
             imgUrl: '../../static/img/mine/stayassess.png',
-            name: '待评价'
+            name: '待评价',
+            dataType: 'comment'
           }, {
             imgUrl: '../../static/img/mine/success.png',
-            name: '已完成'
+            name: '已完成',
+            dataType: ''
           }, {
             imgUrl: '../../static/img/mine/cancel.png',
-            name: '已取消'
+            name: '已取消',
+            dataType: ''
           }
         ],                        // 我的订单第一行
         menuList2: [
@@ -104,35 +140,105 @@
         ],                        // 我的订单第二行
         tabIndex: 0,              // 默认选中点赞
         tabList: ['点赞', '收藏'], // tab
-        goodList: [
-          {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }, {
-            imgUrl: '',
-            name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-            remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-            price: 499
-          }
-        ]
+        shareList: [],            // 收藏文章列表
+        goodList: []
+      }
+    },
+    onLoad() {
+      // 获取点赞文章
+      this.getArticle()
+      
+      // 获取个人信息
+      this.getuserinfo()
+    },
+    watch: {
+      tabIndex(val) {
+        // 获取收藏商品
+        this.getKeepGood()
       }
     },
     methods: {
+      // 进入个人信息页面
+      goPersonal() {
+        uni.navigateTo({
+          url: 'personal?userinfo=' + JSON.stringify(this.userinfo)
+        })
+      },
+      // 获取个人用户信息
+      getuserinfo() {
+        this.$http({
+          url: this.$api.getuserinfo,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              console.log('个人信息', res.data.info)
+              this.userinfo = res.data.info
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '个人用户信息获取失败',
+                icon: 'none'
+              })
+            }
+          }
+          
+        })
+      },
+      
       // 点赞或者收藏
       selectTab(index) {
         this.tabIndex = index
+      },
+      
+      // 获取点赞文章列表
+      getArticle() {
+        this.$http({
+          url: this.$api.mylikearticles,
+          method: 'POST',
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              this.shareList = res.data.myarticles.data
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '点赞文章获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      
+      // 获取收藏的商品列表
+      getKeepGood() {
+        this.$http({
+          url: this.$api.mycollection,
+          method: 'POST',
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              
+              console.log('成功了收藏', res.data.mygoods.data)
+              this.goodList = res.data.mygoods.data
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '收藏商品列表获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
       },
       goChild(index) {
         switch(index) {
@@ -158,16 +264,54 @@
             break
         }
       },
-      goOrder(name) {
+      // 分享详情页
+      goShareDetail(id) {
         uni.navigateTo({
-          url: '../order/order?name=' + name
+          url: '../components/shareInfo?article_id=' + id
+        })
+      },
+      // 订单页
+      goOrder(name, type) {
+        uni.navigateTo({
+          url: '../order/order?name=' + name + '&dataType=' + type
         })
       },
       goSetting() {
         uni.navigateTo({
-          url: 'setting'
+          url: 'setting?userinfo=' + JSON.stringify(this.userinfo)
         })
-      }
+      },
+      
+      // 点赞文章点赞
+      clickZan(item, index) {
+        let that = this
+        let url = this.$api.unLike
+        this.$http({
+          url: url,
+          data: {
+            article_id: item.article_id
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              uni.showToast({
+                title: '取消点赞成功',
+                icon: 'none'
+              })
+              that.shareList.splice(index, 1)
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+                uni.showToast({
+                  title: '取消点赞失败',
+                  icon: 'none'
+                })
+              }
+            }
+        })
+      },
     }
   }
 </script>
@@ -329,6 +473,84 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        .item{
+          height: 524upx;
+          width: 330upx;
+          margin-bottom: 20upx;
+          border: 1px solid $color-ee;
+          .img{
+            height: 330upx;
+            width: 100%;
+            margin-bottom: 18upx;
+            &>image{
+              height: 100%;
+              width: 100%;
+              background: #ccc;
+            }
+          }
+          .title{
+            height: 67upx;
+            font-size: $font-24;
+            line-height: 36upx;
+            margin-bottom: 24upx;
+            padding: 0 20upx;
+            overflow: hidden;
+            white-space: wrap;
+            text-overflow: ellipsis;
+            word-break:break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+          .info{
+            display: flex;
+            justify-content: space-between;
+            height: 40upx;
+            width: 100%;
+            padding: 0 20upx;
+            line-height: 40upx;
+            .user{
+              display: flex;
+              .userImg{ 
+                height: 40upx;
+                width: 40upx;
+                margin-right: 10upx;
+                border-radius: 100%;
+                overflow: hidden;
+                &>image{
+                  height: 100%;
+                  width: 100%;
+                  background: #ccc;
+                }
+              }
+              .userName{
+                font-size: $font-24;
+                font-weight: bold;
+              }
+            }
+            .zan{
+              display: flex;
+              color: $control-color;
+              font-size: $font-24;
+              .iconfont{
+                font-size: $font-34;
+              }
+              .isZan{
+                position: relative;
+                color: $title-color;
+                &::before{
+                  content: '';
+                  height: 13upx;
+                  width: 14upx;
+                  background: $color-red;
+                  position: absolute;
+                  bottom: 10upx;
+                  left: 8upx;
+                }
+              }
+            }
+          }
+        }
         .good-item{
           display: flex;
           flex-direction: column;

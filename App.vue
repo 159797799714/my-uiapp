@@ -21,10 +21,6 @@
             //   return
             // }
             
-            uni.reLaunch({
-              url: 'pages/index/index'
-            })
-            
             return
           }
         }

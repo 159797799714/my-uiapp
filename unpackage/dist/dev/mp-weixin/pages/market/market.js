@@ -171,19 +171,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -199,11 +186,18 @@ var _default =
         goods_id: 10255 }],
 
       menuList: [], // 所有商品分类列表
-      lightning: {
+      lightning: [{
+        title: '限时购',
+        time: '',
+        newPrice: '',
+        oldPrice: '',
+        img: [] },
+      {
         title: '秒杀购',
-        time: '02:00:00',
-        newPrice: 423,
-        oldPrice: 1543 },
+        time: '',
+        newPrice: '',
+        oldPrice: '',
+        img: [] }],
 
       recommendList: [] };
 
@@ -244,30 +238,86 @@ var _default =
 
     },
     // 商城页展示一个限时抢购商品
-    getLimitGoods: function getLimitGoods() {
+    getLimitGoods: function getLimitGoods() {var _this2 = this;
       this.$http({
         url: this.$api.getflashsalegoodsbyone,
         cb: function cb(err, res) {
-          console.log('限时购', res);
+          if (!err && res.code === 1) {
+            console.log('限时', res.data);
+            if (res.data.goods) {
+              _this2.lightning[0].oldPrice = res.data.goods.goods_max_price;
+              _this2.lightning[0].newPrice = res.data.goods.goods_min_price;
+              _this2.lightning[0].newPrice = res.data.goods.goods_min_price;
+              _this2.lightning[0].img[0] = result.data.goods.image[0].file_path;
+              _this2.lightning[0].img[1] = result.data.goods.image[1].file_path;
+
+              // this.lightning[0].time = res.data.goods.activity_endtime
+
+              // originalPrice = result.data.goods.goods_max_price
+              // specialPrice = result.data.goods.goods_min_price
+              // time = result.data.goods.category.activity_endtime
+              // img1 = result.data.goods.image[0].file_path
+              // img2 = result.data.goods.image[1].file_path
+            }
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '限时抢购商品加载失败',
+              icon: 'none' });
+
+          }
         } });
 
     },
     // 商城页展示一个秒杀商品
-    getKillGoods: function getKillGoods() {
+    getKillGoods: function getKillGoods() {var _this3 = this;
       this.$http({
         url: this.$api.getseckillgoodsbyone,
         cb: function cb(err, res) {
-          console.log('秒杀购', res);
+          if (!err && res.code === 1) {
+            console.log('秒杀', res.data);
+            if (res.data.goods) {
+              _this3.lightning[1].oldPrice = res.data.goods.goods_max_price;
+              _this3.lightning[1].newPrice = res.data.goods.goods_min_price;
+              _this3.lightning[1].newPrice = res.data.goods.goods_min_price;
+              _this3.lightning[1].img[0] = result.data.goods.image[0].file_path;
+              _this3.lightning[1].img[1] = result.data.goods.image[1].file_path;
+
+              // this.lightning[0].time = res.data.goods.activity_endtime          时间待处理
+
+              // originalPrice = result.data.goods.goods_max_price
+              // specialPrice = result.data.goods.goods_min_price
+              // time = result.data.goods.category.activity_endtime
+              // img1 = result.data.goods.image[0].file_path
+              // img2 = result.data.goods.image[1].file_path
+            } else {
+              _this3.lightning[1] = '';
+            }
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '秒杀抢购商品加载失败',
+              icon: 'none' });
+
+          }
         } });
 
     },
     // 推荐商品列表
-    getRecommendgoods: function getRecommendgoods() {var _this2 = this;
+    getRecommendgoods: function getRecommendgoods() {var _this4 = this;
       this.$http({
         url: this.$api.recommendgoods,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            _this2.recommendList = res.data.list;
+            _this4.recommendList = res.data.list;
           } else if (res.code === 0 && res.msg) {
             uni.showToast({
               title: res.msg,
@@ -292,12 +342,12 @@ var _default =
     // 抢购或者秒杀页
     goPanicBuy: function goPanicBuy(data) {
       switch (data) {
-        case 1:
+        case 0:
           uni.navigateTo({
             url: 'panicBuy?origin=' + '秒杀' });
 
           break;
-        case 2:
+        case 1:
           uni.navigateTo({
             url: 'panicBuy?origin=' + '限时购' });
 

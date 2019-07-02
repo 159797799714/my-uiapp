@@ -102,20 +102,16 @@ __webpack_require__.r(__webpack_exports__);
           //   return
           // }
 
-          uni.reLaunch({
-            url: 'pages/index/index' });
-
-
           return;
         }
       } });
 
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:34");
+    console.log('App Show', " at App.vue:30");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:37");
+    console.log('App Hide', " at App.vue:33");
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

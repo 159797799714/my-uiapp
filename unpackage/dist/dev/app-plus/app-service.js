@@ -1307,14 +1307,20 @@ function gz$gwx_15(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_15)return __WXML_GLOBAL__.ops_cached.$gwx_15
 __WXML_GLOBAL__.ops_cached.$gwx_15=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'main data-v-1baedeae'])
 Z([3,'index'])
 Z([3,'item'])
 Z([[7],[3,'menuList']])
-Z(z[0])
+Z(z[1])
 Z([3,'__e'])
 Z([3,'item data-v-1baedeae'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goGoods']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[[5],[1,'menuList']],[1,'']],[[7],[3,'index']]],[1,'category_id']]]]]]]]]]]]]]])
 Z([[2,'!=='],[[7],[3,'index']],[1,7]])
+Z(z[1])
+Z(z[2])
+Z([[7],[3,'lightning']])
+Z(z[1])
+Z([[2,'!=='],[[6],[[7],[3,'item']],[3,'oldPrice']],[1,'']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_15);return __WXML_GLOBAL__.ops_cached.$gwx_15
 }
 function gz$gwx_16(){
@@ -1330,8 +1336,10 @@ Z([3,'item bg-white data-v-5d50af01'])
 Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goDetail']],[[4],[[5],[1,'$0']]]],[[4],[[5],[[4],[[5],[[4],[[5],[[5],[[5],[1,'goodList.data']],[1,'']],[[7],[3,'index']]]]]]]]]]]]]]]])
 Z([[2,'==='],[[6],[[7],[3,'item']],[3,'surplus_inventory']],[1,0]])
 Z([3,'price data-v-5d50af01'])
-Z([[2,'!=='],[[6],[[7],[3,'item']],[3,'surplus_inventory']],[1,0]])
+Z([[2,'&&'],[[2,'!=='],[[6],[[7],[3,'item']],[3,'surplus_inventory']],[1,0]],[[2,'==='],[[6],[[6],[[7],[3,'goodList']],[3,'header_info']],[3,'status']],[1,'已开抢']]])
+Z([[2,'&&'],[[2,'==='],[[6],[[6],[[7],[3,'goodList']],[3,'header_info']],[3,'status']],[1,'即将开始']],[[2,'==='],[[6],[[6],[[6],[[7],[3,'goodList']],[3,'data']],[1,0]],[3,'isremind']],[1,'no']]])
 Z(z[7])
+Z([[2,'==='],[[6],[[6],[[7],[3,'goodList']],[3,'header_info']],[3,'status']],[1,'已结束']])
 })(__WXML_GLOBAL__.ops_cached.$gwx_16);return __WXML_GLOBAL__.ops_cached.$gwx_16
 }
 function gz$gwx_17(){
@@ -1444,6 +1452,9 @@ function gz$gwx_31(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_31)return __WXML_GLOBAL__.ops_cached.$gwx_31
 __WXML_GLOBAL__.ops_cached.$gwx_31=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'goods bg-white data-v-efa0bd64'])
+Z([[2,'==='],[[7],[3,'tabIndex']],[1,0]])
+Z([[2,'==='],[[7],[3,'tabIndex']],[1,1]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_31);return __WXML_GLOBAL__.ops_cached.$gwx_31
 }
 function gz$gwx_32(){
@@ -1973,64 +1984,89 @@ e_[x[13]]={f:m13,j:[],i:[],ti:[],ic:[]}
 d_[x[14]]={}
 var m14=function(e,s,r,gg){
 var z=gz$gwx_15()
-var aHE=_v()
+var aHE=_n('view')
+_rz(z,aHE,'class',0,e,s,gg)
+var tIE=_v()
+_(aHE,tIE)
+var eJE=function(oLE,bKE,xME,gg){
+var fOE=_mz(z,'view',['bindtap',5,'class',1,'data-event-opts',2],[],oLE,bKE,gg)
+var cPE=_v()
+_(fOE,cPE)
+if(_oz(z,8,oLE,bKE,gg)){cPE.wxVkey=1
+}
+cPE.wxXCkey=1
+_(xME,fOE)
+return xME
+}
+tIE.wxXCkey=2
+_2z(z,3,eJE,e,s,gg,tIE,'item','index','index')
+var hQE=_v()
+_(aHE,hQE)
+var oRE=function(oTE,cSE,lUE,gg){
+var tWE=_v()
+_(lUE,tWE)
+if(_oz(z,13,oTE,cSE,gg)){tWE.wxVkey=1
+}
+tWE.wxXCkey=1
+return lUE
+}
+hQE.wxXCkey=2
+_2z(z,11,oRE,e,s,gg,hQE,'item','index','index')
 _(r,aHE)
-var tIE=function(bKE,eJE,oLE,gg){
-var oNE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],bKE,eJE,gg)
-var fOE=_v()
-_(oNE,fOE)
-if(_oz(z,7,bKE,eJE,gg)){fOE.wxVkey=1
-}
-fOE.wxXCkey=1
-_(oLE,oNE)
-return oLE
-}
-aHE.wxXCkey=2
-_2z(z,2,tIE,e,s,gg,aHE,'item','index','index')
 return r
 }
 e_[x[14]]={f:m14,j:[],i:[],ti:[],ic:[]}
 d_[x[15]]={}
 var m15=function(e,s,r,gg){
 var z=gz$gwx_16()
-var hQE=_v()
-_(r,hQE)
-var oRE=function(oTE,cSE,lUE,gg){
-var tWE=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oTE,cSE,gg)
-var eXE=_v()
-_(tWE,eXE)
-if(_oz(z,7,oTE,cSE,gg)){eXE.wxVkey=1
+var bYE=_v()
+_(r,bYE)
+var oZE=function(o2E,x1E,f3E,gg){
+var h5E=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],o2E,x1E,gg)
+var o6E=_v()
+_(h5E,o6E)
+if(_oz(z,7,o2E,x1E,gg)){o6E.wxVkey=1
 }
-var bYE=_n('view')
-_rz(z,bYE,'class',8,oTE,cSE,gg)
-var oZE=_v()
-_(bYE,oZE)
-if(_oz(z,9,oTE,cSE,gg)){oZE.wxVkey=1
+var c7E=_n('view')
+_rz(z,c7E,'class',8,o2E,x1E,gg)
+var o8E=_v()
+_(c7E,o8E)
+if(_oz(z,9,o2E,x1E,gg)){o8E.wxVkey=1
 }
-var x1E=_v()
-_(bYE,x1E)
-if(_oz(z,10,oTE,cSE,gg)){x1E.wxVkey=1
+var l9E=_v()
+_(c7E,l9E)
+if(_oz(z,10,o2E,x1E,gg)){l9E.wxVkey=1
 }
-oZE.wxXCkey=1
-x1E.wxXCkey=1
-_(tWE,bYE)
-eXE.wxXCkey=1
-_(lUE,tWE)
-return lUE
+var a0E=_v()
+_(c7E,a0E)
+if(_oz(z,11,o2E,x1E,gg)){a0E.wxVkey=1
 }
-hQE.wxXCkey=2
-_2z(z,2,oRE,e,s,gg,hQE,'item','index','index')
+var tAF=_v()
+_(c7E,tAF)
+if(_oz(z,12,o2E,x1E,gg)){tAF.wxVkey=1
+}
+o8E.wxXCkey=1
+l9E.wxXCkey=1
+a0E.wxXCkey=1
+tAF.wxXCkey=1
+_(h5E,c7E)
+o6E.wxXCkey=1
+_(f3E,h5E)
+return f3E
+}
+bYE.wxXCkey=2
+_2z(z,2,oZE,e,s,gg,bYE,'item','index','index')
 return r
 }
 e_[x[15]]={f:m15,j:[],i:[],ti:[],ic:[]}
 d_[x[16]]={}
 var m16=function(e,s,r,gg){
 var z=gz$gwx_17()
-var f3E=_v()
-_(r,f3E)
-if(_oz(z,0,e,s,gg)){f3E.wxVkey=1
+var bCF=_v()
+_(r,bCF)
+if(_oz(z,0,e,s,gg)){bCF.wxVkey=1
 }
-f3E.wxXCkey=1
+bCF.wxXCkey=1
 return r
 }
 e_[x[16]]={f:m16,j:[],i:[],ti:[],ic:[]}
@@ -2055,20 +2091,20 @@ e_[x[19]]={f:m19,j:[],i:[],ti:[],ic:[]}
 d_[x[20]]={}
 var m20=function(e,s,r,gg){
 var z=gz$gwx_21()
-var o8E=_v()
-_(r,o8E)
-var l9E=function(tAF,a0E,eBF,gg){
-var oDF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],tAF,a0E,gg)
-var xEF=_v()
-_(oDF,xEF)
-if(_oz(z,7,tAF,a0E,gg)){xEF.wxVkey=1
+var cHF=_v()
+_(r,cHF)
+var hIF=function(cKF,oJF,oLF,gg){
+var aNF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],cKF,oJF,gg)
+var tOF=_v()
+_(aNF,tOF)
+if(_oz(z,7,cKF,oJF,gg)){tOF.wxVkey=1
 }
-xEF.wxXCkey=1
-_(eBF,oDF)
-return eBF
+tOF.wxXCkey=1
+_(oLF,aNF)
+return oLF
 }
-o8E.wxXCkey=2
-_2z(z,2,l9E,e,s,gg,o8E,'item','index','index')
+cHF.wxXCkey=2
+_2z(z,2,hIF,e,s,gg,cHF,'item','index','index')
 return r
 }
 e_[x[20]]={f:m20,j:[],i:[],ti:[],ic:[]}
@@ -2105,49 +2141,49 @@ e_[x[25]]={f:m25,j:[],i:[],ti:[],ic:[]}
 d_[x[26]]={}
 var m26=function(e,s,r,gg){
 var z=gz$gwx_27()
-var oLF=_v()
-_(r,oLF)
-if(_oz(z,0,e,s,gg)){oLF.wxVkey=1
+var cVF=_v()
+_(r,cVF)
+if(_oz(z,0,e,s,gg)){cVF.wxVkey=1
 }
-oLF.wxXCkey=1
+cVF.wxXCkey=1
 return r
 }
 e_[x[26]]={f:m26,j:[],i:[],ti:[],ic:[]}
 d_[x[27]]={}
 var m27=function(e,s,r,gg){
 var z=gz$gwx_28()
-var aNF=_v()
-_(r,aNF)
-var tOF=function(bQF,ePF,oRF,gg){
-var oTF=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],bQF,ePF,gg)
-var fUF=_v()
-_(oTF,fUF)
-if(_oz(z,7,bQF,ePF,gg)){fUF.wxVkey=1
+var oXF=_v()
+_(r,oXF)
+var cYF=function(l1F,oZF,a2F,gg){
+var e4F=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],l1F,oZF,gg)
+var b5F=_v()
+_(e4F,b5F)
+if(_oz(z,7,l1F,oZF,gg)){b5F.wxVkey=1
 }
-fUF.wxXCkey=1
-_(oRF,oTF)
-return oRF
+b5F.wxXCkey=1
+_(a2F,e4F)
+return a2F
 }
-aNF.wxXCkey=2
-_2z(z,2,tOF,e,s,gg,aNF,'item','index','index')
+oXF.wxXCkey=2
+_2z(z,2,cYF,e,s,gg,oXF,'item','index','index')
 return r
 }
 e_[x[27]]={f:m27,j:[],i:[],ti:[],ic:[]}
 d_[x[28]]={}
 var m28=function(e,s,r,gg){
 var z=gz$gwx_29()
-var hWF=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
-var oXF=_v()
-_(hWF,oXF)
-if(_oz(z,2,e,s,gg)){oXF.wxVkey=1
+var x7F=_mz(z,'scroll-view',['class',0,'scrollY',1],[],e,s,gg)
+var o8F=_v()
+_(x7F,o8F)
+if(_oz(z,2,e,s,gg)){o8F.wxVkey=1
 }
-var cYF=_v()
-_(hWF,cYF)
-if(_oz(z,3,e,s,gg)){cYF.wxVkey=1
+var f9F=_v()
+_(x7F,f9F)
+if(_oz(z,3,e,s,gg)){f9F.wxVkey=1
 }
-oXF.wxXCkey=1
-cYF.wxXCkey=1
-_(r,hWF)
+o8F.wxXCkey=1
+f9F.wxXCkey=1
+_(r,x7F)
 return r
 }
 e_[x[28]]={f:m28,j:[],i:[],ti:[],ic:[]}
@@ -2160,6 +2196,19 @@ e_[x[29]]={f:m29,j:[],i:[],ti:[],ic:[]}
 d_[x[30]]={}
 var m30=function(e,s,r,gg){
 var z=gz$gwx_31()
+var oBG=_n('view')
+_rz(z,oBG,'class',0,e,s,gg)
+var cCG=_v()
+_(oBG,cCG)
+if(_oz(z,1,e,s,gg)){cCG.wxVkey=1
+}
+var oDG=_v()
+_(oBG,oDG)
+if(_oz(z,2,e,s,gg)){oDG.wxVkey=1
+}
+cCG.wxXCkey=1
+oDG.wxXCkey=1
+_(r,oBG)
 return r
 }
 e_[x[30]]={f:m30,j:[],i:[],ti:[],ic:[]}
@@ -2172,51 +2221,51 @@ e_[x[31]]={f:m31,j:[],i:[],ti:[],ic:[]}
 d_[x[32]]={}
 var m32=function(e,s,r,gg){
 var z=gz$gwx_33()
-var e4F=_v()
-_(r,e4F)
-var b5F=function(x7F,o6F,o8F,gg){
-var c0F=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],x7F,o6F,gg)
-var hAG=_v()
-_(c0F,hAG)
-if(_oz(z,7,x7F,o6F,gg)){hAG.wxVkey=1
+var tGG=_v()
+_(r,tGG)
+var eHG=function(oJG,bIG,xKG,gg){
+var fMG=_mz(z,'view',['bindtap',4,'class',1,'data-event-opts',2],[],oJG,bIG,gg)
+var cNG=_v()
+_(fMG,cNG)
+if(_oz(z,7,oJG,bIG,gg)){cNG.wxVkey=1
 }
-var oBG=_v()
-_(c0F,oBG)
-if(_oz(z,8,x7F,o6F,gg)){oBG.wxVkey=1
+var hOG=_v()
+_(fMG,hOG)
+if(_oz(z,8,oJG,bIG,gg)){hOG.wxVkey=1
 }
-var cCG=_v()
-_(c0F,cCG)
-if(_oz(z,9,x7F,o6F,gg)){cCG.wxVkey=1
+var oPG=_v()
+_(fMG,oPG)
+if(_oz(z,9,oJG,bIG,gg)){oPG.wxVkey=1
 }
-var oDG=_v()
-_(c0F,oDG)
-if(_oz(z,10,x7F,o6F,gg)){oDG.wxVkey=1
+var cQG=_v()
+_(fMG,cQG)
+if(_oz(z,10,oJG,bIG,gg)){cQG.wxVkey=1
 }
-hAG.wxXCkey=1
-oBG.wxXCkey=1
-cCG.wxXCkey=1
-oDG.wxXCkey=1
-_(o8F,c0F)
-return o8F
+cNG.wxXCkey=1
+hOG.wxXCkey=1
+oPG.wxXCkey=1
+cQG.wxXCkey=1
+_(xKG,fMG)
+return xKG
 }
-e4F.wxXCkey=2
-_2z(z,2,b5F,e,s,gg,e4F,'item','index','index')
+tGG.wxXCkey=2
+_2z(z,2,eHG,e,s,gg,tGG,'item','index','index')
 return r
 }
 e_[x[32]]={f:m32,j:[],i:[],ti:[],ic:[]}
 d_[x[33]]={}
 var m33=function(e,s,r,gg){
 var z=gz$gwx_34()
-var aFG=_n('view')
-_rz(z,aFG,'class',0,e,s,gg)
-var eHG=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
-_(aFG,eHG)
-var tGG=_v()
-_(aFG,tGG)
-if(_oz(z,8,e,s,gg)){tGG.wxVkey=1
+var lSG=_n('view')
+_rz(z,lSG,'class',0,e,s,gg)
+var tUG=_mz(z,'calendar',['bind:__l',1,'bind:change',1,'bind:toClick',2,'class',3,'data-event-opts',4,'disableBefore',5,'vueId',6],[],e,s,gg)
+_(lSG,tUG)
+var aTG=_v()
+_(lSG,aTG)
+if(_oz(z,8,e,s,gg)){aTG.wxVkey=1
 }
-tGG.wxXCkey=1
-_(r,aFG)
+aTG.wxXCkey=1
+_(r,lSG)
 return r
 }
 e_[x[33]]={f:m33,j:[],i:[],ti:[],ic:[]}
@@ -2229,34 +2278,34 @@ e_[x[34]]={f:m34,j:[],i:[],ti:[],ic:[]}
 d_[x[35]]={}
 var m35=function(e,s,r,gg){
 var z=gz$gwx_36()
-var xKG=_n('view')
-_rz(z,xKG,'class',0,e,s,gg)
-var oLG=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(xKG,oLG)
-var fMG=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(xKG,fMG)
-var cNG=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
-_(xKG,cNG)
-_(r,xKG)
+var oXG=_n('view')
+_rz(z,oXG,'class',0,e,s,gg)
+var xYG=_mz(z,'uni-rate',['bind:__l',1,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXG,xYG)
+var oZG=_mz(z,'uni-rate',['bind:__l',8,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXG,oZG)
+var f1G=_mz(z,'uni-rate',['bind:__l',15,'bind:change',1,'class',2,'data-event-opts',3,'max',4,'value',5,'vueId',6],[],e,s,gg)
+_(oXG,f1G)
+_(r,oXG)
 return r
 }
 e_[x[35]]={f:m35,j:[],i:[],ti:[],ic:[]}
 d_[x[36]]={}
 var m36=function(e,s,r,gg){
 var z=gz$gwx_37()
-var oPG=_n('view')
-_rz(z,oPG,'class',0,e,s,gg)
-var cQG=_v()
-_(oPG,cQG)
-if(_oz(z,1,e,s,gg)){cQG.wxVkey=1
+var h3G=_n('view')
+_rz(z,h3G,'class',0,e,s,gg)
+var o4G=_v()
+_(h3G,o4G)
+if(_oz(z,1,e,s,gg)){o4G.wxVkey=1
 }
-var oRG=_v()
-_(oPG,oRG)
-if(_oz(z,2,e,s,gg)){oRG.wxVkey=1
+var c5G=_v()
+_(h3G,c5G)
+if(_oz(z,2,e,s,gg)){c5G.wxVkey=1
 }
-cQG.wxXCkey=1
-oRG.wxXCkey=1
-_(r,oPG)
+o4G.wxXCkey=1
+c5G.wxXCkey=1
+_(r,h3G)
 return r
 }
 e_[x[36]]={f:m36,j:[],i:[],ti:[],ic:[]}
@@ -2516,20 +2565,16 @@ __webpack_require__.r(__webpack_exports__);
           //   return
           // }
 
-          uni.reLaunch({
-            url: 'pages/index/index' });
-
-
           return;
         }
       } });
 
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:34");
+    console.log('App Show', " at App.vue:30");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:37");
+    console.log('App Hide', " at App.vue:33");
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -2835,6 +2880,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   resetpassword: _config.default.devApi + '/app.user/resetpassword', // 重置密码
   otherlogin: _config.default.devApi + '/app.user/otherlogin', // 第三方登录
   otherregister: _config.default.devApi + '/app.user/otherregister', // 第三方登录完善信息
+  smscodeyz: _config.default.devApi + '/app.user/smscodeyz', // 验证码校验
+
   // 首页
   categorylist: _config.default.devApi + '/article/categorylist', // 所有文章分类
   articlesbycategoryid: _config.default.devApi + '/article/articlesbycategoryid', // 通过分类ID获取文章列表
@@ -2861,7 +2908,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getseckillgoodsbyone: _config.default.devApi + '/seckill/getseckillgoodsbyone', // 商城页展示一个秒杀商品
   goodlists: _config.default.devApi + '/goods/goodlists', // 商城搜索
 
-
   // 秒杀
   seckill_goodsbycategoryid: _config.default.devApi + '/seckill/goodsbycategoryid', // 通过秒杀活动ID获取秒杀商品列表
   seckill_categorys: _config.default.devApi + '/seckill/categorys', // 秒杀活动分类
@@ -2874,7 +2920,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   flashsale_goodsbycategoryid: _config.default.devApi + '/flashsale/goodsbycategoryid', // 限时抢购活动分类ID获取商品列表
   flashsale_detail: _config.default.devApi + '/flashsale/detail', // 限时抢购商品详情
   flashsale_remind: _config.default.devApi + '/flashsale/remind', // 限时抢购商品加入提醒
-  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind' // 限时抢购商品取消提醒
+  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind', // 限时抢购商品取消提醒
+
+  // 我的
+  mylikearticles: _config.default.devApi + '/app.center/mylikearticles', // 个人中心点赞文章列表
+  mycollection: _config.default.devApi + '/app.center/mycollection', // 个人中心收藏商品列表
+  changepwd: _config.default.devApi + '/app.center/changepwd', // 更改密码
+  modifypersonalinfo: _config.default.devApi + '/app.center/modifypersonalinfo', // 修改个人用户信息
+  getuserinfo: _config.default.devApi + '/app.center/getuserinfo' // 获取用户个人信息
 };exports.default = _default;
 
 /***/ }),
@@ -2888,7 +2941,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  conductApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
+  conductApi: 'http://172.20.10.2/code/api/web/index.php?s=/api', // 开发环境
   devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
 };exports.default = _default;
 
@@ -15741,7 +15794,7 @@ var _default =
       code_word: '获取验证码',
       username: '',
       code: '',
-      check_code: '',
+      check_code: false,
       showInfo: false };
 
   },
@@ -15771,33 +15824,58 @@ var _default =
       this.showDel = false;
     },
     goNext: function goNext() {
-      console.log(this.check_code, this.code, this.check_code === this.code, " at pages\\login\\register.vue:81");
-      if (!this.check_code) {
-        uni.showToast({
-          title: '请先获取手机验证码',
-          icon: 'none' });
+      console.log(this.check_code, this.code, this.showInfo, " at pages\\login\\register.vue:81");
+      this.$http({
+        url: this.$api.smscodeyz,
+        method: 'POST',
+        data: {
+          mobile: this.username,
+          code: this.code },
 
-        return;
-      }
-      if (this.check_code !== this.code) {
-        uni.showToast({
-          title: '验证码不正确',
-          icon: 'none' });
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
 
-        return;
-      }
-      console.log(this.check_code, this.code, " at pages\\login\\register.vue:96");
-      if (this.check_code === this.code && this.check_code) {
-        uni.navigateTo({
-          url: 'password?type=' + this.type + '&mobile=' + this.username });
+            console.log(res, " at pages\\login\\register.vue:92");
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
 
-      }
+          } else {
+            uni.showToast({
+              title: '验证码验证失败',
+              icon: 'none' });
+
+          }
+        } });
+
+      // if(this.check_code) {
+      //   uni.showToast({
+      //     title: '请获取手机验证码',
+      //     icon: 'none'
+      //   })
+      //   return
+      // }
+      // if(this.check_code !== this.code) {
+      //   uni.showToast({
+      //     title: '验证码不正确',
+      //     icon: 'none'
+      //   })
+      //   return
+      // }
+
+      // if(this.check_code === this.code && this.check_code) {
+      //   uni.navigateTo({
+      //     url: 'password?type=' + this.type + '&mobile=' + this.username
+      //   })  
+      // }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
         url: 'login' });
 
     },
+    // 获取手机验证码
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.username);
       var that = this;
@@ -15808,12 +15886,6 @@ var _default =
 
         return;
       }
-
-      // console.log(this.username)
-      // let num = 1111
-      // that.check_code = num.toString()
-      // console.log(num.toString())
-
       this.$http({
         url: this.$api.sendcode,
         method: 'POST',
@@ -15822,7 +15894,7 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            that.check_code = res.data.info.code.toString();
+            that.check_code = true;
             that.code_word = 120;
             that.showInfo = true;
             setInterval(function () {
@@ -15830,7 +15902,7 @@ var _default =
                 that.code_word--;
               }
               if (that.code_word === 0) {
-                that.check_code = '';
+                that.check_code = false;
                 that.showInfo = false;
                 return;
               }
@@ -16807,19 +16879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -16835,11 +16894,18 @@ var _default =
         goods_id: 10255 }],
 
       menuList: [], // 所有商品分类列表
-      lightning: {
+      lightning: [{
+        title: '限时购',
+        time: '',
+        newPrice: '',
+        oldPrice: '',
+        img: [] },
+      {
         title: '秒杀购',
-        time: '02:00:00',
-        newPrice: 423,
-        oldPrice: 1543 },
+        time: '',
+        newPrice: '',
+        oldPrice: '',
+        img: [] }],
 
       recommendList: [] };
 
@@ -16880,30 +16946,86 @@ var _default =
 
     },
     // 商城页展示一个限时抢购商品
-    getLimitGoods: function getLimitGoods() {
+    getLimitGoods: function getLimitGoods() {var _this2 = this;
       this.$http({
         url: this.$api.getflashsalegoodsbyone,
         cb: function cb(err, res) {
-          console.log('限时购', res, " at pages\\market\\market.vue:151");
+          if (!err && res.code === 1) {
+            console.log('限时', res.data, " at pages\\market\\market.vue:146");
+            if (res.data.goods) {
+              _this2.lightning[0].oldPrice = res.data.goods.goods_max_price;
+              _this2.lightning[0].newPrice = res.data.goods.goods_min_price;
+              _this2.lightning[0].newPrice = res.data.goods.goods_min_price;
+              _this2.lightning[0].img[0] = result.data.goods.image[0].file_path;
+              _this2.lightning[0].img[1] = result.data.goods.image[1].file_path;
+
+              // this.lightning[0].time = res.data.goods.activity_endtime
+
+              // originalPrice = result.data.goods.goods_max_price
+              // specialPrice = result.data.goods.goods_min_price
+              // time = result.data.goods.category.activity_endtime
+              // img1 = result.data.goods.image[0].file_path
+              // img2 = result.data.goods.image[1].file_path
+            }
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '限时抢购商品加载失败',
+              icon: 'none' });
+
+          }
         } });
 
     },
     // 商城页展示一个秒杀商品
-    getKillGoods: function getKillGoods() {
+    getKillGoods: function getKillGoods() {var _this3 = this;
       this.$http({
         url: this.$api.getseckillgoodsbyone,
         cb: function cb(err, res) {
-          console.log('秒杀购', res, " at pages\\market\\market.vue:160");
+          if (!err && res.code === 1) {
+            console.log('秒杀', res.data, " at pages\\market\\market.vue:182");
+            if (res.data.goods) {
+              _this3.lightning[1].oldPrice = res.data.goods.goods_max_price;
+              _this3.lightning[1].newPrice = res.data.goods.goods_min_price;
+              _this3.lightning[1].newPrice = res.data.goods.goods_min_price;
+              _this3.lightning[1].img[0] = result.data.goods.image[0].file_path;
+              _this3.lightning[1].img[1] = result.data.goods.image[1].file_path;
+
+              // this.lightning[0].time = res.data.goods.activity_endtime          时间待处理
+
+              // originalPrice = result.data.goods.goods_max_price
+              // specialPrice = result.data.goods.goods_min_price
+              // time = result.data.goods.category.activity_endtime
+              // img1 = result.data.goods.image[0].file_path
+              // img2 = result.data.goods.image[1].file_path
+            } else {
+              _this3.lightning[1] = '';
+            }
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '秒杀抢购商品加载失败',
+              icon: 'none' });
+
+          }
         } });
 
     },
     // 推荐商品列表
-    getRecommendgoods: function getRecommendgoods() {var _this2 = this;
+    getRecommendgoods: function getRecommendgoods() {var _this4 = this;
       this.$http({
         url: this.$api.recommendgoods,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            _this2.recommendList = res.data.list;
+            _this4.recommendList = res.data.list;
           } else if (res.code === 0 && res.msg) {
             uni.showToast({
               title: res.msg,
@@ -16928,12 +17050,12 @@ var _default =
     // 抢购或者秒杀页
     goPanicBuy: function goPanicBuy(data) {
       switch (data) {
-        case 1:
+        case 0:
           uni.navigateTo({
             url: 'panicBuy?origin=' + '秒杀' });
 
           break;
-        case 2:
+        case 1:
           uni.navigateTo({
             url: 'panicBuy?origin=' + '限时购' });
 
@@ -18616,6 +18738,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -18642,7 +18766,7 @@ var _default =
 
   },
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:81");
+    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:83");
     this.title = option.origin;
     uni.setNavigationBarTitle({
       title: option.origin });
@@ -18700,7 +18824,7 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log(res.data.list.data, " at pages\\market\\panicBuy.vue:139");
+            console.log('时间', res.data.list, " at pages\\market\\panicBuy.vue:141");
             _this2.goodList = res.data.list;
           } else if (res.code === 0 || res.code === -1 & res.msg) {
             uni.showToast({
@@ -18722,7 +18846,7 @@ var _default =
     },
     // 去购买或者进入详情页
     goDetail: function goDetail(item) {
-      console.log(item, " at pages\\market\\panicBuy.vue:161");
+      console.log('点击了商品', item, " at pages\\market\\panicBuy.vue:163");
       // uni.navigateTo({
       //   url: '../components/goodDetail?info=' + info + '&panic=true'
       // })
@@ -19635,10 +19759,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      userinfo: {
+        avatarUrl: '',
+        nickName: '',
+        mobile: '' },
+
       menuList1: [
       {
         imgUrl: '../../static/img/mine/staypay.png',
@@ -19674,35 +19827,99 @@ var _default =
       // 我的订单第二行
       tabIndex: 0, // 默认选中点赞
       tabList: ['点赞', '收藏'], // tab
-      goodList: [
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }] };
-
-
+      shareList: [], // 收藏文章列表
+      goodList: [] };
 
   },
+  onLoad: function onLoad() {
+    // 获取点赞文章
+    this.getArticle();
+
+    // 获取个人信息
+    this.getuserinfo();
+  },
+  watch: {
+    tabIndex: function tabIndex(val) {
+      // 获取收藏商品
+      this.getKeepGood();
+    } },
+
   methods: {
+    // 获取个人用户信息
+    getuserinfo: function getuserinfo() {var _this = this;
+      this.$http({
+        url: this.$api.getuserinfo,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            console.log('个人信息', res.data.info, " at pages\\mine\\mine.vue:160");
+            _this.userinfo = res.data.info;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '个人用户信息获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+
+    },
+
     // 点赞或者收藏
     selectTab: function selectTab(index) {
       this.tabIndex = index;
+    },
+
+    // 获取点赞文章列表
+    getArticle: function getArticle() {var _this2 = this;
+      this.$http({
+        url: this.$api.mylikearticles,
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this2.shareList = res.data.myarticles.data;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '点赞文章获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+
+    // 获取收藏的商品列表
+    getKeepGood: function getKeepGood() {var _this3 = this;
+      this.$http({
+        url: this.$api.mycollection,
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+
+            console.log('成功了收藏', res.data.mygoods.data, " at pages\\mine\\mine.vue:214");
+            _this3.goodList = res.data.mygoods.data;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '收藏商品列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
     },
     goChild: function goChild(index) {
       switch (index) {
@@ -19728,6 +19945,13 @@ var _default =
           break;}
 
     },
+    // 分享详情页
+    goShareDetail: function goShareDetail(id) {
+      uni.navigateTo({
+        url: '../components/shareInfo?article_id=' + id });
+
+    },
+    // 订单页
     goOrder: function goOrder(name) {
       uni.navigateTo({
         url: '../order/order?name=' + name });
@@ -19735,7 +19959,38 @@ var _default =
     },
     goSetting: function goSetting() {
       uni.navigateTo({
-        url: 'setting' });
+        url: 'setting?userinfo=' + JSON.stringify(this.userinfo) });
+
+    },
+
+    // 点赞文章点赞
+    clickZan: function clickZan(item, index) {
+      var that = this;
+      var url = this.$api.unLike;
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '取消点赞成功',
+              icon: 'none' });
+
+            that.shareList.splice(index, 1);
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '取消点赞失败',
+              icon: 'none' });
+
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
@@ -20891,6 +21146,9 @@ var _default =
 
 
   },
+  onLoad: function onLoad(option) {
+    console.log(option.userinfo, " at pages\\mine\\setting.vue:51");
+  },
   methods: {
     goPersonal: function goPersonal() {
       uni.navigateTo({
@@ -20913,7 +21171,7 @@ var _default =
       uni.removeStorage({
         key: 'userinfo',
         success: function success(res) {
-          console.log('success', " at pages\\mine\\setting.vue:72");
+          console.log('success', " at pages\\mine\\setting.vue:75");
         } });
 
       uni.navigateTo({
@@ -21750,8 +22008,8 @@ var _default =
   data: function data() {
     return {
       form: {
-        password1: '',
-        password2: '' } };
+        oldpwd: '',
+        newpwd: '' } };
 
 
   },
@@ -21759,6 +22017,36 @@ var _default =
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
+
+    },
+    changeAction: function changeAction() {
+      this.$http({
+        url: this.$api.changepwd,
+        method: 'POST',
+        data: this.form,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '修改密码成功，请重新登录',
+              icon: 'none' });
+
+            setTimeout(function () {
+              uni.reLaunch({
+                url: '../login/login' });
+
+            }, 1000);
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '修改密码失败',
+              icon: 'none' });
+
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

@@ -18,6 +18,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   resetpassword: _config.default.devApi + '/app.user/resetpassword', // 重置密码
   otherlogin: _config.default.devApi + '/app.user/otherlogin', // 第三方登录
   otherregister: _config.default.devApi + '/app.user/otherregister', // 第三方登录完善信息
+  smscodeyz: _config.default.devApi + '/app.user/smscodeyz', // 验证码校验
+
   // 首页
   categorylist: _config.default.devApi + '/article/categorylist', // 所有文章分类
   articlesbycategoryid: _config.default.devApi + '/article/articlesbycategoryid', // 通过分类ID获取文章列表
@@ -44,7 +46,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getseckillgoodsbyone: _config.default.devApi + '/seckill/getseckillgoodsbyone', // 商城页展示一个秒杀商品
   goodlists: _config.default.devApi + '/goods/goodlists', // 商城搜索
 
-
   // 秒杀
   seckill_goodsbycategoryid: _config.default.devApi + '/seckill/goodsbycategoryid', // 通过秒杀活动ID获取秒杀商品列表
   seckill_categorys: _config.default.devApi + '/seckill/categorys', // 秒杀活动分类
@@ -57,7 +58,14 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   flashsale_goodsbycategoryid: _config.default.devApi + '/flashsale/goodsbycategoryid', // 限时抢购活动分类ID获取商品列表
   flashsale_detail: _config.default.devApi + '/flashsale/detail', // 限时抢购商品详情
   flashsale_remind: _config.default.devApi + '/flashsale/remind', // 限时抢购商品加入提醒
-  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind' // 限时抢购商品取消提醒
+  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind', // 限时抢购商品取消提醒
+
+  // 我的
+  mylikearticles: _config.default.devApi + '/app.center/mylikearticles', // 个人中心点赞文章列表
+  mycollection: _config.default.devApi + '/app.center/mycollection', // 个人中心收藏商品列表
+  changepwd: _config.default.devApi + '/app.center/changepwd', // 更改密码
+  modifypersonalinfo: _config.default.devApi + '/app.center/modifypersonalinfo', // 修改个人用户信息
+  getuserinfo: _config.default.devApi + '/app.center/getuserinfo' // 获取用户个人信息
 };exports.default = _default;
 
 /***/ }),
@@ -71,7 +79,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  conductApi: 'http://192.168.31.141/code/api/web/index.php?s=/api', // 开发环境
+  conductApi: 'http://172.20.10.2/code/api/web/index.php?s=/api', // 开发环境
   devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
 };exports.default = _default;
 

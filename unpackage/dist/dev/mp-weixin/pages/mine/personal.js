@@ -140,9 +140,15 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      userinfo: {} };
 
-
+  },
+  onLoad: function onLoad(option) {
+    // console.log(JSON.parse(option.userinfo))
+    if (option.userinfo) {
+      this.userinfo = JSON.parse(option.userinfo);
+    }
   },
   methods: {
     goBack: function goBack() {

@@ -148,7 +148,7 @@ var _default =
       code_word: '获取验证码',
       username: '',
       code: '',
-      check_code: '',
+      check_code: false,
       showInfo: false };
 
   },
@@ -178,33 +178,58 @@ var _default =
       this.showDel = false;
     },
     goNext: function goNext() {
-      console.log(this.check_code, this.code, this.check_code === this.code, " at pages\\login\\register.vue:81");
-      if (!this.check_code) {
-        uni.showToast({
-          title: '请先获取手机验证码',
-          icon: 'none' });
+      console.log(this.check_code, this.code, this.showInfo, " at pages\\login\\register.vue:81");
+      this.$http({
+        url: this.$api.smscodeyz,
+        method: 'POST',
+        data: {
+          mobile: this.username,
+          code: this.code },
 
-        return;
-      }
-      if (this.check_code !== this.code) {
-        uni.showToast({
-          title: '验证码不正确',
-          icon: 'none' });
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
 
-        return;
-      }
-      console.log(this.check_code, this.code, " at pages\\login\\register.vue:96");
-      if (this.check_code === this.code && this.check_code) {
-        uni.navigateTo({
-          url: 'password?type=' + this.type + '&mobile=' + this.username });
+            console.log(res, " at pages\\login\\register.vue:92");
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
 
-      }
+          } else {
+            uni.showToast({
+              title: '验证码验证失败',
+              icon: 'none' });
+
+          }
+        } });
+
+      // if(this.check_code) {
+      //   uni.showToast({
+      //     title: '请获取手机验证码',
+      //     icon: 'none'
+      //   })
+      //   return
+      // }
+      // if(this.check_code !== this.code) {
+      //   uni.showToast({
+      //     title: '验证码不正确',
+      //     icon: 'none'
+      //   })
+      //   return
+      // }
+
+      // if(this.check_code === this.code && this.check_code) {
+      //   uni.navigateTo({
+      //     url: 'password?type=' + this.type + '&mobile=' + this.username
+      //   })  
+      // }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
         url: 'login' });
 
     },
+    // 获取手机验证码
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.username);
       var that = this;
@@ -215,12 +240,6 @@ var _default =
 
         return;
       }
-
-      // console.log(this.username)
-      // let num = 1111
-      // that.check_code = num.toString()
-      // console.log(num.toString())
-
       this.$http({
         url: this.$api.sendcode,
         method: 'POST',
@@ -229,7 +248,7 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            that.check_code = res.data.info.code.toString();
+            that.check_code = true;
             that.code_word = 120;
             that.showInfo = true;
             setInterval(function () {
@@ -237,7 +256,7 @@ var _default =
                 that.code_word--;
               }
               if (that.code_word === 0) {
-                that.check_code = '';
+                that.check_code = false;
                 that.showInfo = false;
                 return;
               }

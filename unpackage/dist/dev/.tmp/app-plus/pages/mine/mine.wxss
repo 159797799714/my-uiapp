@@ -500,6 +500,98 @@ to {
           -ms-flex-wrap: wrap;
               flex-wrap: wrap;
 }
+.content .goods .goods-content .item.data-v-efa0bd64 {
+        height: 524rpx;
+        width: 330rpx;
+        margin-bottom: 20rpx;
+        border: 1px solid #EEEEEE;
+}
+.content .goods .goods-content .item .img.data-v-efa0bd64 {
+          height: 330rpx;
+          width: 100%;
+          margin-bottom: 18rpx;
+}
+.content .goods .goods-content .item .img > image.data-v-efa0bd64 {
+            height: 100%;
+            width: 100%;
+            background: #ccc;
+}
+.content .goods .goods-content .item .title.data-v-efa0bd64 {
+          height: 67rpx;
+          font-size: 24rpx;
+          line-height: 36rpx;
+          margin-bottom: 24rpx;
+          padding: 0 20rpx;
+          overflow: hidden;
+          white-space: wrap;
+          -o-text-overflow: ellipsis;
+             text-overflow: ellipsis;
+          word-break: break-all;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+}
+.content .goods .goods-content .item .info.data-v-efa0bd64 {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -webkit-justify-content: space-between;
+              -ms-flex-pack: justify;
+                  justify-content: space-between;
+          height: 40rpx;
+          width: 100%;
+          padding: 0 20rpx;
+          line-height: 40rpx;
+}
+.content .goods .goods-content .item .info .user.data-v-efa0bd64 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+}
+.content .goods .goods-content .item .info .user .userImg.data-v-efa0bd64 {
+              height: 40rpx;
+              width: 40rpx;
+              margin-right: 10rpx;
+              -webkit-border-radius: 100%;
+                      border-radius: 100%;
+              overflow: hidden;
+}
+.content .goods .goods-content .item .info .user .userImg > image.data-v-efa0bd64 {
+                height: 100%;
+                width: 100%;
+                background: #ccc;
+}
+.content .goods .goods-content .item .info .user .userName.data-v-efa0bd64 {
+              font-size: 24rpx;
+              font-weight: bold;
+}
+.content .goods .goods-content .item .info .zan.data-v-efa0bd64 {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            color: #ADADAD;
+            font-size: 24rpx;
+}
+.content .goods .goods-content .item .info .zan .iconfont.data-v-efa0bd64 {
+              font-size: 34rpx;
+}
+.content .goods .goods-content .item .info .zan .isZan.data-v-efa0bd64 {
+              position: relative;
+              color: #131313;
+}
+.content .goods .goods-content .item .info .zan .isZan.data-v-efa0bd64::before {
+                content: '';
+                height: 13rpx;
+                width: 14rpx;
+                background: #F4433D;
+                position: absolute;
+                bottom: 10rpx;
+                left: 8rpx;
+}
 .content .goods .goods-content .good-item.data-v-efa0bd64 {
         display: -webkit-box;
         display: -webkit-flex;

@@ -8,6 +8,8 @@ export default {
   resetpassword: API.devApi + '/app.user/resetpassword',                // 重置密码
   otherlogin: API.devApi + '/app.user/otherlogin',                      // 第三方登录
   otherregister: API.devApi + '/app.user/otherregister',                // 第三方登录完善信息
+  smscodeyz: API.devApi + '/app.user/smscodeyz',                        // 验证码校验
+  
   // 首页
   categorylist: API.devApi + '/article/categorylist',                   // 所有文章分类
   articlesbycategoryid: API.devApi + '/article/articlesbycategoryid',   // 通过分类ID获取文章列表
@@ -34,7 +36,6 @@ export default {
   getseckillgoodsbyone: API.devApi + '/seckill/getseckillgoodsbyone',       // 商城页展示一个秒杀商品
   goodlists: API.devApi + '/goods/goodlists',                             // 商城搜索
   
-  
   // 秒杀
   seckill_goodsbycategoryid: API.devApi + '/seckill/goodsbycategoryid',           // 通过秒杀活动ID获取秒杀商品列表
   seckill_categorys: API.devApi + '/seckill/categorys',                           // 秒杀活动分类
@@ -49,4 +50,14 @@ export default {
   flashsale_remind: API.devApi + '/flashsale/remind',                               // 限时抢购商品加入提醒
   flashsale_cancelremind: API.devApi + '/flashsale/cancelremind',                   // 限时抢购商品取消提醒
 
+  // 我的
+  mylikearticles: API.devApi + '/app.center/mylikearticles',                        // 个人中心点赞文章列表
+  mycollection: API.devApi + '/app.center/mycollection',                            // 个人中心收藏商品列表
+  changepwd: API.devApi + '/app.center/changepwd',                                  // 更改密码
+  modifypersonalinfo: API.devApi + '/app.center/modifypersonalinfo',                // 修改个人用户信息
+  getuserinfo: API.devApi + '/app.center/getuserinfo',                              // 获取用户个人信息
+  
+  // 订单
+  orderList: API.devApi + '/user.order/lists',                                      // 订单
+  
 }

@@ -165,10 +165,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      userinfo: {
+        avatarUrl: '',
+        nickName: '',
+        mobile: '' },
+
       menuList1: [
       {
         imgUrl: '../../static/img/mine/staypay.png',
@@ -204,35 +233,99 @@ var _default =
       // 我的订单第二行
       tabIndex: 0, // 默认选中点赞
       tabList: ['点赞', '收藏'], // tab
-      goodList: [
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 },
-      {
-        imgUrl: '',
-        name: 'Huawei/华为FreeLaceHuawei/华为FreeLace',
-        remark: ['入耳式', '蓝牙:4.2版本', '立体声'],
-        price: 499 }] };
-
-
+      shareList: [], // 收藏文章列表
+      goodList: [] };
 
   },
+  onLoad: function onLoad() {
+    // 获取点赞文章
+    this.getArticle();
+
+    // 获取个人信息
+    this.getuserinfo();
+  },
+  watch: {
+    tabIndex: function tabIndex(val) {
+      // 获取收藏商品
+      this.getKeepGood();
+    } },
+
   methods: {
+    // 获取个人用户信息
+    getuserinfo: function getuserinfo() {var _this = this;
+      this.$http({
+        url: this.$api.getuserinfo,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            console.log('个人信息', res.data.info, " at pages\\mine\\mine.vue:160");
+            _this.userinfo = res.data.info;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '个人用户信息获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+
+    },
+
     // 点赞或者收藏
     selectTab: function selectTab(index) {
       this.tabIndex = index;
+    },
+
+    // 获取点赞文章列表
+    getArticle: function getArticle() {var _this2 = this;
+      this.$http({
+        url: this.$api.mylikearticles,
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            _this2.shareList = res.data.myarticles.data;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '点赞文章获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+
+    // 获取收藏的商品列表
+    getKeepGood: function getKeepGood() {var _this3 = this;
+      this.$http({
+        url: this.$api.mycollection,
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+
+            console.log('成功了收藏', res.data.mygoods.data, " at pages\\mine\\mine.vue:214");
+            _this3.goodList = res.data.mygoods.data;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '收藏商品列表获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
     },
     goChild: function goChild(index) {
       switch (index) {
@@ -258,6 +351,13 @@ var _default =
           break;}
 
     },
+    // 分享详情页
+    goShareDetail: function goShareDetail(id) {
+      uni.navigateTo({
+        url: '../components/shareInfo?article_id=' + id });
+
+    },
+    // 订单页
     goOrder: function goOrder(name) {
       uni.navigateTo({
         url: '../order/order?name=' + name });
@@ -265,7 +365,38 @@ var _default =
     },
     goSetting: function goSetting() {
       uni.navigateTo({
-        url: 'setting' });
+        url: 'setting?userinfo=' + JSON.stringify(this.userinfo) });
+
+    },
+
+    // 点赞文章点赞
+    clickZan: function clickZan(item, index) {
+      var that = this;
+      var url = this.$api.unLike;
+      this.$http({
+        url: url,
+        data: {
+          article_id: item.article_id },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '取消点赞成功',
+              icon: 'none' });
+
+            that.shareList.splice(index, 1);
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '取消点赞失败',
+              icon: 'none' });
+
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))

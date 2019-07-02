@@ -35,9 +35,9 @@
           <image src="../../static/img/market/pintuan-icon.png" mode="" />
         </view>
         <view class="activity">
-          <view class="lightning" @click="goPanicBuy(1)">
+          <view v-for="(item, index) in lightning" :key="index" v-if="item.oldPrice !== ''" class="lightning limit" @click="goPanicBuy(index)">
             <view class="activity-title">
-              <text class="title">{{ lightning.title }}</text>
+              <text class="title">{{ item.title }}</text>
               <text class="time">{{ lightning.time }}</text>
             </view>
             <view class="price">
@@ -45,20 +45,7 @@
               <text class="old-price">￥{{ lightning.oldPrice }}</text>
             </view>
             <view class="img">
-              <image src="" mode=""></image>
-            </view>
-          </view>
-          <view class="lightning limit" @click="goPanicBuy(2)">
-            <view class="activity-title">
-              <text class="title">限时购</text>
-              <text class="time">{{ lightning.time }}</text>
-            </view>
-            <view class="price">
-              <text class="new-price">￥{{ lightning.newPrice }}</text>
-              <text class="old-price">￥{{ lightning.oldPrice }}</text>
-            </view>
-            <view class="img">
-              <image src="" mode=""></image>
+              <image v-for="(li, num) in item.img" :key="num" :src="li" mode=""></image>
             </view>
           </view>
         </view>
@@ -99,12 +86,19 @@
           goods_id: 10255
         }],
         menuList: [], // 所有商品分类列表
-        lightning: {
+        lightning: [{
+          title: '限时购',
+          time: '',
+          newPrice: '',
+          oldPrice: '',
+          img: []
+        }, {
           title: '秒杀购',
-          time: '02:00:00',
-          newPrice: 423,
-          oldPrice: 1543
-        },
+          time: '',
+          newPrice: '',
+          oldPrice: '',
+          img: []
+        }],
         recommendList: []
       }
     },
@@ -148,7 +142,34 @@
         this.$http({
           url: this.$api.getflashsalegoodsbyone,
           cb: (err, res) => {
-            console.log('限时购', res)
+            if (!err && res.code === 1) {
+              console.log('限时', res.data)
+              if(res.data.goods) {
+                this.lightning[0].oldPrice = res.data.goods.goods_max_price
+                this.lightning[0].newPrice = res.data.goods.goods_min_price
+                this.lightning[0].newPrice = res.data.goods.goods_min_price
+                this.lightning[0].img[0] = result.data.goods.image[0].file_path
+                this.lightning[0].img[1] = result.data.goods.image[1].file_path
+                
+                // this.lightning[0].time = res.data.goods.activity_endtime
+                
+                // originalPrice = result.data.goods.goods_max_price
+                // specialPrice = result.data.goods.goods_min_price
+                // time = result.data.goods.category.activity_endtime
+                // img1 = result.data.goods.image[0].file_path
+                // img2 = result.data.goods.image[1].file_path
+              }
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '限时抢购商品加载失败',
+                icon: 'none'
+              })
+            }
           }
         })
       },
@@ -157,7 +178,36 @@
         this.$http({
           url: this.$api.getseckillgoodsbyone,
           cb: (err, res) => {
-            console.log('秒杀购', res)
+            if (!err && res.code === 1) {
+              console.log('秒杀', res.data)
+              if(res.data.goods) {
+                this.lightning[1].oldPrice = res.data.goods.goods_max_price
+                this.lightning[1].newPrice = res.data.goods.goods_min_price
+                this.lightning[1].newPrice = res.data.goods.goods_min_price
+                this.lightning[1].img[0] = result.data.goods.image[0].file_path
+                this.lightning[1].img[1] = result.data.goods.image[1].file_path
+                
+                // this.lightning[0].time = res.data.goods.activity_endtime          时间待处理
+                
+                // originalPrice = result.data.goods.goods_max_price
+                // specialPrice = result.data.goods.goods_min_price
+                // time = result.data.goods.category.activity_endtime
+                // img1 = result.data.goods.image[0].file_path
+                // img2 = result.data.goods.image[1].file_path
+              } else {
+                this.lightning[1] = ''
+              }
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '秒杀抢购商品加载失败',
+                icon: 'none'
+              })
+            }
           }
         })
       },
@@ -192,12 +242,12 @@
       // 抢购或者秒杀页
       goPanicBuy(data) {
         switch (data) {
-          case 1:
+          case 0:
             uni.navigateTo({
               url: 'panicBuy?origin=' + '秒杀'
             })
             break
-          case 2:
+          case 1:
             uni.navigateTo({
               url: 'panicBuy?origin=' + '限时购'
             })
@@ -385,13 +435,13 @@
 
     .activity {
       display: flex;
-      height: 240upx;
       justify-content: space-between;
       margin-top: 10upx;
 
       .lightning {
-        height: 100%;
-        width: 340upx;
+        height: 240upx;
+        width: 100%;
+        min-width: 340upx;
         padding: 25upx;
         box-sizing: border-box;
         background: $color-f4;
@@ -419,7 +469,8 @@
         .price {
           height: 62upx;
           line-height: 62upx;
-
+          text-overflow: ellipsis;
+          overflow: hidden;
           .new-price {
             margin-right: 13upx;
             font-size: $font-28;
@@ -453,7 +504,6 @@
           display: flex;
           flex-wrap: wrap;
           overflow: hidden;
-
           &>image {
             margin-right: 10upx;
             height: 100%;
@@ -471,7 +521,7 @@
         justify-content: center;
         align-items: center;
         height: 110upx;
-        margin-top: 62upx;
+        // margin-top: 62upx;
         font-size: $font-32;
         font-weight: $font-bold;
 

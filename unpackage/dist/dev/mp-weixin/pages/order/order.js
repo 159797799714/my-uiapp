@@ -155,6 +155,7 @@ var _default =
   data: function data() {
     return {
       selectData: '全部',
+      dataType: '',
       tabList: ['全部', '待付款', '待收货', '待评价', '已完成', '已取消'],
       scrollLeft: 0,
       dataList: [{
@@ -199,10 +200,10 @@ var _default =
     } },
 
   onLoad: function onLoad(option) {
-    if (option.name) {
-      this.selectData = option.name;
-    }
-    console.log('分享文章详情页接受到的参数', option.name);
+    this.selectData = option.name;
+    this.dataType = option.dataType;
+    console.log('分享文章详情页接受到的参数', option.datatype);
+    this.getOrderInfo();
   },
   methods: {
     goBack: function goBack() {
@@ -216,6 +217,32 @@ var _default =
     goDetail: function goDetail(item) {
       uni.navigateTo({
         url: 'orderDetail?item=' + JSON.stringify(item) });
+
+    },
+
+    // 获取订单数据
+    getOrderInfo: function getOrderInfo() {
+      this.$http({
+        url: this.$api.orderList,
+        data: {
+          dataType: this.dataType },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+
+            console.log('成功了加载订单', res.data);
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '订单数据加载失败',
+              icon: 'none' });
+
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

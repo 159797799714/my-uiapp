@@ -152,6 +152,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -236,7 +238,7 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log(res.data.list.data);
+            console.log('时间', res.data.list);
             _this2.goodList = res.data.list;
           } else if (res.code === 0 || res.code === -1 & res.msg) {
             uni.showToast({
@@ -258,7 +260,7 @@ var _default =
     },
     // 去购买或者进入详情页
     goDetail: function goDetail(item) {
-      console.log(item);
+      console.log('点击了商品', item);
       // uni.navigateTo({
       //   url: '../components/goodDetail?info=' + info + '&panic=true'
       // })

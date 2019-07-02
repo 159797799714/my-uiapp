@@ -147,6 +147,9 @@ var _default =
 
 
   },
+  onLoad: function onLoad(option) {
+    console.log(option.userinfo, " at pages\\mine\\setting.vue:51");
+  },
   methods: {
     goPersonal: function goPersonal() {
       uni.navigateTo({
@@ -169,7 +172,7 @@ var _default =
       uni.removeStorage({
         key: 'userinfo',
         success: function success(res) {
-          console.log('success', " at pages\\mine\\setting.vue:72");
+          console.log('success', " at pages\\mine\\setting.vue:75");
         } });
 
       uni.navigateTo({

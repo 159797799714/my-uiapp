@@ -6,9 +6,9 @@
   	<view class="content bg-white border-box">
       <view class="user" @click="goPersonal">
         <view class="img">
-          <image src="../../static/img/mine/bg.png" mode=""></image>
+          <image :src="userinfo.avatarUrl" mode=""></image>
         </view>
-        <view class="name">不知道先生</view>
+        <view class="name">{{ userinfo.nickName }}</view>
         <text class="iconfont">&#xe644;</text>
       </view>
       <view v-for="(item, index) in menu" :key="index" class="item" @click="selAction(item.url)">
@@ -28,6 +28,7 @@
   export default{
     data() {
       return {
+        userinfo: {},
         menu: [{
           icon: '&#xe646;',
           title: '我的收获地址',
@@ -45,6 +46,12 @@
           title: '关于我们',
           url: 'about'
         }]
+      }
+    },
+    onLoad(option) {
+      // console.log(JSON.parse(option.userinfo))
+      if(option.userinfo) {
+        this.userinfo = JSON.parse(option.userinfo)
       }
     },
     methods: {

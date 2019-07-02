@@ -472,7 +472,6 @@ to {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 240rpx;
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
@@ -480,8 +479,9 @@ to {
     margin-top: 10rpx;
 }
 .main .activity .lightning.data-v-1baedeae {
-      height: 100%;
-      width: 340rpx;
+      height: 240rpx;
+      width: 100%;
+      min-width: 340rpx;
       padding: 25rpx;
       -webkit-box-sizing: border-box;
               box-sizing: border-box;
@@ -511,6 +511,9 @@ to {
 .main .activity .lightning .price.data-v-1baedeae {
         height: 62rpx;
         line-height: 62rpx;
+        -o-text-overflow: ellipsis;
+           text-overflow: ellipsis;
+        overflow: hidden;
 }
 .main .activity .lightning .price .new-price.data-v-1baedeae {
           margin-right: 13rpx;
@@ -573,7 +576,6 @@ to {
           -ms-flex-align: center;
               align-items: center;
       height: 110rpx;
-      margin-top: 62rpx;
       font-size: 32rpx;
       font-weight: 600;
 }

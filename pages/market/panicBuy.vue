@@ -33,7 +33,7 @@
             <view class="leaver">
               <text class="text">仅剩余{{ item.surplus_inventory }}件</text>
               <view class="peogress-box">
-                <progress :percent="item.total_inventory - item.surplus_inventory" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
+                <progress :percent="item.surplus_inventory" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
               </view>
             </view>
             <view class="discount">
@@ -42,8 +42,10 @@
             <view class="price">
               <text class="newPrice">￥{{ item.goods_min_price }}</text>
               <text class="oldPrice">￥{{ item.goods_max_price }}</text>
-              <text v-if="item.surplus_inventory !== 0" :class="{buy: true, 'bg-white': true, 'my-button': true}">立即秒杀</text>
-              <text v-if="item.surplus_inventory === 0" :class="{buy: true,'my-button': true, none: item.surplus_inventory === 0}">已售完</text>
+              <text v-if="item.surplus_inventory !== 0 && goodList.header_info.status === '已开抢'" :class="{buy: true, 'bg-white': true, 'my-button': true}">立即秒杀</text>
+              <text v-if="goodList.header_info.status === '即将开始' && goodList.data[0].isremind === 'no'" :class="{buy: true, 'bg-white': true, 'my-button': true}">提醒我</text>
+              <text v-if="item.surplus_inventory === 0" :class="{buy: true,'my-button': true, none: true}">已售完</text>
+              <text v-if="goodList.header_info.status === '已结束'" :class="{buy: true,'my-button': true, none: true}">已结束</text>
             </view>
           </view>
         </view>
@@ -136,7 +138,7 @@
           },
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log(res.data.list.data)
+              console.log('时间', res.data.list)
               this.goodList = res.data.list
             } else if(res.code === 0 || res.code === -1 & res.msg) {
               uni.showToast({
@@ -158,7 +160,7 @@
       },
       // 去购买或者进入详情页
       goDetail(item) {
-        console.log(item)
+        console.log('点击了商品', item)
         // uni.navigateTo({
         //   url: '../components/goodDetail?info=' + info + '&panic=true'
         // })

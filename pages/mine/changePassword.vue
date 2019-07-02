@@ -8,16 +8,16 @@
       <view class="row">
         <text class="name">旧密码</text>
         <view class="ipt">
-          <input type="text" :value="form.password1" placeholder="请输入旧密码"/>
+          <input type="text" v-model="form.oldpwd" placeholder="请输入旧密码"/>
         </view>
       </view>
       <view class="row">
         <text class="name">新密码</text>
         <view class="ipt">
-          <input type="text" :value="form.password2" placeholder="请输入新密码"/>
+          <input type="text" v-model="form.newpwd" placeholder="请输入新密码"/>
         </view>
       </view>
-      <view class="btn">确认修改</view>
+      <view class="btn" @click="changeAction()">确认修改</view>
       <view class="info">本操作将会重置您的登陆密码，请牢记新密码哦～</view>
     </view>
   </view>
@@ -28,8 +28,8 @@
     data() {
       return {
         form: {
-          password1: '',
-          password2: ''
+          oldpwd: '',
+          newpwd: ''
         }
       }
     },
@@ -37,6 +37,36 @@
       goBack() {
         uni.navigateBack({
           delta: 1
+        })
+      },
+      changeAction() {
+        this.$http({
+          url: this.$api.changepwd,
+          method: 'POST',
+          data: this.form,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              uni.showToast({
+                title: '修改密码成功，请重新登录',
+                icon: 'none'
+              })
+              setTimeout(function() {
+                uni.reLaunch({
+                  url: '../login/login'
+                })  
+              }, 1000)
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '修改密码失败',
+                icon: 'none'
+              })
+            }
+          }
         })
       }
     }

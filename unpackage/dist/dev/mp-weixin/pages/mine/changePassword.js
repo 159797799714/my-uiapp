@@ -128,8 +128,8 @@ var _default =
   data: function data() {
     return {
       form: {
-        password1: '',
-        password2: '' } };
+        oldpwd: '',
+        newpwd: '' } };
 
 
   },
@@ -137,6 +137,36 @@ var _default =
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });
+
+    },
+    changeAction: function changeAction() {
+      this.$http({
+        url: this.$api.changepwd,
+        method: 'POST',
+        data: this.form,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '修改密码成功，请重新登录',
+              icon: 'none' });
+
+            setTimeout(function () {
+              uni.reLaunch({
+                url: '../login/login' });
+
+            }, 1000);
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '修改密码失败',
+              icon: 'none' });
+
+          }
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))

@@ -152,6 +152,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -178,7 +180,7 @@ var _default =
 
   },
   onLoad: function onLoad(option) {
-    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:81");
+    console.log('分享文章详情页接受到的参数', option.origin, " at pages\\market\\panicBuy.vue:83");
     this.title = option.origin;
     uni.setNavigationBarTitle({
       title: option.origin });
@@ -236,7 +238,7 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log(res.data.list.data, " at pages\\market\\panicBuy.vue:139");
+            console.log('时间', res.data.list, " at pages\\market\\panicBuy.vue:141");
             _this2.goodList = res.data.list;
           } else if (res.code === 0 || res.code === -1 & res.msg) {
             uni.showToast({
@@ -258,7 +260,7 @@ var _default =
     },
     // 去购买或者进入详情页
     goDetail: function goDetail(item) {
-      console.log(item, " at pages\\market\\panicBuy.vue:161");
+      console.log('点击了商品', item, " at pages\\market\\panicBuy.vue:163");
       // uni.navigateTo({
       //   url: '../components/goodDetail?info=' + info + '&panic=true'
       // })
