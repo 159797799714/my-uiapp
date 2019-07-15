@@ -119,8 +119,7 @@ view.data-v-5ff3a554, image.data-v-5ff3a554, text.data-v-5ff3a554, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-5ff3a554 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-5ff3a554 {
@@ -299,8 +298,7 @@ to {
   text-align: center;
   color: #ADADAD;
   background: rgba(248, 248, 248, 0.1);
-  -webkit-border-radius: 4rpx;
-          border-radius: 4rpx;
+  border-radius: 4rpx;
 }
 .search .search-icon.data-v-5ff3a554 {
     margin-right: 19rpx;
@@ -383,7 +381,6 @@ to {
 .content .culture.data-v-5ff3a554 {
     margin: 30rpx 30rpx 0 30rpx;
     padding-bottom: 30rpx;
-    width: -webkit-calc(100% - 60rpx);
     width: calc(100% - 60rpx);
 }
 .content .culture > image.data-v-5ff3a554 {

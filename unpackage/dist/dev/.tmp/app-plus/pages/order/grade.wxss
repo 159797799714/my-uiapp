@@ -119,8 +119,7 @@ view.data-v-5abba555, image.data-v-5abba555, text.data-v-5abba555, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-5abba555 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-5abba555 {
@@ -369,8 +368,7 @@ to {
       text-align: center;
       vertical-align: center;
       border: 1px dashed #999999;
-      -webkit-border-radius: 10rpx;
-              border-radius: 10rpx;
+      border-radius: 10rpx;
 }
 .content .idea .more .photo > .iconfont.data-v-5abba555, .content .idea .more .video > .iconfont.data-v-5abba555 {
         font-size: 40rpx;
@@ -406,8 +404,7 @@ to {
       height: 44rpx;
       width: 44rpx;
       margin-right: 28rpx;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      border-radius: 100%;
       border: 1px solid #131313;
 }
 .content .idea .anonymity > text.data-v-5abba555 {

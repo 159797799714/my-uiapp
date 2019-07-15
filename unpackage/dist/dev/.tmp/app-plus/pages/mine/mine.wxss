@@ -119,8 +119,7 @@ view.data-v-efa0bd64, image.data-v-efa0bd64, text.data-v-efa0bd64, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-efa0bd64 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-efa0bd64 {
@@ -343,8 +342,7 @@ to {
         height: 114rpx;
         width: 114rpx;
         margin-right: 37rpx;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
 }
 .content .head-main .user > view.data-v-efa0bd64 {
         -webkit-box-flex: 1;
@@ -370,8 +368,7 @@ to {
     padding: 0 30rpx 0 30rpx;
     -webkit-box-shadow: 0rpx 0rpx 24rpx 0rpx rgba(190, 190, 190, 0.27);
             box-shadow: 0rpx 0rpx 24rpx 0rpx rgba(190, 190, 190, 0.27);
-    -webkit-border-radius: 10rpx 10rpx 0rpx 0rpx;
-            border-radius: 10rpx 10rpx 0rpx 0rpx;
+    border-radius: 10rpx 10rpx 0rpx 0rpx;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
 }
@@ -555,8 +552,7 @@ to {
               height: 40rpx;
               width: 40rpx;
               margin-right: 10rpx;
-              -webkit-border-radius: 100%;
-                      border-radius: 100%;
+              border-radius: 100%;
               overflow: hidden;
 }
 .content .goods .goods-content .item .info .user .userImg > image.data-v-efa0bd64 {

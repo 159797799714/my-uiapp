@@ -91,39 +91,39 @@
           })
           return
         }
-        if(this.check_code === this.code && this.check_code) {
-          let data = {
-            mobile: this.mobile,
-            password: this.password
-          }
-          // console.log(JSON.stringify(data))
-          this.$http({
-            url: this.$api.otherregister,
-            method: 'POST',
-            data: data,
-            cb: (err, res) => {
-              if(!err && res.code === 1) {
-                uni.showToast({
-                  title: '绑定手机号成功',
-                  icon: 'none'
-                })
-                uni.switchTab({
-                  url: '../index/index'
-                })
-              } else if (res.code === 0 && res.msg){
-                uni.showToast({
-                  title: res.msg,
-                  icon: 'none'
-                })
-              } if(err) {
-                uni.showToast({
-                  title: '绑定手机号失败',
-                  icon: 'none'
-                })
-              }
-            }
-          })
-        }
+        // if(this.check_code === this.code && this.check_code) {
+        //   let data = {
+        //     mobile: this.mobile,
+        //     password: this.password
+        //   }
+        //   // console.log(JSON.stringify(data))
+        //   this.$http({
+        //     url: this.$api.otherregister,
+        //     method: 'POST',
+        //     data: data,
+        //     cb: (err, res) => {
+        //       if(!err && res.code === 1) {
+        //         uni.showToast({
+        //           title: '绑定手机号成功',
+        //           icon: 'none'
+        //         })
+        //         uni.switchTab({
+        //           url: '../index/index'
+        //         })
+        //       } else if (res.code === 0 && res.msg){
+        //         uni.showToast({
+        //           title: res.msg,
+        //           icon: 'none'
+        //         })
+        //       } if(err) {
+        //         uni.showToast({
+        //           title: '绑定手机号失败',
+        //           icon: 'none'
+        //         })
+        //       }
+        //     }
+        //   })
+        // }
       },
       getCode() {
         let value = /^1[3456789]\d{9}$/.test(this.mobile)
@@ -135,41 +135,35 @@
           })
           return
         }
-        
-        console.log(this.mobile)
-        let num = 1111
-        that.check_code = num.toString()
-        console.log(num.toString())
-        
-        // this.$http({
-        //   url: this.$api.sendcode,
-        //   method: 'POST',
-        //   data: {
-        //     mobile: this.mobile
-        //   },
-        //   cb: (err, res) => {
-        //     if(!err && res.code === 1) {
-        //       that.check_code = res.data.info.code.toString()
-        //       that.code_word = 120
-        //       that.showInfo = true
-        //       setInterval(function() {
-        //         if (that.code_word > 0) {
-        //           that.code_word--
-        //         }
-        //         if (that.code_word === 0) {
-        //           that.check_code = ''
-        //           that.showInfo = false
-        //           return
-        //         }
-        //       }.bind(that), 1000)
-        //     } else {
-        //       uni.showToast({
-        //         title: '手机验证码获取失败',
-        //         icon: 'none'
-        //       })
-        //     }
-        //   }
-        // })
+        this.$http({
+          url: this.$api.sendcode,
+          method: 'POST',
+          data: {
+            mobile: this.mobile
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              that.check_code = res.data.info.code.toString()
+              that.code_word = 120
+              that.showInfo = true
+              setInterval(function() {
+                if (that.code_word > 0) {
+                  that.code_word--
+                }
+                if (that.code_word === 0) {
+                  that.check_code = ''
+                  that.showInfo = false
+                  return
+                }
+              }.bind(that), 1000)
+            } else {
+              uni.showToast({
+                title: '手机验证码获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
       }
     }
   }

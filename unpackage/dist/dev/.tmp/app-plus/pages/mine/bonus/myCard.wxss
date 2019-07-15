@@ -119,8 +119,7 @@ view.data-v-2fb57c47, image.data-v-2fb57c47, text.data-v-2fb57c47, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-2fb57c47 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-2fb57c47 {

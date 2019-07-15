@@ -156,17 +156,14 @@
                     that.openid = loginRes.authResult.openid
                   }
                   
-                  
-                  
-                  
                   // 正式登录
-                  // that.getInfo()
+                  that.getInfo()
                   
                   
-                  // 手动登录
-                  uni.switchTab({
-                    url: '../index/index'
-                  })
+                  // // 手动登录
+                  // uni.switchTab({
+                  //   url: '../index/index'
+                  // })
                   
                 }
               })

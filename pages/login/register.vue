@@ -49,7 +49,8 @@
         username: '',
         code: '',
         check_code: false,
-        showInfo: false
+        showInfo: false,
+        showTitle: '请获取手机验证码'
       }
     },
     onLoad(option) {
@@ -79,30 +80,48 @@
       },
       goNext() {
         console.log(this.check_code, this.code, this.showInfo)
-        this.$http({
-          url: this.$api.smscodeyz,
-          method: 'POST',
-          data: {
-            mobile: this. username,
-            code: this.code
-          },
-          cb: (err, res) => {
-            if(!err && res.code === 1) {
-              
-              console.log(res)
-            } else if(res.code === 0) {
-              uni.showToast({
-                title: res.msg,
-                icon: 'none'
-              })
-            } else {
-              uni.showToast({
-                title: '验证码验证失败',
-                icon: 'none'
-              })
-            }
-          }
-        })
+        if(this.check_code) {
+          if(this.code.length === 4) {
+            this.$http({
+              url: this.$api.smscodeyz,
+              data: {
+                mobile: this. username,
+                code: this.code
+              },
+              cb: (err, res) => {
+                if(!err && res.code === 1) {
+                  if(this.check_code === this.code && this.check_code) {
+                    uni.navigateTo({
+                      url: 'password?type=' + this.type + '&mobile=' + this.username
+                    })  
+                  }
+                } else if(res.code === 0) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                  })
+                } else {
+                  uni.showToast({
+                    title: '验证码验证失败',
+                    icon: 'none'
+                  })
+                }
+              }
+            })  
+          } else {
+            uni.showToast({
+              title: '验证码格式错误',
+              icon: 'none'
+            })
+          }  
+        } else {
+          uni.showToast({
+            title: this.showTitle,
+            icon: 'none'
+          })
+        }  
+        
+        
         // if(this.check_code) {
         //   uni.showToast({
         //     title: '请获取手机验证码',
@@ -151,6 +170,7 @@
               that.check_code = true
               that.code_word = 120
               that.showInfo = true
+              that.showTitle = '验证码过期，请重新获取'
               setInterval(function() {
                 if (that.code_word > 0) {
                   that.code_word--

@@ -119,8 +119,7 @@ view.data-v-10a6f7ae, image.data-v-10a6f7ae, text.data-v-10a6f7ae, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-10a6f7ae {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-10a6f7ae {
@@ -299,8 +298,7 @@ to {
           align-items: center;
   color: #ADADAD;
   background: rgba(248, 248, 248, 0.1);
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
 }
 .topBar .search .ipt.data-v-10a6f7ae {
     -webkit-box-flex: 1;
@@ -385,8 +383,7 @@ to {
     font-size: 22rpx;
     line-height: 50rpx;
     background: #EEEEEE;
-    -webkit-border-radius: 25rpx;
-            border-radius: 25rpx;
+    border-radius: 25rpx;
 }
 .filter-tags .filter-tag .iconfont.data-v-10a6f7ae {
       font-size: 20rpx;
@@ -413,7 +410,6 @@ to {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: -webkit-calc(100% - 274rpx);
   height: calc(100% - 274rpx);
   width: 100%;
   position: absolute;
@@ -582,8 +578,7 @@ to {
           height: 40rpx;
           width: 40rpx;
           margin-right: 10rpx;
-          -webkit-border-radius: 100%;
-                  border-radius: 100%;
+          border-radius: 100%;
           overflow: hidden;
 }
 .main .item .info .user .userImg > image.data-v-10a6f7ae {
@@ -839,8 +834,7 @@ to {
           height: 74rpx;
           font-size: 26rpx;
           text-align: center;
-          -webkit-border-radius: 37rpx;
-                  border-radius: 37rpx;
+          border-radius: 37rpx;
           background: #EEEEEE;
 }
 .big-cover .big-cover-main .caption.data-v-10a6f7ae {
@@ -893,7 +887,6 @@ to {
         background: #EEEEEE;
 }
 .big-cover .big-cover-main .foot.data-v-10a6f7ae {
-      width: -webkit-calc(100% + 60rpx);
       width: calc(100% + 60rpx);
       margin-left: -30rpx;
 }

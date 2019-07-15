@@ -119,8 +119,7 @@ view.data-v-5d50af01, image.data-v-5d50af01, text.data-v-5d50af01, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-5d50af01 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-5d50af01 {
@@ -406,8 +405,7 @@ to {
         -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
                 transform: translateY(-50%);
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
         font-size: 37rpx;
         line-height: 84rpx;
         color: #fff;
@@ -441,21 +439,18 @@ to {
       line-height: 30rpx;
       color: #fff;
       background: #FCD1D1;
-      -webkit-border-radius: 15rpx;
-              border-radius: 15rpx;
+      border-radius: 15rpx;
       overflow: hidden;
 }
 .item .goodInfo .leaver .progress.data-v-5d50af01 {
         height: 30rpx;
-        -webkit-border-radius: 15rpx;
-                border-radius: 15rpx;
+        border-radius: 15rpx;
 }
 .item .goodInfo .leaver .text.data-v-5d50af01 {
         position: absolute;
         top: 0;
         left: 30rpx;
-        -webkit-border-radius: 15rpx;
-                border-radius: 15rpx;
+        border-radius: 15rpx;
 }
 .item .goodInfo .discount.data-v-5d50af01 {
       display: -webkit-box;

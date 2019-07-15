@@ -119,8 +119,7 @@ view.data-v-c232f080, image.data-v-c232f080, text.data-v-c232f080, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-c232f080 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-c232f080 {

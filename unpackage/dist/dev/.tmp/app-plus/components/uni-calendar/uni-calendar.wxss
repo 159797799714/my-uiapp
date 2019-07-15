@@ -119,8 +119,7 @@ view, image, text, input, form {
   z-index: 5;
 }
 .my-button {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box {
@@ -435,10 +434,8 @@ to {
       border: 1px rgba(253, 46, 50, 0.5) solid;
       border-right: none;
       font-size: 24rpx;
-      -webkit-border-top-left-radius: 50rpx;
-              border-top-left-radius: 50rpx;
-      -webkit-border-bottom-left-radius: 50rpx;
-              border-bottom-left-radius: 50rpx;
+      border-top-left-radius: 50rpx;
+      border-bottom-left-radius: 50rpx;
       color: rgba(253, 46, 50, 0.7);
       background: rgba(241, 233, 233, 0.4);
 }

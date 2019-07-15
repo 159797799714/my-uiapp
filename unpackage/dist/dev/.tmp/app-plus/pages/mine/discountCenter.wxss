@@ -119,8 +119,7 @@ view.data-v-00e5acb1, image.data-v-00e5acb1, text.data-v-00e5acb1, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-00e5acb1 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-00e5acb1 {
@@ -312,9 +311,7 @@ to {
 .content.data-v-00e5acb1 {
   position: absolute;
   top: 216rpx;
-  height: -webkit-calc(100% - 216rpx);
   height: calc(100% - 216rpx);
-  width: -webkit-calc(100% - 60rpx);
   width: calc(100% - 60rpx);
   margin: 0 30rpx;
   background: #f4f4f4;
@@ -456,8 +453,7 @@ to {
             display: block;
             height: 40rpx;
             width: 110rpx;
-            -webkit-border-radius: 20rpx;
-                    border-radius: 20rpx;
+            border-radius: 20rpx;
             background: #F4A03D;
             color: #fff;
             text-align: center;

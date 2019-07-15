@@ -119,8 +119,7 @@ view.data-v-33081922, image.data-v-33081922, text.data-v-33081922, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-33081922 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-33081922 {
@@ -340,8 +339,7 @@ to {
       height: 66rpx;
       line-height: 66rpx;
       background: #fff;
-      -webkit-border-radius: 33rpx;
-              border-radius: 33rpx;
+      border-radius: 33rpx;
 }
 .footer .foot-head .ipt > input.data-v-33081922 {
         -webkit-box-flex: 1;
@@ -405,8 +403,7 @@ to {
         width: 100%;
         margin-bottom: 20rpx;
         background: #fff;
-        -webkit-border-radius: 10rpx;
-                border-radius: 10rpx;
+        border-radius: 10rpx;
         text-align: center;
 }
 .footer .send-way .item .logo > text.data-v-33081922 {

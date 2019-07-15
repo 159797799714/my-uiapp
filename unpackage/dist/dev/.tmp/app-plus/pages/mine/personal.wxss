@@ -119,8 +119,7 @@ view.data-v-017b3b3b, image.data-v-017b3b3b, text.data-v-017b3b3b, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-017b3b3b {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-017b3b3b {
@@ -338,8 +337,7 @@ to {
         height: 114rpx;
         width: 114rpx;
         margin-right: 27rpx;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
 }
 .content .personal-img.data-v-017b3b3b {
     height: 174rpx;

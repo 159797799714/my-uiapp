@@ -119,8 +119,7 @@ view.data-v-275f3386, image.data-v-275f3386, text.data-v-275f3386, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-275f3386 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-275f3386 {
@@ -396,8 +395,7 @@ to {
       display: inline-block;
       padding: 0 14rpx;
       line-height: 30rpx;
-      -webkit-border-radius: 15rpx;
-              border-radius: 15rpx;
+      border-radius: 15rpx;
       color: #fff;
       background: #F4A03D;
 }
@@ -430,8 +428,7 @@ to {
         height: 44rpx;
         width: 44rpx;
         text-align: center;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
         background: #F4433D;
         color: #fff;
 }
@@ -483,8 +480,7 @@ to {
         height: 40rpx;
         padding: 0 15rpx;
         line-height: 40rpx;
-        -webkit-border-radius: 20rpx;
-                border-radius: 20rpx;
+        border-radius: 20rpx;
         font-size: 22rpx;
         color: #999999;
         background: #f5f5f5;
@@ -554,8 +550,7 @@ to {
     height: 50rpx;
     width: 140rpx;
     text-align: center;
-    -webkit-border-radius: 25rpx;
-            border-radius: 25rpx;
+    border-radius: 25rpx;
     margin-left: 36rpx;
     font-size: 26rpx;
     line-height: 50rpx;

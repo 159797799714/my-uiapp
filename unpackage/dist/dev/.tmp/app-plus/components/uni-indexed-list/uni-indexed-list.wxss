@@ -119,8 +119,7 @@ view, image, text, input, form {
   z-index: 5;
 }
 .my-button {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box {
@@ -375,7 +374,6 @@ to {
     position: absolute;
     top: 88rpx;
     right: 20rpx;
-    height: -webkit-calc(100% - 130rpx);
     height: calc(100% - 130rpx);
 }
 .uni-indexed .uni-indexed__menu .uni-indexed__menu-item {
@@ -434,8 +432,7 @@ to {
     top: 50%;
     margin-left: -80rpx;
     margin-top: -80rpx;
-    -webkit-border-radius: 80rpx;
-            border-radius: 80rpx;
+    border-radius: 80rpx;
     text-align: center;
     line-height: 160rpx;
     font-size: 70rpx;

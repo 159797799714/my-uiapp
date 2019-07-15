@@ -121,20 +121,55 @@ view, image, text, input, form{
 .font-purple{
   color: $color-purple!important;
 }
-/* iPhone X in portrait & landscape */
-@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) {
+
+.dis-block {
+  display: block;
 }
 
-/* iPhone X in landscape */
-@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape) {
+.dis-flex {
+  display: flex !important;
+  /* flex-wrap: wrap; */
 }
 
-/* iPhone X in portrait */
-@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : portrait) {
+.flex-box {
+  flex: 1;
 }
 
-.container{ position: relative; width: 100%; height: 100%; overflow: hidden; box-sizing: border-box; display: flex; flex-direction: column; }
-.content{ position: relative; flex: 1; overflow: hidden; background: #F5F5F5; display: flex; flex-direction: column; box-sizing: border-box; color: $title-color; }
+.flex-dir-row {
+  flex-direction: row;
+}
+
+.flex-dir-column {
+  flex-direction: column;
+}
+
+.flex-x-center {
+  /* display: flex; */
+  justify-content: center;
+}
+
+.flex-x-between {
+  justify-content: space-between;
+}
+
+.flex-x-around {
+  justify-content: space-around;
+}
+
+.flex-x-end {
+  justify-content: flex-end;
+}
+
+.flex-y-center {
+  align-items: center;
+}
+
+.flex-y-end {
+  align-items: flex-end;
+}
+.flex-self-end {
+    align-self: flex-end;
+}
 
 
 // 关闭原生头部导航时自定义头部样式
@@ -261,3 +296,18 @@ view, image, text, input, form{
   color: $color-slipe-red!important;
   border-color: $color-slipe-red!important;
 }
+
+/* iPhone X in portrait & landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) {
+}
+
+/* iPhone X in landscape */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : landscape) {
+}
+
+/* iPhone X in portrait */
+@media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) and (orientation : portrait) {
+}
+
+.container{ position: relative; width: 100%; height: 100%; overflow: hidden; box-sizing: border-box; display: flex; flex-direction: column; }
+.content{ position: relative; flex: 1; overflow: hidden; background: #F5F5F5; display: flex; flex-direction: column; box-sizing: border-box; color: $title-color; }

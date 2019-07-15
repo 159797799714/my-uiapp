@@ -119,8 +119,7 @@ view.data-v-28fdf44e, image.data-v-28fdf44e, text.data-v-28fdf44e, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-28fdf44e {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-28fdf44e {
@@ -321,7 +320,6 @@ to {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  height: -webkit-calc(100vh - 176rpx);
   height: calc(100vh - 176rpx);
 }
 .content .left-nav.data-v-28fdf44e {
@@ -466,8 +464,7 @@ to {
           width: 40rpx;
           color: #fff;
           line-height: 40rpx;
-          -webkit-border-radius: 100%;
-                  border-radius: 100%;
+          border-radius: 100%;
           background: #EEEEEE;
 }
 .content .main .chosen.data-v-28fdf44e {

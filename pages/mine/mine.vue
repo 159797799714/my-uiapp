@@ -145,14 +145,19 @@
       }
     },
     onLoad() {
-      // 获取点赞文章
-      this.getArticle()
-      
       // 获取个人信息
       this.getuserinfo()
+      
+      // 获取点赞文章
+      this.getArticle()
     },
     watch: {
       tabIndex(val) {
+        // 点赞文章列表
+        if(val === 0) {
+          this.getArticle()
+          return
+        }
         // 获取收藏商品
         this.getKeepGood()
       }

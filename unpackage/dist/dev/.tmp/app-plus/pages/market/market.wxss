@@ -119,8 +119,7 @@ view.data-v-1baedeae, image.data-v-1baedeae, text.data-v-1baedeae, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-1baedeae {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-1baedeae {
@@ -305,8 +304,7 @@ to {
   text-align: center;
   color: #ADADAD;
   background: rgba(248, 248, 248, 0.1);
-  -webkit-border-radius: 4rpx;
-          border-radius: 4rpx;
+  border-radius: 4rpx;
 }
 .search .search-icon.data-v-1baedeae {
     margin-right: 19rpx;
@@ -459,8 +457,7 @@ to {
         line-height: 36rpx;
         padding: 0 10rpx;
         font-size: 20rpx;
-        -webkit-border-radius: 18rpx;
-                border-radius: 18rpx;
+        border-radius: 18rpx;
         background: #EEEEEE;
 }
 .main .group > image.data-v-1baedeae {
@@ -505,8 +502,7 @@ to {
           font-size: 22rpx;
           background: #000000;
           color: #fff;
-          -webkit-border-radius: 18rpx;
-                  border-radius: 18rpx;
+          border-radius: 18rpx;
 }
 .main .activity .lightning .price.data-v-1baedeae {
         height: 62rpx;

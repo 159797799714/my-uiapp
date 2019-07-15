@@ -53,46 +53,76 @@ view.data-v-1baedeae, image.data-v-1baedeae, text.data-v-1baedeae, input.data-v-
 .font-purple.data-v-1baedeae {
   color: #FF00FF !important;
 }
-/* iPhone X in portrait & landscape */
-/* iPhone X in landscape */
-/* iPhone X in portrait */
-.container.data-v-1baedeae {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.dis-block.data-v-1baedeae {
+  display: block;
+}
+.dis-flex.data-v-1baedeae {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  /* flex-wrap: wrap; */
+}
+.flex-box.data-v-1baedeae {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.flex-dir-row.data-v-1baedeae {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.flex-dir-column.data-v-1baedeae {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.content.data-v-1baedeae {
-  position: relative;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  overflow: hidden;
-  background: #F5F5F5;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #131313;
+.flex-x-center.data-v-1baedeae {
+  /* display: flex; */
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.flex-x-between.data-v-1baedeae {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.flex-x-around.data-v-1baedeae {
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+.flex-x-end.data-v-1baedeae {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.flex-y-center.data-v-1baedeae {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.flex-y-end.data-v-1baedeae {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.flex-self-end.data-v-1baedeae {
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 .topBar.data-v-1baedeae {
   display: -webkit-box;
@@ -119,8 +149,7 @@ view.data-v-1baedeae, image.data-v-1baedeae, text.data-v-1baedeae, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-1baedeae {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-1baedeae {
@@ -277,6 +306,47 @@ to {
   color: #FF3C3E !important;
   border-color: #FF3C3E !important;
 }
+/* iPhone X in portrait & landscape */
+/* iPhone X in landscape */
+/* iPhone X in portrait */
+.container.data-v-1baedeae {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.content.data-v-1baedeae {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  background: #F5F5F5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #131313;
+}
 .container.data-v-1baedeae {
   overflow: hidden;
 }
@@ -305,8 +375,7 @@ to {
   text-align: center;
   color: #ADADAD;
   background: rgba(248, 248, 248, 0.1);
-  -webkit-border-radius: 4rpx;
-          border-radius: 4rpx;
+  border-radius: 4rpx;
 }
 .search .search-icon.data-v-1baedeae {
     margin-right: 19rpx;
@@ -459,105 +528,37 @@ to {
         line-height: 36rpx;
         padding: 0 10rpx;
         font-size: 20rpx;
-        -webkit-border-radius: 18rpx;
-                border-radius: 18rpx;
+        border-radius: 18rpx;
         background: #EEEEEE;
 }
 .main .group > image.data-v-1baedeae {
       height: 149rpx;
       width: 190rpx;
 }
-.main .activity.data-v-1baedeae {
+.main .discount.data-v-1baedeae {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    margin-top: 10rpx;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    padding: 0 30rpx;
+    margin-bottom: 30rpx;
 }
-.main .activity .lightning.data-v-1baedeae {
+.main .discount.data-v-1baedeae {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    padding: 0 30rpx;
+    margin-bottom: 30rpx;
+}
+.main .discount .pintuan.data-v-1baedeae {
+      width: 340rpx;
       height: 240rpx;
-      width: 100%;
-      min-width: 340rpx;
-      padding: 25rpx;
-      -webkit-box-sizing: border-box;
-              box-sizing: border-box;
-      background: #f4f4f4;
-}
-.main .activity .lightning .activity-title.data-v-1baedeae {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-}
-.main .activity .lightning .activity-title .title.data-v-1baedeae {
-          margin-right: 14rpx;
-          font-size: 42rpx;
-          line-height: 31rpx;
-          font-weight: 600;
-}
-.main .activity .lightning .activity-title .time.data-v-1baedeae {
-          padding: 0 10rpx;
-          line-height: 41rpx;
-          font-size: 22rpx;
-          background: #000000;
-          color: #fff;
-          -webkit-border-radius: 18rpx;
-                  border-radius: 18rpx;
-}
-.main .activity .lightning .price.data-v-1baedeae {
-        height: 62rpx;
-        line-height: 62rpx;
-        -o-text-overflow: ellipsis;
-           text-overflow: ellipsis;
-        overflow: hidden;
-}
-.main .activity .lightning .price .new-price.data-v-1baedeae {
-          margin-right: 13rpx;
-          font-size: 28rpx;
-          font-weight: 600;
-          color: #F4433D;
-}
-.main .activity .lightning .price .old-price.data-v-1baedeae {
-          font-size: 24rpx;
-          color: #ADADAD;
-          overflow: hidden;
-          position: relative;
-}
-.main .activity .lightning .price .old-price.data-v-1baedeae::before {
-            content: '';
-            text-align: center;
-            width: 100%;
-            background: #ADADAD;
-            height: 2rpx;
-            position: absolute;
-            margin: 0 auto;
-            top: 50%;
-            bottom: 0;
-            -webkit-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                    transform: translateY(-50%);
-}
-.main .activity .lightning .img.data-v-1baedeae {
-        height: 100rpx;
-        width: 100%;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-        overflow: hidden;
-}
-.main .activity .lightning .img > image.data-v-1baedeae {
-          margin-right: 10rpx;
-          height: 100%;
-          width: 100rpx;
-          background: #ccc;
+      background: #f9fafc;
+      margin-bottom: 10rpx;
+      padding: 15rpx 0 0 26rpx;
 }
 .main .recommend.data-v-1baedeae {
     margin-bottom: 200rpx;

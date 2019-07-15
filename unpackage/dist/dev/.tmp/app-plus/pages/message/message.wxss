@@ -119,8 +119,7 @@ view.data-v-446e897e, image.data-v-446e897e, text.data-v-446e897e, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-446e897e {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-446e897e {
@@ -339,8 +338,7 @@ to {
         height: 88rpx;
         width: 88rpx;
         margin-right: 21rpx;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
         overflow: hidden;
         background: #FCD1D1;
 }

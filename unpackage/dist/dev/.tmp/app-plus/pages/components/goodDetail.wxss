@@ -119,8 +119,7 @@ view.data-v-295bbe46, image.data-v-295bbe46, text.data-v-295bbe46, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-295bbe46 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-295bbe46 {
@@ -329,8 +328,7 @@ to {
       height: 4rpx;
       width: 34rpx;
       background: #F4433D;
-      -webkit-border-radius: 2rpx;
-              border-radius: 2rpx;
+      border-radius: 2rpx;
       -webkit-transition: 500ms;
       -o-transition: 500ms;
       transition: 500ms;
@@ -344,8 +342,7 @@ to {
     color: #fff;
     font-size: 40rpx;
     background: rgba(0, 0, 0, 0.4);
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
 }
 .search .back.data-v-295bbe46 {
     margin-right: 73rpx;
@@ -410,8 +407,7 @@ to {
       margin-bottom: 11rpx;
 }
 .panic .time-box .time-info > .iconfont.data-v-295bbe46 {
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
         background: #fff;
         color: #F4A03D;
 }
@@ -420,8 +416,7 @@ to {
       line-height: 30rpx;
       width: 220rpx;
       background: rgba(225, 225, 225, 0.3);
-      -webkit-border-radius: 15rpx;
-              border-radius: 15rpx;
+      border-radius: 15rpx;
       text-align: center;
 }
 .head.data-v-295bbe46 {
@@ -457,8 +452,7 @@ to {
       height: 40rpx;
       padding: 0 17rpx;
       margin-right: 10rpx;
-      -webkit-border-radius: 20rpx;
-              border-radius: 20rpx;
+      border-radius: 20rpx;
       line-height: 40rpx;
       font-size: 24rpx;
       background: rgba(244, 67, 61, 0.08);
@@ -503,8 +497,7 @@ to {
       background: #131313;
       color: #fff;
       line-height: 30rpx;
-      -webkit-border-radius: 15rpx;
-              border-radius: 15rpx;
+      border-radius: 15rpx;
       margin-right: 20rpx;
 }
 .big-cover.toBottom.data-v-295bbe46 {
@@ -567,8 +560,7 @@ to {
         font-size: 20rpx;
         color: #fff;
         background: #131313;
-        -webkit-border-radius: 15rpx;
-                border-radius: 15rpx;
+        border-radius: 15rpx;
         -webkit-flex-wrap: nowrap;
             -ms-flex-wrap: nowrap;
                 flex-wrap: nowrap;
@@ -642,7 +634,6 @@ to {
       overflow: hidden;
 }
 .big-cover .cover-main .cover-word .norm .norm-item.data-v-295bbe46 {
-        width: -webkit-calc(100% + 10rpx);
         width: calc(100% + 10rpx);
 }
 .big-cover .cover-main .cover-word .norm .norm-item .norm-title.data-v-295bbe46 {
@@ -667,8 +658,7 @@ to {
             height: 50rpx;
             font-size: 26rpx;
             line-height: 50rpx;
-            -webkit-border-radius: 25rpx;
-                    border-radius: 25rpx;
+            border-radius: 25rpx;
             background: #f5f5f5;
             border: 2rpx solid #f5f5f5;
 }
@@ -789,8 +779,7 @@ to {
 .user-comment .comment-writer .writer-head > view > view > image.data-v-295bbe46 {
           height: 44rpx;
           width: 44rpx;
-          -webkit-border-radius: 100%;
-                  border-radius: 100%;
+          border-radius: 100%;
           margin-right: 16rpx;
           background: #ccc;
 }
@@ -836,8 +825,7 @@ to {
     height: 100rpx;
     width: 100rpx;
     margin-right: 54rpx;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
     background: #ccc;
 }
 .store .name.data-v-295bbe46 {
@@ -854,8 +842,7 @@ to {
     text-align: center;
     font-size: 24rpx;
     line-height: 50rpx;
-    -webkit-border-radius: 25rpx;
-            border-radius: 25rpx;
+    border-radius: 25rpx;
 }
 .bottom-bar.data-v-295bbe46 {
   height: 98rpx;

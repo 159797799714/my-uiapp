@@ -119,8 +119,7 @@ view.data-v-c8d3d26e, image.data-v-c8d3d26e, text.data-v-c8d3d26e, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-c8d3d26e {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-c8d3d26e {
@@ -471,8 +470,7 @@ to {
           height: 40rpx;
           width: 40rpx;
           margin-right: 10rpx;
-          -webkit-border-radius: 100%;
-                  border-radius: 100%;
+          border-radius: 100%;
           overflow: hidden;
 }
 .goods-content .item .info .user .userImg > image.data-v-c8d3d26e {

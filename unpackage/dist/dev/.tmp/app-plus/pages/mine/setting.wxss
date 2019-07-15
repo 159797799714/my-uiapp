@@ -119,8 +119,7 @@ view.data-v-7d533e25, image.data-v-7d533e25, text.data-v-7d533e25, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-7d533e25 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-7d533e25 {
@@ -303,8 +302,7 @@ to {
       width: 114rpx;
       margin-left: 37rpx;
       margin-right: 37rpx;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      border-radius: 100%;
       overflow: hidden;
 }
 .content .user .img > image.data-v-7d533e25 {
@@ -357,8 +355,7 @@ to {
     display: inline-block;
     margin: 0 auto;
     margin-top: 121rpx;
-    -webkit-border-radius: 49rpx;
-            border-radius: 49rpx;
+    border-radius: 49rpx;
     border: 1px solid #666666;
     font-size: 30rpx;
     line-height: 98rpx;

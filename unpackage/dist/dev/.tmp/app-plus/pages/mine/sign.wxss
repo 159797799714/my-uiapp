@@ -119,8 +119,7 @@ view.data-v-27f8d490, image.data-v-27f8d490, text.data-v-27f8d490, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-27f8d490 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-27f8d490 {
@@ -307,8 +306,7 @@ to {
     height: 1029rpx;
     width: 100%;
     background: #131313;
-    -webkit-border-radius: 0px 0px 0px 127px;
-            border-radius: 0px 0px 0px 127px;
+    border-radius: 0px 0px 0px 127px;
 }
 .content .header.data-v-27f8d490 {
     display: -webkit-box;
@@ -378,8 +376,7 @@ to {
         font-size: 28rpx;
         line-height: 70rpx;
         text-align: center;
-        -webkit-border-radius: 35rpx;
-                border-radius: 35rpx;
+        border-radius: 35rpx;
         background: #3c3c3c;
 }
 .big-cover .cover-bg.data-v-27f8d490 {
@@ -387,8 +384,7 @@ to {
   height: 400rpx;
   width: 600rpx;
   margin: 414rpx auto 66rpx;
-  -webkit-border-radius: 10rpx;
-          border-radius: 10rpx;
+  border-radius: 10rpx;
   overflow: hidden;
 }
 .big-cover .cover-bg > image.data-v-27f8d490 {
@@ -420,8 +416,7 @@ to {
         height: 30rpx;
         width: 30rpx;
         line-height: 30rpx;
-        -webkit-border-radius: 100%;
-                border-radius: 100%;
+        border-radius: 100%;
         text-align: center;
         font-size: 18rpx;
         color: #fff;

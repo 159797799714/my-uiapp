@@ -119,8 +119,7 @@ view.data-v-69f25900, image.data-v-69f25900, text.data-v-69f25900, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-69f25900 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-69f25900 {
@@ -301,8 +300,7 @@ to {
             align-items: center;
     color: #ADADAD;
     background: rgba(248, 248, 248, 0.1);
-    -webkit-border-radius: 10rpx;
-            border-radius: 10rpx;
+    border-radius: 10rpx;
 }
 .topBar .search .ipt.data-v-69f25900 {
       -webkit-box-flex: 1;
@@ -355,8 +353,7 @@ to {
       color: #666666;
       font-size: 28rpx;
       line-height: 27rpx;
-      -webkit-border-radius: 10rpx;
-              border-radius: 10rpx;
+      border-radius: 10rpx;
       background: #f5f5f5;
       margin-right: 30rpx;
       margin-bottom: 19rpx;

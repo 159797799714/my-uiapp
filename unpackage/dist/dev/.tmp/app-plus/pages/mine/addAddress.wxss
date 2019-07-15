@@ -119,8 +119,7 @@ view.data-v-f8044a64, image.data-v-f8044a64, text.data-v-f8044a64, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-f8044a64 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-f8044a64 {
@@ -335,8 +334,7 @@ to {
         width: 92rpx;
         text-align: center;
         line-height: 40rpx;
-        -webkit-border-radius: 20rpx;
-                border-radius: 20rpx;
+        border-radius: 20rpx;
         border: 1px solid #999999;
         color: #666666;
 }

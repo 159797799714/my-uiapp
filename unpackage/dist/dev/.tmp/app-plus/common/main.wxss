@@ -119,8 +119,7 @@ view, image, text, input, form {
   z-index: 5;
 }
 .my-button {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box {

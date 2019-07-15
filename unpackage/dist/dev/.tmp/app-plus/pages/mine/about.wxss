@@ -119,8 +119,7 @@ view.data-v-07549822, image.data-v-07549822, text.data-v-07549822, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-07549822 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-07549822 {

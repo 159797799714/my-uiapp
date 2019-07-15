@@ -119,8 +119,7 @@ view.data-v-7dfac292, image.data-v-7dfac292, text.data-v-7dfac292, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-7dfac292 {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-7dfac292 {
@@ -372,8 +371,7 @@ to {
         font-size: 22rpx;
         line-height: 36rpx;
         text-align: center;
-        -webkit-border-radius: 18rpx;
-                border-radius: 18rpx;
+        border-radius: 18rpx;
         background: #F4433D;
 }
 .content-cover .content .myForm .info.data-v-7dfac292 {
@@ -386,8 +384,7 @@ to {
 .content-cover .content .myForm .btn.data-v-7dfac292 {
       height: 98rpx;
       width: 100%;
-      -webkit-border-radius: 49rpx;
-              border-radius: 49rpx;
+      border-radius: 49rpx;
       font-size: 30rpx;
       color: #fff;
       line-height: 98rpx;

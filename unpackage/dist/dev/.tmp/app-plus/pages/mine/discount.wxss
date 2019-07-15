@@ -119,8 +119,7 @@ view.data-v-31a821bc, image.data-v-31a821bc, text.data-v-31a821bc, input.data-v-
   z-index: 5;
 }
 .my-button.data-v-31a821bc {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box.data-v-31a821bc {
@@ -420,8 +419,7 @@ to {
           line-height: 42rpx;
           font-size: 22rpx;
           color: #F4433D;
-          -webkit-border-radius: 21rpx;
-                  border-radius: 21rpx;
+          border-radius: 21rpx;
           background: #FEF0F0;
 }
 .content .item .item-main .item-right .detail.data-v-31a821bc {
@@ -453,15 +451,13 @@ to {
 .footer.data-v-31a821bc {
   margin: 27rpx 50rpx;
   height: 98rpx;
-  width: -webkit-calc(100% - 100rpx);
   width: calc(100% - 100rpx);
   text-align: center;
   line-height: 98rpx;
   color: #fff;
   font-size: 30rpx;
   background: #131313;
-  -webkit-border-radius: 49rpx;
-          border-radius: 49rpx;
+  border-radius: 49rpx;
 }
 .footer > .iconfont.data-v-31a821bc {
     margin-right: 17rpx;

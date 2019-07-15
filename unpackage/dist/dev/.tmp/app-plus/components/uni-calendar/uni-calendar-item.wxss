@@ -119,8 +119,7 @@ view, image, text, input, form {
   z-index: 5;
 }
 .my-button {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box {
@@ -336,8 +335,7 @@ to {
       -webkit-flex-shrink: 0;
           -ms-flex-negative: 0;
               flex-shrink: 0;
-      -webkit-border-radius: 50%;
-              border-radius: 50%;
+      border-radius: 50%;
       -webkit-transition: all 0.2s;
       -o-transition: all 0.2s;
       transition: all 0.2s;
@@ -371,8 +369,7 @@ to {
       right: 10rpx;
       width: 10rpx;
       height: 10rpx;
-      -webkit-border-radius: 50%;
-              border-radius: 50%;
+      border-radius: 50%;
       background: #ff5a5f;
       z-index: 2;
 }

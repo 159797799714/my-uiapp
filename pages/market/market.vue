@@ -24,31 +24,33 @@
             <view v-if="index !== 7" class="item-title font-A3">{{ item.name }}</view>
           </view>
         </view>
-        <view class="group border-box bg-white">
-          <view class="group-main border-box">
-            <view class="bigTitle">
-              <image src="../../static/img/market/pintuan-text.png" mode=""></image>
+        
+        <!-- 拼团,秒杀，限时购，0元购等活动入口 -->
+        <view class="discount dis-flex flex-x-between">
+          <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(index)">
+            <view class="pintuan-text dis-flex">
+              <image :src="item.imgUrl"></image>
+              <view v-if="index !== 0 && item.time" class="time f-22 col-f b-15">{{ item.time }}</view>
             </view>
-            <view class="smallTitle">拼的越多，越优惠</view>
-            <!-- <view class="leaveTime">距结束 <text>02:01:20</text></view> -->
+            <view v-if="item.info" class="pintuan-info f-28 col-red">{{ index === 2 ? item.info + '折起': item.info }}</view>
+            <view v-if="!item.info && item.min_price" class="price dis-flex f-28 col-red">
+              ￥<text class="min-price">{{index === 3 ? '0': item.min_price  }}</text>
+              <text class="max-price f-24 col-9 t-dec-line">￥{{ item.max_price }}</text>
+            </view>
+            <view class="pintuan-icon">
+              <image mode="aspectFit" v-if="item.img.length > 0" :src="item.img[0]" />
+              <image mode="aspectFit" v-if="item.img.length > 1"  :src="item.img[1]"/>
+              
+              <!-- 无相关活动 -->
+              <view v-if="index !== 0 && !item.time" class="nothing">
+                <image mode="aspectFit" src="../../static/img/no_content.png"></image>
+                <view class="nothing-info f-28">亲, 没有相关活动</view>
+              </view>
+            </view>
           </view>
-          <image src="../../static/img/market/pintuan-icon.png" mode="" />
         </view>
-        <view class="activity">
-          <view v-for="(item, index) in lightning" :key="index" v-if="item.oldPrice !== ''" class="lightning limit" @click="goPanicBuy(index)">
-            <view class="activity-title">
-              <text class="title">{{ item.title }}</text>
-              <text class="time">{{ lightning.time }}</text>
-            </view>
-            <view class="price">
-              <text class="new-price">￥{{ lightning.newPrice }}</text>
-              <text class="old-price">￥{{ lightning.oldPrice }}</text>
-            </view>
-            <view class="img">
-              <image v-for="(li, num) in item.img" :key="num" :src="li" mode=""></image>
-            </view>
-          </view>
-        </view>
+        
+        <!-- 为您推荐 -->
         <view class="recommend">
           <view class="recommend-title">
             <image src="../../static/img/market/foryou.png" mode=""></image>
@@ -148,16 +150,8 @@
                 this.lightning[0].oldPrice = res.data.goods.goods_max_price
                 this.lightning[0].newPrice = res.data.goods.goods_min_price
                 this.lightning[0].newPrice = res.data.goods.goods_min_price
-                this.lightning[0].img[0] = result.data.goods.image[0].file_path
-                this.lightning[0].img[1] = result.data.goods.image[1].file_path
-                
-                // this.lightning[0].time = res.data.goods.activity_endtime
-                
-                // originalPrice = result.data.goods.goods_max_price
-                // specialPrice = result.data.goods.goods_min_price
-                // time = result.data.goods.category.activity_endtime
-                // img1 = result.data.goods.image[0].file_path
-                // img2 = result.data.goods.image[1].file_path
+                this.lightning[0].img[0] = res.data.goods.image[0].file_path
+                this.lightning[0].img[1] = res.data.goods.image[1].file_path
               }
             } else if (res.code === 0 && res.msg) {
               uni.showToast({
@@ -184,16 +178,10 @@
                 this.lightning[1].oldPrice = res.data.goods.goods_max_price
                 this.lightning[1].newPrice = res.data.goods.goods_min_price
                 this.lightning[1].newPrice = res.data.goods.goods_min_price
-                this.lightning[1].img[0] = result.data.goods.image[0].file_path
-                this.lightning[1].img[1] = result.data.goods.image[1].file_path
+                this.lightning[1].img[0] = res.data.goods.image[0].file_path
+                this.lightning[1].img[1] = res.data.goods.image[1].file_path
                 
                 // this.lightning[0].time = res.data.goods.activity_endtime          时间待处理
-                
-                // originalPrice = result.data.goods.goods_max_price
-                // specialPrice = result.data.goods.goods_min_price
-                // time = result.data.goods.category.activity_endtime
-                // img1 = result.data.goods.image[0].file_path
-                // img2 = result.data.goods.image[1].file_path
               } else {
                 this.lightning[1] = ''
               }
@@ -432,85 +420,23 @@
         width: 190upx;
       }
     }
-
-    .activity {
+    .discount{
       display: flex;
-      justify-content: space-between;
-      margin-top: 10upx;
-
-      .lightning {
-        height: 240upx;
-        width: 100%;
-        min-width: 340upx;
-        padding: 25upx;
-        box-sizing: border-box;
-        background: $color-f4;
-
-        .activity-title {
-          display: flex;
-
-          .title {
-            margin-right: 14upx;
-            font-size: $font-42;
-            line-height: 31upx;
-            font-weight: $font-bold;
-          }
-
-          .time {
-            padding: 0 10upx;
-            line-height: 41upx;
-            font-size: $font-22;
-            background: $color-black;
-            color: $color-white;
-            border-radius: 18upx;
-          }
-        }
-
-        .price {
-          height: 62upx;
-          line-height: 62upx;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          .new-price {
-            margin-right: 13upx;
-            font-size: $font-28;
-            font-weight: $font-bold;
-            color: $color-red;
-          }
-
-          .old-price {
-            font-size: $font-24;
-            color: $control-color;
-            overflow: hidden;
-            position: relative;
-            &::before {
-              content: '';
-              text-align: center;
-              width: 100%;
-              background: $control-color;
-              height: 2upx;
-              position: absolute;
-              margin: 0 auto;
-              top: 50%;
-              bottom: 0;
-              transform: translateY(-50%);
-            }
-          }
-        }
-
-        .img {
-          height: 100upx;
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          overflow: hidden;
-          &>image {
-            margin-right: 10upx;
-            height: 100%;
-            width: 100upx;
-            background: #ccc;
-          }
-        }
+      flex-wrap:wrap;
+      padding:0 30upx;
+      margin-bottom:30upx;
+  
+    }
+    .discount{
+      flex-wrap:wrap;
+      padding:0 30upx;
+      margin-bottom:30upx;
+      .pintuan{
+        width:340upx;
+        height:240upx;
+        background:rgba(249, 250, 252, 1);
+        margin-bottom:10upx;
+        padding:15upx 0 0 26upx;
       }
     }
 
