@@ -85,9 +85,10 @@
       uni.setNavigationBarTitle({
         title: option.origin
       })
+    },
+    onShow() {
       // 获取秒杀或者限时购活动列表
       this.getSeckillCategorys()
-      
     },
     watch: {
       selectIndex(val, oldval) {

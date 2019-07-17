@@ -1,7 +1,6 @@
 {
   "navigationStyle": "custom",
   "bounce": "none",
-  "animationType": "zoom-fade-out",
   "titleNView": "false",
   "usingComponents": {}
 }

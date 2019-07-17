@@ -73,13 +73,8 @@
       },
       loginOut() {
         this.$store.commit('loginout')
-        uni.removeStorage({
-          key: 'userinfo',
-          success: function (res) {
-            console.log('success')
-          }
-        })
-        uni.navigateTo({
+        uni.clearStorageSync()
+        uni.reLaunch({
           url: '../login/login'
         })
       }

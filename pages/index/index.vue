@@ -71,9 +71,11 @@
       }
     },
     onLoad() {
+    },
+    onShow() {
       this.getCategorylist()
       this.getDefault()
-      this.getBanner()
+      this.getBanner()  
     },
     methods: {
       // 获取文章

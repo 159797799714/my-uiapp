@@ -29,6 +29,12 @@ view, image, text, input, form {
 .bg_error {
   background: #dd524d;
 }
+.bg-white {
+  background: #fff !important;
+}
+.bg-black {
+  background: #151515 !important;
+}
 .font-red {
   color: #F4433D;
 }
@@ -38,49 +44,85 @@ view, image, text, input, form {
 .font-66 {
   color: #666666;
 }
-/* iPhone X in portrait & landscape */
-/* iPhone X in landscape */
-/* iPhone X in portrait */
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.font-ff {
+  color: #fff;
 }
-.content {
-  position: relative;
+.font-A3 {
+  color: #A3A3A3 !important;
+}
+.font-purple {
+  color: #FF00FF !important;
+}
+.dis-block {
+  display: block;
+}
+.dis-flex {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  /* flex-wrap: wrap; */
+}
+.flex-box {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  overflow: hidden;
-  background: #F5F5F5;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+}
+.flex-dir-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.flex-dir-column {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #131313;
 }
-.bg-white {
-  background: #fff;
+.flex-x-center {
+  /* display: flex; */
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.flex-x-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.flex-x-around {
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
+.flex-x-end {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.flex-y-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.flex-y-end {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.flex-self-end {
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
 }
 .topBar {
   display: -webkit-box;
@@ -107,8 +149,7 @@ view, image, text, input, form {
   z-index: 5;
 }
 .my-button {
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
   text-align: center;
 }
 .border-box {
@@ -264,6 +305,47 @@ to {
 .border-red {
   color: #FF3C3E !important;
   border-color: #FF3C3E !important;
+}
+/* iPhone X in portrait & landscape */
+/* iPhone X in landscape */
+/* iPhone X in portrait */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.content {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  background: #F5F5F5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #131313;
 }
 @font-face {
   font-family: 'iconfont';
@@ -423,10 +505,8 @@ to {
       border: 1px rgba(253, 46, 50, 0.5) solid;
       border-right: none;
       font-size: 24rpx;
-      -webkit-border-top-left-radius: 50rpx;
-              border-top-left-radius: 50rpx;
-      -webkit-border-bottom-left-radius: 50rpx;
-              border-bottom-left-radius: 50rpx;
+      border-top-left-radius: 50rpx;
+      border-bottom-left-radius: 50rpx;
       color: rgba(253, 46, 50, 0.7);
       background: rgba(241, 233, 233, 0.4);
 }

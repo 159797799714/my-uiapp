@@ -88,22 +88,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
     var that = this;
-    uni.getStorage({
-      key: 'userinfo',
-      success: function success(res) {
-        if (res.data.token) {
-          console.log('登录页本地获取的token是', res.data.token);
-          that.$store.commit('setToken', res.data.token);
-          if (res.data.mobile) {
-            console.log('登录页本地获取的手机号是', res.data.mobile);
-            uni.reLaunch({
-              url: 'pages/index/index' });
+    var userinfo = uni.getStorageSync('userinfo');
+    if (userinfo) {
+      if (userinfo.token) {
+        that.$store.commit('setToken', userinfo.token);
+        if (userinfo.mobile) {
+          uni.reLaunch({
+            url: './pages/index/index' });
 
-            return;
-          }
           return;
+        } else {
+          uni.navigateTo({
+            url: './pages/login/bindTel' });
+
         }
-      } });
+      } else {
+        uni.reLaunch({
+          url: './pages/login/login' });
+
+      }
+    } else {
+      uni.reLaunch({
+        url: './pages/login/login' });
+
+    }
+
+
+    // uni.getStorage({
+    //   key: 'userinfo',
+    //   success: function (res) {
+    //     if(res.data.token) {
+    //       console.log('app.vue本地获取的token是', res.data)
+    //       that.$store.commit('setToken', res.data.token)
+    //       if(res.data.mobile) {
+    //         uni.reLaunch({
+    //           url: './pages/index/index'
+    //         })
+    //         return
+    //       } else {
+    //         uni.navigateTo({
+    //           url: './pages/login/bindTel'
+    //         })
+    //       }
+    //       return
+    //     } else {
+    //       uni.redirectTo({
+    //         url: './pages/login/login'
+    //       })
+    //     }
+    //   },
+    //   fail: (err) => {
+    //     uni.reLaunch({
+    //       url: './pages/login/login'
+    //     })
+    //   }
+    // })
+
+
 
   },
   onShow: function onShow() {

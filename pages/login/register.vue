@@ -90,11 +90,9 @@
               },
               cb: (err, res) => {
                 if(!err && res.code === 1) {
-                  if(this.check_code === this.code && this.check_code) {
-                    uni.navigateTo({
-                      url: 'password?type=' + this.type + '&mobile=' + this.username
-                    })  
-                  }
+                  uni.navigateTo({
+                    url: 'password?type=' + this.type + '&mobile=' + this.username
+                  })
                 } else if(res.code === 0) {
                   uni.showToast({
                     title: res.msg,

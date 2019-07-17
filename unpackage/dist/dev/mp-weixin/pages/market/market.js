@@ -210,7 +210,8 @@ var _default =
 
     // 获取推荐商品列表
     this.getRecommendgoods();
-
+  },
+  onShow: function onShow() {
     // 获取一个限时购商品
     this.getLimitGoods();
 

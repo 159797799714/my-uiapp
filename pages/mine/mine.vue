@@ -145,9 +145,11 @@
       }
     },
     onLoad() {
+      
+    },
+    onShow() {
       // 获取个人信息
       this.getuserinfo()
-      
       // 获取点赞文章
       this.getArticle()
     },
@@ -175,7 +177,6 @@
           url: this.$api.getuserinfo,
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log('个人信息', res.data.info)
               this.userinfo = res.data.info
             } else if(res.code === 0) {
               uni.showToast({

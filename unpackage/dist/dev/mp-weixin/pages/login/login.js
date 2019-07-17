@@ -146,26 +146,18 @@ var _default =
       password: '',
       showDel: false,
       ishide: false,
-      loginType: '' };
+      userInfo: {
+        openid: '',
+        type: '',
+        nickname: '',
+        avatarurl: '' } };
+
 
   },
-  onLoad: function onLoad() {
-    // uni.getStorage({
-    //   key: 'userinfo',
-    //   success: function (res) {
-    //     if(res.data.token) {
-    //       console.log('登录页本地获取的token是', res.data.token)
-    //       if(res.data.mobile) {
-    //         console.log('登录页本地获取的手机号是', res.data.mobile)
-    //         uni.reLaunch({
-    //           url: '../index/index'
-    //         })
-    //         return
-    //       }
-    //       return
-    //     }
-    //   }
-    // })
+  onLoad: function onLoad(option) {
+    if (option) {
+      console.log(option.old);
+    }
   },
   methods: {
     onInput: function onInput(e) {
@@ -202,21 +194,28 @@ var _default =
             if (!err && res.code === 1) {
               // console.log(res.data.userinfo.token)
 
+
+
               var userinfo = {
                 mobile: res.data.userinfo.mobile,
                 token: res.data.userinfo.token };
 
               _this.$store.commit('login', userinfo);
-              uni.setStorage({
-                key: 'userinfo',
-                data: userinfo,
-                success: function success() {
-                  console.log('success');
-                } });
 
+              uni.setStorageSync('userinfo', userinfo);
               uni.switchTab({
                 url: '../index/index' });
 
+
+              // uni.setStorage({
+              //   key: 'userinfo',
+              //   data: userinfo,
+              //   success: function () {
+              //     uni.switchTab({
+              //       url: '../index/index'
+              //     })  
+              //   }
+              // })
             } else if (res.code === 0 && res.msg) {
               uni.showToast({
                 title: res.msg,
@@ -241,7 +240,7 @@ var _default =
     // 点击第三方登录
     loginWay: function loginWay(type) {
       var that = this;
-      that.loginType = type === 'weixin' ? 'weixin' : type === 'qq' ? 'qq' : 'sinaweibo';
+      that.userInfo.type = type === 'weixin' ? 'weixin' : type === 'qq' ? 'qq' : 'sinaweibo';
       uni.getProvider({
         service: 'oauth',
         success: function success(res) {
@@ -249,21 +248,24 @@ var _default =
             uni.login({
               provider: type,
               success: function success(loginRes) {
-                // console.log('第三方登录获取到的信息', JSON.stringify(loginRes.authResult.openid))
+                console.log('第三方登录获取到的信息', JSON.stringify(loginRes));
+
                 if (type === 'sinaweibo') {
-                  that.openid = loginRes.authResult.uid;
+                  that.userInfo.openid = loginRes.authResult.uid;
                 } else {
-                  that.openid = loginRes.authResult.openid;
+                  that.userInfo.openid = loginRes.authResult.openid;
                 }
 
-                // 正式登录
-                that.getInfo();
+                uni.getUserInfo({
+                  provider: type,
+                  success: function success(infoRes) {
+                    console.log('头像', infoRes.userInfo.avatarUrl, '用户名', infoRes.userInfo.nickname);
+                    that.userInfo.avatarurl = infoRes.userInfo.avatarUrl ? infoRes.userInfo.avatarUrl : '';
+                    that.userInfo.nickname = infoRes.userInfo.nickname ? infoRes.userInfo.nickname : '';
 
-
-                // // 手动登录
-                // uni.switchTab({
-                //   url: '../index/index'
-                // })
+                    // 正式登录
+                    that.getInfo();
+                  } });
 
               } });
 
@@ -279,29 +281,25 @@ var _default =
     },
     // 第三方登录获取绑定是否手机号等信息
     getInfo: function getInfo() {var _this2 = this;
+      console.log('111', JSON.stringify(this.userInfo));
       this.$http({
         url: this.$api.otherlogin,
         method: 'POST',
-        data: {
-          openid: this.openid,
-          type: this.loginType },
-
+        data: this.userInfo,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            // console.log('获取成功', res.data.userinfo)
-
             // 绑定了手机
             if (res.data.userinfo.mobile) {
               var userinfo = {
                 mobile: res.data.userinfo.mobile,
-                token: res.data.userinfo.token
+                token: res.data.userinfo.token };
 
-
-                // 存储token信息
-              };_this2.$store.commit('login', userinfo);
+              var data = JSON.stringify(userinfo);
+              // 存储token信息
+              _this2.$store.commit('login', userinfo);
               uni.setStorage({
                 key: 'userinfo',
-                data: userinfo,
+                data: data,
                 success: function success() {
                   uni.switchTab({
                     url: '../index/index' });

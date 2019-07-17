@@ -245,9 +245,11 @@ var _default =
 
   },
   onLoad: function onLoad() {
+
+  },
+  onShow: function onShow() {
     // 获取个人信息
     this.getuserinfo();
-
     // 获取点赞文章
     this.getArticle();
   },
@@ -275,7 +277,6 @@ var _default =
         url: this.$api.getuserinfo,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log('个人信息', res.data.info);
             _this.userinfo = res.data.info;
           } else if (res.code === 0) {
             uni.showToast({

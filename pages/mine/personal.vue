@@ -45,9 +45,10 @@
       }
     },
     onLoad(option) {
-      // console.log(JSON.parse(option.userinfo))
-      if(option.userinfo) {
-        this.userinfo = JSON.parse(option.userinfo)
+      let userinfo = option.userinfo
+      console.log(JSON.parse(userinfo))
+      if(userinfo) {
+        this.userinfo = JSON.parse(userinfo)
       }
     },
     methods: {

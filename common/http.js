@@ -6,8 +6,8 @@ export default function(obj){
   })
   let params = {
     'wxapp_id': '10001',
-    // token: store.state.token
-    token: '74155add51e6d35b3ac603555fa0083e'
+    token: store.state.token
+    // token: '74155add51e6d35b3ac603555fa0083e'
   }
   let data ={...obj.data, ...params}
   uni.request({
@@ -28,14 +28,13 @@ export default function(obj){
       obj.cb(err, null)
     },
     complete: (data)=> {
-      if(data) {
-        uni.hideLoading()
-      } else {
-        uni.hideLoading()
+      if(!data) {
         uni.showToast({
           title: '请求出错',
           icon: 'none'
         })
+      } else {
+        uni.hideLoading()
       }
     }
   })

@@ -14,7 +14,7 @@ const store = new Vuex.Store({
       state.mobile = userinfo.mobile;
       state.token = userinfo.token;
     },
-    logout(state) {
+    loginout(state) {
       state.mobile = '';
       state.token = '';
     },

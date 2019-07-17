@@ -110,7 +110,8 @@
       
       // 获取推荐商品列表
       this.getRecommendgoods()
-      
+    },
+    onShow() {
       // 获取一个限时购商品
       this.getLimitGoods()
       

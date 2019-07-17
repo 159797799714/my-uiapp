@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/login/login",
+    "pages/login/bindTel",
     "pages/login/register",
     "pages/login/password",
-    "pages/index/index",
     "pages/components/shareInfo",
     "pages/market/market",
     "pages/components/goodDetail",
@@ -83,6 +84,6 @@
     "autoclose": false
   },
   "appname": "优逸",
-  "compilerVersion": "2.0.1",
+  "compilerVersion": "2.1.1",
   "usingComponents": {}
 }

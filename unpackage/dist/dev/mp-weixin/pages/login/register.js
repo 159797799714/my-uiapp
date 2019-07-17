@@ -190,11 +190,9 @@ var _default =
 
             cb: function cb(err, res) {
               if (!err && res.code === 1) {
-                if (_this.check_code === _this.code && _this.check_code) {
-                  uni.navigateTo({
-                    url: 'password?type=' + _this.type + '&mobile=' + _this.username });
+                uni.navigateTo({
+                  url: 'password?type=' + _this.type + '&mobile=' + _this.username });
 
-                }
               } else if (res.code === 0) {
                 uni.showToast({
                   title: res.msg,

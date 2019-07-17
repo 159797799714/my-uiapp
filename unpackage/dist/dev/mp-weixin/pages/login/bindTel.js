@@ -146,10 +146,10 @@ var _default =
       mobile: '',
       code: '',
       password: '',
-      check_code: '',
-      showInfo: false,
-      ishide: false };
-
+      showInfo: false, // 验证码发送状态
+      ishide: false, // 密码的显示或隐藏
+      check_code: false // 验证码是否正确
+    };
   },
   // onLoad(option) {
   //   console.log(option.token)
@@ -161,6 +161,37 @@ var _default =
         delta: 1 });
 
     },
+    // 验证码输入
+    onInputCode: function onInputCode(e) {
+      var that = this;
+      var code = e.detail.value;
+      if (code.length === 4 && this.showInfo) {
+        this.$http({
+          url: this.$api.smscodeyz,
+          method: 'POST',
+          data: {
+            mobile: this.mobile,
+            code: this.code },
+
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              that.check_code = true;
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            }if (err) {
+              uni.showToast({
+                title: '手机验证码校验失败',
+                icon: 'none' });
+
+            }
+          } });
+
+      }
+    },
+    // 手机号码输入
     onInput: function onInput(e) {
       var value = e.detail.value;
       if (value) {
@@ -170,61 +201,84 @@ var _default =
       this.showDel = false;
     },
     sureAction: function sureAction() {
-      if (!this.check_code) {
+      var that = this;
+      if (!that.showInfo) {
         uni.showToast({
           title: '请先获取手机验证码',
           icon: 'none' });
 
         return;
       }
-      if (this.check_code !== this.code) {
+      if (!that.code || that.code.length !== 4) {
         uni.showToast({
-          title: '验证码不正确',
+          title: '验证码格式错误',
           icon: 'none' });
 
         return;
       }
-      if (!this.password) {
+      if (!that.password) {
         uni.showToast({
           title: '请输入密码',
           icon: 'none' });
 
         return;
       }
-      // if(this.check_code === this.code && this.check_code) {
-      //   let data = {
-      //     mobile: this.mobile,
-      //     password: this.password
-      //   }
-      //   // console.log(JSON.stringify(data))
-      //   this.$http({
-      //     url: this.$api.otherregister,
-      //     method: 'POST',
-      //     data: data,
-      //     cb: (err, res) => {
-      //       if(!err && res.code === 1) {
-      //         uni.showToast({
-      //           title: '绑定手机号成功',
-      //           icon: 'none'
-      //         })
-      //         uni.switchTab({
-      //           url: '../index/index'
-      //         })
-      //       } else if (res.code === 0 && res.msg){
-      //         uni.showToast({
-      //           title: res.msg,
-      //           icon: 'none'
-      //         })
-      //       } if(err) {
-      //         uni.showToast({
-      //           title: '绑定手机号失败',
-      //           icon: 'none'
-      //         })
-      //       }
-      //     }
-      //   })
-      // }
+      if (!that.check_code) {
+        uni.showToast({
+          title: '验证码错误',
+          icon: 'none' });
+
+        return;
+      }
+      // 绑定手机
+      var data = {
+        mobile: that.mobile,
+        password: that.password };
+
+      console.log(JSON.stringify(data));
+      that.$http({
+        url: that.$api.otherregister,
+        method: 'POST',
+        data: data,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '绑定手机号成功',
+              icon: 'none' });
+
+            console.log(JSON.stringify(res));
+            var userinfo = {
+              mobile: res.data.info.mobile,
+              token: res.data.info.token
+
+
+              // 存储token信息
+            };that.$store.commit('login', userinfo);
+            uni.setStorage({
+              key: 'userinfo',
+              data: userinfo,
+              success: function success() {
+                uni.switchTab({
+                  url: '../index/index' });
+
+              } });
+
+          } else if (res.code === 0 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          }if (err) {
+            uni.showToast({
+              title: '绑定手机号失败',
+              icon: 'none' });
+
+          }
+        } });
+
     },
+
+    // 获取验证码
     getCode: function getCode() {
       var value = /^1[3456789]\d{9}$/.test(this.mobile);
       var that = this;
@@ -243,7 +297,6 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            that.check_code = res.data.info.code.toString();
             that.code_word = 120;
             that.showInfo = true;
             setInterval(function () {
@@ -251,7 +304,6 @@ var _default =
                 that.code_word--;
               }
               if (that.code_word === 0) {
-                that.check_code = '';
                 that.showInfo = false;
                 return;
               }
