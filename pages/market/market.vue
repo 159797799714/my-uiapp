@@ -30,12 +30,12 @@
           <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(index)">
             <view class="pintuan-text dis-flex">
               <image :src="item.imgUrl"></image>
-              <view v-if="index !== 0 && item.time" class="time f-22 col-f b-15">{{ item.time }}</view>
+              <view v-if="index !== 0 && item.time" class="time font-22 col-f b-15">{{ item.time }}</view>
             </view>
-            <view v-if="item.info" class="pintuan-info f-28 col-red">{{ index === 2 ? item.info + '折起': item.info }}</view>
-            <view v-if="!item.info && item.min_price" class="price dis-flex f-28 col-red">
+            <view v-if="item.info" class="pintuan-info font-28 col-red">{{ index === 2 ? item.info + '折起': item.info }}</view>
+            <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-red">
               ￥<text class="min-price">{{index === 3 ? '0': item.min_price  }}</text>
-              <text class="max-price f-24 col-9 t-dec-line">￥{{ item.max_price }}</text>
+              <text class="max-price font-24 col-9 t-dec-line">￥{{ item.max_price }}</text>
             </view>
             <view class="pintuan-icon">
               <image mode="aspectFit" v-if="item.img.length > 0" :src="item.img[0]" />
@@ -44,7 +44,7 @@
               <!-- 无相关活动 -->
               <view v-if="index !== 0 && !item.time" class="nothing">
                 <image mode="aspectFit" src="../../static/img/no_content.png"></image>
-                <view class="nothing-info f-28">亲, 没有相关活动</view>
+                <view class="nothing-info font-28">亲, 没有相关活动</view>
               </view>
             </view>
           </view>
@@ -88,17 +88,31 @@
           goods_id: 10255
         }],
         menuList: [], // 所有商品分类列表
-        lightning: [{
-          title: '限时购',
+        discount: [
+        {
+          imgUrl: '../../static/img/market/pintuan-text.png',
+          name: '拼团购',
+          info: '拼得越多，越优惠',
+          img: ['../../static/img/market/pintuan-icon.png']
+        }, {
+          imgUrl: '../../static/img/market/miaoshagou-text.png',
+          name: '秒杀购',
           time: '',
-          newPrice: '',
-          oldPrice: '',
+          min_price: '',
+          max_price: '',
           img: []
         }, {
-          title: '秒杀购',
+          imgUrl: '../../static/img/market/xianshigou-text.png',
+          name: '限时购',
           time: '',
-          newPrice: '',
-          oldPrice: '',
+          info: '',
+          img: []
+        }, {
+          imgUrl: '../../static/img/market/zero-text.png',
+          name: '0元购',
+          time: '',
+          min_price: '',
+          max_price: '',
           img: []
         }],
         recommendList: []
@@ -112,11 +126,11 @@
       this.getRecommendgoods()
     },
     onShow() {
-      // 获取一个限时购商品
-      this.getLimitGoods()
-      
-      // 获取一个秒杀商品
-      this.getKillGoods()
+      // // 获取一个限时购商品
+      // this.getLimitGoods()
+      // 
+      // // 获取一个秒杀商品
+      // this.getKillGoods()
     },
     methods: {
       // 获取所有商品分类
@@ -424,21 +438,73 @@
     .discount{
       display: flex;
       flex-wrap:wrap;
-      padding:0 30upx;
       margin-bottom:30upx;
   
     }
-    .discount{
-      flex-wrap:wrap;
-      padding:0 30upx;
-      margin-bottom:30upx;
-      .pintuan{
-        width:340upx;
-        height:240upx;
-        background:rgba(249, 250, 252, 1);
-        margin-bottom:10upx;
-        padding:15upx 0 0 26upx;
-      }
+    /* 拼团 */
+    .pintuan {
+      width: 340upx;
+      height: 240upx;
+      background: rgba(249, 250, 252, 1);
+      margin-bottom: 10upx;
+      padding: 15upx 0 0 26upx;
+      box-sizing: border-box;
+    }
+    
+    .pintuan-text {
+      font-family: PangMenZhengDao;
+    }
+    
+    .pintuan-text>image{
+      width: 123upx;
+      height: 31upx;
+      margin-right: 14upx;
+    }
+    .pintuan-text .time {
+      line-height: 30upx;
+      height: 30upx;
+      border-radius: 14upx;
+      padding: 0 10upx;
+    }
+    .pintuan-info{
+      line-height: 27upx;
+      margin-top: 11upx;
+    }
+    .pintuan> .price{
+      line-height: 27upx;
+      margin-top: 11upx;
+    }
+    .price .min-price{
+      min-width: 42upx;
+    }
+    .pintuan-icon{
+      flex: 1;
+      padding-right: 30upx;
+      margin-top: 10upx;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .pintuan-icon image {
+      height: 123upx;
+      width: 123upx;
+      margin-right: 10upx;
+    }
+    .pintuan-icon .nothing{
+      height: 100%;
+      width: 100%;
+      text-align: center;
+    }
+    .nothing image{
+      height: 100upx;
+      width: 130upx;
+    }
+    
+    .pintuan-icon-one{
+      text-align: right;
+      margin-top: 0;
+    }
+    .pintuan-icon-one>image{
+      height: 140upx;
     }
 
     .recommend {

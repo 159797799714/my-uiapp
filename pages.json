@@ -55,7 +55,8 @@
         "navigationStyle": "custom",
         "app-plus": {
           "bounce": "none",
-          "titleNView": "false"
+          "titleNView": "false",
+          "usingComponents":true
         }
       }
     }, {

@@ -16,7 +16,7 @@
           </swiper-item>
         </swiper>
       </view>
-      <view class="TabNav bg-black font-ff">
+      <view class="TabNav bg-black font-ff f-bold">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
       <view v-for="(item, index) in cultureList" :key="index" class="culture bg-black">

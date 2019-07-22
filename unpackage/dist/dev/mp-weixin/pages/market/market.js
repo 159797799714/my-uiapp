@@ -188,17 +188,31 @@ var _default =
         goods_id: 10255 }],
 
       menuList: [], // 所有商品分类列表
-      lightning: [{
-        title: '限时购',
+      discount: [
+      {
+        imgUrl: '../../static/img/market/pintuan-text.png',
+        name: '拼团购',
+        info: '拼得越多，越优惠',
+        img: ['../../static/img/market/pintuan-icon.png'] },
+      {
+        imgUrl: '../../static/img/market/miaoshagou-text.png',
+        name: '秒杀购',
         time: '',
-        newPrice: '',
-        oldPrice: '',
+        min_price: '',
+        max_price: '',
         img: [] },
       {
-        title: '秒杀购',
+        imgUrl: '../../static/img/market/xianshigou-text.png',
+        name: '限时购',
         time: '',
-        newPrice: '',
-        oldPrice: '',
+        info: '',
+        img: [] },
+      {
+        imgUrl: '../../static/img/market/zero-text.png',
+        name: '0元购',
+        time: '',
+        min_price: '',
+        max_price: '',
         img: [] }],
 
       recommendList: [] };
@@ -212,11 +226,11 @@ var _default =
     this.getRecommendgoods();
   },
   onShow: function onShow() {
-    // 获取一个限时购商品
-    this.getLimitGoods();
-
-    // 获取一个秒杀商品
-    this.getKillGoods();
+    // // 获取一个限时购商品
+    // this.getLimitGoods()
+    // 
+    // // 获取一个秒杀商品
+    // this.getKillGoods()
   },
   methods: {
     // 获取所有商品分类

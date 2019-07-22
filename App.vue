@@ -76,6 +76,7 @@
 </script>
 
 <style lang="scss">
+  @import url("./components/uni-rich/parse.css");
   page{
     position: relative;
     top: 0;

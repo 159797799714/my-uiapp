@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "u-parse": "/components/uni-rich/parse"
+  }
 }

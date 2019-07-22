@@ -28,7 +28,9 @@
           </view>
       	</view>
         <view class="sing">
-          <!-- <audio :style="{'text-align': 'left'}" :src="current.src" :poster="current.poster" :name="current.name" :author="current.author" :action="audioAction" controls></audio> -->
+          <audio :style="{'text-align': 'left'}" :src="current.src" :controls="false">
+            <text class="iconfont">&#xe62b;</text>
+          </audio>
         </view>
       </view>
       <view class="cultureInfo bg-white">
@@ -38,9 +40,12 @@
         </view>
         <view class="cultureTime">{{ cultureInfo.time }}</view>
         <view class="cultureWords">
-          <rich-text type="node" :nodes="strings"></rich-text>
+          <!-- <rich-text type="node" :nodes="strings"></rich-text> -->
+          <u-parse :content="strings" @preview="preview" @navigate="navigate"/>
         </view>
       </view>
+      
+      <!-- 评论 -->
       <view class="comment bg-white">
         <view class="total">评论({{ comments.num }})</view>
         <view v-for="(item, index) in comments.list" :key="index" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
@@ -84,8 +89,11 @@
 </template>
 
 <script>
-  import parseHtml from  "../../components/richText.js"
+  import uParse from  "../../components/uni-rich/parse.vue"
   export default {
+    components: {
+      uParse
+    },
     data() {
       return {
         current: {
@@ -167,17 +175,11 @@
             // 文章标题等
             this.cultureInfo.title = res.data.detail.article_title
             
-            var richtext=  '<p>众所周知，水电听起来柔软，水电搭配Beats低音更是沁入人心。</p><p><img src="http://market.pd-unixe.com/uploads/2019041511593871a464816.jpg"/></p><p>好了，我们下期再见</p><p><video src="http://weibobangshou.oss-cn-shenzhen.aliyuncs.com/example.mp4" poster="" style="height: 190px;" controls=""></video></p><p></p>'
+            var richtext =  res.data.detail.article_content
             const regex = new RegExp('img')
             richtext= richtext.replace(regex, `img style="max-width: 100%;"`)
             
             this.strings = richtext
-            
-            // this.strings = res.data.detail.article_content
-            
-            // this.strings = parseHtml(res.data.detail.article_content)
-            
-            // console.log(this.strings)
             
             this.cultureInfo.time = res.data.detail.update_time
           }
@@ -286,6 +288,7 @@
 </script>
 
 <style lang="scss" scoped>
+  @import url("../../components/uni-rich/parse.css");
   .topBar{
     position: absolute;
     top: 0;

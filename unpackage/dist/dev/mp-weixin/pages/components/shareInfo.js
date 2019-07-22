@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ "../../../../Desktop/LEI/white/components/uni-rich/parse.vue"));};var _default =
 
 
 
@@ -184,94 +184,48 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _richText = _interopRequireDefault(__webpack_require__(/*! ../../components/richText.js */ "../../../../Desktop/LEI/white/components/richText.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default = { data: function data() {return { current: { poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg', name: '致爱丽丝', author: '暂无', src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' }, audioAction: { method: 'pause' }, // 音频播放audio参数
-      title: '', article_id: '', // 文章ID
-      indicatorDots: true, autoplay: true, interval: 2000, duration: 500, indicatorActiveColor: '#ffffff', swiperList: [], userInfo: { imgUrl: '', userName: '奶油田官方' }, cultureInfo: { title: '2019深圳奶油田电音节', tags: ['深圳奶油田', '深圳'], time: '2019-05-16', words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' }, strings: [], comments: {}, // commentList: [{
+
+
+
+
+
+
+{
+  components: {
+    uParse: uParse },
+
+  data: function data() {
+    return {
+      current: {
+        poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
+        name: '致爱丽丝',
+        author: '暂无',
+        src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3' },
+
+      audioAction: {
+        method: 'pause' },
+      // 音频播放audio参数
+      title: '',
+      article_id: '', // 文章ID
+      indicatorDots: true,
+      autoplay: true,
+      interval: 2000,
+      duration: 500,
+      indicatorActiveColor: '#ffffff',
+      swiperList: [],
+      userInfo: {
+        imgUrl: '',
+        userName: '奶油田官方' },
+
+      cultureInfo: {
+        title: '2019深圳奶油田电音节',
+        tags: ['深圳奶油田', '深圳'],
+        time: '2019-05-16',
+        words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。' },
+
+      strings: [],
+      comments: {},
+      // commentList: [{
       //   imgUrl: '',
       //   name: '撒浪嘿',
       //   speak: '终于有机会去一次音乐节，现场嗨爆了感觉人生已经到了高潮，哈哈。',
@@ -290,14 +244,62 @@ var _default = { data: function data() {return { current: { poster: 'https://img
       //   ]
       // }],               // 评论信息
       speakVal: '', // 我的评论value值
-      sumList: { zanTotal: 2000, starTotal: 1578, megTotal: 1959 } };}, // 接受首页传递的参数
-  onLoad: function onLoad(option) {this.article_id = option.article_id;this.getDetail(this.article_id);}, methods: { goBack: function goBack() {uni.navigateBack({ delta: 1 });}, getDetail: function getDetail(id) {var _this = this;this.$http({ url: this.$api.detailing, data: { article_id: id }, cb: function cb(err, res) {console.log(res.data.detail);_this.swiperList = res.data.detail.banners;_this.comments = res.data.detail.comments; // 文章标题等
-          _this.cultureInfo.title = res.data.detail.article_title;var richtext = '<p>众所周知，水电听起来柔软，水电搭配Beats低音更是沁入人心。</p><p><img src="http://market.pd-unixe.com/uploads/2019041511593871a464816.jpg"/></p><p>好了，我们下期再见</p><p><video src="http://weibobangshou.oss-cn-shenzhen.aliyuncs.com/example.mp4" poster="" style="height: 190px;" controls=""></video></p><p></p>';var regex = new RegExp('img');richtext = richtext.replace(regex, "img style=\"max-width: 100%;\"");_this.strings = richtext; // this.strings = res.data.detail.article_content
-          // this.strings = parseHtml(res.data.detail.article_content)
-          // console.log(this.strings)
-          _this.cultureInfo.time = res.data.detail.update_time;} });}, // 评论点赞
-    zanAction: function zanAction(item, index) {var _this2 = this; // console.log(item.id, item.islike, index)
-      var url = this.$api.commentunlike;if (item.islike === 'no') {url = this.$api.commentlike;}this.$http({ url: url, data: { comment_id: item.id }, cb: function cb(err, res) {if (!err && res) {switch (_this2.comments.list[index].islike) {
+      sumList: {
+        zanTotal: 2000,
+        starTotal: 1578,
+        megTotal: 1959 } };
+
+
+  },
+  // 接受首页传递的参数
+  onLoad: function onLoad(option) {
+    this.article_id = option.article_id;
+    this.getDetail(this.article_id);
+  },
+  methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
+    getDetail: function getDetail(id) {var _this = this;
+      this.$http({
+        url: this.$api.detailing,
+        data: {
+          article_id: id },
+
+        cb: function cb(err, res) {
+          console.log(res.data.detail);
+          _this.swiperList = res.data.detail.banners;
+          _this.comments = res.data.detail.comments;
+          // 文章标题等
+          _this.cultureInfo.title = res.data.detail.article_title;
+
+          var richtext = res.data.detail.article_content;
+          var regex = new RegExp('img');
+          richtext = richtext.replace(regex, "img style=\"max-width: 100%;\"");
+
+          _this.strings = richtext;
+
+          _this.cultureInfo.time = res.data.detail.update_time;
+        } });
+
+    },
+    // 评论点赞
+    zanAction: function zanAction(item, index) {var _this2 = this;
+      // console.log(item.id, item.islike, index)
+      var url = this.$api.commentunlike;
+      if (item.islike === 'no') {
+        url = this.$api.commentlike;
+      }
+      this.$http({
+        url: url,
+        data: {
+          comment_id: item.id },
+
+        cb: function cb(err, res) {
+          if (!err && res) {
+            switch (_this2.comments.list[index].islike) {
               case 'yes':
                 _this2.comments.list[index].islike = 'no';
                 _this2.comments.list[index].likenum -= 1;
