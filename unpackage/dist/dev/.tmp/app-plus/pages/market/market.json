@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh": true,
   "navigationStyle": "custom",
   "bounce": "none",
   "titleNView": false,

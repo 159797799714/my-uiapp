@@ -16,6 +16,7 @@ export default {
   activitytags: API.devApi + '/article/activitytags',                   // 所有标签分类
   articlesbysearch: API.devApi + '/article/articlesbysearch',           // 搜索文章列表
   index: API.devApi + '/page/index',                                    // 首页
+  index_gethomebanners: API.devApi + '/article/gethomebanners',         // 首页轮播图
 
   // 详情页
   commentlike: API.devApi + '/article/commentlike',                      // 评论点赞
@@ -28,13 +29,16 @@ export default {
   like: API.devApi + '/article/like',                                    // 文章点赞
   
   // 商城
-  promotions: API.devApi + '/goods/promotions',                          // 促销活动
-  goodscategory: API.devApi + '/category/goodscategory',                 // 获取所有商品分类
-  recommendgoods: API.devApi + '/goods/recommendgoods',                  // 推荐商品列表
-  getbrands: API.devApi + '/brands/getbrands',                           // 品牌分类
-  getflashsalegoodsbyone: API.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品
-  getseckillgoodsbyone: API.devApi + '/seckill/getseckillgoodsbyone',       // 商城页展示一个秒杀商品
-  goodlists: API.devApi + '/goods/goodlists',                             // 商城搜索
+  promotions: API.devApi + '/goods/promotions',                                 // 促销活动
+  goodscategory: API.devApi + '/category/goodscategory',                        // 获取所有商品分类
+  recommendgoods: API.devApi + '/goods/recommendgoods',                         // 推荐商品列表
+  getbrands: API.devApi + '/brands/getbrands',                                  // 品牌分类
+  getflashsalegoodsbyone: API.devApi + '/flashsale/getflashsalegoodsbyone',     // 商城页展示一个限时抢购商品
+  getseckillgoodsbyone: API.devApi + '/seckill/getseckillgoodsbyone',           // 商城页展示一个秒杀商品
+  goodlists: API.devApi + '/goods/goodlists',                                   // 商城搜索
+  goods_gethomebanners: API.devApi + '/goods/gethomebanners',                   // 商城首页轮播图
+  goods_detail: API.devApi + '/goods/detail',                                   // 普通商品详情
+
   
   // 秒杀
   seckill_goodsbycategoryid: API.devApi + '/seckill/goodsbycategoryid',           // 通过秒杀活动ID获取秒杀商品列表
@@ -59,5 +63,18 @@ export default {
   
   // 订单
   orderList: API.devApi + '/user.order/lists',                                      // 订单
+  
+  
+  // 购物车 
+  shopcarList: API.devApi + '/cart/lists',                                          // 购物车列表
+  addcar: API.devApi + '/cart/add',                                                 // 添加购物车
+  delcar: API.devApi + '/cart/delete',                                              // 移出购物车
+  buyNowinventory: API.devApi + '/order/buyNowinventory',                           // 下订单前检查库存是否充足
+  
+  
+  
+  
+  // 下订单前检查库存 /order/buyNowinventory&goods_id=10234&goods_num=1&goods_sku_id=10028_10255_10258&wxapp_id=10001&token=4de6cf677435f27793fcd69731a43540
+  
   
 }

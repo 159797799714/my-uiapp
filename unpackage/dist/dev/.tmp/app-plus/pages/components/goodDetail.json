@@ -2,5 +2,7 @@
   "navigationStyle": "custom",
   "bounce": "none",
   "titleNView": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "u-parse": "/components/uni-rich/parse"
+  }
 }

@@ -18,7 +18,9 @@
           </view>
         </swiper-item>
       </swiper>
-      <view class="songs padding-30 border-box">
+      
+      <!-- 歌单推荐 -->
+      <!-- <view class="songs padding-30 border-box">
       	<view class="song-share">
           <view class="title">
             <text>歌单推荐</text>(4首)
@@ -32,7 +34,8 @@
             <text class="iconfont">&#xe62b;</text>
           </audio>
         </view>
-      </view>
+      </view> -->
+      
       <view class="cultureInfo bg-white">
         <view class="cultureTitle">{{ cultureInfo.title }}</view>
         <view class="cultureCategory">
@@ -48,7 +51,7 @@
       <!-- 评论 -->
       <view class="comment bg-white">
         <view class="total">评论({{ comments.num }})</view>
-        <view v-for="(item, index) in comments.list" :key="index" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
+        <view v-for="(item, index) in comments.list" :key="index" v-if="index < 3" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
           <view class="writer">
             <view class="writerImg">
               <image :src="item.avatarUrl" mode=""></image>
@@ -76,6 +79,7 @@
             </view>
           </view>
         </view>
+        view.
       </view>
     </scroll-view>
     <view class="speak bg-white border-box">

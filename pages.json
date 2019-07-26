@@ -62,6 +62,7 @@
     }, {
       "path": "pages/market/market",
       "style": {
+        "enablePullDownRefresh": true,
         "navigationStyle": "custom",
         "app-plus": {
           "bounce": "none",

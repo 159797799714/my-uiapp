@@ -10,8 +10,8 @@
       <view class="banner-swiper bg-black">
         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
-            <view class="swiper-item">
-              <image :src="item.imgUrl" mode=""></image>
+            <view class="swiper-item" @click="goDetail(item)">
+              <image :src="item.image.file_path" mode=""></image>
             </view>
           </swiper-item>
         </swiper>
@@ -19,14 +19,13 @@
       <view class="TabNav bg-black font-ff f-bold">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
-      <view v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
+      <view v-if="cultureList.length > 0" v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
         <image :src="item.image.file_path" mode="" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
           <view v-if="item.article_title" class="title font-ff" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
           <view v-if="item.subtitle" class="info font-A3" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
           <view class="control">
             <view class="look">
-              <text class="search-icon iconfont">&#xe6cc;</text>
               <text>{{ item.show_views }}</text>
             </view>
             <view class="zan">
@@ -35,6 +34,10 @@
             </view>
           </view>  
         </view>
+      </view>
+      <view v-if="cultureList.length < 1" class="null dis-flex flex-dir-column  flex-y-center">
+        <view class="iconfont font-88 col-f">&#xe698;</view>
+        <view class="col-f font-32">亲，暂无相关文章哦！</view>
       </view>
     </scroll-view>
   </view>
@@ -48,7 +51,7 @@
         indicatorDots: true,
         autoplay: true,
         interval: 2000,
-        duration: 500,
+        duration: 2000,
         indicatorActiveColor: '#ffffff',
         searchInfo: '大家都在搜“森海塞尔”',
         swiperList: [{
@@ -71,13 +74,27 @@
       }
     },
     onLoad() {
-    },
-    onShow() {
       this.getCategorylist()
       this.getDefault()
       this.getBanner()  
     },
     methods: {
+      goDetail(item) {
+        console.log(item.activity_link)
+        let goods = item.activity_link.indexOf('goods_id=')
+        let article = item.activity_link.indexOf('article_id=')
+        if(goods !== -1) {
+          uni.navigateTo({
+            url: '../components/goodDetail?goods_id=' + item.activity_link.slice(9)
+            // url: 'goodDetail' 
+          })
+        }
+        if(article !== -1) {
+          uni.navigateTo({
+            url: '../components/shareInfo?article_id=' + item.activity_link.slice(11)
+          })
+        }
+      },
       // 获取文章
       getDefault(id) {
         this.$http({
@@ -88,12 +105,12 @@
           cb: (err, res) => {
             if (!err && res.code === 1) {
               this.cultureList = res.data.list
-              if (res.data.list.length === 0) {
-                uni.showToast({
-                	title: '当前分类文章为空',
-                  icon: 'none'
-                })
-              }
+              // if (res.data.list.length === 0) {
+              //   uni.showToast({
+              //   	title: '当前分类文章为空',
+              //     icon: 'none'
+              //   })
+              // }
               return
             } else {
               uni.showToast({
@@ -179,13 +196,13 @@
       // 首页轮播图图片
       getBanner() {
         this.$http({
-          url: this.$api.index,
+          url: this.$api.index_gethomebanners,
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              // console.log(res.data.items[0].data)
+              console.log(res.data)
               
               // 替换轮播图图片路径数据
-              // this.swiperList = res.data.items[0].data
+              this.swiperList = res.data.list
             } else {
               uni.showToast({
               	title: '轮播图图片加载失败',

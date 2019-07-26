@@ -12,7 +12,7 @@
           :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
           <swiper-item v-for="(item, index) in swiperList" :key="index">
             <view class="swiper-item">
-              <image :src="item.imgUrl" mode=""></image>
+              <image :src="item.image.file_path" mode=""></image>
             </view>
           </swiper-item>
         </swiper>
@@ -37,7 +37,7 @@
               ￥<text class="min-price">{{index === 3 ? '0': item.min_price  }}</text>
               <text class="max-price font-24 col-9 t-dec-line">￥{{ item.max_price }}</text>
             </view>
-            <view class="pintuan-icon">
+            <view :class="{'pintuan-icon': true, 'pintuan-icon-one': item.img.length < 2 } ">
               <image mode="aspectFit" v-if="item.img.length > 0" :src="item.img[0]" />
               <image mode="aspectFit" v-if="item.img.length > 1"  :src="item.img[1]"/>
               
@@ -83,10 +83,7 @@
         duration: 500,
         indicatorActiveColor: '#fff',
         searchInfo: '大家都在搜“森海塞尔”',
-        swiperList: [{
-          imgUrl: "https://market.pd-unixe.com/uploads/20190625200421f6a525590.png",
-          goods_id: 10255
-        }],
+        swiperList: [],
         menuList: [], // 所有商品分类列表
         discount: [
         {
@@ -119,6 +116,8 @@
       }
     },
     onLoad() {
+      // 轮播图
+      this.getSwiperList()
       // 获取所有商品分类
       this.getGoodscategory()
       
@@ -132,7 +131,32 @@
       // // 获取一个秒杀商品
       // this.getKillGoods()
     },
+    onPullDownRefresh() {
+      console.log('refresh');
+      setTimeout(function () {
+          uni.stopPullDownRefresh();
+      }, 1000);
+    },
     methods: {
+      getSwiperList() {
+        this.$http({
+          url: this.$api.goods_gethomebanners,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              console.log(res.data)
+              
+              // 替换轮播图图片路径数据
+              this.swiperList = res.data.list
+            } else {
+              uni.showToast({
+              	title: '轮播图图片加载失败',
+                icon: 'none'
+              })
+            }
+            // console.log(res.data.items[0].data[0].imgUrl)
+          }
+        })
+      },
       // 获取所有商品分类
       getGoodscategory() {
         this.$http({
@@ -162,11 +186,7 @@
             if (!err && res.code === 1) {
               console.log('限时', res.data)
               if(res.data.goods) {
-                this.lightning[0].oldPrice = res.data.goods.goods_max_price
-                this.lightning[0].newPrice = res.data.goods.goods_min_price
-                this.lightning[0].newPrice = res.data.goods.goods_min_price
-                this.lightning[0].img[0] = res.data.goods.image[0].file_path
-                this.lightning[0].img[1] = res.data.goods.image[1].file_path
+                
               }
             } else if (res.code === 0 && res.msg) {
               uni.showToast({
@@ -190,13 +210,8 @@
             if (!err && res.code === 1) {
               console.log('秒杀', res.data)
               if(res.data.goods) {
-                this.lightning[1].oldPrice = res.data.goods.goods_max_price
-                this.lightning[1].newPrice = res.data.goods.goods_min_price
-                this.lightning[1].newPrice = res.data.goods.goods_min_price
-                this.lightning[1].img[0] = res.data.goods.image[0].file_path
-                this.lightning[1].img[1] = res.data.goods.image[1].file_path
                 
-                // this.lightning[0].time = res.data.goods.activity_endtime          时间待处理
+                
               } else {
                 this.lightning[1] = ''
               }
@@ -237,24 +252,41 @@
       },
       // 去商品详情页
       goDetail(item) {
+        console.log(item)
         uni.navigateTo({
-          url: '../components/goodDetail?info=' + item.info
+          url: '../components/goodDetail?goods_id=' + item.goods_id
           // url: 'goodDetail' 
         })
       },
-      // 抢购或者秒杀页
-      goPanicBuy(data) {
-        switch (data) {
+      // 抢购或者秒杀,零元购，拼团等
+      goPintuan(index) {
+        switch(index) {
           case 0:
-            uni.navigateTo({
-              url: 'panicBuy?origin=' + '秒杀'
+            uni.showToast({
+              title: '拼团暂未开放',
+              icon: 'none'
             })
             break
           case 1:
             uni.navigateTo({
+              url: 'panicBuy?origin=' + '秒杀'
+            })
+            break
+          case 2:
+            uni.navigateTo({
               url: 'panicBuy?origin=' + '限时购'
             })
             break
+          case 3:
+            uni.showToast({
+              title: '零元购暂未开放',
+              icon: 'none'
+            })
+            break
+            // uni.navigateTo({
+            //   url: 'zerodraw'
+            // })
+            // break
         }
       },
       // 搜索页
@@ -438,8 +470,6 @@
     .discount{
       display: flex;
       flex-wrap:wrap;
-      margin-bottom:30upx;
-  
     }
     /* 拼团 */
     .pintuan {

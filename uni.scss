@@ -58,70 +58,70 @@ $font-88: 88upx;
 
 
 .font-20{
-  font-weight: 20upx!important;
+  font-size: 20upx!important;
   }
 .font-22{
-  font-weight: 22upx!important;
+  font-size: 22upx!important;
   }
 .font-24{
-  font-weight: 24upx!important;
+  font-size: 24upx!important;
   }
 .font-26{
-  font-weight: 26upx!important;
+  font-size: 26upx!important;
   }
 .font-28{
-  font-weight: 28upx!important;
+  font-size: 28upx!important;
   }
 .font-30{
-  font-weight: 30upx!important;
+  font-size: 30upx!important;
   }
 .font-32{
-  font-weight: 32upx!important;
+  font-size: 32upx!important;
   }
 .font-34{
-  font-weight: 34upx!important;
+  font-size: 34upx!important;
   }
 .font-36{
-  font-weight: 36upx!important;
+  font-size: 36upx!important;
   }
 .font-38{
-  font-weight: 38upx!important;
+  font-size: 38upx!important;
   }
 .font-40{
-  font-weight: 40upx!important;
+  font-size: 40upx!important;
   }
 .font-42{
-  font-weight: 42upx!important;
+  font-size: 42upx!important;
   }
 .font-44{
-  font-weight: 44upx!important;
+  font-size: 44upx!important;
   }
 .font-46{
-  font-weight: 46upx!important;
+  font-size: 46upx!important;
   }
 .font-52{
-  font-weight: 52upx!important;
+  font-size: 52upx!important;
   }
 .font-54{
-  font-weight: 54upx!important;
+  font-size: 54upx!important;
   }
 .font-56{
-  font-weight: 56upx!important;
+  font-size: 56upx!important;
   }
 .font-58{
-  font-weight: 58upx!important;
+  font-size: 58upx!important;
   }
 .font-76{
-  font-weight: 76upx!important;
+  font-size: 76upx!important;
   }
 .font-84{
-  font-weight: 84upx!important;
+  font-size: 84upx!important;
   }
 .font-86{
-  font-weight: 86upx!important;
+  font-size: 86upx!important;
   }
 .font-88{
-  font-weight: 88upx!important;
+  font-size: 88upx!important;
   }
 
 
@@ -178,6 +178,9 @@ view, image, text, input, form{
 // 字体颜色
 .font-red{
   color: $color-red;
+}
+.col-f{
+  color: #fff;
 }
 .font-99{
   color: $color-99;
@@ -280,6 +283,13 @@ view, image, text, input, form{
 .padding-30{
   padding-left: 30upx;
   padding-right: 30upx;
+}
+
+.null{
+  margin-top: 80upx;
+  &>.iconfont{
+    margin-bottom: 20upx;
+  }
 }
 
 // 全屏遮罩层

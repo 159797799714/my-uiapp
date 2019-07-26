@@ -1,1352 +1,6 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-/***/ "../../../../Desktop/LEI/white/api/api.js":
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/api/api.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ "../../../../Desktop/LEI/white/api/config.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-
-{
-  // 登录注册
-  login: _config.default.devApi + '/app.user/login', // 登录
-  register: _config.default.devApi + '/app.user/register', // 注册
-  sendcode: _config.default.devApi + '/app.user/sendcode', // 发送验证码
-  resetpassword: _config.default.devApi + '/app.user/resetpassword', // 重置密码
-  otherlogin: _config.default.devApi + '/app.user/otherlogin', // 第三方登录
-  otherregister: _config.default.devApi + '/app.user/otherregister', // 第三方登录完善信息
-  smscodeyz: _config.default.devApi + '/app.user/smscodeyz', // 验证码校验
-
-  // 首页
-  categorylist: _config.default.devApi + '/article/categorylist', // 所有文章分类
-  articlesbycategoryid: _config.default.devApi + '/article/articlesbycategoryid', // 通过分类ID获取文章列表
-  activitytags: _config.default.devApi + '/article/activitytags', // 所有标签分类
-  articlesbysearch: _config.default.devApi + '/article/articlesbysearch', // 搜索文章列表
-  index: _config.default.devApi + '/page/index', // 首页
-
-  // 详情页
-  commentlike: _config.default.devApi + '/article/commentlike', // 评论点赞
-  commentunlike: _config.default.devApi + '/article/commentunlike', // 评论取消点赞
-  commentreplylike: _config.default.devApi + '/article/commentreplylike', // 评论回复点赞
-  commentreplyunlike: _config.default.devApi + '/article/commentreplyunlike', // 评论回复取消点赞
-  addcomments: _config.default.devApi + '/article/addcomments', // 发表评论
-  unLike: _config.default.devApi + '/article/unLike', // 文章取消点赞
-  detailing: _config.default.devApi + '/article/detailing', // 文章详情接口
-  like: _config.default.devApi + '/article/like', // 文章点赞
-
-  // 商城
-  promotions: _config.default.devApi + '/goods/promotions', // 促销活动
-  goodscategory: _config.default.devApi + '/category/goodscategory', // 获取所有商品分类
-  recommendgoods: _config.default.devApi + '/goods/recommendgoods', // 推荐商品列表
-  getbrands: _config.default.devApi + '/brands/getbrands', // 品牌分类
-  getflashsalegoodsbyone: _config.default.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品
-  getseckillgoodsbyone: _config.default.devApi + '/seckill/getseckillgoodsbyone', // 商城页展示一个秒杀商品
-  goodlists: _config.default.devApi + '/goods/goodlists', // 商城搜索
-
-  // 秒杀
-  seckill_goodsbycategoryid: _config.default.devApi + '/seckill/goodsbycategoryid', // 通过秒杀活动ID获取秒杀商品列表
-  seckill_categorys: _config.default.devApi + '/seckill/categorys', // 秒杀活动分类
-  seckill_detail: _config.default.devApi + '/seckill/detail', // 秒杀商品详情
-  seckill_remind: _config.default.devApi + '/seckill/remind', // 秒杀商品提醒
-  seckill_cancelremind: _config.default.devApi + '/seckill/cancelremind', // 秒杀商品取消提醒
-
-  // 限时抢购
-  flashsale_categorys: _config.default.devApi + '/flashsale/categorys', // 限时抢购活动分类
-  flashsale_goodsbycategoryid: _config.default.devApi + '/flashsale/goodsbycategoryid', // 限时抢购活动分类ID获取商品列表
-  flashsale_detail: _config.default.devApi + '/flashsale/detail', // 限时抢购商品详情
-  flashsale_remind: _config.default.devApi + '/flashsale/remind', // 限时抢购商品加入提醒
-  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind', // 限时抢购商品取消提醒
-
-  // 我的
-  mylikearticles: _config.default.devApi + '/app.center/mylikearticles', // 个人中心点赞文章列表
-  mycollection: _config.default.devApi + '/app.center/mycollection', // 个人中心收藏商品列表
-  changepwd: _config.default.devApi + '/app.center/changepwd', // 更改密码
-  modifypersonalinfo: _config.default.devApi + '/app.center/modifypersonalinfo', // 修改个人用户信息
-  getuserinfo: _config.default.devApi + '/app.center/getuserinfo', // 获取用户个人信息
-
-  // 订单
-  orderList: _config.default.devApi + '/user.order/lists' // 订单
-};exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/api/config.js":
-/*!***************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/api/config.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  conductApi: 'http://172.20.10.2/code/api/web/index.php?s=/api', // 开发环境
-  devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
-};exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/common/http.js":
-/*!****************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/common/http.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ "../../../../Desktop/LEI/white/store/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-
-function _default(obj) {
-  uni.showLoading({
-    title: '加载中' });
-
-  var params = {
-    'wxapp_id': '10001',
-    token: _index.default.state.token
-    // token: '74155add51e6d35b3ac603555fa0083e'
-  };
-  var data = _objectSpread({}, obj.data, params);
-  uni.request({
-    url: obj.url,
-    method: obj.method ? obj.method : 'GET',
-    data: data,
-    header: obj.header ? obj.header : {},
-    success: function success(res) {
-      if (res.data.code === -1 || res.data.code === 0 && res.msg) {
-        uni.showToast({
-          title: res.msg,
-          icon: 'none' });
-
-      }
-      obj.cb(null, res.data);
-    },
-    fail: function fail(err) {
-      obj.cb(err, null);
-    },
-    complete: function complete(data) {
-      if (!data) {
-        uni.showToast({
-          title: '请求出错',
-          icon: 'none' });
-
-      } else {
-        uni.hideLoading();
-      }
-    } });
-
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/components/uni-calendar/calendar.js":
-/*!*************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-calendar/calendar.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
-                                                                                                     * @1900-2100区间内的公历、农历互转
-                                                                                                     * @charset UTF-8
-                                                                                                     * @github  https://github.com/jjonline/calendar.js
-                                                                                                     * @Author  Jea杨(JJonline@JJonline.Cn)
-                                                                                                     * @Time    2014-7-21
-                                                                                                     * @Time    2016-8-13 Fixed 2033hex、Attribution Annals
-                                                                                                     * @Time    2016-9-25 Fixed lunar LeapMonth Param Bug
-                                                                                                     * @Time    2017-7-24 Fixed use getTerm Func Param Error.use solar year,NOT lunar year
-                                                                                                     * @Version 1.0.3
-                                                                                                     * @公历转农历：calendar.solar2lunar(1987,11,01); //[you can ignore params of prefix 0]
-                                                                                                     * @农历转公历：calendar.lunar2solar(1987,09,10); //[you can ignore params of prefix 0]
-                                                                                                     */
-var calendar = {
-
-  /**
-                   * 农历1900-2100的润大小信息表
-                   * @Array Of Property
-                   * @return Hex
-                   */
-  lunarInfo: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2, //1900-1909
-  0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977, //1910-1919
-  0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, //1920-1929
-  0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950, //1930-1939
-  0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557, //1940-1949
-  0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0, //1950-1959
-  0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0, //1960-1969
-  0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6, //1970-1979
-  0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570, //1980-1989
-  0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x05ac0, 0x0ab60, 0x096d5, 0x092e0, //1990-1999
-  0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5, //2000-2009
-  0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930, //2010-2019
-  0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, //2020-2029
-  0x05aa0, 0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, //2030-2039
-  0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0, //2040-2049
-  /**Add By JJonline@JJonline.Cn**/
-  0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0, //2050-2059
-  0x0a2e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4, //2060-2069
-  0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0, //2070-2079
-  0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160, //2080-2089
-  0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252, //2090-2099
-  0x0d520], //2100
-
-  /**
-    * 公历每个月份的天数普通表
-    * @Array Of Property
-    * @return Number
-    */
-  solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-
-  /**
-                                                                  * 天干地支之天干速查表
-                                                                  * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
-                                                                  * @return Cn string
-                                                                  */
-  Gan: ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"],
-
-  /**
-                                                                                                               * 天干地支之地支速查表
-                                                                                                               * @Array Of Property
-                                                                                                               * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
-                                                                                                               * @return Cn string
-                                                                                                               */
-  Zhi: ["\u5B50", "\u4E11", "\u5BC5", "\u536F", "\u8FB0", "\u5DF3", "\u5348", "\u672A", "\u7533", "\u9149", "\u620C", "\u4EA5"],
-
-  /**
-                                                                                                                                   * 天干地支之地支速查表<=>生肖
-                                                                                                                                   * @Array Of Property
-                                                                                                                                   * @trans["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
-                                                                                                                                   * @return Cn string
-                                                                                                                                   */
-  Animals: ["\u9F20", "\u725B", "\u864E", "\u5154", "\u9F99", "\u86C7", "\u9A6C", "\u7F8A", "\u7334", "\u9E21", "\u72D7", "\u732A"],
-
-  /**
-                                                                                                                                       * 24节气速查表
-                                                                                                                                       * @Array Of Property
-                                                                                                                                       * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
-                                                                                                                                       * @return Cn string
-                                                                                                                                       */
-  solarTerm: ["\u5C0F\u5BD2", "\u5927\u5BD2", "\u7ACB\u6625", "\u96E8\u6C34", "\u60CA\u86F0", "\u6625\u5206", "\u6E05\u660E", "\u8C37\u96E8", "\u7ACB\u590F", "\u5C0F\u6EE1", "\u8292\u79CD", "\u590F\u81F3", "\u5C0F\u6691", "\u5927\u6691", "\u7ACB\u79CB", "\u5904\u6691", "\u767D\u9732", "\u79CB\u5206", "\u5BD2\u9732", "\u971C\u964D", "\u7ACB\u51AC", "\u5C0F\u96EA", "\u5927\u96EA", "\u51AC\u81F3"],
-
-  /**
-                                                                                                                                                                                                                                                                                                                                                                                                                 * 1900-2100各年的24节气日期速查表
-                                                                                                                                                                                                                                                                                                                                                                                                                 * @Array Of Property
-                                                                                                                                                                                                                                                                                                                                                                                                                 * @return 0x string For splice
-                                                                                                                                                                                                                                                                                                                                                                                                                 */
-  sTermInfo: ['9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f',
-  '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
-  '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa',
-  '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f',
-  'b027097bd097c36b0b6fc9274c91aa', '9778397bd19801ec9210c965cc920e', '97b6b97bd19801ec95f8c965cc920f',
-  '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd197c36c9210c9274c91aa',
-  '97b6b97bd19801ec95f8c965cc920e', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2',
-  '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bcf97c3598082c95f8e1cfcc920f',
-  '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e',
-  '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722',
-  '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f',
-  '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
-  '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd07f595b0b6fc920fb0722',
-  '9778397bd097c36b0b6fc9210c8dc2', '9778397bd19801ec9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f',
-  '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
-  '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
-  '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bd07f1487f595b0b0bc920fb0722',
-  '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
-  '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
-  '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722',
-  '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
-  '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b97bd19801ec9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
-  '9778397bd097c36b0b6fc9210c91aa', '97b6b97bd197c36c9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722',
-  '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
-  '97b6b7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
-  '9778397bd097c36b0b70c9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
-  '7f0e397bd097c35b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
-  '7f0e27f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
-  '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
-  '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
-  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
-  '97b6b7f0e47f531b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
-  '9778397bd097c36b0b6fc9210c91aa', '97b6b7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
-  '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '977837f0e37f149b0723b0787b0721',
-  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c35b0b6fc9210c8dc2',
-  '977837f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
-  '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
-  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd',
-  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
-  '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
-  '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
-  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd',
-  '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
-  '977837f0e37f14998082b0723b06bd', '7f07e7f0e37f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
-  '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721',
-  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5',
-  '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f531b0b0bb0b6fb0722',
-  '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
-  '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
-  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35',
-  '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
-  '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721',
-  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd',
-  '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35',
-  '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e37f14998083b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
-  '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14898082b0723b02d5', '7f07e7f0e37f14998082b0787b0721',
-  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66aa89801e9808297c35', '665f67f0e37f14898082b0723b02d5',
-  '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66a449801e9808297c35',
-  '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
-  '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
-  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e26665b66a449801e9808297c35', '665f67f0e37f1489801eb072297c35',
-  '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722'],
-
-  /**
-                                                                                                           * 数字转中文速查表
-                                                                                                           * @Array Of Property
-                                                                                                           * @trans ['日','一','二','三','四','五','六','七','八','九','十']
-                                                                                                           * @return Cn string
-                                                                                                           */
-  nStr1: ["\u65E5", "\u4E00", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341"],
-
-  /**
-                                                                                                                           * 日期转农历称呼速查表
-                                                                                                                           * @Array Of Property
-                                                                                                                           * @trans ['初','十','廿','卅']
-                                                                                                                           * @return Cn string
-                                                                                                                           */
-  nStr2: ["\u521D", "\u5341", "\u5EFF", "\u5345"],
-
-  /**
-                                                     * 月份转农历称呼速查表
-                                                     * @Array Of Property
-                                                     * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
-                                                     * @return Cn string
-                                                     */
-  nStr3: ["\u6B63", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341", "\u51AC", "\u814A"],
-
-  /**
-                                                                                                                                     * 返回农历y年一整年的总天数
-                                                                                                                                     * @param lunar Year
-                                                                                                                                     * @return Number
-                                                                                                                                     * @eg:var count = calendar.lYearDays(1987) ;//count=387
-                                                                                                                                     */
-  lYearDays: function lYearDays(y) {
-    var i,sum = 348;
-    for (i = 0x8000; i > 0x8; i >>= 1) {sum += this.lunarInfo[y - 1900] & i ? 1 : 0;}
-    return sum + this.leapDays(y);
-  },
-
-  /**
-       * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
-       * @param lunar Year
-       * @return Number (0-12)
-       * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
-       */
-  leapMonth: function leapMonth(y) {//闰字编码 \u95f0
-    return this.lunarInfo[y - 1900] & 0xf;
-  },
-
-  /**
-       * 返回农历y年闰月的天数 若该年没有闰月则返回0
-       * @param lunar Year
-       * @return Number (0、29、30)
-       * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
-       */
-  leapDays: function leapDays(y) {
-    if (this.leapMonth(y)) {
-      return this.lunarInfo[y - 1900] & 0x10000 ? 30 : 29;
-    }
-    return 0;
-  },
-
-  /**
-       * 返回农历y年m月（非闰月）的总天数，计算m为闰月时的天数请使用leapDays方法
-       * @param lunar Year
-       * @return Number (-1、29、30)
-       * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
-       */
-  monthDays: function monthDays(y, m) {
-    if (m > 12 || m < 1) {return -1;} //月份参数从1至12，参数错误返回-1
-    return this.lunarInfo[y - 1900] & 0x10000 >> m ? 30 : 29;
-  },
-
-  /**
-       * 返回公历(!)y年m月的天数
-       * @param solar Year
-       * @return Number (-1、28、29、30、31)
-       * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
-       */
-  solarDays: function solarDays(y, m) {
-    if (m > 12 || m < 1) {return -1;} //若参数错误 返回-1
-    var ms = m - 1;
-    if (ms == 1) {//2月份的闰平规律测算后确认返回28或29
-      return y % 4 == 0 && y % 100 != 0 || y % 400 == 0 ? 29 : 28;
-    } else {
-      return this.solarMonth[ms];
-    }
-  },
-
-  /**
-      * 农历年份转换为干支纪年
-      * @param  lYear 农历年的年份数
-      * @return Cn string
-      */
-  toGanZhiYear: function toGanZhiYear(lYear) {
-    var ganKey = (lYear - 3) % 10;
-    var zhiKey = (lYear - 3) % 12;
-    if (ganKey == 0) ganKey = 10; //如果余数为0则为最后一个天干
-    if (zhiKey == 0) zhiKey = 12; //如果余数为0则为最后一个地支
-    return this.Gan[ganKey - 1] + this.Zhi[zhiKey - 1];
-
-  },
-
-  /**
-      * 公历月、日判断所属星座
-      * @param  cMonth [description]
-      * @param  cDay [description]
-      * @return Cn string
-      */
-  toAstro: function toAstro(cMonth, cDay) {
-    var s = "\u9B54\u7FAF\u6C34\u74F6\u53CC\u9C7C\u767D\u7F8A\u91D1\u725B\u53CC\u5B50\u5DE8\u87F9\u72EE\u5B50\u5904\u5973\u5929\u79E4\u5929\u874E\u5C04\u624B\u9B54\u7FAF";
-    var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
-    return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "\u5EA7"; //座
-  },
-
-  /**
-       * 传入offset偏移量返回干支
-       * @param offset 相对甲子的偏移量
-       * @return Cn string
-       */
-  toGanZhi: function toGanZhi(offset) {
-    return this.Gan[offset % 10] + this.Zhi[offset % 12];
-  },
-
-  /**
-       * 传入公历(!)y年获得该年第n个节气的公历日期
-       * @param y公历年(1900-2100)；n二十四节气中的第几个节气(1~24)；从n=1(小寒)算起
-       * @return day Number
-       * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
-       */
-  getTerm: function getTerm(y, n) {
-    if (y < 1900 || y > 2100) {return -1;}
-    if (n < 1 || n > 24) {return -1;}
-    var _table = this.sTermInfo[y - 1900];
-    var _info = [
-    parseInt('0x' + _table.substr(0, 5)).toString(),
-    parseInt('0x' + _table.substr(5, 5)).toString(),
-    parseInt('0x' + _table.substr(10, 5)).toString(),
-    parseInt('0x' + _table.substr(15, 5)).toString(),
-    parseInt('0x' + _table.substr(20, 5)).toString(),
-    parseInt('0x' + _table.substr(25, 5)).toString()];
-
-    var _calday = [
-    _info[0].substr(0, 1),
-    _info[0].substr(1, 2),
-    _info[0].substr(3, 1),
-    _info[0].substr(4, 2),
-
-    _info[1].substr(0, 1),
-    _info[1].substr(1, 2),
-    _info[1].substr(3, 1),
-    _info[1].substr(4, 2),
-
-    _info[2].substr(0, 1),
-    _info[2].substr(1, 2),
-    _info[2].substr(3, 1),
-    _info[2].substr(4, 2),
-
-    _info[3].substr(0, 1),
-    _info[3].substr(1, 2),
-    _info[3].substr(3, 1),
-    _info[3].substr(4, 2),
-
-    _info[4].substr(0, 1),
-    _info[4].substr(1, 2),
-    _info[4].substr(3, 1),
-    _info[4].substr(4, 2),
-
-    _info[5].substr(0, 1),
-    _info[5].substr(1, 2),
-    _info[5].substr(3, 1),
-    _info[5].substr(4, 2)];
-
-    return parseInt(_calday[n - 1]);
-  },
-
-  /**
-       * 传入农历数字月份返回汉语通俗表示法
-       * @param lunar month
-       * @return Cn string
-       * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
-       */
-  toChinaMonth: function toChinaMonth(m) {// 月 => \u6708
-    if (m > 12 || m < 1) {return -1;} //若参数错误 返回-1
-    var s = this.nStr3[m - 1];
-    s += "\u6708"; //加上月字
-    return s;
-  },
-
-  /**
-       * 传入农历日期数字返回汉字表示法
-       * @param lunar day
-       * @return Cn string
-       * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
-       */
-  toChinaDay: function toChinaDay(d) {//日 => \u65e5
-    var s;
-    switch (d) {
-      case 10:
-        s = "\u521D\u5341";break;
-      case 20:
-        s = "\u4E8C\u5341";break;
-        break;
-      case 30:
-        s = "\u4E09\u5341";break;
-        break;
-      default:
-        s = this.nStr2[Math.floor(d / 10)];
-        s += this.nStr1[d % 10];}
-
-    return s;
-  },
-
-  /**
-       * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
-       * @param y year
-       * @return Cn string
-       * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
-       */
-  getAnimal: function getAnimal(y) {
-    return this.Animals[(y - 4) % 12];
-  },
-
-  /**
-       * 传入阳历年月日获得详细的公历、农历object信息 <=>JSON
-       * @param y  solar year
-       * @param m  solar month
-       * @param d  solar day
-       * @return JSON object
-       * @eg:console.log(calendar.solar2lunar(1987,11,01));
-       */
-  solar2lunar: function solar2lunar(y, m, d) {//参数区间1900.1.31~2100.12.31
-    //年份限定、上限
-    if (y < 1900 || y > 2100) {
-      return -1; // undefined转换为数字变为NaN
-    }
-    //公历传参最下限
-    if (y == 1900 && m == 1 && d < 31) {
-      return -1;
-    }
-    //未传参  获得当天
-    if (!y) {
-      var objDate = new Date();
-    } else {
-      var objDate = new Date(y, parseInt(m) - 1, d);
-    }
-    var i,leap = 0,temp = 0;
-    //修正ymd参数
-    var y = objDate.getFullYear(),
-    m = objDate.getMonth() + 1,
-    d = objDate.getDate();
-    var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;
-    for (i = 1900; i < 2101 && offset > 0; i++) {
-      temp = this.lYearDays(i);
-      offset -= temp;
-    }
-    if (offset < 0) {
-      offset += temp;i--;
-    }
-
-    //是否今天
-    var isTodayObj = new Date(),
-    isToday = false;
-    if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {
-      isToday = true;
-    }
-    //星期几
-    var nWeek = objDate.getDay(),
-    cWeek = this.nStr1[nWeek];
-    //数字表示周几顺应天朝周一开始的惯例
-    if (nWeek == 0) {
-      nWeek = 7;
-    }
-    //农历年
-    var year = i;
-    var leap = this.leapMonth(i); //闰哪个月
-    var isLeap = false;
-
-    //效验闰月
-    for (i = 1; i < 13 && offset > 0; i++) {
-      //闰月
-      if (leap > 0 && i == leap + 1 && isLeap == false) {
-        --i;
-        isLeap = true;temp = this.leapDays(year); //计算农历闰月天数
-      } else
-      {
-        temp = this.monthDays(year, i); //计算农历普通月天数
-      }
-      //解除闰月
-      if (isLeap == true && i == leap + 1) {isLeap = false;}
-      offset -= temp;
-    }
-    // 闰月导致数组下标重叠取反
-    if (offset == 0 && leap > 0 && i == leap + 1)
-    {
-      if (isLeap) {
-        isLeap = false;
-      } else {
-        isLeap = true;--i;
-      }
-    }
-    if (offset < 0)
-    {
-      offset += temp;--i;
-    }
-    //农历月
-    var month = i;
-    //农历日
-    var day = offset + 1;
-    //天干地支处理
-    var sm = m - 1;
-    var gzY = this.toGanZhiYear(year);
-
-    // 当月的两个节气
-    // bugfix-2017-7-24 11:03:38 use lunar Year Param `y` Not `year`
-    var firstNode = this.getTerm(y, m * 2 - 1); //返回当月「节」为几日开始
-    var secondNode = this.getTerm(y, m * 2); //返回当月「节」为几日开始
-
-    // 依据12节气修正干支月
-    var gzM = this.toGanZhi((y - 1900) * 12 + m + 11);
-    if (d >= firstNode) {
-      gzM = this.toGanZhi((y - 1900) * 12 + m + 12);
-    }
-
-    //传入的日期的节气与否
-    var isTerm = false;
-    var Term = null;
-    if (firstNode == d) {
-      isTerm = true;
-      Term = this.solarTerm[m * 2 - 2];
-    }
-    if (secondNode == d) {
-      isTerm = true;
-      Term = this.solarTerm[m * 2 - 1];
-    }
-    //日柱 当月一日与 1900/1/1 相差天数
-    var dayCyclical = Date.UTC(y, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;
-    var gzD = this.toGanZhi(dayCyclical + d - 1);
-    //该日期所属的星座
-    var astro = this.toAstro(m, d);
-
-    return { 'lYear': year, 'lMonth': month, 'lDay': day, 'Animal': this.getAnimal(year), 'IMonthCn': (isLeap ? "\u95F0" : '') + this.toChinaMonth(month), 'IDayCn': this.toChinaDay(day), 'cYear': y, 'cMonth': m, 'cDay': d, 'gzYear': gzY, 'gzMonth': gzM, 'gzDay': gzD, 'isToday': isToday, 'isLeap': isLeap, 'nWeek': nWeek, 'ncWeek': "\u661F\u671F" + cWeek, 'isTerm': isTerm, 'Term': Term, 'astro': astro };
-  },
-
-  /**
-       * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
-       * @param y  lunar year
-       * @param m  lunar month
-       * @param d  lunar day
-       * @param isLeapMonth  lunar month is leap or not.[如果是农历闰月第四个参数赋值true即可]
-       * @return JSON object
-       * @eg:console.log(calendar.lunar2solar(1987,9,10));
-       */
-  lunar2solar: function lunar2solar(y, m, d, isLeapMonth) {//参数区间1900.1.31~2100.12.1
-    var isLeapMonth = !!isLeapMonth;
-    var leapOffset = 0;
-    var leapMonth = this.leapMonth(y);
-    var leapDay = this.leapDays(y);
-    if (isLeapMonth && leapMonth != m) {return -1;} //传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
-    if (y == 2100 && m == 12 && d > 1 || y == 1900 && m == 1 && d < 31) {return -1;} //超出了最大极限值
-    var day = this.monthDays(y, m);
-    var _day = day;
-    //bugFix 2016-9-25
-    //if month is leap, _day use leapDays method
-    if (isLeapMonth) {
-      _day = this.leapDays(y, m);
-    }
-    if (y < 1900 || y > 2100 || d > _day) {return -1;} //参数合法性效验
-
-    //计算农历的时间差
-    var offset = 0;
-    for (var i = 1900; i < y; i++) {
-      offset += this.lYearDays(i);
-    }
-    var leap = 0,isAdd = false;
-    for (var i = 1; i < m; i++) {
-      leap = this.leapMonth(y);
-      if (!isAdd) {//处理闰月
-        if (leap <= i && leap > 0) {
-          offset += this.leapDays(y);isAdd = true;
-        }
-      }
-      offset += this.monthDays(y, i);
-    }
-    //转换闰月农历 需补充该年闰月的前一个月的时差
-    if (isLeapMonth) {offset += day;}
-    //1900年农历正月一日的公历时间为1900年1月30日0时0分0秒(该时间也是本农历的最开始起始点)
-    var stmap = Date.UTC(1900, 1, 30, 0, 0, 0);
-    var calObj = new Date((offset + d - 31) * 86400000 + stmap);
-    var cY = calObj.getUTCFullYear();
-    var cM = calObj.getUTCMonth() + 1;
-    var cD = calObj.getUTCDate();
-
-    return this.solar2lunar(cY, cM, cD);
-  } };var _default =
-
-
-
-calendar;exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/components/uni-rich/libs/html2json.js":
-/*!***************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/html2json.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ "../../../../Desktop/LEI/white/components/uni-rich/libs/wxDiscode.js"));
-var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ "../../../../Desktop/LEI/white/components/uni-rich/libs/htmlparser.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} /**
-                                                                                                                                                                 * html2Json 改造来自: https://github.com/Jxck/html2json
-                                                                                                                                                                 *
-                                                                                                                                                                 *
-                                                                                                                                                                 * author: Di (微信小程序开发工程师)
-                                                                                                                                                                 * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
-                                                                                                                                                                 *               垂直微信小程序开发交流社区
-                                                                                                                                                                 *
-                                                                                                                                                                 * github地址: https://github.com/icindy/wxParse
-                                                                                                                                                                 *
-                                                                                                                                                                 * for: 微信小程序富文本解析
-                                                                                                                                                                 * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
-                                                                                                                                                                 */function makeMap(str) {var obj = {};var items = str.split(',');for (var i = 0; i < items.length; i += 1) {obj[items[i]] = true;}return obj;} // Block Elements - HTML 5
-var block = makeMap('br,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
-var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
-// Elements that you can, intentionally, leave open
-// (and which close themselves)
-var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
-
-function removeDOCTYPE(html) {
-  var isDocument = /<body.*>([^]*)<\/body>/.test(html);
-  return isDocument ? RegExp.$1 : html;
-}
-
-function trimHtml(html) {
-  return html.
-  replace(/<!--.*?-->/gi, '').
-  replace(/\/\*.*?\*\//gi, '').
-  replace(/[ ]+</gi, '<').
-  replace(/<script[^]*<\/script>/gi, '').
-  replace(/<style[^]*<\/style>/gi, '');
-}
-
-function getScreenInfo() {
-  var screen = {};
-  wx.getSystemInfo({
-    success: function success(res) {
-      screen.width = res.windowWidth;
-      screen.height = res.windowHeight;
-    } });
-
-  return screen;
-}
-
-function html2json(html, customHandler, imageProp, host) {
-  // 处理字符串
-  html = removeDOCTYPE(html);
-  html = trimHtml(html);
-  html = _wxDiscode.default.strDiscode(html);
-  // 生成node节点
-  var bufArray = [];
-  var results = {
-    nodes: [],
-    imageUrls: [] };
-
-
-  var screen = getScreenInfo();
-  function Node(tag) {
-    this.node = 'element';
-    this.tag = tag;
-
-    this.$screen = screen;
-  }
-
-  (0, _htmlparser.default)(html, {
-    start: function start(tag, attrs, unary) {
-      // node for this element
-      var node = new Node(tag);
-
-      if (bufArray.length !== 0) {
-        var parent = bufArray[0];
-        if (parent.nodes === undefined) {
-          parent.nodes = [];
-        }
-      }
-
-      if (block[tag]) {
-        node.tagType = 'block';
-      } else if (inline[tag]) {
-        node.tagType = 'inline';
-      } else if (closeSelf[tag]) {
-        node.tagType = 'closeSelf';
-      }
-
-      node.attr = attrs.reduce(function (pre, attr) {var
-        name = attr.name;var
-        value = attr.value;
-        if (name === 'class') {
-          node.classStr = value;
-        }
-        // has multi attibutes
-        // make it array of attribute
-        if (name === 'style') {
-          node.styleStr = value;
-        }
-        if (value.match(/ /)) {
-          value = value.split(' ');
-        }
-
-        // if attr already exists
-        // merge it
-        if (pre[name]) {
-          if (Array.isArray(pre[name])) {
-            // already array, push to last
-            pre[name].push(value);
-          } else {
-            // single value, make it array
-            pre[name] = [pre[name], value];
-          }
-        } else {
-          // not exist, put it
-          pre[name] = value;
-        }
-
-        return pre;
-      }, {});
-
-      // 优化样式相关属性
-      if (node.classStr) {
-        node.classStr += " ".concat(node.tag);
-      } else {
-        node.classStr = node.tag;
-      }
-      if (node.tagType === 'inline') {
-        node.classStr += ' inline';
-      }
-
-      // 对img添加额外数据
-      if (node.tag === 'img') {
-        var imgUrl = node.attr.src;
-        imgUrl = _wxDiscode.default.urlToHttpUrl(imgUrl, imageProp.domain);
-        Object.assign(node.attr, imageProp, {
-          src: imgUrl || '' });
-
-        if (imgUrl) {
-          results.imageUrls.push(imgUrl);
-        }
-      }
-
-      // 处理a标签属性
-      if (node.tag === 'a') {
-        node.attr.href = node.attr.href || '';
-      }
-
-      // 处理font标签样式属性
-      if (node.tag === 'font') {
-        var fontSize = [
-        'x-small',
-        'small',
-        'medium',
-        'large',
-        'x-large',
-        'xx-large',
-        '-webkit-xxx-large'];
-
-        var styleAttrs = {
-          color: 'color',
-          face: 'font-family',
-          size: 'font-size' };
-
-        if (!node.styleStr) node.styleStr = '';
-        Object.keys(styleAttrs).forEach(function (key) {
-          if (node.attr[key]) {
-            var value = key === 'size' ? fontSize[node.attr[key] - 1] : node.attr[key];
-            node.styleStr += "".concat(styleAttrs[key], ": ").concat(value, ";");
-          }
-        });
-      }
-
-      // 临时记录source资源
-      if (node.tag === 'source') {
-        results.source = node.attr.src;
-      }
-
-      if (customHandler.start) {
-        customHandler.start(node, results);
-      }
-
-      if (unary) {
-        // if this tag doesn't have end tag
-        // like <img src="hoge.png"/>
-        // add to parents
-        var _parent = bufArray[0] || results;
-        if (_parent.nodes === undefined) {
-          _parent.nodes = [];
-        }
-        _parent.nodes.push(node);
-      } else {
-        bufArray.unshift(node);
-      }
-    },
-    end: function end(tag) {
-      // merge into parent tag
-      var node = bufArray.shift();
-      if (node.tag !== tag) {
-        console.error('invalid state: mismatch end tag');
-      }
-
-      // 当有缓存source资源时于于video补上src资源
-      if (node.tag === 'video' && results.source) {
-        node.attr.src = results.source;
-        delete results.source;
-      }
-
-      if (customHandler.end) {
-        customHandler.end(node, results);
-      }
-
-      if (bufArray.length === 0) {
-        results.nodes.push(node);
-      } else {
-        var parent = bufArray[0];
-        if (!parent.nodes) {
-          parent.nodes = [];
-        }
-        parent.nodes.push(node);
-      }
-    },
-    chars: function chars(text) {
-      if (!text.trim()) return;
-
-      var node = {
-        node: 'text',
-        text: text };
-
-
-      if (customHandler.chars) {
-        customHandler.chars(node, results);
-      }
-
-      if (bufArray.length === 0) {
-        results.nodes.push(node);
-      } else {
-        var parent = bufArray[0];
-        if (parent.nodes === undefined) {
-          parent.nodes = [];
-        }
-        parent.nodes.push(node);
-      }
-    } });
-
-
-  return results;
-}var _default =
-
-html2json;exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/components/uni-rich/libs/htmlparser.js":
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/htmlparser.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
-                                                                                                      *
-                                                                                                      * htmlParser改造自: https://github.com/blowsie/Pure-JavaScript-HTML5-Parser
-                                                                                                      *
-                                                                                                      * author: Di (微信小程序开发工程师)
-                                                                                                      * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
-                                                                                                      *               垂直微信小程序开发交流社区
-                                                                                                      *
-                                                                                                      * github地址: https://github.com/icindy/wxParse
-                                                                                                      *
-                                                                                                      * for: 微信小程序富文本解析
-                                                                                                      * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
-                                                                                                      */
-// Regular Expressions for parsing tags and attributes
-
-var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z0-9_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
-var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
-var attr = /([a-zA-Z0-9_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g;
-
-function makeMap(str) {
-  var obj = {};
-  var items = str.split(',');
-  for (var i = 0; i < items.length; i += 1) {obj[items[i]] = true;}
-  return obj;
-}
-
-// Empty Elements - HTML 5
-var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr');
-
-// Block Elements - HTML 5
-var block = makeMap('address,code,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video');
-
-// Inline Elements - HTML 5
-var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
-
-// Elements that you can, intentionally, leave open
-// (and which close themselves)
-var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
-
-// Attributes that have their values filled in disabled="disabled"
-var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected');
-
-function HTMLParser(html, handler) {
-  var index;
-  var chars;
-  var match;
-  var last = html;
-  var stack = [];
-
-  stack.last = function () {return stack[stack.length - 1];};
-
-  function parseEndTag(tag, tagName) {
-    // If no tag name is provided, clean shop
-    var pos;
-    if (!tagName) {
-      pos = 0;
-    } else {
-      // Find the closest opened tag of the same type
-      tagName = tagName.toLowerCase();
-      for (pos = stack.length - 1; pos >= 0; pos -= 1) {
-        if (stack[pos] === tagName) break;
-      }
-    }
-    if (pos >= 0) {
-      // Close all the open elements, up the stack
-      for (var i = stack.length - 1; i >= pos; i -= 1) {
-        if (handler.end) handler.end(stack[i]);
-      }
-
-      // Remove the open elements from the stack
-      stack.length = pos;
-    }
-  }
-
-  function parseStartTag(tag, tagName, rest, unary) {
-    tagName = tagName.toLowerCase();
-
-    if (block[tagName]) {
-      while (stack.last() && inline[stack.last()]) {
-        parseEndTag('', stack.last());
-      }
-    }
-
-    if (closeSelf[tagName] && stack.last() === tagName) {
-      parseEndTag('', tagName);
-    }
-
-    unary = empty[tagName] || !!unary;
-
-    if (!unary) stack.push(tagName);
-
-    if (handler.start) {
-      var attrs = [];
-
-      rest.replace(attr, function genAttr(matches, name) {
-        var value = arguments[2] || arguments[3] || arguments[4] || (fillAttrs[name] ? name : '');
-
-        attrs.push({
-          name: name,
-          value: value,
-          escaped: value.replace(/(^|[^\\])"/g, '$1\\"') // "
-        });
-      });
-
-      if (handler.start) {
-        handler.start(tagName, attrs, unary);
-      }
-    }
-  }
-
-  while (html) {
-    chars = true;
-
-    if (html.indexOf('</') === 0) {
-      match = html.match(endTag);
-
-      if (match) {
-        html = html.substring(match[0].length);
-        match[0].replace(endTag, parseEndTag);
-        chars = false;
-      }
-
-      // start tag
-    } else if (html.indexOf('<') === 0) {
-      match = html.match(startTag);
-
-      if (match) {
-        html = html.substring(match[0].length);
-        match[0].replace(startTag, parseStartTag);
-        chars = false;
-      }
-    }
-
-    if (chars) {
-      index = html.indexOf('<');
-      var text = '';
-      while (index === 0) {
-        text += '<';
-        html = html.substring(1);
-        index = html.indexOf('<');
-      }
-      text += index < 0 ? html : html.substring(0, index);
-      html = index < 0 ? '' : html.substring(index);
-
-      if (handler.chars) handler.chars(text);
-    }
-
-    if (html === last) throw new Error("Parse Error: ".concat(html));
-    last = html;
-  }
-
-  // Clean up any remaining tags
-  parseEndTag();
-}var _default =
-
-HTMLParser;exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/components/uni-rich/libs/wxDiscode.js":
-/*!***************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/wxDiscode.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // HTML 支持的数学符号
-function strNumDiscode(str) {
-  str = str.replace(/&forall;/g, '∀');
-  str = str.replace(/&part;/g, '∂');
-  str = str.replace(/&exist;/g, '∃');
-  str = str.replace(/&empty;/g, '∅');
-  str = str.replace(/&nabla;/g, '∇');
-  str = str.replace(/&isin;/g, '∈');
-  str = str.replace(/&notin;/g, '∉');
-  str = str.replace(/&ni;/g, '∋');
-  str = str.replace(/&prod;/g, '∏');
-  str = str.replace(/&sum;/g, '∑');
-  str = str.replace(/&minus;/g, '−');
-  str = str.replace(/&lowast;/g, '∗');
-  str = str.replace(/&radic;/g, '√');
-  str = str.replace(/&prop;/g, '∝');
-  str = str.replace(/&infin;/g, '∞');
-  str = str.replace(/&ang;/g, '∠');
-  str = str.replace(/&and;/g, '∧');
-  str = str.replace(/&or;/g, '∨');
-  str = str.replace(/&cap;/g, '∩');
-  str = str.replace(/&cup;/g, '∪');
-  str = str.replace(/&int;/g, '∫');
-  str = str.replace(/&there4;/g, '∴');
-  str = str.replace(/&sim;/g, '∼');
-  str = str.replace(/&cong;/g, '≅');
-  str = str.replace(/&asymp;/g, '≈');
-  str = str.replace(/&ne;/g, '≠');
-  str = str.replace(/&le;/g, '≤');
-  str = str.replace(/&ge;/g, '≥');
-  str = str.replace(/&sub;/g, '⊂');
-  str = str.replace(/&sup;/g, '⊃');
-  str = str.replace(/&nsub;/g, '⊄');
-  str = str.replace(/&sube;/g, '⊆');
-  str = str.replace(/&supe;/g, '⊇');
-  str = str.replace(/&oplus;/g, '⊕');
-  str = str.replace(/&otimes;/g, '⊗');
-  str = str.replace(/&perp;/g, '⊥');
-  str = str.replace(/&sdot;/g, '⋅');
-  return str;
-}
-
-// HTML 支持的希腊字母
-function strGreeceDiscode(str) {
-  str = str.replace(/&Alpha;/g, 'Α');
-  str = str.replace(/&Beta;/g, 'Β');
-  str = str.replace(/&Gamma;/g, 'Γ');
-  str = str.replace(/&Delta;/g, 'Δ');
-  str = str.replace(/&Epsilon;/g, 'Ε');
-  str = str.replace(/&Zeta;/g, 'Ζ');
-  str = str.replace(/&Eta;/g, 'Η');
-  str = str.replace(/&Theta;/g, 'Θ');
-  str = str.replace(/&Iota;/g, 'Ι');
-  str = str.replace(/&Kappa;/g, 'Κ');
-  str = str.replace(/&Lambda;/g, 'Λ');
-  str = str.replace(/&Mu;/g, 'Μ');
-  str = str.replace(/&Nu;/g, 'Ν');
-  str = str.replace(/&Xi;/g, 'Ν');
-  str = str.replace(/&Omicron;/g, 'Ο');
-  str = str.replace(/&Pi;/g, 'Π');
-  str = str.replace(/&Rho;/g, 'Ρ');
-  str = str.replace(/&Sigma;/g, 'Σ');
-  str = str.replace(/&Tau;/g, 'Τ');
-  str = str.replace(/&Upsilon;/g, 'Υ');
-  str = str.replace(/&Phi;/g, 'Φ');
-  str = str.replace(/&Chi;/g, 'Χ');
-  str = str.replace(/&Psi;/g, 'Ψ');
-  str = str.replace(/&Omega;/g, 'Ω');
-
-  str = str.replace(/&alpha;/g, 'α');
-  str = str.replace(/&beta;/g, 'β');
-  str = str.replace(/&gamma;/g, 'γ');
-  str = str.replace(/&delta;/g, 'δ');
-  str = str.replace(/&epsilon;/g, 'ε');
-  str = str.replace(/&zeta;/g, 'ζ');
-  str = str.replace(/&eta;/g, 'η');
-  str = str.replace(/&theta;/g, 'θ');
-  str = str.replace(/&iota;/g, 'ι');
-  str = str.replace(/&kappa;/g, 'κ');
-  str = str.replace(/&lambda;/g, 'λ');
-  str = str.replace(/&mu;/g, 'μ');
-  str = str.replace(/&nu;/g, 'ν');
-  str = str.replace(/&xi;/g, 'ξ');
-  str = str.replace(/&omicron;/g, 'ο');
-  str = str.replace(/&pi;/g, 'π');
-  str = str.replace(/&rho;/g, 'ρ');
-  str = str.replace(/&sigmaf;/g, 'ς');
-  str = str.replace(/&sigma;/g, 'σ');
-  str = str.replace(/&tau;/g, 'τ');
-  str = str.replace(/&upsilon;/g, 'υ');
-  str = str.replace(/&phi;/g, 'φ');
-  str = str.replace(/&chi;/g, 'χ');
-  str = str.replace(/&psi;/g, 'ψ');
-  str = str.replace(/&omega;/g, 'ω');
-  str = str.replace(/&thetasym;/g, 'ϑ');
-  str = str.replace(/&upsih;/g, 'ϒ');
-  str = str.replace(/&piv;/g, 'ϖ');
-  str = str.replace(/&middot;/g, '·');
-  return str;
-}
-
-function strcharacterDiscode(str) {
-  // 加入常用解析
-  str = str.replace(/&nbsp;/g, ' ');
-  str = str.replace(/&ensp;/g, ' ');
-  str = str.replace(/&emsp;/g, '　');
-  str = str.replace(/&quot;/g, "'");
-  str = str.replace(/&amp;/g, '&');
-  str = str.replace(/&lt;/g, '<');
-  str = str.replace(/&gt;/g, '>');
-  str = str.replace(/&#8226;/g, '•');
-
-  return str;
-}
-
-// HTML 支持的其他实体
-function strOtherDiscode(str) {
-  str = str.replace(/&OElig;/g, 'Œ');
-  str = str.replace(/&oelig;/g, 'œ');
-  str = str.replace(/&Scaron;/g, 'Š');
-  str = str.replace(/&scaron;/g, 'š');
-  str = str.replace(/&Yuml;/g, 'Ÿ');
-  str = str.replace(/&fnof;/g, 'ƒ');
-  str = str.replace(/&circ;/g, 'ˆ');
-  str = str.replace(/&tilde;/g, '˜');
-  str = str.replace(/&ensp;/g, '');
-  str = str.replace(/&emsp;/g, '');
-  str = str.replace(/&thinsp;/g, '');
-  str = str.replace(/&zwnj;/g, '');
-  str = str.replace(/&zwj;/g, '');
-  str = str.replace(/&lrm;/g, '');
-  str = str.replace(/&rlm;/g, '');
-  str = str.replace(/&ndash;/g, '–');
-  str = str.replace(/&mdash;/g, '—');
-  str = str.replace(/&lsquo;/g, '‘');
-  str = str.replace(/&rsquo;/g, '’');
-  str = str.replace(/&sbquo;/g, '‚');
-  str = str.replace(/&ldquo;/g, '“');
-  str = str.replace(/&rdquo;/g, '”');
-  str = str.replace(/&bdquo;/g, '„');
-  str = str.replace(/&dagger;/g, '†');
-  str = str.replace(/&Dagger;/g, '‡');
-  str = str.replace(/&bull;/g, '•');
-  str = str.replace(/&hellip;/g, '…');
-  str = str.replace(/&permil;/g, '‰');
-  str = str.replace(/&prime;/g, '′');
-  str = str.replace(/&Prime;/g, '″');
-  str = str.replace(/&lsaquo;/g, '‹');
-  str = str.replace(/&rsaquo;/g, '›');
-  str = str.replace(/&oline;/g, '‾');
-  str = str.replace(/&euro;/g, '€');
-  str = str.replace(/&trade;/g, '™');
-
-  str = str.replace(/&larr;/g, '←');
-  str = str.replace(/&uarr;/g, '↑');
-  str = str.replace(/&rarr;/g, '→');
-  str = str.replace(/&darr;/g, '↓');
-  str = str.replace(/&harr;/g, '↔');
-  str = str.replace(/&crarr;/g, '↵');
-  str = str.replace(/&lceil;/g, '⌈');
-  str = str.replace(/&rceil;/g, '⌉');
-
-  str = str.replace(/&lfloor;/g, '⌊');
-  str = str.replace(/&rfloor;/g, '⌋');
-  str = str.replace(/&loz;/g, '◊');
-  str = str.replace(/&spades;/g, '♠');
-  str = str.replace(/&clubs;/g, '♣');
-  str = str.replace(/&hearts;/g, '♥');
-
-  str = str.replace(/&diams;/g, '♦');
-  str = str.replace(/&#39;/g, "'");
-  return str;
-}
-
-function strDiscode(str) {
-  str = strNumDiscode(str);
-  str = strGreeceDiscode(str);
-  str = strcharacterDiscode(str);
-  str = strOtherDiscode(str);
-  return str;
-}
-
-function urlToHttpUrl(url, domain) {
-  if (/^\/\//.test(url)) {
-    return "https:".concat(url);
-  } else if (/^\//.test(url)) {
-    return "https://".concat(domain).concat(url);
-  }
-  return url;
-}var _default =
-
-{
-  strDiscode: strDiscode,
-  urlToHttpUrl: urlToHttpUrl };exports.default = _default;
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js":
+/***/ 0:
 /*!*********************************************!*\
   !*** C:/Users/pc/Desktop/LEI/white/main.js ***!
   \*********************************************/
@@ -1354,13 +8,13 @@ function urlToHttpUrl(url, domain) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../Desktop/LEI/white/App.vue"));
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 4);
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ "../../../../Desktop/LEI/white/store/index.js"));
-var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ "../../../../Desktop/LEI/white/api/api.js"));
-var _http = _interopRequireDefault(__webpack_require__(/*! ./common/http.js */ "../../../../Desktop/LEI/white/common/http.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 11));
+var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ 13));
+var _http = _interopRequireDefault(__webpack_require__(/*! ./common/http.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
@@ -1375,676 +29,11 @@ var app = new _vue.default(_objectSpread({
 _App.default));
 
 createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),
 
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fcomponents%2FgoodDetail\"}":
-/*!****************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FgoodDetail"} ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _goodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/components/goodDetail.vue */ "../../../../Desktop/LEI/white/pages/components/goodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_goodDetail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fcomponents%2Fgoods\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fgoods"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _goods = _interopRequireDefault(__webpack_require__(/*! ./pages/components/goods.vue */ "../../../../Desktop/LEI/white/pages/components/goods.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_goods.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fcomponents%2Fsearch\"}":
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fsearch"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _search = _interopRequireDefault(__webpack_require__(/*! ./pages/components/search.vue */ "../../../../Desktop/LEI/white/pages/components/search.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_search.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fcomponents%2FshareInfo\"}":
-/*!***************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FshareInfo"} ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _shareInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/components/shareInfo.vue */ "../../../../Desktop/LEI/white/pages/components/shareInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_shareInfo.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Findex%2Findex\"}":
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "../../../../Desktop/LEI/white/pages/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_index.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2FbindTel\"}":
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ "../../../../Desktop/LEI/white/pages/login/bindTel.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bindTel.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../Desktop/LEI/white/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2Fpassword\"}":
-/*!*********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fpassword"} ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _password = _interopRequireDefault(__webpack_require__(/*! ./pages/login/password.vue */ "../../../../Desktop/LEI/white/pages/login/password.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_password.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Flogin%2Fregister\"}":
-/*!*********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ "../../../../Desktop/LEI/white/pages/login/register.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_register.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmarket%2Fmarket\"}":
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2Fmarket"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _market = _interopRequireDefault(__webpack_require__(/*! ./pages/market/market.vue */ "../../../../Desktop/LEI/white/pages/market/market.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_market.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmarket%2FpanicBuy\"}":
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2FpanicBuy"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _panicBuy = _interopRequireDefault(__webpack_require__(/*! ./pages/market/panicBuy.vue */ "../../../../Desktop/LEI/white/pages/market/panicBuy.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_panicBuy.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmessage%2FchatDetail\"}":
-/*!*************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2FchatDetail"} ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _chatDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/message/chatDetail.vue */ "../../../../Desktop/LEI/white/pages/message/chatDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_chatDetail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmessage%2Fmessage\"}":
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/message.vue */ "../../../../Desktop/LEI/white/pages/message/message.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_message.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fabout\"}":
-/*!*****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fabout"} ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _about = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/about.vue */ "../../../../Desktop/LEI/white/pages/mine/about.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_about.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2FaddAddress\"}":
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FaddAddress"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _addAddress = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/addAddress.vue */ "../../../../Desktop/LEI/white/pages/mine/addAddress.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_addAddress.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Faddress\"}":
-/*!*******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Faddress"} ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _address = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/address.vue */ "../../../../Desktop/LEI/white/pages/mine/address.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_address.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusApplyInfo\"}":
-/*!**********************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusApplyInfo"} ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bonusApplyInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusApplyInfo.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusApplyInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bonusApplyInfo.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusCenter\"}":
-/*!*******************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bonusCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusCenter.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusCenter.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bonusCenter.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FbonusInfo\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusInfo"} ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _bonusInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusInfo.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/bonusInfo.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bonusInfo.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fbonus%2FmyCard\"}":
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FmyCard"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myCard = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/myCard.vue */ "../../../../Desktop/LEI/white/pages/mine/bonus/myCard.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myCard.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2FchangePassword\"}":
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FchangePassword"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/changePassword.vue */ "../../../../Desktop/LEI/white/pages/mine/changePassword.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_changePassword.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fdiscount\"}":
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fdiscount"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _discount = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/discount.vue */ "../../../../Desktop/LEI/white/pages/mine/discount.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_discount.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2FdiscountCenter\"}":
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FdiscountCenter"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _discountCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/discountCenter.vue */ "../../../../Desktop/LEI/white/pages/mine/discountCenter.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_discountCenter.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Flooks\"}":
-/*!*****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Flooks"} ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _looks = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/looks.vue */ "../../../../Desktop/LEI/white/pages/mine/looks.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_looks.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fmean\"}":
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmean"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _mean = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/mean.vue */ "../../../../Desktop/LEI/white/pages/mine/mean.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_mean.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fmine\"}":
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmine"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _mine = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/mine.vue */ "../../../../Desktop/LEI/white/pages/mine/mine.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_mine.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fpersonal\"}":
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fpersonal"} ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _personal = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/personal.vue */ "../../../../Desktop/LEI/white/pages/mine/personal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_personal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fsetting\"}":
-/*!*******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsetting"} ***!
-  \*******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/setting.vue */ "../../../../Desktop/LEI/white/pages/mine/setting.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_setting.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fmine%2Fsign\"}":
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsign"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _sign = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/sign.vue */ "../../../../Desktop/LEI/white/pages/mine/sign.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_sign.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2FmoreList%2FmoreList\"}":
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2FmoreList%2FmoreList"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _moreList = _interopRequireDefault(__webpack_require__(/*! ./pages/moreList/moreList.vue */ "../../../../Desktop/LEI/white/pages/moreList/moreList.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_moreList.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Forder%2Fgrade\"}":
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Fgrade"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _grade = _interopRequireDefault(__webpack_require__(/*! ./pages/order/grade.vue */ "../../../../Desktop/LEI/white/pages/order/grade.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_grade.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Forder%2Forder\"}":
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Forder"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "../../../../Desktop/LEI/white/pages/order/order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_order.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Forder%2ForderDetail\"}":
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2ForderDetail"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/order/orderDetail.vue */ "../../../../Desktop/LEI/white/pages/order/orderDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_orderDetail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/main.js?{\"page\":\"pages%2Fshopcar%2Fshopcar\"}":
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fshopcar%2Fshopcar"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../Desktop/LEI/white/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _shopcar = _interopRequireDefault(__webpack_require__(/*! ./pages/shopcar/shopcar.vue */ "../../../../Desktop/LEI/white/pages/shopcar/shopcar.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_shopcar.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/pages.json":
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/pages.json ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/service.js":
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/service.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
-var USERS_KEY = 'USERS_KEY';
-var STATE_KEY = 'STATE_KEY';
-
-var getUsers = function getUsers() {
-  var ret = '';
-  ret = uni.getStorageSync(USERS_KEY);
-  if (!ret) {
-    ret = '[]';
-  }
-  return JSON.parse(ret);
-};
-
-var addUser = function addUser(userInfo) {
-  var users = getUsers();
-  users.push({
-    account: userInfo.account,
-    password: userInfo.password });
-
-  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
-};var _default =
-
-{
-  getUsers: getUsers,
-  addUser: addUser };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "../../../../Desktop/LEI/white/store/index.js":
-/*!****************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/store/index.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-_vue.default.use(_vuex.default);
-
-var store = new _vuex.default.Store({
-  state: {
-    type: '',
-    mobile: '',
-    token: '' },
-
-  mutations: {
-    login: function login(state, userinfo) {
-      state.mobile = userinfo.mobile;
-      state.token = userinfo.token;
-    },
-    loginout: function loginout(state) {
-      state.mobile = '';
-      state.token = '';
-    },
-    setToken: function setToken(state, token) {
-      state.token = token;
-    } } });var _default =
-
-
-
-store;exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js":
+/***/ 1:
 /*!************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
   \************************************************************/
@@ -2052,7 +41,7 @@ store;exports.default = _default;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createPage = createPage;exports.createComponent = createComponent;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createPage = createPage;exports.createComponent = createComponent;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -2094,7 +83,198 @@ var camelize = cached(function (str) {
   return str.replace(camelizeRE, function (_, c) {return c ? c.toUpperCase() : '';});
 });
 
-var SYNC_API_RE = /^\$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
+var HOOKS = [
+'invoke',
+'success',
+'fail',
+'complete',
+'returnValue'];
+
+
+var globalInterceptors = {};
+var scopedInterceptors = {};
+
+function mergeHook(parentVal, childVal) {
+  var res = childVal ?
+  parentVal ?
+  parentVal.concat(childVal) :
+  Array.isArray(childVal) ?
+  childVal : [childVal] :
+  parentVal;
+  return res ?
+  dedupeHooks(res) :
+  res;
+}
+
+function dedupeHooks(hooks) {
+  var res = [];
+  for (var i = 0; i < hooks.length; i++) {
+    if (res.indexOf(hooks[i]) === -1) {
+      res.push(hooks[i]);
+    }
+  }
+  return res;
+}
+
+function removeHook(hooks, hook) {
+  var index = hooks.indexOf(hook);
+  if (index !== -1) {
+    hooks.splice(index, 1);
+  }
+}
+
+function mergeInterceptorHook(interceptor, option) {
+  Object.keys(option).forEach(function (hook) {
+    if (HOOKS.indexOf(hook) !== -1 && isFn(option[hook])) {
+      interceptor[hook] = mergeHook(interceptor[hook], option[hook]);
+    }
+  });
+}
+
+function removeInterceptorHook(interceptor, option) {
+  if (!interceptor || !option) {
+    return;
+  }
+  Object.keys(option).forEach(function (hook) {
+    if (HOOKS.indexOf(hook) !== -1 && isFn(option[hook])) {
+      removeHook(interceptor[hook], option[hook]);
+    }
+  });
+}
+
+function addInterceptor(method, option) {
+  if (typeof method === 'string' && isPlainObject(option)) {
+    mergeInterceptorHook(scopedInterceptors[method] || (scopedInterceptors[method] = {}), option);
+  } else if (isPlainObject(method)) {
+    mergeInterceptorHook(globalInterceptors, method);
+  }
+}
+
+function removeInterceptor(method, option) {
+  if (typeof method === 'string') {
+    if (isPlainObject(option)) {
+      removeInterceptorHook(scopedInterceptors[method], option);
+    } else {
+      delete scopedInterceptors[method];
+    }
+  } else if (isPlainObject(method)) {
+    removeInterceptorHook(globalInterceptors, method);
+  }
+}
+
+function wrapperHook(hook) {
+  return function (data) {
+    return hook(data) || data;
+  };
+}
+
+function isPromise(obj) {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+}
+
+function queue(hooks, data) {
+  var promise = false;
+  for (var i = 0; i < hooks.length; i++) {
+    var hook = hooks[i];
+    if (promise) {
+      promise = Promise.then(wrapperHook(hook));
+    } else {
+      var res = hook(data);
+      if (isPromise(res)) {
+        promise = Promise.resolve(res);
+      }
+      if (res === false) {
+        return {
+          then: function then() {} };
+
+      }
+    }
+  }
+  return promise || {
+    then: function then(callback) {
+      return callback(data);
+    } };
+
+}
+
+function wrapperOptions(interceptor) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  ['success', 'fail', 'complete'].forEach(function (name) {
+    if (Array.isArray(interceptor[name])) {
+      var oldCallback = options[name];
+      options[name] = function callbackInterceptor(res) {
+        queue(interceptor[name], res).then(function (res) {
+          /* eslint-disable no-mixed-operators */
+          return isFn(oldCallback) && oldCallback(res) || res;
+        });
+      };
+    }
+  });
+  return options;
+}
+
+function wrapperReturnValue(method, returnValue) {
+  var returnValueHooks = [];
+  if (Array.isArray(globalInterceptors.returnValue)) {
+    returnValueHooks.push.apply(returnValueHooks, _toConsumableArray(globalInterceptors.returnValue));
+  }
+  var interceptor = scopedInterceptors[method];
+  if (interceptor && Array.isArray(interceptor.returnValue)) {
+    returnValueHooks.push.apply(returnValueHooks, _toConsumableArray(interceptor.returnValue));
+  }
+  returnValueHooks.forEach(function (hook) {
+    returnValue = hook(returnValue) || returnValue;
+  });
+  return returnValue;
+}
+
+function getApiInterceptorHooks(method) {
+  var interceptor = Object.create(null);
+  Object.keys(globalInterceptors).forEach(function (hook) {
+    if (hook !== 'returnValue') {
+      interceptor[hook] = globalInterceptors[hook].slice();
+    }
+  });
+  var scopedInterceptor = scopedInterceptors[method];
+  if (scopedInterceptor) {
+    Object.keys(scopedInterceptor).forEach(function (hook) {
+      if (hook !== 'returnValue') {
+        interceptor[hook] = (interceptor[hook] || []).concat(scopedInterceptor[hook]);
+      }
+    });
+  }
+  return interceptor;
+}
+
+function invokeApi(method, api, options) {for (var _len = arguments.length, params = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {params[_key - 3] = arguments[_key];}
+  var interceptor = getApiInterceptorHooks(method);
+  if (interceptor && Object.keys(interceptor).length) {
+    if (Array.isArray(interceptor.invoke)) {
+      var res = queue(interceptor.invoke, options);
+      return res.then(function (options) {
+        return api.apply(void 0, [wrapperOptions(interceptor, options)].concat(params));
+      });
+    } else {
+      return api.apply(void 0, [wrapperOptions(interceptor, options)].concat(params));
+    }
+  }
+  return api.apply(void 0, [options].concat(params));
+}
+
+var promiseInterceptor = {
+  returnValue: function returnValue(res) {
+    if (!isPromise(res)) {
+      return res;
+    }
+    return res.then(function (res) {
+      return res[1];
+    }).catch(function (res) {
+      return res[0];
+    });
+  } };
+
+
+var SYNC_API_RE =
+/^\$|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
 
 var CONTEXT_API_RE = /^create|Manager$/;
 
@@ -2133,12 +313,12 @@ function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
   }
-  return function promiseApi() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};for (var _len = arguments.length, params = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {params[_key - 1] = arguments[_key];}
+  return function promiseApi() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};for (var _len2 = arguments.length, params = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {params[_key2 - 1] = arguments[_key2];}
     if (isFn(options.success) || isFn(options.fail) || isFn(options.complete)) {
-      return api.apply(void 0, [options].concat(params));
+      return wrapperReturnValue(name, invokeApi.apply(void 0, [name, api, options].concat(params)));
     }
-    return handlePromise(new Promise(function (resolve, reject) {
-      api.apply(void 0, [Object.assign({}, options, {
+    return wrapperReturnValue(name, handlePromise(new Promise(function (resolve, reject) {
+      invokeApi.apply(void 0, [name, api, Object.assign({}, options, {
         success: resolve,
         fail: reject })].concat(
       params));
@@ -2154,7 +334,7 @@ function promisify(name, api) {
 
         };
       }
-    }));
+    })));
   };
 }
 
@@ -2199,6 +379,19 @@ function upx2px(number, newDeviceWidth) {
   }
   return number < 0 ? -result : result;
 }
+
+var interceptors = {
+  promiseInterceptor: promiseInterceptor };
+
+
+
+
+var baseApi = /*#__PURE__*/Object.freeze({
+  upx2px: upx2px,
+  interceptors: interceptors,
+  addInterceptor: addInterceptor,
+  removeInterceptor: removeInterceptor });
+
 
 var previewImage = {
   args: function args(fromArgs) {
@@ -2442,7 +635,7 @@ function initTriggerEvent(mpInstance) {
     }
   }
   var oldTriggerEvent = mpInstance.triggerEvent;
-  mpInstance.triggerEvent = function (event) {for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {args[_key2 - 1] = arguments[_key2];}
+  mpInstance.triggerEvent = function (event) {for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {args[_key3 - 1] = arguments[_key3];}
     return oldTriggerEvent.apply(mpInstance, [customize(event)].concat(args));
   };
 }
@@ -2455,7 +648,7 @@ function initHook(name, options) {
     };
   } else {
     options[name] = function () {
-      initTriggerEvent(this);for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {args[_key3] = arguments[_key3];}
+      initTriggerEvent(this);for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {args[_key4] = arguments[_key4];}
       return oldHook.apply(this, args);
     };
   }
@@ -2573,7 +766,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -3248,8 +1441,8 @@ var uni = {};
 if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
   uni = new Proxy({}, {
     get: function get(target, name) {
-      if (name === 'upx2px') {
-        return upx2px;
+      if (baseApi[name]) {
+        return baseApi[name];
       }
       if (api[name]) {
         return promisify(name, api[name]);
@@ -3272,7 +1465,9 @@ if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
     } });
 
 } else {
-  uni.upx2px = upx2px;
+  Object.keys(baseApi).forEach(function (name) {
+    uni[name] = baseApi[name];
+  });
 
   {
     Object.keys(todoApis).forEach(function (name) {
@@ -3308,7 +1503,1481 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js":
+/***/ 10:
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 105:
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _message = _interopRequireDefault(__webpack_require__(/*! ./pages/message/message.vue */ 106));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_message.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 11:
+/*!****************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/store/index.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+_vue.default.use(_vuex.default);
+
+var store = new _vuex.default.Store({
+  state: {
+    type: '',
+    mobile: '',
+    token: '' },
+
+  mutations: {
+    login: function login(state, userinfo) {
+      state.mobile = userinfo.mobile;
+      state.token = userinfo.token;
+    },
+    loginout: function loginout(state) {
+      state.mobile = '';
+      state.token = '';
+    },
+    setToken: function setToken(state, token) {
+      state.token = token;
+    } } });var _default =
+
+
+
+store;exports.default = _default;
+
+/***/ }),
+
+/***/ 113:
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fshopcar%2Fshopcar"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _shopcar = _interopRequireDefault(__webpack_require__(/*! ./pages/shopcar/shopcar.vue */ 114));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_shopcar.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 12:
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.0.1
+ * (c) 2017 Evan You
+ * @license MIT
+ */
+var applyMixin = function (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+};
+
+var devtoolHook =
+  typeof window !== 'undefined' &&
+  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  this._children = Object.create(null);
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors$1 = { namespaced: { configurable: true } };
+
+prototypeAccessors$1.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors$1 );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "Store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  var state = options.state; if ( state === void 0 ) state = {};
+  if (typeof state === 'function') {
+    state = state() || {};
+  }
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  if (Vue.config.devtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors = { state: { configurable: true } };
+
+prototypeAccessors.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors.state.set = function (v) {
+  if (true) {
+    assert(false, "Use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
+
+  return entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload)
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  return genericSubscribe(fn, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    computed[key] = function () { return fn(store); };
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.0.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/***/ }),
+
+/***/ 121:
+/*!*************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2FchatDetail"} ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _chatDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/message/chatDetail.vue */ 122));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_chatDetail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 129:
+/*!****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmine"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _mine = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/mine.vue */ 130));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_mine.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 13:
+/*!************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/api/api.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+
+{
+  // 登录注册
+  login: _config.default.devApi + '/app.user/login', // 登录
+  register: _config.default.devApi + '/app.user/register', // 注册
+  sendcode: _config.default.devApi + '/app.user/sendcode', // 发送验证码
+  resetpassword: _config.default.devApi + '/app.user/resetpassword', // 重置密码
+  otherlogin: _config.default.devApi + '/app.user/otherlogin', // 第三方登录
+  otherregister: _config.default.devApi + '/app.user/otherregister', // 第三方登录完善信息
+  smscodeyz: _config.default.devApi + '/app.user/smscodeyz', // 验证码校验
+
+  // 首页
+  categorylist: _config.default.devApi + '/article/categorylist', // 所有文章分类
+  articlesbycategoryid: _config.default.devApi + '/article/articlesbycategoryid', // 通过分类ID获取文章列表
+  activitytags: _config.default.devApi + '/article/activitytags', // 所有标签分类
+  articlesbysearch: _config.default.devApi + '/article/articlesbysearch', // 搜索文章列表
+  index: _config.default.devApi + '/page/index', // 首页
+  index_gethomebanners: _config.default.devApi + '/article/gethomebanners', // 首页轮播图
+
+  // 详情页
+  commentlike: _config.default.devApi + '/article/commentlike', // 评论点赞
+  commentunlike: _config.default.devApi + '/article/commentunlike', // 评论取消点赞
+  commentreplylike: _config.default.devApi + '/article/commentreplylike', // 评论回复点赞
+  commentreplyunlike: _config.default.devApi + '/article/commentreplyunlike', // 评论回复取消点赞
+  addcomments: _config.default.devApi + '/article/addcomments', // 发表评论
+  unLike: _config.default.devApi + '/article/unLike', // 文章取消点赞
+  detailing: _config.default.devApi + '/article/detailing', // 文章详情接口
+  like: _config.default.devApi + '/article/like', // 文章点赞
+
+  // 商城
+  promotions: _config.default.devApi + '/goods/promotions', // 促销活动
+  goodscategory: _config.default.devApi + '/category/goodscategory', // 获取所有商品分类
+  recommendgoods: _config.default.devApi + '/goods/recommendgoods', // 推荐商品列表
+  getbrands: _config.default.devApi + '/brands/getbrands', // 品牌分类
+  getflashsalegoodsbyone: _config.default.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品
+  getseckillgoodsbyone: _config.default.devApi + '/seckill/getseckillgoodsbyone', // 商城页展示一个秒杀商品
+  goodlists: _config.default.devApi + '/goods/goodlists', // 商城搜索
+  goods_gethomebanners: _config.default.devApi + '/goods/gethomebanners', // 商城首页轮播图
+  goods_detail: _config.default.devApi + '/goods/detail', // 普通商品详情
+
+
+  // 秒杀
+  seckill_goodsbycategoryid: _config.default.devApi + '/seckill/goodsbycategoryid', // 通过秒杀活动ID获取秒杀商品列表
+  seckill_categorys: _config.default.devApi + '/seckill/categorys', // 秒杀活动分类
+  seckill_detail: _config.default.devApi + '/seckill/detail', // 秒杀商品详情
+  seckill_remind: _config.default.devApi + '/seckill/remind', // 秒杀商品提醒
+  seckill_cancelremind: _config.default.devApi + '/seckill/cancelremind', // 秒杀商品取消提醒
+
+  // 限时抢购
+  flashsale_categorys: _config.default.devApi + '/flashsale/categorys', // 限时抢购活动分类
+  flashsale_goodsbycategoryid: _config.default.devApi + '/flashsale/goodsbycategoryid', // 限时抢购活动分类ID获取商品列表
+  flashsale_detail: _config.default.devApi + '/flashsale/detail', // 限时抢购商品详情
+  flashsale_remind: _config.default.devApi + '/flashsale/remind', // 限时抢购商品加入提醒
+  flashsale_cancelremind: _config.default.devApi + '/flashsale/cancelremind', // 限时抢购商品取消提醒
+
+  // 我的
+  mylikearticles: _config.default.devApi + '/app.center/mylikearticles', // 个人中心点赞文章列表
+  mycollection: _config.default.devApi + '/app.center/mycollection', // 个人中心收藏商品列表
+  changepwd: _config.default.devApi + '/app.center/changepwd', // 更改密码
+  modifypersonalinfo: _config.default.devApi + '/app.center/modifypersonalinfo', // 修改个人用户信息
+  getuserinfo: _config.default.devApi + '/app.center/getuserinfo', // 获取用户个人信息
+
+  // 订单
+  orderList: _config.default.devApi + '/user.order/lists', // 订单
+
+
+  // 购物车 
+  shopcarList: _config.default.devApi + '/cart/lists', // 购物车列表
+  addcar: _config.default.devApi + '/cart/add', // 添加购物车
+  delcar: _config.default.devApi + '/cart/delete', // 移出购物车
+  buyNowinventory: _config.default.devApi + '/order/buyNowinventory' // 下订单前检查库存是否充足
+
+
+
+
+  // 下订单前检查库存 /order/buyNowinventory&goods_id=10234&goods_num=1&goods_sku_id=10028_10255_10258&wxapp_id=10001&token=4de6cf677435f27793fcd69731a43540
+};exports.default = _default;
+
+/***/ }),
+
+/***/ 137:
+/*!*****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Flooks"} ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _looks = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/looks.vue */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_looks.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 14:
+/*!***************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/api/config.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  conductApi: 'http://172.20.10.2/code/api/web/index.php?s=/api', // 开发环境
+  devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
+};exports.default = _default;
+
+/***/ }),
+
+/***/ 145:
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fsearch"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _search = _interopRequireDefault(__webpack_require__(/*! ./pages/components/search.vue */ 146));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_search.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 15:
+/*!****************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/common/http.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;var _index = _interopRequireDefault(__webpack_require__(/*! ../store/index.js */ 11));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+
+function _default(obj) {
+  uni.showLoading({
+    title: '加载中' });
+
+  var params = {
+    'wxapp_id': '10001',
+    token: _index.default.state.token
+    // token: '74155add51e6d35b3ac603555fa0083e'
+  };
+  var data = _objectSpread({}, obj.data, params);
+  uni.request({
+    url: obj.url,
+    method: obj.method ? obj.method : 'GET',
+    data: data,
+    header: obj.header ? obj.header : {},
+    success: function success(res) {
+      if (res.data.code === -1 || res.data.code === 0 && res.msg) {
+        uni.showToast({
+          title: res.msg,
+          icon: 'none' });
+
+      }
+      obj.cb(null, res.data);
+    },
+    fail: function fail(err) {
+      obj.cb(err, null);
+    },
+    complete: function complete(data) {
+      if (!data) {
+        uni.showToast({
+          title: '请求出错',
+          icon: 'none' });
+
+      } else {
+        uni.hideLoading();
+      }
+    } });
+
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 153:
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fdiscount"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _discount = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/discount.vue */ 154));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_discount.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 16:
+/*!******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_index.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 161:
+/*!****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmean"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _mean = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/mean.vue */ 162));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_mean.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 169:
+/*!*******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsetting"} ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _setting = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/setting.vue */ 170));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_setting.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 177:
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fpersonal"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _personal = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/personal.vue */ 178));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_personal.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 185:
+/*!*******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Faddress"} ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _address = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/address.vue */ 186));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_address.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 193:
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FaddAddress"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _addAddress = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/addAddress.vue */ 194));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_addAddress.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
   \******************************************************************************************/
@@ -8776,7 +8445,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8797,14 +8466,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8880,7 +8549,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9253,1069 +8922,896 @@ internalMixin(Vue);
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 201:
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FchangePassword"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _changePassword = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/changePassword.vue */ 202));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_changePassword.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ "./node_modules/vuex/dist/vuex.esm.js":
-/*!********************************************!*\
-  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
-  \********************************************/
-/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 209:
+/*!*****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fabout"} ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
-/**
- * vuex v3.0.1
- * (c) 2017 Evan You
- * @license MIT
- */
-var applyMixin = function (Vue) {
-  var version = Number(Vue.version.split('.')[0]);
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
-  if (version >= 2) {
-    Vue.mixin({ beforeCreate: vuexInit });
-  } else {
-    // override init and inject vuex init procedure
-    // for 1.x backwards compatibility.
-    var _init = Vue.prototype._init;
-    Vue.prototype._init = function (options) {
-      if ( options === void 0 ) options = {};
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _about = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/about.vue */ 210));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_about.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
-      options.init = options.init
-        ? [vuexInit].concat(options.init)
-        : vuexInit;
-      _init.call(this, options);
-    };
+/***/ }),
+
+/***/ 217:
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FdiscountCenter"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _discountCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/discountCenter.vue */ 218));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_discountCenter.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 22:
+/*!************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/service.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
+var USERS_KEY = 'USERS_KEY';
+var STATE_KEY = 'STATE_KEY';
+
+var getUsers = function getUsers() {
+  var ret = '';
+  ret = uni.getStorageSync(USERS_KEY);
+  if (!ret) {
+    ret = '[]';
   }
-
-  /**
-   * Vuex init hook, injected into each instances init hooks list.
-   */
-
-  function vuexInit () {
-    var options = this.$options;
-    // store injection
-    if (options.store) {
-      this.$store = typeof options.store === 'function'
-        ? options.store()
-        : options.store;
-    } else if (options.parent && options.parent.$store) {
-      this.$store = options.parent.$store;
-    }
-  }
+  return JSON.parse(ret);
 };
 
-var devtoolHook =
-  typeof window !== 'undefined' &&
-  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+var addUser = function addUser(userInfo) {
+  var users = getUsers();
+  users.push({
+    account: userInfo.account,
+    password: userInfo.password });
 
-function devtoolPlugin (store) {
-  if (!devtoolHook) { return }
+  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
+};var _default =
 
-  store._devtoolHook = devtoolHook;
+{
+  getUsers: getUsers,
+  addUser: addUser };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
-  devtoolHook.emit('vuex:init', store);
+/***/ }),
 
-  devtoolHook.on('vuex:travel-to-state', function (targetState) {
-    store.replaceState(targetState);
-  });
+/***/ 225:
+/*!******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Forder"} ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-  store.subscribe(function (mutation, state) {
-    devtoolHook.emit('vuex:mutation', mutation, state);
-  });
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ 226));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_order.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 233:
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2ForderDetail"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _orderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/order/orderDetail.vue */ 234));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_orderDetail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 241:
+/*!******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Fgrade"} ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _grade = _interopRequireDefault(__webpack_require__(/*! ./pages/order/grade.vue */ 242));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_grade.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 249:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bonusCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusCenter.vue */ 250));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusCenter.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 25:
+/*!******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 257:
+/*!*****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusInfo"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bonusInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusInfo.vue */ 258));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 265:
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FmyCard"} ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _myCard = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/myCard.vue */ 266));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_myCard.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 273:
+/*!****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsign"} ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _sign = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/sign.vue */ 274));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_sign.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 281:
+/*!**********************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusApplyInfo"} ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bonusApplyInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusApplyInfo.vue */ 282));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bonusApplyInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 294:
+/*!***************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/html2json.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _wxDiscode = _interopRequireDefault(__webpack_require__(/*! ./wxDiscode */ 295));
+var _htmlparser = _interopRequireDefault(__webpack_require__(/*! ./htmlparser */ 296));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} /**
+                                                                                                                                                                 * html2Json 改造来自: https://github.com/Jxck/html2json
+                                                                                                                                                                 *
+                                                                                                                                                                 *
+                                                                                                                                                                 * author: Di (微信小程序开发工程师)
+                                                                                                                                                                 * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
+                                                                                                                                                                 *               垂直微信小程序开发交流社区
+                                                                                                                                                                 *
+                                                                                                                                                                 * github地址: https://github.com/icindy/wxParse
+                                                                                                                                                                 *
+                                                                                                                                                                 * for: 微信小程序富文本解析
+                                                                                                                                                                 * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
+                                                                                                                                                                 */function makeMap(str) {var obj = {};var items = str.split(',');for (var i = 0; i < items.length; i += 1) {obj[items[i]] = true;}return obj;} // Block Elements - HTML 5
+var block = makeMap('br,code,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
+var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
+// Elements that you can, intentionally, leave open
+// (and which close themselves)
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
+
+function removeDOCTYPE(html) {
+  var isDocument = /<body.*>([^]*)<\/body>/.test(html);
+  return isDocument ? RegExp.$1 : html;
 }
 
-/**
- * Get the first item that pass the test
- * by second argument function
- *
- * @param {Array} list
- * @param {Function} f
- * @return {*}
- */
-/**
- * Deep copy the given object considering circular structure.
- * This function caches all nested objects and its copies.
- * If it detects circular structure, use cached copy to avoid infinite loop.
- *
- * @param {*} obj
- * @param {Array<Object>} cache
- * @return {*}
- */
-
-
-/**
- * forEach for object
- */
-function forEachValue (obj, fn) {
-  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+function trimHtml(html) {
+  return html.
+  replace(/<!--.*?-->/gi, '').
+  replace(/\/\*.*?\*\//gi, '').
+  replace(/[ ]+</gi, '<').
+  replace(/<script[^]*<\/script>/gi, '').
+  replace(/<style[^]*<\/style>/gi, '');
 }
 
-function isObject (obj) {
-  return obj !== null && typeof obj === 'object'
+function getScreenInfo() {
+  var screen = {};
+  wx.getSystemInfo({
+    success: function success(res) {
+      screen.width = res.windowWidth;
+      screen.height = res.windowHeight;
+    } });
+
+  return screen;
 }
 
-function isPromise (val) {
-  return val && typeof val.then === 'function'
-}
+function html2json(html, customHandler, imageProp, host) {
+  // 处理字符串
+  html = removeDOCTYPE(html);
+  html = trimHtml(html);
+  html = _wxDiscode.default.strDiscode(html);
+  // 生成node节点
+  var bufArray = [];
+  var results = {
+    nodes: [],
+    imageUrls: [] };
 
-function assert (condition, msg) {
-  if (!condition) { throw new Error(("[vuex] " + msg)) }
-}
 
-var Module = function Module (rawModule, runtime) {
-  this.runtime = runtime;
-  this._children = Object.create(null);
-  this._rawModule = rawModule;
-  var rawState = rawModule.state;
-  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
-};
+  var screen = getScreenInfo();
+  function Node(tag) {
+    this.node = 'element';
+    this.tag = tag;
 
-var prototypeAccessors$1 = { namespaced: { configurable: true } };
-
-prototypeAccessors$1.namespaced.get = function () {
-  return !!this._rawModule.namespaced
-};
-
-Module.prototype.addChild = function addChild (key, module) {
-  this._children[key] = module;
-};
-
-Module.prototype.removeChild = function removeChild (key) {
-  delete this._children[key];
-};
-
-Module.prototype.getChild = function getChild (key) {
-  return this._children[key]
-};
-
-Module.prototype.update = function update (rawModule) {
-  this._rawModule.namespaced = rawModule.namespaced;
-  if (rawModule.actions) {
-    this._rawModule.actions = rawModule.actions;
-  }
-  if (rawModule.mutations) {
-    this._rawModule.mutations = rawModule.mutations;
-  }
-  if (rawModule.getters) {
-    this._rawModule.getters = rawModule.getters;
-  }
-};
-
-Module.prototype.forEachChild = function forEachChild (fn) {
-  forEachValue(this._children, fn);
-};
-
-Module.prototype.forEachGetter = function forEachGetter (fn) {
-  if (this._rawModule.getters) {
-    forEachValue(this._rawModule.getters, fn);
-  }
-};
-
-Module.prototype.forEachAction = function forEachAction (fn) {
-  if (this._rawModule.actions) {
-    forEachValue(this._rawModule.actions, fn);
-  }
-};
-
-Module.prototype.forEachMutation = function forEachMutation (fn) {
-  if (this._rawModule.mutations) {
-    forEachValue(this._rawModule.mutations, fn);
-  }
-};
-
-Object.defineProperties( Module.prototype, prototypeAccessors$1 );
-
-var ModuleCollection = function ModuleCollection (rawRootModule) {
-  // register root module (Vuex.Store options)
-  this.register([], rawRootModule, false);
-};
-
-ModuleCollection.prototype.get = function get (path) {
-  return path.reduce(function (module, key) {
-    return module.getChild(key)
-  }, this.root)
-};
-
-ModuleCollection.prototype.getNamespace = function getNamespace (path) {
-  var module = this.root;
-  return path.reduce(function (namespace, key) {
-    module = module.getChild(key);
-    return namespace + (module.namespaced ? key + '/' : '')
-  }, '')
-};
-
-ModuleCollection.prototype.update = function update$1 (rawRootModule) {
-  update([], this.root, rawRootModule);
-};
-
-ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
-    var this$1 = this;
-    if ( runtime === void 0 ) runtime = true;
-
-  if (true) {
-    assertRawModule(path, rawModule);
+    this.$screen = screen;
   }
 
-  var newModule = new Module(rawModule, runtime);
-  if (path.length === 0) {
-    this.root = newModule;
-  } else {
-    var parent = this.get(path.slice(0, -1));
-    parent.addChild(path[path.length - 1], newModule);
-  }
+  (0, _htmlparser.default)(html, {
+    start: function start(tag, attrs, unary) {
+      // node for this element
+      var node = new Node(tag);
 
-  // register nested modules
-  if (rawModule.modules) {
-    forEachValue(rawModule.modules, function (rawChildModule, key) {
-      this$1.register(path.concat(key), rawChildModule, runtime);
-    });
-  }
-};
-
-ModuleCollection.prototype.unregister = function unregister (path) {
-  var parent = this.get(path.slice(0, -1));
-  var key = path[path.length - 1];
-  if (!parent.getChild(key).runtime) { return }
-
-  parent.removeChild(key);
-};
-
-function update (path, targetModule, newModule) {
-  if (true) {
-    assertRawModule(path, newModule);
-  }
-
-  // update target module
-  targetModule.update(newModule);
-
-  // update nested modules
-  if (newModule.modules) {
-    for (var key in newModule.modules) {
-      if (!targetModule.getChild(key)) {
-        if (true) {
-          console.warn(
-            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
-            'manual reload is needed'
-          );
+      if (bufArray.length !== 0) {
+        var parent = bufArray[0];
+        if (parent.nodes === undefined) {
+          parent.nodes = [];
         }
-        return
       }
-      update(
-        path.concat(key),
-        targetModule.getChild(key),
-        newModule.modules[key]
-      );
-    }
-  }
-}
 
-var functionAssert = {
-  assert: function (value) { return typeof value === 'function'; },
-  expected: 'function'
-};
+      if (block[tag]) {
+        node.tagType = 'block';
+      } else if (inline[tag]) {
+        node.tagType = 'inline';
+      } else if (closeSelf[tag]) {
+        node.tagType = 'closeSelf';
+      }
 
-var objectAssert = {
-  assert: function (value) { return typeof value === 'function' ||
-    (typeof value === 'object' && typeof value.handler === 'function'); },
-  expected: 'function or object with "handler" function'
-};
+      node.attr = attrs.reduce(function (pre, attr) {var
+        name = attr.name;var
+        value = attr.value;
+        if (name === 'class') {
+          node.classStr = value;
+        }
+        // has multi attibutes
+        // make it array of attribute
+        if (name === 'style') {
+          node.styleStr = value;
+        }
+        if (value.match(/ /)) {
+          value = value.split(' ');
+        }
 
-var assertTypes = {
-  getters: functionAssert,
-  mutations: functionAssert,
-  actions: objectAssert
-};
+        // if attr already exists
+        // merge it
+        if (pre[name]) {
+          if (Array.isArray(pre[name])) {
+            // already array, push to last
+            pre[name].push(value);
+          } else {
+            // single value, make it array
+            pre[name] = [pre[name], value];
+          }
+        } else {
+          // not exist, put it
+          pre[name] = value;
+        }
 
-function assertRawModule (path, rawModule) {
-  Object.keys(assertTypes).forEach(function (key) {
-    if (!rawModule[key]) { return }
+        return pre;
+      }, {});
 
-    var assertOptions = assertTypes[key];
+      // 优化样式相关属性
+      if (node.classStr) {
+        node.classStr += " ".concat(node.tag);
+      } else {
+        node.classStr = node.tag;
+      }
+      if (node.tagType === 'inline') {
+        node.classStr += ' inline';
+      }
 
-    forEachValue(rawModule[key], function (value, type) {
-      assert(
-        assertOptions.assert(value),
-        makeAssertionMessage(path, key, type, value, assertOptions.expected)
-      );
-    });
-  });
-}
+      // 对img添加额外数据
+      if (node.tag === 'img') {
+        var imgUrl = node.attr.src;
+        imgUrl = _wxDiscode.default.urlToHttpUrl(imgUrl, imageProp.domain);
+        Object.assign(node.attr, imageProp, {
+          src: imgUrl || '' });
 
-function makeAssertionMessage (path, key, type, value, expected) {
-  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
-  if (path.length > 0) {
-    buf += " in module \"" + (path.join('.')) + "\"";
-  }
-  buf += " is " + (JSON.stringify(value)) + ".";
-  return buf
-}
+        if (imgUrl) {
+          results.imageUrls.push(imgUrl);
+        }
+      }
 
-var Vue; // bind on install
+      // 处理a标签属性
+      if (node.tag === 'a') {
+        node.attr.href = node.attr.href || '';
+      }
 
-var Store = function Store (options) {
-  var this$1 = this;
-  if ( options === void 0 ) options = {};
+      // 处理font标签样式属性
+      if (node.tag === 'font') {
+        var fontSize = [
+        'x-small',
+        'small',
+        'medium',
+        'large',
+        'x-large',
+        'xx-large',
+        '-webkit-xxx-large'];
 
-  // Auto install if it is not done yet and `window` has `Vue`.
-  // To allow users to avoid auto-installation in some cases,
-  // this code should be placed here. See #731
-  if (!Vue && typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
-  }
+        var styleAttrs = {
+          color: 'color',
+          face: 'font-family',
+          size: 'font-size' };
 
-  if (true) {
-    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
-    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
-    assert(this instanceof Store, "Store must be called with the new operator.");
-  }
+        if (!node.styleStr) node.styleStr = '';
+        Object.keys(styleAttrs).forEach(function (key) {
+          if (node.attr[key]) {
+            var value = key === 'size' ? fontSize[node.attr[key] - 1] : node.attr[key];
+            node.styleStr += "".concat(styleAttrs[key], ": ").concat(value, ";");
+          }
+        });
+      }
 
-  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
-  var strict = options.strict; if ( strict === void 0 ) strict = false;
+      // 临时记录source资源
+      if (node.tag === 'source') {
+        results.source = node.attr.src;
+      }
 
-  var state = options.state; if ( state === void 0 ) state = {};
-  if (typeof state === 'function') {
-    state = state() || {};
-  }
+      if (customHandler.start) {
+        customHandler.start(node, results);
+      }
 
-  // store internal state
-  this._committing = false;
-  this._actions = Object.create(null);
-  this._actionSubscribers = [];
-  this._mutations = Object.create(null);
-  this._wrappedGetters = Object.create(null);
-  this._modules = new ModuleCollection(options);
-  this._modulesNamespaceMap = Object.create(null);
-  this._subscribers = [];
-  this._watcherVM = new Vue();
-
-  // bind commit and dispatch to self
-  var store = this;
-  var ref = this;
-  var dispatch = ref.dispatch;
-  var commit = ref.commit;
-  this.dispatch = function boundDispatch (type, payload) {
-    return dispatch.call(store, type, payload)
-  };
-  this.commit = function boundCommit (type, payload, options) {
-    return commit.call(store, type, payload, options)
-  };
-
-  // strict mode
-  this.strict = strict;
-
-  // init root module.
-  // this also recursively registers all sub-modules
-  // and collects all module getters inside this._wrappedGetters
-  installModule(this, state, [], this._modules.root);
-
-  // initialize the store vm, which is responsible for the reactivity
-  // (also registers _wrappedGetters as computed properties)
-  resetStoreVM(this, state);
-
-  // apply plugins
-  plugins.forEach(function (plugin) { return plugin(this$1); });
-
-  if (Vue.config.devtools) {
-    devtoolPlugin(this);
-  }
-};
-
-var prototypeAccessors = { state: { configurable: true } };
-
-prototypeAccessors.state.get = function () {
-  return this._vm._data.$$state
-};
-
-prototypeAccessors.state.set = function (v) {
-  if (true) {
-    assert(false, "Use store.replaceState() to explicit replace store state.");
-  }
-};
-
-Store.prototype.commit = function commit (_type, _payload, _options) {
-    var this$1 = this;
-
-  // check object-style commit
-  var ref = unifyObjectStyle(_type, _payload, _options);
-    var type = ref.type;
-    var payload = ref.payload;
-    var options = ref.options;
-
-  var mutation = { type: type, payload: payload };
-  var entry = this._mutations[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown mutation type: " + type));
-    }
-    return
-  }
-  this._withCommit(function () {
-    entry.forEach(function commitIterator (handler) {
-      handler(payload);
-    });
-  });
-  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
-
-  if (
-     true &&
-    options && options.silent
-  ) {
-    console.warn(
-      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
-      'Use the filter functionality in the vue-devtools'
-    );
-  }
-};
-
-Store.prototype.dispatch = function dispatch (_type, _payload) {
-    var this$1 = this;
-
-  // check object-style dispatch
-  var ref = unifyObjectStyle(_type, _payload);
-    var type = ref.type;
-    var payload = ref.payload;
-
-  var action = { type: type, payload: payload };
-  var entry = this._actions[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown action type: " + type));
-    }
-    return
-  }
-
-  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
-
-  return entry.length > 1
-    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
-    : entry[0](payload)
-};
-
-Store.prototype.subscribe = function subscribe (fn) {
-  return genericSubscribe(fn, this._subscribers)
-};
-
-Store.prototype.subscribeAction = function subscribeAction (fn) {
-  return genericSubscribe(fn, this._actionSubscribers)
-};
-
-Store.prototype.watch = function watch (getter, cb, options) {
-    var this$1 = this;
-
-  if (true) {
-    assert(typeof getter === 'function', "store.watch only accepts a function.");
-  }
-  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
-};
-
-Store.prototype.replaceState = function replaceState (state) {
-    var this$1 = this;
-
-  this._withCommit(function () {
-    this$1._vm._data.$$state = state;
-  });
-};
-
-Store.prototype.registerModule = function registerModule (path, rawModule, options) {
-    if ( options === void 0 ) options = {};
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-    assert(path.length > 0, 'cannot register the root module by using registerModule.');
-  }
-
-  this._modules.register(path, rawModule);
-  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
-  // reset store to update getters...
-  resetStoreVM(this, this.state);
-};
-
-Store.prototype.unregisterModule = function unregisterModule (path) {
-    var this$1 = this;
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-  }
-
-  this._modules.unregister(path);
-  this._withCommit(function () {
-    var parentState = getNestedState(this$1.state, path.slice(0, -1));
-    Vue.delete(parentState, path[path.length - 1]);
-  });
-  resetStore(this);
-};
-
-Store.prototype.hotUpdate = function hotUpdate (newOptions) {
-  this._modules.update(newOptions);
-  resetStore(this, true);
-};
-
-Store.prototype._withCommit = function _withCommit (fn) {
-  var committing = this._committing;
-  this._committing = true;
-  fn();
-  this._committing = committing;
-};
-
-Object.defineProperties( Store.prototype, prototypeAccessors );
-
-function genericSubscribe (fn, subs) {
-  if (subs.indexOf(fn) < 0) {
-    subs.push(fn);
-  }
-  return function () {
-    var i = subs.indexOf(fn);
-    if (i > -1) {
-      subs.splice(i, 1);
-    }
-  }
-}
-
-function resetStore (store, hot) {
-  store._actions = Object.create(null);
-  store._mutations = Object.create(null);
-  store._wrappedGetters = Object.create(null);
-  store._modulesNamespaceMap = Object.create(null);
-  var state = store.state;
-  // init all modules
-  installModule(store, state, [], store._modules.root, true);
-  // reset vm
-  resetStoreVM(store, state, hot);
-}
-
-function resetStoreVM (store, state, hot) {
-  var oldVm = store._vm;
-
-  // bind store public getters
-  store.getters = {};
-  var wrappedGetters = store._wrappedGetters;
-  var computed = {};
-  forEachValue(wrappedGetters, function (fn, key) {
-    // use computed to leverage its lazy-caching mechanism
-    computed[key] = function () { return fn(store); };
-    Object.defineProperty(store.getters, key, {
-      get: function () { return store._vm[key]; },
-      enumerable: true // for local getters
-    });
-  });
-
-  // use a Vue instance to store the state tree
-  // suppress warnings just in case the user has added
-  // some funky global mixins
-  var silent = Vue.config.silent;
-  Vue.config.silent = true;
-  store._vm = new Vue({
-    data: {
-      $$state: state
+      if (unary) {
+        // if this tag doesn't have end tag
+        // like <img src="hoge.png"/>
+        // add to parents
+        var _parent = bufArray[0] || results;
+        if (_parent.nodes === undefined) {
+          _parent.nodes = [];
+        }
+        _parent.nodes.push(node);
+      } else {
+        bufArray.unshift(node);
+      }
     },
-    computed: computed
-  });
-  Vue.config.silent = silent;
+    end: function end(tag) {
+      // merge into parent tag
+      var node = bufArray.shift();
+      if (node.tag !== tag) {
+        console.error('invalid state: mismatch end tag');
+      }
 
-  // enable strict mode for new vm
-  if (store.strict) {
-    enableStrictMode(store);
+      // 当有缓存source资源时于于video补上src资源
+      if (node.tag === 'video' && results.source) {
+        node.attr.src = results.source;
+        delete results.source;
+      }
+
+      if (customHandler.end) {
+        customHandler.end(node, results);
+      }
+
+      if (bufArray.length === 0) {
+        results.nodes.push(node);
+      } else {
+        var parent = bufArray[0];
+        if (!parent.nodes) {
+          parent.nodes = [];
+        }
+        parent.nodes.push(node);
+      }
+    },
+    chars: function chars(text) {
+      if (!text.trim()) return;
+
+      var node = {
+        node: 'text',
+        text: text };
+
+
+      if (customHandler.chars) {
+        customHandler.chars(node, results);
+      }
+
+      if (bufArray.length === 0) {
+        results.nodes.push(node);
+      } else {
+        var parent = bufArray[0];
+        if (parent.nodes === undefined) {
+          parent.nodes = [];
+        }
+        parent.nodes.push(node);
+      }
+    } });
+
+
+  return results;
+}var _default =
+
+html2json;exports.default = _default;
+
+/***/ }),
+
+/***/ 295:
+/*!***************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/wxDiscode.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // HTML 支持的数学符号
+function strNumDiscode(str) {
+  str = str.replace(/&forall;/g, '∀');
+  str = str.replace(/&part;/g, '∂');
+  str = str.replace(/&exist;/g, '∃');
+  str = str.replace(/&empty;/g, '∅');
+  str = str.replace(/&nabla;/g, '∇');
+  str = str.replace(/&isin;/g, '∈');
+  str = str.replace(/&notin;/g, '∉');
+  str = str.replace(/&ni;/g, '∋');
+  str = str.replace(/&prod;/g, '∏');
+  str = str.replace(/&sum;/g, '∑');
+  str = str.replace(/&minus;/g, '−');
+  str = str.replace(/&lowast;/g, '∗');
+  str = str.replace(/&radic;/g, '√');
+  str = str.replace(/&prop;/g, '∝');
+  str = str.replace(/&infin;/g, '∞');
+  str = str.replace(/&ang;/g, '∠');
+  str = str.replace(/&and;/g, '∧');
+  str = str.replace(/&or;/g, '∨');
+  str = str.replace(/&cap;/g, '∩');
+  str = str.replace(/&cup;/g, '∪');
+  str = str.replace(/&int;/g, '∫');
+  str = str.replace(/&there4;/g, '∴');
+  str = str.replace(/&sim;/g, '∼');
+  str = str.replace(/&cong;/g, '≅');
+  str = str.replace(/&asymp;/g, '≈');
+  str = str.replace(/&ne;/g, '≠');
+  str = str.replace(/&le;/g, '≤');
+  str = str.replace(/&ge;/g, '≥');
+  str = str.replace(/&sub;/g, '⊂');
+  str = str.replace(/&sup;/g, '⊃');
+  str = str.replace(/&nsub;/g, '⊄');
+  str = str.replace(/&sube;/g, '⊆');
+  str = str.replace(/&supe;/g, '⊇');
+  str = str.replace(/&oplus;/g, '⊕');
+  str = str.replace(/&otimes;/g, '⊗');
+  str = str.replace(/&perp;/g, '⊥');
+  str = str.replace(/&sdot;/g, '⋅');
+  return str;
+}
+
+// HTML 支持的希腊字母
+function strGreeceDiscode(str) {
+  str = str.replace(/&Alpha;/g, 'Α');
+  str = str.replace(/&Beta;/g, 'Β');
+  str = str.replace(/&Gamma;/g, 'Γ');
+  str = str.replace(/&Delta;/g, 'Δ');
+  str = str.replace(/&Epsilon;/g, 'Ε');
+  str = str.replace(/&Zeta;/g, 'Ζ');
+  str = str.replace(/&Eta;/g, 'Η');
+  str = str.replace(/&Theta;/g, 'Θ');
+  str = str.replace(/&Iota;/g, 'Ι');
+  str = str.replace(/&Kappa;/g, 'Κ');
+  str = str.replace(/&Lambda;/g, 'Λ');
+  str = str.replace(/&Mu;/g, 'Μ');
+  str = str.replace(/&Nu;/g, 'Ν');
+  str = str.replace(/&Xi;/g, 'Ν');
+  str = str.replace(/&Omicron;/g, 'Ο');
+  str = str.replace(/&Pi;/g, 'Π');
+  str = str.replace(/&Rho;/g, 'Ρ');
+  str = str.replace(/&Sigma;/g, 'Σ');
+  str = str.replace(/&Tau;/g, 'Τ');
+  str = str.replace(/&Upsilon;/g, 'Υ');
+  str = str.replace(/&Phi;/g, 'Φ');
+  str = str.replace(/&Chi;/g, 'Χ');
+  str = str.replace(/&Psi;/g, 'Ψ');
+  str = str.replace(/&Omega;/g, 'Ω');
+
+  str = str.replace(/&alpha;/g, 'α');
+  str = str.replace(/&beta;/g, 'β');
+  str = str.replace(/&gamma;/g, 'γ');
+  str = str.replace(/&delta;/g, 'δ');
+  str = str.replace(/&epsilon;/g, 'ε');
+  str = str.replace(/&zeta;/g, 'ζ');
+  str = str.replace(/&eta;/g, 'η');
+  str = str.replace(/&theta;/g, 'θ');
+  str = str.replace(/&iota;/g, 'ι');
+  str = str.replace(/&kappa;/g, 'κ');
+  str = str.replace(/&lambda;/g, 'λ');
+  str = str.replace(/&mu;/g, 'μ');
+  str = str.replace(/&nu;/g, 'ν');
+  str = str.replace(/&xi;/g, 'ξ');
+  str = str.replace(/&omicron;/g, 'ο');
+  str = str.replace(/&pi;/g, 'π');
+  str = str.replace(/&rho;/g, 'ρ');
+  str = str.replace(/&sigmaf;/g, 'ς');
+  str = str.replace(/&sigma;/g, 'σ');
+  str = str.replace(/&tau;/g, 'τ');
+  str = str.replace(/&upsilon;/g, 'υ');
+  str = str.replace(/&phi;/g, 'φ');
+  str = str.replace(/&chi;/g, 'χ');
+  str = str.replace(/&psi;/g, 'ψ');
+  str = str.replace(/&omega;/g, 'ω');
+  str = str.replace(/&thetasym;/g, 'ϑ');
+  str = str.replace(/&upsih;/g, 'ϒ');
+  str = str.replace(/&piv;/g, 'ϖ');
+  str = str.replace(/&middot;/g, '·');
+  return str;
+}
+
+function strcharacterDiscode(str) {
+  // 加入常用解析
+  str = str.replace(/&nbsp;/g, ' ');
+  str = str.replace(/&ensp;/g, ' ');
+  str = str.replace(/&emsp;/g, '　');
+  str = str.replace(/&quot;/g, "'");
+  str = str.replace(/&amp;/g, '&');
+  str = str.replace(/&lt;/g, '<');
+  str = str.replace(/&gt;/g, '>');
+  str = str.replace(/&#8226;/g, '•');
+
+  return str;
+}
+
+// HTML 支持的其他实体
+function strOtherDiscode(str) {
+  str = str.replace(/&OElig;/g, 'Œ');
+  str = str.replace(/&oelig;/g, 'œ');
+  str = str.replace(/&Scaron;/g, 'Š');
+  str = str.replace(/&scaron;/g, 'š');
+  str = str.replace(/&Yuml;/g, 'Ÿ');
+  str = str.replace(/&fnof;/g, 'ƒ');
+  str = str.replace(/&circ;/g, 'ˆ');
+  str = str.replace(/&tilde;/g, '˜');
+  str = str.replace(/&ensp;/g, '');
+  str = str.replace(/&emsp;/g, '');
+  str = str.replace(/&thinsp;/g, '');
+  str = str.replace(/&zwnj;/g, '');
+  str = str.replace(/&zwj;/g, '');
+  str = str.replace(/&lrm;/g, '');
+  str = str.replace(/&rlm;/g, '');
+  str = str.replace(/&ndash;/g, '–');
+  str = str.replace(/&mdash;/g, '—');
+  str = str.replace(/&lsquo;/g, '‘');
+  str = str.replace(/&rsquo;/g, '’');
+  str = str.replace(/&sbquo;/g, '‚');
+  str = str.replace(/&ldquo;/g, '“');
+  str = str.replace(/&rdquo;/g, '”');
+  str = str.replace(/&bdquo;/g, '„');
+  str = str.replace(/&dagger;/g, '†');
+  str = str.replace(/&Dagger;/g, '‡');
+  str = str.replace(/&bull;/g, '•');
+  str = str.replace(/&hellip;/g, '…');
+  str = str.replace(/&permil;/g, '‰');
+  str = str.replace(/&prime;/g, '′');
+  str = str.replace(/&Prime;/g, '″');
+  str = str.replace(/&lsaquo;/g, '‹');
+  str = str.replace(/&rsaquo;/g, '›');
+  str = str.replace(/&oline;/g, '‾');
+  str = str.replace(/&euro;/g, '€');
+  str = str.replace(/&trade;/g, '™');
+
+  str = str.replace(/&larr;/g, '←');
+  str = str.replace(/&uarr;/g, '↑');
+  str = str.replace(/&rarr;/g, '→');
+  str = str.replace(/&darr;/g, '↓');
+  str = str.replace(/&harr;/g, '↔');
+  str = str.replace(/&crarr;/g, '↵');
+  str = str.replace(/&lceil;/g, '⌈');
+  str = str.replace(/&rceil;/g, '⌉');
+
+  str = str.replace(/&lfloor;/g, '⌊');
+  str = str.replace(/&rfloor;/g, '⌋');
+  str = str.replace(/&loz;/g, '◊');
+  str = str.replace(/&spades;/g, '♠');
+  str = str.replace(/&clubs;/g, '♣');
+  str = str.replace(/&hearts;/g, '♥');
+
+  str = str.replace(/&diams;/g, '♦');
+  str = str.replace(/&#39;/g, "'");
+  return str;
+}
+
+function strDiscode(str) {
+  str = strNumDiscode(str);
+  str = strGreeceDiscode(str);
+  str = strcharacterDiscode(str);
+  str = strOtherDiscode(str);
+  return str;
+}
+
+function urlToHttpUrl(url, domain) {
+  if (/^\/\//.test(url)) {
+    return "https:".concat(url);
+  } else if (/^\//.test(url)) {
+    return "https://".concat(domain).concat(url);
+  }
+  return url;
+}var _default =
+
+{
+  strDiscode: strDiscode,
+  urlToHttpUrl: urlToHttpUrl };exports.default = _default;
+
+/***/ }),
+
+/***/ 296:
+/*!****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/htmlparser.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
+                                                                                                      *
+                                                                                                      * htmlParser改造自: https://github.com/blowsie/Pure-JavaScript-HTML5-Parser
+                                                                                                      *
+                                                                                                      * author: Di (微信小程序开发工程师)
+                                                                                                      * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
+                                                                                                      *               垂直微信小程序开发交流社区
+                                                                                                      *
+                                                                                                      * github地址: https://github.com/icindy/wxParse
+                                                                                                      *
+                                                                                                      * for: 微信小程序富文本解析
+                                                                                                      * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
+                                                                                                      */
+// Regular Expressions for parsing tags and attributes
+
+var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z0-9_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
+var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
+var attr = /([a-zA-Z0-9_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g;
+
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+  for (var i = 0; i < items.length; i += 1) {obj[items[i]] = true;}
+  return obj;
+}
+
+// Empty Elements - HTML 5
+var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr');
+
+// Block Elements - HTML 5
+var block = makeMap('address,code,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,ins,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video');
+
+// Inline Elements - HTML 5
+var inline = makeMap('a,abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var');
+
+// Elements that you can, intentionally, leave open
+// (and which close themselves)
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr');
+
+// Attributes that have their values filled in disabled="disabled"
+var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected');
+
+function HTMLParser(html, handler) {
+  var index;
+  var chars;
+  var match;
+  var last = html;
+  var stack = [];
+
+  stack.last = function () {return stack[stack.length - 1];};
+
+  function parseEndTag(tag, tagName) {
+    // If no tag name is provided, clean shop
+    var pos;
+    if (!tagName) {
+      pos = 0;
+    } else {
+      // Find the closest opened tag of the same type
+      tagName = tagName.toLowerCase();
+      for (pos = stack.length - 1; pos >= 0; pos -= 1) {
+        if (stack[pos] === tagName) break;
+      }
+    }
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (var i = stack.length - 1; i >= pos; i -= 1) {
+        if (handler.end) handler.end(stack[i]);
+      }
+
+      // Remove the open elements from the stack
+      stack.length = pos;
+    }
   }
 
-  if (oldVm) {
-    if (hot) {
-      // dispatch changes in all subscribed watchers
-      // to force getter re-evaluation for hot reloading.
-      store._withCommit(function () {
-        oldVm._data.$$state = null;
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = tagName.toLowerCase();
+
+    if (block[tagName]) {
+      while (stack.last() && inline[stack.last()]) {
+        parseEndTag('', stack.last());
+      }
+    }
+
+    if (closeSelf[tagName] && stack.last() === tagName) {
+      parseEndTag('', tagName);
+    }
+
+    unary = empty[tagName] || !!unary;
+
+    if (!unary) stack.push(tagName);
+
+    if (handler.start) {
+      var attrs = [];
+
+      rest.replace(attr, function genAttr(matches, name) {
+        var value = arguments[2] || arguments[3] || arguments[4] || (fillAttrs[name] ? name : '');
+
+        attrs.push({
+          name: name,
+          value: value,
+          escaped: value.replace(/(^|[^\\])"/g, '$1\\"') // "
+        });
       });
+
+      if (handler.start) {
+        handler.start(tagName, attrs, unary);
+      }
     }
-    Vue.nextTick(function () { return oldVm.$destroy(); });
-  }
-}
-
-function installModule (store, rootState, path, module, hot) {
-  var isRoot = !path.length;
-  var namespace = store._modules.getNamespace(path);
-
-  // register in namespace map
-  if (module.namespaced) {
-    store._modulesNamespaceMap[namespace] = module;
   }
 
-  // set state
-  if (!isRoot && !hot) {
-    var parentState = getNestedState(rootState, path.slice(0, -1));
-    var moduleName = path[path.length - 1];
-    store._withCommit(function () {
-      Vue.set(parentState, moduleName, module.state);
-    });
-  }
+  while (html) {
+    chars = true;
 
-  var local = module.context = makeLocalContext(store, namespace, path);
+    if (html.indexOf('</') === 0) {
+      match = html.match(endTag);
 
-  module.forEachMutation(function (mutation, key) {
-    var namespacedType = namespace + key;
-    registerMutation(store, namespacedType, mutation, local);
-  });
-
-  module.forEachAction(function (action, key) {
-    var type = action.root ? key : namespace + key;
-    var handler = action.handler || action;
-    registerAction(store, type, handler, local);
-  });
-
-  module.forEachGetter(function (getter, key) {
-    var namespacedType = namespace + key;
-    registerGetter(store, namespacedType, getter, local);
-  });
-
-  module.forEachChild(function (child, key) {
-    installModule(store, rootState, path.concat(key), child, hot);
-  });
-}
-
-/**
- * make localized dispatch, commit, getters and state
- * if there is no namespace, just use root ones
- */
-function makeLocalContext (store, namespace, path) {
-  var noNamespace = namespace === '';
-
-  var local = {
-    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ( true && !store._actions[type]) {
-          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
-          return
-        }
+      if (match) {
+        html = html.substring(match[0].length);
+        match[0].replace(endTag, parseEndTag);
+        chars = false;
       }
 
-      return store.dispatch(type, payload)
-    },
+      // start tag
+    } else if (html.indexOf('<') === 0) {
+      match = html.match(startTag);
 
-    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ( true && !store._mutations[type]) {
-          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
-          return
-        }
+      if (match) {
+        html = html.substring(match[0].length);
+        match[0].replace(startTag, parseStartTag);
+        chars = false;
       }
-
-      store.commit(type, payload, options);
     }
-  };
 
-  // getters and state object must be gotten lazily
-  // because they will be changed by vm update
-  Object.defineProperties(local, {
-    getters: {
-      get: noNamespace
-        ? function () { return store.getters; }
-        : function () { return makeLocalGetters(store, namespace); }
-    },
-    state: {
-      get: function () { return getNestedState(store.state, path); }
+    if (chars) {
+      index = html.indexOf('<');
+      var text = '';
+      while (index === 0) {
+        text += '<';
+        html = html.substring(1);
+        index = html.indexOf('<');
+      }
+      text += index < 0 ? html : html.substring(0, index);
+      html = index < 0 ? '' : html.substring(index);
+
+      if (handler.chars) handler.chars(text);
     }
-  });
 
-  return local
-}
-
-function makeLocalGetters (store, namespace) {
-  var gettersProxy = {};
-
-  var splitPos = namespace.length;
-  Object.keys(store.getters).forEach(function (type) {
-    // skip if the target getter is not match this namespace
-    if (type.slice(0, splitPos) !== namespace) { return }
-
-    // extract local getter type
-    var localType = type.slice(splitPos);
-
-    // Add a port to the getters proxy.
-    // Define as getter property because
-    // we do not want to evaluate the getters in this time.
-    Object.defineProperty(gettersProxy, localType, {
-      get: function () { return store.getters[type]; },
-      enumerable: true
-    });
-  });
-
-  return gettersProxy
-}
-
-function registerMutation (store, type, handler, local) {
-  var entry = store._mutations[type] || (store._mutations[type] = []);
-  entry.push(function wrappedMutationHandler (payload) {
-    handler.call(store, local.state, payload);
-  });
-}
-
-function registerAction (store, type, handler, local) {
-  var entry = store._actions[type] || (store._actions[type] = []);
-  entry.push(function wrappedActionHandler (payload, cb) {
-    var res = handler.call(store, {
-      dispatch: local.dispatch,
-      commit: local.commit,
-      getters: local.getters,
-      state: local.state,
-      rootGetters: store.getters,
-      rootState: store.state
-    }, payload, cb);
-    if (!isPromise(res)) {
-      res = Promise.resolve(res);
-    }
-    if (store._devtoolHook) {
-      return res.catch(function (err) {
-        store._devtoolHook.emit('vuex:error', err);
-        throw err
-      })
-    } else {
-      return res
-    }
-  });
-}
-
-function registerGetter (store, type, rawGetter, local) {
-  if (store._wrappedGetters[type]) {
-    if (true) {
-      console.error(("[vuex] duplicate getter key: " + type));
-    }
-    return
-  }
-  store._wrappedGetters[type] = function wrappedGetter (store) {
-    return rawGetter(
-      local.state, // local state
-      local.getters, // local getters
-      store.state, // root state
-      store.getters // root getters
-    )
-  };
-}
-
-function enableStrictMode (store) {
-  store._vm.$watch(function () { return this._data.$$state }, function () {
-    if (true) {
-      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
-    }
-  }, { deep: true, sync: true });
-}
-
-function getNestedState (state, path) {
-  return path.length
-    ? path.reduce(function (state, key) { return state[key]; }, state)
-    : state
-}
-
-function unifyObjectStyle (type, payload, options) {
-  if (isObject(type) && type.type) {
-    options = payload;
-    payload = type;
-    type = type.type;
+    if (html === last) throw new Error("Parse Error: ".concat(html));
+    last = html;
   }
 
-  if (true) {
-    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
-  }
+  // Clean up any remaining tags
+  parseEndTag();
+}var _default =
 
-  return { type: type, payload: payload, options: options }
-}
-
-function install (_Vue) {
-  if (Vue && _Vue === Vue) {
-    if (true) {
-      console.error(
-        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
-      );
-    }
-    return
-  }
-  Vue = _Vue;
-  applyMixin(Vue);
-}
-
-var mapState = normalizeNamespace(function (namespace, states) {
-  var res = {};
-  normalizeMap(states).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedState () {
-      var state = this.$store.state;
-      var getters = this.$store.getters;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
-        if (!module) {
-          return
-        }
-        state = module.context.state;
-        getters = module.context.getters;
-      }
-      return typeof val === 'function'
-        ? val.call(this, state, getters)
-        : state[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapMutations = normalizeNamespace(function (namespace, mutations) {
-  var res = {};
-  normalizeMap(mutations).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedMutation () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var commit = this.$store.commit;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
-        if (!module) {
-          return
-        }
-        commit = module.context.commit;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [commit].concat(args))
-        : commit.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var mapGetters = normalizeNamespace(function (namespace, getters) {
-  var res = {};
-  normalizeMap(getters).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedGetter () {
-      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
-        return
-      }
-      if ( true && !(val in this.$store.getters)) {
-        console.error(("[vuex] unknown getter: " + val));
-        return
-      }
-      return this.$store.getters[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapActions = normalizeNamespace(function (namespace, actions) {
-  var res = {};
-  normalizeMap(actions).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedAction () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var dispatch = this.$store.dispatch;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
-        if (!module) {
-          return
-        }
-        dispatch = module.context.dispatch;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [dispatch].concat(args))
-        : dispatch.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var createNamespacedHelpers = function (namespace) { return ({
-  mapState: mapState.bind(null, namespace),
-  mapGetters: mapGetters.bind(null, namespace),
-  mapMutations: mapMutations.bind(null, namespace),
-  mapActions: mapActions.bind(null, namespace)
-}); };
-
-function normalizeMap (map) {
-  return Array.isArray(map)
-    ? map.map(function (key) { return ({ key: key, val: key }); })
-    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
-}
-
-function normalizeNamespace (fn) {
-  return function (namespace, map) {
-    if (typeof namespace !== 'string') {
-      map = namespace;
-      namespace = '';
-    } else if (namespace.charAt(namespace.length - 1) !== '/') {
-      namespace += '/';
-    }
-    return fn(namespace, map)
-  }
-}
-
-function getModuleByNamespace (store, helper, namespace) {
-  var module = store._modulesNamespaceMap[namespace];
-  if ( true && !module) {
-    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
-  }
-  return module
-}
-
-var index_esm = {
-  Store: Store,
-  install: install,
-  version: '3.0.1',
-  mapState: mapState,
-  mapMutations: mapMutations,
-  mapGetters: mapGetters,
-  mapActions: mapActions,
-  createNamespacedHelpers: createNamespacedHelpers
-};
-
-
-/* harmony default export */ __webpack_exports__["default"] = (index_esm);
-
+HTMLParser;exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/webpack/buildin/global.js":
+/***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
   \***********************************/
@@ -10343,6 +9839,732 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ 316:
+/*!*************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/components/uni-calendar/calendar.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /**
+                                                                                                     * @1900-2100区间内的公历、农历互转
+                                                                                                     * @charset UTF-8
+                                                                                                     * @github  https://github.com/jjonline/calendar.js
+                                                                                                     * @Author  Jea杨(JJonline@JJonline.Cn)
+                                                                                                     * @Time    2014-7-21
+                                                                                                     * @Time    2016-8-13 Fixed 2033hex、Attribution Annals
+                                                                                                     * @Time    2016-9-25 Fixed lunar LeapMonth Param Bug
+                                                                                                     * @Time    2017-7-24 Fixed use getTerm Func Param Error.use solar year,NOT lunar year
+                                                                                                     * @Version 1.0.3
+                                                                                                     * @公历转农历：calendar.solar2lunar(1987,11,01); //[you can ignore params of prefix 0]
+                                                                                                     * @农历转公历：calendar.lunar2solar(1987,09,10); //[you can ignore params of prefix 0]
+                                                                                                     */
+var calendar = {
+
+  /**
+                   * 农历1900-2100的润大小信息表
+                   * @Array Of Property
+                   * @return Hex
+                   */
+  lunarInfo: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2, //1900-1909
+  0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977, //1910-1919
+  0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, //1920-1929
+  0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950, //1930-1939
+  0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557, //1940-1949
+  0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0, //1950-1959
+  0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0, //1960-1969
+  0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6, //1970-1979
+  0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570, //1980-1989
+  0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x05ac0, 0x0ab60, 0x096d5, 0x092e0, //1990-1999
+  0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5, //2000-2009
+  0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930, //2010-2019
+  0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, //2020-2029
+  0x05aa0, 0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, //2030-2039
+  0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0, //2040-2049
+  /**Add By JJonline@JJonline.Cn**/
+  0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0, //2050-2059
+  0x0a2e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4, //2060-2069
+  0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0, //2070-2079
+  0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160, //2080-2089
+  0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252, //2090-2099
+  0x0d520], //2100
+
+  /**
+    * 公历每个月份的天数普通表
+    * @Array Of Property
+    * @return Number
+    */
+  solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+
+  /**
+                                                                  * 天干地支之天干速查表
+                                                                  * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+                                                                  * @return Cn string
+                                                                  */
+  Gan: ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"],
+
+  /**
+                                                                                                               * 天干地支之地支速查表
+                                                                                                               * @Array Of Property
+                                                                                                               * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+                                                                                                               * @return Cn string
+                                                                                                               */
+  Zhi: ["\u5B50", "\u4E11", "\u5BC5", "\u536F", "\u8FB0", "\u5DF3", "\u5348", "\u672A", "\u7533", "\u9149", "\u620C", "\u4EA5"],
+
+  /**
+                                                                                                                                   * 天干地支之地支速查表<=>生肖
+                                                                                                                                   * @Array Of Property
+                                                                                                                                   * @trans["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
+                                                                                                                                   * @return Cn string
+                                                                                                                                   */
+  Animals: ["\u9F20", "\u725B", "\u864E", "\u5154", "\u9F99", "\u86C7", "\u9A6C", "\u7F8A", "\u7334", "\u9E21", "\u72D7", "\u732A"],
+
+  /**
+                                                                                                                                       * 24节气速查表
+                                                                                                                                       * @Array Of Property
+                                                                                                                                       * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+                                                                                                                                       * @return Cn string
+                                                                                                                                       */
+  solarTerm: ["\u5C0F\u5BD2", "\u5927\u5BD2", "\u7ACB\u6625", "\u96E8\u6C34", "\u60CA\u86F0", "\u6625\u5206", "\u6E05\u660E", "\u8C37\u96E8", "\u7ACB\u590F", "\u5C0F\u6EE1", "\u8292\u79CD", "\u590F\u81F3", "\u5C0F\u6691", "\u5927\u6691", "\u7ACB\u79CB", "\u5904\u6691", "\u767D\u9732", "\u79CB\u5206", "\u5BD2\u9732", "\u971C\u964D", "\u7ACB\u51AC", "\u5C0F\u96EA", "\u5927\u96EA", "\u51AC\u81F3"],
+
+  /**
+                                                                                                                                                                                                                                                                                                                                                                                                                 * 1900-2100各年的24节气日期速查表
+                                                                                                                                                                                                                                                                                                                                                                                                                 * @Array Of Property
+                                                                                                                                                                                                                                                                                                                                                                                                                 * @return 0x string For splice
+                                                                                                                                                                                                                                                                                                                                                                                                                 */
+  sTermInfo: ['9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f',
+  '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+  '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa',
+  '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f',
+  'b027097bd097c36b0b6fc9274c91aa', '9778397bd19801ec9210c965cc920e', '97b6b97bd19801ec95f8c965cc920f',
+  '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd197c36c9210c9274c91aa',
+  '97b6b97bd19801ec95f8c965cc920e', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2',
+  '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bcf97c3598082c95f8e1cfcc920f',
+  '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+  '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722',
+  '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f',
+  '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+  '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd07f595b0b6fc920fb0722',
+  '9778397bd097c36b0b6fc9210c8dc2', '9778397bd19801ec9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f',
+  '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
+  '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
+  '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bd07f1487f595b0b0bc920fb0722',
+  '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+  '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+  '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722',
+  '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e',
+  '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b97bd19801ec9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+  '9778397bd097c36b0b6fc9210c91aa', '97b6b97bd197c36c9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722',
+  '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e',
+  '97b6b7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2',
+  '9778397bd097c36b0b70c9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
+  '7f0e397bd097c35b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
+  '7f0e27f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+  '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+  '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721',
+  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9274c91aa',
+  '97b6b7f0e47f531b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+  '9778397bd097c36b0b6fc9210c91aa', '97b6b7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+  '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '977837f0e37f149b0723b0787b0721',
+  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c35b0b6fc9210c8dc2',
+  '977837f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722',
+  '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd',
+  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722',
+  '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+  '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd',
+  '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722',
+  '977837f0e37f14998082b0723b06bd', '7f07e7f0e37f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+  '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721',
+  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5',
+  '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f531b0b0bb0b6fb0722',
+  '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+  '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
+  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35',
+  '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722',
+  '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721',
+  '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd',
+  '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35',
+  '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e37f14998083b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722',
+  '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14898082b0723b02d5', '7f07e7f0e37f14998082b0787b0721',
+  '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66aa89801e9808297c35', '665f67f0e37f14898082b0723b02d5',
+  '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66a449801e9808297c35',
+  '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721',
+  '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd',
+  '7f07e7f0e47f531b0723b0b6fb0721', '7f0e26665b66a449801e9808297c35', '665f67f0e37f1489801eb072297c35',
+  '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722'],
+
+  /**
+                                                                                                           * 数字转中文速查表
+                                                                                                           * @Array Of Property
+                                                                                                           * @trans ['日','一','二','三','四','五','六','七','八','九','十']
+                                                                                                           * @return Cn string
+                                                                                                           */
+  nStr1: ["\u65E5", "\u4E00", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341"],
+
+  /**
+                                                                                                                           * 日期转农历称呼速查表
+                                                                                                                           * @Array Of Property
+                                                                                                                           * @trans ['初','十','廿','卅']
+                                                                                                                           * @return Cn string
+                                                                                                                           */
+  nStr2: ["\u521D", "\u5341", "\u5EFF", "\u5345"],
+
+  /**
+                                                     * 月份转农历称呼速查表
+                                                     * @Array Of Property
+                                                     * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
+                                                     * @return Cn string
+                                                     */
+  nStr3: ["\u6B63", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341", "\u51AC", "\u814A"],
+
+  /**
+                                                                                                                                     * 返回农历y年一整年的总天数
+                                                                                                                                     * @param lunar Year
+                                                                                                                                     * @return Number
+                                                                                                                                     * @eg:var count = calendar.lYearDays(1987) ;//count=387
+                                                                                                                                     */
+  lYearDays: function lYearDays(y) {
+    var i,sum = 348;
+    for (i = 0x8000; i > 0x8; i >>= 1) {sum += this.lunarInfo[y - 1900] & i ? 1 : 0;}
+    return sum + this.leapDays(y);
+  },
+
+  /**
+       * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
+       * @param lunar Year
+       * @return Number (0-12)
+       * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
+       */
+  leapMonth: function leapMonth(y) {//闰字编码 \u95f0
+    return this.lunarInfo[y - 1900] & 0xf;
+  },
+
+  /**
+       * 返回农历y年闰月的天数 若该年没有闰月则返回0
+       * @param lunar Year
+       * @return Number (0、29、30)
+       * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
+       */
+  leapDays: function leapDays(y) {
+    if (this.leapMonth(y)) {
+      return this.lunarInfo[y - 1900] & 0x10000 ? 30 : 29;
+    }
+    return 0;
+  },
+
+  /**
+       * 返回农历y年m月（非闰月）的总天数，计算m为闰月时的天数请使用leapDays方法
+       * @param lunar Year
+       * @return Number (-1、29、30)
+       * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
+       */
+  monthDays: function monthDays(y, m) {
+    if (m > 12 || m < 1) {return -1;} //月份参数从1至12，参数错误返回-1
+    return this.lunarInfo[y - 1900] & 0x10000 >> m ? 30 : 29;
+  },
+
+  /**
+       * 返回公历(!)y年m月的天数
+       * @param solar Year
+       * @return Number (-1、28、29、30、31)
+       * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
+       */
+  solarDays: function solarDays(y, m) {
+    if (m > 12 || m < 1) {return -1;} //若参数错误 返回-1
+    var ms = m - 1;
+    if (ms == 1) {//2月份的闰平规律测算后确认返回28或29
+      return y % 4 == 0 && y % 100 != 0 || y % 400 == 0 ? 29 : 28;
+    } else {
+      return this.solarMonth[ms];
+    }
+  },
+
+  /**
+      * 农历年份转换为干支纪年
+      * @param  lYear 农历年的年份数
+      * @return Cn string
+      */
+  toGanZhiYear: function toGanZhiYear(lYear) {
+    var ganKey = (lYear - 3) % 10;
+    var zhiKey = (lYear - 3) % 12;
+    if (ganKey == 0) ganKey = 10; //如果余数为0则为最后一个天干
+    if (zhiKey == 0) zhiKey = 12; //如果余数为0则为最后一个地支
+    return this.Gan[ganKey - 1] + this.Zhi[zhiKey - 1];
+
+  },
+
+  /**
+      * 公历月、日判断所属星座
+      * @param  cMonth [description]
+      * @param  cDay [description]
+      * @return Cn string
+      */
+  toAstro: function toAstro(cMonth, cDay) {
+    var s = "\u9B54\u7FAF\u6C34\u74F6\u53CC\u9C7C\u767D\u7F8A\u91D1\u725B\u53CC\u5B50\u5DE8\u87F9\u72EE\u5B50\u5904\u5973\u5929\u79E4\u5929\u874E\u5C04\u624B\u9B54\u7FAF";
+    var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
+    return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "\u5EA7"; //座
+  },
+
+  /**
+       * 传入offset偏移量返回干支
+       * @param offset 相对甲子的偏移量
+       * @return Cn string
+       */
+  toGanZhi: function toGanZhi(offset) {
+    return this.Gan[offset % 10] + this.Zhi[offset % 12];
+  },
+
+  /**
+       * 传入公历(!)y年获得该年第n个节气的公历日期
+       * @param y公历年(1900-2100)；n二十四节气中的第几个节气(1~24)；从n=1(小寒)算起
+       * @return day Number
+       * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
+       */
+  getTerm: function getTerm(y, n) {
+    if (y < 1900 || y > 2100) {return -1;}
+    if (n < 1 || n > 24) {return -1;}
+    var _table = this.sTermInfo[y - 1900];
+    var _info = [
+    parseInt('0x' + _table.substr(0, 5)).toString(),
+    parseInt('0x' + _table.substr(5, 5)).toString(),
+    parseInt('0x' + _table.substr(10, 5)).toString(),
+    parseInt('0x' + _table.substr(15, 5)).toString(),
+    parseInt('0x' + _table.substr(20, 5)).toString(),
+    parseInt('0x' + _table.substr(25, 5)).toString()];
+
+    var _calday = [
+    _info[0].substr(0, 1),
+    _info[0].substr(1, 2),
+    _info[0].substr(3, 1),
+    _info[0].substr(4, 2),
+
+    _info[1].substr(0, 1),
+    _info[1].substr(1, 2),
+    _info[1].substr(3, 1),
+    _info[1].substr(4, 2),
+
+    _info[2].substr(0, 1),
+    _info[2].substr(1, 2),
+    _info[2].substr(3, 1),
+    _info[2].substr(4, 2),
+
+    _info[3].substr(0, 1),
+    _info[3].substr(1, 2),
+    _info[3].substr(3, 1),
+    _info[3].substr(4, 2),
+
+    _info[4].substr(0, 1),
+    _info[4].substr(1, 2),
+    _info[4].substr(3, 1),
+    _info[4].substr(4, 2),
+
+    _info[5].substr(0, 1),
+    _info[5].substr(1, 2),
+    _info[5].substr(3, 1),
+    _info[5].substr(4, 2)];
+
+    return parseInt(_calday[n - 1]);
+  },
+
+  /**
+       * 传入农历数字月份返回汉语通俗表示法
+       * @param lunar month
+       * @return Cn string
+       * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
+       */
+  toChinaMonth: function toChinaMonth(m) {// 月 => \u6708
+    if (m > 12 || m < 1) {return -1;} //若参数错误 返回-1
+    var s = this.nStr3[m - 1];
+    s += "\u6708"; //加上月字
+    return s;
+  },
+
+  /**
+       * 传入农历日期数字返回汉字表示法
+       * @param lunar day
+       * @return Cn string
+       * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
+       */
+  toChinaDay: function toChinaDay(d) {//日 => \u65e5
+    var s;
+    switch (d) {
+      case 10:
+        s = "\u521D\u5341";break;
+      case 20:
+        s = "\u4E8C\u5341";break;
+        break;
+      case 30:
+        s = "\u4E09\u5341";break;
+        break;
+      default:
+        s = this.nStr2[Math.floor(d / 10)];
+        s += this.nStr1[d % 10];}
+
+    return s;
+  },
+
+  /**
+       * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
+       * @param y year
+       * @return Cn string
+       * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
+       */
+  getAnimal: function getAnimal(y) {
+    return this.Animals[(y - 4) % 12];
+  },
+
+  /**
+       * 传入阳历年月日获得详细的公历、农历object信息 <=>JSON
+       * @param y  solar year
+       * @param m  solar month
+       * @param d  solar day
+       * @return JSON object
+       * @eg:console.log(calendar.solar2lunar(1987,11,01));
+       */
+  solar2lunar: function solar2lunar(y, m, d) {//参数区间1900.1.31~2100.12.31
+    //年份限定、上限
+    if (y < 1900 || y > 2100) {
+      return -1; // undefined转换为数字变为NaN
+    }
+    //公历传参最下限
+    if (y == 1900 && m == 1 && d < 31) {
+      return -1;
+    }
+    //未传参  获得当天
+    if (!y) {
+      var objDate = new Date();
+    } else {
+      var objDate = new Date(y, parseInt(m) - 1, d);
+    }
+    var i,leap = 0,temp = 0;
+    //修正ymd参数
+    var y = objDate.getFullYear(),
+    m = objDate.getMonth() + 1,
+    d = objDate.getDate();
+    var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;
+    for (i = 1900; i < 2101 && offset > 0; i++) {
+      temp = this.lYearDays(i);
+      offset -= temp;
+    }
+    if (offset < 0) {
+      offset += temp;i--;
+    }
+
+    //是否今天
+    var isTodayObj = new Date(),
+    isToday = false;
+    if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {
+      isToday = true;
+    }
+    //星期几
+    var nWeek = objDate.getDay(),
+    cWeek = this.nStr1[nWeek];
+    //数字表示周几顺应天朝周一开始的惯例
+    if (nWeek == 0) {
+      nWeek = 7;
+    }
+    //农历年
+    var year = i;
+    var leap = this.leapMonth(i); //闰哪个月
+    var isLeap = false;
+
+    //效验闰月
+    for (i = 1; i < 13 && offset > 0; i++) {
+      //闰月
+      if (leap > 0 && i == leap + 1 && isLeap == false) {
+        --i;
+        isLeap = true;temp = this.leapDays(year); //计算农历闰月天数
+      } else
+      {
+        temp = this.monthDays(year, i); //计算农历普通月天数
+      }
+      //解除闰月
+      if (isLeap == true && i == leap + 1) {isLeap = false;}
+      offset -= temp;
+    }
+    // 闰月导致数组下标重叠取反
+    if (offset == 0 && leap > 0 && i == leap + 1)
+    {
+      if (isLeap) {
+        isLeap = false;
+      } else {
+        isLeap = true;--i;
+      }
+    }
+    if (offset < 0)
+    {
+      offset += temp;--i;
+    }
+    //农历月
+    var month = i;
+    //农历日
+    var day = offset + 1;
+    //天干地支处理
+    var sm = m - 1;
+    var gzY = this.toGanZhiYear(year);
+
+    // 当月的两个节气
+    // bugfix-2017-7-24 11:03:38 use lunar Year Param `y` Not `year`
+    var firstNode = this.getTerm(y, m * 2 - 1); //返回当月「节」为几日开始
+    var secondNode = this.getTerm(y, m * 2); //返回当月「节」为几日开始
+
+    // 依据12节气修正干支月
+    var gzM = this.toGanZhi((y - 1900) * 12 + m + 11);
+    if (d >= firstNode) {
+      gzM = this.toGanZhi((y - 1900) * 12 + m + 12);
+    }
+
+    //传入的日期的节气与否
+    var isTerm = false;
+    var Term = null;
+    if (firstNode == d) {
+      isTerm = true;
+      Term = this.solarTerm[m * 2 - 2];
+    }
+    if (secondNode == d) {
+      isTerm = true;
+      Term = this.solarTerm[m * 2 - 1];
+    }
+    //日柱 当月一日与 1900/1/1 相差天数
+    var dayCyclical = Date.UTC(y, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;
+    var gzD = this.toGanZhi(dayCyclical + d - 1);
+    //该日期所属的星座
+    var astro = this.toAstro(m, d);
+
+    return { 'lYear': year, 'lMonth': month, 'lDay': day, 'Animal': this.getAnimal(year), 'IMonthCn': (isLeap ? "\u95F0" : '') + this.toChinaMonth(month), 'IDayCn': this.toChinaDay(day), 'cYear': y, 'cMonth': m, 'cDay': d, 'gzYear': gzY, 'gzMonth': gzM, 'gzDay': gzD, 'isToday': isToday, 'isLeap': isLeap, 'nWeek': nWeek, 'ncWeek': "\u661F\u671F" + cWeek, 'isTerm': isTerm, 'Term': Term, 'astro': astro };
+  },
+
+  /**
+       * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
+       * @param y  lunar year
+       * @param m  lunar month
+       * @param d  lunar day
+       * @param isLeapMonth  lunar month is leap or not.[如果是农历闰月第四个参数赋值true即可]
+       * @return JSON object
+       * @eg:console.log(calendar.lunar2solar(1987,9,10));
+       */
+  lunar2solar: function lunar2solar(y, m, d, isLeapMonth) {//参数区间1900.1.31~2100.12.1
+    var isLeapMonth = !!isLeapMonth;
+    var leapOffset = 0;
+    var leapMonth = this.leapMonth(y);
+    var leapDay = this.leapDays(y);
+    if (isLeapMonth && leapMonth != m) {return -1;} //传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
+    if (y == 2100 && m == 12 && d > 1 || y == 1900 && m == 1 && d < 31) {return -1;} //超出了最大极限值
+    var day = this.monthDays(y, m);
+    var _day = day;
+    //bugFix 2016-9-25
+    //if month is leap, _day use leapDays method
+    if (isLeapMonth) {
+      _day = this.leapDays(y, m);
+    }
+    if (y < 1900 || y > 2100 || d > _day) {return -1;} //参数合法性效验
+
+    //计算农历的时间差
+    var offset = 0;
+    for (var i = 1900; i < y; i++) {
+      offset += this.lYearDays(i);
+    }
+    var leap = 0,isAdd = false;
+    for (var i = 1; i < m; i++) {
+      leap = this.leapMonth(y);
+      if (!isAdd) {//处理闰月
+        if (leap <= i && leap > 0) {
+          offset += this.leapDays(y);isAdd = true;
+        }
+      }
+      offset += this.monthDays(y, i);
+    }
+    //转换闰月农历 需补充该年闰月的前一个月的时差
+    if (isLeapMonth) {offset += day;}
+    //1900年农历正月一日的公历时间为1900年1月30日0时0分0秒(该时间也是本农历的最开始起始点)
+    var stmap = Date.UTC(1900, 1, 30, 0, 0, 0);
+    var calObj = new Date((offset + d - 31) * 86400000 + stmap);
+    var cY = calObj.getUTCFullYear();
+    var cM = calObj.getUTCMonth() + 1;
+    var cD = calObj.getUTCDate();
+
+    return this.solar2lunar(cY, cM, cD);
+  } };var _default =
+
+
+
+calendar;exports.default = _default;
+
+/***/ }),
+
+/***/ 33:
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bindTel.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 4:
+/*!************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/pages.json ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ 41:
+/*!*********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ 42));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_register.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 49:
+/*!*********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fpassword"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _password = _interopRequireDefault(__webpack_require__(/*! ./pages/login/password.vue */ 50));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_password.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 57:
+/*!***************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FshareInfo"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _shareInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/components/shareInfo.vue */ 58));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_shareInfo.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 65:
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2Fmarket"} ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _market = _interopRequireDefault(__webpack_require__(/*! ./pages/market/market.vue */ 66));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_market.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 73:
+/*!****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FgoodDetail"} ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _goodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/components/goodDetail.vue */ 74));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_goodDetail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 81:
+/*!***********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fgoods"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _goods = _interopRequireDefault(__webpack_require__(/*! ./pages/components/goods.vue */ 82));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_goods.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 89:
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2FmoreList%2FmoreList"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _moreList = _interopRequireDefault(__webpack_require__(/*! ./pages/moreList/moreList.vue */ 90));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_moreList.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 97:
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2FpanicBuy"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _panicBuy = _interopRequireDefault(__webpack_require__(/*! ./pages/market/panicBuy.vue */ 98));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_panicBuy.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })
 

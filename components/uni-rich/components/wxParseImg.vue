@@ -6,9 +6,10 @@
 		:style="newStyleStr || node.styleStr"
 		:data-src="node.attr.src"
 		:src="node.attr.src"
-		@tap="wxParseImgTap"
 		@load="wxParseImgLoad"
 	/>
+  
+  <!-- @tap="wxParseImgTap" -->
 </template>
 
 <script>

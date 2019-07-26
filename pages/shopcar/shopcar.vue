@@ -90,7 +90,20 @@
         current: 0
       }
     },
+    onLoad() {
+      //  获取购物车数据
+      this.getList()
+    },
     methods: {
+      getList() {
+        let that = this
+        that.$http({
+          url: that.$api.shopcarList,
+          cb: (err, res) => {
+            console.log(res)
+          }
+        })
+      },
       checkboxChange: function(e) {
         console.log(e)
         // var items = this.items,
