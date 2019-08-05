@@ -1,6 +1,9 @@
 {
   "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
   "bounce": "none",
   "titleNView": "false",
-  "usingComponents": {}
+  "usingComponents": {
+    "banner": "/pages/components/banner"
+  }
 }

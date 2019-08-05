@@ -69,31 +69,33 @@
       <view class="user-comment bg-white">
         <view class="comment-head">
           <view>
-            <text>用户评价</text> ({{ comment_data_count }})
+            <text>用户评价</text> ({{ comment_data_count ? comment_data_count  : '0' }})
           </view>
           <view class="font-red">
             <text>查看全部</text>
             <text class="iconfont">&#xe644;</text>
           </view>
         </view>
-        <view v-for="(item, idnex) in detail.comment_data" :key="index" class="comment-writer">
+        <view v-for="(item, index) in detail.comment_data" :key="index" class="comment-writer">
           <view class="writer-head">
             <view>
               <view>
-                <image src="" mode=""></image>
-                <text>炒饭</text>
+                <image :src="item.user.avatarUrl" mode=""></image>
+                <text>{{ item.user.nickName }}</text>
               </view>
-              <view class="font-99">
-                <text>2018.10.13 13:11</text>
-                <text>黑色；官方标配</text>
+              <view class="font-99 pad-left-60">
+                <text>{{ item.create_time }}</text>
+                <text></text>
               </view>
-              <view></view>
             </view>
-            <text class="iconfont font-99">&#xe63a;</text>
           </view>
-          <view class="writer-speak">很喜欢，音质不错，算是物超所值了。</view>
-          <view class="writer-speak-img">
+          <view class="writer-speak pad-left-60">{{ item.content }}</view>
+          <view v-if="false" class="writer-speak-img pad-left-60">
             <image src="" mode=""></image>
+          </view>
+          <view class="dis-flex flex-x-between font-99 pad-left-60">
+            <text class="font-24">黑色；官方标配</text>
+            <text class="iconfont font-99">&#xe63a;</text>
           </view>
         </view>
       </view>
@@ -104,6 +106,7 @@
         <view class="btn">进店逛逛</view>
       </view> -->
       
+      <view class="goods-title t-center font-24 ">宝贝详情</view>
       <view class="good-detail">
         <u-parse :content="detail.content" @preview="preview" @navigate="navigate"/>
       </view>
@@ -456,7 +459,26 @@
       },
       // 收藏
       keepAction() {
-        console.log('点击了收藏')
+        let that = this
+        console.log('点击了收藏', that.detail.goods_iscollection, that.detail.goods_id)
+        let iscollection = that.detail.goods_iscollection
+        let data = {
+          type: 'add',
+          goods_id: that.detail.goods_id
+        }
+        if(iscollection === 'yes') {
+          data.type = 'cancel'
+        }
+        that.$http({
+          url: that.$api.goodscollection,
+          data: data,
+          cb: (err, res) => {
+            console.log(res)
+            if(that.$resFilter(err, res)) {
+              that.detail.goods_iscollection = iscollection === 'yes' ? 'no': 'yes'
+            }
+          }
+        })
       },
       // 页面滚动
       scroll(e) {
@@ -859,7 +881,7 @@
   .user-comment{
     margin-top: 20upx;
     margin-bottom: 20upx;
-    padding: 0 30upx;
+    padding: 0 30upx 20upx;
     .comment-head{
       height: 94upx;
       font-size: $font-28;
@@ -876,7 +898,7 @@
       }
     }
     .comment-writer{
-      height: 332upx;
+      max-height: 430upx;
       .writer-head{
         height: 78upx;
         margin-top: 30upx;
@@ -909,13 +931,14 @@
         margin-top: 7upx;
       }
       .writer-speak-img{
-        height: 110upx;
+        height: 203upx;
+        margin-bottom: 30upx;
         display: flex;
         flex-wrap: nowrap;
         overflow: hidden;
         &>image{
-          height: 110upx;
-          width: 110upx;
+          height: 203upx;
+          width: 203upx;
           margin-right: 10upx;
           background: #ccc;
         }
@@ -946,6 +969,34 @@
       font-size: $font-24;
       line-height: 50upx;
       border-radius: 25upx;
+    }
+  }
+  .goods-title{
+    position: relative;
+    line-height: 80upx;
+    width: 380upx;
+    margin: 0 auto;
+    &:before{
+      content: '';
+      height: 2upx;
+      width: 120upx;
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      left: 0;
+      background: rgba(153, 153, 153, 0.3);
+    }
+    &:after{
+      content: '';
+      height: 2upx;
+      width: 120upx;
+      position:absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      right: 0;
+      background: rgba(153, 153, 153, 0.3);
     }
   }
   .bottom-bar{
@@ -991,5 +1042,8 @@
         background: $color-red;
       }
     }
+  }
+  .pad-left-60{
+    padding-left: 60upx;
   }
 </style>

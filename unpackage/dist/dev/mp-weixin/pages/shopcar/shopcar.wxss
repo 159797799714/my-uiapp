@@ -241,6 +241,9 @@ view.data-v-33baadac, image.data-v-33baadac, text.data-v-33baadac, input.data-v-
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.t-center.data-v-33baadac {
+  text-align: center;
+}
 .padding-30.data-v-33baadac {
   padding-left: 30rpx;
   padding-right: 30rpx;
@@ -437,13 +440,13 @@ to {
   background: #f5f5f5;
 }
 .content.data-v-33baadac {
-  margin: 0 30rpx 0 30rpx;
+  margin: 30rpx 0 30rpx;
   width: calc(100% - 60rpx);
   margin-top: 0;
 }
 .content .store.data-v-33baadac {
     min-height: 292rpx;
-    padding: 0 20rpx 35rpx 20rpx;
+    padding: 20rpx 20rpx 35rpx 20rpx;
     margin: 30rpx 0;
 }
 .content .store .store-head.data-v-33baadac {
@@ -453,7 +456,7 @@ to {
       display: flex;
       font-size: 28rpx;
       line-height: 89rpx;
-      margin-bottom: 8rpx;
+      margin: 30rpx 0 8rpx 0;
 }
 .content .store .store-head > checkbox.data-v-33baadac {
         margin-right: 30rpx;

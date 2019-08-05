@@ -241,6 +241,9 @@ view.data-v-295bbe46, image.data-v-295bbe46, text.data-v-295bbe46, input.data-v-
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.t-center.data-v-295bbe46 {
+  text-align: center;
+}
 .padding-30.data-v-295bbe46 {
   padding-left: 30rpx;
   padding-right: 30rpx;
@@ -864,13 +867,26 @@ to {
 .big-cover .cover-main .cover-word .control-num > view > text.data-v-295bbe46 {
           font-size: 24rpx;
 }
-.big-cover .cover-main .sure-btn.data-v-295bbe46 {
+.big-cover .cover-main .alert-btn.data-v-295bbe46 {
     height: 98rpx;
-    background: #131313;
-    text-align: center;
-    font-size: 30rpx;
-    line-height: 98rpx;
-    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.big-cover .cover-main .alert-btn .sure-btn.data-v-295bbe46 {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      background: #131313;
+      text-align: center;
+      font-size: 30rpx;
+      line-height: 98rpx;
+      color: #fff;
+}
+.big-cover .cover-main .alert-btn .buy-btn.data-v-295bbe46 {
+      background: #F4433D;
 }
 .sale-info.data-v-295bbe46 {
   height: 114rpx;
@@ -879,7 +895,7 @@ to {
 .user-comment.data-v-295bbe46 {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  padding: 0 30rpx;
+  padding: 0 30rpx 20rpx;
 }
 .user-comment .comment-head.data-v-295bbe46 {
     height: 94rpx;
@@ -906,7 +922,7 @@ to {
       margin-left: 18rpx;
 }
 .user-comment .comment-writer.data-v-295bbe46 {
-    height: 332rpx;
+    max-height: 430rpx;
 }
 .user-comment .comment-writer .writer-head.data-v-295bbe46 {
       height: 78rpx;
@@ -950,7 +966,8 @@ to {
       margin-top: 7rpx;
 }
 .user-comment .comment-writer .writer-speak-img.data-v-295bbe46 {
-      height: 110rpx;
+      height: 203rpx;
+      margin-bottom: 30rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -961,8 +978,8 @@ to {
       overflow: hidden;
 }
 .user-comment .comment-writer .writer-speak-img > image.data-v-295bbe46 {
-        height: 110rpx;
-        width: 110rpx;
+        height: 203rpx;
+        width: 203rpx;
         margin-right: 10rpx;
         background: #ccc;
 }
@@ -1000,6 +1017,34 @@ to {
     font-size: 24rpx;
     line-height: 50rpx;
     border-radius: 25rpx;
+}
+.goods-title.data-v-295bbe46 {
+  position: relative;
+  line-height: 80rpx;
+  width: 380rpx;
+  margin: 0 auto;
+}
+.goods-title.data-v-295bbe46:before {
+    content: '';
+    height: 2rpx;
+    width: 120rpx;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    left: 0;
+    background: rgba(153, 153, 153, 0.3);
+}
+.goods-title.data-v-295bbe46:after {
+    content: '';
+    height: 2rpx;
+    width: 120rpx;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    right: 0;
+    background: rgba(153, 153, 153, 0.3);
 }
 .bottom-bar.data-v-295bbe46 {
   height: 98rpx;
@@ -1075,5 +1120,8 @@ to {
 }
 .bottom-bar .btn-menu .buy.data-v-295bbe46 {
       background: #F4433D;
+}
+.pad-left-60.data-v-295bbe46 {
+  padding-left: 60rpx;
 }
 

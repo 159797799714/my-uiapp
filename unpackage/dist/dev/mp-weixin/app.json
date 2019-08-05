@@ -13,6 +13,7 @@
     "pages/market/panicBuy",
     "pages/message/message",
     "pages/shopcar/shopcar",
+    "pages/zerodraw/zerodraw",
     "pages/message/chatDetail",
     "pages/mine/mine",
     "pages/mine/looks",
@@ -79,5 +80,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap58.json"
 }

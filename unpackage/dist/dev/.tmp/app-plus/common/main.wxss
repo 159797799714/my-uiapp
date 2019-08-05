@@ -480,6 +480,9 @@ view, image, text, input, form {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.t-center {
+  text-align: center;
+}
 .padding-30 {
   padding-left: 30rpx;
   padding-right: 30rpx;

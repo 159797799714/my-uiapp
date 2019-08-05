@@ -8,13 +8,7 @@
     </view>
     <scroll-view scroll-y="true" class="content bg-black">
       <view class="banner-swiper bg-black">
-        <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
-          <swiper-item v-for="(item, index) in swiperList" :key="index">
-            <view class="swiper-item" @click="goDetail(item)">
-              <image :src="item.image.file_path" mode=""></image>
-            </view>
-          </swiper-item>
-        </swiper>
+        <banner :swiperList="swiperList"></banner>
       </view>
       <view class="TabNav bg-black font-ff f-bold">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
@@ -44,13 +38,17 @@
 </template>
 
 <script>
+  import banner from "../components/banner.vue";
   import service from '../../service.js';
   export default {
+    components: {
+      banner
+    },
     data() {
       return {
         indicatorDots: true,
         autoplay: true,
-        interval: 2000,
+        interval: 3000,
         duration: 2000,
         indicatorActiveColor: '#ffffff',
         searchInfo: '大家都在搜“森海塞尔”',
@@ -79,22 +77,6 @@
       this.getBanner()  
     },
     methods: {
-      goDetail(item) {
-        console.log(item.activity_link)
-        let goods = item.activity_link.indexOf('goods_id=')
-        let article = item.activity_link.indexOf('article_id=')
-        if(goods !== -1) {
-          uni.navigateTo({
-            url: '../components/goodDetail?goods_id=' + item.activity_link.slice(9)
-            // url: 'goodDetail' 
-          })
-        }
-        if(article !== -1) {
-          uni.navigateTo({
-            url: '../components/shareInfo?article_id=' + item.activity_link.slice(11)
-          })
-        }
-      },
       // 获取文章
       getDefault(id) {
         this.$http({
@@ -269,17 +251,6 @@
     .banner-swiper {
       padding: 30upx 30upx 0 30upx;
       height: 390upx;
-      .swiper {
-        height: 390upx;
-      }
-      .swiper-item {
-        height: 390upx;
-        width: 100%;
-        &>image{
-          height: 100%;
-          width: 100%;
-        }
-      }
     }
     .TabNav{
       padding: 0 30upx;

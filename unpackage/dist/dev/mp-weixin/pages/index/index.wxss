@@ -241,6 +241,9 @@ view.data-v-5ff3a554, image.data-v-5ff3a554, text.data-v-5ff3a554, input.data-v-
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.t-center.data-v-5ff3a554 {
+  text-align: center;
+}
 .padding-30.data-v-5ff3a554 {
   padding-left: 30rpx;
   padding-right: 30rpx;
@@ -471,17 +474,6 @@ to {
 .content .banner-swiper.data-v-5ff3a554 {
     padding: 30rpx 30rpx 0 30rpx;
     height: 390rpx;
-}
-.content .banner-swiper .swiper.data-v-5ff3a554 {
-      height: 390rpx;
-}
-.content .banner-swiper .swiper-item.data-v-5ff3a554 {
-      height: 390rpx;
-      width: 100%;
-}
-.content .banner-swiper .swiper-item > image.data-v-5ff3a554 {
-        height: 100%;
-        width: 100%;
 }
 .content .TabNav.data-v-5ff3a554 {
     padding: 0 30rpx;

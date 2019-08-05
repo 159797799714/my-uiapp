@@ -79,7 +79,6 @@
             </view>
           </view>
         </view>
-        view.
       </view>
     </scroll-view>
     <view class="speak bg-white border-box">

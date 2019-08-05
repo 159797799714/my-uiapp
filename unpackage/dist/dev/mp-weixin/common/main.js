@@ -133,6 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
   },
+
   onShow: function onShow() {
     console.log('App Show');
   },

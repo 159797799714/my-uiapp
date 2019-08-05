@@ -4,14 +4,14 @@
     <scroll-view scroll-y="true" class="content border-box">
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <radio-group @change="checkboxChange">
-          <view class="store-head">
-            <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->
+          <!-- <view class="store-head">
+            <checkbox value="" checked="true" color="#FFCC33"/>
             <radio :value="item.storeName" color="#F4433D"/>
             <view class="store-name">
               <text class="iconfont">&#xe60b;</text>
-              <text>{{ item.storeName }}</text>
+              <text v-if="storeName">{{ item.storeName }}</text>
             </view>
-          </view>
+          </view> -->
           <view v-for="(good, num) in item.goodArr" :key="num" class="item" @click="goDetail(good.name)">
             <view class="left-box">
               <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->
@@ -150,18 +150,18 @@
     background: $color-f5;
   }
   .content {
-    margin: 0 30upx 0 30upx;
+    margin:  30upx 0 30upx;
     width: calc(100% - 60upx);
     margin-top: 0;
     .store{
       min-height: 292upx;
-      padding: 0 20upx 35upx 20upx;
+      padding: 20upx 20upx 35upx 20upx;
       margin: 30upx 0;
       .store-head{
         display: flex;
         font-size: $font-28;
         line-height: 89upx;
-        margin-bottom: 8upx;
+        margin: 30upx 0 8upx 0;
         &>checkbox{
           margin-right: 30upx;
           border-radius: 100%;

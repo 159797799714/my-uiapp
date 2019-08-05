@@ -241,6 +241,9 @@ view.data-v-c4044d68, image.data-v-c4044d68, text.data-v-c4044d68, input.data-v-
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.t-center.data-v-c4044d68 {
+  text-align: center;
+}
 .padding-30.data-v-c4044d68 {
   padding-left: 30rpx;
   padding-right: 30rpx;

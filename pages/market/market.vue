@@ -1,25 +1,28 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" @click="pagetoTop">
       <view class="search" @click="goSearch">
         <text class="search-icon iconfont">&#xe667;</text>
         <view class="searchVal">{{ searchInfo }}</view>
       </view>
     </view>
-    <scroll-view scroll-y="true" class="content-box bg-black">
+    <scroll-view scroll-y="true" class="content-box bg-black" :scroll-top="scrollTop">
       <view class="banner-swiper">
-        <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
+        
+        <!-- <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
           :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
-          <swiper-item v-for="(item, index) in swiperList" :key="index">
+          <swiper-item v-for="(item, index) in swiperList" :key="index" @click="naviget(item.activity_link)">
             <view class="swiper-item">
               <image :src="item.image.file_path" mode=""></image>
             </view>
-          </swiper-item>
-        </swiper>
+          </swiper-item> 
+        </swiper>-->
+         
+        <banner :swiperList="swiperList"></banner>
       </view>
       <view class="main">
         <view class="menuList">
-          <view v-for="(item, index) in menuList" :key="index" class="item" @click="goGoods(item.category_id)">
+          <view v-for="(item, index) in menuList" :key="index" class="item" @click="goGoods(item.category_id, item.name)">
             <image :src="item.icon" mode="aspectFit"></image>
             <view v-if="index !== 7" class="item-title font-A3">{{ item.name }}</view>
           </view>
@@ -74,7 +77,11 @@
 </template>
 
 <script>
+  import banner from "../components/banner.vue"
   export default {
+    components: {
+      banner
+    },
     data() {
       return {
         indicatorDots: true,
@@ -83,6 +90,7 @@
         duration: 500,
         indicatorActiveColor: '#fff',
         searchInfo: '大家都在搜“森海塞尔”',
+        scrollTop: 0,
         swiperList: [],
         menuList: [], // 所有商品分类列表
         discount: [
@@ -138,12 +146,18 @@
       }, 1000);
     },
     methods: {
+      
+      pagetoTop() {
+        console.log('点击了')
+        this.scrollTop = 50
+      },
+      // 轮播图
       getSwiperList() {
         this.$http({
           url: this.$api.goods_gethomebanners,
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log(res.data)
+              console.log('首页轮播图数据', res.data)
               
               // 替换轮播图图片路径数据
               this.swiperList = res.data.list
@@ -153,10 +167,10 @@
                 icon: 'none'
               })
             }
-            // console.log(res.data.items[0].data[0].imgUrl)
           }
         })
       },
+      
       // 获取所有商品分类
       getGoodscategory() {
         this.$http({
@@ -296,10 +310,17 @@
         })
       },
       // 商品分类
-      goGoods(id) {
+      goGoods(id, name) {
+        if(name !== 'MORE') {
+          uni.navigateTo({
+            url: '../components/goods?id=' + id
+          })
+          return
+        }
         uni.navigateTo({
-          url: '../components/goods?id=' + id
+          url: '../moreList/moreList'
         })
+        
       },
       // 点击更多
       goMore() {
@@ -319,13 +340,9 @@
   }
 
   .content-box {
-    position: absolute;
-    top: 176upx;
-    left: 0;
     height: 100%;
     overflow: hidden;
   }
-
   .search {
     display: flex;
     justify-content: center;
@@ -352,20 +369,6 @@
     height: 438upx;
     box-sizing: border-box;
     padding: 38upx 30upx 0 30upx;
-
-    .swiper {
-      height: 400upx;
-    }
-
-    .swiper-item {
-      height: 400upx;
-      width: 100%;
-
-      &>image {
-        height: 100%;
-        width: 100%;
-      }
-    }
   }
 
   .main {

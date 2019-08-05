@@ -37,6 +37,7 @@ export default {
   getseckillgoodsbyone: API.devApi + '/seckill/getseckillgoodsbyone',           // 商城页展示一个秒杀商品
   goodlists: API.devApi + '/goods/goodlists',                                   // 商城搜索
   goods_gethomebanners: API.devApi + '/goods/gethomebanners',                   // 商城首页轮播图
+  goodscollection: API.devApi + '/goods/goodscollection',                       // 商品收藏与取消收藏
   goods_detail: API.devApi + '/goods/detail',                                   // 普通商品详情
 
   

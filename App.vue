@@ -66,6 +66,7 @@
       
       
 		},
+    
 		onShow: function() {
 			console.log('App Show')
 		},
