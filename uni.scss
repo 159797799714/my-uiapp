@@ -123,7 +123,9 @@ $font-88: 88upx;
 .font-88{
   font-size: 88upx!important;
   }
-
+.font-160{
+  font-size: 160upx!important;
+  }
 
 $font-bold: 600;
 
@@ -174,7 +176,19 @@ view, image, text, input, form{
 .bg-black{
   background: #151515!important;
 }
+.bg-3e{
+  background: $color-slipe-red;
+}
+.bg-3d{
+  background: $color-red;
+}
+.bg-13{
+  background: $title-color;
+}
 
+.border-99{
+  border: 1px solid $color-99;
+}
 // 字体颜色
 .font-red{
   color: $color-red;
@@ -187,6 +201,12 @@ view, image, text, input, form{
 }
 .font-66{
   color: $word-color;
+}
+.col-66{
+  color: $word-color;
+}
+.col-3d{
+  color: $color-red;
 }
 .font-ff{
   color: $color-white;
@@ -212,41 +232,50 @@ view, image, text, input, form{
 }
 
 .flex-dir-row {
-  flex-direction: row;
+  flex-direction: row!important;
 }
 
 .flex-dir-column {
-  flex-direction: column;
+  flex-direction: column!important;
 }
 
 .flex-x-center {
   /* display: flex; */
-  justify-content: center;
+  justify-content: center!important;
 }
 
 .flex-x-between {
-  justify-content: space-between;
+  justify-content: space-between!important;
 }
 
 .flex-x-around {
-  justify-content: space-around;
+  justify-content: space-around!important;
 }
 
 .flex-x-end {
-  justify-content: flex-end;
+  justify-content: flex-end!important;
 }
 
 .flex-y-center {
-  align-items: center;
+  align-items: center!important;
 }
 
 .flex-y-end {
-  align-items: flex-end;
+  align-items: flex-end!important;
 }
 .flex-self-end {
-    align-self: flex-end;
+    align-self: flex-end!important;
 }
 
+.p-re{
+  position: relative!important;
+}
+.p-ab{
+  position: absolute!important;
+}
+.p-fix{
+  position: fixed!important;
+}
 
 // 关闭原生头部导航时自定义头部样式
 .topBar{

@@ -157,41 +157,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       selectData: '全部',
       dataType: '',
-      tabList: ['全部', '待付款', '待收货', '待评价', '已完成', '已取消'],
-      scrollLeft: 0,
-      dataList: [{
-        store: '苹果官方旗舰店',
-        sum: '2',
-        status: '已取消',
-        price: 300,
-        arr: [{
-          imgUrl: '',
-          title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
-          info: '黑色 官方标配' }] },
-
+      tabList: [{
+        name: '全部',
+        dataType: 'all' },
       {
-        store: '香蕉官方旗舰店',
-        sum: '2',
-        status: '已完成',
-        price: 200,
-        arr: [{
-          imgUrl: '',
-          title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
-          info: '黑色 官方标配' },
-        {
-          imgUrl: '',
-          title: 'Sony/索尼 超级头盔',
-          info: '黑色 官方标配' }] }]
+        name: '待付款',
+        dataType: 'payment' },
+      {
+        name: '待收货',
+        dataType: 'received' },
+      {
+        name: '待评价',
+        dataType: 'comment' },
+      {
+        name: '已完成',
+        dataType: '' },
+      {
+        name: '已取消',
+        dataType: '' }],
 
 
-      // dataList: ''        dataList初始值需要为空字符串
-    };
+      scrollLeft: 0,
+      // dataList: [{
+      //   store: '苹果官方旗舰店',
+      //   sum: '2',
+      //   status: '已取消',
+      //   price: 300,
+      //   arr: [{
+      //     imgUrl: '',
+      //     title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
+      //     info: '黑色 官方标配'
+      //   }]
+      // }, {
+      //   store: '香蕉官方旗舰店',
+      //   sum: '2',
+      //   status: '已完成',
+      //   price: 200,
+      //   arr: [{
+      //     imgUrl: '',
+      //     title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
+      //     info: '黑色 官方标配'
+      //   }, {
+      //     imgUrl: '',
+      //     title: 'Sony/索尼 超级头盔',
+      //     info: '黑色 官方标配'
+      //   }]
+      // }]
+      dataList: [] };
+
   },
   watch: {
     // 监听选中的订单类别，改变位置
@@ -209,7 +232,7 @@ var _default =
   onLoad: function onLoad(option) {
     this.selectData = option.name;
     this.dataType = option.dataType;
-    console.log('分享文章详情页接受到的参数', option.datatype);
+    console.log('分享文章详情页接受到的参数', this.selectData, this.dataType);
     this.getOrderInfo();
   },
   methods: {
@@ -218,25 +241,36 @@ var _default =
         delta: 1 });
 
     },
+    // 选择订单分类
+
     selectTab: function selectTab(item) {
-      this.selectData = item;
+      this.selectData = item.name;
+      this.dataType = item.dataType;
+      this.getOrderInfo();
     },
     goDetail: function goDetail(item) {
       uni.navigateTo({
         url: 'orderDetail?item=' + JSON.stringify(item) });
 
     },
+    // 去商城
+    goMarket: function goMarket() {
+      uni.switchTab({
+        url: '../market/market' });
 
+    },
     // 获取订单数据
     getOrderInfo: function getOrderInfo() {
-      this.$http({
-        url: this.$api.orderList,
+      var that = this;
+      that.$http({
+        url: that.$api.orderList,
         data: {
-          dataType: this.dataType },
+          dataType: that.dataType },
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log('成功了加载订单', res.data);
+            console.log('成功了加载订单', res.data.list.data);
+            that.dataList = res.data.list.data;
           } else if (res.code === 0) {
             uni.showToast({
               title: res.msg,

@@ -21,9 +21,9 @@
         </view>
       </view>
       <view class="order bg-white">
-        <view class="myorder">
+        <view class="myorder" @click="goOrder('全部', 'all')">
           <text>我的订单</text>
-          <view @click="goOrder('全部', 'all')">
+          <view>
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
           </view>

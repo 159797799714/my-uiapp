@@ -68,8 +68,9 @@ export default {
   
   // 购物车 
   shopcarList: API.devApi + '/cart/lists',                                          // 购物车列表
-  addcar: API.devApi + '/cart/add',                                                 // 添加购物车
-  delcar: API.devApi + '/cart/delete',                                              // 移出购物车
+  addcar: API.devApi + '/cart/add',                                                 // 添加购物车/ 增加购物车商品数量
+  subcar: API.devApi + '/cart/sub',                                                 // 减少购物车商品数量
+  delcar: API.devApi + '/cart/delete',                                              // 移出购物车 / 传多个goods_sku_id即可一次性删除多个商品
   buyNowinventory: API.devApi + '/order/buyNowinventory',                           // 下订单前检查库存是否充足
   
   

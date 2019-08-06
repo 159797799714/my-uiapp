@@ -184,6 +184,9 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
     this.getBanner();
   },
   methods: {
+    onScroll: function onScroll(e) {
+      console.log(e);
+    },
     // 获取文章
     getDefault: function getDefault(id) {var _this = this;
       this.$http({

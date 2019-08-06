@@ -150,67 +150,134 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      // list: [{
+      //   storeName: '优逸影音自营',
+      //   goodArr : [{
+      //     imgUrl: '',
+      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
+      //     info: '黑色 官方标配',
+      //     price: 1099,
+      //     num: 1
+      //   }]
+      // }, {
+      //   storeName: '优逸影音自营',
+      //   goodArr: [{
+      //     imgUrl: '',
+      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
+      //     info: '黑色 官方标配',
+      //     price: 399,
+      //     num: 2
+      //   }, {
+      //     imgUrl: '',
+      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
+      //     info: '黑色 官方标配',
+      //     price: 99,
+      //     num: 4
+      //   }]
+      // }, {
+      //   storeName: '优逸影音自营',
+      //   goodArr: [{
+      //     imgUrl: '',
+      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
+      //     info: '黑色 官方标配',
+      //     price: 1099,
+      //     num: 1
+      //   }, {
+      //     imgUrl: '',
+      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
+      //     info: '黑色 官方标配',
+      //     price: 5299,
+      //     num: 3
+      //   }]
+      // }],
       list: [{
-        storeName: '优逸影音自营',
-        goodArr: [{
-          imgUrl: '',
-          name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-          info: '黑色 官方标配',
-          price: 1099,
-          num: 1 }] },
-
-      {
-        storeName: '优逸影音自营',
-        goodArr: [{
-          imgUrl: '',
-          name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-          info: '黑色 官方标配',
-          price: 399,
-          num: 2 },
-        {
-          imgUrl: '',
-          name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-          info: '黑色 官方标配',
-          price: 99,
-          num: 4 }] },
-
-      {
-        storeName: '优逸影音自营',
-        goodArr: [{
-          imgUrl: '',
-          name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-          info: '黑色 官方标配',
-          price: 1099,
-          num: 1 },
-        {
-          imgUrl: '',
-          name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-          info: '黑色 官方标配',
-          price: 5299,
-          num: 3 }] }],
-
+        storeName: '优逸smilehome自营',
+        goodArr: [] }],
 
       current: 0 };
 
   },
   onLoad: function onLoad() {
+    // //  获取购物车数据
+    // this.getList()
+  },
+  onShow: function onShow() {
     //  获取购物车数据
     this.getList();
   },
   methods: {
-    getList: function getList() {
+    // 获取购物车列表
+    getList: function getList() {var _this = this;
       var that = this;
       that.$http({
         url: that.$api.shopcarList,
         cb: function cb(err, res) {
-          console.log(res);
+          console.log(res.data.goods_list);
+          _this.list[0].goodArr = res.data.goods_list;
         } });
 
     },
+    // 选择
     checkboxChange: function checkboxChange(e) {
       console.log(e);
       // var items = this.items,
@@ -224,20 +291,63 @@ var _default =
       //   }
       // }
     },
-    controlNum: function controlNum(type, index, num) {
-      var item = this.list[index].goodArr[num].num;
-      if (type === 'cut' && item > 1) {
-        this.list[index].goodArr[num].num -= 1;
-        return;
+    // 加减购物车物品数量
+    controlNum: function controlNum(good, index, type) {
+      console.log(good, index, type);
+      var that = this;
+      var url = that.$api.addcar;
+      var num = that.list[0].goodArr[index].total_num;
+      var data = {
+        goods_id: good.goods_id,
+        goods_sku_id: good.goods_sku_id
+
+        // 减少数量
+      };if (type === 'cut' && num > 1) {
+        console.log('进来了减少', type, num);
+        url = that.$api.subcar;
+        that.$http({
+          url: url,
+          methods: 'POST',
+          data: data,
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              that.list[0].goodArr[index].total_num -= 1;
+              return;
+            }
+          } });
+
       }
+      // 增加数量
       if (type === 'add') {
-        this.list[index].goodArr[num].num += 1;
+        console.log('进来了增加');
+        data.goods_num = 1;
+        that.$http({
+          url: url,
+          methods: 'POST',
+          data: data,
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              that.list[0].goodArr[index].total_num += 1;
+            } else if (res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            }
+          } });
+
         return;
       }
     },
-    goDetail: function goDetail(info) {
+
+    goShopping: function goShopping() {
+      uni.switchTab({
+        url: '../market/market' });
+
+    },
+    goDetail: function goDetail(goods_id) {
       uni.navigateTo({
-        url: '../components/goodDetail?info=' + info });
+        url: '../components/goodDetail?goods_id=' + goods_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

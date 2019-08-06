@@ -2747,8 +2747,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   // 购物车 
   shopcarList: _config.default.devApi + '/cart/lists', // 购物车列表
-  addcar: _config.default.devApi + '/cart/add', // 添加购物车
-  delcar: _config.default.devApi + '/cart/delete', // 移出购物车
+  addcar: _config.default.devApi + '/cart/add', // 添加购物车/ 增加购物车商品数量
+  subcar: _config.default.devApi + '/cart/sub', // 减少购物车商品数量
+  delcar: _config.default.devApi + '/cart/delete', // 移出购物车 / 传多个goods_sku_id即可一次性删除多个商品
   buyNowinventory: _config.default.devApi + '/order/buyNowinventory' // 下订单前检查库存是否充足
 
 

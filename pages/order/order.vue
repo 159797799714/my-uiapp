@@ -3,49 +3,53 @@
     <view class="topBar">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>我的订单</text>
-      <text class="iconfont del">&#xe667;</text>
+      <text class="iconfont">&#xe667;</text>
     </view>
     <scroll-view scroll-x="true" :scroll-left="scrollLeft" class="scroll-tab">
       <view class="tabNav border-box">
-        <view v-for="(item, index) in tabList" :key="index" :class="{tab: true, selected: item === selectData}" @click="selectTab(item)">{{ item }}</view>
+        <view v-for="(item, index) in tabList" :key="index" :class="{tab: true, selected: item.name === selectData}" @click="selectTab(item)">{{ item.name }}</view>
       </view> 
     </scroll-view>
-  	<scroll-view v-if="dataList" scroll-y="true" class="content padding-30 border-box">
+  	<scroll-view v-if="dataList.length > 0" scroll-y="true" class="content padding-30 border-box">
       <view v-for="(item, index) in dataList" :key="index" class="item border-box bg-white">
         <view class="head">
           <view class="store">
             <view>
               <text class="iconfont">&#xe60b;</text>
-            </view>{{ item.store }}
+            </view>优逸smilehome
             <text class="iconfont jiantou">&#xe644;</text>
           </view>
-          <view class="status">{{ item.status }}</view>
+          <view class="status">{{ item.state_text }}</view>
         </view>
-        <view v-for="(li, num) in item.arr" :key="num" class="center" @click="goDetail(item)">
+        <view v-for="(li, num) in item.goods" :key="num" class="center" @click="goDetail(item)">
           <view class="img">
-            <image src="../../static/img/mine/bg.png" mode=""></image>
+            <image :src="li.image.file_path" mode=""></image>
           </view>
           <view class="info">
-            <view class="title">{{ li.title }}</view>
-            <view class="remark">{{ li.info }}</view>
+            <view class="title">{{ li.goods_name }}</view>
+            <view class="remark">{{ li.goods_attr }}</view>
           </view>
         </view>
         <view class="sum">
-          <view class="num">共计： <text>{{ item.arr.length }}件</text></view>
-          <view class="money">实付金额：<text>{{ item.price }}元</text></view>
+          <view class="num">共计： <text>{{ item.goods.length }}件</text></view>
+          <view class="money">实付金额：<text>{{ item.total_price }}元</text></view>
         </view>
-        <view class="control">
+        <!-- <view class="control">
           <text>删除订单</text>
+        </view> -->
+        <view class="control">
+          <text class="border-99">取消订单</text>
+          <text class="bg-3e border-err col-f">立即付款</text>
         </view>
       </view>
     </scroll-view>
     <!-- 页面数据为空时 -->
-    <view v-if="!dataList" class="nothing">
+    <view v-if="dataList.length < 1" class="nothing">
       <view class="img">
         <image src="../../static/img/order/null.png" mode=""/>
       </view>
       <view class="big-info">暂无订单</view>
-      <view class="small-info">“快去商城看看有没有你喜欢的优物吧～”</view>
+      <view class="small-info" @click="goMarket">“快去商城看看有没有你喜欢的优物吧～”</view>
     </view>
   </view>
 </template>
@@ -56,34 +60,53 @@
       return {
         selectData: '全部',
         dataType: '',
-        tabList: ['全部', '待付款', '待收货', '待评价', '已完成', '已取消'],
-        scrollLeft: 0,
-        dataList: [{
-          store: '苹果官方旗舰店',
-          sum: '2',
-          status: '已取消',
-          price: 300,
-          arr: [{
-            imgUrl: '',
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
-            info: '黑色 官方标配'
-          }]
-        }, {
-          store: '香蕉官方旗舰店',
-          sum: '2',
-          status: '已完成',
-          price: 200,
-          arr: [{
-            imgUrl: '',
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
-            info: '黑色 官方标配'
+        tabList: [{
+            name: '全部',
+            dataType: 'all'
           }, {
-            imgUrl: '',
-            title: 'Sony/索尼 超级头盔',
-            info: '黑色 官方标配'
-          }]
-        }]
-        // dataList: ''        dataList初始值需要为空字符串
+            name: '待付款',
+            dataType: 'payment'
+          }, {
+            name: '待收货',
+            dataType: 'received'
+          }, {
+            name: '待评价',
+            dataType: 'comment'
+          }, {
+            name: '已完成',
+            dataType: ''
+          }, {
+            name: '已取消',
+            dataType: ''
+          }
+        ],
+        scrollLeft: 0,
+        // dataList: [{
+        //   store: '苹果官方旗舰店',
+        //   sum: '2',
+        //   status: '已取消',
+        //   price: 300,
+        //   arr: [{
+        //     imgUrl: '',
+        //     title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
+        //     info: '黑色 官方标配'
+        //   }]
+        // }, {
+        //   store: '香蕉官方旗舰店',
+        //   sum: '2',
+        //   status: '已完成',
+        //   price: 200,
+        //   arr: [{
+        //     imgUrl: '',
+        //     title: 'Sony/索尼 MDR-ZX310头戴式监听重低耳耳',
+        //     info: '黑色 官方标配'
+        //   }, {
+        //     imgUrl: '',
+        //     title: 'Sony/索尼 超级头盔',
+        //     info: '黑色 官方标配'
+        //   }]
+        // }]
+        dataList: []
       }
     },
     watch: {
@@ -102,7 +125,7 @@
     onLoad(option) {
       this.selectData = option.name
       this.dataType = option.dataType
-      console.log('分享文章详情页接受到的参数',option.datatype)
+      console.log('分享文章详情页接受到的参数',this.selectData, this.dataType)
       this.getOrderInfo()
     },
     methods: {
@@ -111,25 +134,36 @@
           delta: 1
         })
       },
+      // 选择订单分类
+      
       selectTab(item) {
-        this.selectData = item
+        this.selectData = item.name
+        this.dataType = item.dataType
+        this.getOrderInfo()
       },
       goDetail(item) {
         uni.navigateTo({
           url: 'orderDetail?item=' + JSON.stringify(item)
         })
       },
-      
+      // 去商城
+      goMarket() {
+        uni.switchTab({
+          url: '../market/market'
+        })
+      },
       // 获取订单数据
       getOrderInfo() {
-        this.$http({
-          url: this.$api.orderList,
+        let that = this
+        that.$http({
+          url: that.$api.orderList,
           data: {
-            dataType: this.dataType
+            dataType: that.dataType
           },
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log('成功了加载订单', res.data)
+              console.log('成功了加载订单', res.data.list.data)
+              that.dataList = res.data.list.data
             } else if(res.code === 0) {
               uni.showToast({
                 title: res.msg,
@@ -298,8 +332,8 @@
           height: 50upx;
           display: inline-block;
           padding: 0 23upx;
+          margin-left: 36upx;
           border-radius: 25upx;
-          border: 1px solid $color-99;
         }
       }
     }

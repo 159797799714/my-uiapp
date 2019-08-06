@@ -6,7 +6,7 @@
         <view class="searchVal">{{ searchInfo }}</view>
       </view>
     </view>
-    <scroll-view scroll-y="true" class="content bg-black">
+    <scroll-view scroll-y="true" class="content bg-black" @scroll="onScroll">
       <view class="banner-swiper bg-black">
         <banner :swiperList="swiperList"></banner>
       </view>
@@ -14,7 +14,7 @@
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
       <view v-if="cultureList.length > 0" v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
-        <image :src="item.image.file_path" mode="" @click="goInfo(item.article_id)"></image>
+        <image :src="item.image.file_path" mode="widthFix" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
           <view v-if="item.article_title" class="title font-ff" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
           <view v-if="item.subtitle" class="info font-A3" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
@@ -38,11 +38,11 @@
 </template>
 
 <script>
-  import banner from "../components/banner.vue";
+  import banner from '../components/banner.vue';
   import service from '../../service.js';
   export default {
     components: {
-      banner
+      banner: banner
     },
     data() {
       return {
@@ -77,6 +77,9 @@
       this.getBanner()  
     },
     methods: {
+      onScroll(e) {
+        console.log(e)
+      },
       // 获取文章
       getDefault(id) {
         this.$http({
@@ -296,7 +299,6 @@
       width: calc(100% - 60upx);
       &>image{
         margin-bottom: 15upx;
-        height: 388upx;
         width: 100%;
       }
       .item-words{
