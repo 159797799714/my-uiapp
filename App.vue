@@ -12,7 +12,7 @@
         if(userinfo.token) {
           that.$store.commit('setToken', userinfo.token)
           if(userinfo.mobile) {
-            uni.reLaunch({
+            uni.switchTab({
               url: './pages/index/index'
             })
             return
@@ -22,12 +22,12 @@
             })
           }
         } else {
-          uni.reLaunch({
+          uni.redirectTo({
             url: './pages/login/login'
           })  
         }
       } else {
-        uni.reLaunch({
+        uni.redirectTo({
           url: './pages/login/login'
         })
       }

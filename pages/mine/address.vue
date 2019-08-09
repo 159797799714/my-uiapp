@@ -42,7 +42,23 @@
         ]
       }
     },
+    onLoad() {
+      // 获取地址列表
+      this.getAddress();
+    },
     methods: {
+      // 获取收货地址列表
+      getAddress() {
+        let that= this
+        that.$http({
+          url: that.$api.addresslist,
+          cb: (err, res) => {
+            if(!err && res) {
+              console.log(res)
+            }
+          }
+        })
+      },
       goBack() {
         uni.navigateBack({
           delta: 1

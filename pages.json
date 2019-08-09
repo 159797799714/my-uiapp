@@ -141,7 +141,7 @@
       "path": "pages/mine/mine",
       "style": {
         "navigationStyle": "custom",
-        "navigationBarTextStyle": "black",
+        "navigationBarTextStyle": "white",
         "app-plus": {
           "bounce": "none",
           "titleNView": false

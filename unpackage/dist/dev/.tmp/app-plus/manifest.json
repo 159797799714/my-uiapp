@@ -4,7 +4,7 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__955877F",
+  "id": "__UNI__0B8B211",
   "name": "优逸",
   "version": {
     "name": "1.0.0",
@@ -115,12 +115,7 @@
       },
       "apple": {},
       "plugins": {
-        "oauth": {
-          "weixin": {
-            "appid": "wx96212763ae052f5c",
-            "appsecret": ""
-          }
-        },
+        "oauth": {},
         "maps": {},
         "audio": {
           "mp3": {

@@ -2,5 +2,5 @@
   "navigationStyle": "custom",
   "bounce": "none",
   "titleNView": "false",
-  "usingComponents": {}
+  "usingComponents": true
 }

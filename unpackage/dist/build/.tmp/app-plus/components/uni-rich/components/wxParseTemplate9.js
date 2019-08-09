@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/uni-rich/components/wxParseTemplate9"],{"0ece":function(n,e,t){"use strict";t.r(e);var r=t("cb5c"),o=t("cfb2");for(var u in o)"default"!==u&&function(n){t.d(e,n,function(){return o[n]})}(u);var c=t("2877"),a=Object(c["a"])(o["default"],r["a"],r["b"],!1,null,null,null);e["default"]=a.exports},3420:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r=function(){return t.e("components/uni-rich/components/wxParseTemplate10").then(t.bind(null,"4e44"))},o=function(){return t.e("components/uni-rich/components/wxParseImg").then(t.bind(null,"f708"))},u=function(){return t.e("components/uni-rich/components/wxParseVideo").then(t.bind(null,"7cc0"))},c=function(){return t.e("components/uni-rich/components/wxParseAudio").then(t.bind(null,"4069"))},a=function(){return t.e("components/uni-rich/components/wxParseTable").then(t.bind(null,"159f"))},i={name:"wxParseTemplate9",props:{node:{}},components:{wxParseTemplate:r,wxParseImg:o,wxParseVideo:u,wxParseAudio:c,wxParseTable:a},methods:{wxParseATap:function(n){var e=n.currentTarget.dataset.href;if(e){var t=this.$parent;while(!t.preview||"function"!==typeof t.preview)t=t.$parent;t.navigate(e,n)}}}};e.default=i},cb5c:function(n,e,t){"use strict";var r=function(){var n=this,e=n.$createElement;n._self._c},o=[];t.d(e,"a",function(){return r}),t.d(e,"b",function(){return o})},cfb2:function(n,e,t){"use strict";t.r(e);var r=t("3420"),o=t.n(r);for(var u in r)"default"!==u&&function(n){t.d(e,n,function(){return r[n]})}(u);e["default"]=o.a}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/uni-rich/components/wxParseTemplate9-create-component',
+    {
+        'components/uni-rich/components/wxParseTemplate9-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("0ece"))
+        })
+    },
+    [['components/uni-rich/components/wxParseTemplate9-create-component']]
+]);                

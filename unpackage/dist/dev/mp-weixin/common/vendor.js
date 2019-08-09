@@ -2740,6 +2740,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   changepwd: _config.default.devApi + '/app.center/changepwd', // 更改密码
   modifypersonalinfo: _config.default.devApi + '/app.center/modifypersonalinfo', // 修改个人用户信息
   getuserinfo: _config.default.devApi + '/app.center/getuserinfo', // 获取用户个人信息
+  addresslist: _config.default.devApi + '/address/lists', // 获取收货地址
+  deleteAddress: _config.default.devApi + '/address/delete', // 删除收货地址
+  addAddress: _config.default.devApi + '/address/add', // 添加收货地址
+  addressDetail: _config.default.devApi + '/address/detail', // 收货地址详情
+  editAddres: _config.default.devApi + '/address/edit', // 编辑收货地址
+  setDefaultAddress: _config.default.devApi + '/address/setDefault', // 设置默认收货地址
 
   // 订单
   orderList: _config.default.devApi + '/user.order/lists', // 订单
@@ -2751,8 +2757,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   subcar: _config.default.devApi + '/cart/sub', // 减少购物车商品数量
   delcar: _config.default.devApi + '/cart/delete', // 移出购物车 / 传多个goods_sku_id即可一次性删除多个商品
   buyNowinventory: _config.default.devApi + '/order/buyNowinventory' // 下订单前检查库存是否充足
-
-
 
 
   // 下订单前检查库存 /order/buyNowinventory&goods_id=10234&goods_num=1&goods_sku_id=10028_10255_10258&wxapp_id=10001&token=4de6cf677435f27793fcd69731a43540

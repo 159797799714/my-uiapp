@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["pages/components/banner"],{"2f2e":function(n,t,e){"use strict";var a=e("414d"),o=e.n(a);o.a},"414d":function(n,t,e){},5358:function(n,t,e){"use strict";e.r(t);var a=e("cf2d"),o=e.n(a);for(var r in a)"default"!==r&&function(n){e.d(t,n,function(){return a[n]})}(r);t["default"]=o.a},5523:function(n,t,e){"use strict";var a=function(){var n=this,t=n.$createElement;n._self._c},o=[];e.d(t,"a",function(){return a}),e.d(t,"b",function(){return o})},8876:function(n,t,e){"use strict";var a=e("f95c"),o=e.n(a);o.a},cf2d:function(n,t,e){"use strict";(function(n){Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var e={name:"banner",props:{swiperList:Array,searchInfo:{type:String,default:"大家都在搜“森海塞尔”"}},data:function(){return{indicatorDots:!0,autoplay:!0,interval:2e3,duration:1e3,indicatorActiveColor:"#fff"}},methods:{naviget:function(t){var e=t.indexOf("goods_id="),a=t.indexOf("article_id="),o=t.indexOf("luckydraw_id=");console.log(e,a,o," at pages\\components\\banner.vue:38"),-1===e?-1===a?-1===o||n.navigateTo({url:"../zerodraw/zerodraw?luckydraw_id="+t.slice(13)}):n.navigateTo({url:"../components/shareInfo?article_id="+t.slice(11)}):n.navigateTo({url:"../components/goodDetail?goods_id="+t.slice(9)})}}};t.default=e}).call(this,e("6e42")["default"])},ddf1:function(n,t,e){"use strict";e.r(t);var a=e("5523"),o=e("5358");for(var r in o)"default"!==r&&function(n){e.d(t,n,function(){return o[n]})}(r);e("2f2e"),e("8876");var i=e("2877"),c=Object(i["a"])(o["default"],a["a"],a["b"],!1,null,"3fb19148",null);t["default"]=c.exports},f95c:function(n,t,e){}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'pages/components/banner-create-component',
+    {
+        'pages/components/banner-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("ddf1"))
+        })
+    },
+    [['pages/components/banner-create-component']]
+]);                

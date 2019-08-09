@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["components/uni-rich/components/wxParseTemplate6"],{"325b":function(n,e,t){"use strict";var r=function(){var n=this,e=n.$createElement;n._self._c},o=[];t.d(e,"a",function(){return r}),t.d(e,"b",function(){return o})},"8eba":function(n,e,t){"use strict";t.r(e);var r=t("fac6"),o=t.n(r);for(var a in r)"default"!==a&&function(n){t.d(e,n,function(){return r[n]})}(a);e["default"]=o.a},"9c74":function(n,e,t){"use strict";t.r(e);var r=t("325b"),o=t("8eba");for(var a in o)"default"!==a&&function(n){t.d(e,n,function(){return o[n]})}(a);var u=t("2877"),i=Object(u["a"])(o["default"],r["a"],r["b"],!1,null,null,null);e["default"]=i.exports},fac6:function(n,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0;var r=function(){return t.e("components/uni-rich/components/wxParseTemplate7").then(t.bind(null,"ef4b"))},o=function(){return t.e("components/uni-rich/components/wxParseImg").then(t.bind(null,"f708"))},a=function(){return t.e("components/uni-rich/components/wxParseVideo").then(t.bind(null,"7cc0"))},u=function(){return t.e("components/uni-rich/components/wxParseAudio").then(t.bind(null,"4069"))},i=function(){return t.e("components/uni-rich/components/wxParseTable").then(t.bind(null,"159f"))},c={name:"wxParseTemplate6",props:{node:{}},components:{wxParseTemplate:r,wxParseImg:o,wxParseVideo:a,wxParseAudio:u,wxParseTable:i},methods:{wxParseATap:function(n){var e=n.currentTarget.dataset.href;if(e){var t=this.$parent;while(!t.preview||"function"!==typeof t.preview)t=t.$parent;t.navigate(e,n)}}}};e.default=c}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'components/uni-rich/components/wxParseTemplate6-create-component',
+    {
+        'components/uni-rich/components/wxParseTemplate6-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("9c74"))
+        })
+    },
+    [['components/uni-rich/components/wxParseTemplate6-create-component']]
+]);                

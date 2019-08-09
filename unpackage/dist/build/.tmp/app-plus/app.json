@@ -13,6 +13,7 @@
     "pages/market/panicBuy",
     "pages/message/message",
     "pages/shopcar/shopcar",
+    "pages/zerodraw/zerodraw",
     "pages/message/chatDetail",
     "pages/mine/mine",
     "pages/mine/looks",
@@ -35,7 +36,6 @@
     "pages/mine/sign",
     "pages/mine/bonus/bonusApplyInfo"
   ],
-  "subPackages": [],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarBackgroundColor": "#000000",
@@ -84,6 +84,6 @@
     "autoclose": false
   },
   "appname": "优逸",
-  "compilerVersion": "2.1.1",
+  "compilerVersion": "2.1.3",
   "usingComponents": {}
 }

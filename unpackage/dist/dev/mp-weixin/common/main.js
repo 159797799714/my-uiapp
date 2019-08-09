@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
       if (userinfo.token) {
         that.$store.commit('setToken', userinfo.token);
         if (userinfo.mobile) {
-          uni.reLaunch({
+          uni.switchTab({
             url: './pages/index/index' });
 
           return;
@@ -89,12 +89,12 @@ __webpack_require__.r(__webpack_exports__);
 
         }
       } else {
-        uni.reLaunch({
+        uni.redirectTo({
           url: './pages/login/login' });
 
       }
     } else {
-      uni.reLaunch({
+      uni.redirectTo({
         url: './pages/login/login' });
 
     }

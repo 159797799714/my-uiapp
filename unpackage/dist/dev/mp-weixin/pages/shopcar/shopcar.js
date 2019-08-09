@@ -169,93 +169,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
-      // list: [{
-      //   storeName: '优逸影音自营',
-      //   goodArr : [{
-      //     imgUrl: '',
-      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-      //     info: '黑色 官方标配',
-      //     price: 1099,
-      //     num: 1
-      //   }]
-      // }, {
-      //   storeName: '优逸影音自营',
-      //   goodArr: [{
-      //     imgUrl: '',
-      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-      //     info: '黑色 官方标配',
-      //     price: 399,
-      //     num: 2
-      //   }, {
-      //     imgUrl: '',
-      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-      //     info: '黑色 官方标配',
-      //     price: 99,
-      //     num: 4
-      //   }]
-      // }, {
-      //   storeName: '优逸影音自营',
-      //   goodArr: [{
-      //     imgUrl: '',
-      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-      //     info: '黑色 官方标配',
-      //     price: 1099,
-      //     num: 1
-      //   }, {
-      //     imgUrl: '',
-      //     name: '索尼（SONY）WF-SP900真无线防水运动耳机',
-      //     info: '黑色 官方标配',
-      //     price: 5299,
-      //     num: 3
-      //   }]
-      // }],
       list: [{
         storeName: '优逸smilehome自营',
         goodArr: [] }],
 
-      current: 0 };
-
+      total_price: 0, // 总计算钱数
+      checked_sum: 0, // 选中商品数量
+      all_checked: false // 全部选中
+    };
   },
   onLoad: function onLoad() {
     // //  获取购物车数据
@@ -272,28 +197,62 @@ var _default =
       that.$http({
         url: that.$api.shopcarList,
         cb: function cb(err, res) {
-          console.log(res.data.goods_list);
-          _this.list[0].goodArr = res.data.goods_list;
+          var list = res.data.goods_list;
+          list.map(function (item, index) {
+            console.log(item);
+            item.checked = false;
+          });
+          console.log(list);
+          _this.list[0].goodArr = list;
         } });
 
     },
-    // 选择
-    checkboxChange: function checkboxChange(e) {
-      console.log(e);
-      // var items = this.items,
-      // values = e.detail.value
-      // for (var i = 0, lenI = items.length; i < lenI; ++i) {
-      //   const item = items[i]
-      //   if (values.includes(item.value)) {
-      //     this.$set(item, 'checked', true)
-      //   } else {
-      //     this.$set(item, 'checked', false)
-      //   }
-      // }
+
+    // 勾选商品
+    checkboxChange: function checkboxChange(id, num, index) {
+      // console.log(id, num, index)
+      var checked = this.list[index].goodArr[num].checked;
+      // console.log(this.list[index].goodArr[num].checked)
+      this.list[index].goodArr[num].checked = !checked;
+      // 计算总金额
+      this.computePrice();
     },
+
+    // 计算总金额
+    computePrice: function computePrice() {
+      var that = this;
+      var list = this.list[0].goodArr;
+      that.total_price = 0;
+      that.checked_sum = 0;
+      list.map(function (item, index) {
+        if (item.checked) {
+          that.checked_sum += Number(item.total_num);
+          that.total_price += Number(item.goods_price) * Number(item.total_num);
+        }
+      });
+    },
+
+    // 选中所有商品
+    selAllRadio: function selAllRadio() {
+      var that = this;
+      if (that.all_checked) {
+        that.list[0].goodArr.map(function (item, index) {
+          item.checked = false;
+        });
+      } else {
+        that.list[0].goodArr.map(function (item, index) {
+          item.checked = true;
+        });
+      }
+      this.all_checked = !this.all_checked;
+
+      // 计算总金额
+      this.computePrice();
+
+    },
+
     // 加减购物车物品数量
-    controlNum: function controlNum(good, index, type) {
-      console.log(good, index, type);
+    controlNum: function controlNum(good, index, type) {var _this2 = this;
       var that = this;
       var url = that.$api.addcar;
       var num = that.list[0].goodArr[index].total_num;
@@ -301,9 +260,9 @@ var _default =
         goods_id: good.goods_id,
         goods_sku_id: good.goods_sku_id
 
+
         // 减少数量
       };if (type === 'cut' && num > 1) {
-        console.log('进来了减少', type, num);
         url = that.$api.subcar;
         that.$http({
           url: url,
@@ -312,14 +271,17 @@ var _default =
           cb: function cb(err, res) {
             if (!err && res.code === 1) {
               that.list[0].goodArr[index].total_num -= 1;
+
+              // 计算总金额
+              _this2.computePrice();
               return;
             }
           } });
 
       }
+
       // 增加数量
       if (type === 'add') {
-        console.log('进来了增加');
         data.goods_num = 1;
         that.$http({
           url: url,
@@ -328,6 +290,10 @@ var _default =
           cb: function cb(err, res) {
             if (!err && res.code === 1) {
               that.list[0].goodArr[index].total_num += 1;
+
+              // 计算总金额
+              _this2.computePrice();
+              return;
             } else if (res.code === 0) {
               uni.showToast({
                 title: res.msg,

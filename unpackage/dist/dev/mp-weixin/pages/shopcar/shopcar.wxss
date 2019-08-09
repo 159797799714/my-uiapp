@@ -469,12 +469,12 @@ to {
   background: #f5f5f5;
 }
 .content.data-v-33baadac {
-  padding: 0 30rpx 0;
+  padding: 0 30rpx;
 }
 .content .store.data-v-33baadac {
     min-height: 292rpx;
-    padding: 0 20rpx 35rpx 20rpx;
-    margin-bottom: 30rpx;
+    padding: 20rpx 20rpx 35rpx 20rpx;
+    margin: 30rpx 0 60rpx;
 }
 .content .store .store-head.data-v-33baadac {
       display: -webkit-box;
@@ -595,26 +595,16 @@ to {
 .content .store .item .right-box .foot .num .icon .iconfont.data-v-33baadac {
                 font-size: 24rpx;
 }
-.content .store radio.data-v-33baadac {
-      width: 30rpx;
-      margin-right: 30rpx;
-      -webkit-transform: scale(0.6);
-          -ms-transform: scale(0.6);
-              transform: scale(0.6);
+.settle.data-v-33baadac {
+  height: 98rpx;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding-left: 50rpx;
+  line-height: 98rpx;
 }
-.content .settle.data-v-33baadac {
-    height: 98rpx;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    padding-left: 50rpx;
-    line-height: 98rpx;
-}
-.content .settle .settle-btn.data-v-33baadac {
-      width: 300rpx;
-}
-.iconfont.data-v-33baadac {
-  margin-right: 0;
+.settle .settle-btn.data-v-33baadac {
+    width: 300rpx;
 }
 .blank.data-v-33baadac {
   margin: auto;
@@ -627,5 +617,15 @@ to {
     padding: 10rpx 30rpx;
     line-height: 30rpx;
     border: 1px solid #999999;
+}
+radio.data-v-33baadac {
+  width: 30rpx;
+  margin-right: 30rpx;
+  -webkit-transform: scale(0.6);
+      -ms-transform: scale(0.6);
+          transform: scale(0.6);
+}
+.iconfont.data-v-33baadac {
+  margin-right: 0;
 }
 

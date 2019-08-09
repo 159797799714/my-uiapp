@@ -149,7 +149,23 @@ var _default =
 
 
   },
+  onLoad: function onLoad() {
+    // 获取地址列表
+    this.getAddress();
+  },
   methods: {
+    // 获取收货地址列表
+    getAddress: function getAddress() {
+      var that = this;
+      that.$http({
+        url: that.$api.addresslist,
+        cb: function cb(err, res) {
+          if (!err && res) {
+            console.log(res);
+          }
+        } });
+
+    },
     goBack: function goBack() {
       uni.navigateBack({
         delta: 1 });

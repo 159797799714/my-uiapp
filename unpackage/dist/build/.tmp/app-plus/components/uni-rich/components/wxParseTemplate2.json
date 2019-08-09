@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "weixin-parse-template": "/components/uni-rich/components/wxParseTemplate3",
+    "weixin-parse-img": "/components/uni-rich/components/wxParseImg",
+    "weixin-parse-video": "/components/uni-rich/components/wxParseVideo",
+    "weixin-parse-audio": "/components/uni-rich/components/wxParseAudio",
+    "weixin-parse-table": "/components/uni-rich/components/wxParseTable"
+  },
+  "component": true
+}

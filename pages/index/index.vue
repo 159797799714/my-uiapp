@@ -72,6 +72,7 @@
       }
     },
     onLoad() {
+      console.log('index 的onload')
       this.getCategorylist()
       this.getDefault()
       this.getBanner()  

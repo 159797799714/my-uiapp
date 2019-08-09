@@ -48,17 +48,17 @@
           <view v-for="(item, index) in tabList" :key="index" :class="{ tabItem: true, after: index === tabIndex }" @click="selectTab(index)">{{ item }}</view>
         </view>
         
-        <!-- 收藏 -->
+        <!-- 点赞 -->
         <view v-if="tabIndex === 0" class="goods-content">
           <view v-for="(item, index) in shareList" :key="index" class="item">
             <view class="img"  @click="goShareDetail(item.article_id)">
-              <image :src="item.image.file_path" mode=""></image>
+              <image :src="item.image.file_path" mode="aspectFill"></image>
             </view>
             <view class="title border-box" @click="goShareDetail(item.article_id)">{{ item.article_title }}</view>
             <view class="info border-box">
               <view class="user">
                 <view class="userImg">
-                  <image :src="item.headimg.file_path" mode=""></image>
+                  <image :src="item.headimg.file_path" mode="aspectFill"></image>
                 </view>
                 <view class="userName">{{ item.author }}</view> 
               </view>
@@ -70,7 +70,7 @@
           </view>
         </view>
         
-         <!-- 点赞 -->
+         <!-- 收藏 -->
         <view v-if="tabIndex === 1" class="goods-content">
           <view v-for="(item, index) in goodList" :key="index" class="good-item">
             <view class="good-img"></view>
