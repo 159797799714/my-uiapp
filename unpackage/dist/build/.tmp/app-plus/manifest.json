@@ -4,13 +4,13 @@
     "iPhone",
     "iPad"
   ],
-  "id": "__UNI__0B8B211",
+  "id": "__UNI__824270B",
   "name": "优逸",
   "version": {
     "name": "1.0.0",
     "code": "100"
   },
-  "description": "",
+  "description": "这是一款主要面向年轻群体的潮玩，爆款，促销的一个应用",
   "launch_path": "__uniapptabbar.html",
   "developer": {
     "name": "",
@@ -53,7 +53,7 @@
     "distribute": {
       "icons": {
         "ios": {
-          "appstore": "static/img/mine/bg.png",
+          "appstore": "unpackage/res/icons/1024x1024.png",
           "ipad": {
             "app": "unpackage/res/icons/76x76.png",
             "app@2x": "unpackage/res/icons/152x152.png",
@@ -115,8 +115,28 @@
       },
       "apple": {},
       "plugins": {
-        "oauth": {},
+        "oauth": {
+          "weixin": {
+            "appid": "wx96212763ae052f5c",
+            "appsecret": "2165ff8b5a6863717876a720152e6994"
+          },
+          "qq": {
+            "appid": "1109274316"
+          }
+        },
         "maps": {},
+        "payment": {
+          "weixin": {
+            "appid": "wx96212763ae052f5c"
+          },
+          "alipay": {}
+        },
+        "share": {
+          "weixin": {
+            "appid": "wx96212763ae052f5c",
+            "appsecret": "2165ff8b5a6863717876a720152e6994"
+          }
+        },
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

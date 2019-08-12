@@ -73,46 +73,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = Array.isArray(_vm.password)
-
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      var $$a = _vm.password,
-        $$el = $event.target,
-        $$c = $$el.checked ? true : false
-
-      if (Array.isArray($$a)) {
-        var $$v = null,
-          $$i = _vm._i($$a, $$v)
-
-        if ($$el.checked) {
-          $$i < 0 && (_vm.password = $$a.concat([$$v]))
-        } else {
-          $$i > -1 &&
-            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-        }
-      } else {
-        _vm.password = $$c
-      }
-    }
-
-    _vm.e1 = function($event) {
-      _vm.password = null
-    }
-
-    _vm.e2 = function($event) {
       _vm.ishide = !_vm.ishide
     }
   }
-
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        g0: g0
-      }
-    }
-  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -146,6 +111,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //

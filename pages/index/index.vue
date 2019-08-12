@@ -72,10 +72,12 @@
       }
     },
     onLoad() {
-      console.log('index 的onload')
       this.getCategorylist()
       this.getDefault()
       this.getBanner()  
+    },
+    onShow() {
+      console.log('index 的onshow')
     },
     methods: {
       onScroll(e) {

@@ -22,7 +22,8 @@
             </view>
             <view class="ipt">
               <text class="iconfont">&#xe64c;</text>
-              <input :type="ishide ? 'password': 'text'" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
+              <input v-if="ishide" type="password" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
+              <input v-if="!ishide" type="text" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
               <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
             </view>
             <view v-if="!showInfo" class="info"></view>
@@ -101,7 +102,9 @@
         this.showDel = false
       },
       sureAction() {
+        let code_mobile = uni.getStorageSync('code_mobile');
         let that = this
+        console.log(Number(code_mobile) !== that.mobile)
         if(!that.showInfo) {
           uni.showToast({
             title: '请先获取手机验证码',
@@ -121,6 +124,14 @@
             title: '请输入密码',
             icon: 'none'
           })
+          return
+        }
+        if(Number(code_mobile) !== that.mobile) {
+          uni.showToast({
+            title: '手机号不一致，请重新获取验证码',
+            icon: 'none'
+          })
+          that.showInfo = false
           return
         }
         if(!that.check_code) {
@@ -180,6 +191,7 @@
       
       // 获取验证码
       getCode() {
+        uni.setStorageSync('code_mobile', this.mobile);
         let value = /^1[3456789]\d{9}$/.test(this.mobile)
         let that = this
         if (!value){

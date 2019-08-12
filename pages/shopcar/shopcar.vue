@@ -5,14 +5,14 @@
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <!-- <view class="store"> -->
 
-        <!-- <view class="store-head">
+        <view class="store-head">
           <checkbox value="" checked="true" color="#FFCC33"/>
           <radio :value="item.storeName" color="#F4433D" />
           <view class="store-name">
             <text class="iconfont">&#xe60b;</text>
             <text>{{ item.storeName }}</text>
           </view>
-        </view> -->
+        </view>
         <view v-for="(good, num) in item.goodArr" :key="num" class="item">
           <view class="left-box">
             <view class="radio-btn" @click="checkboxChange(good.goods_sku_id, num, index)">

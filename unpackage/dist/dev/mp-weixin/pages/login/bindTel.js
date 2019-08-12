@@ -73,50 +73,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = Array.isArray(_vm.password)
-
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
       _vm.mobile = ""
     }
 
     _vm.e1 = function($event) {
-      var $$a = _vm.password,
-        $$el = $event.target,
-        $$c = $$el.checked ? true : false
-
-      if (Array.isArray($$a)) {
-        var $$v = null,
-          $$i = _vm._i($$a, $$v)
-
-        if ($$el.checked) {
-          $$i < 0 && (_vm.password = $$a.concat([$$v]))
-        } else {
-          $$i > -1 &&
-            (_vm.password = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-        }
-      } else {
-        _vm.password = $$c
-      }
-    }
-
-    _vm.e2 = function($event) {
-      _vm.password = null
-    }
-
-    _vm.e3 = function($event) {
       _vm.ishide = !_vm.ishide
     }
   }
-
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        g0: g0
-      }
-    }
-  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -150,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
 //
 //
 //
@@ -252,7 +218,9 @@ var _default =
       this.showDel = false;
     },
     sureAction: function sureAction() {
+      var code_mobile = uni.getStorageSync('code_mobile');
       var that = this;
+      console.log(Number(code_mobile) !== that.mobile);
       if (!that.showInfo) {
         uni.showToast({
           title: '请先获取手机验证码',
@@ -272,6 +240,14 @@ var _default =
           title: '请输入密码',
           icon: 'none' });
 
+        return;
+      }
+      if (Number(code_mobile) !== that.mobile) {
+        uni.showToast({
+          title: '手机号不一致，请重新获取验证码',
+          icon: 'none' });
+
+        that.showInfo = false;
         return;
       }
       if (!that.check_code) {
@@ -331,6 +307,7 @@ var _default =
 
     // 获取验证码
     getCode: function getCode() {
+      uni.setStorageSync('code_mobile', this.mobile);
       var value = /^1[3456789]\d{9}$/.test(this.mobile);
       var that = this;
       if (!value) {

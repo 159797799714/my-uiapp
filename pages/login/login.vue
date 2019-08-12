@@ -14,7 +14,8 @@
           </view>
           <view class="ipt border-box">
             <text class="iconfont">&#xe64c;</text>
-            <input :type="ishide ? 'password': 'text'" v-model="password" placeholder="请输入密码" maxlength="16">
+            <input v-if="ishide" type="password" v-model="password" placeholder="请输入密码" maxlength="16">
+            <input v-if="!ishide" type="text" v-model="password" placeholder="请输入密码" maxlength="16">
             <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
           </view>
           <view class="btn" foroType="submit" @click="goLogin">登录</view>
@@ -93,8 +94,6 @@
             cb: (err, res) => {
               if(!err && res.code === 1) {
                 // console.log(res.data.userinfo.token)
-                
-                
                 
                 let userinfo = {
                   mobile: res.data.userinfo.mobile,

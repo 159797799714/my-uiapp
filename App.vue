@@ -2,6 +2,8 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
+      console.log(uni.getSystemInfoSync().platform)
+      
       // #ifdef APP-PLUS
       // 锁定屏幕方向
       plus.screen.lockOrientation('portrait-primary') //锁定
@@ -31,7 +33,6 @@
           url: './pages/login/login'
         })
       }
-      
       
       // uni.getStorage({
       //   key: 'userinfo',

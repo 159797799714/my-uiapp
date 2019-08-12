@@ -2837,7 +2837,7 @@ function _default(obj) {
     url: obj.url,
     method: obj.method ? obj.method : 'GET',
     data: data,
-    header: obj.header ? obj.header : {},
+    header: obj.header ? obj.header : { 'content-type': 'application/x-www-form-urlencoded', 'Accept-Language': 'zh-CN,zh;q=0.9' },
     success: function success(res) {
       if (res.data.code === -1 || res.data.code === 0 && res.msg) {
         uni.showToast({

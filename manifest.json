@@ -1,7 +1,7 @@
 {
     "name" : "优逸",
-    "appid" : "__UNI__0B8B211",
-    "description" : "",
+    "appid" : "__UNI__824270B",
+    "description" : "这是一款主要面向年轻群体的潮玩，爆款，促销的一个应用",
     "versionName" : "1.0.0",
     "versionCode" : "100",
     "transformPx" : false,
@@ -56,12 +56,32 @@
             "ios" : {},
             /* ios打包配置 */
             "sdkConfigs" : {
-                "oauth" : {},
-                "maps" : {}
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx96212763ae052f5c",
+                        "appsecret" : "2165ff8b5a6863717876a720152e6994"
+                    },
+                    "qq" : {
+                        "appid" : "1109274316"
+                    }
+                },
+                "maps" : {},
+                "payment" : {
+                    "weixin" : {
+                        "appid" : "wx96212763ae052f5c"
+                    },
+                    "alipay" : {}
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wx96212763ae052f5c",
+                        "appsecret" : "2165ff8b5a6863717876a720152e6994"
+                    }
+                }
             },
             "icons" : {
                 "ios" : {
-                    "appstore" : "static/img/mine/bg.png",
+                    "appstore" : "unpackage/res/icons/1024x1024.png",
                     "ipad" : {
                         "app" : "unpackage/res/icons/76x76.png",
                         "app@2x" : "unpackage/res/icons/152x152.png",
@@ -111,6 +131,17 @@
     },
     "h5" : {
         "title" : "优逸商城",
-        "domain" : "youyi.shop.com"
+        "domain" : "youyi.shop.com",
+        "devServer" : {
+            "port" : 8000,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/" : {
+                    "target" : "https://market.pd-unixe.com/index.php?s=/api",  // 需要跨域的域名
+                    "changeOrigin" : true,
+                    "secure" : false
+                }
+            }
+        }
     }
 }

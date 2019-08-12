@@ -9,7 +9,8 @@
         <view class="title">{{ title }}</view>
         <view v-if="type === 'forget'" class="info">为您的账号设置一个新密码</view>
         <view class="ipt">
-          <input :type="ishide ? 'password': 'text'" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
+          <input v-if="ishide" type="password" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
+          <input v-if="!ishide" type="text" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
           <text class="iconfont del" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
         </view>
         <view class="btn" foroType="submit" @click="sureAction">{{ btnValue }}</view>

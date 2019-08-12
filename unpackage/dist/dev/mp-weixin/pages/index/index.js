@@ -179,10 +179,12 @@ var _service = _interopRequireDefault(__webpack_require__(/*! ../../service.js *
     } },
 
   onLoad: function onLoad() {
-    console.log('index 的onload');
     this.getCategorylist();
     this.getDefault();
     this.getBanner();
+  },
+  onShow: function onShow() {
+    console.log('index 的onshow');
   },
   methods: {
     onScroll: function onScroll(e) {

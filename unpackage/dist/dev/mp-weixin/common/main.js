@@ -69,6 +69,8 @@ __webpack_require__.r(__webpack_exports__);
 {
   onLaunch: function onLaunch() {
     console.log('App Launch');
+    console.log(uni.getSystemInfoSync().platform);
+
 
 
 
@@ -98,7 +100,6 @@ __webpack_require__.r(__webpack_exports__);
         url: './pages/login/login' });
 
     }
-
 
     // uni.getStorage({
     //   key: 'userinfo',
