@@ -5,7 +5,7 @@
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <!-- <view class="store"> -->
 
-        <view class="store-head">
+        <!-- <view class="store-head">
           <view @click="selAllRadio">
             <radio  value="all" :checked="all_checked" color="#F4433D" />
           </view>
@@ -13,10 +13,10 @@
             <text class="iconfont">&#xe60b;</text>
             <text>{{ item.storeName }}</text>
           </view>
-        </view>
+        </view> -->
         <view v-for="(good, num) in item.goodArr" :key="num" class="item">
           <view class="left-box">
-            <view class="radio-btn" @click="checkboxChange(good.goods_sku_id, num, index)">
+            <view class="radio-btn dis-flex flex-y-center" @click="checkboxChange(good.goods_sku_id, num, index)">
               <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->
               <label class="radio">
                 <radio :value="good.goods_sku_id" :checked="good.checked" color="#F4433D" />
@@ -263,15 +263,15 @@
       .item {
         display: flex;
         margin-bottom: 30upx;
+        border-top: 1px solid #f5f5f5;
+        padding-top: 20px;
 
         .left-box {
           display: flex;
-
           &>radio {
             height: 30upx;
             margin-top: 96upx;
           }
-
           .img {
             height: 180upx;
             width: 180upx;
