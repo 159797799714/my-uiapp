@@ -23,7 +23,7 @@
             <text class="forget" @click="clickAction('forget')">忘记密码？</text>
             <text @click="clickAction('register')">注册账号</text>
           </view>
-          <view class="login-way">
+          <view v-if="statusBarHeight > 0" class="login-way">
             <view class="title">
               <text>第三方登录</text>
             </view>
@@ -58,6 +58,11 @@
     onLoad(option) {
       if(option) {
         console.log(option.old)
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

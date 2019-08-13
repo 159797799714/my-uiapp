@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text>消息</text>
     </view>
     <scroll-view scroll-y class="content border-box">
@@ -62,6 +62,11 @@
             mes: '我是谁？我在哪？我要干嘛？'
           }
         ]
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

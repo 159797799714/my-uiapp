@@ -2,13 +2,23 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-      console.log(uni.getSystemInfoSync().platform)
       
       // #ifdef APP-PLUS
       // 锁定屏幕方向
       plus.screen.lockOrientation('portrait-primary') //锁定
       //#endif
+      
       let that = this
+      // 获取设备状态栏高度
+      
+      uni.getSystemInfo({
+        success: function (res) {
+          console.log(res.statusBarHeight > 0)
+          that.$store.commit('setHeight', res.statusBarHeight)
+        }
+      });
+      
+      
       let userinfo = uni.getStorageSync('userinfo')
       if(userinfo) {
         if(userinfo.token) {

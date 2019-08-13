@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text class="title">每日签到</text>
     </view>
@@ -68,6 +68,9 @@
       date() {
         let time = new Date()
         return time.getFullYear() + '-' + (time.getMonth() + 1 ) + '-' + time.getDate()
+      },
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

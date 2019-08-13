@@ -1,23 +1,23 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px', top: isHeadShow? '0': '-88px' }">
       <view class="search">
         <text class="iconfont" @click="goBack">&#xe61c;</text>
         <view class="center">
-          <image src="" mode=""></image>
-          <text class="name">{{ userInfo.userName }}</text>
+          <image :src="userInfo.file_path" mode="aspectFill"></image>
+          <text class="name">{{ userInfo.author }}</text>
         </view>
         <text class="iconfont" @click="goShare">&#xe60f;</text>
       </view>
     </view>
-    <scroll-view scroll-y="true" class="content">
-      <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
+    <scroll-view scroll-y="true" class="content" @scroll="onScroll">
+      <!-- <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
         <swiper-item v-for="(item, index) in swiperList" :key="index">
           <view :class="{'swiper-item': true, 'bg_primary': true}">
             <image :src="item.banner_img" mode=""></image>
           </view>
         </swiper-item>
-      </swiper>
+      </swiper> -->
       
       <!-- 歌单推荐 -->
       <!-- <view class="songs padding-30 border-box">
@@ -35,13 +35,15 @@
           </audio>
         </view>
       </view> -->
-      
+      <view>
+        <image :src="detail.image.file_path" mode="widthFix" style="width: 100%"></image>
+      </view>
       <view class="cultureInfo bg-white">
-        <view class="cultureTitle">{{ cultureInfo.title }}</view>
-        <view class="cultureCategory">
-          <text v-for="(item, index) in cultureInfo.tags" :key="index">{{ item }}</text>
-        </view>
-        <view class="cultureTime">{{ cultureInfo.time }}</view>
+       <view class="cultureTitle font-30">{{ detail.article_title }}</view>
+        <!-- <view class="cultureCategory">
+        <text v-for="(item, index) in cultureInfo.tags" :key="index">{{ item }}</text>
+        </view> 
+        <view class="cultureTime">{{ detail.headimg.create_time }}</view> -->
         <view class="cultureWords">
           <!-- <rich-text type="node" :nodes="strings"></rich-text> -->
           <u-parse :content="strings" @preview="preview" @navigate="navigate"/>
@@ -50,8 +52,8 @@
       
       <!-- 评论 -->
       <view class="comment bg-white">
-        <view class="total">评论({{ comments.num }})</view>
-        <view v-for="(item, index) in comments.list" :key="index" v-if="index < 3" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
+        <view class="total">评论({{ detail.comments.num }})</view>
+        <view v-for="(item, index) in detail.comments.list" :key="index" v-if="index < 3" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
           <view class="writer">
             <view class="writerImg">
               <image :src="item.avatarUrl" mode=""></image>
@@ -85,7 +87,7 @@
       <input type="text" v-model="speakVal" placeholder="留下你的精彩评论吧" @confirm="addComment" @input="onInput"/>
       <view>
         <text class="iconfont">&#xe69d;</text>
-        <text>{{ comments.num }}</text>
+        <text>{{ detail.comments.num }}</text>
       </view>
     </view>
   </view>
@@ -99,15 +101,8 @@
     },
     data() {
       return {
-        current: {
-          poster: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.jpg',
-          name: '致爱丽丝',
-          author: '暂无',
-          src: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/audio/music.mp3',
-        },
-        audioAction: {
-          method: 'pause'
-        },                                            // 音频播放audio参数
+        scrollTop: 0,                   // 距滚动距离
+        isHeadShow: true,              // 头部作者名
         title: '',
         article_id: '',                               // 文章ID
         indicatorDots: true,
@@ -115,11 +110,8 @@
         interval: 2000,
         duration: 500,
         indicatorActiveColor: '#ffffff',
-        swiperList: [],
-        userInfo: {
-          imgUrl: '',
-          userName: '奶油田官方'
-        },
+        detail: {},
+        userInfo: {},
         cultureInfo: {
           title: '2019深圳奶油田电音节',
           tags: ['深圳奶油田', '深圳'],
@@ -127,7 +119,6 @@
           words: '邀请了著名乐队Pendulum的核心成员Rob Swire和GaretMcGrillen改组成的双人电子音乐制作团队KnifeParty等，一系列世界级百慕大DJ及国际流行巨星齐现阵。一系列世界级百慕大DJ及国际流行巨星齐现阵。除了力为消费者带来前所未有的跟世界音乐巨星接触的机会，作为风暴电音节的主赞助商，随时随地可以去发现、体检、享受电音所带来的无限兴奋和快乐。'
         },
         strings: [],
-        comments: {},
         // commentList: [{
         //   imgUrl: '',
         //   name: '撒浪嘿',
@@ -159,11 +150,24 @@
       this.article_id = option.article_id
       this.getDetail(this.article_id)
     },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
+    },
     methods: {
       goBack() {
         uni.navigateBack({
           delta: 1
           })
+      },
+      onScroll(e) {
+        if(e.detail.scrollTop > this.scrollTop) {
+          this.isHeadShow= false
+        } else {
+          this.isHeadShow= true
+        }
+        this.scrollTop= e.detail.scrollTop
       },
       getDetail(id) {
         this.$http({
@@ -173,18 +177,24 @@
           },
           cb: (err, res) => {
             console.log(res.data.detail)
-            this.swiperList = res.data.detail.banners
-            this.comments = res.data.detail.comments
+            let detail = res.data.detail
+            this.detail = detail
+            this.swiperList = detail.banners
             // 文章标题等
-            this.cultureInfo.title = res.data.detail.article_title
+            this.cultureInfo.title = detail.article_title
             
-            var richtext =  res.data.detail.article_content
+            this.userInfo = {
+              file_path: detail.headimg.file_path,
+              author: detail.author
+            }
+            var richtext =  detail.article_content
             const regex = new RegExp('img')
             richtext= richtext.replace(regex, `img style="max-width: 100%;"`)
             
             this.strings = richtext
             
-            this.cultureInfo.time = res.data.detail.update_time
+            
+            this.cultureInfo.time = detail.update_time
           }
         })
       },
@@ -202,18 +212,18 @@
           },
           cb: (err, res) => {
             if(!err && res) {
-              switch(this.comments.list[index].islike) {
+              switch(this.detail.comments.list[index].islike) {
                 case 'yes':
-                  this.comments.list[index].islike = 'no'
-                  this.comments.list[index].likenum -= 1
+                  this.detail.comments.list[index].islike = 'no'
+                  this.detail.comments.list[index].likenum -= 1
                   uni.showToast({
                   	title: '取消点赞成功',
                     icon: 'none'
                   })
                   break
                 case 'no':
-                  this.comments.list[index].islike = 'yes'
-                  this.comments.list[index].likenum += 1
+                  this.detail.comments.list[index].islike = 'yes'
+                  this.detail.comments.list[index].likenum += 1
                   uni.showToast({
                   	title: '点赞成功',
                     icon: 'none'
@@ -221,7 +231,7 @@
                   break
               }
             } else {
-              switch(this.comments.list[index].islike) {
+              switch(this.detail.comments.list[index].islike) {
                 case 'yes':
                   uni.showToast({
                   	title: '取消点赞失败',
@@ -296,9 +306,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     background: rgba(0, 0, 0, 0.3);
     z-index: 100;
+    transition: 500ms;
     .search{
       display: flex;
       width: 100%;
@@ -315,7 +325,8 @@
           height: 60upx;
           width: 60upx;
           margin-right: 27upx;
-          background: #ccc;
+          border-radius: 100%;
+          background: rgba(0, 0, 0, 0.6);
         }
       }
       .iconfont{
@@ -362,13 +373,11 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30upx;
-    padding: 60upx 30upx;
+    padding: 30upx 30upx 60upx;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
     .cultureTitle{
-      margin-bottom: 21upx;
-      font-size: $font-40;
       font-weight: $font-bold;
       line-height: 56upx;
     }

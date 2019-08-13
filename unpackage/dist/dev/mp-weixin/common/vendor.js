@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
 /***/ 0:
-/*!*********************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js ***!
-  \*********************************************/
+/*!*************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1613,9 +1613,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 106:
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
-  \**********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmessage%2Fmessage"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1630,9 +1630,9 @@ createPage(_message.default);
 /***/ }),
 
 /***/ 11:
-/*!****************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/store/index.js ***!
-  \****************************************************/
+/*!********************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/store/index.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1646,8 +1646,9 @@ var store = new _vuex.default.Store({
   state: {
     type: '',
     mobile: '',
-    token: '' },
-
+    token: '',
+    statusBarHeight: 20 // 状态栏高度
+  },
   mutations: {
     login: function login(state, userinfo) {
       state.mobile = userinfo.mobile;
@@ -1659,6 +1660,9 @@ var store = new _vuex.default.Store({
     },
     setToken: function setToken(state, token) {
       state.token = token;
+    },
+    setHeight: function setHeight(state, height) {
+      state.statusBarHeight = height;
     } } });var _default =
 
 
@@ -1668,9 +1672,9 @@ store;exports.default = _default;
 /***/ }),
 
 /***/ 114:
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fshopcar%2Fshopcar"} ***!
-  \**********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fshopcar%2Fshopcar"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2636,9 +2640,9 @@ var index_esm = {
 /***/ }),
 
 /***/ 122:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fzerodraw%2Fzerodraw"} ***!
-  \************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fzerodraw%2Fzerodraw"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2653,9 +2657,9 @@ createPage(_zerodraw.default);
 /***/ }),
 
 /***/ 128:
-/*!*************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmessage%2FchatDetail"} ***!
-  \*************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmessage%2FchatDetail"} ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2670,9 +2674,9 @@ createPage(_chatDetail.default);
 /***/ }),
 
 /***/ 13:
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/api/api.js ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/api/api.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2765,9 +2769,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ }),
 
 /***/ 136:
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmine"} ***!
-  \****************************************************************************/
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fmine"} ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2782,24 +2786,24 @@ createPage(_mine.default);
 /***/ }),
 
 /***/ 14:
-/*!***************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/api/config.js ***!
-  \***************************************************/
+/*!*******************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/api/config.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  conductApi: 'http://172.20.10.2/code/api/web/index.php?s=/api', // 开发环境
+  conductApi: 'http://47.244.175.39/code/api/web/index.php?s=/api', // 开发环境
   devApi: 'https://market.pd-unixe.com/index.php?s=/api' // 生产环境
 };exports.default = _default;
 
 /***/ }),
 
 /***/ 144:
-/*!*****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Flooks"} ***!
-  \*****************************************************************************/
+/*!*********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Flooks"} ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2814,9 +2818,9 @@ createPage(_looks.default);
 /***/ }),
 
 /***/ 15:
-/*!****************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/common/http.js ***!
-  \****************************************************/
+/*!********************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/common/http.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2837,7 +2841,7 @@ function _default(obj) {
     url: obj.url,
     method: obj.method ? obj.method : 'GET',
     data: data,
-    header: obj.header ? obj.header : { 'content-type': 'application/x-www-form-urlencoded', 'Accept-Language': 'zh-CN,zh;q=0.9' },
+    header: obj.header ? obj.header : { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' },
     success: function success(res) {
       if (res.data.code === -1 || res.data.code === 0 && res.msg) {
         uni.showToast({
@@ -2867,9 +2871,9 @@ function _default(obj) {
 /***/ }),
 
 /***/ 152:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fsearch"} ***!
-  \************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fcomponents%2Fsearch"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2884,9 +2888,9 @@ createPage(_search.default);
 /***/ }),
 
 /***/ 16:
-/*!*********************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/common/resFilter.js ***!
-  \*********************************************************/
+/*!*************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/common/resFilter.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2921,9 +2925,9 @@ function resFilter(err, res, msg) {
 /***/ }),
 
 /***/ 160:
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fdiscount"} ***!
-  \********************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fdiscount"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2938,9 +2942,9 @@ createPage(_discount.default);
 /***/ }),
 
 /***/ 168:
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fmean"} ***!
-  \****************************************************************************/
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fmean"} ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2955,9 +2959,9 @@ createPage(_mean.default);
 /***/ }),
 
 /***/ 17:
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \******************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2972,9 +2976,9 @@ createPage(_index.default);
 /***/ }),
 
 /***/ 176:
-/*!*******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsetting"} ***!
-  \*******************************************************************************/
+/*!***********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fsetting"} ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2989,9 +2993,9 @@ createPage(_setting.default);
 /***/ }),
 
 /***/ 184:
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fpersonal"} ***!
-  \********************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fpersonal"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3006,9 +3010,9 @@ createPage(_personal.default);
 /***/ }),
 
 /***/ 192:
-/*!*******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Faddress"} ***!
-  \*******************************************************************************/
+/*!***********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Faddress"} ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8972,9 +8976,9 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 200:
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FaddAddress"} ***!
-  \**********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2FaddAddress"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8989,9 +8993,9 @@ createPage(_addAddress.default);
 /***/ }),
 
 /***/ 208:
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FchangePassword"} ***!
-  \**************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2FchangePassword"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9006,9 +9010,9 @@ createPage(_changePassword.default);
 /***/ }),
 
 /***/ 216:
-/*!*****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fabout"} ***!
-  \*****************************************************************************/
+/*!*********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fabout"} ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9023,9 +9027,9 @@ createPage(_about.default);
 /***/ }),
 
 /***/ 224:
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2FdiscountCenter"} ***!
-  \**************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2FdiscountCenter"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9040,9 +9044,9 @@ createPage(_discountCenter.default);
 /***/ }),
 
 /***/ 23:
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/service.js ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/service.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9077,9 +9081,9 @@ var addUser = function addUser(userInfo) {
 /***/ }),
 
 /***/ 232:
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Forder"} ***!
-  \******************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Forder%2Forder"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9094,9 +9098,9 @@ createPage(_order.default);
 /***/ }),
 
 /***/ 240:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2ForderDetail"} ***!
-  \************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Forder%2ForderDetail"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9111,9 +9115,9 @@ createPage(_orderDetail.default);
 /***/ }),
 
 /***/ 248:
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Forder%2Fgrade"} ***!
-  \******************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Forder%2Fgrade"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9128,9 +9132,9 @@ createPage(_grade.default);
 /***/ }),
 
 /***/ 256:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
-  \*******************************************************************************************/
+/*!***********************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9145,9 +9149,9 @@ createPage(_bonusCenter.default);
 /***/ }),
 
 /***/ 26:
-/*!******************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \******************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9162,9 +9166,9 @@ createPage(_login.default);
 /***/ }),
 
 /***/ 264:
-/*!*****************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusInfo"} ***!
-  \*****************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusInfo"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9179,9 +9183,9 @@ createPage(_bonusInfo.default);
 /***/ }),
 
 /***/ 272:
-/*!**************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FmyCard"} ***!
-  \**************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fbonus%2FmyCard"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9196,9 +9200,9 @@ createPage(_myCard.default);
 /***/ }),
 
 /***/ 280:
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fsign"} ***!
-  \****************************************************************************/
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fsign"} ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9213,9 +9217,9 @@ createPage(_sign.default);
 /***/ }),
 
 /***/ 288:
-/*!**********************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusApplyInfo"} ***!
-  \**********************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusApplyInfo"} ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9261,9 +9265,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 310:
-/*!***************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/html2json.js ***!
-  \***************************************************************************/
+/*!*******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-rich/libs/html2json.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9533,9 +9537,9 @@ html2json;exports.default = _default;
 /***/ }),
 
 /***/ 311:
-/*!***************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/wxDiscode.js ***!
-  \***************************************************************************/
+/*!*******************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-rich/libs/wxDiscode.js ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9738,9 +9742,9 @@ function urlToHttpUrl(url, domain) {
 /***/ }),
 
 /***/ 312:
-/*!****************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-rich/libs/htmlparser.js ***!
-  \****************************************************************************/
+/*!********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-rich/libs/htmlparser.js ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9905,9 +9909,9 @@ HTMLParser;exports.default = _default;
 /***/ }),
 
 /***/ 332:
-/*!*************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/components/uni-calendar/calendar.js ***!
-  \*************************************************************************/
+/*!*****************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-calendar/calendar.js ***!
+  \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10466,9 +10470,9 @@ calendar;exports.default = _default;
 /***/ }),
 
 /***/ 34:
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
-  \********************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10483,9 +10487,9 @@ createPage(_bindTel.default);
 /***/ }),
 
 /***/ 4:
-/*!************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/pages.json ***!
-  \************************************************/
+/*!****************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/pages.json ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10495,9 +10499,9 @@ createPage(_bindTel.default);
 /***/ }),
 
 /***/ 42:
-/*!*********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
-  \*********************************************************************************/
+/*!*************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10512,9 +10516,9 @@ createPage(_register.default);
 /***/ }),
 
 /***/ 50:
-/*!*********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Flogin%2Fpassword"} ***!
-  \*********************************************************************************/
+/*!*************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Fpassword"} ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10529,9 +10533,9 @@ createPage(_password.default);
 /***/ }),
 
 /***/ 58:
-/*!***************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FshareInfo"} ***!
-  \***************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fcomponents%2FshareInfo"} ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10546,9 +10550,9 @@ createPage(_shareInfo.default);
 /***/ }),
 
 /***/ 66:
-/*!********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2Fmarket"} ***!
-  \********************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmarket%2Fmarket"} ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10563,9 +10567,9 @@ createPage(_market.default);
 /***/ }),
 
 /***/ 74:
-/*!****************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2FgoodDetail"} ***!
-  \****************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fcomponents%2FgoodDetail"} ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10580,9 +10584,9 @@ createPage(_goodDetail.default);
 /***/ }),
 
 /***/ 82:
-/*!***********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fcomponents%2Fgoods"} ***!
-  \***********************************************************************************/
+/*!***************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fcomponents%2Fgoods"} ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10597,9 +10601,9 @@ createPage(_goods.default);
 /***/ }),
 
 /***/ 90:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2FmoreList%2FmoreList"} ***!
-  \************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2FmoreList%2FmoreList"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10614,9 +10618,9 @@ createPage(_moreList.default);
 /***/ }),
 
 /***/ 98:
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/white/main.js?{"page":"pages%2Fmarket%2FpanicBuy"} ***!
-  \**********************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmarket%2FpanicBuy"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

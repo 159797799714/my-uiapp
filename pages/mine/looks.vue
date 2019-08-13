@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text class="title">浏览记录</text>
     </view>
@@ -109,6 +109,11 @@
             zan_num: 300
           }
         ],
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

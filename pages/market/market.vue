@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar" @click="pagetoTop">
+    <view class="topBar" @click="pagetoTop" :style="{'padding-top': statusBarHeight + 'px' }">
       <view class="search" @click="goSearch">
         <text class="search-icon iconfont">&#xe667;</text>
         <view class="searchVal">{{ searchInfo }}</view>
@@ -121,6 +121,11 @@
           img: []
         }],
         recommendList: []
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad() {

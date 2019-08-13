@@ -194,7 +194,7 @@ view, image, text, input, form{
   color: $color-red;
 }
 .col-f{
-  color: #fff;
+  color: #fff!important;
 }
 .font-99{
   color: $color-99;
@@ -283,13 +283,11 @@ view, image, text, input, form{
   justify-content: center;
   align-items: center;
   padding: 0 30upx;
-  height: 88px;
-  width: 100%;
-  padding-top: 44px;
+  height: 44px;
+  width: calc(100% - 60upx);
   font-size: $font-28;
   background: $title-color;
   color: $control-color;
-  box-sizing: border-box;
   z-index: 5;
 }
 

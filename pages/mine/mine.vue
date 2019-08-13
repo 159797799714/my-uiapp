@@ -3,7 +3,7 @@
     <scroll-view scroll-y="true" class="content">
       <view class="header">
         <image src="../../static/img/mine/bg.png" class="head-bg"></image>
-        <view class="head-main">
+        <view class="head-main border-box" :style="{'padding-top': statusBarHeight + 'px'}">
           <view class="navigator">
             <view class="title">
               我的
@@ -142,6 +142,11 @@
         tabList: ['点赞', '收藏'], // tab
         shareList: [],            // 收藏文章列表
         goodList: []
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad() {
@@ -338,8 +343,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      padding-top: 88upx;
-      height: 310upx;
+      height: 398upx;
       width: 100%;
       color: $color-white;
       background: rgba(0, 0, 0, 0.8);

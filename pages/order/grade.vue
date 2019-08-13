@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px'}">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>发布评价</text>
       <text class="commit">发布</text>
@@ -62,6 +62,11 @@
     watch: {
       describe(val) {
         console.log('data',val)
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>编辑收货人</text>
       <text class="iconfont del" @click="delAction">&#xe620;</text>
@@ -62,6 +62,11 @@
     onLoad(option) {
       if(option.info) {
         this.info = JSON.parse(option.info)
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

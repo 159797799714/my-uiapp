@@ -7,7 +7,8 @@ const store = new Vuex.Store({
   state: {
     type: '',
     mobile: '',
-    token: ''
+    token: '',
+    statusBarHeight: 20,    // 状态栏高度
   },
   mutations: {
     login(state, userinfo) {
@@ -20,6 +21,9 @@ const store = new Vuex.Store({
     },
     setToken(state, token) {
       state.token = token
+    },
+    setHeight(state, height) {
+      state.statusBarHeight = height
     }
   }
 })

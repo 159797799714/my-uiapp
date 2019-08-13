@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px'}">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text class="title">订单详情</text>
     </view>
@@ -90,6 +90,11 @@
         this.receive = JSON.parse(option.item)
       }
       console.log('分享文章详情页接受到的参数',JSON.parse(option.item))
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
     },
     methods: {
       goBack() {

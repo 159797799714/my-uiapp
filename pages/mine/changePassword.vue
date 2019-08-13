@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text class="title">更改密码</text>
     </view>
@@ -31,6 +31,11 @@
           oldpwd: '',
           newpwd: ''
         }
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

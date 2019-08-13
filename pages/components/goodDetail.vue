@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <!-- :style="{background: 'rgba(0, 0, 0,' + top / 375 + ')'}" -->
       <view class="search">
         <text class="iconfont back" @click="goBack">&#xe61c;</text>
@@ -262,8 +262,12 @@
       // 获取商品详情
       this.getDetail()
     },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
+    },
     methods: {
-      
       // 获取商品详情
       getDetail() {
         let that = this

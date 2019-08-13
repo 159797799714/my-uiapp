@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px'}">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>我的订单</text>
       <text class="iconfont">&#xe667;</text>
@@ -120,6 +120,11 @@
           this.scrollLeft = 0
           return
         }
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad(option) {

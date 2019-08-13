@@ -1,5 +1,5 @@
 {
-    "name" : "优逸",
+    "name" : "雷啊雷啊",
     "appid" : "__UNI__824270B",
     "description" : "这是一款主要面向年轻群体的潮玩，爆款，促销的一个应用",
     "versionName" : "1.0.0",
@@ -119,8 +119,7 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
-        "appid" : "",
+        "appid" : "wx5e82bca62ff2eea1",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,
@@ -137,7 +136,7 @@
             "disableHostCheck" : true,
             "proxy" : {
                 "/" : {
-                    "target" : "https://market.pd-unixe.com/index.php?s=/api",  // 需要跨域的域名
+                    "target" : "https://market.pd-unixe.com/index.php?s=/api", // 需要跨域的域名
                     "changeOrigin" : true,
                     "secure" : false
                 }

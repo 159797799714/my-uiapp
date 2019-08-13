@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>我的优惠券</text>
       <text class="iconfont" @click="goMean">&#xe611;</text>
@@ -74,6 +74,11 @@
         }
         this.imgName = 'usable'
         this.btnShow = 'visible'
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

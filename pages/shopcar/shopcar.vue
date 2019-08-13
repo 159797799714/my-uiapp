@@ -1,13 +1,14 @@
 <template>
   <view class="container">
-    <view class="top border-box bg-13 col-f t-center"> 购物车 </view>
+    <view class="topBar bg-13 col-f t-center font-38" :style="{'padding-top': statusBarHeight + 'px'}"> 购物车 </view>
     <scroll-view v-if="list[0].goodArr.length > 0" scroll-y="true" class="content border-box">
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <!-- <view class="store"> -->
 
         <view class="store-head">
-          <checkbox value="" checked="true" color="#FFCC33"/>
-          <radio :value="item.storeName" color="#F4433D" />
+          <view @click="selAllRadio">
+            <radio  value="all" :checked="all_checked" color="#F4433D" />
+          </view>
           <view class="store-name">
             <text class="iconfont">&#xe60b;</text>
             <text>{{ item.storeName }}</text>
@@ -73,6 +74,11 @@
         total_price: 0,         // 总计算钱数
         checked_sum: 0,         // 选中商品数量
         all_checked: false,     // 全部选中
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad() {

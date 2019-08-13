@@ -362,7 +362,7 @@ view, image, text, input, form {
   color: #F4433D;
 }
 .col-f {
-  color: #fff;
+  color: #fff !important;
 }
 .font-99 {
   color: #999999;
@@ -479,14 +479,11 @@ view, image, text, input, form {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 30rpx;
-  height: 88px;
-  width: 100%;
-  padding-top: 44px;
+  height: 44px;
+  width: calc(100% - 60rpx);
   font-size: 28rpx;
   background: #131313;
   color: #ADADAD;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   z-index: 5;
 }
 .my-button {

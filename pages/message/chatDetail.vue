@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text class="title">{{ title }}</text>
     </view>
@@ -44,6 +44,11 @@
     },
     onLoad: function(option) {
       this.title = option.title
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
     },
     methods: {
       goBack() {

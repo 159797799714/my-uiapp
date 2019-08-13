@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar"  :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="title">设置</text>
     </view>
   	<view class="content bg-white border-box">
@@ -52,6 +52,11 @@
       // console.log(JSON.parse(option.userinfo))
       if(option.userinfo) {
         this.userinfo = JSON.parse(option.userinfo)
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     methods: {

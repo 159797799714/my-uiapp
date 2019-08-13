@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <view class="search border-box">
         <text class="search-icon iconfont">&#xe667;</text>
@@ -203,6 +203,11 @@
           this.goodsFormData.search = val
         }
         
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad(option) {

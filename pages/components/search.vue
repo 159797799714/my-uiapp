@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <view class="topBar">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <view class="search border-box">
         <text class="search-icon iconfont">&#xe667;</text>
         <input class="ipt" :placeholder="'大家都在搜' + searchInfo" confirm-type="search" :value="inputClearValue" @input="clearInput" @confirm="searchAction"/>
@@ -52,6 +52,11 @@
           that.history = res.data
         }
       });
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
     },
     methods: {
       goBack() {
