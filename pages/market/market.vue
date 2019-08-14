@@ -318,7 +318,7 @@
       goGoods(id, name) {
         if(name !== 'MORE') {
           uni.navigateTo({
-            url: '../components/goods?id=' + id
+            url: '../components/goods?id=' + id + '&name=' + name
           })
           return
         }

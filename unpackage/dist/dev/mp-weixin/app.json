@@ -60,12 +60,6 @@
         "selectedIconPath": "static/img/tabbar/market2.png"
       },
       {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "static/img/tabbar/message1.png",
-        "selectedIconPath": "static/img/tabbar/message2.png"
-      },
-      {
         "pagePath": "pages/shopcar/shopcar",
         "text": "购物车",
         "iconPath": "static/img/tabbar/shopcar1.png",
@@ -80,5 +74,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap2.json"
+  "sitemapLocation": "sitemap36.json"
 }

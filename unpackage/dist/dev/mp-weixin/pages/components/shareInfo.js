@@ -202,6 +202,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     uParse: uParse },
@@ -269,13 +283,20 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     onScroll: function onScroll(e) {
-      if (e.detail.scrollTop > this.scrollTop) {
-        this.isHeadShow = false;
-      } else {
-        this.isHeadShow = true;
+      var that = this;
+      if (e.detail.scrollTop > that.scrollTop && that.isHeadShow) {
+        that.isHeadShow = false;
+        // 停留一段时间不滚动，自动出现顶部返回
+        // setTimeout(function() {
+        //   that.isHeadShow = true
+        // }, 2000)
+      } else if (e.detail.scrollTop < that.scrollTop && !that.isHeadShow) {
+        that.isHeadShow = true;
       }
-      this.scrollTop = e.detail.scrollTop;
+      that.scrollTop = e.detail.scrollTop;
     },
+
+    // 获取文章详情
     getDetail: function getDetail(id) {var _this = this;
       this.$http({
         url: this.$api.detailing,
@@ -305,9 +326,15 @@ __webpack_require__.r(__webpack_exports__);
         } });
 
     },
+    gogoodDetail: function gogoodDetail(item) {
+      console.log(item);
+      uni.navigateTo({
+        url: './goodDetail?goods_id=' + item.goods_id });
+
+    },
     // 评论点赞
     zanAction: function zanAction(item, index) {var _this2 = this;
-      // console.log(item.id, item.islike, index)
+      console.log('点赞', item, item.islike, index);
       var url = this.$api.commentunlike;
       if (item.islike === 'no') {
         url = this.$api.commentlike;
@@ -319,18 +346,18 @@ __webpack_require__.r(__webpack_exports__);
 
         cb: function cb(err, res) {
           if (!err && res) {
-            switch (_this2.detail.comments.list[index].islike) {
+            switch (_this2.detail.comments_show[index].islike) {
               case 'yes':
-                _this2.detail.comments.list[index].islike = 'no';
-                _this2.detail.comments.list[index].likenum -= 1;
+                _this2.detail.comments_show[index].islike = 'no';
+                _this2.detail.comments_show[index].likenum -= 1;
                 uni.showToast({
                   title: '取消点赞成功',
                   icon: 'none' });
 
                 break;
               case 'no':
-                _this2.detail.comments.list[index].islike = 'yes';
-                _this2.detail.comments.list[index].likenum += 1;
+                _this2.detail.comments_show[index].islike = 'yes';
+                _this2.detail.comments_show[index].likenum += 1;
                 uni.showToast({
                   title: '点赞成功',
                   icon: 'none' });
@@ -338,7 +365,7 @@ __webpack_require__.r(__webpack_exports__);
                 break;}
 
           } else {
-            switch (_this2.detail.comments.list[index].islike) {
+            switch (_this2.detail.comments_show[index].islike) {
               case 'yes':
                 uni.showToast({
                   title: '取消点赞失败',
@@ -356,6 +383,8 @@ __webpack_require__.r(__webpack_exports__);
         } });
 
     },
+
+    // 分享
     goShare: function goShare() {
       uni.share({
         provider: "weixin",

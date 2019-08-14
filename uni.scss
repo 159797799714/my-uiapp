@@ -127,6 +127,21 @@ $font-88: 88upx;
   font-size: 160upx!important;
   }
 
+.onelist-hidden {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.twolist-hidden {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 $font-bold: 600;
 
 .f-bold{
@@ -185,6 +200,9 @@ view, image, text, input, form{
 .bg-13{
   background: $title-color;
 }
+.bg-orange{
+  background: #FF5C00!important;
+}
 
 .border-99{
   border: 1px solid $color-99;
@@ -192,6 +210,9 @@ view, image, text, input, form{
 // 字体颜色
 .font-red{
   color: $color-red;
+}
+.col-m {
+  color: #ff5c00 !important;
 }
 .col-f{
   color: #fff!important;
@@ -300,6 +321,9 @@ view, image, text, input, form{
 .border-box{
   box-sizing: border-box;
 }
+.b-r-10{
+  border-radius: 10upx;
+}
 
 .flex-box{
   display: flex;
@@ -391,7 +415,7 @@ view, image, text, input, form{
     content: '+';
     position: absolute;
     box-sizing: border-box;
-    padding-left: 2upx;
+    padding-left: 0upx;
     bottom: -20upx;
     right: -20upx;
     color: $color-white;

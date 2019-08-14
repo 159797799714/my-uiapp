@@ -39,6 +39,8 @@ export default {
   goods_gethomebanners: API.devApi + '/goods/gethomebanners',                   // 商城首页轮播图
   goodscollection: API.devApi + '/goods/goodscollection',                       // 商品收藏与取消收藏
   goods_detail: API.devApi + '/goods/detail',                                   // 普通商品详情
+  goodscategorybysecond: API.devApi + '/category/goodscategorybysecond',        // 获取二级商品分类
+  getbrandsbycategoryid: API.devApi + '/brands/getbrandsbycategoryid',          // 获取二级品牌根据一级分类
 
   
   // 秒杀

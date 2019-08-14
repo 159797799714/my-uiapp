@@ -50,10 +50,24 @@
         </view>
       </view>
       
+      <!-- 商品 -->
+      <view v-for="(item, index) in detail.article_goods_info" :key="index" class="good dis-flex flex-x-between border-box bg-white" @click="gogoodDetail(item)">
+        <view class="left">
+          <image :src="item.image[0].file_path" mode="widthFix"></image>
+        </view>
+        <view class="right border-box dis-flex flex-dir-column flex-x-between">
+          <view class="good-name font-30 twolist-hidden">{{ item.goods_name }}</view>
+          <view class="good-info dis-flex flex-x-between font-32">
+            <view class="good-price col-m">￥{{item.sku[0].goods_price}}</view>
+            <view class="good-btn col-f bg-orange t-center b-r-10">去选购</view>
+          </view>
+        </view>
+      </view>
+      
       <!-- 评论 -->
       <view class="comment bg-white">
-        <view class="total">评论({{ detail.comments.num }})</view>
-        <view v-for="(item, index) in detail.comments.list" :key="index" v-if="index < 3" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
+        <view class="total f-bold font-36">评论({{ detail.comments.num }})</view>
+        <view v-for="(item, index) in detail.comments_show" :key="index" v-if="index < 10" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
           <view class="writer">
             <view class="writerImg">
               <image :src="item.avatarUrl" mode=""></image>
@@ -63,7 +77,7 @@
                 <view class="writer-name">{{ item.nickName }}</view>
                 <view class="writer-speak">{{ item.content }}<text>{{ item.input_date }}</text></view>
                 <view class="zan">
-                  <text :class="{iconfont: true, isZan: item.islike !== 'no'}" @click="zanAction(item, index)">&#xe63a;</text>
+                  <text :class="{iconfont: true, isZan: item.islike === 'yes'}" @click="zanAction(item, index)">&#xe63a;</text>
                   <text>{{ item.likenum }}</text>
                 </view>
               </view>
@@ -162,13 +176,20 @@
           })
       },
       onScroll(e) {
-        if(e.detail.scrollTop > this.scrollTop) {
-          this.isHeadShow= false
-        } else {
-          this.isHeadShow= true
+        let that = this
+        if(e.detail.scrollTop > that.scrollTop && that.isHeadShow) {
+          that.isHeadShow= false
+          // 停留一段时间不滚动，自动出现顶部返回
+          // setTimeout(function() {
+          //   that.isHeadShow = true
+          // }, 2000)
+        } else if(e.detail.scrollTop < that.scrollTop && !that.isHeadShow){
+          that.isHeadShow= true
         }
-        this.scrollTop= e.detail.scrollTop
+        that.scrollTop= e.detail.scrollTop
       },
+      
+      // 获取文章详情
       getDetail(id) {
         this.$http({
           url: this.$api.detailing,
@@ -198,9 +219,15 @@
           }
         })
       },
+      gogoodDetail(item) {
+        console.log(item)
+        uni.navigateTo({
+          url: './goodDetail?goods_id=' + item.goods_id
+        })
+      },
       // 评论点赞
       zanAction(item, index) {
-        // console.log(item.id, item.islike, index)
+        console.log('点赞', item, item.islike, index)
         let url = this.$api.commentunlike
         if(item.islike === 'no') {
           url = this.$api.commentlike
@@ -212,18 +239,18 @@
           },
           cb: (err, res) => {
             if(!err && res) {
-              switch(this.detail.comments.list[index].islike) {
+              switch(this.detail.comments_show[index].islike) {
                 case 'yes':
-                  this.detail.comments.list[index].islike = 'no'
-                  this.detail.comments.list[index].likenum -= 1
+                  this.detail.comments_show[index].islike = 'no'
+                  this.detail.comments_show[index].likenum -= 1
                   uni.showToast({
                   	title: '取消点赞成功',
                     icon: 'none'
                   })
                   break
                 case 'no':
-                  this.detail.comments.list[index].islike = 'yes'
-                  this.detail.comments.list[index].likenum += 1
+                  this.detail.comments_show[index].islike = 'yes'
+                  this.detail.comments_show[index].likenum += 1
                   uni.showToast({
                   	title: '点赞成功',
                     icon: 'none'
@@ -231,7 +258,7 @@
                   break
               }
             } else {
-              switch(this.detail.comments.list[index].islike) {
+              switch(this.detail.comments_show[index].islike) {
                 case 'yes':
                   uni.showToast({
                   	title: '取消点赞失败',
@@ -249,6 +276,8 @@
           }
         })
       },
+      
+      // 分享
       goShare() {
         uni.share({
           provider: "weixin",
@@ -372,8 +401,7 @@
   .cultureInfo{
     display: flex;
     flex-direction: column;
-    margin-bottom: 30upx;
-    padding: 30upx 30upx 60upx;
+    padding: 30upx 30upx 0;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
@@ -415,12 +443,40 @@
         max-width: 500upx;
       }
     }
+    
+  }
+  .good{
+    height: 290upx;
+    width: 100%;
+    padding: 20upx;
+    border-top: 1px solid #ededed;
+    border-bottom: 1px solid #ededed;
+    .left{
+      width: 250upx;
+      height: 100%;
+      margin-right: 30upx;
+      &>image{
+        width: 250upx;
+        height: 100%;
+      }
+    }
+    .right{
+      flex: 1;
+      padding-top: 10upx;
+      .good-info{
+        line-height: 70upx;
+      }
+      .good-btn{
+        margin-right: 20upx;
+        width: 180upx;
+        height: 70upx;
+      }
+    }
   }
   .comment{
     padding: 40upx 40upx 0 35upx;
-    margin-bottom: 99upx;
+    margin: 30upx 0 99upx;
     .total{
-      font-size: $font-36;
       line-height: 34upx;
     }
     .item{

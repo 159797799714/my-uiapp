@@ -83,23 +83,13 @@ var render = function() {
     }
   })
 
-  var l2 = _vm.__map(_vm.captionList, function(item, index) {
+  var l1 = _vm.__map(_vm.captionList, function(item, index) {
     var g2 = _vm.selectArr.indexOf(index)
     var g3 = _vm.selectArr.indexOf(index)
-
-    var l1 = _vm.__map(item.arr, function(li, num) {
-      var g4 = item.selectIndexArr.indexOf(li)
-      return {
-        $orig: _vm.__get_orig(li),
-        g4: g4
-      }
-    })
-
     return {
       $orig: _vm.__get_orig(item),
       g2: g2,
-      g3: g3,
-      l1: l1
+      g3: g3
     }
   })
 
@@ -109,6 +99,10 @@ var render = function() {
     }
 
     _vm.e1 = function($event) {
+      _vm.filterTag_Index = ""
+    }
+
+    _vm.e2 = function($event) {
       _vm.filter_alert = false
     }
   }
@@ -118,7 +112,7 @@ var render = function() {
     {
       $root: {
         l0: l0,
-        l2: l2
+        l1: l1
       }
     }
   )
@@ -276,7 +270,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -285,7 +278,7 @@ var _default =
       searchInfo: '', // 输入框placeholdeer
       inputValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
-      tabIndex: 0, // 默认选中分享
+      tabIndex: '', // 默认选中分享
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
       shareTag: [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }], // 标签默认这个是商品标签
@@ -297,28 +290,29 @@ var _default =
         list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
         sum: 4999 },
 
+      classList: [],
       filterArr: [],
       goodList: [], // 商城数据
+      byid: false, // 从商城进入，用于判断是否加载二级品牌分类
       captionList: [
       {
         title: '品牌',
-        selectIndexArr: [], //循环时加上
         arr: [] },
       {
         title: '分类',
-        selectIndexArr: [],
         arr: [] },
       {
         title: '促销',
-        selectIndexArr: [],
         arr: [] }],
 
       // 筛选侧边栏数据
       selectArr: [], // 筛选侧边栏展开的数组index
+      brand_id: '', // 选中的品牌ID
+      category_id: '', // 一级分类ID
       goodsFormData: {
         category_id: '',
         search: '',
-        sortType: '',
+        sortType: 'all',
         sortPrice: '',
         listRows: '',
         brand_id: '',
@@ -327,24 +321,25 @@ var _default =
         max_price: '' },
       // 商品默认请求参数
       shareFormData: {
-        category_id: '',
         search: '',
-        tags_id: '' },
+        tags_id: '' } };
 
-      byid: false // 分享文章默认请求参数
-    };
+
   },
   watch: {
     tabIndex: function tabIndex(val, oldval) {
-      this.filterIndex = 0;
-      this.searchAction();
-      if (val === 0) {
-        this.getCultureTag();
-        return;
-      }
-      if (val === 1) {
-        this.shareTag = [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }];
-        return;
+      if (oldval !== '') {
+        this.filterIndex = 0;
+        if (val === 0) {
+          this.getCultureTag();
+          this.searchAction();
+          return;
+        }
+        if (val === 1) {
+          this.shareTag = [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }],
+          this.searchAction();
+          return;
+        }
       }
     },
     filterIndex: function filterIndex(val, oldVal) {
@@ -353,12 +348,8 @@ var _default =
       }
     },
     inputValue: function inputValue(val, oldval) {
-      if (this.tabIndex === 0) {
-        this.shareFormData.search = val;
-      } else {
-        this.goodsFormData.search = val;
-      }
-
+      this.shareFormData.search = val;
+      this.goodsFormData.search = val;
     } },
 
   computed: {
@@ -379,14 +370,16 @@ var _default =
       }
     }
     if (option.id) {
-      console.log('id', option.id);
-      this.shareFormData.category_id = option.id;
-      this.goodsFormData.category_id = option.id;
+      console.log('id', option.id, option.name);
+      this.category_id = option.id;
+      this.tabIndex = 1;
       this.byid = true;
     }
     // 获取文章标签
     this.searchAction();
 
+    // 获取品牌和分类
+    this.getClassList();
   },
   methods: {
     // 选中分享文章标签
@@ -394,25 +387,25 @@ var _default =
       this.$http({
         url: this.$api.activitytags,
         cb: function cb(err, res) {
-          // console.log(res.data.tags)
+          console.log(res.data.tags[0].tag_id);
           _this.shareTag = res.data.tags;
+          _this.shareFormData.tags_id = res.data.tags[0].tag_id.toString();
         } });
 
     },
 
     // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
-    searchAction: function searchAction() {var _this2 = this;
-      var url = this.$api.goodlists;
-      var data = this.goodsFormData;
-      if (this.tabIndex === 0) {// 选中分享时
-        url = this.$api.articlesbysearch; // 关键字搜索
-        if (this.byid && this.inputValue === '') {
-          url = this.$api.articlesbycategoryid; // 选中分享且是从商城携带id进来搜索时
-        }
-        data = this.shareFormData;
+    searchAction: function searchAction() {
+      var that = this;
+      var url = that.$api.goodlists;
+      var data = that.goodsFormData;
+      if (that.tabIndex === 0) {// 选中分享时
+        url = that.$api.articlesbysearch;
+        data = that.shareFormData;
+      }if (!that.byid && that.tabIndex === 1) {
+        url = that.$api.goodlists; // 关键字搜索
       }
-      console.log('url', url, 'data', data, 'byid', this.byid);
-      this.$http({
+      that.$http({
         url: url,
         data: data,
         cb: function cb(err, res) {
@@ -423,14 +416,14 @@ var _default =
                 title: '未搜索到相关数据',
                 icon: 'none' });
 
-              return;
             }
-            switch (_this2.tabIndex) {
+            switch (that.tabIndex) {
               case 0:
-                _this2.shareList = res.data.list;
+                that.shareList = res.data.list;
                 break;
               case 1:
-                _this2.goodList = res.data.list.data;
+                that.goodList = res.data.list.data;
+                that.filterCoverList.sum = res.data.list.total;
                 break;}
 
           } else {
@@ -466,7 +459,8 @@ var _default =
         url: '../components/shareInfo?article_id=' + id });
 
     },
-    // 
+
+    // 清除搜索框
     clearInput: function clearInput(event) {
       if (event.target.value.length > 0) {
         this.showClearIcon = true;
@@ -475,74 +469,125 @@ var _default =
         this.showClearIcon = false;
       }
     },
+    // 选择外层品牌分类
+    selectClass: function selectClass(item) {
+      var that = this;
+      if (that.filterTag_Index === '0') {
+        that.goodsFormData.brand_id = that.goodsFormData.brand_id && that.goodsFormData.brand_id === item.category_id ? '' : item.category_id;
+      } else if (that.filterTag_Index === '1') {
+        that.goodsFormData.category_id = that.goodsFormData.category_id && that.goodsFormData.category_id === item.category_id ? '' : item.category_id;
+      }
+      this.searchAction();
+    },
+    // 重置品牌和分类
+    resetSearch: function resetSearch() {
+      var that = this;
+      that.goodsFormData.category_id = '';
+      that.goodsFormData.brand_id = '';
+      that.goodsFormData.promotions_type = '';
+      that.filterTag_Index = '';
+      that.filter_alert = false;
+      that.selectArr = [];
+      this.searchAction();
+    },
     // 分享商城tab点击
     selectTab: function selectTab(index) {
       this.tabIndex = index;
     },
+
     // 价格等分类点击
-    selectFilter: function selectFilter(index) {var _this3 = this;
-      this.filterIndex = index;
-      if (this.tabIndex === 0) {
-        console.log('进来了');
+    selectFilter: function selectFilter(index) {
+      var that = this;
+      that.filterIndex = index;
+      if (that.tabIndex === 0) {
+        console.log('进来了', that.shareTag[index].tag_id);
+        that.shareFormData.tags_id = that.shareTag[index].tag_id;
+        that.searchAction();
         return;
       }
       // 商城下面的标签分类
-      if (this.tabIndex === 1) {
+      if (that.tabIndex === 1) {
         switch (index) {
           case 0:
-            this.goodsFormData.sortType = '';
-            this.searchAction();
+            that.goodsFormData.sortType = 'all';
+            that.searchAction();
             break;
           case 1:
-            this.goodsFormData.sortType = 'sales';
-            this.searchAction();
+            that.goodsFormData.sortType = 'sales';
+            that.searchAction();
             break;
           case 2:
-            this.goodsFormData.sortType = 'price';
-            this.searchAction();
+            that.goodsFormData.sortType = 'shelves';
+            that.searchAction();
             break;
           case 3:
-            this.goodsFormData.sortPrice = !this.goodsFormData.sortPrice;
-            this.searchAction();
+            that.goodsFormData.sortType = 'price';
+            that.goodsFormData.sortPrice = !that.goodsFormData.sortPrice;
+            that.searchAction();
             break;
           case 4:
-            // 品牌分类
-            this.$http({
-              url: this.$api.getbrands,
-              cb: function cb(err, res) {
-                var arr = [];
-                var list = res.data.list;
-                for (var item in list) {
-                  arr.push(list[item]);
-                }
-                _this3.captionList[0].arr = arr;
-              } });
-
-            // 商品分类
-            this.$http({
-              url: this.$api.goodscategory,
-              cb: function cb(err, res) {
-                console.log(res.data.list);
-                _this3.captionList[1].arr = res.data.list;
-              } });
-
             // 促销活动
-            this.$http({
-              url: this.$api.promotions,
+            that.$http({
+              url: that.$api.promotions,
               cb: function cb(err, res) {
                 // console.log(res.data.promotions)
-                _this3.captionList[2].arr = res.data.promotions;
+                that.classList.push(res.data.promotions);
+                that.captionList[2].arr = res.data.promotions;
+                if (that.goodsFormData.brand_id) {
+                  that.selectArr.push(0);
+                }
+                if (that.goodsFormData.category_id) {
+                  that.selectArr.push(1);
+                }
+                if (that.goodsFormData.promotions_type) {
+                  that.selectArr.push(2);
+                }
               } });
 
-            this.filter_alert = true;
+            that.filter_alert = true;
             break;}
 
         return;
       }
     },
+    // 获取品牌,分类信息
+    getClassList: function getClassList() {
+      var that = this;
+      var data = {};
+      var url = that.$api.getbrands;
+      var url2 = that.$api.goodscategory;
+      // 品牌
+      if (that.byid) {
+        data = {
+          category_id: this.category_id };
+
+        url = that.$api.getbrandsbycategoryid;
+        url2 = that.$api.goodscategorybysecond;
+      }
+      that.$http({
+        url: url,
+        data: data,
+        cb: function cb(err, res) {
+          that.classList.push(res.data.list);
+          that.captionList[0].arr = res.data.list;
+          // 分类
+          that.$http({
+            url: url2,
+            data: data,
+            cb: function cb(err, result) {
+              console.log(result.data.list);
+              that.captionList[1].arr = result.data.list;
+              that.classList.push(result.data.list);
+            } });
+
+        } });
+
+    },
+
     //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
       var index = info.toString();
+      this.filterCoverList.list = this.classList[index];
       if (index === this.filterTag_Index && this.filterTag_Index !== '') {
         this.filterTag_Index = '';
         return;
@@ -555,47 +600,30 @@ var _default =
     setCategory: function setCategory(index) {
       if (this.selectArr.indexOf(index) === -1) {
         this.selectArr.push(index);
+        console.log(this.selectArr);
         return;
       }
       this.selectArr.splice(this.selectArr.indexOf(index), 1);
     },
+
     // 筛选侧边弹窗选择分类里面的子选项
-    selTag: function selTag(index, num) {
-      console.log('选择了', index, num);
-      var name = this.captionList[index].arr[num];
-      var charIndex = this.captionList[index].selectIndexArr.indexOf(name);
-      if (this.captionList[index].selectIndexArr.length < 1) {
-        this.captionList[index].selectIndexArr.push(name);
-        return;
+    selTag: function selTag(index, num, item) {
+      var that = this;
+      console.log('选择了', index, num, item);
+      if (index === 0) {
+        that.goodsFormData.brand_id = item.category_id === that.goodsFormData.brand_id && that.goodsFormData.brand_id ? '' : item.category_id;
+      } else if (index === 1) {
+        that.goodsFormData.category_id = item.category_id === that.goodsFormData.category_id && that.goodsFormData.category_id ? '' : item.category_id;
+      } else if (index === 2) {
+        that.goodsFormData.promotions_type = item.type === that.goodsFormData.promotions_type && that.goodsFormData.promotions_type ? '' : item.type;
       }
-      if (this.captionList[index].selectIndexArr.length === 1) {
-        if (charIndex === -1) {
-          this.captionList[index].selectIndexArr = [name];
-          return;
-        }
-        this.captionList[index].selectIndexArr = [];
-      }
-
-      // console.log(this.captionList[index].selectIndexArr, name)
-
-      // 多选
-
-      // if(charIndex === -1) {
-      //   this.captionList[index].selectIndexArr.push(name)
-      //   return
-      // }
-      // if (charIndex !== -1) {
-      //   this.captionList[index].selectIndexArr.splice(charIndex, 1)
-      //   return
-      // }
+      this.searchAction();
     },
-    // 重置筛选
-    resetFilter: function resetFilter() {
-      this.captionList.map(function (item, index) {
-        item.selectIndexArr = ['默认'];
-      });
+    sureSearch: function sureSearch() {
+      this.searchAction();
+      this.filter_alert = false;
     },
-    clickZan: function clickZan(item, index) {var _this4 = this;
+    clickZan: function clickZan(item, index) {var _this2 = this;
       console.log(item.article_id, item.islike, index);
       var url = this.$api.unLike;
       if (item.islike === 'no') {
@@ -608,26 +636,26 @@ var _default =
 
         cb: function cb(err, res) {
           if (!err && res) {
-            switch (_this4.shareList[index].islike) {
+            switch (_this2.shareList[index].islike) {
               case 'yes':
                 uni.showToast({
                   title: '取消点赞成功',
                   icon: 'none' });
 
-                _this4.shareList[index].islike = 'no';
-                _this4.shareList[index].like_count -= 1;
+                _this2.shareList[index].islike = 'no';
+                _this2.shareList[index].like_count -= 1;
                 break;
               case 'no':
                 uni.showToast({
                   title: '点赞成功',
                   icon: 'none' });
 
-                _this4.shareList[index].islike = 'yes';
-                _this4.shareList[index].like_count += 1;
+                _this2.shareList[index].islike = 'yes';
+                _this2.shareList[index].like_count += 1;
                 break;}
 
           } else {
-            switch (_this4.shareList[index].islike) {
+            switch (_this2.shareList[index].islike) {
               case 'yes':
                 uni.showToast({
                   title: '取消点赞失败',
@@ -644,20 +672,11 @@ var _default =
           }
         } });
 
-      // if (!this.shareList[index].zan_status) {
-      //   this.shareList[index].zan_num += 1
-      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
-      //   return
-      // }
-      // if (this.shareList[index].zan_status) {
-      //   this.shareList[index].zan_num -= 1
-      //   this.shareList[index].zan_status = !this.shareList[index].zan_status
-      //   return
-      // }
     },
     goDetail: function goDetail(item) {
+      console.log('接收到信息', item.goods_id);
       uni.navigateTo({
-        url: '../components/goodDetail?info=' + item.name });
+        url: '../components/goodDetail?goods_id=' + item.goods_id });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
