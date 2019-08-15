@@ -65,86 +65,71 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 296));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    banner: banner },
+
   data: function data() {
     return {
       title: '', // 顶部标题
-      indicatorDots: true,
-      autoplay: true,
-      interval: 2000,
-      duration: 500,
-      indicatorActiveColor: '#ffffff', // 以上轮播图信息
+      swiperList: [], // 轮播图
       timeList: [], // 时间
       selectIndex: 0, // 选中的时间
-      goodList: [
-      {
-        title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-        leaver_sum: 40,
-        total: 100,
-        discount: '4.6折',
-        newPrice: 300,
-        oldPrice: 4000,
-        code: 1,
-        percent: 40 }] };
-
-
+      goodList: [] // 商品列表
+    };
   },
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option.origin);
@@ -194,35 +179,79 @@ var _default =
 
     },
     // 通过秒杀活动ID获取秒杀商品列表
-    getgoodsbycategoryid: function getgoodsbycategoryid(id) {var _this2 = this;
-      var url = this.$api.seckill_goodsbycategoryid;
-      if (this.title === '限时购') {
-        url = this.$api.flashsale_goodsbycategoryid;
+    getgoodsbycategoryid: function getgoodsbycategoryid(id) {
+      var that = this;
+      var url = that.$api.seckill_goodsbycategoryid;
+      if (that.title === '限时购') {
+        url = that.$api.flashsale_goodsbycategoryid;
       }
-      this.$http({
+      that.$http({
         url: url,
         data: {
           category_id: id },
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log('时间', res.data.list);
-            _this2.goodList = res.data.list;
-          } else if (res.code === 0 || res.code === -1 & res.msg) {
+            console.log(that.title, res.data.list);
+            that.swiperList = res.data.list.banners;
+            that.goodList = res.data.list;
+          } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
               title: res.msg,
               icon: 'none' });
 
           } else {
             uni.showToast({
-              title: '秒杀商品列表加载失败',
+              title: that.title + '商品列表加载失败',
               icon: 'none' });
 
           }
         } });
 
     },
+    goBuy: function goBuy(item) {
+      console.log(item);
+    },
+    // 抢购提醒
+    setRemind: function setRemind(item, index) {
+      console.log(item, index);
+      var that = this;
+      var url = that.$api.seckill_remind;
+      if (that.title === '限时购') {
+        url = that.$api.flashsale_remind;
+        if (item.remind === 'yes') {
+          url = that.$api.flashsale_cancelremind;
+        }
+      } else if (that.title === '秒杀购') {
+        // url = 
+      }
 
+      that.$http({
+        url: url,
+        data: {
+          good_id: item.goods_id,
+          activity_category_id: item.activity_category_id,
+          formId: 'app' },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            console.log(res.data);
+
+          } else if (res.code === 0 || res.code === -1 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '设置失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    // 选择活动
     selectTime: function selectTime(item, index) {
       this.selectIndex = index;
     },

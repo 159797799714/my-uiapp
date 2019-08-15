@@ -270,6 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -285,12 +286,13 @@ var _default =
       filter: ['品牌', '分类'],
       filterTag_Index: '', //默认选中品牌
       filter_alert: true, // 筛选遮罩层显示
+      scrollTop: 0, // 页面滚动距离顶部位置
       shareList: [],
       filterCoverList: {
-        list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
-        sum: 4999 },
+        list: [],
+        sum: 0 },
 
-      classList: [],
+      classList: [], // 品牌分类列表
       filterArr: [],
       goodList: [], // 商城数据
       byid: false, // 从商城进入，用于判断是否加载二级品牌分类
@@ -310,6 +312,7 @@ var _default =
       brand_id: '', // 选中的品牌ID
       category_id: '', // 一级分类ID
       goodsFormData: {
+        page: 1,
         category_id: '',
         search: '',
         sortType: 'all',
@@ -350,6 +353,7 @@ var _default =
     inputValue: function inputValue(val, oldval) {
       this.shareFormData.search = val;
       this.goodsFormData.search = val;
+      this.goodsFormData.page = 1;
     } },
 
   computed: {
@@ -393,6 +397,12 @@ var _default =
         } });
 
     },
+    // 上拉加载更多
+    loadingMore: function loadingMore() {
+      var that = this;
+      that.goodsFormData.page += 1;
+      that.searchAction();
+    },
 
     // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
     searchAction: function searchAction() {
@@ -422,7 +432,13 @@ var _default =
                 that.shareList = res.data.list;
                 break;
               case 1:
-                that.goodList = res.data.list.data;
+                if (that.goodsFormData.page > 1 && that.goodsFormData.page <= res.data.list.last_page) {
+                  res.data.list.data.map(function (item, index) {
+                    that.goodList.push(item);
+                  });
+                } else if (that.goodsFormData.page === 1) {
+                  that.goodList = res.data.list.data;
+                }
                 that.filterCoverList.sum = res.data.list.total;
                 break;}
 
@@ -485,6 +501,7 @@ var _default =
       that.goodsFormData.category_id = '';
       that.goodsFormData.brand_id = '';
       that.goodsFormData.promotions_type = '';
+      that.goodsFormData.page = 1;
       that.filterTag_Index = '';
       that.filter_alert = false;
       that.selectArr = [];
@@ -498,6 +515,8 @@ var _default =
     // 价格等分类点击
     selectFilter: function selectFilter(index) {
       var that = this;
+      that.goodsFormData.page = 1;
+      that.scrollTop = 0;
       that.filterIndex = index;
       if (that.tabIndex === 0) {
         console.log('进来了', that.shareTag[index].tag_id);
@@ -586,14 +605,17 @@ var _default =
 
     //直接点击外面的分类品牌
     selectFilterTag: function selectFilterTag(info) {
+      var that = this;
       var index = info.toString();
-      this.filterCoverList.list = this.classList[index];
-      if (index === this.filterTag_Index && this.filterTag_Index !== '') {
-        this.filterTag_Index = '';
+      that.goodsFormData.page = 1;
+      that.scrollTop = 0;
+      that.filterCoverList.list = that.classList[index];
+      if (index === that.filterTag_Index && that.filterTag_Index !== '') {
+        that.filterTag_Index = '';
         return;
       }
-      if (index !== this.filterTag_Index || this.filterTag_Index === '') {
-        this.filterTag_Index = index;
+      if (index !== that.filterTag_Index || that.filterTag_Index === '') {
+        that.filterTag_Index = index;
       }
     },
     // 点击筛选侧边栏中的品牌，活动等分类

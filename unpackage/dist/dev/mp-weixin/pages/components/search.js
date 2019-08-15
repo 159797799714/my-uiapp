@@ -204,21 +204,29 @@ var _default =
     },
     delHistory: function delHistory() {
       var that = this;
-      uni.showModal({
-        title: '温馨提示',
-        content: '确认删除所有搜索记录？',
-        success: function success(res) {
-          if (res.confirm) {
-            uni.removeStorage({
-              key: 'history_arr',
-              success: function success(res) {
-                that.history = [];
-              } });
+      if (that.history.length.length > 0) {
+        uni.showModal({
+          title: '温馨提示',
+          content: '确认删除所有搜索记录？',
+          success: function success(res) {
+            if (res.confirm) {
+              uni.removeStorage({
+                key: 'history_arr',
+                success: function success(res) {
+                  that.history = [];
+                } });
 
-          } else if (res.cancel) {
-            console.log('用户点击取消');
-          }
-        } });
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+            }
+          } });
+
+      } else {
+        uni.showToast({
+          title: '没有记录了哦！',
+          icon: 'none' });
+
+      }
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -39,7 +39,6 @@
 
 <script>
   import banner from '../components/banner.vue';
-  import service from '../../service.js';
   export default {
     components: {
       banner: banner

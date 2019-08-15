@@ -238,6 +238,9 @@ view, image, text, input, form {
       -ms-flex-item-align: end !important;
           align-self: flex-end !important;
 }
+.t-dec-line {
+  text-decoration: line-through;
+}
 .p-re {
   position: relative !important;
 }

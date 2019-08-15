@@ -59,12 +59,6 @@
         "selectedIconPath": "static/img/tabbar/market2.png"
       },
       {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "static/img/tabbar/message1.png",
-        "selectedIconPath": "static/img/tabbar/message2.png"
-      },
-      {
         "pagePath": "pages/shopcar/shopcar",
         "text": "购物车",
         "iconPath": "static/img/tabbar/shopcar1.png",
@@ -79,11 +73,12 @@
     ]
   },
   "nvueCompiler": "weex",
+  "renderer": "auto",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
-  "appname": "优逸",
-  "compilerVersion": "2.1.3",
+  "appname": "雷啊雷啊",
+  "compilerVersion": "2.2.1",
   "usingComponents": {}
 }

@@ -766,7 +766,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2724,6 +2724,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getbrands: _config.default.devApi + '/brands/getbrands', // 品牌分类
   getflashsalegoodsbyone: _config.default.devApi + '/flashsale/getflashsalegoodsbyone', // 商城页展示一个限时抢购商品
   getseckillgoodsbyone: _config.default.devApi + '/seckill/getseckillgoodsbyone', // 商城页展示一个秒杀商品
+  getluckydrawgoodsbyone: _config.default.devApi + '/luckydraw/getluckydrawgoodsbyone', // 商城页展示一个零元购商品
   goodlists: _config.default.devApi + '/goods/goodlists', // 商城搜索
   goods_gethomebanners: _config.default.devApi + '/goods/gethomebanners', // 商城首页轮播图
   goodscollection: _config.default.devApi + '/goods/goodscollection', // 商品收藏与取消收藏
@@ -8502,7 +8503,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8523,14 +8524,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8606,7 +8607,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9051,43 +9052,6 @@ createPage(_discountCenter.default);
 
 /***/ }),
 
-/***/ 23:
-/*!****************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/app-unixe/service.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
-var USERS_KEY = 'USERS_KEY';
-var STATE_KEY = 'STATE_KEY';
-
-var getUsers = function getUsers() {
-  var ret = '';
-  ret = uni.getStorageSync(USERS_KEY);
-  if (!ret) {
-    ret = '[]';
-  }
-  return JSON.parse(ret);
-};
-
-var addUser = function addUser(userInfo) {
-  var users = getUsers();
-  users.push({
-    account: userInfo.account,
-    password: userInfo.password });
-
-  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
-};var _default =
-
-{
-  getUsers: getUsers,
-  addUser: addUser };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
 /***/ 232:
 /*!**********************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Forder%2Forder"} ***!
@@ -9139,6 +9103,23 @@ createPage(_grade.default);
 
 /***/ }),
 
+/***/ 25:
+/*!**********************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
 /***/ 256:
 /*!***********************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmine%2Fbonus%2FbonusCenter"} ***!
@@ -9152,23 +9133,6 @@ createPage(_grade.default);
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _bonusCenter = _interopRequireDefault(__webpack_require__(/*! ./pages/mine/bonus/bonusCenter.vue */ 257));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_bonusCenter.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 26:
-/*!**********************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -9916,6 +9880,23 @@ HTMLParser;exports.default = _default;
 
 /***/ }),
 
+/***/ 33:
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bindTel.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
 /***/ 332:
 /*!*****************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-calendar/calendar.js ***!
@@ -10477,23 +10458,6 @@ calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 34:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ 35));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bindTel.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
 /***/ 4:
 /*!****************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/pages.json ***!
@@ -10506,7 +10470,7 @@ createPage(_bindTel.default);
 
 /***/ }),
 
-/***/ 42:
+/***/ 41:
 /*!*************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Fregister"} ***!
   \*************************************************************************************/
@@ -10517,13 +10481,13 @@ createPage(_bindTel.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ 43));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ 42));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_register.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 50:
+/***/ 49:
 /*!*************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2Fpassword"} ***!
   \*************************************************************************************/
@@ -10534,13 +10498,13 @@ createPage(_register.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _password = _interopRequireDefault(__webpack_require__(/*! ./pages/login/password.vue */ 51));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _password = _interopRequireDefault(__webpack_require__(/*! ./pages/login/password.vue */ 50));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_password.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 58:
+/***/ 57:
 /*!*******************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fcomponents%2FshareInfo"} ***!
   \*******************************************************************************************/
@@ -10551,13 +10515,13 @@ createPage(_password.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _shareInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/components/shareInfo.vue */ 59));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _shareInfo = _interopRequireDefault(__webpack_require__(/*! ./pages/components/shareInfo.vue */ 58));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_shareInfo.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 66:
+/***/ 65:
 /*!************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Fmarket%2Fmarket"} ***!
   \************************************************************************************/
@@ -10568,9 +10532,120 @@ createPage(_shareInfo.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _market = _interopRequireDefault(__webpack_require__(/*! ./pages/market/market.vue */ 67));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _market = _interopRequireDefault(__webpack_require__(/*! ./pages/market/market.vue */ 66));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_market.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 71:
+/*!********************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/common/util.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+ /**
+               * 工具类
+               */
+module.exports = {
+
+  /**
+                    * scene解码
+                    */
+  scene_decode: function scene_decode(e) {
+    if (e === undefined)
+    return {};
+    var scene = decodeURIComponent(e),
+    params = scene.split(','),
+    data = {};
+    for (var i in params) {
+      var val = params[i].split(':');
+      val.length > 0 && val[0] && (data[val[0]] = val[1] || null);
+    }
+    return data;
+  },
+
+  /**
+      * 格式化日期格式 (用于兼容ios Date对象)
+      */
+  format_date: function format_date(time) {
+    // 将xxxx-xx-xx的时间格式，转换为 xxxx/xx/xx的格式 
+    return time.replace(/\-/g, "/");
+  },
+
+  /**
+      * 对象转URL
+      */
+  urlEncode: function urlEncode(data) {
+    var _result = [];
+    for (var key in data) {
+      var value = data[key];
+      if (value.constructor == Array) {
+        value.forEach(function (_value) {
+          _result.push(key + "=" + _value);
+        });
+      } else {
+        _result.push(key + '=' + value);
+      }
+    }
+    return _result.join('&');
+  },
+
+  /**
+      * 倒计时
+      */
+  countDown: function countDown(time, callback) {
+    if (time === "") {
+      return;
+    }
+
+    function checkTime(i) {//将0-9的数字前面加上0，例1变为01 
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    var countDownName = setInterval(function () {
+      var format = time.replace(/-/g, '/');
+      var countDown = Date.parse(new Date(format));
+      if (countDown < new Date()) {
+        clearInterval(countDownName);
+        callback("00:00:00");
+        return;
+      }
+      var leftTime = countDown - new Date(); //计算剩余的毫秒数 
+      var days = parseInt(leftTime / 1000 / 60 / 60 / 24, 10); //计算剩余的天数 
+      var hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10); //计算剩余的小时 
+      var minutes = parseInt(leftTime / 1000 / 60 % 60, 10); //计算剩余的分钟 
+      var seconds = parseInt(leftTime / 1000 % 60, 10); //计算剩余的秒数 
+      // days = checkTime(days);
+      if (days == 0) {
+        hours = checkTime(hours);
+      }
+      minutes = checkTime(minutes);
+      seconds = checkTime(seconds);
+      var nowTime = (days * 24 == 0 ? '' : days * 24) + hours + ":" + minutes + ":" + seconds;
+      callback(nowTime);
+      if (hours == '00' && minutes == '00' && seconds == '00') {
+        clearInterval(countDownName);
+      }
+    }, 1000);
+
+  },
+
+  delInterval: function delInterval() {
+    clearInterval(countDownName);
+  },
+
+  DecideReceive: function DecideReceive(time) {
+    var format = time.replace(/-/g, '/');
+    var countDown = Date.parse(new Date(format));
+    var leftTime = new Date() - countDown; //计算剩余的毫秒数 
+    console.log(leftTime);
+    return leftTime > 259200000;
+  } };
 
 /***/ }),
 

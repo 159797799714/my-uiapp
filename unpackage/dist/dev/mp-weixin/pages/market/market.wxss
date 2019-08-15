@@ -238,6 +238,9 @@ view.data-v-b4561094, image.data-v-b4561094, text.data-v-b4561094, input.data-v-
       -ms-flex-item-align: end !important;
           align-self: flex-end !important;
 }
+.t-dec-line.data-v-b4561094 {
+  text-decoration: line-through;
+}
 .p-re.data-v-b4561094 {
   position: relative !important;
 }
@@ -688,14 +691,16 @@ to {
 }
 .main .pintuan-info.data-v-b4561094 {
     line-height: 27rpx;
-    margin-top: 11rpx;
+    margin: 10rpx 0;
+    letter-spacing: 2rpx;
 }
 .main .pintuan > .price.data-v-b4561094 {
     line-height: 27rpx;
-    margin-top: 11rpx;
+    margin: 10rpx 0;
 }
 .main .price .min-price.data-v-b4561094 {
     min-width: 42rpx;
+    margin-right: 10rpx;
 }
 .main .pintuan-icon.data-v-b4561094 {
     -webkit-box-flex: 1;
@@ -710,8 +715,7 @@ to {
 }
 .main .pintuan-icon image.data-v-b4561094 {
     height: 123rpx;
-    width: 123rpx;
-    margin-right: 10rpx;
+    width: 100%;
 }
 .main .pintuan-icon .nothing.data-v-b4561094 {
     height: 100%;
@@ -723,14 +727,14 @@ to {
     width: 130rpx;
 }
 .main .pintuan-icon-one.data-v-b4561094 {
-    text-align: right;
+    text-align: center;
     margin-top: 0;
 }
 .main .pintuan-icon-one > image.data-v-b4561094 {
     height: 140rpx;
 }
 .main .recommend.data-v-b4561094 {
-    margin-bottom: 200rpx;
+    margin-bottom: 20rpx;
 }
 .main .recommend .recommend-title.data-v-b4561094 {
       display: -webkit-box;
@@ -751,7 +755,7 @@ to {
 }
 .main .recommend .recommend-title > image.data-v-b4561094 {
         height: 48rpx;
-        width: 100%;
+        width: 640rpx;
 }
 .main .recommend .recommend-content.data-v-b4561094 {
       display: -webkit-box;
@@ -768,7 +772,7 @@ to {
 }
 .main .recommend .recommend-content .recommend-item.data-v-b4561094 {
         height: 524rpx;
-        width: 328rpx;
+        width: 330rpx;
         margin-bottom: 20rpx;
 }
 .main .recommend .recommend-content .recommend-item > image.data-v-b4561094 {

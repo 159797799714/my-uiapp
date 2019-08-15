@@ -238,6 +238,9 @@ view.data-v-1356b3ee, image.data-v-1356b3ee, text.data-v-1356b3ee, input.data-v-
       -ms-flex-item-align: end !important;
           align-self: flex-end !important;
 }
+.t-dec-line.data-v-1356b3ee {
+  text-decoration: line-through;
+}
 .p-re.data-v-1356b3ee {
   position: relative !important;
 }
@@ -554,11 +557,8 @@ to {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.main .swiper.data-v-1356b3ee {
+.main .banner.data-v-1356b3ee {
     height: 330rpx;
-}
-.main .swiper .swiper-item.data-v-1356b3ee {
-      height: 330rpx;
 }
 .main .leave-time.data-v-1356b3ee {
     height: 62rpx;
@@ -660,6 +660,7 @@ to {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
+      height: 40rpx;
       padding: 0 7rpx;
 }
 .item .goodInfo .discount > text.data-v-1356b3ee {

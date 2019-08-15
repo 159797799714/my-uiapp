@@ -1,4 +1,4 @@
-<view class="container data-v-534f2344"><view class="topBar data-v-534f2344"><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" class="iconfont data-v-534f2344" bindtap="__e"></text><text class="title data-v-534f2344">优惠券说明</text></view><view class="content data-v-534f2344"><view class="mean data-v-534f2344">1:每个订单仅能使用一张优惠券，不兑换，不找零;
+<view class="container data-v-690da555"><view class="topBar data-v-690da555" style="{{'padding-top:'+(statusBarHeight+'px')+';'}}"><text data-event-opts="{{[['tap',[['goBack',['$event']]]]]}}" class="iconfont data-v-690da555" bindtap="__e"></text><text class="title data-v-690da555">优惠券说明</text></view><view class="content data-v-690da555"><view class="mean data-v-690da555">1:每个订单仅能使用一张优惠券，不兑换，不找零;
 2:每张优惠券的使用条件请查看对应优惠券的使用说明;
 3:除非该优惠券有特殊说明，否则优惠券仅能抵扣商品金额;
 4:请在有效期内使用优惠券，未使用的优惠券过期后将自动作废;

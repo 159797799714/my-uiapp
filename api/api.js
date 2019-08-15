@@ -35,6 +35,7 @@ export default {
   getbrands: API.devApi + '/brands/getbrands',                                  // 品牌分类
   getflashsalegoodsbyone: API.devApi + '/flashsale/getflashsalegoodsbyone',     // 商城页展示一个限时抢购商品
   getseckillgoodsbyone: API.devApi + '/seckill/getseckillgoodsbyone',           // 商城页展示一个秒杀商品
+  getluckydrawgoodsbyone: API.devApi + '/luckydraw/getluckydrawgoodsbyone',     // 商城页展示一个零元购商品
   goodlists: API.devApi + '/goods/goodlists',                                   // 商城搜索
   goods_gethomebanners: API.devApi + '/goods/gethomebanners',                   // 商城首页轮播图
   goodscollection: API.devApi + '/goods/goodscollection',                       // 商品收藏与取消收藏

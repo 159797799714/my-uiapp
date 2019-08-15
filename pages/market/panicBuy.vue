@@ -9,43 +9,38 @@
         </view>
       </view>
       <scroll-view scroll-y="true" class="main">
-        <swiper class="swiper bg-white" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" :indicator-active-color="indicatorActiveColor">
-          <swiper-item>
-            <view class="swiper-item bg_primary"></view>
-          </swiper-item>
-          <swiper-item>
-            <view class="swiper-item bg_warning"></view>
-          </swiper-item>
-          <swiper-item>
-            <view class="swiper-item bg_primary"></view>
-          </swiper-item>
-        </swiper>
-        <view class="leave-time">{{ title === '秒杀'?'秒杀': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view>
-        <view v-for="(item, index) in goodList.data" :key="index" class="item bg-white" @click="goDetail(item)">
-          <view class="goodImg">
-            <view v-if="item.surplus_inventory === 0" class="imgCover">
+        <view v-if="swiperList.length > 0" class="banner">
+          <banner :swiperList="swiperList"></banner>
+        </view>
+        <!-- <view class="leave-time">{{ title === '秒杀'?'秒杀': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view> -->
+        <view v-for="(item, index) in goodList.data" :key="index" class="item bg-white">
+          <view class="goodImg" @click="goDetail(item)">
+            <view v-if="item.surplus_inventory < 1" class="imgCover">
               <text>售完</text>
             </view>
-            <image :src="goodList.banners[index].file_path" mode=""></image>
+            <image :src="item.image[0].file_path" mode=""></image>
           </view>
           <view class="goodInfo">
-            <view class="goodName">{{ item.goods_name }}</view>
-            <view class="leaver">
+            <view class="goodName" @click="goDetail(item)">{{ item.goods_name }}</view>
+            <view class="leaver" @click="goDetail(item)">
               <text class="text">仅剩余{{ item.surplus_inventory }}件</text>
               <view class="peogress-box">
-                <progress :percent="item.surplus_inventory" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
+                <progress :percent="item.surplus_inventory / item.total_inventory * 100" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
               </view>
             </view>
             <view class="discount">
-              <text>{{ item.selling_point }}</text>
+              <text v-if="item.goods_discount_price !== 0 || item.goods_discount_price">{{ item.goods_discount_price }}折</text>
             </view>
             <view class="price">
               <text class="newPrice">￥{{ item.goods_min_price }}</text>
               <text class="oldPrice">￥{{ item.goods_max_price }}</text>
-              <text v-if="item.surplus_inventory !== 0 && goodList.header_info.status === '已开抢'" :class="{buy: true, 'bg-white': true, 'my-button': true}">立即秒杀</text>
-              <text v-if="goodList.header_info.status === '即将开始' && goodList.data[0].isremind === 'no'" :class="{buy: true, 'bg-white': true, 'my-button': true}">提醒我</text>
-              <text v-if="item.surplus_inventory === 0" :class="{buy: true,'my-button': true, none: true}">已售完</text>
+              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="goBuy(item)">立即秒杀</text>
+              <text v-if="item.surplus_inventory < 1" :class="{buy: true,'my-button': true, none: true}">已售完</text>
               <text v-if="goodList.header_info.status === '已结束'" :class="{buy: true,'my-button': true, none: true}">已结束</text>
+              <!-- <form @submit="setRemind" report-submi="true"> -->
+                <!-- <button v-if="goodList.header_info.status === '即将开始'" :class="{buy: true, 'bg-white': true, 'my-button': true}" formType="submit">{{ item.isremind == 'no' ? '提醒我' : '取消提醒' }}</button> -->
+                <text v-if="goodList.header_info.status === '即将开始'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="setRemind(item, index)">{{ item.isremind == 'no' ? '提醒我' : '取消提醒' }}</text>
+              <!-- </form> -->
             </view>
           </view>
         </view>
@@ -55,28 +50,18 @@
 </template>
 
 <script>
+  import banner from "../components/banner.vue";
   export default {
+    components: {
+      banner
+    },
     data() {
       return {
         title: '',                         // 顶部标题
-        indicatorDots: true,
-        autoplay: true,
-        interval: 2000,
-        duration: 500,
-        indicatorActiveColor: '#ffffff',   // 以上轮播图信息
+        swiperList: [],   // 轮播图
         timeList: [],                      // 时间
         selectIndex: 0,                    // 选中的时间
-        goodList: [
-          {
-            title: 'Sony/索尼 MDR-ZX310头戴式监听重低音耳机Sony/索尼 MDR-ZX310头戴式监听重低音耳机',
-            leaver_sum: 40,
-            total: 100,
-            discount: '4.6折',
-            newPrice: 300,
-            oldPrice: 4000,
-            code: 1,
-            percent: 40
-          }]
+        goodList: [],                      // 商品列表
       }
     },
     onLoad(option) {
@@ -128,34 +113,78 @@
       },
       // 通过秒杀活动ID获取秒杀商品列表
       getgoodsbycategoryid(id) {
-        let url = this.$api.seckill_goodsbycategoryid
-        if(this.title === '限时购') {
-          url = this.$api.flashsale_goodsbycategoryid
+        let that = this
+        let url = that.$api.seckill_goodsbycategoryid
+        if(that.title === '限时购') {
+          url = that.$api.flashsale_goodsbycategoryid
         }
-        this.$http({
+        that.$http({
           url: url,
           data: {
             category_id: id
           },
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log('时间', res.data.list)
-              this.goodList = res.data.list
-            } else if(res.code === 0 || res.code === -1 & res.msg) {
+              console.log(that.title, res.data.list)
+              that.swiperList= res.data.list.banners
+              that.goodList = res.data.list
+            } else if(res.code === 0 || res.code === -1 && res.msg) {
               uni.showToast({
                 title: res.msg,
                 icon: 'none'
               })
             } else {
               uni.showToast({
-                title: '秒杀商品列表加载失败',
+                title: that.title + '商品列表加载失败',
                 icon: 'none'
               })
             }
           }
         })
       },
-      
+      goBuy(item) {
+        console.log(item)
+      },
+      // 抢购提醒
+      setRemind(item, index) {
+        console.log(item, index)
+        let that = this
+        let url= that.$api.seckill_remind
+        if(that.title === '限时购') {
+          url= that.$api.flashsale_remind
+          if(item.remind === 'yes') {
+            url= that.$api.flashsale_cancelremind
+          }  
+        } else if(that.title === '秒杀购') {
+          // url = 
+        }
+        
+        that.$http({
+          url: url,
+          data: {
+            good_id: item.goods_id,
+            activity_category_id: item.activity_category_id,
+            formId: 'app'
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              console.log(res.data)
+              
+            } else if(res.code === 0 || res.code === -1 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '设置失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      // 选择活动
       selectTime(item, index) {
         this.selectIndex = index
       },
@@ -213,11 +242,8 @@
   overflow: hidden;
   padding: 30upx;
   box-sizing: border-box;
-  .swiper{
+  .banner{
     height: 330upx;
-    .swiper-item{
-      height: 330upx;
-    }
   }
   .leave-time{
     height: 62upx;
@@ -307,6 +333,7 @@
       }
       .discount{
         display: flex;
+        height: 40upx;
         padding: 0 7upx;
         &>text{
           padding: 5upx 11upx;

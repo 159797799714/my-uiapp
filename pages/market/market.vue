@@ -33,19 +33,18 @@
           <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(index)">
             <view class="pintuan-text dis-flex">
               <image :src="item.imgUrl"></image>
-              <view v-if="index !== 0 && item.time" class="time font-22 col-f b-15">{{ item.time }}</view>
+              <text v-if="item.time" class="time font-22 col-f bg-black">{{ item.time }}</text>
             </view>
-            <view v-if="item.info" class="pintuan-info font-28 col-red">{{ index === 2 ? item.info + '折起': item.info }}</view>
-            <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-red">
-              ￥<text class="min-price">{{index === 3 ? '0': item.min_price  }}</text>
-              <text class="max-price font-24 col-9 t-dec-line">￥{{ item.max_price }}</text>
+            <view v-if="item.info" class="pintuan-info font-28 col-3d f-bold">{{ item.info }}</view>
+            <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-3d">
+              ￥<text class="min-price f-bold">{{index === 3 ? '0': item.min_price }}</text>
+              <text class="max-price font-24 font-99 t-dec-line">￥{{ item.max_price }}</text>
             </view>
-            <view :class="{'pintuan-icon': true, 'pintuan-icon-one': item.img.length < 2 } ">
-              <image mode="aspectFit" v-if="item.img.length > 0" :src="item.img[0]" />
-              <image mode="aspectFit" v-if="item.img.length > 1"  :src="item.img[1]"/>
+            <view class="pintuan-icon pintuan-icon-one">
+              <image mode="aspectFit" v-if="item.img" :src="item.img"/>
               
               <!-- 无相关活动 -->
-              <view v-if="index !== 0 && !item.time" class="nothing">
+              <view v-if="!item.time" class="nothing">
                 <image mode="aspectFit" src="../../static/img/no_content.png"></image>
                 <view class="nothing-info font-28">亲, 没有相关活动</view>
               </view>
@@ -56,7 +55,7 @@
         <!-- 为您推荐 -->
         <view class="recommend">
           <view class="recommend-title">
-            <image src="../../static/img/market/foryou.png" mode=""></image>
+            <image src="../../static/img/market/foryou.png" mode="widthFix"></image>
           </view>
           <view class="recommend-content">
             <view v-for="(item, index) in recommendList" :key="index" class="recommend-item bg-white" @click="goDetail(item)">
@@ -77,48 +76,48 @@
 </template>
 
 <script>
-  import banner from "../components/banner.vue"
+  import banner from "../components/banner.vue";
+  import { countDown } from "../../common/util.js";
   export default {
     components: {
       banner
     },
     data() {
       return {
-        indicatorDots: true,
-        autoplay: true,
-        interval: 2000,
-        duration: 500,
-        indicatorActiveColor: '#fff',
         searchInfo: '大家都在搜“森海塞尔”',
         scrollTop: 0,
         swiperList: [],
         menuList: [], // 所有商品分类列表
-        discount: [
-        {
+        discount: [{
           imgUrl: '../../static/img/market/pintuan-text.png',
           name: '拼团购',
-          info: '拼得越多，越优惠',
-          img: ['../../static/img/market/pintuan-icon.png']
+          info: '',
+          time: '',
+          min_price: '',
+          max_price: '',
+          img: ''
         }, {
           imgUrl: '../../static/img/market/miaoshagou-text.png',
           name: '秒杀购',
           time: '',
           min_price: '',
           max_price: '',
-          img: []
+          img: ''
         }, {
           imgUrl: '../../static/img/market/xianshigou-text.png',
           name: '限时购',
           time: '',
+          min_price: '',
+          max_price: '',
           info: '',
-          img: []
+          img: ''
         }, {
           imgUrl: '../../static/img/market/zero-text.png',
           name: '0元购',
           time: '',
           min_price: '',
           max_price: '',
-          img: []
+          img: ''
         }],
         recommendList: []
       }
@@ -131,6 +130,7 @@
     onLoad() {
       // 轮播图
       this.getSwiperList()
+      
       // 获取所有商品分类
       this.getGoodscategory()
       
@@ -138,11 +138,12 @@
       this.getRecommendgoods()
     },
     onShow() {
-      // // 获取一个限时购商品
-      // this.getLimitGoods()
-      // 
-      // // 获取一个秒杀商品
-      // this.getKillGoods()
+      // 获取一个限时购商品
+      this.getLimitGoods()
+      // 零元购
+      this.getZero()
+      // 获取一个秒杀商品
+      this.getKillGoods()
     },
     onPullDownRefresh() {
       console.log('refresh');
@@ -199,13 +200,21 @@
       },
       // 商城页展示一个限时抢购商品
       getLimitGoods() {
+        let that = this
         this.$http({
           url: this.$api.getflashsalegoodsbyone,
           cb: (err, res) => {
             if (!err && res.code === 1) {
               console.log('限时', res.data)
               if(res.data.goods) {
-                
+                let goods= res.data.goods
+                that.discount[2].min_price= goods.sku[0].goods_price
+                that.discount[2].max_price= goods.sku[0].line_price
+                that.discount[2].img= goods.headimg.file_path
+                that.discount[2].info= goods.homepage_activity_subtitle
+                countDown(goods.category.activity_endtime, function(skilltime) {
+                  that.discount[2].time = skilltime
+                })
               }
             } else if (res.code === 0 && res.msg) {
               uni.showToast({
@@ -223,16 +232,29 @@
       },
       // 商城页展示一个秒杀商品
       getKillGoods() {
-        this.$http({
-          url: this.$api.getseckillgoodsbyone,
+        let that = this
+        that.$http({
+          url: that.$api.getseckillgoodsbyone,
           cb: (err, res) => {
             if (!err && res.code === 1) {
               console.log('秒杀', res.data)
               if(res.data.goods) {
-                
-                
-              } else {
-                this.lightning[1] = ''
+                let goods= res.data.goods
+                that.discount[1].min_price= goods.sku[0].goods_price
+                that.discount[1].max_price= goods.sku[0].line_price
+                that.discount[1].img= goods.headimg.file_path
+                that.discount[1].info= goods.homepage_activity_subtitle
+                countDown(goods.category.activity_endtime, function(skilltime) {
+                  that.discount[1].time = skilltime
+                })
+              }
+              if(res.data.sharing_goods) {
+                let sharing = res.data.sharing_goods
+                that.discount[0].img = sharing.image_url
+                that.discount[0].info = sharing.sharing_home_subtitle
+                countDown(sharing.sharing_homa_activity_time, function(time) {
+                  that.discount[0].time = time
+                })  
               }
             } else if (res.code === 0 && res.msg) {
               uni.showToast({
@@ -247,6 +269,55 @@
             }
           }
         })
+      },
+      
+      // 零元购
+      getZero() {
+        let that = this
+        this.$http({
+          url: this.$api.getluckydrawgoodsbyone,
+          cb: (err, res) => {
+            if (!err && res.code === 1) {
+              console.log('零元购', res.data)
+              if(res.data.goods) {
+                let goods= res.data.goods
+                that.discount[3].min_price= goods.sku[0].goods_price
+                that.discount[3].max_price= goods.sku[0].line_price
+                that.discount[3].img= goods.headimg.file_path
+                that.discount[3].info= goods.homepage_activity_subtitle
+                countDown(goods.category.activity_endtime, function(skilltime) {
+                  that.discount[3].time = skilltime
+                })
+              }
+            } else if (res.code === 0 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '零元抽奖商品加载失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      //   App._get('luckydraw/getluckydrawgoodsbyone', {}, function(result) {
+      //     if (result.data.goods) {
+      //       _this.setData({
+      //         'discount[3].min_price': result.data.goods.sku ? result.data.goods.sku[0].goods_price: '',
+      //         'discount[3].max_price': result.data.goods.sku ? result.data.goods.sku[0].line_price: '',
+      //         'discount[3].info': result.data.goods.homepage_activity_subtitle ? result.data.goods.homepage_activity_subtitle : '',
+      //         'discount[3].img': result.data.goods.headimg ? result.data.goods.headimg.file_path: ''
+      //       })
+      //       utils.countDown(result.data.goods.category.activity_endtime, function(nowTime) {
+      //         _this.setData({
+      //           'discount[3].time': nowTime
+      //         })
+      //       })
+      //     }
+      // 
+      //   })
       },
       // 推荐商品列表
       getRecommendgoods() {
@@ -506,14 +577,16 @@
     }
     .pintuan-info{
       line-height: 27upx;
-      margin-top: 11upx;
+      margin: 10upx 0;
+      letter-spacing: 2upx;
     }
     .pintuan> .price{
       line-height: 27upx;
-      margin-top: 11upx;
+      margin: 10upx 0;
     }
     .price .min-price{
       min-width: 42upx;
+      margin-right: 10upx;
     }
     .pintuan-icon{
       flex: 1;
@@ -524,8 +597,7 @@
     }
     .pintuan-icon image {
       height: 123upx;
-      width: 123upx;
-      margin-right: 10upx;
+      width: 100%;
     }
     .pintuan-icon .nothing{
       height: 100%;
@@ -538,7 +610,7 @@
     }
     
     .pintuan-icon-one{
-      text-align: right;
+      text-align: center;
       margin-top: 0;
     }
     .pintuan-icon-one>image{
@@ -546,7 +618,7 @@
     }
 
     .recommend {
-      margin-bottom: 200upx;
+      margin-bottom: 20upx;
       .recommend-title {
         display: flex;
         justify-content: center;
@@ -558,7 +630,7 @@
 
         &>image {
           height: 48upx;
-          width: 100%;
+          width: 640upx;
         }
       }
 
@@ -569,7 +641,7 @@
 
         .recommend-item {
           height: 524upx;
-          width: 328upx;
+          width: 330upx;
           margin-bottom: 20upx;
 
           &>image {

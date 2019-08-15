@@ -238,6 +238,9 @@ view.data-v-cfbc3cb4, image.data-v-cfbc3cb4, text.data-v-cfbc3cb4, input.data-v-
       -ms-flex-item-align: end !important;
           align-self: flex-end !important;
 }
+.t-dec-line.data-v-cfbc3cb4 {
+  text-decoration: line-through;
+}
 .p-re.data-v-cfbc3cb4 {
   position: relative !important;
 }
@@ -720,6 +723,9 @@ to {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.culture .nomore.data-v-cfbc3cb4 {
+    line-height: 60rpx;
+}
 .main.data-v-cfbc3cb4 {
   padding: 0 30rpx;
   display: -webkit-box;
@@ -837,8 +843,9 @@ to {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 524rpx;
-    width: 330rpx;
+    width: 332rpx;
     margin-top: 20rpx;
+    border: 1rpx solid #eee;
 }
 .main .good-item .good-img.data-v-cfbc3cb4 {
       height: 330rpx;

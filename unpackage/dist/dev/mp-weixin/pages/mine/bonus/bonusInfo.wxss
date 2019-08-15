@@ -238,6 +238,9 @@ view.data-v-551dcdca, image.data-v-551dcdca, text.data-v-551dcdca, input.data-v-
       -ms-flex-item-align: end !important;
           align-self: flex-end !important;
 }
+.t-dec-line.data-v-551dcdca {
+  text-decoration: line-through;
+}
 .p-re.data-v-551dcdca {
   position: relative !important;
 }

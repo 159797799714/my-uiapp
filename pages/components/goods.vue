@@ -42,7 +42,7 @@
         <view class="white" @click="filterTag_Index = ''"/>
       </view>
       
-      <scroll-view  scroll-y="true" class="culture">
+      <scroll-view  scroll-y="true" class="culture" :scroll-top="scrollTop" @scrolltolower="loadingMore" lower-threshold="100">
         <!-- 分享 -->
         <view v-if="tabIndex === 0" class="main bg-white border-box">
           <view v-for="(item, index) in shareList" :key="index" class="item">
@@ -76,7 +76,7 @@
               <view class="good-remark">
                 <text>{{ item.selling_point }}</text>
               </view>
-              <view class="good-price">
+              <view class="good-price font-purple">
                 <view>
                   <text>粉丝价￥</text>
                   <text class="bigText">{{ item.sku[0].goods_price * 100 % 100 === 0 ? item.sku[0].goods_price * 100 / 100 : item.sku[0].goods_price }}</text>
@@ -85,6 +85,7 @@
             </view>
           </view>
         </view>
+        <view v-if="tabIndex === 1 && goodList.length === filterCoverList.sum" class="font-30 t-center color-99 nomore">抱歉！没有更多商品~</view>
       </scroll-view>
     </view>
     
@@ -135,12 +136,13 @@
         filter: ['品牌', '分类'],
         filterTag_Index: '',            //默认选中品牌
         filter_alert: true,             // 筛选遮罩层显示
+        scrollTop: 0,                   // 页面滚动距离顶部位置
         shareList: [],
         filterCoverList: {
-          list: ['铁三角', '索尼', '铁三角', '索尼', '铁三角'],
-          sum: 4999
+          list: [],
+          sum: 0
         },
-        classList: [],
+        classList: [],                                 // 品牌分类列表
         filterArr: [],
         goodList: [],                                  // 商城数据
         byid: false,                                   // 从商城进入，用于判断是否加载二级品牌分类
@@ -160,6 +162,7 @@
         brand_id: '',                        // 选中的品牌ID
         category_id: '',                     // 一级分类ID
         goodsFormData: {
+          page: 1,
           category_id: '',
           search: '',
           sortType: 'all',
@@ -200,6 +203,7 @@
       inputValue(val, oldval) {
         this.shareFormData.search = val
         this.goodsFormData.search = val
+        this.goodsFormData.page = 1
       }
     },
     computed: {
@@ -243,6 +247,12 @@
           }
         })
       },
+      // 上拉加载更多
+      loadingMore() {
+        let that = this
+        that.goodsFormData.page += 1
+        that.searchAction()
+      },
       
       // 搜索商品或者文章 this.tabIndex =  0 为分享 1为商品 
       searchAction() {
@@ -272,7 +282,13 @@
                   that.shareList = res.data.list
                   break
                 case 1:
-                  that.goodList = res.data.list.data
+                  if(that.goodsFormData.page > 1 && that.goodsFormData.page <= res.data.list.last_page) {
+                    res.data.list.data.map((item, index) => {
+                      that.goodList.push(item)
+                    })
+                  } else if(that.goodsFormData.page === 1){
+                    that.goodList = res.data.list.data
+                  }
                   that.filterCoverList.sum = res.data.list.total
                   break
               }
@@ -335,6 +351,7 @@
         that.goodsFormData.category_id = ''
         that.goodsFormData.brand_id = ''
         that.goodsFormData.promotions_type = ''
+        that.goodsFormData.page = 1
         that.filterTag_Index = ''
         that.filter_alert = false
         that.selectArr = []
@@ -348,6 +365,8 @@
       // 价格等分类点击
       selectFilter(index) {
         let that = this
+        that.goodsFormData.page = 1
+        that.scrollTop = 0
         that.filterIndex = index
         if(that.tabIndex === 0) {
           console.log('进来了', that.shareTag[index].tag_id)
@@ -436,14 +455,17 @@
       
       //直接点击外面的分类品牌
       selectFilterTag(info) {
+        let that = this
         let index = info.toString()
-        this.filterCoverList.list= this.classList[index]
-        if(index === this.filterTag_Index && this.filterTag_Index !== '') {
-          this.filterTag_Index = ''
+        that.goodsFormData.page = 1
+        that.scrollTop = 0
+        that.filterCoverList.list= that.classList[index]
+        if(index === that.filterTag_Index && that.filterTag_Index !== '') {
+          that.filterTag_Index = ''
           return
         }
-        if (index !== this.filterTag_Index || this.filterTag_Index === '') {
-          this.filterTag_Index = index
+        if (index !== that.filterTag_Index || that.filterTag_Index === '') {
+          that.filterTag_Index = index
         }
       },
       // 点击筛选侧边栏中的品牌，活动等分类
@@ -699,6 +721,9 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    .nomore{
+      line-height: 60upx;
+    }
   }
   //商品样式1
   .main{
@@ -789,8 +814,9 @@
       display: flex;
       flex-direction: column;
       height: 524upx;
-      width: 330upx;
+      width: 332upx;
       margin-top: 20upx;
+      border: 1upx solid #eee;
       .good-img{
         height: 330upx;
         width: 330upx;
@@ -982,4 +1008,5 @@
       }
     }
   }
+ 
 </style>

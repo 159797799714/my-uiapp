@@ -3,7 +3,7 @@
     <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
       :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
       <swiper-item v-for="(item, index) in swiperList" :key="index" @click="naviget(item.activity_link)" class="swiper-item">
-        <image :src="item.image.file_path" mode=""></image>
+        <image :src="item.image.file_path || item.file_path" mode=""></image>
       </swiper-item>
     </swiper>
   </view>

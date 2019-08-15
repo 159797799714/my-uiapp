@@ -18,14 +18,14 @@
           <text v-for="(item, index) in history" :key="index" class="tag" @click="goGood(item)">{{ item }}</text>
         </view>
       </view>
-      <view class="hot">
+      <!-- <view class="hot">
         <view class="title">
           <text>热门搜索</text>
         </view>
         <view class="tags">
           <text v-for="(item, index) in hot" :key="index" class="tag"  @click="goGood(item)">{{ item }}</text>
         </view>
-      </view>
+      </view> -->
     </sroll-view>
   </view>
 </template>
@@ -97,22 +97,30 @@
       },
       delHistory() {
         let that = this
-        uni.showModal({
-          title: '温馨提示',
-          content: '确认删除所有搜索记录？',
-          success(res) {
-            if (res.confirm) {
-              uni.removeStorage({
-                key: 'history_arr',
-                success: function (res) {
-                  that.history = []
-                }
-              });
-            } else if (res.cancel) {
-              console.log('用户点击取消')
+        if(that.history.length.length > 0) {
+          uni.showModal({
+            title: '温馨提示',
+            content: '确认删除所有搜索记录？',
+            success(res) {
+              if (res.confirm) {
+                uni.removeStorage({
+                  key: 'history_arr',
+                  success: function (res) {
+                    that.history = []
+                  }
+                });
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
             }
-          }
-        })
+          })  
+        } else {
+          uni.showToast({
+            title: '没有记录了哦！',
+            icon: 'none'
+          })
+        }
+        
       }
     }
   }
