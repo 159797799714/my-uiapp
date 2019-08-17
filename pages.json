@@ -319,6 +319,13 @@
           "titleNView": "false"
         }
       }
+    },{
+      "path" : "pages/order/submitOrder",
+      "style": {
+        "navigationBarTitleText": "订单确认",
+        "navigationBarBackgroundColor":"#151515",
+        "navigationBarTextStyle":"white"
+      }
     }
   ],
   "tabBar": {

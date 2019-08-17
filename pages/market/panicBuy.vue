@@ -12,7 +12,7 @@
         <view v-if="swiperList.length > 0" class="banner">
           <banner :swiperList="swiperList"></banner>
         </view>
-        <!-- <view class="leave-time">{{ title === '秒杀'?'秒杀': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view> -->
+        <!-- <view class="leave-time">{{ title === '秒杀购'?'秒杀购': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view> -->
         <view v-for="(item, index) in goodList.data" :key="index" class="item bg-white">
           <view class="goodImg" @click="goDetail(item)">
             <view v-if="item.surplus_inventory < 1" class="imgCover">
@@ -34,7 +34,7 @@
             <view class="price">
               <text class="newPrice">￥{{ item.goods_min_price }}</text>
               <text class="oldPrice">￥{{ item.goods_max_price }}</text>
-              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="goBuy(item)">立即秒杀</text>
+              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="goBuy(item)">立即抢购</text>
               <text v-if="item.surplus_inventory < 1" :class="{buy: true,'my-button': true, none: true}">已售完</text>
               <text v-if="goodList.header_info.status === '已结束'" :class="{buy: true,'my-button': true, none: true}">已结束</text>
               <!-- <form @submit="setRemind" report-submi="true"> -->
@@ -61,7 +61,7 @@
         swiperList: [],   // 轮播图
         timeList: [],                      // 时间
         selectIndex: 0,                    // 选中的时间
-        goodList: [],                      // 商品列表
+        goodList: {},                      // 商品列表
       }
     },
     onLoad(option) {
@@ -72,46 +72,51 @@
       })
     },
     onShow() {
-      // 获取秒杀或者限时购活动列表
+      // 获取秒杀购或者限时购活动列表
       this.getSeckillCategorys()
     },
     watch: {
       selectIndex(val, oldval) {
-        // 点击顶部时间动态获取秒杀商品
+        // 点击顶部时间动态获取秒杀购商品
         this.getgoodsbycategoryid(this.timeList[val].category_id)
       }
     },
     methods: {
-      // 获取秒杀活动列表
+      // 获取秒杀购活动列表
       getSeckillCategorys() {
-        let url = this.$api.seckill_categorys
-        if(this.title === '限时购') {
-          url = this.$api.flashsale_categorys
+        let that = this
+        let url = that.$api.seckill_categorys
+        if(that.title === '限时购') {
+          url = that.$api.flashsale_categorys
         }
-        this.$http({
+        that.$http({
           url: url,
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              this.timeList = res.data.list
+              that.timeList = res.data.list
               
-              // 通过第一个活动ID获取秒杀商品
-              this.getgoodsbycategoryid(this.timeList[0].category_id)
-              
-            } else if(res.code === 0 || res.code === -1 & res.msg) {
+              if(that.selectIndex !== 0) {
+                 // 如果已经有选中的活动就通过该活动ID获取秒杀购商品
+                 that.getgoodsbycategoryid(that.timeList[that.selectIndex].category_id) 
+              } else {
+                // 第一次进入自动通过第一个活动ID获取秒杀购商品
+                that.getgoodsbycategoryid(that.timeList[0].category_id) 
+              }
+            } else if(res.code === 0 || res.code === -1 && res.msg) {
               uni.showToast({
                 title: res.msg,
                 icon: 'none'
               })
             } else {
               uni.showToast({
-                title: '秒杀活动列表加载失败',
+                title: '秒杀购活动列表加载失败',
                 icon: 'none'
               })
             }
           }
         })
       },
-      // 通过秒杀活动ID获取秒杀商品列表
+      // 通过秒杀购活动ID获取秒杀购商品列表
       getgoodsbycategoryid(id) {
         let that = this
         let url = that.$api.seckill_goodsbycategoryid
@@ -144,21 +149,29 @@
       },
       goBuy(item) {
         console.log(item)
+        uni.navigateTo({
+          url: '../components/goodDetail?goods_id=' + item.goods_id + '&panic=true' + '&title=' + this.title
+        })
       },
       // 抢购提醒
       setRemind(item, index) {
-        console.log(item, index)
         let that = this
+        console.log(item, index)
+        console.log(that.goodList.data[index].isremind)
+        
         let url= that.$api.seckill_remind
         if(that.title === '限时购') {
+          console.log('111')
           url= that.$api.flashsale_remind
           if(item.remind === 'yes') {
+            console.log('222')
             url= that.$api.flashsale_cancelremind
           }  
-        } else if(that.title === '秒杀购') {
-          // url = 
+        } else if(that.title === '秒杀购' && item.remind === 'yes') {
+          console.lol('444')
+          url = that.$api.seckill_cancelremind
         }
-        
+        console.log(url)
         that.$http({
           url: url,
           data: {
@@ -168,8 +181,8 @@
           },
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log(res.data)
-              
+              console.log(res.data, that.goodList.data[index].isremind)
+              that.goodList.data[index].isremind = that.goodList.data[index].isremind === 'no'? 'yes': 'no'
             } else if(res.code === 0 || res.code === -1 && res.msg) {
               uni.showToast({
                 title: res.msg,

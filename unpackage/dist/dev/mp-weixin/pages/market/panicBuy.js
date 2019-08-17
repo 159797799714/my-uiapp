@@ -65,7 +65,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 296));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 304));};var _default =
 
 
 
@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
       swiperList: [], // 轮播图
       timeList: [], // 时间
       selectIndex: 0, // 选中的时间
-      goodList: [] // 商品列表
+      goodList: {} // 商品列表
     };
   },
   onLoad: function onLoad(option) {
@@ -139,46 +139,51 @@ __webpack_require__.r(__webpack_exports__);
 
   },
   onShow: function onShow() {
-    // 获取秒杀或者限时购活动列表
+    // 获取秒杀购或者限时购活动列表
     this.getSeckillCategorys();
   },
   watch: {
     selectIndex: function selectIndex(val, oldval) {
-      // 点击顶部时间动态获取秒杀商品
+      // 点击顶部时间动态获取秒杀购商品
       this.getgoodsbycategoryid(this.timeList[val].category_id);
     } },
 
   methods: {
-    // 获取秒杀活动列表
-    getSeckillCategorys: function getSeckillCategorys() {var _this = this;
-      var url = this.$api.seckill_categorys;
-      if (this.title === '限时购') {
-        url = this.$api.flashsale_categorys;
+    // 获取秒杀购活动列表
+    getSeckillCategorys: function getSeckillCategorys() {
+      var that = this;
+      var url = that.$api.seckill_categorys;
+      if (that.title === '限时购') {
+        url = that.$api.flashsale_categorys;
       }
-      this.$http({
+      that.$http({
         url: url,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            _this.timeList = res.data.list;
+            that.timeList = res.data.list;
 
-            // 通过第一个活动ID获取秒杀商品
-            _this.getgoodsbycategoryid(_this.timeList[0].category_id);
-
-          } else if (res.code === 0 || res.code === -1 & res.msg) {
+            if (that.selectIndex !== 0) {
+              // 如果已经有选中的活动就通过该活动ID获取秒杀购商品
+              that.getgoodsbycategoryid(that.timeList[that.selectIndex].category_id);
+            } else {
+              // 第一次进入自动通过第一个活动ID获取秒杀购商品
+              that.getgoodsbycategoryid(that.timeList[0].category_id);
+            }
+          } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
               title: res.msg,
               icon: 'none' });
 
           } else {
             uni.showToast({
-              title: '秒杀活动列表加载失败',
+              title: '秒杀购活动列表加载失败',
               icon: 'none' });
 
           }
         } });
 
     },
-    // 通过秒杀活动ID获取秒杀商品列表
+    // 通过秒杀购活动ID获取秒杀购商品列表
     getgoodsbycategoryid: function getgoodsbycategoryid(id) {
       var that = this;
       var url = that.$api.seckill_goodsbycategoryid;
@@ -211,21 +216,29 @@ __webpack_require__.r(__webpack_exports__);
     },
     goBuy: function goBuy(item) {
       console.log(item);
+      uni.navigateTo({
+        url: '../components/goodDetail?goods_id=' + item.goods_id + '&panic=true' + '&title=' + this.title });
+
     },
     // 抢购提醒
     setRemind: function setRemind(item, index) {
-      console.log(item, index);
       var that = this;
+      console.log(item, index);
+      console.log(that.goodList.data[index].isremind);
+
       var url = that.$api.seckill_remind;
       if (that.title === '限时购') {
+        console.log('111');
         url = that.$api.flashsale_remind;
         if (item.remind === 'yes') {
+          console.log('222');
           url = that.$api.flashsale_cancelremind;
         }
-      } else if (that.title === '秒杀购') {
-        // url = 
+      } else if (that.title === '秒杀购' && item.remind === 'yes') {
+        console.lol('444');
+        url = that.$api.seckill_cancelremind;
       }
-
+      console.log(url);
       that.$http({
         url: url,
         data: {
@@ -235,8 +248,8 @@ __webpack_require__.r(__webpack_exports__);
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log(res.data);
-
+            console.log(res.data, that.goodList.data[index].isremind);
+            that.goodList.data[index].isremind = that.goodList.data[index].isremind === 'no' ? 'yes' : 'no';
           } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
               title: res.msg,

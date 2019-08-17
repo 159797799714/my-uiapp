@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 305));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 313));};var _default =
 
 
 

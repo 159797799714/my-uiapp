@@ -33,6 +33,8 @@ $color_success: #4cd964;
 $color_warning: #f0ad4e;
 $color_error: #dd524d;
 // 字体
+
+$font-16: 16upx;
 $font-20: 20upx;
 $font-22: 22upx;
 $font-24: 24upx;
@@ -56,7 +58,9 @@ $font-84: 84upx;
 $font-86: 86upx;
 $font-88: 88upx;
 
-
+.font-16{
+  font-size: $font-16!important;
+}
 .font-20{
   font-size: 20upx!important;
   }
@@ -192,10 +196,13 @@ view, image, text, input, form{
   background: #151515!important;
 }
 .bg-3e{
-  background: $color-slipe-red;
+  background: $color-slipe-red!important;
 }
 .bg-3d{
-  background: $color-red;
+  background: $color-red!important;
+}
+.bg-f5{
+  background: $color-f5!important;
 }
 .bg-13{
   background: $title-color;
@@ -227,7 +234,7 @@ view, image, text, input, form{
   color: $word-color;
 }
 .col-3d{
-  color: $color-red;
+  color: $color-red!important;
 }
 .font-ff{
   color: $color-white;
@@ -286,6 +293,12 @@ view, image, text, input, form{
 }
 .flex-self-end {
     align-self: flex-end!important;
+}
+.m-top20{
+  margin-top: 20upx;
+}
+.over-hidden{
+  overflow: hidden;
 }
 
 .t-dec-line {
@@ -349,7 +362,31 @@ view, image, text, input, form{
     margin-bottom: 20upx;
   }
 }
+.m-top10{
+  margin-top: 10upx;
+}
+.flow-all-list {
+  font-size: 30upx;
+  padding: 15upx 30upx;
+  border-bottom: 1upx solid #f1f1f1;
+}
 
+.flow-all-list:last-child {
+  border-bottom: none;
+}
+
+.flow-all-list-cont {
+  font-size: 28upx;
+  padding: 10upx 0;
+}
+.flow-fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #eee;
+  z-index: 11;
+}
 // 全屏遮罩层
 .big-cover{
   position: fixed;

@@ -34,7 +34,8 @@
     "pages/mine/bonus/bonusInfo",
     "pages/mine/bonus/myCard",
     "pages/mine/sign",
-    "pages/mine/bonus/bonusApplyInfo"
+    "pages/mine/bonus/bonusApplyInfo",
+    "pages/order/submitOrder"
   ],
   "subPackages": [],
   "window": {
@@ -74,5 +75,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap6.json"
+  "sitemapLocation": "sitemap82.json"
 }

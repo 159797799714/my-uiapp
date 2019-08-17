@@ -188,7 +188,7 @@
             data: data,
             cb: (err, res) => {
               if (!err && res.code === 1) {
-                that.list[0].goodArr[index].total_num += 1
+                that.list[0].goodArr[index].total_num = that.list[0].goodArr[index].total_num - 0 + 1
                 
                 // 计算总金额
                 this.computePrice()

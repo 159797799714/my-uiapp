@@ -28,7 +28,7 @@
           </view>
         </view>
         
-        <!-- 拼团,秒杀，限时购，0元购等活动入口 -->
+        <!-- 拼团,秒杀购，限时购，0元购等活动入口 -->
         <view class="discount dis-flex flex-x-between">
           <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(index)">
             <view class="pintuan-text dis-flex">
@@ -98,7 +98,7 @@
           img: ''
         }, {
           imgUrl: '../../static/img/market/miaoshagou-text.png',
-          name: '秒杀购',
+          name: '秒杀购购',
           time: '',
           min_price: '',
           max_price: '',
@@ -142,7 +142,7 @@
       this.getLimitGoods()
       // 零元购
       this.getZero()
-      // 获取一个秒杀商品
+      // 获取一个秒杀购商品
       this.getKillGoods()
     },
     onPullDownRefresh() {
@@ -230,14 +230,14 @@
           }
         })
       },
-      // 商城页展示一个秒杀商品
+      // 商城页展示一个秒杀购商品
       getKillGoods() {
         let that = this
         that.$http({
           url: that.$api.getseckillgoodsbyone,
           cb: (err, res) => {
             if (!err && res.code === 1) {
-              console.log('秒杀', res.data)
+              console.log('秒杀购', res.data)
               if(res.data.goods) {
                 let goods= res.data.goods
                 that.discount[1].min_price= goods.sku[0].goods_price
@@ -263,7 +263,7 @@
               })
             } else {
               uni.showToast({
-                title: '秒杀抢购商品加载失败',
+                title: '秒杀购抢购商品加载失败',
                 icon: 'none'
               })
             }
@@ -348,7 +348,7 @@
           // url: 'goodDetail' 
         })
       },
-      // 抢购或者秒杀,零元购，拼团等
+      // 抢购或者秒杀购,零元购，拼团等
       goPintuan(index) {
         switch(index) {
           case 0:
@@ -359,7 +359,7 @@
             break
           case 1:
             uni.navigateTo({
-              url: 'panicBuy?origin=' + '秒杀'
+              url: 'panicBuy?origin=' + '秒杀购'
             })
             break
           case 2:

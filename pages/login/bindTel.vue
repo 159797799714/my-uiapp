@@ -104,7 +104,7 @@
       sureAction() {
         let code_mobile = uni.getStorageSync('code_mobile');
         let that = this
-        console.log(Number(code_mobile) !== that.mobile)
+        console.log(code_mobile, that.mobile, code_mobile === that.mobile)
         if(!that.showInfo) {
           uni.showToast({
             title: '请先获取手机验证码',
@@ -126,12 +126,11 @@
           })
           return
         }
-        if(Number(code_mobile) !== that.mobile) {
+        if(code_mobile !== that.mobile) {
           uni.showToast({
-            title: '手机号不一致，请重新获取验证码',
+            title: '手机号码与已获取验证码的手机号不一致',
             icon: 'none'
           })
-          that.showInfo = false
           return
         }
         if(!that.check_code) {

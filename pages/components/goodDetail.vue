@@ -4,10 +4,12 @@
       <!-- :style="{background: 'rgba(0, 0, 0,' + top / 375 + ')'}" -->
       <view class="search">
         <text class="iconfont back" @click="goBack">&#xe61c;</text>
-        <view class="nav" :style="{opacity: top / 375}">
+        <text class="col-f">商品详情</text>
+        <!-- 顶部锚点 -->
+        <!-- <view class="nav" :style="{opacity: top / 375}">
           <view v-for="(item, index) in navList" :key="index" :class="{checked: index === navIndex}" @click="navAction(index)">{{ item }}</view>
           <view class="slipe-span" :style="{left: (1 / navList.length / 2 * (navIndex * 2 + 1) ) * 100 + '%'}"></view>
-        </view>
+        </view> -->
         <view class="conduct">
           <text class="iconfont share" @click="goShare">&#xe60f;</text>
           <text class="iconfont" @click="keepAction">&#xe637;</text>
@@ -22,24 +24,32 @@
           </view>
         </swiper-item>
       </swiper>
-      <view v-if="showPanic" class="panic border-box">
+      
+      <!-- 限时购，秒杀购显示时间 -->
+      <view v-if="showPanic" :class="{'panic border-box': true, 'bg-3d': title === '限时购'}">
         <view class="price">
-          <text class="newPrice">￥199.00</text>
-          <text class="oldPrice">￥700</text>
+          <text class="newPrice">￥{{ detail.sku[0].goods_price }}</text>
+          <text class="oldPrice">￥{{ detail.sku[0].line_price }}</text>
         </view>
         <view class="time-box">
           <view class="time-info">
-            <text class="iconfont">&#xe6b9;</text>距开抢00:10:50.08
+            <text :class="{iconfont: true, 'col-3d': title === '限时购'}">&#xe6b9;</text>{{ activityStart ? '距结束' : '距开始'}} {{ countDownTime }}
           </view>
-          <view class="time">今天17:00开抢</view>
+          <view v-if="!activityStart" class="time">今天开抢</view>
+          <view v-if="activityStart" class="time over-hidden p-re">
+            <text class="p-ab num font-20 t-center">已抢：{{ percent }}%</text>
+            <progress :percent="percent" :activeColor="activeColor" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
+          </view>
         </view>
       </view>
+      
       <view class="head bg-white">
         <view class="title">{{ detail.goods_name }}</view>
-        <view class="price font-red">￥{{ detail.sku[0].goods_price }}</view>
+        <view v-if="!showPanic" class="price font-red">￥{{ detail.sku[0].goods_price }}</view>
         <view v-if="detail.selling_point" class="tags">
           <text class="tag">{{ detail.selling_point }}</text>
         </view>
+        <text class="font-28">销量：{{ detail.goods_sales }}</text>
       </view>
       <view v-if="detail.promotion_info" class="sale-info row bg-white" @click="lookInfo">
         <view class="row-name">促销信息</view>
@@ -129,7 +139,7 @@
       </view>
       <view class="btn-menu">
         <view class="btn" @click="outAddcar">加入购物车</view>
-        <view class="btn buy">立即购买</view>
+        <view class="btn buy" @click="buyNow">立即购买</view>
       </view>
     </view>
     
@@ -152,19 +162,19 @@
     
     <!-- 商品规格选择弹窗 -->
     <view v-if="normShow" class="big-cover toTop border-box">
-      <view class="white"></view>
+      <view class="white" @click="normShow= false"></view>
       <view class="cover-main bg-white border-box">
         <view class="cover-word border-box padding-30">
           <view class="header">
             <view class="img">
-              <image :src="goods.image_path" mode=""></image>
+              <image :src="goods.image_path? goods.image_path: detail.image[0].file_path"></image>
             </view>
             <view class="other">
               <view class="cancel">
                 <text class="iconfont" @click="closeNorm">&#xe613;</text>
               </view>
-              <view class="price">￥<text>{{ goods.goods_price }}</text></view>
-              <view class="storeNum">仅剩{{ goods.stock_num }}件</view>
+              <view class="price">￥<text>{{ goods.goods_price? goods.goods_price : detail.sku[0].goods_price }}</text></view>
+              <view class="storeNum">仅剩{{ goods.stock_num? goods.stock_num: detail.sku[0].stock_num }}件</view>
             </view>
           </view>
           <scroll-view scroll-y="true" class="norm">
@@ -177,9 +187,9 @@
             <view class="control-num">
               <text>购买数量</text>
               <view class="sum">
-                <text class="iconfont" @click="controlNum('-')">&#xe643;</text>
+                <text v-if="!panic" class="iconfont" @click="controlNum('-')">&#xe643;</text>
                 <text class="num">{{ goods_num }}</text>
-                <text class="iconfont" @click="controlNum('+')">&#xe620;</text>
+                <text v-if="!panic" class="iconfont" @click="controlNum('+')">&#xe620;</text>
               </view>
             </view>
           </scroll-view>
@@ -187,7 +197,7 @@
         <view class="alert-btn">
           <view v-if="isCar" class="sure-btn" @click="addCar">确认</view>
           <view v-if="!isCar" class="sure-btn"  @click="addCar">加入购物车</view>
-          <view v-if="!isCar" class="sure-btn buy-btn">立即购买</view>  
+          <view v-if="!isCar" class="sure-btn buy-btn" @click="toBuy">立即购买</view>  
         </view>
 
       </view>
@@ -196,7 +206,8 @@
 </template>
 
 <script>
-  import uParse from  "../../components/uni-rich/parse.vue"
+  import uParse from  "../../components/uni-rich/parse.vue";
+  import { countDown } from "../../common/util.js";
   export default {
     components: {
       uParse
@@ -218,7 +229,7 @@
         specData: {},                         // 商品规格
         select_arr: [],                       // 选中商品id数组
         select_name: [],                      // 选中的规格名称
-        spec_sku_id: '',                      // 选中商品id拼接信息  例子：10028_10253_10256
+        spec_sku_id: 0,                       // 选中商品id拼接信息  例子：10028_10253_10256
         goods: {},                            // 选中规格商品价格
         strings: '',                          // 商品详情信息
         goods_num: 1,                         // 购买商品数量
@@ -247,18 +258,24 @@
         //   time: '2019.06.12-2019.06.15',
         //   type: 2
         // }],
+        activeColor: '',                       // 进度条剩余的颜色
         normShow: false,                        // 商品规格弹窗
+        title: '',                              // 传过来的秒杀购或者限时购
+        percent: 0,                             // 已经被抢的比例
+        activityStart: '',                      // 活动是否开始
+        countDownTime: '',                      // 距离结束时间
+        
       }
     },
-    // 接受首页传递的参数
+    // 接受传递的参数
     onLoad(option) {
       console.log('分享文章详情页接受到的参数',option)
       this.goods_id = option.goods_id
       if(option.panic === 'true') {
         this.showPanic = true
-        return
+        this.title = option.title
+        this.activeColor= option.title === '秒杀购'? '#F4433D' : '#F4A03D'
       }
-      
       // 获取商品详情
       this.getDetail()
     },
@@ -271,10 +288,20 @@
       // 获取商品详情
       getDetail() {
         let that = this
-        this.$http({
-          url: this.$api.goods_detail,
+        let url = that.$api.goods_detail
+        // 入口区分接口地址
+        if(that.showPanic) {
+          if(that.title === '限时购') {
+            url= that.$api.flashsale_detail
+          } else if(that.title === '秒杀购') {
+            url= that.$api.seckill_detail
+          }
+        }
+        // 请求
+        that.$http({
+          url: url,
           data: {
-            goods_id: this.goods_id
+            goods_id: that.goods_id
           },
           cb: (err, res) => {
             if(!err && res.code === 1) {
@@ -284,7 +311,23 @@
               that.comment_data_count = that.detail.comment_data_count
               that.swiperList = that.detail.image
               that.specData = res.data.specData
-              // that.spec_sku_id = that.specData.spec_attr[0].spec_items[0].item_id + '_' + 
+              
+              let data = res.data.detail
+              that.percent = Math.ceil((data.total_inventory - data.surplus_inventory)/data.total_inventory * 100)
+              if(data.activity_starttime) {
+                if(new Date(data.activity_starttime) > new Date()) {
+                  data.activityStart = false
+                  countDown(data.activity_endtime,function(nowTime) {
+                    that.countDownTime= nowTime
+                  })
+                }else {
+                  that.activityStart = true
+                  countDown(data.activity_endtime,function(nowTime) {
+                    that.countDownTime= nowTime
+                  })
+                }  
+              }
+              
               
               if(that.specData) {
                 let obj = {}
@@ -304,9 +347,6 @@
                   that.select_name.push(item.spec_items[0].spec_value)
                 })  
               }
-              
-              
-              
             } else if(res.code === 0 || res.code === -1 && res.msg) {
               uni.showToast({
                 title: res.msg,
@@ -318,44 +358,46 @@
                 icon: 'none'
               })
             }
-          }
-        })
+          },
+        })  
+        
       },
       
       // 商品规格
       selectNorm(shu, li, num) {
+        let that = this
         console.log(shu, li , num)
-        this.select_arr[shu] = li.item_id
+        that.select_arr[shu] = li.item_id
         let arr = []
         let arr2 = []
         
         // 选中的规格id数组
-        this.select_arr.map((item, index) => {
+        that.select_arr.map((item, index) => {
           if(index === shu) {
             arr.push(li.item_id)
           } else {
             arr.push(item)
           }
         })
-        this.select_arr = arr
+        that.select_arr = arr
         
         // 选中的名称数组
-        this.select_name.map((item, index) => {
+        that.select_name.map((item, index) => {
           if(index === shu) {
             arr2.push(li.spec_value)
           } else {
             arr2.push(item)
           }
         })
-        this.select_name = arr2
+        that.select_name = arr2
         
         console.log('选中的规格id', arr, '选中的规格名称',  arr2)
         
-        let id = this.select_arr.join('_')
+        let id = that.select_arr.join('_')
         
         // 图片及价钱和库存
-        let obj = this.goods
-        this.specData.spec_list.map((item, index) => {
+        let obj = that.goods
+        that.specData.spec_list.map((item, index) => {
           if(item.spec_sku_id === id) {
             obj.goods_price= item.form.goods_price
             obj.stock_num= item.form.stock_num
@@ -364,7 +406,7 @@
             }
           }
         })
-        this.goods = obj
+        that.goods = obj
         
       },
       // 设置商品数量
@@ -392,13 +434,53 @@
         this.isCar = true
         this.normShow = true
       },
+      // 立即购买
+      buyNow() {
+        this.normShow = true
+      },
+      // 弹窗立即购买
+      toBuy() {
+        let that = this
+        that.$http({
+          url: that.$api.buyNowinventory,
+          data: {
+            goods_id: that.goods_id,
+            goods_num: that.goods_num,
+            goods_sku_id: that.spec_sku_id
+          },
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              console.log('库存充足')
+              let data= {
+                goods_id: that.goods_id,
+                goods_num: that.goods_num,
+                goods_sku_id: that.spec_sku_id,
+                panic: that.showPanic,
+                title: that.title
+              }
+              uni.navigateTo({
+                url: '../order/submitOrder?data=' + JSON.stringify(data)
+              })
+            } else if(res.code === 0 || res.code === -1 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '检测库存失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
       
       // 加入购物车操作
       addCar() {
-        console.log(this.goods_id, this.goods_num, this.select_arr.join('_'))  // goods_sku_id
         let that = this
         let data = {
-          goods_sku_id: that.select_arr.join('_'),
+          goods_sku_id: that.select_arr.length > 0? that.select_arr.join('_'): 0,
           goods_id: that.goods_id,
           goods_num: that.goods_num
         }
@@ -627,6 +709,12 @@
         background: rgba(225, 225, 225, 0.3);
         border-radius: 15upx;
         text-align: center;
+        .num{
+          left: 0;
+          top: 0;
+          width: 220upx;
+          line-height: 30upx;
+        }
       }
     }
   }
@@ -648,7 +736,7 @@
       line-height: 32upx;
     }
     .price{
-      margin-bottom: 35upx;
+      margin-bottom: 15upx;
       font-size: $font-36;
       line-height: 36upx;
       font-weight: $font-bold;
@@ -658,7 +746,6 @@
       .tag{
         display: inline-block;
         height: 40upx;
-        padding: 0 17upx;
         margin-right: 10upx;
         border-radius: 20upx;
         line-height: 40upx;
@@ -711,7 +798,7 @@
       flex: 1;
     }
     .cover-main{
-      height: 896upx;
+      max-height: 896upx;
       padding-top: 9upx;
       display: flex;
       flex-direction: column;
@@ -798,7 +885,7 @@
           }
         }
         .norm{
-          height: 628upx;
+          max-height: 628upx;
           width: 100%;
           overflow: hidden;
           .norm-item{

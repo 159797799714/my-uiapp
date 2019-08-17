@@ -77,6 +77,10 @@ var render = function() {
     _vm.e0 = function($event) {
       _vm.normShow = true
     }
+
+    _vm.e1 = function($event) {
+      _vm.normShow = false
+    }
   }
 }
 var staticRenderFns = []
@@ -110,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 305));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -309,6 +313,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 313));};var _default =
 {
   components: {
     uParse: uParse },
@@ -330,7 +345,7 @@ __webpack_require__.r(__webpack_exports__);
       specData: {}, // 商品规格
       select_arr: [], // 选中商品id数组
       select_name: [], // 选中的规格名称
-      spec_sku_id: '', // 选中商品id拼接信息  例子：10028_10253_10256
+      spec_sku_id: 0, // 选中商品id拼接信息  例子：10028_10253_10256
       goods: {}, // 选中规格商品价格
       strings: '', // 商品详情信息
       goods_num: 1, // 购买商品数量
@@ -359,18 +374,24 @@ __webpack_require__.r(__webpack_exports__);
       //   time: '2019.06.12-2019.06.15',
       //   type: 2
       // }],
-      normShow: false // 商品规格弹窗
+      activeColor: '', // 进度条剩余的颜色
+      normShow: false, // 商品规格弹窗
+      title: '', // 传过来的秒杀购或者限时购
+      percent: 0, // 已经被抢的比例
+      activityStart: '', // 活动是否开始
+      countDownTime: '' // 距离结束时间
     };
+
   },
-  // 接受首页传递的参数
+  // 接受传递的参数
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option);
     this.goods_id = option.goods_id;
     if (option.panic === 'true') {
       this.showPanic = true;
-      return;
+      this.title = option.title;
+      this.activeColor = option.title === '秒杀购' ? '#F4433D' : '#F4A03D';
     }
-
     // 获取商品详情
     this.getDetail();
   },
@@ -383,10 +404,20 @@ __webpack_require__.r(__webpack_exports__);
     // 获取商品详情
     getDetail: function getDetail() {
       var that = this;
-      this.$http({
-        url: this.$api.goods_detail,
+      var url = that.$api.goods_detail;
+      // 入口区分接口地址
+      if (that.showPanic) {
+        if (that.title === '限时购') {
+          url = that.$api.flashsale_detail;
+        } else if (that.title === '秒杀购') {
+          url = that.$api.seckill_detail;
+        }
+      }
+      // 请求
+      that.$http({
+        url: url,
         data: {
-          goods_id: this.goods_id },
+          goods_id: that.goods_id },
 
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
@@ -396,7 +427,23 @@ __webpack_require__.r(__webpack_exports__);
             that.comment_data_count = that.detail.comment_data_count;
             that.swiperList = that.detail.image;
             that.specData = res.data.specData;
-            // that.spec_sku_id = that.specData.spec_attr[0].spec_items[0].item_id + '_' + 
+
+            var data = res.data.detail;
+            that.percent = Math.ceil((data.total_inventory - data.surplus_inventory) / data.total_inventory * 100);
+            if (data.activity_starttime) {
+              if (new Date(data.activity_starttime) > new Date()) {
+                data.activityStart = false;
+                (0, _util.countDown)(data.activity_endtime, function (nowTime) {
+                  that.countDownTime = nowTime;
+                });
+              } else {
+                that.activityStart = true;
+                (0, _util.countDown)(data.activity_endtime, function (nowTime) {
+                  that.countDownTime = nowTime;
+                });
+              }
+            }
+
 
             if (that.specData) {
               var obj = {};
@@ -416,9 +463,6 @@ __webpack_require__.r(__webpack_exports__);
                 that.select_name.push(item.spec_items[0].spec_value);
               });
             }
-
-
-
           } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
               title: res.msg,
@@ -432,42 +476,44 @@ __webpack_require__.r(__webpack_exports__);
           }
         } });
 
+
     },
 
     // 商品规格
     selectNorm: function selectNorm(shu, li, num) {
+      var that = this;
       console.log(shu, li, num);
-      this.select_arr[shu] = li.item_id;
+      that.select_arr[shu] = li.item_id;
       var arr = [];
       var arr2 = [];
 
       // 选中的规格id数组
-      this.select_arr.map(function (item, index) {
+      that.select_arr.map(function (item, index) {
         if (index === shu) {
           arr.push(li.item_id);
         } else {
           arr.push(item);
         }
       });
-      this.select_arr = arr;
+      that.select_arr = arr;
 
       // 选中的名称数组
-      this.select_name.map(function (item, index) {
+      that.select_name.map(function (item, index) {
         if (index === shu) {
           arr2.push(li.spec_value);
         } else {
           arr2.push(item);
         }
       });
-      this.select_name = arr2;
+      that.select_name = arr2;
 
       console.log('选中的规格id', arr, '选中的规格名称', arr2);
 
-      var id = this.select_arr.join('_');
+      var id = that.select_arr.join('_');
 
       // 图片及价钱和库存
-      var obj = this.goods;
-      this.specData.spec_list.map(function (item, index) {
+      var obj = that.goods;
+      that.specData.spec_list.map(function (item, index) {
         if (item.spec_sku_id === id) {
           obj.goods_price = item.form.goods_price;
           obj.stock_num = item.form.stock_num;
@@ -476,7 +522,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       });
-      this.goods = obj;
+      that.goods = obj;
 
     },
     // 设置商品数量
@@ -504,13 +550,53 @@ __webpack_require__.r(__webpack_exports__);
       this.isCar = true;
       this.normShow = true;
     },
+    // 立即购买
+    buyNow: function buyNow() {
+      this.normShow = true;
+    },
+    // 弹窗立即购买
+    toBuy: function toBuy() {
+      var that = this;
+      that.$http({
+        url: that.$api.buyNowinventory,
+        data: {
+          goods_id: that.goods_id,
+          goods_num: that.goods_num,
+          goods_sku_id: that.spec_sku_id },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            console.log('库存充足');
+            var data = {
+              goods_id: that.goods_id,
+              goods_num: that.goods_num,
+              goods_sku_id: that.spec_sku_id,
+              panic: that.showPanic,
+              title: that.title };
+
+            uni.navigateTo({
+              url: '../order/submitOrder?data=' + JSON.stringify(data) });
+
+          } else if (res.code === 0 || res.code === -1 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '检测库存失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
 
     // 加入购物车操作
     addCar: function addCar() {
-      console.log(this.goods_id, this.goods_num, this.select_arr.join('_')); // goods_sku_id
       var that = this;
       var data = {
-        goods_sku_id: that.select_arr.join('_'),
+        goods_sku_id: that.select_arr.length > 0 ? that.select_arr.join('_') : 0,
         goods_id: that.goods_id,
         goods_num: that.goods_num };
 

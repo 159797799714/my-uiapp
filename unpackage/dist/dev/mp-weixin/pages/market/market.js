@@ -184,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 296));};var _default =
+var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 304));};var _default =
 {
   components: {
     banner: banner },
@@ -205,7 +205,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         img: '' },
       {
         imgUrl: '../../static/img/market/miaoshagou-text.png',
-        name: '秒杀购',
+        name: '秒杀购购',
         time: '',
         min_price: '',
         max_price: '',
@@ -249,7 +249,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
     this.getLimitGoods();
     // 零元购
     this.getZero();
-    // 获取一个秒杀商品
+    // 获取一个秒杀购商品
     this.getKillGoods();
   },
   onPullDownRefresh: function onPullDownRefresh() {
@@ -337,14 +337,14 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         } });
 
     },
-    // 商城页展示一个秒杀商品
+    // 商城页展示一个秒杀购商品
     getKillGoods: function getKillGoods() {
       var that = this;
       that.$http({
         url: that.$api.getseckillgoodsbyone,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log('秒杀', res.data);
+            console.log('秒杀购', res.data);
             if (res.data.goods) {
               var goods = res.data.goods;
               that.discount[1].min_price = goods.sku[0].goods_price;
@@ -370,7 +370,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
 
           } else {
             uni.showToast({
-              title: '秒杀抢购商品加载失败',
+              title: '秒杀购抢购商品加载失败',
               icon: 'none' });
 
           }
@@ -455,7 +455,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         // url: 'goodDetail' 
       });
     },
-    // 抢购或者秒杀,零元购，拼团等
+    // 抢购或者秒杀购,零元购，拼团等
     goPintuan: function goPintuan(index) {
       switch (index) {
         case 0:
@@ -466,7 +466,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
           break;
         case 1:
           uni.navigateTo({
-            url: 'panicBuy?origin=' + '秒杀' });
+            url: 'panicBuy?origin=' + '秒杀购' });
 
           break;
         case 2:
