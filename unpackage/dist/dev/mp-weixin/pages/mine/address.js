@@ -126,27 +126,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
+      default_id: '', // 默认收货地址ID
       addressList: [
-      {
-        name: '锤子',
-        tel: '166666666666',
-        location: '广东省深圳市南山区',
-        address: '高新南九道三行科技大厦11108',
-        tags: ['其他'],
-        def: true },
-      {
-        name: '冬瓜',
-        tel: '166666666666',
-        location: '广东省深圳市南山区',
-        address: '高新南九道三行科技大厦11108',
-        tags: ['家'],
-        def: false }] };
-
-
+        // {
+        //   name: '羊羊羊',
+        //   phone: '15555555555',
+        //   region: '',
+        //   detail: '',
+        //   def: false
+        // }, {
+        //   name: '',
+        //   phone: '',
+        //   region: '',
+        //   detail: '',
+        //   def: false
+        // }
+      ] };
 
   },
   computed: {
@@ -155,18 +159,33 @@ var _default =
     } },
 
   onLoad: function onLoad() {
+    // // 获取地址列表
+    // this.getAddress();
+  },
+  onShow: function onShow() {
     // 获取地址列表
     this.getAddress();
   },
   methods: {
     // 获取收货地址列表
-    getAddress: function getAddress() {
+    getAddress: function getAddress() {var _this = this;
       var that = this;
       that.$http({
         url: that.$api.addresslist,
         cb: function cb(err, res) {
-          if (!err && res) {
-            console.log(res);
+          if (!err && res.code === 1) {
+            _this.addressList = res.data.list;
+            _this.default_id = res.data.default_id;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '收货地址获取失败',
+              icon: 'none' });
+
           }
         } });
 
@@ -182,8 +201,9 @@ var _default =
 
     },
     editAction: function editAction(item) {
+      var isDefault = this.default_id === item.address_id;
       uni.navigateTo({
-        url: 'addAddress?info=' + JSON.stringify(item) });
+        url: 'addAddress?id=' + item.address_id + '&isDefault=' + isDefault });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "分类",
   "navigationBarBackgroundColor": "#151515",
-  "usingComponents": {
-    "uni-indexed-list": "/components/uni-indexed-list/uni-indexed-list"
-  }
+  "usingComponents": {}
 }

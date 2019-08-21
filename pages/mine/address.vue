@@ -2,20 +2,25 @@
   <view class="container">
     <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
-      <text>收货地址</text>
+      <text @click="addAction">收货地址</text>
       <text class="iconfont" @click="addAction">&#xe620;</text>
     </view>
     <view class="content padding-30 border-box bg-white">
       <view v-for="(item, index) in addressList" :key="index" class="item" @click="editAction(item)">
         <view class="row1">
           <text class="name">{{ item.name }}</text>
-          <text class="tel">{{ item.tel }}</text>
-          <text v-if="item.def" class="tag">默认</text>
+          <text class="tel">{{ item.phone }}</text>
+          <text v-if="item.address_id === default_id" class="tag">默认</text>
           <text v-for="(li, num) in item.tags" :key="num" class="tag">{{ li }}</text>
         </view>
-        <view class="address">{{ item.location + item.address }}</view>
+        <view class="address">{{ item.region.city + item.region.province + item.region.region + item.detail }}</view>
+      </view>
+      <view v-if="addressList.length < 1" class="blank font-99 t-center">
+        <text class="iconfont font-160">&#xe715;</text>
+        <view class="font-36 font-99 t-center">暂无收货地址~</view>
       </view>
     </view>
+    <view class="addBtn bg-black col-f t-center font-30" @click="addAction">添加新地址</view>
   </view>
 </template>
 
@@ -23,22 +28,21 @@
   export default{
     data() {
       return {
+        default_id: '',           // 默认收货地址ID
         addressList: [
-          {
-            name: '锤子',
-            tel: '166666666666',
-            location: '广东省深圳市南山区',
-            address: '高新南九道三行科技大厦11108',
-            tags: ['其他'],
-            def: true
-          }, {
-            name: '冬瓜',
-            tel: '166666666666',
-            location: '广东省深圳市南山区',
-            address: '高新南九道三行科技大厦11108',
-            tags: ['家'],
-            def: false
-          }
+          // {
+          //   name: '羊羊羊',
+          //   phone: '15555555555',
+          //   region: '',
+          //   detail: '',
+          //   def: false
+          // }, {
+          //   name: '',
+          //   phone: '',
+          //   region: '',
+          //   detail: '',
+          //   def: false
+          // }
         ]
       }
     },
@@ -48,6 +52,10 @@
       }
     },
     onLoad() {
+      // // 获取地址列表
+      // this.getAddress();
+    },
+    onShow() {
       // 获取地址列表
       this.getAddress();
     },
@@ -58,8 +66,19 @@
         that.$http({
           url: that.$api.addresslist,
           cb: (err, res) => {
-            if(!err && res) {
-              console.log(res)
+            if(!err && res.code === 1) {
+              this.addressList= res.data.list
+              this.default_id= res.data.default_id
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '收货地址获取失败',
+                icon: 'none'
+              })
             }
           }
         })
@@ -75,8 +94,9 @@
         })
       },
       editAction(item) {
+        let isDefault= this.default_id === item.address_id
         uni.navigateTo({
-          url: 'addAddress?info=' + JSON.stringify(item)
+          url: 'addAddress?id=' + item.address_id + '&isDefault=' + isDefault
         })
       }
     }
@@ -134,5 +154,15 @@
         color: $word-color;
       }
     }
+    .blank{
+      margin: auto;
+      width: 300upx;
+      height: 400upx;
+    }
+    
+  }
+  .addBtn{
+    height: 100upx;
+    line-height: 100upx;
   }
 </style>

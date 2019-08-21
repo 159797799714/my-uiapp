@@ -1,127 +1,129 @@
 <template>
 	<view class="container bg-f5">
-	
+	<view class="main">
 	  <!-- 顶部选项卡 -->
 	  <view class="swiper-tab dis-flex flex-y-center flex-x-around font-28 bg-white">
 	    <view v-for="(item, index) in tabList" :key="index" :class="{'swiper-tab-item': true, 'on' : tabDefault === index }" @click="selectTab(index)">
 	      {{ item }}
 	    </view>
 	  </view>
-	
-	  <!-- 快递配送：配送地址 -->
-	  <view v-if="tabDefault === 0" @click="selectAddress" class="flow-delivery bg-white">
-	    <view class="flow-delivery__detail dis-flex flex-y-center flex-x-between">
-	      <text class="iconfont iconlogo font-40">&#xe646;</text>
-	      <view class="detail-content flex-box">
-	        <view v-if="detail.address.detail.address_id">
-	          <view class="detail-content__title dis-flex">
-	            <text class="font-30">{{ detail.address.name }}</text>
-	            <text class="detail-content__title-phone font-28">{{ detail.address.phone }}</text>
-	          </view>
-	          <view class="detail-content__describe">
-	            <text class="col-7">{{detail.address.region.province}} {{detail.address.region.city}} {{detail.address.region.region}} {{detail.address.detail}}</text>
-	          </view>
-	        </view>
-	        <view v-else>
-	          <view class="detail-content__describe dis-flex">
-	            <text class="col-6">请选择配送地址</text>
-	          </view>
-	        </view>
-	      </view>
-	      <text class="iconfont info font-40">&#xe644;</text>
-	    </view>
-	  </view>
-	
-	  <!-- 上门自提：自提门店 -->
-	  <view v-if="tabDefault === 1" @click="selectExtractPoint" class="flow-delivery bg-white">
-	    <view class="flow-delivery__detail dis-flex flex-y-center">
-	      <text class="iconfont iconlogo font-40">&#xe646;</text>
-	      <view class="detail-content flex-box">
-	        <view v-if="detail.extract_shop.shop_id">
-	          <view class="detail-content__title dis-flex">
-	            <text class="font-30">{{ detail.extract_shop.shop_name }}</text>
-	          </view>
-	          <view class="detail-content__describe">
-	            <text class="col-7">{{detail.extract_shop.region.province}} {{detail.extract_shop.region.city}} {{detail.extract_shop.region.region}} {{detail.extract_shop.address}}</text>
-	          </view>
-	        </view>
-	        <view v-else>
-	          <view class="detail-content__describe dis-flex">
-	            <text class="col-6">请选择自提点</text>
-	          </view>
-	        </view>
-	      </view>
-	      <text class="iconfont info font-40">&#xe644;</text>
-	    </view>
-	  </view>
-	
-	  <!-- 商品列表 -->
-	  <view class="m-top20 bg-white">
-	    <view class="checkout_list" v-for="(item, index) in detail.goods_list" :key="index" @click="goDetail(item)">
-        <view class="dis-flex flow-shopList">
-          <view class="flow-list-left">
-            <image mode="scaleToFill" :src="item.image[0].file_path"></image>
+    
+      <!-- 快递配送：配送地址 -->
+      <view v-if="tabDefault === 0" @click="selectAddress" class="flow-delivery bg-white">
+        <view class="flow-delivery__detail dis-flex flex-y-center flex-x-between">
+          <text class="iconfont iconlogo font-40">&#xe646;</text>
+          <view class="detail-content flex-box">
+            <view v-if="detail.address.address_id">
+              <view class="detail-content__title dis-flex onelist-hidden">
+                <text class="font-30">{{ detail.address.name }}</text>
+                <text class="detail-content__title-phone font-28">{{ detail.address.phone }}</text>
+              </view>
+              <view class="detail-content__describe onelist-hidden">
+                <text class="col-7">{{detail.address.region.province}} {{detail.address.region.city}} {{detail.address.region.region}} {{detail.address.detail}}</text>
+              </view>
+            </view>
+            <view v-else>
+              <view class="detail-content__describe dis-flex">
+                <text class="col-6">请选择配送地址</text>
+              </view>
+            </view>
           </view>
-          <view class="flow-list-right dis-flex flex-dir-column">
-            <view class="font-30 col-3 twolist-hidden">{{item.goods_name}}</view>
-            <view class="font-26 col-7">{{item.goods_sku.goods_attr}}</view>
-            <view class="flow-list-cont dis-flex flex-x-between flex-y-center">
-              <text class="flow-cont font-30">￥{{item.goods_price}}</text>
-              <text class="small font-26">×{{item.total_num}}</text>
+          <text class="iconfont info font-40">&#xe644;</text>
+        </view>
+      </view>
+      	
+      <!-- 上门自提：自提门店 -->
+      <view v-if="tabDefault === 1" @click="selectExtractPoint" class="flow-delivery bg-white">
+        <view class="flow-delivery__detail dis-flex flex-y-center">
+          <text class="iconfont iconlogo font-40">&#xe646;</text>
+          <view class="detail-content flex-box">
+            <view v-if="detail.extract_shop.shop_id">
+              <view class="detail-content__title dis-flex">
+                <text class="font-30">{{ detail.extract_shop.shop_name }}</text>
+              </view>
+              <view class="detail-content__describe">
+                <text class="col-7">{{detail.extract_shop.region.province}} {{detail.extract_shop.region.city}} {{detail.extract_shop.region.region}} {{detail.extract_shop.address}}</text>
+              </view>
+            </view>
+            <view v-else>
+              <view class="detail-content__describe dis-flex">
+                <text class="col-6">请选择自提点</text>
+              </view>
+            </view>
+          </view>
+          <text class="iconfont info font-40">&#xe644;</text>
+        </view>
+      </view>
+      	
+      <!-- 商品列表 -->
+      <view class="m-top20 bg-white">
+        <view class="checkout_list" v-for="(item, index) in detail.goods_list" :key="index" @click="goDetail(item)">
+          <view class="dis-flex flow-shopList">
+            <view class="flow-list-left">
+              <image mode="scaleToFill" :src="item.image[0].file_path"></image>
+            </view>
+            <view class="flow-list-right dis-flex flex-dir-column">
+              <view class="font-30 col-3 twolist-hidden">{{item.goods_name}}</view>
+              <view class="font-26 col-7">{{item.goods_sku.goods_attr}}</view>
+              <view class="flow-list-cont dis-flex flex-x-between flex-y-center">
+                <text class="flow-cont font-30">￥{{item.goods_price}}</text>
+                <text class="small font-26">×{{item.total_num}}</text>
+              </view>
             </view>
           </view>
         </view>
-	    </view>
-	    <view class="dis-flex flex-x-end font-28 padding-15 font-99">
-	      <text>共{{ detail.order_total_num }}件商品，合计：</text>
-	      <text class="flow-money col-m">￥{{ detail.order_total_price }}</text>
-	    </view>
-	  </view>
-	
-	  <!-- 买家留言 -->
-	  <view class="flow-all-money bg-white m-top20">
-	    <view class="ipt-wrapper dis-flex flow-all-list">
-	      <input v-model="remark" placeholder="选填：买家留言（50字以内）" maxlength="50"></input>
-	    </view>
-	  </view>
-	
-	  <!-- 商品金额 -->
-	  <view class="flow-all-money bg-white m-top20">
-	    <view class="dis-flex flex-x-between flow-all-list">
-	      <text class="flex-five">商品总金额：</text>
-	      <view class="flex-five t-r">
-	        <text class="col-m">￥{{ detail.order_total_price }}</text>
-	      </view>
-	    </view>
-	    <view class="dis-flex flex-x-between flow-all-list">
-	      <text class="flex-five">优惠券：</text>
-	      <view class="flex-five t-r">
-	        <view class="" catchtap="togglePopupCoupon">
-	          <view v-if="detail.coupon_list.length > 0">
-	            <text class="col-m" v-if="selectCoupon.couponId">-￥{{ detail.selectCoupon.reduced_price }}</text>
-	            <text class="col-m" v-else>有{{ detail.coupon_list.length }}张优惠券可用</text>
-	            <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
-	          </view>
-	          <text v-else class="">无优惠券可用</text>
-	        </view>
-	      </view>
-	    </view>
+        <view class="dis-flex flex-x-end font-28 padding-15 font-99">
+          <text>共{{ detail.order_total_num }}件商品，合计：</text>
+          <text class="flow-money col-m">￥{{ detail.order_total_price }}</text>
+        </view>
+      </view>
+      	
+      <!-- 买家留言 -->
+      <view class="flow-all-money bg-white m-top20">
+        <view class="ipt-wrapper dis-flex flow-all-list">
+          <input v-model="remark" placeholder="选填：买家留言（50字以内）" maxlength="50"></input>
+        </view>
+      </view>
+      	
+      <!-- 商品金额 -->
+      <view class="flow-all-money bg-white m-top20">
+        <view class="dis-flex flex-x-between flow-all-list">
+          <text class="flex-five">商品总金额：</text>
+          <view class="flex-five t-r">
+            <text class="col-m">￥{{ detail.order_total_price }}</text>
+          </view>
+        </view>
+        <view class="dis-flex flex-x-between flow-all-list">
+          <text class="flex-five">优惠券：</text>
+          <view class="flex-five t-r">
+            <view class="" catchtap="togglePopupCoupon">
+              <view v-if="detail.coupon_list.length > 0">
+                <text class="col-m" v-if="selectCoupon.couponId">-￥{{ detail.selectCoupon.reduced_price }}</text>
+                <text class="col-m" v-else>有{{ detail.coupon_list.length }}张优惠券可用</text>
+                <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+              </view>
+              <text v-else class="">无优惠券可用</text>
+            </view>
+          </view>
+        </view>
+      </view>
+        <!-- 配送费用 -->
+       <!-- <view v-if="{{ currentDelivery == deliverys.EXPRESS.value }}" class="dis-flex flow-all-list">
+          <text class="flex-five">配送费用：</text>
+          <view class="flex-five t-r">
+            <view v-if="{{address.address_id}}">
+              <text class="col-m" v-if="{{intra_region}}">+￥{{express_price}}</text>
+              <text v-else>不在配送范围</text>
+            </view>
+            <view v-else>
+              <text class="col-7">请先选择配送地址</text>
+            </view>
+          </view>
+        </view>
+      </view> -->
+      	
     </view>
-	    <!-- 配送费用 -->
-	   <!-- <view v-if="{{ currentDelivery == deliverys.EXPRESS.value }}" class="dis-flex flow-all-list">
-	      <text class="flex-five">配送费用：</text>
-	      <view class="flex-five t-r">
-	        <view v-if="{{address.address_id}}">
-	          <text class="col-m" v-if="{{intra_region}}">+￥{{express_price}}</text>
-	          <text v-else>不在配送范围</text>
-	        </view>
-	        <view v-else>
-	          <text class="col-7">请先选择配送地址</text>
-	        </view>
-	      </view>
-	    </view>
-	  </view> -->
-	
+	  
 	  <!-- 提交订单 -->
 	  <view class="flow-fixed-footer dis-flex flex-x-between bg-white m-top10">
       <view class="chackout-left pl-12 font-34 p-left-30">实付款：
@@ -146,11 +148,22 @@
         delivery: 10,                      // 快递10 自提20
         detail: {},                        // 订单数据
         remark: '',                        // 买家留言
+        cart_ids: '',                      // 购物车进来传入id
+        isCart: false,                     // 是否购物车进来
 			};
 		},
     onLoad(option) {
-      this.option= JSON.parse(option.data)
-      console.log(this.option)
+      console.log(option)
+      if(option.data) {
+        this.option= JSON.parse(option.data)
+        console.log('data')
+        return
+      }
+      if(option.cart === 'true') {
+        console.log('cart')
+        this.isCart= true
+        this.cart_ids= option.cart_ids
+      }
     },
     onShow() {
       // 提交订单
@@ -174,9 +187,18 @@
       orderBuy() {
         let that = this
         let data = that.option
+        let url= that.$api.orderBuyNow
         data.delivery= that.delivery
+        if(that.isCart) {
+          url= that.$api.orderCart
+          data= {
+            cart_ids: that.cart_ids,
+            shop_id: that.shop_id,
+            delivery:that.delivery
+          }
+        }
         that.$http({
-          url: that.$api.orderBuyNow,
+          url: url,
           data: data,
           cb: (err, res) => {
             if(!err && res.code === 1) {
@@ -196,6 +218,24 @@
               })
             }
           }
+        })
+      },
+      // 选择自提门店
+      selectExtractPoint() {
+        uni.chooseLocation({
+          success: function (res) {
+            console.log('位置名称：' + res.name);
+            console.log('详细地址：' + res.address);
+            console.log('纬度：' + res.latitude);
+            console.log('经度：' + res.longitude);
+            
+          }
+        });
+      },
+      // 选择收货地址
+      selectAddress() {
+        uni.navigateTo({
+          url: '../mine/address'
         })
       },
       goDetail(item) {
@@ -233,6 +273,11 @@
   border-bottom: 2px solid #16171c;
 }
 
+.main{
+  height: calc(100% - 92upx);
+  width: 100%;
+  overflow: auto;
+}
 /* 配送信息 */
 
 .flow-delivery {

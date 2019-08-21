@@ -221,6 +221,9 @@ view, image, text, input, form{
 .col-m {
   color: #ff5c00 !important;
 }
+.col-ee{
+  color: $color-ee!important;
+}
 .col-f{
   color: #fff!important;
 }
@@ -314,6 +317,10 @@ view, image, text, input, form{
   position: fixed!important;
 }
 
+.v-hidden{
+  visibility: hidden;
+}
+
 // 关闭原生头部导航时自定义头部样式
 .topBar{
   display: flex;
@@ -350,7 +357,15 @@ view, image, text, input, form{
 .t-center{
   text-align: center;
 }
-
+.t-left{
+  text-align: left;
+}
+.t-right{
+  text-align: right;
+}
+.b-top{
+  border-top: 1px solid #f5f5f5;
+}
 .padding-30{
   padding-left: 30upx;
   padding-right: 30upx;
@@ -412,6 +427,15 @@ view, image, text, input, form{
 .toBig{
   animation: toBig 800ms;
 }
+
+.my-btn{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 100%;
+  border-radius: 5px;
+}
+
 // 遮罩层从下往上
 @keyframes toTop{
   from{

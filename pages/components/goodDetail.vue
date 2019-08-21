@@ -187,9 +187,9 @@
             <view class="control-num">
               <text>购买数量</text>
               <view class="sum">
-                <text v-if="!panic" class="iconfont" @click="controlNum('-')">&#xe643;</text>
+                <text v-if="!showPanic" class="iconfont" @click="controlNum('-')">&#xe643;</text>
                 <text class="num">{{ goods_num }}</text>
-                <text v-if="!panic" class="iconfont" @click="controlNum('+')">&#xe620;</text>
+                <text v-if="!showPanic" class="iconfont" @click="controlNum('+')">&#xe620;</text>
               </view>
             </view>
           </scroll-view>
@@ -245,7 +245,7 @@
         // store: {
         //   name: 'SONY官方自营店',
         //   imgUrl: ''   
-        // },                                      // 店名头像信息
+        // },                                   // 店名头像信息
         showPanic: false,                       // 顶部分享显示与隐藏
         coverShow: false,                       // 全局遮罩层显隐
         // sale_info: [{

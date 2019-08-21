@@ -73,6 +73,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.isEdit = !_vm.isEdit
+    }
+
+    _vm.e1 = function($event) {
+      _vm.isEdit = !_vm.isEdit
+    }
+  }
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -170,6 +179,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -180,7 +193,9 @@ var _default =
 
       total_price: 0, // 总计算钱数
       checked_sum: 0, // 选中商品数量
-      all_checked: false // 全部选中
+      all_checked: false, // 全部选中
+      goodId: [], // item.goods_id + '_' + item.goods_sku_id
+      isEdit: false // 是否处于编辑状态
     };
   },
   computed: {
@@ -193,8 +208,13 @@ var _default =
     // this.getList()
   },
   onShow: function onShow() {
+    this.checked_sum = 0;
     //  获取购物车数据
+
     this.getList();
+    if (this.all_checked) {
+      this.selAllRadio();
+    }
   },
   methods: {
     // 获取购物车列表
@@ -213,7 +233,12 @@ var _default =
         } });
 
     },
+    // 去结算
+    toSureOrder: function toSureOrder() {
+      uni.navigateTo({
+        url: '../order/submitOrder?cart=true&cart_ids=' + this.goodId.join(',') });
 
+    },
     // 勾选商品
     checkboxChange: function checkboxChange(id, num, index) {
       // console.log(id, num, index)
@@ -224,16 +249,53 @@ var _default =
       this.computePrice();
     },
 
+    delGood: function delGood() {
+      var that = this;
+      uni.showModal({
+        content: '确认删除所选商品？',
+        success: function success(res) {
+          if (res.confirm) {
+            that.$http({
+              url: that.$api.delcar,
+              data: {
+                goods_sku_id: that.goodId.join(',') },
+
+              cb: function cb(err, res) {
+                if (!err && res.code === 1) {
+                  uni.showToast({
+                    title: '删除成功',
+                    icon: 'none' });
+
+                  // 重新获取列表
+                  that.getList();
+                } else {
+                  uni.showToast({
+                    title: '删除失败请重试',
+                    icon: 'none' });
+
+                }
+              } });
+
+          } else if (res.cancel) {
+            console.log('用户点击取消');
+          }
+        } });
+
+    },
+
     // 计算总金额
     computePrice: function computePrice() {
       var that = this;
       var list = this.list[0].goodArr;
       that.total_price = 0;
       that.checked_sum = 0;
+      that.goodId = [];
       list.map(function (item, index) {
+        // console.log(item.checked, item.total_num, that.checked_sum, that.total_price)
         if (item.checked) {
           that.checked_sum += Number(item.total_num);
           that.total_price += Number(item.goods_price) * Number(item.total_num);
+          that.goodId.push(item.goods_id + '_' + item.goods_sku_id);
         }
       });
     },
@@ -317,10 +379,20 @@ var _default =
         url: '../market/market' });
 
     },
-    goDetail: function goDetail(goods_id) {
-      uni.navigateTo({
-        url: '../components/goodDetail?goods_id=' + goods_id });
+    goDetail: function goDetail(goods_id, type) {
+      if (type === 0) {
+        uni.navigateTo({
+          url: '../components/goodDetail?goods_id=' + goods_id });
 
+      } else if (type === 1) {
+        uni.navigateTo({
+          url: '../components/goodDetail?goods_id=' + goods_id + '&panic=true&title=' + '秒杀购' });
+
+      } else if (type === 2) {
+        uni.navigateTo({
+          url: '../components/goodDetail?goods_id=' + goods_id + '&panic=true&title=' + '限时购' });
+
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

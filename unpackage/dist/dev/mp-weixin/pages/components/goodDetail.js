@@ -361,7 +361,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
       // store: {
       //   name: 'SONY官方自营店',
       //   imgUrl: ''   
-      // },                                      // 店名头像信息
+      // },                                   // 店名头像信息
       showPanic: false, // 顶部分享显示与隐藏
       coverShow: false, // 全局遮罩层显隐
       // sale_info: [{

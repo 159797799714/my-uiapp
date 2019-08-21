@@ -1,6 +1,9 @@
 <template>
   <view class="container">
-    <view class="topBar bg-13 col-f t-center font-38" :style="{'padding-top': statusBarHeight + 'px'}"> 购物车 </view>
+    <view class="topBar bg-13 col-f font-38 t-left flex-x-between" :style="{'padding-top': statusBarHeight + 'px'}">
+      <text @click="isEdit = !isEdit">购物车</text>
+      <text class="font-30" @click="isEdit = !isEdit">{{ isEdit? '完成': '编辑' }}</text>
+    </view>
     <scroll-view v-if="list[0].goodArr.length > 0" scroll-y="true" class="content border-box">
       <view v-for="(item, index) in list" :key="index" class="store bg-white">
         <!-- <view class="store"> -->
@@ -14,7 +17,7 @@
             <text>{{ item.storeName }}</text>
           </view>
         </view> -->
-        <view v-for="(good, num) in item.goodArr" :key="num" class="item">
+        <view v-for="(good, num) in item.goodArr" :key="num" :class="{item: true, 'b-top': num !== 0}">
           <view class="left-box">
             <view class="radio-btn dis-flex flex-y-center" @click="checkboxChange(good.goods_sku_id, num, index)">
               <!-- <checkbox value="" checked="true" color="#FFCC33"/> -->
@@ -27,17 +30,17 @@
             </view>
           </view>
           <view class="right-box">
-            <view class="good-name" @click="goDetail(good.goods_id)">{{ good.goods_name }}</view>
-            <text class="good-info" @click="goDetail(good.goods_id)">{{ good.goods_sku.goods_attr }}</text>
+            <view class="good-name" @click="goDetail(good.goods_id, good.goods_type)">{{ good.goods_name }}</view>
+            <text :class="{'good-info': true, 'v-hidden': !good.goods_sku.goods_attr }" @click="goDetail(good.goods_id, good.goods_type)">{{ good.goods_sku.goods_attr }}</text>
             <view class="foot">
               <text class="price">￥{{ good.goods_price }}</text>
               <view class="num">
-                <view class="icon" @click="controlNum(good, num, 'cut')">
-                  <text class="iconfont">&#xe643;</text>
+                <view class="icon">
+                  <text v-if="good.goods_type === 0" :class="{'iconfont': true, 'col-ee': good.goods_type !== 0}" @click="controlNum(good, num, 'cut')">&#xe643;</text>
                 </view>
                 <text>{{ good.total_num }}</text>
-                <view class="icon" @click="controlNum(good, num, 'add')">
-                  <text class="iconfont">&#xe645;</text>
+                <view class="icon">
+                  <text v-if="good.goods_type === 0" :class="{'iconfont': true, 'col-ee': good.goods_type !== 0}" @click="controlNum(good, num, 'add')">&#xe645;</text>
                 </view>
               </view>
             </view>
@@ -45,14 +48,15 @@
         </view>
       </view>
     </scroll-view>
-    <view v-if="checked_sum > 0 && list[0].goodArr.length > 0" class="settle dis-flex flex-x-between p-fix border-box t-center bg-white">
+    <view v-if="checked_sum > 0 && list[0].goodArr.length > 0 || isEdit" class="settle dis-flex flex-x-between p-fix border-box t-center bg-white">
       <view class="all_radio_btn font-26" @click="selAllRadio">
         <radio value="all" :checked="all_checked" color="#F4433D" />全选
       </view>
-      <view class="all col-3d font-36">
+      <view v-if="!isEdit" class="all col-3d font-36">
         <text class="font-26 col-66">总计：</text>￥{{ total_price }}
       </view>
-      <view class="settle-btn font-30 col-f bg-3d">去计算({{ checked_sum }})</view>
+      <view v-if="!isEdit" class="settle-btn font-30 col-f bg-3d" @click="toSureOrder">去计算({{ checked_sum }})</view>
+      <view v-if="isEdit" class="settle-btn font-30 col-f bg-13" @click="delGood">删除</view>
     </view>
     <!-- 购物车为空 -->
     <view v-if="list[0].goodArr.length < 1" class="blank font-99">
@@ -74,6 +78,8 @@
         total_price: 0,         // 总计算钱数
         checked_sum: 0,         // 选中商品数量
         all_checked: false,     // 全部选中
+        goodId: [],             // item.goods_id + '_' + item.goods_sku_id
+        isEdit: false,          // 是否处于编辑状态
       }
     },
     computed: {
@@ -86,8 +92,13 @@
       // this.getList()
     },
     onShow() {
+      this.checked_sum = 0
       //  获取购物车数据
+      
       this.getList()
+      if(this.all_checked) {
+        this.selAllRadio()
+      }
     },
     methods: {
       // 获取购物车列表
@@ -106,7 +117,12 @@
           }
         })
       },
-      
+      // 去结算
+      toSureOrder() {
+        uni.navigateTo({
+          url: '../order/submitOrder?cart=true&cart_ids=' + this.goodId.join(',')
+        })
+      },
       // 勾选商品
       checkboxChange(id, num, index) {
         // console.log(id, num, index)
@@ -117,16 +133,53 @@
         this.computePrice()
       },
       
+      delGood() {
+        let that = this
+        uni.showModal({
+          content: '确认删除所选商品？',
+          success(res) {
+            if (res.confirm) {
+              that.$http({
+                url: that.$api.delcar,
+                data: {
+                  goods_sku_id: that.goodId.join(',')
+                },
+                cb: (err, res) => {
+                  if(!err && res.code === 1) {
+                    uni.showToast({
+                      title: '删除成功',
+                      icon: 'none'
+                    })
+                    // 重新获取列表
+                    that.getList()
+                  } else {
+                    uni.showToast({
+                      title: '删除失败请重试',
+                      icon: 'none'
+                    })
+                  }
+                }
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      },
+      
       // 计算总金额
       computePrice() {
         let that = this
         let list =  this.list[0].goodArr
         that.total_price = 0
         that.checked_sum = 0
+        that.goodId = []
         list.map((item, index) => {
+          // console.log(item.checked, item.total_num, that.checked_sum, that.total_price)
           if(item.checked) {
             that.checked_sum += Number(item.total_num)
             that.total_price += Number(item.goods_price) * Number(item.total_num)
+            that.goodId.push(item.goods_id + '_' + item.goods_sku_id)
           }
         })
       },
@@ -210,10 +263,20 @@
           url: '../market/market'
         })
       },
-      goDetail(goods_id) {
-        uni.navigateTo({
-          url: '../components/goodDetail?goods_id=' + goods_id
-        })
+      goDetail(goods_id, type) {
+        if(type === 0) {
+          uni.navigateTo({
+            url: '../components/goodDetail?goods_id=' + goods_id
+          })  
+        } else if(type === 1) {
+          uni.navigateTo({
+            url: '../components/goodDetail?goods_id=' + goods_id + '&panic=true&title=' + '秒杀购' 
+          })
+        } else if(type === 2) {
+          uni.navigateTo({
+            url: '../components/goodDetail?goods_id=' + goods_id + '&panic=true&title=' + '限时购' 
+          })
+        }
       }
     }
   }
@@ -236,7 +299,7 @@
     padding: 0 30upx;
 
     .store {
-      min-height: 292upx;
+      // min-height: 292upx;
       padding: 20rpx 20upx 35upx 20upx;
       margin: 30upx 0 60rpx;
 
@@ -259,11 +322,10 @@
           }
         }
       }
-
+      
       .item {
         display: flex;
         margin-bottom: 30upx;
-        border-top: 1px solid #f5f5f5;
         padding-top: 20px;
 
         .left-box {
@@ -291,7 +353,6 @@
           .good-name {
             height: 66upx;
             margin-top: -5upx;
-            margin-bottom: 24upx;
             font-size: $font-26;
             line-height: 36upx;
             white-space: wrap;

@@ -1,4 +1,6 @@
 {
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "mpvue-city-picker": "/components/uni-pick/mpvue-citypicker/mpvueCityPicker"
+  }
 }

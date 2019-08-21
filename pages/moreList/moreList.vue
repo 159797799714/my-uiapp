@@ -97,9 +97,7 @@
 </template>
 
 <script>
-  import uniIndexedList from "@/components/uni-indexed-list/uni-indexed-list.vue"
   export default{
-    components: {uniIndexedList},
     data() {
       return{
         topIndex: 0,                          // 顶部导航默认选中的

@@ -2,10 +2,10 @@
   <view class="container">
     <scroll-view scroll-y="true" class="content">
       <view class="header">
-        <image src="../../static/img/mine/bg.png" class="head-bg"></image>
-        <view class="head-main border-box" :style="{'padding-top': statusBarHeight + 'px'}">
+        <!-- <image src="../../static/img/mine/bg.png" class="head-bg"></image> -->
+        <view class="head-main border-box bg-black" :style="{'padding-top': statusBarHeight + 'px'}">
           <view class="navigator">
-            <view class="title">
+            <view class="title" @click="goSetting">
               我的
               <text class="iconfont" @click="goSetting">&#xe676;</text>
             </view>
@@ -36,20 +36,20 @@
         </view>
         
         <!--  优惠券菜单等 -->
-        <view class="row2">
+        <!-- <view class="row2">
           <view v-for="(item, index) in menuList2" :key="index" @click="goChild(index)">
             <image :src="item.imgUrl" mode=""></image>
             <text>{{ item.name }}</text>
           </view>
-        </view>
+        </view> -->
       </view>
       <view class="goods bg-white">
-        <view class="goodsTab">
+        <!-- <view class="goodsTab">
           <view v-for="(item, index) in tabList" :key="index" :class="{ tabItem: true, after: index === tabIndex }" @click="selectTab(index)">{{ item }}</view>
-        </view>
+        </view> -->
         
         <!-- 点赞 -->
-        <view v-if="tabIndex === 0" class="goods-content">
+        <!-- <view v-if="tabIndex === 0" class="goods-content">
           <view v-for="(item, index) in shareList" :key="index" class="item">
             <view class="img"  @click="goShareDetail(item.article_id)">
               <image :src="item.image.file_path" mode="aspectFill"></image>
@@ -68,10 +68,10 @@
               </view>
             </view>
           </view>
-        </view>
+        </view> -->
         
          <!-- 收藏 -->
-        <view v-if="tabIndex === 1" class="goods-content">
+        <!-- <view v-if="tabIndex === 1" class="goods-content">
           <view v-for="(item, index) in goodList" :key="index" class="good-item">
             <view class="good-img"></view>
             <view class="good-info border-box">
@@ -85,7 +85,7 @@
               </view>
             </view>
           </view>
-        </view>
+        </view> -->
       </view>
     </scroll-view>
   </view>

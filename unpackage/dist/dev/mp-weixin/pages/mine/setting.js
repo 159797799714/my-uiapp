@@ -167,6 +167,11 @@ var _default =
     } },
 
   methods: {
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
+
+    },
     goPersonal: function goPersonal() {
       uni.navigateTo({
         url: 'personal' });

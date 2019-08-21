@@ -42,6 +42,7 @@ export default {
   goods_detail: API.devApi + '/goods/detail',                                   // 普通商品详情
   goodscategorybysecond: API.devApi + '/category/goodscategorybysecond',        // 获取二级商品分类
   getbrandsbycategoryid: API.devApi + '/brands/getbrandsbycategoryid',          // 获取二级品牌根据一级分类
+  categoryIndex: API.devApi + '/category/index',                                // 更多分类首页
 
   
   // 秒杀
@@ -70,10 +71,14 @@ export default {
   addressDetail: API.devApi + '/address/detail',                                    // 收货地址详情
   editAddres: API.devApi + '/address/edit',                                         // 编辑收货地址
   setDefaultAddress: API.devApi + '/address/setDefault',                            // 设置默认收货地址
+  shopList: API.devApi + '/api/shop/lists',                                         // 自提收货门店列表
+  
   
   // 订单
   orderList: API.devApi + '/user.order/lists',                                      // 订单
   orderBuyNow: API.devApi + '/order/buyNow',                                        // 确认订单
+  orderCart: API.devApi + '/order/cart',                                            // 购物车确认订单
+  
   
   
   // 购物车 

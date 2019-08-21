@@ -60,6 +60,11 @@
       }
     },
     methods: {
+      goBack() {
+        uni.navigateBack({
+          delta: 1
+        })
+      },
       goPersonal() {
         uni.navigateTo({
           url: 'personal'

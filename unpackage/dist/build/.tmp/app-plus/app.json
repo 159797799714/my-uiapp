@@ -34,7 +34,8 @@
     "pages/mine/bonus/bonusInfo",
     "pages/mine/bonus/myCard",
     "pages/mine/sign",
-    "pages/mine/bonus/bonusApplyInfo"
+    "pages/mine/bonus/bonusApplyInfo",
+    "pages/order/submitOrder"
   ],
   "window": {
     "navigationBarTextStyle": "white",
@@ -79,6 +80,6 @@
     "autoclose": false
   },
   "appname": "雷啊雷啊",
-  "compilerVersion": "2.2.1",
+  "compilerVersion": "2.2.2",
   "usingComponents": {}
 }

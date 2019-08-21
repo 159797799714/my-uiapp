@@ -15,11 +15,11 @@
             "delay" : 0
         },
         "modules" : {
-            "Maps" : {},
-            "OAuth" : {},
             "Push" : {},
             "Payment" : {},
-            "Share" : {}
+            "Share" : {},
+            "OAuth" : {},
+            "Maps" : {}
         },
         /* 模块配置 */
         "distribute" : {
@@ -63,6 +63,11 @@
                     },
                     "qq" : {
                         "appid" : "1109274316"
+                    },
+                    "sina" : {
+                        "appkey" : "2520778804",
+                        "appsecret" : "3f60244aef914425b46f2ec91308a222",
+                        "redirect_uri" : "http://market-pd.unixe.com"
                     }
                 },
                 "maps" : {},
@@ -77,7 +82,8 @@
                         "appid" : "wx96212763ae052f5c",
                         "appsecret" : "2165ff8b5a6863717876a720152e6994"
                     }
-                }
+                },
+                "push" : {}
             },
             "icons" : {
                 "ios" : {
@@ -124,7 +130,8 @@
             "urlCheck" : false,
             "es6" : true,
             "postcss" : true,
-            "minified" : true
+            "minified" : true,
+            "checkSiteMap" : false
         },
         "usingComponents" : true
     },

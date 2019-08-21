@@ -242,6 +242,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var _default =
 {
   data: function data() {
@@ -252,12 +254,23 @@ var _default =
       option: {}, // 接受到的参数
       delivery: 10, // 快递10 自提20
       detail: {}, // 订单数据
-      remark: '' // 买家留言
+      remark: '', // 买家留言
+      cart_ids: '', // 购物车进来传入id
+      isCart: false // 是否购物车进来
     };
   },
   onLoad: function onLoad(option) {
-    this.option = JSON.parse(option.data);
-    console.log(this.option);
+    console.log(option);
+    if (option.data) {
+      this.option = JSON.parse(option.data);
+      console.log('data');
+      return;
+    }
+    if (option.cart === 'true') {
+      console.log('cart');
+      this.isCart = true;
+      this.cart_ids = option.cart_ids;
+    }
   },
   onShow: function onShow() {
     // 提交订单
@@ -281,9 +294,18 @@ var _default =
     orderBuy: function orderBuy() {var _this = this;
       var that = this;
       var data = that.option;
+      var url = that.$api.orderBuyNow;
       data.delivery = that.delivery;
+      if (that.isCart) {
+        url = that.$api.orderCart;
+        data = {
+          cart_ids: that.cart_ids,
+          shop_id: that.shop_id,
+          delivery: that.delivery };
+
+      }
       that.$http({
-        url: that.$api.orderBuyNow,
+        url: url,
         data: data,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
@@ -303,6 +325,24 @@ var _default =
 
           }
         } });
+
+    },
+    // 选择自提门店
+    selectExtractPoint: function selectExtractPoint() {
+      uni.chooseLocation({
+        success: function success(res) {
+          console.log('位置名称：' + res.name);
+          console.log('详细地址：' + res.address);
+          console.log('纬度：' + res.latitude);
+          console.log('经度：' + res.longitude);
+
+        } });
+
+    },
+    // 选择收货地址
+    selectAddress: function selectAddress() {
+      uni.navigateTo({
+        url: '../mine/address' });
 
     },
     goDetail: function goDetail(item) {

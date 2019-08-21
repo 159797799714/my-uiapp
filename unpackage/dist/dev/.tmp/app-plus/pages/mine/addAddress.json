@@ -2,5 +2,7 @@
   "navigationStyle": "custom",
   "bounce": "none",
   "titleNView": "false",
-  "usingComponents": {}
+  "usingComponents": {
+    "mpvue-city-picker": "/components/uni-pick/mpvue-citypicker/mpvueCityPicker"
+  }
 }

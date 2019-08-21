@@ -18,13 +18,13 @@
     "url": ""
   },
   "permissions": {
-    "Maps": {
-      "coordType": "gcj02"
-    },
-    "OAuth": {},
     "Push": {},
     "Payment": {},
     "Share": {},
+    "OAuth": {},
+    "Maps": {
+      "coordType": "gcj02"
+    },
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -122,6 +122,11 @@
           },
           "qq": {
             "appid": "1109274316"
+          },
+          "sina": {
+            "appkey": "2520778804",
+            "appsecret": "3f60244aef914425b46f2ec91308a222",
+            "redirect_uri": "http://market-pd.unixe.com"
           }
         },
         "maps": {},
@@ -137,6 +142,7 @@
             "appsecret": "2165ff8b5a6863717876a720152e6994"
           }
         },
+        "push": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
@@ -152,7 +158,7 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.2.1",
+      "compilerVersion": "2.2.2",
       "control": "v8",
       "nvueCompiler": "weex",
       "renderer": "auto"

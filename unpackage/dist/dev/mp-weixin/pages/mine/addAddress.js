@@ -105,71 +105,97 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/uni-pick/mpvue-citypicker/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-pick/mpvue-citypicker/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/uni-pick/mpvue-citypicker/mpvueCityPicker.vue */ 328));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    mpvueCityPicker: mpvueCityPicker },
+
   data: function data() {
     return {
-      info: {
+      address_id: '', // 传过来的地址id
+      isDefault: false, // 是否默认地址
+      detail: {
         name: '',
-        tel: '',
-        location: '',
-        address: '',
-        tags: ['家', '公司', '学校', '其他'],
-        def: false } };
+        phone: '',
+        region: '',
+        detail: '' },
 
+
+      // 城市选择
+      cityPickerValueDefault: [0, 0, 1],
+      themeColor: '#007AFF' };
 
   },
   onLoad: function onLoad(option) {
-    if (option.info) {
-      this.info = JSON.parse(option.info);
+    if (option.id) {
+      this.isDefault = option.isDefault === 'true' ? true : false;
+      this.address_id = option.id;
+      // 获取地址详情
+      this.getAddressDetail(option.id);
     }
+  },
+  onUnload: function onUnload() {
+    // if(address_id) {
+    //   
+    // } else {
+    //   // 离开页面自动保存
+    //   this.saveAddress()  
+    // }
   },
   computed: {
     statusBarHeight: function statusBarHeight() {
@@ -182,34 +208,203 @@ var _default =
         delta: 1 });
 
     },
-    // 打开地图选择地址并获取位置
-    getLocation: function getLocation() {
+    // 三级联动选择
+    showMulLinkageThreePicker: function showMulLinkageThreePicker() {
+      this.$refs.mpvueCityPicker.show();
+    },
+    // 地址确定回调
+    onConfirm: function onConfirm(e) {
+      this.detail.region = e.label.replace(/-/g, ',');
+    },
+    // 获取地址详情
+    getAddressDetail: function getAddressDetail(id) {
       var that = this;
-      uni.chooseLocation({
-        success: function success(res) {
-          that.info.location = res.address;
-          console.log('位置名称：' + res.name);
-          console.log('详细地址：' + res.address);
-          console.log('纬度：' + res.latitude);
-          console.log('经度：' + res.longitude);
+      that.$http({
+        url: that.$api.addressDetail,
+        data: {
+          address_id: id },
+
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            res.data.detail.region = res.data.detail.region.city + ',' + res.data.detail.region.province + ',' +
+            res.data.detail.region.region;
+            that.detail = res.data.detail;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '收货地址获取失败',
+              icon: 'none' });
+
+          }
         } });
 
     },
-    delAction: function delAction() {
+    // 保存或者添加收货地址
+    saveAddress: function saveAddress() {
+      var that = this;
+      var detail = that.detail;
+      detail.address_id = that.address_id;
+      if (that.address_id) {
+        that.$http({
+          url: that.$api.editAddres,
+          data: detail,
+          method: 'POST',
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              uni.showToast({
+                title: '修改',
+                icon: 'none' });
+
+              uni.navigateBack({
+                delta: 1 });
+
+            } else if (res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            } else {
+              uni.showToast({
+                title: '修改失败，请重试',
+                icon: 'none' });
+
+            }
+          } });
+
+      } else {
+        that.$http({
+          url: that.$api.addAddress,
+          data: that.detail,
+          method: 'POST',
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              uni.showToast({
+                title: '添加成功',
+                icon: 'none' });
+
+              uni.navigateBack({
+                delta: 1 });
+
+            } else if (res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            } else {
+              uni.showToast({
+                title: '添加失败，请重试',
+                icon: 'none' });
+
+            }
+          } });
+
+      }
+    },
+    // 选择省市区
+    selectRegion: function selectRegion(e) {
+      console.log(e.detail.value);
+      var region = e.detail.value.join(',');
+      this.detail.region = region;
+    },
+    // 打开地图选择地址并获取位置
+    // getLocation() {
+    //   let that = this
+    //   uni.chooseLocation({
+    //     success: function(res) {
+    //       console.log(res)
+    //       that.info.region = res.address
+    //       console.log('位置名称：' + res.name);
+    //       console.log('详细地址：' + res.address);
+    //       console.log('纬度：' + res.latitude);
+    //       console.log('经度：' + res.longitude);
+    //     }
+    //   })
+    // },
+    // 保存地址
+    saveAction: function saveAction() {
+      var that = this;
       uni.showModal({
         // title: '温馨提示',
-        content: '确认删除？',
+        content: '确认保存？',
         success: function success(res) {
           if (res.confirm) {
-            console.log(res.confirm);
+            that.saveAddress();
           } else if (res.cancel) {
             console.log('用户点击取消');
           }
         } });
 
     },
+
+    // 选择默认
     switchChange: function switchChange(e) {
-      console.log('switch1 发生 change 事件，携带值为', e.target.value);
+      var that = this;
+      if (e.target.value) {
+        that.$http({
+          url: that.$api.setDefaultAddress,
+          data: {
+            address_id: that.address_id },
+
+          method: 'POST',
+          cb: function cb(err, res) {
+            if (!err && res.code === 1) {
+              uni.showToast({
+                title: '设置成功',
+                icon: 'none' });
+
+              that.isDefault = true;
+            } else if (res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none' });
+
+            } else {
+              uni.showToast({
+                title: '设置失败，请重试',
+                icon: 'none' });
+
+            }
+          } });
+
+      } else {
+        that.isDefault = false;
+      }
+    },
+    // 删除地址
+    delAddress: function delAddress() {
+      var that = this;
+      that.$http({
+        url: that.$api.deleteAddress,
+        data: {
+          address_id: that.address_id },
+
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            uni.showToast({
+              title: '删除成功',
+              icon: 'none' });
+
+            uni.navigateBack({
+              delta: 1 });
+
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '删除失败，请重试',
+              icon: 'none' });
+
+          }
+        } });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
