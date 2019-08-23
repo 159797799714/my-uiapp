@@ -76,7 +76,7 @@ export default {
   
   // 订单
   orderList: API.devApi + '/user.order/lists',                                      // 订单
-  orderBuyNow: API.devApi + '/order/buyNow',                                        // 确认订单
+  orderBuyNow: API.devApi + '/order/buyNow',                                        // 确认订单 
   orderCart: API.devApi + '/order/cart',                                            // 购物车确认订单
   
   

@@ -1,19 +1,22 @@
 <template>
   <view class="container">
-    <!-- <view class="topBar">
-      <view class="top">
-        <text class="iconfont" @click="goBack">&#xe61c;</text>
-        <view class="topNav">
-          <text v-for="(item, index) in topList" :key="index" :class="{topSelected: index === topIndex}" @click="selectTop(index)">{{ item }}</text>
-        </view>
-      </view>
-    </view> -->
+    <view class="topBar col-f font-38" :style="{'padding-top': statusBarHeight + 'px' }">
+      <text class="iconfont font-42" @click="goBack">&#xe61c;</text>
+      <text class="title flex-box t-center">更多分类</text>
+    </view>
     <view class="content">
       <scroll-view scroll-y="true" class="left-nav">
-        <view v-for="(item, index) in list" :key="index" :class="{navLi: true, selectedLi: navData === index}" @click="clickNav(index)">{{ item }}</view>
+        <view v-for="(item, index) in list" :key="index" :class="{navLi: true, selectedLi: category_id === item.category_id}" @click="clickNav(item)">{{ item.name }}</view>
       </scroll-view>
       <scroll-view scroll-y="true" class="main bg-white border-box">
-        <view class="banner"></view>
+        <view v-for="(li, num) in itemList" :key="num" class="list-item flex-three" @click="goMoreGood(li.category_id)">
+          <view class="item-img border-box t-center">
+            <image :src="li.image.file_path" mode="widthFix"></image>
+          </view>
+          <view class="item-name font-26 t-center">{{ li.name }}</view>
+        </view>
+        
+        <!-- <view class="banner"></view>
         <view v-for="(data, index) in child" :key="index" class="item-box border-box">
           <view class="title">{{ data.title }}</view>
           <view class="flex-box">
@@ -56,42 +59,9 @@
           <view class="more">
             查看更多<text class="iconfont">&#xe604;</text>
           </view>
-        </view>
+        </view> -->
       </scroll-view>
     </view>
-    
-    <!-- 索引列表组件 -->
-    <!-- <view v-if="topIndex === 1" class="content">
-      <view class="main">
-        <uni-indexed-list :options="brand" :showSelect="false" @click="bindClick"></uni-indexed-list>
-      </view>
-    </view> -->
-    
-    <!-- <view class="content border-box">
-      <scroll-view scroll-y="true" class="culture">
-         <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
-           :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
-           <swiper-item v-for="(item, index) in swiperList" :key="index">
-             <view :class="{'swiper-item': true, 'bg_primary': true}"></view>
-           </swiper-item>
-         </swiper>
-         <view class="like">
-           <view class="title">
-            <text>猜你喜欢</text>
-            <view>
-              <text>换一换</text>
-              <text class="iconfont">&#xe6a7;</text>
-            </view>
-            </view>
-            <view v-for="(item, index) in album.arr" :key="index" class="span">
-              <view class="banner"></view>
-              <view class="num">
-                <text class="iconfont"></text>
-                <text>{{ item.sum }}人购买</text>
-              </view>   
-            </view>
-         </view>
-      </scroll-view> -->
     </view>
   </view>
 </template>
@@ -100,10 +70,12 @@
   export default{
     data() {
       return{
-        topIndex: 0,                          // 顶部导航默认选中的
-        topList: ['分类'],  // 顶部导航选项
-        list: ['为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆'],  // 侧边菜单
-        navData: 0,
+        topIndex: 0,                                       // 顶部导航默认选中的
+        topList: ['分类'],                                 // 顶部导航选项
+        list: [],                                         // 侧边菜单
+        category_id: '',                                  // 侧边栏选中分类ID
+        itemList: [],                                     // 选中分类的子分类列表
+        
         child: [{
           title: '常用分类',
           arr: ['基础护肤', '包包', '面膜', '平板电脑', '粉底液', '板鞋']
@@ -127,12 +99,54 @@
               sum: 2095
           }]
         },
-        brand: 3   // 品牌
+        brand: 3,   // 品牌
+        
       }
     },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
+    },
+    onLoad() {
+      // 获取分类列表
+      this.getCategoryIndex()
+    },
     methods: {
-      clickNav(index) {
-        this.navData = index
+      // 获取分类列表
+      getCategoryIndex() {
+        let that= this
+        that.$http({
+          url: that.$api.categoryIndex,
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              that.list= res.data.list
+              that.category_id= res.data.list[0].category_id
+              that.itemList= res.data.list[0].child
+            } else if(res.code === 0) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '加载失败，请退出重试',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      goMoreGood(id) {
+        uni.navigateTo({
+          url: './moreGoods?category_id=' + id
+        })
+      },
+      
+      // 选择侧边栏
+      clickNav(item) {
+        this.category_id = item.category_id
+        this.itemList = item.child
       },
       // selectTop(index) {
       //   this.topIndex = index
@@ -150,30 +164,10 @@
 </script>
 
 <style lang="scss" scoped>
-  .topBar{
-    .top{
-      display: flex;
-      width: 100%;
-      font-size: $font-30;
-      color: $color-white;
-      line-height: 88upx;
-      align-items: center;
-      justify-content: space-between;
-      .iconfont{
-        font-size: $font-40;
-      }
-      .topNav{
-        width: 540upx;
-        padding: 0 13upx;
-        color: $color-99;
-        display: flex;
-        justify-content: center;
-      }
-      .topSelected{
-        color: $color-white;
-        font-weight: bold;
-      }
-    }
+  .title{
+    display: block;
+    width: 100%;
+    text-align: center;
   }
   .content{
     flex-direction: row;
@@ -192,7 +186,7 @@
         background: $color-white;
         font-weight: bold;
         color: $title-color;
-        font-size: $font-28;
+        font-size: $font-30;
         &::before{
           content: '';
           height: 28upx;
@@ -206,6 +200,32 @@
         }
       }
     }
+    .list-item{
+      .item-img{
+        padding: 13rpx 10rpx 4rpx 10rpx;
+        overflow: hidden;
+      }
+      .item-img>image{
+        height: 150upx;
+        width: 100%;
+      }
+      .item-name{
+        padding: 0 15rpx 30rpx 15rpx;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     .main{
       flex: 1;
       padding: 29upx 30upx 20upx 20upx;

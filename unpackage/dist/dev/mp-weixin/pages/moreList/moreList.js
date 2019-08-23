@@ -173,44 +173,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
     return {
       topIndex: 0, // 顶部导航默认选中的
       topList: ['分类'], // 顶部导航选项
-      list: ['为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆', '为你推荐', '品牌墙', '美容彩妆'], // 侧边菜单
-      navData: 0,
+      list: [], // 侧边菜单
+      category_id: '', // 侧边栏选中分类ID
+      itemList: [], // 选中分类的子分类列表
+
       child: [{
         title: '常用分类',
         arr: ['基础护肤', '包包', '面膜', '平板电脑', '粉底液', '板鞋'] },
@@ -236,10 +208,52 @@ var _default =
 
       brand: 3 // 品牌
     };
+
+  },
+  computed: {
+    statusBarHeight: function statusBarHeight() {
+      return this.$store.state.statusBarHeight;
+    } },
+
+  onLoad: function onLoad() {
+    // 获取分类列表
+    this.getCategoryIndex();
   },
   methods: {
-    clickNav: function clickNav(index) {
-      this.navData = index;
+    // 获取分类列表
+    getCategoryIndex: function getCategoryIndex() {
+      var that = this;
+      that.$http({
+        url: that.$api.categoryIndex,
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            that.list = res.data.list;
+            that.category_id = res.data.list[0].category_id;
+            that.itemList = res.data.list[0].child;
+          } else if (res.code === 0) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '加载失败，请退出重试',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+    goMoreGood: function goMoreGood(id) {
+      uni.navigateTo({
+        url: './moreGoods?category_id=' + id });
+
+    },
+
+    // 选择侧边栏
+    clickNav: function clickNav(item) {
+      this.category_id = item.category_id;
+      this.itemList = item.child;
     },
     // selectTop(index) {
     //   this.topIndex = index

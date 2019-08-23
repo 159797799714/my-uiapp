@@ -259,7 +259,7 @@ view, image, text, input, form{
 }
 
 .flex-box {
-  flex: 1;
+  flex: 1!important;
 }
 
 .flex-dir-row {
@@ -296,6 +296,10 @@ view, image, text, input, form{
 }
 .flex-self-end {
     align-self: flex-end!important;
+}
+.flex-three{
+  float: left;
+  width: 33%;
 }
 .m-top20{
   margin-top: 20upx;
@@ -366,6 +370,10 @@ view, image, text, input, form{
 .b-top{
   border-top: 1px solid #f5f5f5;
 }
+.b-bottom{
+  border-bottom: 1px solid #f5f5f5;
+}
+
 .padding-30{
   padding-left: 30upx;
   padding-right: 30upx;

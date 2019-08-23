@@ -21,9 +21,9 @@
         </view>
       </view>
       <view class="order bg-white">
-        <view class="myorder" @click="goOrder('全部', 'all')">
-          <text>我的订单</text>
-          <view>
+        <view class="myorder">
+          <text @click="checkWeChat">我的订单</text>
+          <view @click="goOrder('全部', 'all')">
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
           </view>
@@ -44,12 +44,12 @@
         </view> -->
       </view>
       <view class="goods bg-white">
-        <!-- <view class="goodsTab">
+        <view class="goodsTab">
           <view v-for="(item, index) in tabList" :key="index" :class="{ tabItem: true, after: index === tabIndex }" @click="selectTab(index)">{{ item }}</view>
-        </view> -->
+        </view>
         
         <!-- 点赞 -->
-        <!-- <view v-if="tabIndex === 0" class="goods-content">
+        <view v-if="tabIndex === 0" class="goods-content">
           <view v-for="(item, index) in shareList" :key="index" class="item">
             <view class="img"  @click="goShareDetail(item.article_id)">
               <image :src="item.image.file_path" mode="aspectFill"></image>
@@ -68,10 +68,10 @@
               </view>
             </view>
           </view>
-        </view> -->
+        </view>
         
          <!-- 收藏 -->
-        <!-- <view v-if="tabIndex === 1" class="goods-content">
+        <view v-if="tabIndex === 1" class="goods-content">
           <view v-for="(item, index) in goodList" :key="index" class="good-item">
             <view class="good-img"></view>
             <view class="good-info border-box">
@@ -85,7 +85,7 @@
               </view>
             </view>
           </view>
-        </view> -->
+        </view>
       </view>
     </scroll-view>
   </view>
@@ -115,11 +115,7 @@
             dataType: 'comment'
           }, {
             imgUrl: '../../static/img/mine/success.png',
-            name: '已完成',
-            dataType: ''
-          }, {
-            imgUrl: '../../static/img/mine/cancel.png',
-            name: '已取消',
+            name: '退换/售后',
             dataType: ''
           }
         ],                        // 我的订单第一行
@@ -141,7 +137,8 @@
         tabIndex: 0,              // 默认选中点赞
         tabList: ['点赞', '收藏'], // tab
         shareList: [],            // 收藏文章列表
-        goodList: []
+        goodList: [],
+        sweixin: null,            // 跳转小程序
       }
     },
     computed: {
@@ -150,7 +147,8 @@
       }
     },
     onLoad() {
-      
+      // 获取当前显示webview
+      // this.getPlus()
     },
     onShow() {
       // 获取个人信息
@@ -170,6 +168,36 @@
       }
     },
     methods: {
+      
+      // getPlus() {
+      //     //获取当前显示的webview
+      //     var pages = getCurrentPages()
+      //     var page = pages[pages.length - 1]
+      //     var currentWebview = page.$getAppWebview()
+      //     //调用H5+APP的扩展API
+      //     var shares=null;
+      //     let that = this
+      //     var pusher = plus.share.getServices(function(s){
+      //       shares={};
+      //       for(var i in s){
+      //         var t=s[i];
+      //         shares[t.id]=t;
+      //       }
+      //       that.sweixin=shares['weixin'];
+      //     }, function(e){
+      //       console.log("获取分享服务列表失败："+e.message);
+      //     });
+      //     //放入当前的webview
+      //     currentWebview.append(pusher);
+      //   },
+      // checkWeChat() {
+      //   //调用微信小程序
+      //   this.sweixin.launchMiniProgram({
+      //     id:'gh_d5318ceadc5f' //要跳转小程序的原始ID
+      //   })
+      // },
+      
+      
       // 进入个人信息页面
       goPersonal() {
         uni.navigateTo({
@@ -333,7 +361,7 @@
     flex-direction: column;
     color: $title-color;
     .header, .head-bg{
-      height: 378upx;
+      height: 358upx;
       width: 100%;
     }
     .header{
@@ -343,7 +371,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 398upx;
+      height: 358upx;
       width: 100%;
       color: $color-white;
       background: rgba(0, 0, 0, 0.8);
@@ -394,13 +422,12 @@
       }
     }
     .order{
-      position: absolute;
       width: 100%;
-      height: 436upx;
-      padding: 0 30upx 0 30upx;
+      padding: 0 30upx;
       box-shadow:0upx 0upx 24upx 0upx rgba(190,190,190,0.27);
       border-radius:10upx 10upx 0upx 0upx;
       box-sizing: border-box;
+      z-index: 100;
       .myorder{
         display: flex;
         justify-content: space-between;
@@ -449,7 +476,6 @@
       }
     }
     .goods{
-      margin-top: 436upx;
       padding: 33upx 30upx;
       .goodsTab{
         height: 70upx;

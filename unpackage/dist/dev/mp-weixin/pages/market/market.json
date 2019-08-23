@@ -1,5 +1,4 @@
 {
-  "enablePullDownRefresh": true,
   "navigationStyle": "custom",
   "usingComponents": {
     "banner": "/pages/components/banner"

@@ -145,7 +145,7 @@
     
     <!-- 促销信息弹窗 -->
     <!-- <view v-if="coverShow" class="big-cover toTop">
-      <view class="white" @click="coverShow = false"></view>
+      <view class="white" @click="closeNorm"></view>
       <view class="cover-main bg-white border-box">
         <view class="cover-word padding-30">
           <view class="title" >促销信息</view>
@@ -156,13 +156,13 @@
             </view>
           </view>
         </view>
-        <view class="sure-btn" @click="coverShow = false">关闭</view>
+        <view class="sure-btn" @click="closeNorm">关闭</view>
       </view>
     </view> -->
     
     <!-- 商品规格选择弹窗 -->
     <view v-if="normShow" class="big-cover toTop border-box">
-      <view class="white" @click="normShow= false"></view>
+      <view class="white" @click="closeNorm"></view>
       <view class="cover-main bg-white border-box">
         <view class="cover-word border-box padding-30">
           <view class="header">
@@ -479,22 +479,45 @@
       // 加入购物车操作
       addCar() {
         let that = this
-        let data = {
-          goods_sku_id: that.select_arr.length > 0? that.select_arr.join('_'): 0,
-          goods_id: that.goods_id,
-          goods_num: that.goods_num
-        }
         that.$http({
-          url: that.$api.addcar,
-          method: 'POST',
-          data: data,
+          url: that.$api.buyNowinventory,
+          data: {
+            goods_id: that.goods_id,
+            goods_num: that.goods_num,
+            goods_sku_id: that.spec_sku_id
+          },
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              uni.showToast({
-                title: '添加成功',
-                icon: 'none'
+              let params = {
+                goods_sku_id: that.select_arr.length > 0? that.select_arr.join('_'): 0,
+                goods_id: that.goods_id,
+                goods_num: that.goods_num
+              }
+              that.$http({
+                url: that.$api.addcar,
+                method: 'POST',
+                data: params,
+                cb: (err, res) => {
+                  if(!err && res.code === 1) {
+                    uni.showToast({
+                      title: '添加成功',
+                      icon: 'none'
+                    })
+                    that.isCar = false
+                    that.normShow = false
+                  } else if(res.code === 0 || res.code === -1 && res.msg) {
+                    uni.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                  } else {
+                    uni.showToast({
+                      title: '加入购物车失败',
+                      icon: 'none'
+                    })
+                  }
+                }
               })
-              that.normShow = false
             } else if(res.code === 0 || res.code === -1 && res.msg) {
               uni.showToast({
                 title: res.msg,
@@ -502,7 +525,7 @@
               })
             } else {
               uni.showToast({
-                title: '加入购物车失败',
+                title: '检测库存失败',
                 icon: 'none'
               })
             }
@@ -514,6 +537,7 @@
       closeNorm() {
         this.normShow = false
         this.isCar = false
+        this.coverShow = false
       },
       
       // 返回
@@ -950,19 +974,18 @@
       .alert-btn{
         height: 98upx;
         display: flex;
-        .sure-btn{
-          flex: 1;
-          background: $title-color;
-          text-align: center;
-          font-size: $font-30;
-          line-height: 98upx;
-          color: $color-white;
-        }
-        .buy-btn{
-          background: $color-red;
-        }
       }
-      
+      .sure-btn{
+        flex: 1;
+        background: $title-color;
+        text-align: center;
+        font-size: $font-30;
+        line-height: 98upx;
+        color: $color-white;
+      }
+      .buy-btn{
+        background: $color-red;
+      }
     }  
   }
   .sale-info{

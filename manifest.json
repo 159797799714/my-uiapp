@@ -15,7 +15,6 @@
             "delay" : 0
         },
         "modules" : {
-            "Push" : {},
             "Payment" : {},
             "Share" : {},
             "OAuth" : {},
@@ -45,7 +44,9 @@
                     "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
                     "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>",
                     "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
@@ -72,10 +73,11 @@
                 },
                 "maps" : {},
                 "payment" : {
+                    "alipay" : {},
                     "weixin" : {
                         "appid" : "wx96212763ae052f5c"
                     },
-                    "alipay" : {}
+                    "appleiap" : {}
                 },
                 "share" : {
                     "weixin" : {

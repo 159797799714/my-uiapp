@@ -77,10 +77,6 @@ var render = function() {
     _vm.e0 = function($event) {
       _vm.normShow = true
     }
-
-    _vm.e1 = function($event) {
-      _vm.normShow = false
-    }
   }
 }
 var staticRenderFns = []
@@ -595,22 +591,45 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
     // 加入购物车操作
     addCar: function addCar() {
       var that = this;
-      var data = {
-        goods_sku_id: that.select_arr.length > 0 ? that.select_arr.join('_') : 0,
-        goods_id: that.goods_id,
-        goods_num: that.goods_num };
-
       that.$http({
-        url: that.$api.addcar,
-        method: 'POST',
-        data: data,
+        url: that.$api.buyNowinventory,
+        data: {
+          goods_id: that.goods_id,
+          goods_num: that.goods_num,
+          goods_sku_id: that.spec_sku_id },
+
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            uni.showToast({
-              title: '添加成功',
-              icon: 'none' });
+            var params = {
+              goods_sku_id: that.select_arr.length > 0 ? that.select_arr.join('_') : 0,
+              goods_id: that.goods_id,
+              goods_num: that.goods_num };
 
-            that.normShow = false;
+            that.$http({
+              url: that.$api.addcar,
+              method: 'POST',
+              data: params,
+              cb: function cb(err, res) {
+                if (!err && res.code === 1) {
+                  uni.showToast({
+                    title: '添加成功',
+                    icon: 'none' });
+
+                  that.isCar = false;
+                  that.normShow = false;
+                } else if (res.code === 0 || res.code === -1 && res.msg) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none' });
+
+                } else {
+                  uni.showToast({
+                    title: '加入购物车失败',
+                    icon: 'none' });
+
+                }
+              } });
+
           } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
               title: res.msg,
@@ -618,7 +637,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
 
           } else {
             uni.showToast({
-              title: '加入购物车失败',
+              title: '检测库存失败',
               icon: 'none' });
 
           }
@@ -630,6 +649,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
     closeNorm: function closeNorm() {
       this.normShow = false;
       this.isCar = false;
+      this.coverShow = false;
     },
 
     // 返回

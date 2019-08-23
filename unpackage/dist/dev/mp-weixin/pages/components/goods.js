@@ -375,6 +375,7 @@ var _default =
     }
     if (option.id) {
       console.log('id', option.id, option.name);
+      this.goodsFormData.category_id = option.id;
       this.category_id = option.id;
       this.tabIndex = 1;
       this.byid = true;

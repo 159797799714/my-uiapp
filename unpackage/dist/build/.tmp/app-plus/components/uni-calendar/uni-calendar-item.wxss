@@ -316,6 +316,15 @@ view, image, text, input, form {
 .t-center {
   text-align: center;
 }
+.t-left {
+  text-align: left;
+}
+.t-right {
+  text-align: right;
+}
+.b-top {
+  border-top: 1px solid #f5f5f5;
+}
 .padding-30 {
   padding-left: 30rpx;
   padding-right: 30rpx;

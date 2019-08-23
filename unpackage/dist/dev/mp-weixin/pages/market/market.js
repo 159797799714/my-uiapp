@@ -204,8 +204,15 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         max_price: '',
         img: '' },
       {
+        imgUrl: '../../static/img/market/zero-text.png',
+        name: '0元购',
+        time: '',
+        min_price: '',
+        max_price: '',
+        img: '' },
+      {
         imgUrl: '../../static/img/market/miaoshagou-text.png',
-        name: '秒杀购购',
+        name: '秒杀购',
         time: '',
         min_price: '',
         max_price: '',
@@ -217,13 +224,6 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         min_price: '',
         max_price: '',
         info: '',
-        img: '' },
-      {
-        imgUrl: '../../static/img/market/zero-text.png',
-        name: '0元购',
-        time: '',
-        min_price: '',
-        max_price: '',
         img: '' }],
 
       recommendList: [] };
@@ -251,12 +251,6 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
     this.getZero();
     // 获取一个秒杀购商品
     this.getKillGoods();
-  },
-  onPullDownRefresh: function onPullDownRefresh() {
-    console.log('refresh');
-    setTimeout(function () {
-      uni.stopPullDownRefresh();
-    }, 1000);
   },
   methods: {
 
@@ -409,22 +403,6 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
           }
         } });
 
-      //   App._get('luckydraw/getluckydrawgoodsbyone', {}, function(result) {
-      //     if (result.data.goods) {
-      //       _this.setData({
-      //         'discount[3].min_price': result.data.goods.sku ? result.data.goods.sku[0].goods_price: '',
-      //         'discount[3].max_price': result.data.goods.sku ? result.data.goods.sku[0].line_price: '',
-      //         'discount[3].info': result.data.goods.homepage_activity_subtitle ? result.data.goods.homepage_activity_subtitle : '',
-      //         'discount[3].img': result.data.goods.headimg ? result.data.goods.headimg.file_path: ''
-      //       })
-      //       utils.countDown(result.data.goods.category.activity_endtime, function(nowTime) {
-      //         _this.setData({
-      //           'discount[3].time': nowTime
-      //         })
-      //       })
-      //     }
-      // 
-      //   })
     },
     // 推荐商品列表
     getRecommendgoods: function getRecommendgoods() {var _this3 = this;
@@ -456,25 +434,25 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
       });
     },
     // 抢购或者秒杀购,零元购，拼团等
-    goPintuan: function goPintuan(index) {
-      switch (index) {
-        case 0:
+    goPintuan: function goPintuan(name) {
+      switch (name) {
+        case '拼团购':
           uni.showToast({
             title: '拼团暂未开放',
             icon: 'none' });
 
           break;
-        case 1:
+        case '秒杀购':
           uni.navigateTo({
             url: 'panicBuy?origin=' + '秒杀购' });
 
           break;
-        case 2:
+        case '限时购':
           uni.navigateTo({
             url: 'panicBuy?origin=' + '限时购' });
 
           break;
-        case 3:
+        case '0元购':
           uni.showToast({
             title: '零元购暂未开放',
             icon: 'none' });

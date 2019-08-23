@@ -2765,7 +2765,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   // 订单
   orderList: _config.default.devApi + '/user.order/lists', // 订单
-  orderBuyNow: _config.default.devApi + '/order/buyNow', // 确认订单
+  orderBuyNow: _config.default.devApi + '/order/buyNow', // 确认订单 
   orderCart: _config.default.devApi + '/order/cart', // 购物车确认订单
 
 
@@ -9903,24 +9903,7 @@ HTMLParser;exports.default = _default;
 
 /***/ }),
 
-/***/ 33:
-/*!************************************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_bindTel.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 333:
+/***/ 326:
 /*!****************************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-pick/mpvue-citypicker/city-data/province.js ***!
   \****************************************************************************************************/
@@ -10070,7 +10053,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 334:
+/***/ 327:
 /*!************************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-pick/mpvue-citypicker/city-data/city.js ***!
   \************************************************************************************************/
@@ -11584,7 +11567,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 335:
+/***/ 328:
 /*!************************************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-pick/mpvue-citypicker/city-data/area.js ***!
   \************************************************************************************************/
@@ -24137,7 +24120,24 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 350:
+/***/ 33:
+/*!************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2Flogin%2FbindTel"} ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _bindTel = _interopRequireDefault(__webpack_require__(/*! ./pages/login/bindTel.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_bindTel.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 343:
 /*!*****************************************************************************!*\
   !*** C:/Users/pc/Desktop/LEI/app-unixe/components/uni-calendar/calendar.js ***!
   \*****************************************************************************/
@@ -24723,6 +24723,23 @@ calendar;exports.default = _default;
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/login/register.vue */ 42));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_register.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 483:
+/*!*****************************************************************************************!*\
+  !*** C:/Users/pc/Desktop/LEI/app-unixe/main.js?{"page":"pages%2FmoreList%2FmoreGoods"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _moreGoods = _interopRequireDefault(__webpack_require__(/*! ./pages/moreList/moreGoods.vue */ 484));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_moreGoods.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),

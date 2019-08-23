@@ -1,6 +1,5 @@
 {
   "navigationStyle": "custom",
-  "enablePullDownRefresh": true,
   "bounce": "none",
   "titleNView": "false",
   "usingComponents": {

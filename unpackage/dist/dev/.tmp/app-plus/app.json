@@ -11,6 +11,7 @@
     "pages/components/goods",
     "pages/moreList/moreList",
     "pages/market/panicBuy",
+    "pages/moreList/moreGoods",
     "pages/message/message",
     "pages/shopcar/shopcar",
     "pages/zerodraw/zerodraw",

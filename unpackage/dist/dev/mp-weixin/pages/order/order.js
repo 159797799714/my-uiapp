@@ -174,17 +174,14 @@ var _default =
         name: '待付款',
         dataType: 'payment' },
       {
+        name: '待发货',
+        dataType: 'delivery' },
+      {
         name: '待收货',
         dataType: 'received' },
       {
         name: '待评价',
-        dataType: 'comment' },
-      {
-        name: '已完成',
-        dataType: '' },
-      {
-        name: '已取消',
-        dataType: '' }],
+        dataType: 'comment' }],
 
 
       scrollLeft: 0,
@@ -218,17 +215,17 @@ var _default =
   },
   watch: {
     // 监听选中的订单类别，改变位置
-    selectData: function selectData(val) {
-      if (val === '已取消' || val === '已完成') {
-        this.scrollLeft = 69;
-        return;
-      }
-      if (val === '全部' || val === '待付款') {
-        this.scrollLeft = 0;
-        return;
-      }
-    } },
-
+    // selectData(val) {
+    //   if (val === '已取消' || val === '已完成') {
+    //     this.scrollLeft = 69
+    //     return
+    //   }
+    //   if (val === '全部' || val === '待付款') {
+    //     this.scrollLeft = 0
+    //     return
+    //   }
+    // }
+  },
   computed: {
     statusBarHeight: function statusBarHeight() {
       return this.$store.state.statusBarHeight;

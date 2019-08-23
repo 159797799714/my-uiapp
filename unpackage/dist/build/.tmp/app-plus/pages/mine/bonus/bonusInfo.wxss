@@ -316,6 +316,15 @@ view.data-v-502a7874, image.data-v-502a7874, text.data-v-502a7874, input.data-v-
 .t-center.data-v-502a7874 {
   text-align: center;
 }
+.t-left.data-v-502a7874 {
+  text-align: left;
+}
+.t-right.data-v-502a7874 {
+  text-align: right;
+}
+.b-top.data-v-502a7874 {
+  border-top: 1px solid #f5f5f5;
+}
 .padding-30.data-v-502a7874 {
   padding-left: 30rpx;
   padding-right: 30rpx;

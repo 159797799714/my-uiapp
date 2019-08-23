@@ -138,7 +138,7 @@ var _html2json = _interopRequireDefault(__webpack_require__(/*! ./libs/html2json
 //
 //
 //
-var wxParseTemplate = function wxParseTemplate() {return __webpack_require__.e(/*! import() | components/uni-rich/components/wxParseTemplate0 */ "components/uni-rich/components/wxParseTemplate0").then(__webpack_require__.bind(null, /*! ./components/wxParseTemplate0 */ 353));};var _default2 = { name: 'wxParse', props: { // user-select:none;
+var wxParseTemplate = function wxParseTemplate() {return __webpack_require__.e(/*! import() | components/uni-rich/components/wxParseTemplate0 */ "components/uni-rich/components/wxParseTemplate0").then(__webpack_require__.bind(null, /*! ./components/wxParseTemplate0 */ 346));};var _default2 = { name: 'wxParse', props: { // user-select:none;
     userSelect: { type: String, default: 'text' //none |text| all | element
     }, imgOptions: { type: [Object, Boolean], default: function _default() {return { loop: false, indicator: 'number', longPressActions: false // longPressActions: {
           // 	 itemList: ['发送给朋友', '保存图片', '收藏'],

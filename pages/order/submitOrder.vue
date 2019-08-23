@@ -129,7 +129,7 @@
       <view class="chackout-left pl-12 font-34 p-left-30">实付款：
         <text class="col-m">￥{{ detail.actual_pay_price > 0 ? detail.actual_pay_price:  detail.order_pay_price }}</text>
       </view>
-      <view @click="submitOrder" class="submit-btn bg-black col-f t-center">
+      <view @click="getOrderInfo" class="submit-btn bg-black col-f t-center">
         <text class="flow-btn font-32">提交订单</text>
       </view>
 	  </view>
@@ -150,6 +150,7 @@
         remark: '',                        // 买家留言
         cart_ids: '',                      // 购物车进来传入id
         isCart: false,                     // 是否购物车进来
+        orderInfo: '',                     // 支付宝订单数据
 			};
 		},
     onLoad(option) {
@@ -220,6 +221,66 @@
           }
         })
       },
+      // 支付前获取订单信息
+      getOrderInfo() {
+        let that = this
+        let data = that.option
+        let url= that.$api.orderBuyNow
+        data.delivery= that.delivery
+        data.pay_method= 'APP'
+        if(that.isCart) {
+          url= that.$api.orderCart
+          data= {
+            cart_ids: that.cart_ids,
+            shop_id: that.shop_id,
+            delivery: that.delivery,
+            pay_method: 'APP'
+          }
+        }
+        that.$http({
+          url: url,
+          data: data,
+          method: 'POST',
+          cb: (err, res) => {
+            if(!err && res.code === 1) {
+              that.orderInfo= res.data.payment
+              let _this= that
+              // 调起微信支付
+              uni.getProvider({
+                service: 'oauth',
+                success: function (res) {
+                  console.log(res.provider)
+                  if (~res.provider.indexOf('weixin')) {
+                    uni.requestPayment({
+                      provider: 'wxpay',
+                      orderInfo: _this.orderInfo, //微信、支付宝订单数据
+                      success: function (res) {
+                        console.log('success:' + JSON.stringify(res));
+                      },
+                      fail: function (err) {
+                        console.log('fail:' + JSON.stringify(err));
+                      }
+                    })
+                  }
+                }
+              })
+              
+            } else if(res.code === 0 || res.code === -1 && res.msg) {
+              uni.showToast({
+                title: res.msg,
+                icon: 'none'
+              })
+            } else {
+              uni.showToast({
+                title: '支付订单获取失败',
+                icon: 'none'
+              })
+            }
+          }
+        })
+      },
+      
+      
       // 选择自提门店
       selectExtractPoint() {
         uni.chooseLocation({

@@ -222,11 +222,7 @@ var _default =
         dataType: 'comment' },
       {
         imgUrl: '../../static/img/mine/success.png',
-        name: '已完成',
-        dataType: '' },
-      {
-        imgUrl: '../../static/img/mine/cancel.png',
-        name: '已取消',
+        name: '退换/售后',
         dataType: '' }],
 
       // 我的订单第一行
@@ -248,8 +244,9 @@ var _default =
       tabIndex: 0, // 默认选中点赞
       tabList: ['点赞', '收藏'], // tab
       shareList: [], // 收藏文章列表
-      goodList: [] };
-
+      goodList: [],
+      sweixin: null // 跳转小程序
+    };
   },
   computed: {
     statusBarHeight: function statusBarHeight() {
@@ -257,7 +254,8 @@ var _default =
     } },
 
   onLoad: function onLoad() {
-
+    // 获取当前显示webview
+    // this.getPlus()
   },
   onShow: function onShow() {
     // 获取个人信息
@@ -277,6 +275,36 @@ var _default =
     } },
 
   methods: {
+
+    // getPlus() {
+    //     //获取当前显示的webview
+    //     var pages = getCurrentPages()
+    //     var page = pages[pages.length - 1]
+    //     var currentWebview = page.$getAppWebview()
+    //     //调用H5+APP的扩展API
+    //     var shares=null;
+    //     let that = this
+    //     var pusher = plus.share.getServices(function(s){
+    //       shares={};
+    //       for(var i in s){
+    //         var t=s[i];
+    //         shares[t.id]=t;
+    //       }
+    //       that.sweixin=shares['weixin'];
+    //     }, function(e){
+    //       console.log("获取分享服务列表失败："+e.message);
+    //     });
+    //     //放入当前的webview
+    //     currentWebview.append(pusher);
+    //   },
+    // checkWeChat() {
+    //   //调用微信小程序
+    //   this.sweixin.launchMiniProgram({
+    //     id:'gh_d5318ceadc5f' //要跳转小程序的原始ID
+    //   })
+    // },
+
+
     // 进入个人信息页面
     goPersonal: function goPersonal() {
       uni.navigateTo({

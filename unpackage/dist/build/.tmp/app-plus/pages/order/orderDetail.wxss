@@ -316,6 +316,15 @@ view.data-v-a3af5f22, image.data-v-a3af5f22, text.data-v-a3af5f22, input.data-v-
 .t-center.data-v-a3af5f22 {
   text-align: center;
 }
+.t-left.data-v-a3af5f22 {
+  text-align: left;
+}
+.t-right.data-v-a3af5f22 {
+  text-align: right;
+}
+.b-top.data-v-a3af5f22 {
+  border-top: 1px solid #f5f5f5;
+}
 .padding-30.data-v-a3af5f22 {
   padding-left: 30rpx;
   padding-right: 30rpx;

@@ -30,10 +30,10 @@
         
         <!-- 拼团,秒杀购，限时购，0元购等活动入口 -->
         <view class="discount dis-flex flex-x-between">
-          <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(index)">
+          <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(item.name)">
             <view class="pintuan-text dis-flex">
               <image :src="item.imgUrl"></image>
-              <text v-if="item.time" class="time font-22 col-f bg-black">{{ item.time }}</text>
+              <text v-if="item.time && index !== 0 && index !== 1" class="time font-22 col-f bg-black">{{ item.time }}</text>
             </view>
             <view v-if="item.info" class="pintuan-info font-28 col-3d f-bold">{{ item.info }}</view>
             <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-3d">
@@ -97,8 +97,15 @@
           max_price: '',
           img: ''
         }, {
+          imgUrl: '../../static/img/market/zero-text.png',
+          name: '0元购',
+          time: '',
+          min_price: '',
+          max_price: '',
+          img: ''
+        }, {
           imgUrl: '../../static/img/market/miaoshagou-text.png',
-          name: '秒杀购购',
+          name: '秒杀购',
           time: '',
           min_price: '',
           max_price: '',
@@ -110,13 +117,6 @@
           min_price: '',
           max_price: '',
           info: '',
-          img: ''
-        }, {
-          imgUrl: '../../static/img/market/zero-text.png',
-          name: '0元购',
-          time: '',
-          min_price: '',
-          max_price: '',
           img: ''
         }],
         recommendList: []
@@ -144,12 +144,6 @@
       this.getZero()
       // 获取一个秒杀购商品
       this.getKillGoods()
-    },
-    onPullDownRefresh() {
-      console.log('refresh');
-      setTimeout(function () {
-          uni.stopPullDownRefresh();
-      }, 1000);
     },
     methods: {
       
@@ -302,22 +296,6 @@
             }
           }
         })
-      //   App._get('luckydraw/getluckydrawgoodsbyone', {}, function(result) {
-      //     if (result.data.goods) {
-      //       _this.setData({
-      //         'discount[3].min_price': result.data.goods.sku ? result.data.goods.sku[0].goods_price: '',
-      //         'discount[3].max_price': result.data.goods.sku ? result.data.goods.sku[0].line_price: '',
-      //         'discount[3].info': result.data.goods.homepage_activity_subtitle ? result.data.goods.homepage_activity_subtitle : '',
-      //         'discount[3].img': result.data.goods.headimg ? result.data.goods.headimg.file_path: ''
-      //       })
-      //       utils.countDown(result.data.goods.category.activity_endtime, function(nowTime) {
-      //         _this.setData({
-      //           'discount[3].time': nowTime
-      //         })
-      //       })
-      //     }
-      // 
-      //   })
       },
       // 推荐商品列表
       getRecommendgoods() {
@@ -349,25 +327,25 @@
         })
       },
       // 抢购或者秒杀购,零元购，拼团等
-      goPintuan(index) {
-        switch(index) {
-          case 0:
+      goPintuan(name) {
+        switch(name) {
+          case '拼团购':
             uni.showToast({
               title: '拼团暂未开放',
               icon: 'none'
             })
             break
-          case 1:
+          case '秒杀购':
             uni.navigateTo({
               url: 'panicBuy?origin=' + '秒杀购'
             })
             break
-          case 2:
+          case '限时购':
             uni.navigateTo({
               url: 'panicBuy?origin=' + '限时购'
             })
             break
-          case 3:
+          case '0元购':
             uni.showToast({
               title: '零元购暂未开放',
               icon: 'none'

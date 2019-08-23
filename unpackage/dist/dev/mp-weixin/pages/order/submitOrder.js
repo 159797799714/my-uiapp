@@ -256,7 +256,8 @@ var _default =
       detail: {}, // 订单数据
       remark: '', // 买家留言
       cart_ids: '', // 购物车进来传入id
-      isCart: false // 是否购物车进来
+      isCart: false, // 是否购物车进来
+      orderInfo: '' // 支付宝订单数据
     };
   },
   onLoad: function onLoad(option) {
@@ -291,7 +292,7 @@ var _default =
       this.tabDefault = index;
     },
     // 提交订单
-    orderBuy: function orderBuy() {var _this = this;
+    orderBuy: function orderBuy() {var _this2 = this;
       var that = this;
       var data = that.option;
       var url = that.$api.orderBuyNow;
@@ -311,7 +312,7 @@ var _default =
           if (!err && res.code === 1) {
             that.detail = res.data;
             if (res.data.extract_shop) {
-              _this.shop_id = res.data.extract_shop.shop_id;
+              _this2.shop_id = res.data.extract_shop.shop_id;
             }
           } else if (res.code === 0 || res.code === -1 && res.msg) {
             uni.showToast({
@@ -327,6 +328,66 @@ var _default =
         } });
 
     },
+    // 支付前获取订单信息
+    getOrderInfo: function getOrderInfo() {
+      var that = this;
+      var data = that.option;
+      var url = that.$api.orderBuyNow;
+      data.delivery = that.delivery;
+      data.pay_method = 'APP';
+      if (that.isCart) {
+        url = that.$api.orderCart;
+        data = {
+          cart_ids: that.cart_ids,
+          shop_id: that.shop_id,
+          delivery: that.delivery,
+          pay_method: 'APP' };
+
+      }
+      that.$http({
+        url: url,
+        data: data,
+        method: 'POST',
+        cb: function cb(err, res) {
+          if (!err && res.code === 1) {
+            that.orderInfo = res.data.payment;
+            var _this = that;
+            // 调起微信支付
+            uni.getProvider({
+              service: 'oauth',
+              success: function success(res) {
+                console.log(res.provider);
+                if (~res.provider.indexOf('weixin')) {
+                  uni.requestPayment({
+                    provider: 'wxpay',
+                    orderInfo: _this.orderInfo, //微信、支付宝订单数据
+                    success: function success(res) {
+                      console.log('success:' + JSON.stringify(res));
+                    },
+                    fail: function fail(err) {
+                      console.log('fail:' + JSON.stringify(err));
+                    } });
+
+                }
+              } });
+
+
+          } else if (res.code === 0 || res.code === -1 && res.msg) {
+            uni.showToast({
+              title: res.msg,
+              icon: 'none' });
+
+          } else {
+            uni.showToast({
+              title: '支付订单获取失败',
+              icon: 'none' });
+
+          }
+        } });
+
+    },
+
+
     // 选择自提门店
     selectExtractPoint: function selectExtractPoint() {
       uni.chooseLocation({

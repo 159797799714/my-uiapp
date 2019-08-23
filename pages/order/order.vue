@@ -66,18 +66,15 @@
           }, {
             name: '待付款',
             dataType: 'payment'
+          },{
+            name: '待发货',
+            dataType: 'delivery'
           }, {
             name: '待收货',
             dataType: 'received'
           }, {
             name: '待评价',
             dataType: 'comment'
-          }, {
-            name: '已完成',
-            dataType: ''
-          }, {
-            name: '已取消',
-            dataType: ''
           }
         ],
         scrollLeft: 0,
@@ -111,16 +108,16 @@
     },
     watch: {
       // 监听选中的订单类别，改变位置
-      selectData(val) {
-        if (val === '已取消' || val === '已完成') {
-          this.scrollLeft = 69
-          return
-        }
-        if (val === '全部' || val === '待付款') {
-          this.scrollLeft = 0
-          return
-        }
-      }
+      // selectData(val) {
+      //   if (val === '已取消' || val === '已完成') {
+      //     this.scrollLeft = 69
+      //     return
+      //   }
+      //   if (val === '全部' || val === '待付款') {
+      //     this.scrollLeft = 0
+      //     return
+      //   }
+      // }
     },
     computed: {
       statusBarHeight() {
@@ -209,7 +206,8 @@
   }
   .tabNav{
     height: 70upx;
-    width: calc(100% + 148upx);
+    // width: calc(100% + 148upx);
+    width: calc(100% + 10upx);
     padding: 0 30upx;
     line-height: 70upx;
     .tab{
