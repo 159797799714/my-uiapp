@@ -319,7 +319,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 313));};var _default =
+var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 321));};var _default =
 {
   components: {
     uParse: uParse },

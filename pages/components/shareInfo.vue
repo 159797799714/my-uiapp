@@ -179,10 +179,6 @@
         let that = this
         if(e.detail.scrollTop > that.scrollTop && that.isHeadShow) {
           that.isHeadShow= false
-          // 停留一段时间不滚动，自动出现顶部返回
-          setTimeout(function() {
-            that.isHeadShow = true
-          }, 5000)
         } else if(e.detail.scrollTop < that.scrollTop && !that.isHeadShow){
           that.isHeadShow= true
         }

@@ -10,16 +10,17 @@
       <view class="banner-swiper bg-black">
         <banner :swiperList="swiperList"></banner>
       </view>
-      <view class="TabNav bg-black font-ff f-bold">
+      <view class="TabNav bg-black col-cc">
         <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
       </view>
       <view v-if="cultureList.length > 0" v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
         <image :src="item.image.file_path" mode="widthFix" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
-          <view v-if="item.article_title" class="title font-ff" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
-          <view v-if="item.subtitle" class="info font-A3" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
+          <view v-if="item.article_title" class="title col-cc" @click="goInfo(item.article_id)">{{ item.article_title }}</view>
+          <view v-if="item.subtitle" class="info col-66" @click="goInfo(item.article_id)">{{ item.subtitle }}</view>
           <view class="control">
             <view class="look">
+              <text class="search-icon iconfont">&#xe6cc;</text>
               <text>{{ item.show_views }}</text>
             </view>
             <view class="zan">
@@ -295,8 +296,8 @@
           right: 0;
           bottom: 0;
           margin: auto;
-          background: $color-slipe-red;
-          opacity: 0.8;
+          background: $color-purple;
+          opacity: 0.6;
         }
       }
     }

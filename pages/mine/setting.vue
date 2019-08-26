@@ -1,6 +1,7 @@
 <template>
   <view class="container">
-    <view class="topBar"  :style="{'padding-top': statusBarHeight + 'px' }">
+    <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
+      <text class="iconfont font-40 f-bold" @click="goBack">&#xe61c;</text>
       <text class="title">设置</text>
     </view>
   	<view class="content bg-white border-box">
@@ -94,8 +95,19 @@
 
 <style lang="scss" scoped>
   .topBar{
+    display: flex;
+    justify-content: space-between;
     font-size: $font-38;
     color: $color-white;
+    .iconfont{
+      font-size: $font-42;
+      font-weight: 500;
+    }
+    .title{
+      flex: 1;
+      margin-right: 40upx;
+      text-align: center;
+    }
   }
   .content{
     padding: 0 30upx;

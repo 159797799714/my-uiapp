@@ -90,6 +90,7 @@
     }
     .title{
       flex: 1;
+      margin-right: 40upx;
       text-align: center;
     }
   }

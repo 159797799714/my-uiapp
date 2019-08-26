@@ -1,19 +1,23 @@
 <template>
   <view class="container">
+    <view class="topBar dis-flex flex-x-between col-blue" @click="pagetoTop" :style="{'padding-top': statusBarHeight + 'px' }">
+      <text class="iconfont font-40 f-bold" @click="goBack">&#xe61c;</text>
+      <text class="iconfont font-40" @click="goShare">&#xe60f;</text>
+    </view>
     <view class="content">
       <view class="tabs">
-        <view v-for="(item, index) in timeList" :key="index" :class="{'tab-item': true, selected: selectIndex === index}" @click="selectTime(item, index)">
+        <view v-for="(item, index) in timeList" :key="index" :class="{'tab-item bg-black': true, selected: selectIndex === index}" @click="selectTime(item, index)">
           <text class="day">{{ item.activity_date }}</text>
           <text class="hour">{{ item.activity_time }}</text>
           <text class="status">{{ item.status }}</text>
         </view>
       </view>
-      <scroll-view scroll-y="true" class="main">
+      <scroll-view scroll-y="true" class="main bg-black">
         <view v-if="swiperList.length > 0" class="banner">
           <banner :swiperList="swiperList"></banner>
         </view>
         <!-- <view class="leave-time">{{ title === '秒杀购'?'秒杀购': '抢购' }}，距离下场开始时间 <text>45:15:11</text></view> -->
-        <view v-for="(item, index) in goodList.data" :key="index" class="item bg-white">
+        <view v-for="(item, index) in goodList.data" :key="index" class="item">
           <view class="goodImg" @click="goDetail(item)">
             <view v-if="item.surplus_inventory < 1" class="imgCover">
               <text>售完</text>
@@ -21,20 +25,20 @@
             <image :src="item.image[0].file_path" mode=""></image>
           </view>
           <view class="goodInfo">
-            <view class="goodName" @click="goDetail(item)">{{ item.goods_name }}</view>
+            <view class="goodName font-99" @click="goDetail(item)">{{ item.goods_name }}</view>
+            <view class="word font-20 col-f3c">历史新低</view>
+            <view class="price">
+              <view class="newPrice font-28 col-f3c">￥<text class="font-36">{{ item.goods_min_price }}</text></view>
+              <text class="oldPrice t-dec-line">￥{{ item.goods_max_price }}</text>
+            </view>
             <view class="leaver" @click="goDetail(item)">
               <text class="text">仅剩余{{ item.surplus_inventory }}件</text>
               <view class="peogress-box">
-                <progress :percent="item.surplus_inventory / item.total_inventory * 100" activeColor="#FF3C3E" stroke-width="15" backgroundColor="#FCD1D1" class="progress"/>
+                <progress :percent="item.surplus_inventory / item.total_inventory * 100" activeColor="#FF33CC" stroke-width="15" backgroundColor="#666666" class="progress"/>
               </view>
             </view>
-            <view class="discount">
-              <text v-if="item.goods_discount_price !== 0 || item.goods_discount_price">{{ item.goods_discount_price }}折</text>
-            </view>
             <view class="price">
-              <text class="newPrice">￥{{ item.goods_min_price }}</text>
-              <text class="oldPrice">￥{{ item.goods_max_price }}</text>
-              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="goBuy(item)">立即抢购</text>
+              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{'buy bg-black col-f': true, 'my-button': true}" @click="goBuy(item)">立即抢购</text>
               <text v-if="item.surplus_inventory < 1" :class="{buy: true,'my-button': true, none: true}">已售完</text>
               <text v-if="goodList.header_info.status === '已结束'" :class="{buy: true,'my-button': true, none: true}">已结束</text>
               <!-- <form @submit="setRemind" report-submi="true"> -->
@@ -62,6 +66,11 @@
         timeList: [],                      // 时间
         selectIndex: 0,                    // 选中的时间
         goodList: {},                      // 商品列表
+      }
+    },
+    computed: {
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
       }
     },
     onLoad(option) {
@@ -197,6 +206,11 @@
           }
         })
       },
+      goBack() {
+        uni.navigateBack({
+          delta: 1
+        })
+      },
       // 选择活动
       selectTime(item, index) {
         this.selectIndex = index
@@ -223,6 +237,8 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
+  padding-top: 4upx;
+  background: linear-gradient(to right,#00BFFF, #9933FF, #ff33cc);
   z-index: 2;
   .tab-item{
     flex: 1;
@@ -231,7 +247,6 @@
     justify-content: center;
     align-items: center;
     color: $color-99;
-    background: $title-color;
     .day{
       font-size: $font-24;
       line-height: 36upx;
@@ -257,6 +272,7 @@
   box-sizing: border-box;
   .banner{
     height: 330upx;
+    margin-bottom: 50upx;
   }
   .leave-time{
     height: 62upx;
@@ -272,8 +288,8 @@
 }
 .item{
     display: flex;
-    padding: 10upx;
-    margin-bottom: 15upx;
+    padding: 20upx;
+    margin-bottom: 30upx;
     .goodImg{
       position: relative;
       height: 260upx;
@@ -312,7 +328,7 @@
       flex: 1;
       .goodName{
         height: 75upx;
-        font-size: $font-30;
+        font-size: $font-28;
         line-height: 40upx;
         white-space: wrap;
         overflow: hidden;
@@ -322,15 +338,15 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
+      .word{
+        line-height: 45upx;
+      }
       .leaver{
         position: relative;
-        margin: 30upx 0;
-        // padding: 0 30upx;
+        margin: 17upx 0;
         height: 30upx;
         font-size: $font-22;
         line-height: 30upx;
-        color: $color-white;
-        background: $color-pink;
         border-radius: 15upx;
         overflow: hidden;
         .progress{
@@ -344,30 +360,13 @@
           border-radius: 15upx;
         }
       }
-      .discount{
-        display: flex;
-        height: 40upx;
-        padding: 0 7upx;
-        &>text{
-          padding: 5upx 11upx;
-          margin-bottom: 8upx;
-          border: 1px solid $title-color;
-          color: $title-color;
-          font-size: $font-20;
-          line-height: $font-20;
-        }  
-      }
       .price{
-        height: 50upx;
         position: relative;
         display: flex;
         align-items: flex-end;
         .newPrice{
           margin-right: 14upx;
-          font-size: $font-28;
           line-height: 36upx;
-          color: $color-slipe-red;
-          font-weight: $font-bold;
         }
         .oldPrice{
           font-size: $font-22;
@@ -375,27 +374,18 @@
           color: $word-color;
           text-overflow: hidden;
           white-space: nowrap;
-          
-          &::before{
-            content: '———';
-            text-align: center;
-            color: $control-color;
-            height: 2upx;
-            position: absolute;
-            margin: auto;
-          }
         }
         .buy{
           display: inline-block;
           position: absolute;
           top: -2upx;
           right: 0;
-          height: 48upx;
-          width: 140upx;
+          height: 32upx;
+          width: 120upx;
           color: $color-slipe-red;
-          border: 1px solid $color-slipe-red;
+          border: 1px solid $color-purple;
           font-size: $font-24;
-          line-height: 48upx;
+          line-height: 32upx;
         }
         .none{
           border-color: $color-99;

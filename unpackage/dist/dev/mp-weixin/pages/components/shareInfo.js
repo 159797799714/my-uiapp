@@ -105,7 +105,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 313));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 321));};var _default =
 
 
 
@@ -286,10 +286,6 @@ __webpack_require__.r(__webpack_exports__);
       var that = this;
       if (e.detail.scrollTop > that.scrollTop && that.isHeadShow) {
         that.isHeadShow = false;
-        // 停留一段时间不滚动，自动出现顶部返回
-        setTimeout(function () {
-          that.isHeadShow = true;
-        }, 5000);
       } else if (e.detail.scrollTop < that.scrollTop && !that.isHeadShow) {
         that.isHeadShow = true;
       }

@@ -5,6 +5,7 @@ import store from './store'
 import api from './api/api.js'
 import HTTP from './common/http.js'
 import resFilter from './common/resFilter.js'
+import './static/icon/iconfont.css'
 
 Vue.config.productionTip = false
 

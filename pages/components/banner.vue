@@ -1,5 +1,5 @@
 <template>
-  <view class="banner">
+  <view class="banner border-box">
     <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
       :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
       <swiper-item v-for="(item, index) in swiperList" :key="index" @click="naviget(item.activity_link)" class="swiper-item">
@@ -64,6 +64,8 @@
  .banner{
     height: 100%;
     width: 100%;
+    padding: 4upx;
+    background: linear-gradient(to right,#00BFFF, #9933FF, #ff33cc);
     .swiper-item{
       height: 100%;
       width: 100%;

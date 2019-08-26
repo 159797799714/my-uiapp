@@ -92,7 +92,10 @@
         "navigationStyle": "custom"
       }
     }, {
-      "path": "pages/market/panicBuy"
+      "path": "pages/market/panicBuy",
+      "style": {
+        "navigationStyle": "custom"
+      }
     }, {
       "path": "pages/moreList/moreGoods",
       "style": {
@@ -358,7 +361,7 @@
   },
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#000000",
-    "backgroundColor": "#000000"
+    "navigationBarBackgroundColor": "#131313",
+    "backgroundColor": "#131313"
   }
 }

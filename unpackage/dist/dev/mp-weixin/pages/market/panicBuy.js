@@ -65,7 +65,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 304));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 312));};var _default =
+
+
+
+
 
 
 
@@ -131,6 +135,11 @@ __webpack_require__.r(__webpack_exports__);
       goodList: {} // 商品列表
     };
   },
+  computed: {
+    statusBarHeight: function statusBarHeight() {
+      return this.$store.state.statusBarHeight;
+    } },
+
   onLoad: function onLoad(option) {
     console.log('分享文章详情页接受到的参数', option.origin);
     this.title = option.origin;
@@ -262,6 +271,11 @@ __webpack_require__.r(__webpack_exports__);
 
           }
         } });
+
+    },
+    goBack: function goBack() {
+      uni.navigateBack({
+        delta: 1 });
 
     },
     // 选择活动

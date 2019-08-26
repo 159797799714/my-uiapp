@@ -176,15 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-
-
-
-var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 304));};var _default =
+var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = function banner() {return __webpack_require__.e(/*! import() | pages/components/banner */ "pages/components/banner").then(__webpack_require__.bind(null, /*! ../components/banner.vue */ 312));};var _default =
 {
   components: {
     banner: banner },
@@ -196,6 +188,21 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
       swiperList: [],
       menuList: [], // 所有商品分类列表
       discount: [{
+        imgUrl: '../../static/img/market/xianshigou-text.png',
+        name: '限时购',
+        time: '',
+        min_price: '',
+        max_price: '',
+        info: '',
+        img: '' },
+      {
+        imgUrl: '../../static/img/market/miaoshagou-text.png',
+        name: '秒杀购',
+        time: '',
+        min_price: '',
+        max_price: '',
+        img: '' },
+      {
         imgUrl: '../../static/img/market/pintuan-text.png',
         name: '拼团购',
         info: '',
@@ -209,21 +216,6 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var banner = fun
         time: '',
         min_price: '',
         max_price: '',
-        img: '' },
-      {
-        imgUrl: '../../static/img/market/miaoshagou-text.png',
-        name: '秒杀购',
-        time: '',
-        min_price: '',
-        max_price: '',
-        img: '' },
-      {
-        imgUrl: '../../static/img/market/xianshigou-text.png',
-        name: '限时购',
-        time: '',
-        min_price: '',
-        max_price: '',
-        info: '',
         img: '' }],
 
       recommendList: [] };

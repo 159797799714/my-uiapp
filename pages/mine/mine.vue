@@ -1,55 +1,55 @@
 <template>
   <view class="container">
-    <scroll-view scroll-y="true" class="content">
-      <view class="header">
-        <!-- <image src="../../static/img/mine/bg.png" class="head-bg"></image> -->
-        <view class="head-main border-box bg-black" :style="{'padding-top': statusBarHeight + 'px'}">
-          <view class="navigator">
-            <view class="title" @click="goSetting">
-              我的
-              <text class="iconfont" @click="goSetting">&#xe676;</text>
-            </view>
+    <scroll-view scroll-y="true" class="content bg-33">
+      <view class="head-main bg-black" :style="{'padding-top': statusBarHeight + 27 + 'px'}">
+        <view class="user dis-flex flex-x-between">
+          <image :src="userinfo.avatarUrl"></image>
+          <view class="person dis-flex flex-dir-column flex-x-end col-f" @click="goPersonal">
+            <view class="name font-36">{{ userinfo.nickName ? userinfo.nickName : '未设置昵称' }}</view>
+            <view class="sign font-22">这家伙很懒什么都没有留下</view>
           </view>
-          <view class="user">
-            <image :src="userinfo.avatarUrl" mode=""></image>
-            <view @click="goPersonal">
-              <view class="name">{{ userinfo.nickName ? userinfo.nickName : '未设置昵称' }}</view>
-              <view class="uenum">UE号：{{ userinfo.mobile ? userinfo.mobile : '未绑定手机号' }}</view>
-              <view class="sign">这家伙很懒什么都没有留下</view>
-            </view>
+          <text class="iconfont font-34" @click="goSetting">&#xe676;</text>
+        </view>
+        <view class="topic dis-flex flex-x-around">
+          <view v-for="(item, index) in topicList" :key="index" class="topic-item t-center font-25 font-99">
+            <view class="topic-num">{{ item.num }}</view>
+            <view class="topic-name">{{ item.name }}</view>
           </view>
         </view>
       </view>
-      <view class="order bg-white">
-        <view class="myorder">
-          <text @click="checkWeChat">我的订单</text>
-          <view @click="goOrder('全部', 'all')">
+      <view class="linear-border"></view>
+      <view class="order bg-black">
+        <view class="myorder font-28">
+          <text class="col-cc" @click="checkWeChat">我的订单</text>
+          <view class="col-66" @click="goOrder('全部', 'all')">
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
           </view>
         </view>
-        <view class="row1">
-          <view v-for="(item, index) in menuList1" :key="index" @click="goOrder(item.name, item.dataType)">
-            <image :src="item.imgUrl" mode=""></image>
-            <text>{{ item.name }}</text>
-          </view>
+      </view>
+      <view class="menu border-box dis-flex flex-x-between flex-wrap bg-black">
+        <view v-for="(item, index) in menuList" :key="index" class="menu-item dis-flex flex-dir-column flex-y-center">
+          <image :src="item.imgUrl"></image>
+          <view class="menu-name col-cc font-26">{{ item.name }}</view>
+        </view>
+      </view>
+      <view class="distribute bg-black">
+        <view class="menu-title">我的分销</view>
+        <view class="dis-flex flex-x-between">
+          <view v-for="(item, index) in distributeList" :key="index" class="row-item dis-flex flex-dir-column flex-y-center">
+            <text class="iconfont font-57 col-gold">{{ item.iconName }}</text>
+            <view class="item-name col-cc font-26">{{ item.name }}</view>
+          </view>  
         </view>
         
-        <!--  优惠券菜单等 -->
-        <!-- <view class="row2">
-          <view v-for="(item, index) in menuList2" :key="index" @click="goChild(index)">
-            <image :src="item.imgUrl" mode=""></image>
-            <text>{{ item.name }}</text>
-          </view>
-        </view> -->
       </view>
-      <view class="goods bg-white">
+      <!-- <view class="goods bg-black">
         <view class="goodsTab">
           <view v-for="(item, index) in tabList" :key="index" :class="{ tabItem: true, after: index === tabIndex }" @click="selectTab(index)">{{ item }}</view>
-        </view>
+        </view> -->
         
         <!-- 点赞 -->
-        <view v-if="tabIndex === 0" class="goods-content">
+        <!-- <view v-if="tabIndex === 0" class="goods-content">
           <view v-for="(item, index) in shareList" :key="index" class="item">
             <view class="img"  @click="goShareDetail(item.article_id)">
               <image :src="item.image.file_path" mode="aspectFill"></image>
@@ -68,10 +68,10 @@
               </view>
             </view>
           </view>
-        </view>
+        </view> -->
         
          <!-- 收藏 -->
-        <view v-if="tabIndex === 1" class="goods-content">
+        <!-- <view v-if="tabIndex === 1" class="goods-content">
           <view v-for="(item, index) in goodList" :key="index" class="good-item">
             <view class="good-img"></view>
             <view class="good-info border-box">
@@ -86,7 +86,7 @@
             </view>
           </view>
         </view>
-      </view>
+      </view> -->
     </scroll-view>
   </view>
 </template>
@@ -100,38 +100,71 @@
           nickName: '',
           mobile: '',
         },
-        menuList1: [
+        topicList: [{
+          num: 1000,
+          name: '关注'
+        }, {
+          num: 222,
+          name: '收藏'
+        }, {
+          num: 1000,
+          name: '点赞'
+        }, {
+          num: 222,
+          name: '粉丝'
+        }],
+        menuList: [
           {
-            imgUrl: '../../static/img/mine/staypay.png',
+            imgUrl: '../../static/img/mine/mine1.png',
             name: '待付款',
             dataType: 'payment'
           }, {
-            imgUrl: '../../static/img/mine/stayreceive.png',
+            imgUrl: '../../static/img/mine/mine2.png',
             name: '待收货',
             dataType: 'received'
           }, {
-            imgUrl: '../../static/img/mine/stayassess.png',
+            imgUrl: '../../static/img/mine/mine3.png',
             name: '待评价',
             dataType: 'comment'
           }, {
-            imgUrl: '../../static/img/mine/success.png',
+            imgUrl: '../../static/img/mine/mine4.png',
             name: '退换/售后',
+            dataType: ''
+          }, {
+            imgUrl: '../../static/img/mine/mine1.png',
+            name: '每日签到',
+            dataType: ''
+          }, {
+            imgUrl: '../../static/img/mine/mine2.png',
+            name: '我的积分',
+            dataType: ''
+          }, {
+            imgUrl: '../../static/img/mine/mine3.png',
+            name: '优惠券',
+            dataType: ''
+          }, {
+            imgUrl: '../../static/img/mine/mine4.png',
+            name: '我的钱包',
             dataType: ''
           }
         ],                        // 我的订单第一行
-        menuList2: [
+        distributeList: [
           {
-            imgUrl: '../../static/img/mine/discount.png',
-            name: '优惠券'
+            iconName: '&#xe6f7',
+            name: '每日签到',
+            dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/sign.png',
-            name: '我的签到'
+            iconName: '&#xe657',
+            name: '我的积分',
+            dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/recording.png',
-            name: '最近浏览'
+            iconName: '&#xe691',
+            name: '优惠券',
+            dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/share.png',
-            name: '我的推广'
+            iconName: '&#xe67c',
+            name: '我的钱包',
+            dataType: ''
           }
         ],                        // 我的订单第二行
         tabIndex: 0,              // 默认选中点赞
@@ -360,18 +393,8 @@
     display: flex;
     flex-direction: column;
     color: $title-color;
-    .header, .head-bg{
-      height: 358upx;
-      width: 100%;
-    }
-    .header{
-      position: relative;
-    }
     .head-main{
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 358upx;
+      height: 268upx;
       width: 100%;
       color: $color-white;
       background: rgba(0, 0, 0, 0.8);
@@ -397,19 +420,23 @@
         
       }
       .user{
-        display: flex;
+        margin-bottom: 23upx;
         padding: 0 67upx;
+        height: 114upx;
         &>image{
           height: 114upx;
           width: 114upx;
           margin-right: 37upx;
           border-radius: 100%;
+          border: 2px solid $color-cc;
         }
-        &>view{
+        .person{
           flex: 1;
           font-size: $font-22;
           color: $color-99;
+          letter-spacing: 1upx;
           .name{
+            margin-bottom: 10upx;
             font-size: $font-36;
             line-height: 36upx;
             color: $color-white;
@@ -421,60 +448,70 @@
         }
       }
     }
+    .topic{
+      padding: 0 67upx;
+      height: 84upx;
+      .topic-item{
+        padding: 26upx 0 13upx;
+        flex: 1;
+      }
+      
+    }
+    .linear-border{
+      height: 6upx;
+      width: 100%;
+    }
     .order{
       width: 100%;
       padding: 0 30upx;
-      box-shadow:0upx 0upx 24upx 0upx rgba(190,190,190,0.27);
-      border-radius:10upx 10upx 0upx 0upx;
       box-sizing: border-box;
-      z-index: 100;
       .myorder{
         display: flex;
         justify-content: space-between;
         height: 75upx;
         padding-left: 30upx;
         line-height: 75upx;
-        font-size: $font-28;
-        border-bottom: 2px solid $color-f5;
-        &>text{
-          font-weight: $font-bold;
-        }
         &>view>text{
           margin-left: 15upx;
-          color: $word-color;
-        }
-      }
-      .row1, .row2{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: $font-24;
-        line-height: $font-24;
-        &>view{
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-      .row1{
-        padding: 28upx;
-        border-bottom: 2px solid $color-f5;
-        &>view>image{
-          height: 84upx;
-          width: 84upx;
-          margin-bottom: 14upx;
-        }
-      }
-      .row2{
-        padding: 28upx 62upx;
-        &>view>image{
-          height: 81upx;
-          width: 81upx;
-          margin-bottom: 14upx;
         }
       }
     }
+    .menu{
+      padding: 0 40upx;
+      height: 410upx;
+      margin-bottom: 20upx;
+      overflow: hidden;
+      .menu-item{
+        width: 164upx;
+        &>image{
+          height: 86upx;
+          width: 86upx;
+          margin: 46upx 0 15upx;
+        }
+        .menu-name{
+          margin-bottom: 23upx;
+          line-height: 24upx;
+        }
+      }
+    }
+    .distribute{
+      padding: 37upx 80upx;
+    }
+    .row-item{
+      &>image{
+        height: 65upx;
+        width: 81upx;
+        margin-bottom: 20upx;
+      }
+    }
+    .menu-title{
+      margin-bottom: 30upx;
+      font-size: $font-28;
+      color: $color-cc;
+      line-height: 28upx;
+    }
+    // 注释的收藏和点赞
+    
     .goods{
       padding: 33upx 30upx;
       .goodsTab{

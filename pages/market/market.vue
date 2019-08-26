@@ -8,17 +8,9 @@
     </view>
     <scroll-view scroll-y="true" class="content-box bg-black" :scroll-top="scrollTop">
       <view class="banner-swiper">
-        
-        <!-- <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :circular="true"
-          :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration">
-          <swiper-item v-for="(item, index) in swiperList" :key="index" @click="naviget(item.activity_link)">
-            <view class="swiper-item">
-              <image :src="item.image.file_path" mode=""></image>
-            </view>
-          </swiper-item> 
-        </swiper>-->
-         
-        <banner :swiperList="swiperList"></banner>
+        <view class="banner-box border-box">
+          <banner :swiperList="swiperList"></banner>
+        </view>
       </view>
       <view class="main">
         <view class="menuList">
@@ -29,14 +21,14 @@
         </view>
         
         <!-- 拼团,秒杀购，限时购，0元购等活动入口 -->
-        <view class="discount dis-flex flex-x-between">
-          <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column" @click="goPintuan(item.name)">
+        <view class="discount dis-flex flex-x-around">
+          <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column bg-black" @click="goPintuan(item.name)">
             <view class="pintuan-text dis-flex">
               <image :src="item.imgUrl"></image>
-              <text v-if="item.time && index !== 0 && index !== 1" class="time font-22 col-f bg-black">{{ item.time }}</text>
+              <text v-if="item.time && index !== 2 && index !== 3" class="time font-22 col-f bg-93f">{{ item.time }}</text>
             </view>
-            <view v-if="item.info" class="pintuan-info font-28 col-3d f-bold">{{ item.info }}</view>
-            <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-3d">
+            <view v-if="item.info" class="pintuan-info font-28 col-f3c f-bold">{{ item.info }}</view>
+            <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-f3c">
               ￥<text class="min-price f-bold">{{index === 3 ? '0': item.min_price }}</text>
               <text class="max-price font-24 font-99 t-dec-line">￥{{ item.max_price }}</text>
             </view>
@@ -46,7 +38,7 @@
               <!-- 无相关活动 -->
               <view v-if="!item.time" class="nothing">
                 <image mode="aspectFit" src="../../static/img/no_content.png"></image>
-                <view class="nothing-info font-28">亲, 没有相关活动</view>
+                <view class="nothing-info font-28 col-cc">亲, 没有相关活动</view>
               </view>
             </view>
           </view>
@@ -58,14 +50,14 @@
             <image src="../../static/img/market/foryou.png" mode="widthFix"></image>
           </view>
           <view class="recommend-content">
-            <view v-for="(item, index) in recommendList" :key="index" class="recommend-item bg-white" @click="goDetail(item)">
+            <view v-for="(item, index) in recommendList" :key="index" class="recommend-item bg-black" @click="goDetail(item)">
               <image :src="item.image[0].file_path" mode=""></image>
-              <view class="goods-info padding-15-35">{{ item.goods_name }}</view>
-              <view class="old-price padding-15-35">
+              <view class="goods-info padding-15-35 col-cc">{{ item.goods_name }}</view>
+              <view class="old-price padding-15-35 col-99">
                 <text>￥{{ item.goods_max_price}}</text>
               </view>
               <view class="price font-purple padding-15-35">
-                粉丝￥<text class="bigNewPrice">{{ item.goods_min_price }}</text>
+                粉丝价￥<text class="bigNewPrice f-bold">{{ item.goods_min_price }}</text>
               </view>
             </view>
           </view>
@@ -89,6 +81,21 @@
         swiperList: [],
         menuList: [], // 所有商品分类列表
         discount: [{
+          imgUrl: '../../static/img/market/xianshigou-text.png',
+          name: '限时购',
+          time: '',
+          min_price: '',
+          max_price: '',
+          info: '',
+          img: ''
+        }, {
+          imgUrl: '../../static/img/market/miaoshagou-text.png',
+          name: '秒杀购',
+          time: '',
+          min_price: '',
+          max_price: '',
+          img: ''
+        }, {
           imgUrl: '../../static/img/market/pintuan-text.png',
           name: '拼团购',
           info: '',
@@ -102,21 +109,6 @@
           time: '',
           min_price: '',
           max_price: '',
-          img: ''
-        }, {
-          imgUrl: '../../static/img/market/miaoshagou-text.png',
-          name: '秒杀购',
-          time: '',
-          min_price: '',
-          max_price: '',
-          img: ''
-        }, {
-          imgUrl: '../../static/img/market/xianshigou-text.png',
-          name: '限时购',
-          time: '',
-          min_price: '',
-          max_price: '',
-          info: '',
           img: ''
         }],
         recommendList: []
@@ -424,7 +416,11 @@
     box-sizing: border-box;
     padding: 38upx 30upx 0 30upx;
   }
-
+  .banner-box{
+    width: 100%;
+    height: 100%;
+    
+  }
   .main {
     position: relative;
     width: 100%;
@@ -525,16 +521,16 @@
       }
     }
     .discount{
-      display: flex;
+      padding-top: 4upx;
       flex-wrap:wrap;
+      background: linear-gradient(to right,#00BFFF, #9933FF, #ff33cc);
     }
     /* 拼团 */
     .pintuan {
-      width: 340upx;
-      height: 240upx;
-      background: rgba(249, 250, 252, 1);
-      margin-bottom: 10upx;
+      margin-bottom: 6upx;
       padding: 15upx 0 0 26upx;
+      width: 339upx;
+      height: 240upx;
       box-sizing: border-box;
     }
     
@@ -546,12 +542,14 @@
       width: 123upx;
       height: 31upx;
       margin-right: 14upx;
+      background-color: #000000;
     }
     .pintuan-text .time {
       line-height: 30upx;
       height: 30upx;
       border-radius: 14upx;
       padding: 0 10upx;
+      letter-spacing: 1upx;
     }
     .pintuan-info{
       line-height: 27upx;
