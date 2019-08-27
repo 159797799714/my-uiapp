@@ -198,6 +198,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -238,38 +270,38 @@ var _default =
         name: '退换/售后',
         dataType: '' },
       {
-        imgUrl: '../../static/img/mine/mine1.png',
+        imgUrl: '../../static/img/mine/mine5.png',
         name: '每日签到',
         dataType: '' },
       {
-        imgUrl: '../../static/img/mine/mine2.png',
+        imgUrl: '../../static/img/mine/mine6.png',
         name: '我的积分',
         dataType: '' },
       {
-        imgUrl: '../../static/img/mine/mine3.png',
+        imgUrl: '../../static/img/mine/mine7.png',
         name: '优惠券',
         dataType: '' },
       {
-        imgUrl: '../../static/img/mine/mine4.png',
+        imgUrl: '../../static/img/mine/mine8.png',
         name: '我的钱包',
         dataType: '' }],
 
       // 我的订单第一行
       distributeList: [
       {
-        iconName: '&#xe6f7',
+        iconName: '&#xe6f7;',
         name: '每日签到',
         dataType: '' },
       {
-        iconName: '&#xe657',
+        iconName: '&#xe657;',
         name: '我的积分',
         dataType: '' },
       {
-        iconName: '&#xe691',
+        iconName: '&#xe691;',
         name: '优惠券',
         dataType: '' },
       {
-        iconName: '&#xe67c',
+        iconName: '&#xe67c;',
         name: '我的钱包',
         dataType: '' }],
 

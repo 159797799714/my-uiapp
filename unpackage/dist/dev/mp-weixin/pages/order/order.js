@@ -161,6 +161,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -244,7 +264,6 @@ var _default =
 
     },
     // 选择订单分类
-
     selectTab: function selectTab(item) {
       this.selectData = item.name;
       this.dataType = item.dataType;
@@ -283,6 +302,48 @@ var _default =
               title: '订单数据加载失败',
               icon: 'none' });
 
+          }
+        } });
+
+    },
+    cancelOrder: function cancelOrder(orderId) {
+      var that = this;
+      uni.showModal({
+        title: '温馨提示',
+        content: '确定取消此订单？',
+        success: function success(res) {
+          if (res.confirm) {
+            that.$http({
+              url: that.$api.cancelOrder,
+              data: {
+                order_id: orderId },
+
+              method: 'POST',
+              cb: function cb(err, res) {
+                if (!err && res.code === 1) {
+                  uni.showToast({
+                    title: '订单取消成功',
+                    icon: 'none' });
+
+
+                  // 重新获取数据
+                  that.getOrderInfo();
+
+                } else if (res.code === 0) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none' });
+
+                } else {
+                  uni.showToast({
+                    title: '订单取消失败',
+                    icon: 'none' });
+
+                }
+              } });
+
+          } else if (res.cancel) {
+            return;
           }
         } });
 

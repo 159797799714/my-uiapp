@@ -279,7 +279,7 @@ var _default =
       searchInfo: '', // 输入框placeholdeer
       inputValue: '', //  输入框value值
       showClearIcon: false, // 输入框清空
-      tabIndex: '', // 默认选中分享
+      tabIndex: 0, // 默认选中分享
       filterIndex: 0, // 默认选中综合
       tabList: ['分享', '商城'],
       shareTag: [{ tag_name: '综合' }, { tag_name: '销量' }, { tag_name: '上架' }, { tag_name: '价格' }, { tag_name: '筛选' }], // 标签默认这个是商品标签

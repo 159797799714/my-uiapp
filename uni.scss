@@ -27,6 +27,10 @@ $color-8c: #8c8c8c;
 $color-3c: #3c3c3c;
 $color-purple: #FF00FF;
 $color-cc: #cccccc;
+$color-93f: #9933ff;
+$color-f3f: #ff33ff;
+$color-36f: #3366FF;
+$color-63f: #6633ff;
 
 
 
@@ -204,6 +208,12 @@ view, image, text, input, form{
 .bg-black{
   background: #151515!important;
 }
+.bg-36f{
+  background: $color-36f!important;
+}
+.bg-99{
+  background: #999999!important;
+}
 .bg-33{
   background: $color-33!important;
 }
@@ -229,6 +239,12 @@ view, image, text, input, form{
 .border-99{
   border: 1px solid $color-99;
 }
+.border-f3f{
+  border: 1px solid $color-f3f;
+}
+.border-93f{
+  border: 1px solid $color-93f;
+}
 // 字体颜色
 .font-red{
   color: $color-red;
@@ -236,14 +252,23 @@ view, image, text, input, form{
 .col-m {
   color: #ff5c00 !important;
 }
+.col-13{
+  color: $color-black!important;
+}
 .col-ee{
   color: $color-ee!important;
+}
+.col-99{
+  color: $color-99!important;
 }
 .col-f{
   color: #fff!important;
 }
 .col-cc{
   color: $color-cc;
+}
+.col-f3f{
+  color: $color-f3f;
 }
 .col-blue{
   color: #3366FF!important;
@@ -262,6 +287,9 @@ view, image, text, input, form{
 }
 .col-f3c{
   color: #FF33CC!important;
+}
+.col-93f{
+  color: $color-93f!important;
 }
 .col-3d{
   color: $color-red!important;
@@ -446,7 +474,7 @@ view, image, text, input, form{
   width: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   z-index: 20;
@@ -511,7 +539,7 @@ view, image, text, input, form{
 
 .selectSpan{
   position: relative;
-  background: $color-pink-bg!important;
+  color: $color-36f;
   &:before{
     content: '+';
     position: absolute;
@@ -525,7 +553,7 @@ view, image, text, input, form{
     width: 42upx;
     text-align: left;
     line-height: 40upx;
-    background: $color-orange;
+    background: $color-36f;
     transform: rotate(45deg);
     z-index: 5;
   }

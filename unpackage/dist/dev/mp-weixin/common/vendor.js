@@ -15,8 +15,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 11));
 var _api = _interopRequireDefault(__webpack_require__(/*! ./api/api.js */ 13));
 var _http = _interopRequireDefault(__webpack_require__(/*! ./common/http.js */ 15));
-var _resFilter = _interopRequireDefault(__webpack_require__(/*! ./common/resFilter.js */ 16));
-__webpack_require__(/*! ./static/icon/iconfont.css */ 492);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _resFilter = _interopRequireDefault(__webpack_require__(/*! ./common/resFilter.js */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
 
@@ -2750,7 +2749,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   // 订单
   orderList: _config.default.devApi + '/user.order/lists', // 订单
   orderBuyNow: _config.default.devApi + '/order/buyNow', // 确认订单 
-  orderCart: _config.default.devApi + '/order/cart', // 购物车确认订单
+  orderCart: _config.default.devApi + '/order/cart', // 购物车确认订单user.order/cancel
+  cancelOrder: _config.default.devApi + '/user.order/cancel', // 取消订单
 
 
 
@@ -24759,17 +24759,6 @@ var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _password = _interopRequireDefault(__webpack_require__(/*! ./pages/login/password.vue */ 50));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_password.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 492:
-/*!******************************************************************!*\
-  !*** C:/Users/pc/Desktop/LEI/app-unixe/static/icon/iconfont.css ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 

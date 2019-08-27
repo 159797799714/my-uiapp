@@ -20,7 +20,7 @@
       <view class="linear-border"></view>
       <view class="order bg-black">
         <view class="myorder font-28">
-          <text class="col-cc" @click="checkWeChat">我的订单</text>
+          <text class="col-cc">我的订单</text>
           <view class="col-66" @click="goOrder('全部', 'all')">
             <text>全部订单</text>
             <text class="iconfont">&#xe644;</text>
@@ -28,7 +28,11 @@
         </view>
       </view>
       <view class="menu border-box dis-flex flex-x-between flex-wrap bg-black">
-        <view v-for="(item, index) in menuList" :key="index" class="menu-item dis-flex flex-dir-column flex-y-center">
+        <view v-for="(item, index) in menuList" :key="index" v-if="index < 4" class="menu-item dis-flex flex-dir-column flex-y-center" @click="goOrder(item.name, item.dataType)">
+          <image :src="item.imgUrl"></image>
+          <view class="menu-name col-cc font-26">{{ item.name }}</view>
+        </view>
+        <view v-for="(item, index) in menuList" :key="index" v-if="index >= 4" class="menu-item dis-flex flex-dir-column flex-y-center" @click="goOthers(item.name)">
           <image :src="item.imgUrl"></image>
           <view class="menu-name col-cc font-26">{{ item.name }}</view>
         </view>
@@ -37,11 +41,39 @@
         <view class="menu-title">我的分销</view>
         <view class="dis-flex flex-x-between">
           <view v-for="(item, index) in distributeList" :key="index" class="row-item dis-flex flex-dir-column flex-y-center">
-            <text class="iconfont font-57 col-gold">{{ item.iconName }}</text>
+            <text v-if="index === 0" class="font-76 col-gold iconfont">&#xe6f7;</text>
+            <text v-if="index === 1" class="font-76 col-gold iconfont">&#xe657;</text>
+            <text v-if="index === 2" class="font-76 col-gold iconfont">&#xe691;</text>
+            <text v-if="index === 3" class="font-76 col-gold iconfont">&#xe67c;</text>
             <view class="item-name col-cc font-26">{{ item.name }}</view>
           </view>  
         </view>
-        
+      </view>
+      
+      <view class="distribute bg-black">
+        <view class="menu-title">我的福利</view>
+        <view class="dis-flex flex-x-between">
+          <view v-for="(item, index) in distributeList" :key="index" class="row-item dis-flex flex-dir-column flex-y-center">
+            <text v-if="index === 0" class="font-76 col-gold iconfont">&#xe64a;</text>
+            <text v-if="index === 1" class="font-76 col-gold iconfont">&#xe614;</text>
+            <text v-if="index === 2" class="font-76 col-gold iconfont">&#xe631;</text>
+            <text v-if="index === 3" class="font-76 col-gold iconfont">&#xe724;</text>
+            <view class="item-name col-cc font-26">{{ item.name }}</view>
+          </view>  
+        </view>
+      </view>
+      
+      <view class="distribute bg-black">
+        <view class="menu-title">我的服务</view>
+        <view class="dis-flex flex-x-between">
+          <view v-for="(item, index) in distributeList" :key="index" class="row-item dis-flex flex-dir-column flex-y-center">
+            <text v-if="index === 0" class="font-76 col-gold iconfont">&#xe7e4;</text>
+            <text v-if="index === 1" class="font-76 col-gold iconfont">&#xe60a;</text>
+            <text v-if="index === 2" class="font-76 col-gold iconfont">&#xe602;</text>
+            <text v-if="index === 3" class="font-76 col-gold iconfont">&#xe693;</text>
+            <view class="item-name col-cc font-26">{{ item.name }}</view>
+          </view>  
+        </view>
       </view>
       <!-- <view class="goods bg-black">
         <view class="goodsTab">
@@ -131,38 +163,38 @@
             name: '退换/售后',
             dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/mine1.png',
+            imgUrl: '../../static/img/mine/mine5.png',
             name: '每日签到',
             dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/mine2.png',
+            imgUrl: '../../static/img/mine/mine6.png',
             name: '我的积分',
             dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/mine3.png',
+            imgUrl: '../../static/img/mine/mine7.png',
             name: '优惠券',
             dataType: ''
           }, {
-            imgUrl: '../../static/img/mine/mine4.png',
+            imgUrl: '../../static/img/mine/mine8.png',
             name: '我的钱包',
             dataType: ''
           }
         ],                        // 我的订单第一行
         distributeList: [
           {
-            iconName: '&#xe6f7',
+            iconName: '&#xe6f7;',
             name: '每日签到',
             dataType: ''
           }, {
-            iconName: '&#xe657',
+            iconName: '&#xe657;',
             name: '我的积分',
             dataType: ''
           }, {
-            iconName: '&#xe691',
+            iconName: '&#xe691;',
             name: '优惠券',
             dataType: ''
           }, {
-            iconName: '&#xe67c',
+            iconName: '&#xe67c;',
             name: '我的钱包',
             dataType: ''
           }
@@ -389,6 +421,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .iconfont{
+    margin-right: 0;
+  }
   .content{
     display: flex;
     flex-direction: column;
@@ -469,7 +504,7 @@
         display: flex;
         justify-content: space-between;
         height: 75upx;
-        padding-left: 30upx;
+        padding-left: 38upx;
         line-height: 75upx;
         &>view>text{
           margin-left: 15upx;
@@ -479,7 +514,6 @@
     .menu{
       padding: 0 40upx;
       height: 410upx;
-      margin-bottom: 20upx;
       overflow: hidden;
       .menu-item{
         width: 164upx;
@@ -495,9 +529,11 @@
       }
     }
     .distribute{
-      padding: 37upx 80upx;
+      margin-top: 20upx;
+      padding: 37upx 40upx;
     }
     .row-item{
+      width: 164upx;
       &>image{
         height: 65upx;
         width: 81upx;
@@ -506,10 +542,15 @@
     }
     .menu-title{
       margin-bottom: 30upx;
+      padding: 0 38upx;
       font-size: $font-28;
       color: $color-cc;
       line-height: 28upx;
     }
+    
+    
+    
+    
     // 注释的收藏和点赞
     
     .goods{

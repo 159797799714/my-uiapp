@@ -9,7 +9,7 @@
       </view>
       <text v-if="tabIndex === 1" class="iconfont" @click="changeStyle">&#xe60e;</text>
     </view>
-    <view class="content bg-white border-box">
+    <view class="content bg-black border-box">
       
       <!-- 分享或者商城 -->
       <view class="tabs">
@@ -24,18 +24,18 @@
         </view>
       </view>
       <!-- 品牌及分类 -->
-      <view v-if="tabIndex === 1" class="filter-tags bg-white padding-30">
-        <view v-for="(item, index) in filter" :key="index" :class="{'filter-tag': true, selectFilter: filterTag_Index === index.toString()}" @click="selectFilterTag(index)">{{ item }}
+      <view v-if="tabIndex === 1" class="filter-tags bg-black padding-30">
+        <view v-for="(item, index) in filter" :key="index" :class="{'filter-tag': true, selectFilterTag: filterTag_Index === index.toString()}" @click="selectFilterTag(index)">{{ item }}
           <text :class="{iconfont: true, clicked: filterTag_Index === index.toString()}">&#xe792;</text>
         </view>
       </view>
       <view :class="{'filter-cover': true, 'filter-cover-0': !(filterTag_Index !== '' && tabIndex === 1)}" >
-        <view class="cover-main bg-white">
+        <view class="cover-main bg-black">
           <view class="list padding-30 border-box">
-            <view v-for="(item, index) in filterCoverList.list" :class="{'selectSpan': item.category_id === goodsFormData.brand_id || item.category_id === goodsFormData.category_id}" :key="index" @click="selectClass(item)">{{ item.name }}</view>
+            <view v-for="(item, index) in filterCoverList.list" :class="{'bg-99': true, 'selectSpan': item.category_id === goodsFormData.brand_id || item.category_id === goodsFormData.category_id}" :key="index" @click="selectClass(item)">{{ item.name }}</view>
           </view>
           <view class="foot">
-            <view @click="resetSearch">重置</view>
+            <view class="bg-99 col-13" @click="resetSearch">重置</view>
             <view class="sure" @click="filterTag_Index = ''">完成({{ filterCoverList.sum }}物品)</view>
           </view>
         </view>
@@ -44,18 +44,18 @@
       
       <scroll-view  scroll-y="true" class="culture" :scroll-top="scrollTop" @scrolltolower="loadingMore" lower-threshold="100">
         <!-- 分享 -->
-        <view v-if="tabIndex === 0" class="main bg-white border-box">
+        <view v-if="tabIndex === 0" class="main bg-black border-box">
           <view v-for="(item, index) in shareList" :key="index" class="item">
             <view class="img"  @click="goShareDetail(item.article_id)">
               <image :src="item.image.file_path" mode="aspectFill"></image>
             </view>
-            <view class="title border-box" @click="goShareDetail(item.article_id)">{{ item.article_title }}</view>
+            <view class="title border-box col-99" @click="goShareDetail(item.article_id)">{{ item.article_title }}</view>
             <view class="info border-box">
               <view class="user">
                 <view class="userImg">
                   <image :src="item.headimg.file_path" mode=""></image>
                 </view>
-                <view class="userName">{{ item.author }}</view> 
+                <view class="userName col-f">{{ item.author }}</view> 
               </view>
               <view class="zan">
                 <text :class="{iconfont: true, isZan: item.islike === 'yes'}" @click="clickZan(item, index)">&#xe63a;</text>
@@ -66,13 +66,13 @@
         </view>
         
         <!-- 商品 -->
-        <view v-if="tabIndex === 1" :class="{main: style === 0, 'bg-white': true, 'border-box': true, row: style === 1}">
-          <view v-for="(item, index) in goodList" :key="index" class="good-item"  @click="goDetail(item)">
+        <view v-if="tabIndex === 1" :class="{main: style === 0, 'bg-black': true, 'border-box': true, row: style === 1}">
+          <view v-for="(item, index) in goodList" :key="index" class="good-item bg-black"  @click="goDetail(item)">
             <view class="good-img">
               <image :src="item.image[0].file_path" mode=""></image>
             </view>
             <view class="good-info border-box">
-              <view class="good-name">{{ item.goods_name }}</view>
+              <view class="good-name col-99">{{ item.goods_name }}</view>
               <view class="good-remark">
                 <text>{{ item.selling_point }}</text>
               </view>
@@ -92,27 +92,27 @@
     <!-- 筛选 -->
     <view v-if="filterIndex === 4 && filter_alert" class="big-cover toLeft">
       <view class="white" @click="filter_alert = false"></view>
-      <view class="big-cover-main bg-white border-box padding-30">
+      <view class="big-cover-main bg-black border-box padding-30" :style="{'padding-top': statusBarHeight + 'px' }">
         <scroll-view scroll-y="true" class="box">
-          <view class="price">
+          <view class="price col-99">
             <view class="title">价格区间(元)</view>
-            <view class="ipt">
-              <input type="text" class="lower" v-model="goodsFormData.min_price" placeholder="最低价" placeholder-style="color: #999"/>
-              <input type="text" v-model="goodsFormData.max_price" placeholder="最高价" placeholder-style="color: #999"/>
+            <view class="ipt col-13">
+              <input type="text" class="lower bg-99" v-model="goodsFormData.min_price" placeholder="最低价" placeholder-style="color: #131313"/>
+              <input type="text" class="bg-99" v-model="goodsFormData.max_price" placeholder="最高价" placeholder-style="color: #131313"/>
             </view>
           </view>
           <view  v-for="(item, index) in captionList" :key="index" class="list-span">
-            <view class="title caption" @click="setCategory(index)">
+            <view class="title caption col-99" @click="setCategory(index)">
               <text>{{ item.title }}</text>
               <text :class="{iconfont: true, rotate: selectArr.indexOf(index) !== -1}">&#xe792;</text>
             </view>
             <view v-if="selectArr.indexOf(index) !== -1 " class="tag-span">
-              <view v-for="(li, num) in item.arr" :key="num" :class="{tag: true, 'border-box': true, selectSpan: li.category_id === goodsFormData.brand_id && index === 0 || li.category_id === goodsFormData.category_id && index === 1 || li.type === goodsFormData.promotions_type && index === 2}" @click="selTag(index, num, li)">{{ li.name }}</view>
+              <view v-for="(li, num) in item.arr" :key="num" :class="{'tag bg-99': true, 'border-box': true, selectSpan: li.category_id === goodsFormData.brand_id && index === 0 || li.category_id === goodsFormData.category_id && index === 1 || li.type === goodsFormData.promotions_type && index === 2}" @click="selTag(index, num, li)">{{ li.name }}</view>
             </view>
           </view>
         </scroll-view>
         <view class="foot">
-          <view @click="resetSearch">重置</view>
+          <view class="bg-99 col-13" @click="resetSearch">重置</view>
           <view class="sure" @click="sureSearch">完成({{ filterCoverList.sum }}物品)</view>
         </view>
       </view>
@@ -129,7 +129,7 @@
         searchInfo: '',              // 输入框placeholdeer
         inputValue: '',              //  输入框value值
         showClearIcon: false,        // 输入框清空
-        tabIndex: '',                // 默认选中分享
+        tabIndex: 0,                 // 默认选中分享
         filterIndex: 0,              // 默认选中综合
         tabList: ['分享', '商城'],
         shareTag: [{tag_name:'综合'}, {tag_name:'销量'}, {tag_name:'上架'}, {tag_name:'价格'}, {tag_name:'筛选'}],   // 标签默认这个是商品标签
@@ -599,7 +599,7 @@
       content: '';
       height: 4upx;
       width: 34upx;
-      background: $color-red;
+      background: $color-purple;
       position: absolute;
       bottom: 20upx;
       left: 0;
@@ -622,11 +622,14 @@
     
   }
   .selectFilter{
-    color: $color-red;
+    color: $color-purple;
     font-weight: $font-bold;
     .iconfont{
       font-weight: 400;
     }
+  }
+  .selectFilterTag{
+    background: $color-36f!important;
   }
   .filter-tags{
     height: 50upx;
@@ -638,7 +641,7 @@
       text-align: center;
       font-size: $font-22;
       line-height: 50upx;
-      background: $color-ee;
+      background: $color-63f;
       border-radius: 25upx;
       .iconfont{
         font-size: $font-20;
@@ -674,20 +677,19 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        max-height: 460upx;
+        max-height: 660upx;
         overflow: auto;
+        padding-bottom: 20upx;
         &>view{
           height: 88upx;
           width: 216upx;
-          margin-right: 20upx;
-          margin-bottom: 20upx;
+          margin: 20upx 20upx 0upx 0upx;
           font-size: $font-26;
           line-height: 88upx;
           text-align: center;
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          background: $color-ee;
           &:nth-child(3n) {
             margin-right: 0;
           }
@@ -709,13 +711,13 @@
     color: $word-color;
     text-align: center;
     line-height: 98upx;
-    border-top: 1px solid $color-f5;
+    border-top: 1px solid $color-99;
     &>view{
       flex: 1;
     }
     .sure{
       color: $color-white;
-      background: $color-orange;
+      background: $color-black;
     }
   }
   .culture{
@@ -737,7 +739,7 @@
       height: 524upx;
       width: 330upx;
       margin-bottom: 20upx;
-      border: 1px solid $color-ee;
+      border: 1px solid $word-color;
       .img{
         height: 330upx;
         width: 100%;
@@ -797,14 +799,13 @@
           }
           .isZan{
             position: relative;
-            color: $title-color;
             &::before{
               content: '';
-              height: 13upx;
+              height: 12upx;
               width: 14upx;
-              background: $color-red;
+              background: $color-purple;
               position: absolute;
-              bottom: 10upx;
+              bottom: 12upx;
               left: 8upx;
             }
           }
@@ -815,9 +816,9 @@
       display: flex;
       flex-direction: column;
       height: 524upx;
-      width: 332upx;
+      width: 330upx;
       margin-top: 20upx;
-      border: 1upx solid #eee;
+      border: 1upx solid $word-color;
       .good-img{
         height: 330upx;
         width: 330upx;
@@ -869,11 +870,12 @@
   .row{
     padding: 0 30upx;
     .good-item{
-      height: 220upx;
+      height: 224upx;
       width: 100%;
       margin-bottom: 20upx;
       box-sizing: border-box;
       display: flex;
+      border: 1upx solid $word-color;
       .good-img{
         height: 220upx;
         width: 220upx;
@@ -935,8 +937,9 @@
       display: flex;
       flex-direction: column;
       .box{
-        flex: 1;
+        height: 100%;
         overflow: hidden;
+        box-sizing: border-box;
       }
       .title{
         font-size: $font-26;
@@ -944,7 +947,7 @@
       }
       .price{
         height: 159upx;
-        margin: 80upx 5upx 0 5upx;
+        margin: 0 5upx;
         padding-bottom: 30upx;
         .ipt{
           height: 74upx;
@@ -976,7 +979,7 @@
       .caption{
         display: flex;
         justify-content: space-between;
-        border-top: 2px solid $color-f5;
+        border-top: 1px solid $word-color;
         .iconfont{
           transition: 500ms;
         }
@@ -1000,7 +1003,6 @@
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
-          background: $color-ee;
         }
       }
       .foot{

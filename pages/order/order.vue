@@ -1,45 +1,65 @@
 <template>
-  <view class="container">
+  <view class="container bg-black">
     <view class="topBar" :style="{'padding-top': statusBarHeight + 'px'}">
       <text class="iconfont" @click="goBack">&#xe61c;</text>
       <text>我的订单</text>
       <text class="iconfont">&#xe667;</text>
     </view>
     <scroll-view scroll-x="true" :scroll-left="scrollLeft" class="scroll-tab">
-      <view class="tabNav border-box">
+      <view class="tabNav border-box col-99">
         <view v-for="(item, index) in tabList" :key="index" :class="{tab: true, selected: item.name === selectData}" @click="selectTab(item)">{{ item.name }}</view>
       </view> 
     </scroll-view>
-  	<scroll-view v-if="dataList.length > 0" scroll-y="true" class="content padding-30 border-box">
-      <view v-for="(item, index) in dataList" :key="index" class="item border-box bg-white">
+  	<scroll-view v-if="dataList.length > 0" scroll-y="true" class="content border-box bg-33">
+      <view v-for="(item, index) in dataList" :key="index" class="item padding-30 border-box bg-black">
         <view class="head">
           <view class="store">
-            <view>
+            <view class="icon">
               <text class="iconfont">&#xe60b;</text>
             </view>优逸smilehome
             <text class="iconfont jiantou">&#xe644;</text>
           </view>
-          <view class="status">{{ item.state_text }}</view>
+          <view class="status col-93f">{{ item.state_text }}</view>
         </view>
-        <view v-for="(li, num) in item.goods" :key="num" class="center" @click="goDetail(item)">
+        <view v-for="(li, num) in item.goods" :key="num" class="center">
+           <!-- @click="goDetail(item)" -->
           <view class="img">
             <image :src="li.image.file_path" mode=""></image>
           </view>
-          <view class="info">
-            <view class="title">{{ li.goods_name }}</view>
-            <view class="remark">{{ li.goods_attr }}</view>
+          <view class="info dis-flex flex-dir-column flex-x-between">
+            <view>
+              <view class="title col-99 dis-flex flex-x-between">
+                <text class="name">{{ li.goods_name }}</text>
+                <text>￥{{ li.total_pay_price * 100 / 100 }}元</text>
+              </view>
+              <view>
+                <text v-if="li.goods_attr" class="remark bg-99 col-13">{{ li.goods_attr }}</text>
+              </view>  
+            </view>
+            <view v-if="num === item.goods.length - 1" class="sum dis-flex flex-x-end">
+              <view class="num col-99">共计:<text>{{ item.goods.length }}件</text></view>
+              <view class="money col-99">合计￥<text>{{ item.total_price * 100 / 100 }}元</text></view>
+            </view>
           </view>
         </view>
-        <view class="sum">
-          <view class="num">共计： <text>{{ item.goods.length }}件</text></view>
-          <view class="money">实付金额：<text>{{ item.total_price }}元</text></view>
-        </view>
+        <!-- <view class="sum">
+          <view class="num col-99">共计： <text>{{ item.goods.length }}件</text></view>
+          <view class="money col-99">实付金额：<text>{{ item.total_price }}元</text></view>
+        </view> -->
         <!-- <view class="control">
           <text>删除订单</text>
         </view> -->
-        <view class="control">
-          <text class="border-99">取消订单</text>
-          <text class="bg-3e border-err col-f">立即付款</text>
+        <view v-if="item.order_status.value !== 20" class="control">
+          <text v-if="item.pay_status.value === 10" class="border-93f" @click="cancelOrder(item.order_id)">取消订单</text>
+          <text v-if="item.order_status.value !== 21 && item.pay_status.value === 20 && item.delivery_status.value === 10" class="border-93f" @click="cancelOrder(item.order_id)">申请取消</text>
+          <text v-if="item.order_status.value === 21" class="border-93f">取消申请中</text>
+          <text v-if="item.pay_status.value === 10" class="border-f3f col-f3f">立即付款</text>
+          
+          <!-- <text v-if="item.state_text !== '待付款'" class="border-93f">删除订单</text> -->
+          <text v-if="item.delivery_status.value === 20 && item.receipt_status.value === 10" class="border-93f">查看物流</text>
+          
+          <text v-if="item.order_status.value === 30 && item.is_comment === 0" class="border-f3f col-f3f">评价</text>
+          <text v-if="item.delivery_status.value === 20 && item.receipt_status.value === 10" class="border-f3f col-f3f">确认收货</text>
         </view>
       </view>
     </scroll-view>
@@ -137,7 +157,6 @@
         })
       },
       // 选择订单分类
-      
       selectTab(item) {
         this.selectData = item.name
         this.dataType = item.dataType
@@ -179,6 +198,48 @@
             }
           }
         })
+      },
+      cancelOrder(orderId) {
+        let that = this
+        uni.showModal({
+          title: '温馨提示',
+          content: '确定取消此订单？',
+          success: function (res) {
+            if (res.confirm) {
+              that.$http({
+                url: that.$api.cancelOrder,
+                data: {
+                  order_id: orderId
+                },
+                method: 'POST',
+                cb: (err, res) => {
+                  if(!err && res.code === 1) {
+                    uni.showToast({
+                      title: '订单取消成功',
+                      icon: 'none'
+                    })
+                    
+                    // 重新获取数据
+                    that.getOrderInfo()
+                    
+                  } else if(res.code === 0) {
+                    uni.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                  } else {
+                    uni.showToast({
+                      title: '订单取消失败',
+                      icon: 'none'
+                    })
+                  }
+                }
+              })
+            } else if (res.cancel) {
+              return
+            }
+          }
+        })
       }
     }
   }
@@ -203,12 +264,13 @@
     width: calc(100% - 10upx);
     background: $title-color;
     overflow: hidden;
+    border-bottom: 2px solid $color-33;
   }
   .tabNav{
     height: 70upx;
-    // width: calc(100% + 148upx);
     width: calc(100% + 10upx);
     padding: 0 30upx;
+    margin-bottom: 20upx;
     line-height: 70upx;
     .tab{
       display: inline-block;
@@ -217,20 +279,19 @@
       text-align: center;
       font-size: $font-28;
       line-height: 70upx;
-      color: $color-white;
     }
     .selected{
       font-size: $font-34;
-      font-weight: $font-bold;
+      color: $color-white;
       &:after{
         content: '';
         position: absolute;
         display: block;
         height: 4upx;
-        width: 34upx;
-        background: $color-red;
+        width: 65upx;
+        background: $color-purple;
         left: 50%;
-        bottom: 0;
+        bottom: 4upx;
         transform: translateX(-50%);
         border-radius: 2upx;
       }
@@ -239,9 +300,9 @@
   .content{
     // padding-bottom: 30upx;
     .item{
-      margin-top: 30upx;
+      margin-bottom: 30upx;
       padding: 30upx;
-      min-height: 480upx;
+      min-height: 430upx;
       width: 100%;
       font-size: $font-28;
       .head{
@@ -259,12 +320,15 @@
             width: 44upx;
             text-align: center;
             border-radius: 100%;
-            background: $color-red;
+            background: $color-purple;
             color: $color-white;
           }
           .jiantou{
             margin-left: 35upx;
           }
+        }
+        .icon{
+          margin-right: 20upx;
         }
         .status{
           color: $title-color;
@@ -288,15 +352,18 @@
           .title{
             width: 100%;
             margin-top: -6upx;
-            margin-bottom: 30upx;
-            line-height: 40upx;
-            white-space: wrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-break:break-all;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            margin-bottom: 10upx;
+            .name{
+              width: 270upx;
+              line-height: 40upx;
+              overflow: hidden;
+              white-space: wrap;
+              text-overflow: ellipsis;
+              word-break:break-all;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
           }
           .remark{
             display: inline-block;
@@ -305,23 +372,15 @@
             line-height: 40upx;
             border-radius: 20upx;
             font-size: $font-22;
-            color: $color-99;
             background: $color-f5;
           }
         }
       }
       .sum{
-        margin-top: 10upx;
-        margin-bottom: 30upx;
-        display: flex;
-        justify-content: space-between;
         height: 27upx;
         line-height: 27upx;
-        color: $color-99;
-        &>view{
-          &>text{
-            color: $title-color;
-          }
+        .money{
+          margin-left: 10upx;
         }
       }
       .control{
