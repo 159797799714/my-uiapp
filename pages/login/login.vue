@@ -1,37 +1,58 @@
 <template>
   <view class="container">
     <image src="../../static/img/login/login_bg.png" mode="" class="content_bg"></image>
-    <view class="content border-box">
-      <view class="main">
+    <view class="content border-box" :style="{padding: statusBarHeight > 20 ? '55px 52px 0': '44px 52px 0'}">
+      <view class="main dis-flex flex-dir-column flex-y-center">
         <view class="logo">
-          <image src="../../static/img/login/logo.png" mode=""></image>
+          <image src="../../static/img/login/logo.png" mode="widthFix" :style="{width: 517 * windowHeight / 1460 + 'px'}"></image>
         </view>
+        <view class="page-title font-50 col-f t-center">用户登录</view>
         <form @submit="login" @reset="formReset" class="form-main border-box">
-          <view class="ipt">
-            <text class="iconfont">&#xe763;</text>
-            <input type="text" v-model="mobile" placeholder="请输入您的手机号码" @input="onInput" maxlength="11">
-            <text v-if="showDel" class="iconfont del" @click="mobile = ''">&#xe620;</text>
+          <view class="ipt-main linear-border">
+            <view class="ipt border-box">
+              <text class="iconfont col-obf">&#xe763;</text>
+              <input type="text" v-model="mobile" placeholder="请输入您的手机号码" @input="onInput" maxlength="11" placeholder-style="color: #fff">
+              <text v-if="showDel" class="iconfont del" @click="mobile = ''">&#xe620;</text>
+            </view>  
           </view>
-          <view class="ipt border-box">
-            <text class="iconfont">&#xe64c;</text>
-            <input v-if="ishide" type="password" v-model="password" placeholder="请输入密码" maxlength="16">
-            <input v-if="!ishide" type="text" v-model="password" placeholder="请输入密码" maxlength="16">
-            <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
+          
+          <view class="ipt-main linear-border">
+            <view class="ipt border-box">
+              <text class="iconfont col-obf">&#xe64c;</text>
+              <input v-if="ishide" type="password" v-model="password" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
+              <input v-if="!ishide" type="text" v-model="password" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
+              <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>  
+            </view>
           </view>
-          <view class="btn" foroType="submit" @click="goLogin">登录</view>
-          <view class="other">
-            <text class="forget" @click="clickAction('forget')">忘记密码？</text>
-            <text @click="clickAction('register')">注册账号</text>
+          
+          <!-- <view class="ipt-main linear-border">
+            <view class="ipt border-box">
+              <text class="iconfont col-obf">&#xe636;</text>
+              <input type="text" class="code-ipt" v-model="code" placeholder="请输入验证码" maxlength="4" placeholder-style="color: #fff">
+              <text v-if="!showInfo" class="code col-obf font-24" @click="getCode">获取验证码</text>
+              <text v-if="showInfo" class="code">{{ code_word }}</text>
+            </view>
+          </view> -->
+          
+          <view class="ipt-main linear-border">
+            <view class="ipt dis-block border-box t-center" foroType="submit" @click="goLogin">
+              <text class="font-40 line-85">登录</text>
+            </view>
           </view>
-          <view v-if="statusBarHeight > 0" class="login-way">
-            <view class="title">
+          
+          <view v-if="statusBarHeight > 0" class="login-way border-box" :style="{ 'padding-top': statusBarHeight - 10 + 'px' }">
+            <!-- <view class="title">
               <text>第三方登录</text>
-            </view>
+            </view> -->
             <view class="box">
-              <text class="iconfont" @click="loginWay('weixin')">&#xe608;</text>
-              <text class="iconfont" @click="loginWay('qq')">&#xe612;</text>
-              <text class="iconfont" @click="loginWay('sinaweibo')">&#xe607;</text>
+              <image src="../../static/img/login/weixin.png" @click="loginWay('weixin')" mode="aspectFit"></image>
+              <image src="../../static/img/login/qq.png" @click="loginWay('qq')" mode="aspectFit"></image>
+              <image src="../../static/img/login/sinaweibo.png" @click="loginWay('sinaweibo')" mode="aspectFit"></image>
             </view>
+          </view>
+          <view class="other">
+            <text @click="clickAction('register')">注册账号</text>
+            <text class="forget col-f" @click="clickAction('forget')">忘记密码？</text>
           </view>
         </form>
       </view>
@@ -61,6 +82,9 @@
       }
     },
     computed: {
+      windowHeight() {
+        return this.$store.state.windowHeight
+      },
       statusBarHeight() {
         return this.$store.state.statusBarHeight
       }
@@ -252,41 +276,39 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 88upx 60upx 0;
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0);
 
     .main {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
       .logo {
-        margin-bottom: 156upx;
-        height: 85upx;
-        width: 350upx;
-
+        max-height: 517upx;
+        overflow: hidden;
         &>image {
           margin: 0 auto;
           height: 100%;
           width: 100%;
         }
       }
-
+      .page-title{
+        line-height: 150upx;
+      }
       .form-main {
         width: 100%;
-
+        .ipt-main{
+          margin-bottom: 47upx;
+          padding: 2upx;
+          border-radius: 10upx;
+        }
         .ipt {
-          height: 104upx;
+          height: 85upx;
           padding: 0 40upx;
           display: flex;
           align-items: center;
           color: $color-white;
-          border-bottom: 1px solid $color-90;
-
+          border-radius: 10upx;
+          background: rgba(0, 0, 0, 0.9);
           &>text {
             font-size: $font-30;
           }
@@ -296,7 +318,24 @@
             margin: 10upx 30upx;
             font-size: $font-28;
           }
-
+          .code-ipt{
+            position: relative;
+            margin-right: 40upx;
+            &:after{
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              height: 30upx;
+              width: 1px;
+              background: $color-white;
+            }
+          }
+          .line-85{
+            line-height: 85upx;
+          }
           .del {
             transform: rotate(45deg);
           }
@@ -306,30 +345,31 @@
           margin: 53upx 0 51upx;
           height: 98upx;
           width: 100%;
-          border-radius: 49upx;
           font-size: $font-30;
           color: $color-white;
           line-height: 98upx;
           text-align: center;
           background: $color-red;
+          border-radius: 49upx;
+          padding: 5upx;
         }
 
         .other {
-          padding: 0 45upx;
+          position: absolute;
+          bottom: 80upx;
+          width: calc(100% - 212upx);
           display: flex;
           justify-content: space-between;
           height: 29upx;
           line-height: 29upx;
           font-size: $font-30;
           color: $color-white;
-
           .forget {
             color: $color-99;
           }
         }
 
         .login-way {
-          margin-top: 295upx;
           height: 146upx;
           width: 100%;
           color: $color-99;
@@ -352,13 +392,13 @@
           }
 
           .box {
-            padding: 0 57upx;
+            padding: 0 42upx;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
 
-            &>text {
-              font-size: $font-76;
-              line-height: 76upx;
+            &>image {
+              max-width: 70upx;
+              height: 74upx;
             }
           }
         }

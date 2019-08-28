@@ -16,7 +16,14 @@ export default function(obj){
     data: data,
     header: obj.header? obj.header : {'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*'},
     success: (res) => {
-      if(res.data.code === -1 || res.data.code === 0 && res.msg) {
+      if(res.data.code === -1) {
+        // 未登录或者登陆失效，重定向到登陆
+        uni.reLaunch({
+          url: '../login/login'
+        })
+        return
+      }
+      if(res.data.code === 0 && res.msg) {
         uni.showToast({
           title: res.msg,
           icon: 'none'

@@ -75,7 +75,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.username = ""
+      _vm.mobile = ""
     }
   }
 }
@@ -150,6 +150,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -176,6 +227,14 @@ var _default =
       return;
     }
   },
+  computed: {
+    windowHeight: function windowHeight() {
+      return this.$store.state.windowHeight;
+    },
+    statusBarHeight: function statusBarHeight() {
+      return this.$store.state.statusBarHeight;
+    } },
+
   methods: {
     goBack: function goBack() {
       uni.navigateBack({

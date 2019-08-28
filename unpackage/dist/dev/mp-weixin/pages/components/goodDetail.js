@@ -319,6 +319,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = function uParse() {return Promise.all(/*! import() | components/uni-rich/parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-rich/parse")]).then(__webpack_require__.bind(null, /*! ../../components/uni-rich/parse.vue */ 321));};var _default =
 {
   components: {
@@ -333,7 +337,7 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
       indicatorDots: true, // 指示点显隐
       autoplay: true, // 自动轮播
       interval: 3000, // 自动轮播时间 
-      duration: 2000, // 轮播过渡时间
+      duration: 1000, // 轮播过渡时间
       indicatorActiveColor: '#fff', // 轮播图指示点选中颜色
       swiperList: [], // 轮播元素数组
       isShowTop: true, // 顶部
@@ -360,16 +364,6 @@ var _util = __webpack_require__(/*! ../../common/util.js */ 71);var uParse = fun
       // },                                   // 店名头像信息
       showPanic: false, // 顶部分享显示与隐藏
       coverShow: false, // 全局遮罩层显隐
-      // sale_info: [{
-      //   title: '满送',
-      //   info: '满999元送4000毫安的充电宝,购买后送200积分',
-      //   type: 1
-      // }, {
-      //   title: '促销',
-      //   info: '满1548元，省150元',
-      //   time: '2019.06.12-2019.06.15',
-      //   type: 2
-      // }],
       activeColor: '', // 进度条剩余的颜色
       normShow: false, // 商品规格弹窗
       title: '', // 传过来的秒杀购或者限时购

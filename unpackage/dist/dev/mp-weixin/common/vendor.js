@@ -1653,7 +1653,8 @@ var store = new _vuex.default.Store({
     type: '',
     mobile: '',
     token: '',
-    statusBarHeight: 20 // 状态栏高度
+    statusBarHeight: 20, // 状态栏高度
+    windowHeight: '' // 屏幕高度
   },
   mutations: {
     login: function login(state, userinfo) {
@@ -1667,8 +1668,9 @@ var store = new _vuex.default.Store({
     setToken: function setToken(state, token) {
       state.token = token;
     },
-    setHeight: function setHeight(state, height) {
-      state.statusBarHeight = height;
+    setHeight: function setHeight(state, res) {
+      state.statusBarHeight = res.statusBarHeight;
+      state.windowHeight = res.windowHeight;
     } } });var _default =
 
 
@@ -2859,7 +2861,14 @@ function _default(obj) {
     data: data,
     header: obj.header ? obj.header : { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' },
     success: function success(res) {
-      if (res.data.code === -1 || res.data.code === 0 && res.msg) {
+      if (res.data.code === -1) {
+        // 未登录或者登陆失效，重定向到登陆
+        uni.reLaunch({
+          url: '../login/login' });
+
+        return;
+      }
+      if (res.data.code === 0 && res.msg) {
         uni.showToast({
           title: res.msg,
           icon: 'none' });

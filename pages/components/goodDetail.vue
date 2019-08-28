@@ -3,20 +3,19 @@
     <view class="topBar" :style="{'padding-top': statusBarHeight + 'px' }">
       <!-- :style="{background: 'rgba(0, 0, 0,' + top / 375 + ')'}" -->
       <view class="search">
-        <text class="iconfont back" @click="goBack">&#xe61c;</text>
-        <text class="col-f">商品详情</text>
+        <text class="iconfont back col-off" @click="goBack">&#xe61c;</text>
+        <!-- <text class="col-f">商品详情</text> -->
         <!-- 顶部锚点 -->
         <!-- <view class="nav" :style="{opacity: top / 375}">
           <view v-for="(item, index) in navList" :key="index" :class="{checked: index === navIndex}" @click="navAction(index)">{{ item }}</view>
           <view class="slipe-span" :style="{left: (1 / navList.length / 2 * (navIndex * 2 + 1) ) * 100 + '%'}"></view>
         </view> -->
         <view class="conduct">
-          <text class="iconfont share" @click="goShare">&#xe60f;</text>
-          <text class="iconfont" @click="keepAction">&#xe637;</text>
+          <text class="iconfont share col-blue" @click="goShare">&#xe60f;</text>
         </view>
       </view>
     </view>
-    <scroll-view scroll-y="true" @scroll="scroll" class="content">
+    <scroll-view scroll-y="true" @scroll="scroll" class="content bg-33">
       <swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :indicator-active-color="indicatorActiveColor" :interval="interval" :duration="duration" :circular="true">
         <swiper-item v-for="(item, index) in swiperList" :key="index">
           <view :class="{'swiper-item': true }">
@@ -43,45 +42,52 @@
         </view>
       </view>
       
-      <view class="head bg-white">
-        <view class="title">{{ detail.goods_name }}</view>
-        <view v-if="!showPanic" class="price font-red">￥{{ detail.sku[0].goods_price }}</view>
-        <view v-if="detail.selling_point" class="tags">
-          <text class="tag">{{ detail.selling_point }}</text>
+      <view class="dis-flex flex-x-between flex-y-center head bg-black">
+        <view>
+          <view class="title col-99">{{ detail.goods_name }}</view>
+          <view v-if="!showPanic" class="price col-f3c">￥{{ detail.sku[0].goods_price }}</view>
+          <view v-if="detail.selling_point" class="tags">
+            <text class="tag col-f3c">{{ detail.selling_point }}</text>
+          </view>  
         </view>
-        <text class="font-28">销量：{{ detail.goods_sales }}</text>
+        <text class="iconfont keep font-52 col-f3c" @click="keepAction">&#xe637;</text>
+        
+        <!-- <text class="font-28">销量：{{ detail.goods_sales }}</text> -->
       </view>
-      <view v-if="detail.promotion_info" class="sale-info row bg-white" @click="lookInfo">
+      <view v-if="detail.goods_promotions_list" class="sale-info row bg-black" @click="lookInfo">
         <view class="row-name">促销信息</view>
         <view class="row-info">
-          <!-- <text class="info">满送</text> -->
-          <text>{{ detail.promotion_info }}</text>
+          <text class="info bg-93f col-f">{{ detail.goods_promotions_list[0].title }}</text>
+          <text class="col-99 onelist-hidden">{{ detail.goods_promotions_list[0].describe }}</text>
         </view>
-        <!-- <text class="iconfont">&#xe644;</text> -->
+        <text class="iconfont col-99">&#xe644;</text>
       </view>
-      <view v-if="specData.spec_attr" class="row bg-white">
+      <view v-if="specData.spec_attr" class="row bg-black">
         <view class="row-name">选择颜色</view>
-        <view class="row-info">已选：
+        <view class="row-info col-66">已选：
           <text v-for="(item, index) in select_name" :key="index">{{ item }}</text>
         </view>
       </view>
-      <view v-if="specData.spec_attr" class="row bg-white" @click="normShow = true">
+      <view v-if="specData.spec_attr" class="row bg-black" @click="normShow = true">
         <view class="row-name">商品规格</view>
-        <view class="row-info">
-          <text v-for="(item, index) in specData.spec_attr" :key="index">{{ item.group_name }}</text></view>
-        <text class="iconfont">&#xe644;</text>
+        <view class="row-info col-66">
+          <text v-for="(item, index) in specData.spec_attr" :key="index">{{ item.group_name }}</text>
+        </view>
+        <text class="iconfont col-99">&#xe644;</text>
       </view>
-      <view class="row bg-white">
+      <view v-if="detail.goods_services_list" class="row bg-black">
         <view class="row-name">服务说明</view>
-        <view class="row-info">7天无理由退货，7天保价</view>
-        <text class="iconfont">&#xe644;</text>
+        <view class="row-info">
+          <text v-for="(item, index) in detail.goods_services_list" :key="index" class="info bg-93f col-f">{{ item.title }}</text>
+        </view>
+        <text class="iconfont col-66">&#xe644;</text>
       </view>
-      <view class="user-comment bg-white">
+      <view class="user-comment bg-black">
         <view class="comment-head">
-          <view>
+          <view class="col-99">
             <text>用户评价</text> ({{ comment_data_count ? comment_data_count  : '0' }})
           </view>
-          <view class="font-red">
+          <view class="col-99">
             <text>查看全部</text>
             <text class="iconfont">&#xe644;</text>
           </view>
@@ -91,38 +97,38 @@
             <view>
               <view>
                 <image :src="item.user.avatarUrl" mode=""></image>
-                <text>{{ item.user.nickName }}</text>
+                <text class="col-99">{{ item.user.nickName }}</text>
               </view>
-              <view class="font-99 pad-left-60">
+              <view class="col-66 pad-left-60">
                 <text>{{ item.create_time }}</text>
                 <text></text>
               </view>
             </view>
           </view>
-          <view class="writer-speak pad-left-60">{{ item.content }}</view>
+          <view class="writer-speak pad-left-60 col-99">{{ item.content }}</view>
           <view v-if="false" class="writer-speak-img pad-left-60">
             <image src="" mode=""></image>
           </view>
           <view class="dis-flex flex-x-between font-99 pad-left-60">
-            <text class="font-24">黑色；官方标配</text>
+            <text class="font-24 col-66">黑色；官方标配</text>
             <text class="iconfont font-99">&#xe63a;</text>
           </view>
         </view>
       </view>
       
-      <!-- <view  class="store bg-white">
+      <!-- <view  class="store bg-black">
         <image src="" mode=""></image>
         <view class="name">{{ store.name }}</view>
         <view class="btn">进店逛逛</view>
       </view> -->
       
-      <view class="goods-title t-center font-24 ">宝贝详情</view>
+      <view class="goods-title t-center font-24 col-99">宝贝详情</view>
       <view class="good-detail">
         <u-parse :content="detail.content" @preview="preview" @navigate="navigate"/>
       </view>
       
     </scroll-view>
-    <view class="bottom-bar bg-white">
+    <view class="bottom-bar bg-black">
       <view class="link-menu border-box">
         <view>
         	<text class="iconfont">&#xe60b;</text>
@@ -144,26 +150,24 @@
     </view>
     
     <!-- 促销信息弹窗 -->
-    <!-- <view v-if="coverShow" class="big-cover toTop">
+    <view v-if="coverShow" class="big-cover toTop">
       <view class="white" @click="closeNorm"></view>
-      <view class="cover-main bg-white border-box">
-        <view class="cover-word padding-30">
-          <view class="title" >促销信息</view>
-          <view v-for="(item, index) in sale_info" :key="index" class="item">
-            <text :class="{'red-bg': item.type === 2}">{{ item.title }}</text>
-            <view class="item-info">{{ item.info }}
-              <view v-if="item.time" class="item-time">{{ item.time }}</view>
-            </view>
+      <view class="cover-main bg-black border-box">
+        <view class="cover-word promotions padding-30">
+          <view class="title col-99">促销信息</view>
+          <view v-for="(item, index) in detail.goods_promotions_list" :key="index" class="item">
+            <text class="font-30 col-f bg-93f">{{ item.title }}</text>
+            <view class="item-info font-30 col-99">{{ item.describe }}</view>
           </view>
         </view>
-        <view class="sure-btn" @click="closeNorm">关闭</view>
+        <view class="alert-btn bg-66 font-36 col-13 f-bold  t-center flex-x-center flex-y-center" @click="closeNorm">关闭</view>
       </view>
-    </view> -->
+    </view>
     
     <!-- 商品规格选择弹窗 -->
     <view v-if="normShow" class="big-cover toTop border-box">
       <view class="white" @click="closeNorm"></view>
-      <view class="cover-main bg-white border-box">
+      <view class="cover-main bg-black border-box b-top">
         <view class="cover-word border-box padding-30">
           <view class="header">
             <view class="img">
@@ -221,7 +225,7 @@
         indicatorDots: true,                  // 指示点显隐
         autoplay: true,                       // 自动轮播
         interval: 3000,                       // 自动轮播时间 
-        duration: 2000,                       // 轮播过渡时间
+        duration: 1000,                       // 轮播过渡时间
         indicatorActiveColor: '#fff',         // 轮播图指示点选中颜色
         swiperList:[],                        // 轮播元素数组
         isShowTop: true,                      // 顶部
@@ -248,17 +252,7 @@
         // },                                   // 店名头像信息
         showPanic: false,                       // 顶部分享显示与隐藏
         coverShow: false,                       // 全局遮罩层显隐
-        // sale_info: [{
-        //   title: '满送',
-        //   info: '满999元送4000毫安的充电宝,购买后送200积分',
-        //   type: 1
-        // }, {
-        //   title: '促销',
-        //   info: '满1548元，省150元',
-        //   time: '2019.06.12-2019.06.15',
-        //   type: 2
-        // }],
-        activeColor: '',                       // 进度条剩余的颜色
+        activeColor: '',                        // 进度条剩余的颜色
         normShow: false,                        // 商品规格弹窗
         title: '',                              // 传过来的秒杀购或者限时购
         percent: 0,                             // 已经被抢的比例
@@ -630,7 +624,7 @@
     justify-content: space-between;
     .conduct{
       .share{
-        margin: 0 55upx 0 30upx;
+        margin: 0 0upx 0 30upx;
       }
     }
     .nav{
@@ -753,9 +747,6 @@
       overflow: hidden;
       word-break:break-all;
       text-overflow: ellipsis;
-      // display: -webkit-box;
-      // -webkit-line-clamp: 2;
-      // -webkit-box-orient: vertical;
       font-size: $font-32;
       line-height: 32upx;
     }
@@ -774,19 +765,15 @@
         border-radius: 20upx;
         line-height: 40upx;
         font-size: $font-24;
-        background:rgba(244,67,61,0.08);
-        color: $color-red;
-        &:nth-child(2n-1){
-          background:rgba(244,160,61,0.08);
-          color: $color-orange
-        }
       }
+    }
+    .keep{
+      
     }
   }
   .row{
     height: 104upx;
     padding: 0 30upx;
-    border-bottom: 1upx solid $color-f5;
     display: flex;
     align-items: center;
     .row-name{
@@ -822,10 +809,14 @@
       flex: 1;
     }
     .cover-main{
+      min-height: 400upx;
       max-height: 896upx;
       padding-top: 9upx;
       display: flex;
       flex-direction: column;
+      .promotions{
+        min-height: 600upx;
+      }
       .cover-word{
         flex: 1;
         display: flex;
@@ -833,6 +824,7 @@
         
         // 促销信息
         .title{
+          margin-bottom: 20upx;
           font-size: $font-34;
           line-height: 110upx;
           text-align: center;
@@ -840,14 +832,12 @@
         }
         .item{
           display: flex;
-          margin-bottom: 28upx;
-          line-height: 30upx;
-          font-size: $font-26;
+          margin-bottom: 35upx;
+          line-height: 50upx;
           &>text{
             padding: 0 14upx;
-            height: 30upx;
+            height: 50upx;
             margin-right: 20upx;
-            font-size: $font-20;
             color:$color-white;
             background: $title-color;
             border-radius: 15upx;
@@ -858,13 +848,6 @@
           }
           .item-info{
             flex: 1;
-            flex-wrap: wrap;
-          }
-          .item-time{
-            margin-top: 15upx;
-            font-size: $font-24;
-            color: $color-99;
-            line-height: 19upx;
           }
         }
         
@@ -1003,7 +986,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1upx solid $color-f5;
       &>view>text{
         margin-right: 18upx;
       }
@@ -1042,7 +1024,7 @@
       .writer-speak{
         font-size: $font-28;
         line-height: 50upx;
-        margin-top: 7upx;
+        padding-top: 10upx;
       }
       .writer-speak-img{
         height: 203upx;

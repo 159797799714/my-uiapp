@@ -13,8 +13,9 @@
       
       uni.getSystemInfo({
         success: function (res) {
-          console.log(res.statusBarHeight > 0)
-          that.$store.commit('setHeight', res.statusBarHeight)
+          console.log(res)
+          that.$store.commit('setHeight', res)
+          // .statusBarHeight
         }
       });
       

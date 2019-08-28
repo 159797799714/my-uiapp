@@ -38,12 +38,12 @@
               </view>
             </view>
             <view class="price">
-              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" :class="{'buy bg-black col-f': true, 'my-button': true}" @click="goBuy(item)">立即抢购</text>
-              <text v-if="item.surplus_inventory < 1" :class="{buy: true,'my-button': true, none: true}">已售完</text>
-              <text v-if="goodList.header_info.status === '已结束'" :class="{buy: true,'my-button': true, none: true}">已结束</text>
+              <text v-if="item.surplus_inventory > 0 && item.isbuy === 'allow'" class="buy bg-black col-f my-button" @click="goBuy(item)">立即抢购</text>
+              <text v-if="item.surplus_inventory < 1" class="{buy my-button none">已售完</text>
+              <text v-if="goodList.header_info.status === '已结束'" class="buy my-button none">已结束</text>
               <!-- <form @submit="setRemind" report-submi="true"> -->
                 <!-- <button v-if="goodList.header_info.status === '即将开始'" :class="{buy: true, 'bg-white': true, 'my-button': true}" formType="submit">{{ item.isremind == 'no' ? '提醒我' : '取消提醒' }}</button> -->
-                <text v-if="goodList.header_info.status === '即将开始'" :class="{buy: true, 'bg-white': true, 'my-button': true}" @click="setRemind(item, index)">{{ item.isremind == 'no' ? '提醒我' : '取消提醒' }}</text>
+                <text v-if="goodList.header_info.status === '即将开始'" class="buy bg-black col-f my-button" @click="setRemind(item, index)">{{ item.isremind == 'no' ? '提醒我' : '取消提醒' }}</text>
               <!-- </form> -->
             </view>
           </view>
@@ -237,7 +237,7 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
-  padding-top: 4upx;
+  padding-top: 6upx;
   background: linear-gradient(to right,#00BFFF, #9933FF, #ff33cc);
   z-index: 2;
   .tab-item{

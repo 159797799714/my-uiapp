@@ -25,18 +25,18 @@
           <view v-for="(item, index) in discount" :key="index" class="pintuan dis-flex flex-dir-column bg-black" @click="goPintuan(item.name)">
             <view class="pintuan-text dis-flex">
               <image :src="item.imgUrl"></image>
-              <text v-if="item.time && index !== 2 && index !== 3" class="time font-22 col-f bg-93f">{{ item.time }}</text>
+              <text v-if="item.time && index !== 2 && index !== 3 && item.time !== '00:00:00'" class="time font-22 col-f bg-93f">{{ item.time }}</text>
             </view>
-            <view v-if="item.info" class="pintuan-info font-28 col-f3c f-bold">{{ item.info }}</view>
+            <view v-if="item.info" class="pintuan-info font-28 col-f3c">{{ item.info }}</view>
             <view v-if="!item.info && item.min_price" class="price dis-flex font-28 col-f3c">
-              ￥<text class="min-price f-bold">{{index === 3 ? '0': item.min_price }}</text>
-              <text class="max-price font-24 font-99 t-dec-line">￥{{ item.max_price }}</text>
+              ￥<text class="min-price">{{index === 3 ? '0': item.min_price }}</text>
+              <!-- <text class="max-price font-24 font-99 t-dec-line">￥{{ item.max_price }}</text> -->
             </view>
             <view class="pintuan-icon pintuan-icon-one">
               <image mode="aspectFit" v-if="item.img" :src="item.img"/>
               
               <!-- 无相关活动 -->
-              <view v-if="!item.time" class="nothing">
+              <view v-if="!item.time" class="nothing border-box">
                 <image mode="aspectFit" src="../../static/img/no_content.png"></image>
                 <view class="nothing-info font-28 col-cc">亲, 没有相关活动</view>
               </view>
@@ -53,11 +53,12 @@
             <view v-for="(item, index) in recommendList" :key="index" class="recommend-item bg-black" @click="goDetail(item)">
               <image :src="item.image[0].file_path" mode=""></image>
               <view class="goods-info padding-15-35 col-cc">{{ item.goods_name }}</view>
-              <view class="old-price padding-15-35 col-99">
-                <text>￥{{ item.goods_max_price}}</text>
-              </view>
               <view class="price font-purple padding-15-35">
-                粉丝价￥<text class="bigNewPrice f-bold">{{ item.goods_min_price }}</text>
+                粉丝价￥<text class="bigNewPrice">{{ item.goods_min_price }}</text>
+              </view>
+              <view class="old-price padding-15-35 col-99">
+                <text class="t-dec-line">￥{{ item.goods_max_price * 100 / 100 }}</text>
+                <text class="integral font-16">积分:122</text>
               </view>
             </view>
           </view>
@@ -541,7 +542,7 @@
     .pintuan-text>image{
       width: 123upx;
       height: 31upx;
-      margin-right: 14upx;
+      margin-right: 26upx;
       background-color: #000000;
     }
     .pintuan-text .time {
@@ -576,6 +577,7 @@
       width: 100%;
     }
     .pintuan-icon .nothing{
+      padding-top: 10upx;
       height: 100%;
       width: 100%;
       text-align: center;
@@ -599,14 +601,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 110upx;
+        height: 130upx;
         // margin-top: 62upx;
         font-size: $font-32;
         font-weight: $font-bold;
 
         &>image {
           height: 48upx;
-          width: 640upx;
+          width: 100%;
         }
       }
 
@@ -641,26 +643,13 @@
             font-size: $font-26;
             color: $color-99;
             font-weight: normal;
-            &>text{
-              position: relative;
-              &:before {
-                content: '';
-                text-align: center;
-                width: 100%;
-                background: $control-color;
-                height: 2upx;
-                position: absolute;
-                margin: 0 auto;
-                top: 50%;
-                bottom: 0;
-                transform: translateY(-50%);
-              }  
+            .integral{
+              margin-left: 13upx;
             }
           }
           .price {
             font-size: $font-26;
-            font-weight: bold;
-            line-height: 34upx;
+            line-height: 38upx;
             .bigNewPrice {
               font-size: $font-34;
             }

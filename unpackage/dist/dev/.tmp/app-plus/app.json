@@ -40,8 +40,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#000000",
-    "backgroundColor": "#000000"
+    "navigationBarBackgroundColor": "#131313",
+    "backgroundColor": "#131313"
   },
   "tabBar": {
     "color": "#666",

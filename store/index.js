@@ -9,6 +9,7 @@ const store = new Vuex.Store({
     mobile: '',
     token: '',
     statusBarHeight: 20,    // 状态栏高度
+    windowHeight: '',       // 屏幕高度
   },
   mutations: {
     login(state, userinfo) {
@@ -22,8 +23,9 @@ const store = new Vuex.Store({
     setToken(state, token) {
       state.token = token
     },
-    setHeight(state, height) {
-      state.statusBarHeight = height
+    setHeight(state, res) {
+      state.statusBarHeight = res.statusBarHeight
+      state.windowHeight = res.windowHeight
     }
   }
 })

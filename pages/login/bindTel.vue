@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    <image src="../../static/img/login/register_bg.png" mode="" class="content_bg"></image>
+    <image src="../../static/img/login/login_bg.png" mode="" class="content_bg"></image>
     <view class="content-cover">
       <view class="topBar">
         <text class="iconfont" @click="goBack">&#xe61c;</text>

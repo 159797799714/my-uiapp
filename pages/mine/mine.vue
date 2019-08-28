@@ -42,7 +42,7 @@
         <view class="dis-flex flex-x-between">
           <view v-for="(item, index) in distributeList" :key="index" class="row-item dis-flex flex-dir-column flex-y-center">
             <text v-if="index === 0" class="font-76 col-gold iconfont">&#xe6f7;</text>
-            <text v-if="index === 1" class="font-76 col-gold iconfont">&#xe657;</text>
+            <text v-if="index === 1" class="font-76 col-gold iconfont">&#xe660;</text>
             <text v-if="index === 2" class="font-76 col-gold iconfont">&#xe691;</text>
             <text v-if="index === 3" class="font-76 col-gold iconfont">&#xe67c;</text>
             <view class="item-name col-cc font-26">{{ item.name }}</view>

@@ -35,7 +35,7 @@
             <view v-for="(item, index) in filterCoverList.list" :class="{'bg-99': true, 'selectSpan': item.category_id === goodsFormData.brand_id || item.category_id === goodsFormData.category_id}" :key="index" @click="selectClass(item)">{{ item.name }}</view>
           </view>
           <view class="foot">
-            <view class="bg-99 col-13" @click="resetSearch">重置</view>
+            <view class="bg-66 col-13" @click="resetSearch">重置</view>
             <view class="sure" @click="filterTag_Index = ''">完成({{ filterCoverList.sum }}物品)</view>
           </view>
         </view>
@@ -85,7 +85,7 @@
             </view>
           </view>
         </view>
-        <view v-if="tabIndex === 1 && goodList.length === filterCoverList.sum" class="font-30 t-center color-99 nomore">抱歉！没有更多商品~</view>
+        <view v-if="tabIndex === 1 && goodList.length === filterCoverList.sum" class="font-30 t-center col-99 nomore">抱歉！没有更多商品~</view>
       </scroll-view>
     </view>
     
@@ -112,7 +112,7 @@
           </view>
         </scroll-view>
         <view class="foot">
-          <view class="bg-99 col-13" @click="resetSearch">重置</view>
+          <view class="bg-66 col-13" @click="resetSearch">重置</view>
           <view class="sure" @click="sureSearch">完成({{ filterCoverList.sum }}物品)</view>
         </view>
       </view>

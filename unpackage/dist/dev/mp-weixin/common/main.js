@@ -80,8 +80,9 @@ __webpack_require__.r(__webpack_exports__);
 
     uni.getSystemInfo({
       success: function success(res) {
-        console.log(res.statusBarHeight > 0);
-        that.$store.commit('setHeight', res.statusBarHeight);
+        console.log(res);
+        that.$store.commit('setHeight', res);
+        // .statusBarHeight
       } });
 
 
