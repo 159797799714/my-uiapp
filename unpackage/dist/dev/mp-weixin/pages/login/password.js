@@ -77,6 +77,10 @@ var render = function() {
     _vm.e0 = function($event) {
       _vm.ishide = !_vm.ishide
     }
+
+    _vm.e1 = function($event) {
+      _vm.ishide = !_vm.ishide
+    }
   }
 }
 var staticRenderFns = []
@@ -131,6 +135,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -141,6 +167,7 @@ var _default =
       code_word: '获取验证码',
       mobile: '',
       password: '',
+      password2: '',
       code: '',
       btnValue: '',
       ishide: false };
@@ -149,7 +176,7 @@ var _default =
   onLoad: function onLoad(option) {
     this.type = option.type;
     this.mobile = option.mobile;
-    console.log('接收到的参数', option);
+    console.log('password接收到的参数', option);
     if (option.type === 'register') {
       this.title = '设置密码';
       this.btnValue = '注册并登录';
@@ -161,6 +188,14 @@ var _default =
       return;
     }
   },
+  computed: {
+    windowHeight: function windowHeight() {
+      return this.$store.state.windowHeight;
+    },
+    statusBarHeight: function statusBarHeight() {
+      return this.$store.state.statusBarHeight;
+    } },
+
   methods: {
     goBack: function goBack() {
       uni.navigateBack({
@@ -168,6 +203,22 @@ var _default =
 
     },
     sureAction: function sureAction() {var _this = this;
+      console.log('fjafjf');
+      if (!this.password) {
+        uni.showToast({
+          title: '密码不能为空',
+          icon: 'none' });
+
+        return;
+      }
+      if (this.password !== this.password2) {
+        uni.showToast({
+          title: '两次密码输入不一致',
+          icon: 'none' });
+
+        return;
+      }
+
       switch (this.type) {
         case 'forget':
           this.$http({

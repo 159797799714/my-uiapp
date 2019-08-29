@@ -6,7 +6,7 @@
         <view class="logo">
           <image src="../../static/img/login/logo.png" mode="widthFix" :style="{width: 517 * windowHeight / 1460 + 'px'}"></image>
         </view>
-        <view class="page-title font-50 col-f t-center">用户登录</view>
+        <view class="page-title font-50 col-f t-center" :style="{'line-height': statusBarHeight > 20 ? '75px': '65px'}">用户登录</view>
         <form @submit="login" @reset="formReset" class="form-main border-box">
           <view class="ipt-main linear-border">
             <view class="ipt border-box">
@@ -290,9 +290,6 @@
           height: 100%;
           width: 100%;
         }
-      }
-      .page-title{
-        line-height: 150upx;
       }
       .form-main {
         width: 100%;

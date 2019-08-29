@@ -640,9 +640,6 @@ to {
         height: 100%;
         width: 100%;
 }
-.content .main .page-title.data-v-73d4b94a {
-      line-height: 150rpx;
-}
 .content .main .form-main.data-v-73d4b94a {
       width: 100%;
 }

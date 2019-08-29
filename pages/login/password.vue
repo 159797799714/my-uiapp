@@ -2,19 +2,41 @@
   <view class="container">
     <image src="../../static/img/login/login_bg.png" mode="" class="content_bg"></image>
     <view class="content-cover">
-      <view class="topBar">
-        <text class="iconfont" @click="goBack">&#xe61c;</text>
+      <view class="topBar p-ab" :style="{'padding-top': statusBarHeight + 'px' }">
+        <text class="iconfont font-52 col-f" @click="goBack">&#xe61c;</text>
       </view>
-      <view class="content border-box">
-        <view class="title">{{ title }}</view>
-        <view v-if="type === 'forget'" class="info">为您的账号设置一个新密码</view>
-        <view class="ipt">
-          <input v-if="ishide" type="password" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
-          <input v-if="!ishide" type="text" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
-          <text class="iconfont del" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
+      <view class="main dis-flex flex-dir-column flex-y-center" :style="{padding: statusBarHeight > 20 ? '55px 52px 0': '44px 52px 0'}">
+        <view class="logo">
+          <image src="../../static/img/login/logo.png" mode="widthFix" :style="{width: 517 * windowHeight / 1460 + 'px'}"></image>
         </view>
-        <view class="btn" foroType="submit" @click="sureAction">{{ btnValue }}</view>
-      </view>  
+        <view class="page-title font-50 col-f t-center" :style="{'line-height': statusBarHeight > 20 ? '75px': '65px'}">{{ title }}</view>
+        <form @submit="login" @reset="formReset" class="form-main border-box">
+          
+          <view class="ipt-main linear-border">
+            <view class="ipt border-box">
+              <text class="iconfont col-obf">&#xe64c;</text>
+              <input v-if="ishide" type="password" v-model="password" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
+              <input v-if="!ishide" type="text" v-model="password" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
+              <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>  
+            </view>
+          </view>
+          
+          <view class="ipt-main linear-border">
+            <view class="ipt border-box">
+              <text class="iconfont col-obf">&#xe64c;</text>
+              <input v-if="ishide" type="password2" v-model="password2" placeholder="请再次输入密码" maxlength="16" placeholder-style="color: #fff">
+              <input v-if="!ishide" type="text" v-model="password2" placeholder="请再次输入密码" maxlength="16" placeholder-style="color: #fff">
+              <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>  
+            </view>
+          </view>
+          
+          <view class="ipt-main linear-border top-100">
+            <view class="ipt dis-block border-box t-center" foroType="submit" @click="sureAction">
+              <text class="font-40 line-85">{{ btnValue }}</text>
+            </view>
+          </view>
+        </form>
+      </view>
     </view>
   </view>
 </template>
@@ -29,6 +51,7 @@
         code_word: '获取验证码',
         mobile: '',
         password: '',
+        password2: '',
         code: '',
         btnValue: '',
         ishide: false
@@ -37,7 +60,7 @@
     onLoad(option) {
       this.type = option.type
       this.mobile = option.mobile
-      console.log('接收到的参数', option)
+      console.log('password接收到的参数', option)
       if(option.type === 'register') {
         this.title = '设置密码'
         this.btnValue = '注册并登录'
@@ -49,6 +72,14 @@
         return
       }
     },
+    computed: {
+      windowHeight() {
+        return this.$store.state.windowHeight
+      },
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
+    },
     methods: {
       goBack() {
         uni.navigateBack({
@@ -56,79 +87,96 @@
         })
       },
       sureAction() {
-        switch(this.type) {
-          case 'forget':
-            this.$http({
-              url: this.$api.resetpassword,
-              method: 'POST',
-              data: {
-                mobile: this.mobile,
-                newpassword: this.password
-              },
-              cb: (err, res) => {
-                if(!err && res.code === 1) {
-                  this.$store.commit('login', {
-                    mobile: this.mobile,
-                    token: res.data.token
-                  })
-                  uni.showToast({
-                    title: '重置密码成功',
-                    icon: 'none'
-                  })
-                  
-                  uni.switchTab({
-                    url: '../index/index'
-                  })
-                  return
-                } else if(res.code === 0 && res.msg) {
-                  uni.showToast({
-                    title: res.msg,
-                    icon: 'none'
-                  })
-                  return
-                } else {
-                  uni.showToast({
-                    title: '重置密码失败',
-                    icon: 'none'
-                  })
-                  return
-                }
-              }
-            })
-            break
-          case 'register':
-            this.$http({
-              url: this.$api.register,
-              method: 'POST',
-              data: {
-                mobile: this.mobile,
-                password: this.password
-              },
-              cb: (err, res) => {
-                if(!err && res.code === 1) {
-                  uni.showToast({
-                    title: '注册成功',
-                    icon: 'none'
-                  })
-                  uni.switchTab({
-                    url: '../index/index'
-                  })
-                } else if(res.code === 0) {
-                  uni.showToast({
-                    title: res.msg,
-                    icon: 'none'
-                  })
-                } else {
-                  uni.showToast({
-                    title: '注册失败',
-                    icon: 'none'
-                  })
-                }
-              }
-            })
-            break
+        console.log('fjafjf')
+        if(!this.password) {
+          uni.showToast({
+            title: '密码不能为空',
+            icon: 'none'
+          })
+          return
         }
-      }
+        if(this.password !== this.password2) {
+          uni.showToast({
+            title: '两次密码输入不一致',
+            icon: 'none'
+          })
+          return
+        }
+        
+        switch(this.type) {
+            case 'forget':
+              this.$http({
+                url: this.$api.resetpassword,
+                method: 'POST',
+                data: {
+                  mobile: this.mobile,
+                  newpassword: this.password
+                },
+                cb: (err, res) => {
+                  if(!err && res.code === 1) {
+                    this.$store.commit('login', {
+                      mobile: this.mobile,
+                      token: res.data.token
+                    })
+                    uni.showToast({
+                      title: '重置密码成功',
+                      icon: 'none'
+                    })
+                    
+                    uni.switchTab({
+                      url: '../index/index'
+                    })
+                    return
+                  } else if(res.code === 0 && res.msg) {
+                    uni.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                    return
+                  } else {
+                    uni.showToast({
+                      title: '重置密码失败',
+                      icon: 'none'
+                    })
+                    return
+                  }
+                }
+              })
+              break
+            case 'register':
+              this.$http({
+                url: this.$api.register,
+                method: 'POST',
+                data: {
+                  mobile: this.mobile,
+                  password: this.password
+                },
+                cb: (err, res) => {
+                  if(!err && res.code === 1) {
+                    uni.showToast({
+                      title: '注册成功',
+                      icon: 'none'
+                    })
+                    uni.switchTab({
+                      url: '../index/index'
+                    })
+                  } else if(res.code === 0) {
+                    uni.showToast({
+                      title: res.msg,
+                      icon: 'none'
+                    })
+                  } else {
+                    uni.showToast({
+                      title: '注册失败',
+                      icon: 'none'
+                    })
+                  }
+                }
+              })
+              break
+          }
+        }
+        
       
     }
   }
@@ -139,7 +187,9 @@
     height: 100%;
     width: 100%;
   }
-  
+  .top-100{
+    margin-top: 100upx;
+  }
   .content-cover{
     position: absolute;
     top: 0;
@@ -163,44 +213,130 @@
       flex-direction: column;
       padding: 65upx 60upx 60upx;
       background: rgba(0, 0, 0, 0);
-      .title{
-        margin-bottom: 27upx;
-        font-size: $font-54;
-        line-height: 54upx;
-        color: $color-white;
-      }
-      .info{
-        margin-bottom: 83upx;
-        font-size: $font-28;
-        line-height: 27upx;
-        color: $color-99;
-      }
-      .ipt{
-        height: 104upx;
-        display: flex;
-        align-items: center;
-        color: $color-white;
-        border-bottom: 1px solid $color-90;
-        &>text{
-          font-size: $font-30;
-        }
-        &>input{
-          flex: 1;
-          font-size: $font-28;
+    }
+    .main {
+      flex: 1;
+      .logo {
+        max-height: 517upx;
+        overflow: hidden;
+        &>image {
+          margin: 0 auto;
+          height: 100%;
+          width: 100%;
         }
       }
-      .btn{
-        margin-top: 189upx;
-        height: 98upx;
+      .page-title{
+        line-height: 150upx;
+      }
+      .form-main {
         width: 100%;
-        border-radius: 49upx;
-        font-size: $font-30;
-        color: $color-white;
-        line-height: 98upx;
-        text-align: center;
-        background: $color-red;
+        .ipt-main{
+          margin-bottom: 47upx;
+          padding: 2upx;
+          border-radius: 10upx;
+        }
+        .ipt {
+          height: 85upx;
+          padding: 0 40upx;
+          display: flex;
+          align-items: center;
+          color: $color-white;
+          border-radius: 10upx;
+          background: rgba(0, 0, 0, 0.9);
+          &>text {
+            font-size: $font-30;
+          }
+    
+          &>input {
+            flex: 1;
+            margin: 10upx 30upx;
+            font-size: $font-28;
+          }
+          .code-ipt{
+            position: relative;
+            margin-right: 40upx;
+            &:after{
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              height: 30upx;
+              width: 1px;
+              background: $color-white;
+            }
+          }
+          .line-85{
+            line-height: 85upx;
+          }
+          .del {
+            transform: rotate(45deg);
+          }
+        }
+    
+        .btn {
+          margin: 53upx 0 51upx;
+          height: 98upx;
+          width: 100%;
+          font-size: $font-30;
+          color: $color-white;
+          line-height: 98upx;
+          text-align: center;
+          background: $color-red;
+          border-radius: 49upx;
+          padding: 5upx;
+        }
+    
+        .other {
+          position: absolute;
+          bottom: 80upx;
+          width: calc(100% - 212upx);
+          display: flex;
+          justify-content: space-between;
+          height: 29upx;
+          line-height: 29upx;
+          font-size: $font-30;
+          color: $color-white;
+          .forget {
+            color: $color-99;
+          }
+        }
+    
+        .login-way {
+          height: 146upx;
+          width: 100%;
+          color: $color-99;
+    
+          .title {
+            height: 13upx;
+            margin-bottom: 55upx;
+            text-align: center;
+            border-bottom: 1px solid $color-99;
+    
+            &>text {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              background: $title-color;
+              padding: 0 5upx;
+              line-height: 27upx;
+              font-size: $font-28;
+            }
+          }
+    
+          .box {
+            padding: 0 42upx;
+            display: flex;
+            justify-content: space-between;
+    
+            &>image {
+              max-width: 70upx;
+              height: 74upx;
+            }
+          }
+        }
       }
-      
     }
   }
 </style>

@@ -75,7 +75,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.mobile = ""
+      _vm.username = ""
     }
   }
 }
@@ -190,17 +190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -219,13 +208,16 @@ var _default =
   onLoad: function onLoad(option) {
     this.type = option.type;
     if (option.type === 'register') {
-      this.title = '注册';
+      this.title = '用户注册';
       return;
     }
     if (option.type === 'forget') {
       this.title = '找回密码';
       return;
     }
+  },
+  onShow: function onShow() {
+    this.showInfo = false;
   },
   computed: {
     windowHeight: function windowHeight() {
@@ -249,68 +241,49 @@ var _default =
       }
       this.showDel = false;
     },
-    goNext: function goNext() {var _this = this;
+    goNext: function goNext() {
       console.log(this.check_code, this.code, this.showInfo);
-      if (this.check_code) {
-        if (this.code.length === 4) {
-          this.$http({
-            url: this.$api.smscodeyz,
-            data: {
-              mobile: this.username,
-              code: this.code },
-
-            cb: function cb(err, res) {
-              if (!err && res.code === 1) {
-                uni.navigateTo({
-                  url: 'password?type=' + _this.type + '&mobile=' + _this.username });
-
-              } else if (res.code === 0) {
-                uni.showToast({
-                  title: res.msg,
-                  icon: 'none' });
-
-              } else {
-                uni.showToast({
-                  title: '验证码验证失败',
-                  icon: 'none' });
-
-              }
-            } });
-
-        } else {
-          uni.showToast({
-            title: '验证码格式错误',
-            icon: 'none' });
-
-        }
-      } else {
-        uni.showToast({
-          title: this.showTitle,
-          icon: 'none' });
-
-      }
-
-
       // if(this.check_code) {
+      //   if(this.code.length === 4) {
+      //     this.$http({
+      //       url: this.$api.smscodeyz,
+      //       data: {
+      //         mobile: this. username,
+      //         code: this.code
+      //       },
+      //       cb: (err, res) => {
+      //         if(!err && res.code === 1) {
+      //           uni.navigateTo({
+      //             url: 'password?type=' + this.type + '&mobile=' + this.username
+      //           })
+      //         } else if(res.code === 0) {
+      //           uni.showToast({
+      //             title: res.msg,
+      //             icon: 'none'
+      //           })
+      //         } else {
+      //           uni.showToast({
+      //             title: '验证码验证失败',
+      //             icon: 'none'
+      //           })
+      //         }
+      //       }
+      //     })  
+      //   } else {
+      //     uni.showToast({
+      //       title: '验证码格式错误',
+      //       icon: 'none'
+      //     })
+      //   }  
+      // } else {
       //   uni.showToast({
-      //     title: '请获取手机验证码',
+      //     title: this.showTitle,
       //     icon: 'none'
       //   })
-      //   return
       // }
-      // if(this.check_code !== this.code) {
-      //   uni.showToast({
-      //     title: '验证码不正确',
-      //     icon: 'none'
-      //   })
-      //   return
-      // }
+      uni.navigateTo({
+        url: 'password?type=' + this.type + '&mobile=' + this.username });
 
-      // if(this.check_code === this.code && this.check_code) {
-      //   uni.navigateTo({
-      //     url: 'password?type=' + this.type + '&mobile=' + this.username
-      //   })  
-      // }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
@@ -319,6 +292,7 @@ var _default =
     },
     // 获取手机验证码
     getCode: function getCode() {
+      console.log(this.username);
       var value = /^1[3456789]\d{9}$/.test(this.username);
       var that = this;
       if (!value) {

@@ -617,6 +617,15 @@ to {
   height: 100%;
   width: 100%;
 }
+.topBar.data-v-1e376352 {
+  background: transparent;
+}
+.topBar > text.data-v-1e376352 {
+    line-height: 44px;
+}
+.top-100.data-v-1e376352 {
+  margin-top: 100rpx;
+}
 .content.data-v-1e376352 {
   position: absolute;
   top: 0;
@@ -639,9 +648,6 @@ to {
         margin: 0 auto;
         height: 100%;
         width: 100%;
-}
-.content .main .page-title.data-v-1e376352 {
-      line-height: 150rpx;
 }
 .content .main .form-main.data-v-1e376352 {
       width: 100%;
