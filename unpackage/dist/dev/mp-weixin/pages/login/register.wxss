@@ -641,7 +641,6 @@ to {
             flex: 1;
 }
 .content .main .logo.data-v-1e376352 {
-      max-height: 517rpx;
       overflow: hidden;
 }
 .content .main .logo > image.data-v-1e376352 {

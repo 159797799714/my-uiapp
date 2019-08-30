@@ -216,8 +216,7 @@ var _default =
     },
     clickAction: function clickAction(type) {
       uni.navigateTo({
-        url: 'register?type=' + type,
-        "animationType": "zoom-fade-out" });
+        url: 'register?type=' + type });
 
     },
     goLogin: function goLogin() {var _this = this;

@@ -660,9 +660,12 @@ to {
     padding: 30rpx 30rpx 0 30rpx;
     height: 390rpx;
 }
+.content .word-swiper.data-v-bd473f48 {
+    height: 150rpx;
+}
 .content .TabNav.data-v-bd473f48 {
     padding: 0 30rpx;
-    padding-top: 50rpx;
+    padding-top: 48rpx;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -674,8 +677,9 @@ to {
       -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1;
+      max-width: 138rpx;
       font-size: 32rpx;
-      line-height: 60rpx;
+      line-height: 40rpx;
       text-align: center;
       position: relative;
 }
@@ -689,6 +693,7 @@ to {
 }
 .content .TabNav .selected.data-v-bd473f48 {
       font-size: 40rpx;
+      color: #fff;
 }
 .content .TabNav .selected.data-v-bd473f48::before {
         content: '';

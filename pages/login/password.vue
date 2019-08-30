@@ -24,8 +24,8 @@
           <view class="ipt-main linear-border">
             <view class="ipt border-box">
               <text class="iconfont col-obf">&#xe64c;</text>
-              <input v-if="ishide" type="password2" v-model="password2" placeholder="请再次输入密码" maxlength="16" placeholder-style="color: #fff">
-              <input v-if="!ishide" type="text" v-model="password2" placeholder="请再次输入密码" maxlength="16" placeholder-style="color: #fff">
+              <input v-if="ishide" type="password" v-model="password2" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
+              <input v-if="!ishide" type="text" v-model="password2" placeholder="请输入密码" maxlength="16" placeholder-style="color: #fff">
               <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>  
             </view>
           </view>
@@ -58,12 +58,12 @@
       }
     },
     onLoad(option) {
-      this.type = option.type
+      that.type = option.type
       this.mobile = option.mobile
       console.log('password接收到的参数', option)
       if(option.type === 'register') {
         this.title = '设置密码'
-        this.btnValue = '注册并登录'
+        this.btnValue = '注册'
         return
       }
       if(option.type === 'forget') {
@@ -87,15 +87,16 @@
         })
       },
       sureAction() {
+        let that = this
         console.log('fjafjf')
-        if(!this.password) {
+        if(!that.password) {
           uni.showToast({
             title: '密码不能为空',
             icon: 'none'
           })
           return
         }
-        if(this.password !== this.password2) {
+        if(that.password !== that.password2) {
           uni.showToast({
             title: '两次密码输入不一致',
             icon: 'none'
@@ -103,81 +104,80 @@
           return
         }
         
-        switch(this.type) {
-            case 'forget':
-              this.$http({
-                url: this.$api.resetpassword,
-                method: 'POST',
-                data: {
-                  mobile: this.mobile,
-                  newpassword: this.password
-                },
-                cb: (err, res) => {
-                  if(!err && res.code === 1) {
-                    this.$store.commit('login', {
-                      mobile: this.mobile,
-                      token: res.data.token
-                    })
-                    uni.showToast({
-                      title: '重置密码成功',
-                      icon: 'none'
-                    })
-                    
+        switch(that.type) {
+          case 'forget':
+            that.$http({
+              url: that.$api.resetpassword,
+              method: 'POST',
+              data: {
+                mobile: that.mobile,
+                newpassword: that.password
+              },
+              cb: (err, res) => {
+                if(!err && res.code === 1) {
+                  that.$store.commit('login', {
+                    mobile: res.data.mobile,
+                    token: res.data.token
+                  })
+                  uni.showToast({
+                    title: '重置密码成功即将自动登录',
+                    icon: 'none'
+                  })
+                  setTimeout(function() {
                     uni.switchTab({
                       url: '../index/index'
-                    })
-                    return
-                  } else if(res.code === 0 && res.msg) {
-                    uni.showToast({
-                      title: res.msg,
-                      icon: 'none'
-                    })
-                    return
-                  } else {
-                    uni.showToast({
-                      title: '重置密码失败',
-                      icon: 'none'
-                    })
-                    return
-                  }
+                    })  
+                  }, 1000)
+                  
+                } else if(res.code === 0 && res.msg) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                  })
+                  return
+                } else {
+                  uni.showToast({
+                    title: '重置密码失败',
+                    icon: 'none'
+                  })
+                  return
                 }
-              })
-              break
-            case 'register':
-              this.$http({
-                url: this.$api.register,
-                method: 'POST',
-                data: {
-                  mobile: this.mobile,
-                  password: this.password
-                },
-                cb: (err, res) => {
-                  if(!err && res.code === 1) {
-                    uni.showToast({
-                      title: '注册成功',
-                      icon: 'none'
-                    })
-                    uni.switchTab({
-                      url: '../index/index'
-                    })
-                  } else if(res.code === 0) {
-                    uni.showToast({
-                      title: res.msg,
-                      icon: 'none'
-                    })
-                  } else {
-                    uni.showToast({
-                      title: '注册失败',
-                      icon: 'none'
-                    })
-                  }
+              }
+            })
+            break
+          case 'register':
+            that.$http({
+              url: that.$api.register,
+              method: 'POST',
+              data: {
+                mobile: that.mobile,
+                password: that.password
+              },
+              cb: (err, res) => {
+                if(!err && res.code === 1) {
+                  uni.showToast({
+                    title: '注册成功',
+                    icon: 'none'
+                  })
+                  uni.switchTab({
+                    url: './login'
+                  })
+                } else if(res.code === 0) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                  })
+                } else {
+                  uni.showToast({
+                    title: '注册失败',
+                    icon: 'none'
+                  })
                 }
-              })
-              break
-          }
+              }
+            })
+            break
         }
-        
-      
+      }
     }
   }
 </script>
@@ -217,7 +217,6 @@
     .main {
       flex: 1;
       .logo {
-        max-height: 517upx;
         overflow: hidden;
         &>image {
           margin: 0 auto;

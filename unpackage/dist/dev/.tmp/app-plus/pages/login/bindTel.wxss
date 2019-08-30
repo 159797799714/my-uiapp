@@ -635,16 +635,8 @@ to {
   background: transparent;
 }
 .content-cover .topBar.data-v-4b28b7bf {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    font-size: 38rpx;
-    color: #fff;
+    line-height: 88rpx;
+    background: transparent;
 }
 .content-cover .topBar .iconfont.data-v-4b28b7bf {
       font-size: 42rpx;
@@ -673,8 +665,14 @@ to {
       line-height: 54rpx;
       color: #fff;
 }
+.content-cover .content .myForm .ipt-main.data-v-4b28b7bf {
+      margin-bottom: 47rpx;
+      padding: 2rpx;
+      border-radius: 10rpx;
+}
 .content-cover .content .myForm .ipt.data-v-4b28b7bf {
-      height: 104rpx;
+      height: 85rpx;
+      padding: 0 40rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -684,7 +682,8 @@ to {
           -ms-flex-align: center;
               align-items: center;
       color: #fff;
-      border-bottom: 1px solid #909090;
+      border-radius: 10rpx;
+      background: rgba(0, 0, 0, 0.9);
 }
 .content-cover .content .myForm .ipt > text.data-v-4b28b7bf {
         font-size: 30rpx;
@@ -697,19 +696,77 @@ to {
         margin: 10rpx 30rpx;
         font-size: 28rpx;
 }
+.content-cover .content .myForm .ipt .code-ipt.data-v-4b28b7bf {
+        position: relative;
+        margin-right: 40rpx;
+}
+.content-cover .content .myForm .ipt .code-ipt.data-v-4b28b7bf:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          height: 30rpx;
+          width: 1px;
+          background: #fff;
+}
+.content-cover .content .myForm .ipt .line-85.data-v-4b28b7bf {
+        line-height: 85rpx;
+}
 .content-cover .content .myForm .ipt .del.data-v-4b28b7bf {
         -webkit-transform: rotate(45deg);
             -ms-transform: rotate(45deg);
                 transform: rotate(45deg);
 }
-.content-cover .content .myForm .ipt .code.data-v-4b28b7bf {
-        width: 140rpx;
-        height: 36rpx;
-        font-size: 22rpx;
-        line-height: 36rpx;
+.content-cover .content .myForm .btn.data-v-4b28b7bf {
+      margin: 53rpx 0 51rpx;
+      height: 98rpx;
+      width: 100%;
+      font-size: 30rpx;
+      color: #fff;
+      line-height: 98rpx;
+      text-align: center;
+      background: #F4433D;
+      border-radius: 49rpx;
+      padding: 5rpx;
+}
+.content-cover .content .myForm .login-way.data-v-4b28b7bf {
+      height: 146rpx;
+      width: 100%;
+      color: #999999;
+}
+.content-cover .content .myForm .login-way .title.data-v-4b28b7bf {
+        height: 13rpx;
+        margin-bottom: 55rpx;
         text-align: center;
-        border-radius: 18rpx;
-        background: #F4433D;
+        border-bottom: 1px solid #999999;
+}
+.content-cover .content .myForm .login-way .title > text.data-v-4b28b7bf {
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+              -ms-transform: translateX(-50%);
+                  transform: translateX(-50%);
+          background: #131313;
+          padding: 0 5rpx;
+          line-height: 27rpx;
+          font-size: 28rpx;
+}
+.content-cover .content .myForm .login-way .box.data-v-4b28b7bf {
+        padding: 0 42rpx;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+}
+.content-cover .content .myForm .login-way .box > image.data-v-4b28b7bf {
+          max-width: 70rpx;
+          height: 74rpx;
 }
 .content-cover .content .myForm .info.data-v-4b28b7bf {
       height: 20rpx;

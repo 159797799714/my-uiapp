@@ -100,8 +100,7 @@
       },
       clickAction(type) {
         uni.navigateTo({
-          url: 'register?type=' + type,
-          "animationType": "zoom-fade-out"
+          url: 'register?type=' + type
         })
       },
       goLogin() {
@@ -283,7 +282,6 @@
     .main {
       flex: 1;
       .logo {
-        max-height: 517upx;
         overflow: hidden;
         &>image {
           margin: 0 auto;

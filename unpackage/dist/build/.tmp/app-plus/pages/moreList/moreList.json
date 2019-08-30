@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "分类",
-  "navigationBarBackgroundColor": "#151515",
+  "navigationStyle": "custom",
   "usingComponents": {}
 }

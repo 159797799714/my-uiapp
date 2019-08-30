@@ -37,7 +37,7 @@
         </form>
         <view v-if="type === 'register'" class="other">
           <view class="login font-36 col-f t-center" @click="goLogin">已有账号?</view>
-          <view class="clause font-24 col-66">
+          <view class="clause font-24 col-66" @click="goBind">
             <text class="iconfont">&#xe722;</text>注册即表示您已同意
             <text class="col-f">《用户协议》</text>和
             <text class="col-f">《隐私条款》</text>
@@ -129,49 +129,59 @@
         }
         this.showDel = false
       },
-      goNext() {
-        console.log(this.check_code, this.code, this.showInfo)
-        // if(this.check_code) {
-        //   if(this.code.length === 4) {
-        //     this.$http({
-        //       url: this.$api.smscodeyz,
-        //       data: {
-        //         mobile: this. username,
-        //         code: this.code
-        //       },
-        //       cb: (err, res) => {
-        //         if(!err && res.code === 1) {
-        //           uni.navigateTo({
-        //             url: 'password?type=' + this.type + '&mobile=' + this.username
-        //           })
-        //         } else if(res.code === 0) {
-        //           uni.showToast({
-        //             title: res.msg,
-        //             icon: 'none'
-        //           })
-        //         } else {
-        //           uni.showToast({
-        //             title: '验证码验证失败',
-        //             icon: 'none'
-        //           })
-        //         }
-        //       }
-        //     })  
-        //   } else {
-        //     uni.showToast({
-        //       title: '验证码格式错误',
-        //       icon: 'none'
-        //     })
-        //   }  
-        // } else {
-        //   uni.showToast({
-        //     title: this.showTitle,
-        //     icon: 'none'
-        //   })
-        // }
+      goBind() {
         uni.navigateTo({
-          url: 'password?type=' + this.type + '&mobile=' + this.username,
+          url: './bindTel'
         })
+      },
+      goNext() {
+        let that= this
+        console.log(that.check_code, that.code, that.showInfo)
+        if(!that.username) {
+          uni.showToast({
+            title: '请输入手机号码',
+            icon: 'none'
+          })
+          return
+        }
+        if(that.check_code) {
+          if(that.code.length === 4) {
+            that.$http({
+              url: that.$api.smscodeyz,
+              data: {
+                mobile: that. username,
+                code: that.code
+              },
+              cb: (err, res) => {
+                if(!err && res.code === 1) {
+                  uni.navigateTo({
+                    url: 'password?type=' + that.type + '&mobile=' + that.username
+                  })
+                } else if(res.code === 0) {
+                  uni.showToast({
+                    title: res.msg,
+                    icon: 'none'
+                  })
+                } else {
+                  uni.showToast({
+                    title: '验证码验证失败',
+                    icon: 'none'
+                  })
+                }
+              }
+            })  
+          } else {
+            uni.showToast({
+              title: '验证码格式错误',
+              icon: 'none'
+            })
+          }  
+        } else {
+          uni.showToast({
+            title: that.showTitle,
+            icon: 'none'
+          })
+        }
       },
       goLogin() {
         uni.navigateTo({
@@ -180,9 +190,10 @@
       },
       // 获取手机验证码
       getCode() {
-        console.log(this.username)
-        let value = /^1[3456789]\d{9}$/.test(this.username)
         let that = this
+        console.log(that.username)
+        let value = /^1[3456789]\d{9}$/.test(that.username)
+        
         if (!value){
           uni.showToast({
             title: '请输入正确的手机号码',
@@ -249,7 +260,6 @@
     .main {
       flex: 1;
       .logo {
-        max-height: 517upx;
         overflow: hidden;
         &>image {
           margin: 0 auto;

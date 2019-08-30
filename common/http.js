@@ -10,6 +10,7 @@ export default function(obj){
     // token: '74155add51e6d35b3ac603555fa0083e'
   }
   let data ={...obj.data, ...params}
+  console.log(store.state.token)
   uni.request({
     url: obj.url,
     method: obj.method? obj.method : 'GET',

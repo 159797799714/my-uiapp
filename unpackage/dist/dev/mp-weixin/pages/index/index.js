@@ -147,17 +147,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 {
   components: {
     banner: banner },
 
   data: function data() {
     return {
-      indicatorDots: true,
-      autoplay: true,
-      interval: 3000,
-      duration: 2000,
-      indicatorActiveColor: '#ffffff',
       searchInfo: '大家都在搜“森海塞尔”',
       swiperList: [{
         imgUrl: "https://market.pd-unixe.com/uploads/201906111745582db721897.png" },
@@ -169,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
         imgUrl: "https://market.pd-unixe.com/uploads/201906111745539eac11543.png" }],
 
       tabList: [],
-      selectIndex: 0,
+      category_id: '',
       cultureList: [] };
 
   },
@@ -179,8 +179,8 @@ __webpack_require__.r(__webpack_exports__);
     } },
 
   watch: {
-    selectIndex: function selectIndex(val) {
-      this.getDefault(this.tabList[val].category_id);
+    category_id: function category_id(val) {
+      this.getDefault(val);
     } },
 
   onLoad: function onLoad() {
@@ -222,17 +222,39 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     // 获取文章分类
-    getCategorylist: function getCategorylist() {var _this2 = this;
-      this.$http({
+    getCategorylist: function getCategorylist() {
+      var that = this;
+      that.$http({
         data: {
           'wxapp_id': 10001,
           token: 'b612f5e2a32d553fdaea8eeb06bc2744' },
 
-        url: this.$api.categorylist,
+        url: that.$api.categorylist,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            _this2.tabList = res.data.categoryList;
-            return;
+            var list = res.data.categoryList;
+            var time = Math.ceil(list.length / 5);
+            console.log(time);
+            if (time === 1) {
+              var obj = {
+                arr: res.data.categoryList };
+
+              that.tabList.push(obj);
+              that.category_id = that.tabList[0].arr[0].category_id;
+              return;
+            }
+
+            if (time > 1) {
+              for (var i = 0; i < time; i++) {
+                var _obj = {
+                  arr: list.splice(0, 5) };
+
+                that.tabList.push(_obj);
+              }
+              that.category_id = that.tabList[0].arr[0].category_id;
+              return;
+            }
+
           } else {
             uni.showToast({
               title: '文章分类获取失败',
@@ -243,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     // 点赞
-    zanAction: function zanAction(item, index) {var _this3 = this;
+    zanAction: function zanAction(item, index) {var _this2 = this;
       console.log(item.article_id, item.islike, index);
       var url = this.$api.unLike;
       if (item.islike === 'no') {
@@ -256,26 +278,26 @@ __webpack_require__.r(__webpack_exports__);
 
         cb: function cb(err, res) {
           if (!err && res) {
-            switch (_this3.cultureList[index].islike) {
+            switch (_this2.cultureList[index].islike) {
               case 'yes':
                 uni.showToast({
                   title: '取消点赞成功',
                   icon: 'none' });
 
-                _this3.cultureList[index].islike = 'no';
-                _this3.cultureList[index].like_count -= 1;
+                _this2.cultureList[index].islike = 'no';
+                _this2.cultureList[index].like_count -= 1;
                 break;
               case 'no':
                 uni.showToast({
                   title: '点赞成功',
                   icon: 'none' });
 
-                _this3.cultureList[index].islike = 'yes';
-                _this3.cultureList[index].like_count += 1;
+                _this2.cultureList[index].islike = 'yes';
+                _this2.cultureList[index].like_count += 1;
                 break;}
 
           } else {
-            switch (_this3.cultureList[index].islike) {
+            switch (_this2.cultureList[index].islike) {
               case 'yes':
                 uni.showToast({
                   title: '取消点赞失败',
@@ -294,15 +316,14 @@ __webpack_require__.r(__webpack_exports__);
 
     },
     // 首页轮播图图片
-    getBanner: function getBanner() {var _this4 = this;
+    getBanner: function getBanner() {var _this3 = this;
       this.$http({
         url: this.$api.index_gethomebanners,
         cb: function cb(err, res) {
           if (!err && res.code === 1) {
-            console.log(res.data);
 
             // 替换轮播图图片路径数据
-            _this4.swiperList = res.data.list;
+            _this3.swiperList = res.data.list;
           } else {
             uni.showToast({
               title: '轮播图图片加载失败',
@@ -315,7 +336,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     // 选择分类
     selectTab: function selectTab(item, index) {
-      this.selectIndex = index;
+      this.category_id = item.category_id;
     },
     // 文章详情页
     goInfo: function goInfo(item) {

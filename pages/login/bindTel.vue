@@ -2,14 +2,42 @@
   <view class="container">
     <image src="../../static/img/login/login_bg.png" mode="" class="content_bg"></image>
     <view class="content-cover">
-      <view class="topBar">
+      <view class="topBar dis-block font-52 col-f t-left" :style="{'padding-top': statusBarHeight + 'px' }">
         <text class="iconfont" @click="goBack">&#xe61c;</text>
       </view>
       <view class="content border-box">
         <view>
           <view class="title">绑定手机号码</view>
           <form @submit="formSubmit" @reset="formReset" class="myForm">
-            <view class="ipt">
+            
+            
+            <view class="ipt-main linear-border">
+              <view class="ipt border-box">
+                <text class="iconfont col-obf">&#xe763;</text>
+                <input type="text" v-model="mobile" placeholder="请输入您的手机号码" @input="onInput" maxlength="11" placeholder-style="color: #fff">
+                <text v-if="showDel" class="iconfont del" @click="username = ''">&#xe620;</text>
+              </view>  
+            </view>
+            
+            <view class="ipt-main linear-border">
+              <view class="ipt border-box">
+                <text class="iconfont col-obf">&#xe636;</text>
+                <input type="text" class="code-ipt" v-model="code" placeholder="请输入验证码" maxlength="4" placeholder-style="color: #fff">
+                <text v-if="!showInfo" class="code col-obf font-24" @click="getCode">获取验证码</text>
+                <text v-if="showInfo" class="code col-obf font-24">{{ code_word }}</text>
+              </view>
+            </view>
+            
+            <view class="ipt-main linear-border">
+              <view class="ipt border-box">
+                <text class="iconfont col-obf">&#xe64c;</text>
+                <input v-if="ishide" type="password" v-model="password" placeholder="请输入（6-16字母数字）密码" maxlength="16" placeholder-style="color: #fff">
+                <input v-if="!ishide" type="text" v-model="password" placeholder="请输入（6-16字母数字）密码" maxlength="16" placeholder-style="color: #fff">
+                <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>  
+              </view>
+            </view>
+            
+            <!-- <view class="ipt">
               <text class="iconfont">&#xe619;</text>
               <input type="text" v-model="mobile" placeholder="请输入您的手机号码" @input="onInput" maxlength="11">
               <text v-if="showDel" class="iconfont del" @click="mobile = ''">&#xe620;</text>
@@ -25,10 +53,15 @@
               <input v-if="ishide" type="password" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
               <input v-if="!ishide" type="text" v-model="password" placeholder="请输入新的密码（6-16为字母数字）" maxlength="16">
               <text class="iconfont" @click="ishide = !ishide">{{ ishide? '&#xe6e1;' : '&#xe6cc;'}}</text>
-            </view>
+            </view> -->
             <view v-if="!showInfo" class="info"></view>
-            <view v-if="showInfo" class="info">验证码已通过手机短信的形式发送至您的手机，请注意查收</view>
-            <view class="btn" foroType="submit" @click="sureAction">确认</view>
+            <view v-if="showInfo" class="info font-purple">验证码已通过手机短信的形式发送至您的手机，请注意查收</view>
+            <view class="ipt-main linear-border top-100">
+              <view class="ipt dis-block border-box t-center" foroType="submit" @click="sureAction">
+                <text class="font-40 line-85">确认</text>
+              </view>
+            </view>
+            <!-- <view class="btn" foroType="submit" @click="sureAction">确认</view> -->
           </form>
         </view>
       </view>
@@ -56,6 +89,14 @@
     //   console.log(option.token)
     //   this.token = option.token
     // },
+    computed: {
+      windowHeight() {
+        return this.$store.state.windowHeight
+      },
+      statusBarHeight() {
+        return this.$store.state.statusBarHeight
+      }
+    },
     methods: {
       goBack() {
         uni.navigateBack({
@@ -248,10 +289,8 @@
     flex-direction: column;
     background: rgba(0, 0, 0, 0);
     .topBar{
-      display: flex;
-      justify-content: space-between;
-      font-size: $font-38;
-      color: $color-white;
+      line-height: 88upx;
+      background: rgba(0, 0, 0, 0);
       .iconfont{
         font-size: $font-42;
         font-weight: 500;
@@ -270,31 +309,95 @@
         color: $color-white;
       }
       .myForm{
-        .ipt{
-          height: 104upx;
+        .ipt-main{
+          margin-bottom: 47upx;
+          padding: 2upx;
+          border-radius: 10upx;
+        }
+        .ipt {
+          height: 85upx;
+          padding: 0 40upx;
           display: flex;
           align-items: center;
           color: $color-white;
-          border-bottom: 1px solid $color-90;
-          &>text{
+          border-radius: 10upx;
+          background: rgba(0, 0, 0, 0.9);
+          &>text {
             font-size: $font-30;
           }
-          &>input{
+            
+          &>input {
             flex: 1;
             margin: 10upx 30upx;
             font-size: $font-28;
           }
-          .del{
+          .code-ipt{
+            position: relative;
+            margin-right: 40upx;
+            &:after{
+              content: '';
+              position: absolute;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              margin: auto;
+              height: 30upx;
+              width: 1px;
+              background: $color-white;
+            }
+          }
+          .line-85{
+            line-height: 85upx;
+          }
+          .del {
             transform: rotate(45deg);
           }
-          .code{
-            width: 140upx;
-            height: 36upx;
-            font-size: $font-22;
-            line-height: 36upx;
+        }
+            
+        .btn {
+          margin: 53upx 0 51upx;
+          height: 98upx;
+          width: 100%;
+          font-size: $font-30;
+          color: $color-white;
+          line-height: 98upx;
+          text-align: center;
+          background: $color-red;
+          border-radius: 49upx;
+          padding: 5upx;
+        }
+            
+        .login-way {
+          height: 146upx;
+          width: 100%;
+          color: $color-99;
+            
+          .title {
+            height: 13upx;
+            margin-bottom: 55upx;
             text-align: center;
-            border-radius: 18upx;
-            background: $color-red;
+            border-bottom: 1px solid $color-99;
+            
+            &>text {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              background: $title-color;
+              padding: 0 5upx;
+              line-height: 27upx;
+              font-size: $font-28;
+            }
+          }
+            
+          .box {
+            padding: 0 42upx;
+            display: flex;
+            justify-content: space-between;
+            
+            &>image {
+              max-width: 70upx;
+              height: 74upx;
+            }
           }
         }
         .info{

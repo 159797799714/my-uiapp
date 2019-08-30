@@ -11,6 +11,7 @@
     "pages/components/goods",
     "pages/moreList/moreList",
     "pages/market/panicBuy",
+    "pages/moreList/moreGoods",
     "pages/message/message",
     "pages/shopcar/shopcar",
     "pages/zerodraw/zerodraw",
@@ -39,8 +40,8 @@
   ],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#000000",
-    "backgroundColor": "#000000"
+    "navigationBarBackgroundColor": "#131313",
+    "backgroundColor": "#131313"
   },
   "tabBar": {
     "color": "#666",

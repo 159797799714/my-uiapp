@@ -10,9 +10,14 @@
       <view class="banner-swiper bg-black">
         <banner :swiperList="swiperList"></banner>
       </view>
-      <view class="TabNav bg-black col-cc">
-        <view v-for="(item, index) in tabList" :key="index" :class="{item: true, selected: index === selectIndex }" @click="selectTab(item, index)">{{ item.name }}</view>
-      </view>
+      <swiper :indicator-dots="true" indicator-active-color="#fff" indicator-color="#666" :duration="500" class="word-swiper">
+        <swiper-item v-for="(item, index) in tabList" :key="index">
+          <view class="TabNav bg-black col-cc">
+            <view v-for="(li, num) in item.arr" :key="num" :class="{item: true, selected: li.category_id === category_id }" @click="selectTab(li, num)">{{ li.name }}</view>
+          </view>
+        </swiper-item>
+      </swiper>
+      
       <view v-if="cultureList.length > 0" v-for="(item, index) in cultureList" :key="index" class="culture bg-black">
         <image :src="item.image.file_path" mode="widthFix" @click="goInfo(item.article_id)"></image>
         <view class="item-words">
@@ -46,11 +51,6 @@
     },
     data() {
       return {
-        indicatorDots: true,
-        autoplay: true,
-        interval: 3000,
-        duration: 2000,
-        indicatorActiveColor: '#ffffff',
         searchInfo: '大家都在搜“森海塞尔”',
         swiperList: [{
           imgUrl:"https://market.pd-unixe.com/uploads/201906111745582db721897.png"
@@ -62,7 +62,7 @@
           imgUrl:"https://market.pd-unixe.com/uploads/201906111745539eac11543.png"
         }],
         tabList: [],
-        selectIndex: 0,
+        category_id: '',
         cultureList: []
       }
     },
@@ -72,8 +72,8 @@
       }
     },
     watch: {
-      selectIndex(val) {
-        this.getDefault(this.tabList[val].category_id)
+      category_id(val) {
+        this.getDefault(val)
       }
     },
     onLoad() {
@@ -116,16 +116,38 @@
       },
       // 获取文章分类
       getCategorylist() {
-        this.$http({
+        let that= this
+        that.$http({
           data: {
             'wxapp_id': 10001,
             token: 'b612f5e2a32d553fdaea8eeb06bc2744',  
           },
-          url: this.$api.categorylist,
+          url: that.$api.categorylist,
           cb: (err, res) => {
-            if (!err && res.code === 1) { 
-              this.tabList = res.data.categoryList
-              return
+            if (!err && res.code === 1) {
+              let list= res.data.categoryList
+              let time= Math.ceil(list.length / 5)
+              console.log(time)
+              if(time === 1) {
+                let obj= {
+                  arr: res.data.categoryList
+                }
+                that.tabList.push(obj)
+                that.category_id= that.tabList[0].arr[0].category_id
+                return
+              }
+              
+              if(time > 1) {
+                for(let i= 0;i < time; i++) {
+                  let obj={
+                    arr: list.splice(0, 5)
+                  }
+                  that.tabList.push(obj)
+                }
+                that.category_id= that.tabList[0].arr[0].category_id
+                return
+              }
+             
             } else {
               uni.showToast({
               	title: '文章分类获取失败',
@@ -192,7 +214,6 @@
           url: this.$api.index_gethomebanners,
           cb: (err, res) => {
             if(!err && res.code === 1) {
-              console.log(res.data)
               
               // 替换轮播图图片路径数据
               this.swiperList = res.data.list
@@ -208,7 +229,7 @@
       },
       // 选择分类
       selectTab(item, index) {
-        this.selectIndex = index
+        this.category_id = item.category_id
       }, 
       // 文章详情页
       goInfo(item) {
@@ -263,15 +284,19 @@
       padding: 30upx 30upx 0 30upx;
       height: 390upx;
     }
+    .word-swiper{
+      height: 150upx;
+    }
     .TabNav{
       padding: 0 30upx;
-      padding-top: 50upx;
+      padding-top: 48upx;
       display: flex;
       position: relative;
       .item{
         flex: 1;
+        max-width: 138upx;
         font-size: $font-32;
-        line-height: 60upx;
+        line-height: 40upx;
         text-align: center;
         position: relative;
       }
@@ -285,6 +310,7 @@
       }
       .selected{
         font-size: $font-40;
+        color: $color-white;
         &::before{
           content: '';
           display: block;

@@ -632,16 +632,12 @@ to {
             flex: 1;
 }
 .content .main .logo.data-v-73d4b94a {
-      max-height: 517rpx;
       overflow: hidden;
 }
 .content .main .logo > image.data-v-73d4b94a {
         margin: 0 auto;
         height: 100%;
         width: 100%;
-}
-.content .main .page-title.data-v-73d4b94a {
-      line-height: 150rpx;
 }
 .content .main .form-main.data-v-73d4b94a {
       width: 100%;

@@ -174,12 +174,12 @@ var _default =
 
   },
   onLoad: function onLoad(option) {
-    this.type = option.type;
+    that.type = option.type;
     this.mobile = option.mobile;
     console.log('password接收到的参数', option);
     if (option.type === 'register') {
       this.title = '设置密码';
-      this.btnValue = '注册并登录';
+      this.btnValue = '注册';
       return;
     }
     if (option.type === 'forget') {
@@ -202,16 +202,17 @@ var _default =
         delta: 1 });
 
     },
-    sureAction: function sureAction() {var _this = this;
+    sureAction: function sureAction() {
+      var that = this;
       console.log('fjafjf');
-      if (!this.password) {
+      if (!that.password) {
         uni.showToast({
           title: '密码不能为空',
           icon: 'none' });
 
         return;
       }
-      if (this.password !== this.password2) {
+      if (that.password !== that.password2) {
         uni.showToast({
           title: '两次密码输入不一致',
           icon: 'none' });
@@ -219,30 +220,31 @@ var _default =
         return;
       }
 
-      switch (this.type) {
+      switch (that.type) {
         case 'forget':
-          this.$http({
-            url: this.$api.resetpassword,
+          that.$http({
+            url: that.$api.resetpassword,
             method: 'POST',
             data: {
-              mobile: this.mobile,
-              newpassword: this.password },
+              mobile: that.mobile,
+              newpassword: that.password },
 
             cb: function cb(err, res) {
               if (!err && res.code === 1) {
-                _this.$store.commit('login', {
-                  mobile: _this.mobile,
+                that.$store.commit('login', {
+                  mobile: res.data.mobile,
                   token: res.data.token });
 
                 uni.showToast({
-                  title: '重置密码成功',
+                  title: '重置密码成功即将自动登录',
                   icon: 'none' });
 
+                setTimeout(function () {
+                  uni.switchTab({
+                    url: '../index/index' });
 
-                uni.switchTab({
-                  url: '../index/index' });
+                }, 1000);
 
-                return;
               } else if (res.code === 0 && res.msg) {
                 uni.showToast({
                   title: res.msg,
@@ -260,12 +262,12 @@ var _default =
 
           break;
         case 'register':
-          this.$http({
-            url: this.$api.register,
+          that.$http({
+            url: that.$api.register,
             method: 'POST',
             data: {
-              mobile: this.mobile,
-              password: this.password },
+              mobile: that.mobile,
+              password: that.password },
 
             cb: function cb(err, res) {
               if (!err && res.code === 1) {
@@ -274,7 +276,7 @@ var _default =
                   icon: 'none' });
 
                 uni.switchTab({
-                  url: '../index/index' });
+                  url: './login' });
 
               } else if (res.code === 0) {
                 uni.showToast({

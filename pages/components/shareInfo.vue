@@ -38,20 +38,20 @@
       <view>
         <image :src="detail.image.file_path" mode="widthFix" style="width: 100%"></image>
       </view>
-      <view class="cultureInfo bg-white">
+      <view class="cultureInfo bg-black">
        <view class="cultureTitle font-30">{{ detail.article_title }}</view>
         <!-- <view class="cultureCategory">
         <text v-for="(item, index) in cultureInfo.tags" :key="index">{{ item }}</text>
         </view> 
         <view class="cultureTime">{{ detail.headimg.create_time }}</view> -->
-        <view class="cultureWords">
+        <view class="cultureWords col-99">
           <!-- <rich-text type="node" :nodes="strings"></rich-text> -->
           <u-parse :content="strings" @preview="preview" @navigate="navigate"/>
         </view>
       </view>
       
       <!-- 商品 -->
-      <view v-for="(item, index) in detail.article_goods_info" :key="index" class="good dis-flex flex-x-between border-box bg-white" @click="gogoodDetail(item)">
+      <view v-for="(item, index) in detail.article_goods_info" :key="index" class="good dis-flex flex-x-between border-box bg-black" @click="gogoodDetail(item)">
         <view class="left">
           <image :src="item.image[0].file_path" mode="widthFix"></image>
         </view>
@@ -65,7 +65,7 @@
       </view>
       
       <!-- 评论 -->
-      <view class="comment bg-white">
+      <view class="comment bg-black">
         <view class="total f-bold font-36">评论({{ detail.comments.num }})</view>
         <view v-for="(item, index) in detail.comments_show" :key="index" v-if="index < 10" :class="{ item: true, 'border-box': true, 'no-border': index === 0 }">
           <view class="writer">
@@ -97,8 +97,8 @@
         </view>
       </view>
     </scroll-view>
-    <view class="speak bg-white border-box">
-      <input type="text" v-model="speakVal" placeholder="留下你的精彩评论吧" @confirm="addComment" @input="onInput"/>
+    <view class="speak bg-black border-box">
+      <input type="text" class="bg-66" v-model="speakVal" placeholder="留下你的精彩评论吧" placeholder-style="color: #ccc" @confirm="addComment" @input="onInput"/>
       <view>
         <text class="iconfont">&#xe69d;</text>
         <text>{{ detail.comments.num }}</text>

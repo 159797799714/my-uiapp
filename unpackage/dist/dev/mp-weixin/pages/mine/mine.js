@@ -275,15 +275,15 @@ var _default =
         dataType: '' },
       {
         imgUrl: '../../static/img/mine/mine6.png',
-        name: '我的积分',
+        name: '我的分享',
         dataType: '' },
       {
         imgUrl: '../../static/img/mine/mine7.png',
-        name: '优惠券',
+        name: '我的消息',
         dataType: '' },
       {
         imgUrl: '../../static/img/mine/mine8.png',
-        name: '我的钱包',
+        name: '客服小蜜',
         dataType: '' }],
 
       // 我的订单第一行

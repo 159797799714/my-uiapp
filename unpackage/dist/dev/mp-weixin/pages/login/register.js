@@ -241,49 +241,59 @@ var _default =
       }
       this.showDel = false;
     },
-    goNext: function goNext() {
-      console.log(this.check_code, this.code, this.showInfo);
-      // if(this.check_code) {
-      //   if(this.code.length === 4) {
-      //     this.$http({
-      //       url: this.$api.smscodeyz,
-      //       data: {
-      //         mobile: this. username,
-      //         code: this.code
-      //       },
-      //       cb: (err, res) => {
-      //         if(!err && res.code === 1) {
-      //           uni.navigateTo({
-      //             url: 'password?type=' + this.type + '&mobile=' + this.username
-      //           })
-      //         } else if(res.code === 0) {
-      //           uni.showToast({
-      //             title: res.msg,
-      //             icon: 'none'
-      //           })
-      //         } else {
-      //           uni.showToast({
-      //             title: '验证码验证失败',
-      //             icon: 'none'
-      //           })
-      //         }
-      //       }
-      //     })  
-      //   } else {
-      //     uni.showToast({
-      //       title: '验证码格式错误',
-      //       icon: 'none'
-      //     })
-      //   }  
-      // } else {
-      //   uni.showToast({
-      //     title: this.showTitle,
-      //     icon: 'none'
-      //   })
-      // }
+    goBind: function goBind() {
       uni.navigateTo({
-        url: 'password?type=' + this.type + '&mobile=' + this.username });
+        url: './bindTel' });
 
+    },
+    goNext: function goNext() {
+      var that = this;
+      console.log(that.check_code, that.code, that.showInfo);
+      if (!that.username) {
+        uni.showToast({
+          title: '请输入手机号码',
+          icon: 'none' });
+
+        return;
+      }
+      if (that.check_code) {
+        if (that.code.length === 4) {
+          that.$http({
+            url: that.$api.smscodeyz,
+            data: {
+              mobile: that.username,
+              code: that.code },
+
+            cb: function cb(err, res) {
+              if (!err && res.code === 1) {
+                uni.navigateTo({
+                  url: 'password?type=' + that.type + '&mobile=' + that.username });
+
+              } else if (res.code === 0) {
+                uni.showToast({
+                  title: res.msg,
+                  icon: 'none' });
+
+              } else {
+                uni.showToast({
+                  title: '验证码验证失败',
+                  icon: 'none' });
+
+              }
+            } });
+
+        } else {
+          uni.showToast({
+            title: '验证码格式错误',
+            icon: 'none' });
+
+        }
+      } else {
+        uni.showToast({
+          title: that.showTitle,
+          icon: 'none' });
+
+      }
     },
     goLogin: function goLogin() {
       uni.navigateTo({
@@ -292,9 +302,10 @@ var _default =
     },
     // 获取手机验证码
     getCode: function getCode() {
-      console.log(this.username);
-      var value = /^1[3456789]\d{9}$/.test(this.username);
       var that = this;
+      console.log(that.username);
+      var value = /^1[3456789]\d{9}$/.test(that.username);
+
       if (!value) {
         uni.showToast({
           title: '请输入正确的手机号码',
